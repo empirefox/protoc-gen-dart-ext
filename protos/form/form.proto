@@ -1,0 +1,176 @@
+syntax = "proto3";
+
+package form;
+
+option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/form";
+
+import "google/protobuf/descriptor.proto";
+
+import "protos/form/color.proto";
+import "protos/form/icon.proto";
+import "protos/units/currency.proto";
+import "protos/units/units.proto";
+
+extend google.protobuf.EnumOptions {
+  // default Field if not set in message.
+  form.Field defaultField = 919113;
+}
+extend google.protobuf.EnumValueOptions {
+  form.InputOption inputOption = 919113;
+}
+extend google.protobuf.MessageOptions {
+  form.InputOption entry = 919113;
+}
+message InputOption {
+  MaterialIcon icon = 1;
+}
+
+extend google.protobuf.FieldOptions {
+  form.Field field = 919113;
+}
+message Field {
+  InputDecoration decoration = 1;
+  bool hide = 2;
+  bool enabled = 3;
+  bool ensureAgain = 4;
+
+  // not for bool?
+  bool emptyAsNoChange = 5;
+
+  oneof type {
+    TextInput text = 11;
+    TypeAheadInput typeAhead = 12;
+    SignatureInput signature = 13;
+    NumberInput number = 14;
+    StepperInput stepper = 15;
+    SliderInput slider = 16;
+    RateInput rate = 17;
+    RadioInput radio = 18;
+    SwitchInput boolSwitch = 19;
+    ListInput list = 20;
+    DatetimePickerInput datetime = 21;
+  }
+}
+
+message TextInput {
+  enum Type {
+    autoByType = 0;
+
+    datetime = 2;
+    emailAddress = 3;
+    multiline = 4;
+    number = 5;
+    phone = 6;
+    text = 7;
+    url = 8;
+  }
+  Type keyboardType = 1;
+
+  bool obscureText = 2;
+  bool autocorrect = 3;
+  int32 maxLines = 4;
+  bool maxLengthEnforced = 5;
+}
+
+message TypeAheadInput {
+  oneof builder {
+    string codeAccessor = 1;
+    bool fromEnum = 2;
+  }
+}
+
+message SignatureInput {
+  double width = 1;
+  double height = 2;
+  MaterialColor backgroundColor = 3;
+  MaterialColor penColor = 4;
+  double penStrokeWidth = 5;
+}
+
+enum UnitPlace {
+  noUnitPlace = 0;
+
+  suffix = 1;
+  labelSuffix = 2;
+}
+message NumberInput {
+  bool fullUnit = 1;
+  UnitPlace unitPlace = 2;
+}
+message StepperInput {
+  bool fullUnit = 1;
+  UnitPlace unitPlace = 2;
+  uint32 step = 3;
+}
+message SliderInput {
+  bool fullUnit = 1;
+  UnitPlace unitPlace = 2;
+  uint32 divisions = 3;
+}
+
+message RateInput {
+  MaterialIcon icon = 1;
+}
+
+message RadioInput {
+  enum Type {
+    radio = 0;
+    // extract a new message?
+    dropdown = 1;
+    segmentedControl = 2;
+  }
+  Type type = 1;
+
+  oneof builder {
+    string codeAccessor = 2;
+    bool fromEnum = 3;
+  }
+}
+
+message SwitchInput {
+  bool checkbox = 1;
+}
+
+message ListInput {
+  enum Type {
+    // values must be checked from fixed list
+    checkbox = 0;
+    // values can be others
+    chips = 1;
+  }
+  Type type = 1;
+
+  oneof builder {
+    string codeAccessor = 2;
+    bool fromEnum = 3;
+  }
+}
+
+message DatetimePickerInput {
+  enum Type {
+    date = 0;
+    time = 1;
+    both = 2;
+  }
+  Type type = 1;
+
+  // format must in target_package.TimeFormatNameRegister
+  string format = 2;
+}
+
+message InputDecoration {
+  MaterialIcon icon = 1;
+  MaterialIcon prefixIcon = 2;
+  MaterialIcon suffixIcon = 3;
+  bool hasCounter = 4;
+}
+
+// TODO move to validate
+message Date {
+  oneof utc {
+    // seconds from January 1, 1970 UTC
+    int64 unix = 1;
+    // 2006-01-02
+    string rfc3339 = 2;
+  }
+}

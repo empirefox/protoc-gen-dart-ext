@@ -1,0 +1,23 @@
+name: pgde
+
+version: 0.0.1
+
+environment:
+  sdk: ">=2.2.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  collection:
+  intl:
+  protobuf: ^0.13.11
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  args:
+  intl_translation:
+  test:

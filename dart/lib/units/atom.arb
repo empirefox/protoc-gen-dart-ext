@@ -1,0 +1,585 @@
+{
+  "@@last_modified": "2019-04-26T09:55:41Z",
+  "@@locale": "en",
+  "@@x-entity": "AtomV1",
+  "Meter": "meter",
+  "@Meter": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Meters": "meters",
+  "@Meters": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Foot": "foot",
+  "@Foot": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Feet": "feet",
+  "@Feet": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Inch": "inch",
+  "@Inch": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Inches": "inches",
+  "@Inches": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Yard": "yard",
+  "@Yard": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Yards": "yards",
+  "@Yards": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Mile": "mile",
+  "@Mile": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Miles": "miles",
+  "@Miles": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "NauticalMile": "nautical mile",
+  "@NauticalMile": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "NauticalMiles": "nautical miles",
+  "@NauticalMiles": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "LightYear": "light year",
+  "@LightYear": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "LightYears": "light years",
+  "@LightYears": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Hectare": "hectare",
+  "@Hectare": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Hectares": "hectares",
+  "@Hectares": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Are": "are",
+  "@Are": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Ares": "ares",
+  "@Ares": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Liter": "liter",
+  "@Liter": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Liters": "liters",
+  "@Liters": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Gallon": "gallon",
+  "@Gallon": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Gallons": "gallons",
+  "@Gallons": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Barrel": "barrel",
+  "@Barrel": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Barrels": "barrels",
+  "@Barrels": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Gram": "gram",
+  "@Gram": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Grams": "grams",
+  "@Grams": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Ton": "ton",
+  "@Ton": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Tons": "tons",
+  "@Tons": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Pound": "pound",
+  "@Pound": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Pounds": "pounds",
+  "@Pounds": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Ounce": "ounce",
+  "@Ounce": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Ounces": "ounces",
+  "@Ounces": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Second": "second",
+  "@Second": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Seconds": "seconds",
+  "@Seconds": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Minute": "minute",
+  "@Minute": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Minutes": "minutes",
+  "@Minutes": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Hour": "hour",
+  "@Hour": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Hours": "hours",
+  "@Hours": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Day": "day",
+  "@Day": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Days": "days",
+  "@Days": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Week": "week",
+  "@Week": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Weeks": "weeks",
+  "@Weeks": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Month": "month",
+  "@Month": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Months": "months",
+  "@Months": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Year": "year",
+  "@Year": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Years": "years",
+  "@Years": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Century": "century",
+  "@Century": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Centuries": "centuries",
+  "@Centuries": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "SecondAngle": "second",
+  "@SecondAngle": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "SecondsAngle": "seconds",
+  "@SecondsAngle": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "MinuteAngle": "minute",
+  "@MinuteAngle": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "MinutesAngle": "minutes",
+  "@MinutesAngle": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Degree": "degree",
+  "@Degree": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Degrees": "degrees",
+  "@Degrees": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Ampere": "ampere",
+  "@Ampere": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Amperes": "amperes",
+  "@Amperes": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Electronvolt": "electronvolt",
+  "@Electronvolt": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Electronvolts": "electronvolts",
+  "@Electronvolts": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Bel": "bel",
+  "@Bel": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Bels": "bels",
+  "@Bels": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Kelvin": "kelvin",
+  "@Kelvin": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Kelvins": "kelvins",
+  "@Kelvins": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Mole": "mole",
+  "@Mole": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Moles": "moles",
+  "@Moles": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Candela": "candela",
+  "@Candela": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Candelas": "candelas",
+  "@Candelas": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Bit": "bit",
+  "@Bit": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Bits": "bits",
+  "@Bits": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Byte": "byte",
+  "@Byte": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Bytes": "bytes",
+  "@Bytes": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Character": "character",
+  "@Character": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Characters": "characters",
+  "@Characters": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Word": "word",
+  "@Word": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Words": "words",
+  "@Words": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Radian": "radian",
+  "@Radian": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Radians": "radians",
+  "@Radians": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Steradian": "steradian",
+  "@Steradian": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Steradians": "steradians",
+  "@Steradians": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Hertz": "hertz",
+  "@Hertz": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Newton": "newton",
+  "@Newton": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Newtons": "newtons",
+  "@Newtons": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Pascal": "pascal",
+  "@Pascal": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Pascals": "pascals",
+  "@Pascals": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Joule": "joule",
+  "@Joule": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Joules": "joules",
+  "@Joules": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Watt": "watt",
+  "@Watt": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Watts": "watts",
+  "@Watts": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Coulomb": "coulomb",
+  "@Coulomb": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Coulombs": "coulombs",
+  "@Coulombs": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Volt": "volt",
+  "@Volt": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Volts": "volts",
+  "@Volts": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Farad": "farad",
+  "@Farad": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Farads": "farads",
+  "@Farads": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Ohm": "ohm",
+  "@Ohm": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Ohms": "ohms",
+  "@Ohms": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Siemens": "siemens",
+  "@Siemens": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Weber": "weber",
+  "@Weber": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Webers": "webers",
+  "@Webers": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Tesla": "tesla",
+  "@Tesla": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Teslas": "teslas",
+  "@Teslas": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Henry": "henry",
+  "@Henry": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Henries": "henries",
+  "@Henries": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "DegreeCelsius": "degree Celsius",
+  "@DegreeCelsius": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "DegreesCelsius": "degrees Celsius",
+  "@DegreesCelsius": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Lumen": "lumen",
+  "@Lumen": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Lumens": "lumens",
+  "@Lumens": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Lux": "lux",
+  "@Lux": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Luxes": "luxes",
+  "@Luxes": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Becquerel": "becquerel",
+  "@Becquerel": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Becquerels": "becquerels",
+  "@Becquerels": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Gray": "gray",
+  "@Gray": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Grays": "grays",
+  "@Grays": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Sievert": "sievert",
+  "@Sievert": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Sieverts": "sieverts",
+  "@Sieverts": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  },
+  "Katal": "katal",
+  "@Katal": {
+    "type": "text",
+    "description": "SI units (singular)"
+  },
+  "Katals": "katals",
+  "@Katals": {
+    "type": "text",
+    "description": "SI units (plural), empty means no plural form"
+  }
+}

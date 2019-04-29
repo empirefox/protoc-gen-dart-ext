@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package exports;
+
+option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/exports";
+
+message Field {
+  // the unique id of field which is assosiated to an Entity.
+  string ref = 1;
+  // the field name which is converted from an Entity name after merged.
+  string name = 2;
+}
+
+message Entity {
+  string name = 1;
+  repeated Field fields = 2;
+}
+
+message Package {
+  repeated Entity entities = 1;
+}
+
+// describe whats to use.
+message Exports {
+  map<string, Package> packages = 1;
+}

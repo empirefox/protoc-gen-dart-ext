@@ -4,18 +4,26 @@ import './atom.dart';
 import './prefix.dart';
 import './currency.dart';
 
-const List<Cell> dots = [Cell()];
-
 class Unit {
+  final String Function(dynamic) format;
   final List<Cell> dots;
   final List<Cell> per;
-  const Unit({this.dots, this.per});
+  const Unit({this.format, this.dots, this.per});
+
+  String get symbol => l10n(null, false);
 
   String l10n(UnitsLocalization l, bool p) =>
       _join(dots, l, p) + (per == null ? '' : ('/' + _join(per, l, p)));
 
   String _join(List<Cell> cells, UnitsLocalization l, bool p) =>
       cells == null ? '' : cells.map((c) => c.l10n(l, p)).join('.');
+}
+
+class CurrencyUnit extends CellUnit {
+  final CurrencyV1 _c;
+  CurrencyUnit(this._c);
+  @override
+  String from([UnitsLocalization l, bool p]) => _c.l10n(l);
 }
 
 class Cell {
@@ -43,23 +51,6 @@ class CellPrefix {
 abstract class CellUnit {
   const CellUnit();
   String from([UnitsLocalization l, bool p]);
-}
-
-// CurrencyUnit
-class CurrencyUnit extends CellUnit {
-  static const _code = const _CurrencyCodeValuer();
-  static const _symbol = const _CurrencySymbolValuer();
-  static const _name = const _CurrencyNameValuer();
-
-  final CurrencyV1 _c;
-  final _CurrencyValuer _v;
-
-  const CurrencyUnit.code(this._c) : _v = _code;
-  const CurrencyUnit.symbol(this._c) : _v = _symbol;
-  const CurrencyUnit.name(this._c) : _v = _name;
-
-  @override
-  String from([UnitsLocalization l, bool p]) => _v.from(_c, l);
 }
 
 // AtomUnit
@@ -104,29 +95,6 @@ class _PrefixNameValuer implements _PrefixValuer {
   const _PrefixNameValuer();
   @override
   String from(PrefixV1 p, [UnitsLocalization l]) => p.l10n(l);
-}
-
-// _CurrencyValuer
-abstract class _CurrencyValuer {
-  String from(CurrencyV1 c, [UnitsLocalization l]);
-}
-
-class _CurrencyCodeValuer implements _CurrencyValuer {
-  const _CurrencyCodeValuer();
-  @override
-  String from(CurrencyV1 c, [UnitsLocalization l]) => c.ccy;
-}
-
-class _CurrencySymbolValuer implements _CurrencyValuer {
-  const _CurrencySymbolValuer();
-  @override
-  String from(CurrencyV1 c, [UnitsLocalization l]) => c.unicode ?? c.ccy;
-}
-
-class _CurrencyNameValuer implements _CurrencyValuer {
-  const _CurrencyNameValuer();
-  @override
-  String from(CurrencyV1 c, [UnitsLocalization l]) => c.l10n(l);
 }
 
 // _AtomValuer

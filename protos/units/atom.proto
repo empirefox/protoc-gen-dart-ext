@@ -79,56 +79,60 @@ enum AtomV1 {
   mole = 32;
   // cd
   candela = 33;
+  // %
+  percent = 34;
+  // ‰
+  perThousand = 35;
   // b
-  bit = 34;
+  bit = 36;
   // B
-  byte = 35;
+  byte = 37;
   // character
-  character = 36;
+  character = 38;
   // word
-  word = 37;
+  word = 39;
   // rad
-  radian = 38;
+  radian = 40;
   // sr
-  steradian = 39;
+  steradian = 41;
   // Hz
-  hertz = 40;
+  hertz = 42;
   // N
-  newton = 41;
+  newton = 43;
   // Pa
-  pascal = 42;
+  pascal = 44;
   // J
-  joule = 43;
+  joule = 45;
   // W
-  watt = 44;
+  watt = 46;
   // C
-  coulomb = 45;
+  coulomb = 47;
   // V
-  volt = 46;
+  volt = 48;
   // F
-  farad = 47;
+  farad = 49;
   // Ω
-  ohm = 48;
+  ohm = 50;
   // S
-  siemens = 49;
+  siemens = 51;
   // Wb
-  weber = 50;
+  weber = 52;
   // T
-  tesla = 51;
+  tesla = 53;
   // H
-  henry = 52;
+  henry = 54;
   // °C
-  degreeCelsius = 53;
+  degreeCelsius = 55;
   // lm
-  lumen = 54;
+  lumen = 56;
   // lx
-  lux = 55;
+  lux = 57;
   // Bq
-  becquerel = 56;
+  becquerel = 58;
   // Gy
-  gray = 57;
+  gray = 59;
   // Sv
-  sievert = 58;
+  sievert = 60;
   // kat
-  katal = 59;
+  katal = 61;
 }

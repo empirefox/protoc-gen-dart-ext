@@ -20,6 +20,7 @@ gen_atom:
 		-proto=${units_path}/atom.proto \
 		-dart=${dart_lib}/units/atom.dart \
 		-arb=${dart_lib}/units/atom.arb
+	@dartfmt -w ${dart_lib}/units/atom.dart
 
 .PHONY: gen_currency
 gen_currency:
@@ -27,6 +28,7 @@ gen_currency:
 		-proto=${units_path}/currency.proto \
 		-dart=${dart_lib}/units/currency.dart \
 		-arb=${dart_lib}/units/currency.arb
+	@dartfmt -w ${dart_lib}/units/currency.dart
 
 .PHONY: gen_prefix
 gen_prefix:
@@ -34,6 +36,7 @@ gen_prefix:
 		-proto=${units_path}/prefix.proto \
 		-dart=${dart_lib}/units/prefix.dart \
 		-arb=${dart_lib}/units/prefix.arb
+	@dartfmt -w ${dart_lib}/units/prefix.dart
 
 .PHONY: gen_units_gtt
 gen_units_gtt:

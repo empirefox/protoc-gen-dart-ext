@@ -76,7 +76,6 @@ class Field extends $pb.GeneratedMessage {
     ..aOB(3, 'enabled')
     ..aOB(4, 'ensureAgain')
     ..aOB(5, 'emptyAsNoChange')
-    ..aOB(6, 'disableDesc')
     ..a<TextInput>(11, 'text', $pb.PbFieldType.OM, TextInput.getDefault, TextInput.create)
     ..a<TypeAheadInput>(12, 'typeAhead', $pb.PbFieldType.OM, TypeAheadInput.getDefault, TypeAheadInput.create)
     ..a<SignatureInput>(13, 'signature', $pb.PbFieldType.OM, SignatureInput.getDefault, SignatureInput.create)
@@ -132,64 +131,59 @@ class Field extends $pb.GeneratedMessage {
   $core.bool hasEmptyAsNoChange() => $_has(4);
   void clearEmptyAsNoChange() => clearField(5);
 
-  $core.bool get disableDesc => $_get(5, false);
-  set disableDesc($core.bool v) { $_setBool(5, v); }
-  $core.bool hasDisableDesc() => $_has(5);
-  void clearDisableDesc() => clearField(6);
-
-  TextInput get text => $_getN(6);
+  TextInput get text => $_getN(5);
   set text(TextInput v) { setField(11, v); }
-  $core.bool hasText() => $_has(6);
+  $core.bool hasText() => $_has(5);
   void clearText() => clearField(11);
 
-  TypeAheadInput get typeAhead => $_getN(7);
+  TypeAheadInput get typeAhead => $_getN(6);
   set typeAhead(TypeAheadInput v) { setField(12, v); }
-  $core.bool hasTypeAhead() => $_has(7);
+  $core.bool hasTypeAhead() => $_has(6);
   void clearTypeAhead() => clearField(12);
 
-  SignatureInput get signature => $_getN(8);
+  SignatureInput get signature => $_getN(7);
   set signature(SignatureInput v) { setField(13, v); }
-  $core.bool hasSignature() => $_has(8);
+  $core.bool hasSignature() => $_has(7);
   void clearSignature() => clearField(13);
 
-  NumberInput get number => $_getN(9);
+  NumberInput get number => $_getN(8);
   set number(NumberInput v) { setField(14, v); }
-  $core.bool hasNumber() => $_has(9);
+  $core.bool hasNumber() => $_has(8);
   void clearNumber() => clearField(14);
 
-  StepperInput get stepper => $_getN(10);
+  StepperInput get stepper => $_getN(9);
   set stepper(StepperInput v) { setField(15, v); }
-  $core.bool hasStepper() => $_has(10);
+  $core.bool hasStepper() => $_has(9);
   void clearStepper() => clearField(15);
 
-  SliderInput get slider => $_getN(11);
+  SliderInput get slider => $_getN(10);
   set slider(SliderInput v) { setField(16, v); }
-  $core.bool hasSlider() => $_has(11);
+  $core.bool hasSlider() => $_has(10);
   void clearSlider() => clearField(16);
 
-  RateInput get rate => $_getN(12);
+  RateInput get rate => $_getN(11);
   set rate(RateInput v) { setField(17, v); }
-  $core.bool hasRate() => $_has(12);
+  $core.bool hasRate() => $_has(11);
   void clearRate() => clearField(17);
 
-  RadioInput get radio => $_getN(13);
+  RadioInput get radio => $_getN(12);
   set radio(RadioInput v) { setField(18, v); }
-  $core.bool hasRadio() => $_has(13);
+  $core.bool hasRadio() => $_has(12);
   void clearRadio() => clearField(18);
 
-  SwitchInput get boolSwitch => $_getN(14);
+  SwitchInput get boolSwitch => $_getN(13);
   set boolSwitch(SwitchInput v) { setField(19, v); }
-  $core.bool hasBoolSwitch() => $_has(14);
+  $core.bool hasBoolSwitch() => $_has(13);
   void clearBoolSwitch() => clearField(19);
 
-  ListInput get list => $_getN(15);
+  ListInput get list => $_getN(14);
   set list(ListInput v) { setField(20, v); }
-  $core.bool hasList() => $_has(15);
+  $core.bool hasList() => $_has(14);
   void clearList() => clearField(20);
 
-  DatetimePickerInput get datetime => $_getN(16);
+  DatetimePickerInput get datetime => $_getN(15);
   set datetime(DatetimePickerInput v) { setField(21, v); }
-  $core.bool hasDatetime() => $_has(16);
+  $core.bool hasDatetime() => $_has(15);
   void clearDatetime() => clearField(21);
 }
 
@@ -704,10 +698,10 @@ class Date extends $pb.GeneratedMessage {
 }
 
 class Form {
-  static final $pb.Extension defaultField = $pb.Extension<Field>('google.protobuf.EnumOptions', 'defaultField', 919112, $pb.PbFieldType.OM, Field.getDefault, Field.create);
-  static final $pb.Extension inputOption = $pb.Extension<InputOption>('google.protobuf.EnumValueOptions', 'inputOption', 919112, $pb.PbFieldType.OM, InputOption.getDefault, InputOption.create);
-  static final $pb.Extension entry = $pb.Extension<InputOption>('google.protobuf.MessageOptions', 'entry', 919112, $pb.PbFieldType.OM, InputOption.getDefault, InputOption.create);
-  static final $pb.Extension field = $pb.Extension<Field>('google.protobuf.FieldOptions', 'field', 919112, $pb.PbFieldType.OM, Field.getDefault, Field.create);
+  static final $pb.Extension defaultField = $pb.Extension<Field>('google.protobuf.EnumOptions', 'defaultField', 919113, $pb.PbFieldType.OM, Field.getDefault, Field.create);
+  static final $pb.Extension inputOption = $pb.Extension<InputOption>('google.protobuf.EnumValueOptions', 'inputOption', 919113, $pb.PbFieldType.OM, InputOption.getDefault, InputOption.create);
+  static final $pb.Extension entry = $pb.Extension<InputOption>('google.protobuf.MessageOptions', 'entry', 919113, $pb.PbFieldType.OM, InputOption.getDefault, InputOption.create);
+  static final $pb.Extension field = $pb.Extension<Field>('google.protobuf.FieldOptions', 'field', 919113, $pb.PbFieldType.OM, Field.getDefault, Field.create);
   static void registerAllExtensions($pb.ExtensionRegistry registry) {
     registry.add(defaultField);
     registry.add(inputOption);

@@ -28,7 +28,6 @@ const Field$json = const {
     const {'1': 'enabled', '3': 3, '4': 1, '5': 8, '10': 'enabled'},
     const {'1': 'ensureAgain', '3': 4, '4': 1, '5': 8, '10': 'ensureAgain'},
     const {'1': 'emptyAsNoChange', '3': 5, '4': 1, '5': 8, '10': 'emptyAsNoChange'},
-    const {'1': 'disableDesc', '3': 6, '4': 1, '5': 8, '10': 'disableDesc'},
     const {'1': 'text', '3': 11, '4': 1, '5': 11, '6': '.form.TextInput', '9': 0, '10': 'text'},
     const {'1': 'typeAhead', '3': 12, '4': 1, '5': 11, '6': '.form.TypeAheadInput', '9': 0, '10': 'typeAhead'},
     const {'1': 'signature', '3': 13, '4': 1, '5': 11, '6': '.form.SignatureInput', '9': 0, '10': 'signature'},

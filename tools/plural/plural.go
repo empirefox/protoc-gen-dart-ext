@@ -5,6 +5,7 @@ import (
 	"log"
 	"text/template"
 
+	"github.com/empirefox/makeplural/cases"
 	"github.com/empirefox/makeplural/plural"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/genshared"
 )
@@ -79,15 +80,20 @@ enum Form { other, zero, one, two, few, many }
 
 typedef PluralFunc = Form Function(num value, bool ordinal);
 
-{{- range $k, $v := . }}
-Form match{{ powerCamel $k }}(num value, bool ordinal) {
-  {{ template "rule" $v }}
+{{- range .Cultures }}
+Form match{{ powerCamel .Name }}(num value, bool ordinal) {
+  {{ template "rule" . }}
 }
 {{- end }}
 
+Form matchOther(num value, bool ordinal) => Form.other;
+
 final Map<String, PluralFunc> rules = {
-  {{- range $k, $v := . }}
-  "{{ $k }}": match{{ powerCamel $k }},
+  {{- range .Cultures }}
+  "{{ .Name }}": match{{ powerCamel .Name }},
+  {{- end }}
+  {{- range .Others }}
+  "{{ . }}": matchOther,
   {{- end }}
 };
 `
@@ -125,13 +131,13 @@ void _testNamedKey(
 }
 
 void main() {
-  {{- range $k, $v := . }}
-  group('{{ $k }}', () {
-    final fn = rules['{{ $k }}'];
-    {{- range $v.Tests.Cardinal }}
+  {{- range .Cultures }}
+  group('{{ .Name }}', () {
+    final fn = rules['{{ .Name }}'];
+    {{- range .Tests.Cardinal }}
       {{ template "cardinal" . }}
     {{- end }}
-    {{- range $v.Tests.Ordinal }}
+    {{- range .Tests.Ordinal }}
       {{ template "ordinal" . }}
     {{- end }}
   });
@@ -161,10 +167,18 @@ func main() {
 	rs.OpenAll()
 	defer rs.Close()
 
-	err := rs.Render(plural.Cultures)
+	err := rs.Render(&Data{
+		Cultures: plural.Cultures,
+		Others:   plural.Others,
+	})
 	if err != nil {
 		log.Fatalf("executing template: %v", err)
 	}
 
 	log.Println("Done.")
+}
+
+type Data struct {
+	Cultures []cases.Culture
+	Others   []string
 }

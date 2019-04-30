@@ -36,8 +36,9 @@ message Unit {
   }
   PrefixType prefixType = 1;
   AtomType atomType = 2;
-  repeated Cell dots = 3;
-  repeated Cell per = 4;
+  string lang = 3;
+  repeated Cell dots = 4;
+  repeated Cell per = 5;
 }
 
 enum AtomType {

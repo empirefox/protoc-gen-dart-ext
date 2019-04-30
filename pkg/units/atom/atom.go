@@ -160,6 +160,10 @@ var Atoms = []*Atom{
 	// luminous intensity
 	candela, //= &Atom{"candela", "cd", "candelas"}
 
+	// ratio
+	percent,     //= &Atom{"percent", "%", ""}
+	perthousand, //= &Atom{"per thousand", "‰", ""}
+
 	bit,       //= &Atom{"bit", "b", "bits"}
 	byte,      //= &Atom{"byte", "B", "bytes"}
 	character, //= &Atom{"character", "", "characters"}

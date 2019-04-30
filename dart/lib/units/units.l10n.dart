@@ -51,7 +51,7 @@ class _UnitsLocalizationDelegate
   }
 }
 
-/// last_modified: 2019-04-26 10:17:32 +0000 UTC
+/// last_modified: 2019-04-29 04:05:20 +0000 UTC
 
 abstract class UnitsLocalization {
   static const delegate = _UnitsLocalizationDelegate();
@@ -189,6 +189,10 @@ abstract class UnitsLocalization {
   String get atomCandela;
 
   String get atomCandelas;
+
+  String get atomPercent;
+
+  String get atomPerThousand;
 
   String get atomBit;
 
@@ -833,6 +837,10 @@ class UnitsLocalizationEn extends UnitsLocalization {
   String get atomCandela => r'candela';
 
   String get atomCandelas => r'candelas';
+
+  String get atomPercent => r'percent';
+
+  String get atomPerThousand => r'per thousand';
 
   String get atomBit => r'bit';
 
@@ -1482,6 +1490,10 @@ class UnitsLocalizationAs extends UnitsLocalization {
 
   String get atomCandelas => r'candelas';
 
+  String get atomPercent => r'percent';
+
+  String get atomPerThousand => r'per thousand';
+
   String get atomBit => r'bit';
 
   String get atomBits => r'bits';
@@ -2129,6 +2141,10 @@ class UnitsLocalizationZhHans extends UnitsLocalization {
   String get atomCandela => r'candela';
 
   String get atomCandelas => r'candelas';
+
+  String get atomPercent => r'percent';
+
+  String get atomPerThousand => r'per thousand';
 
   String get atomBit => r'bit';
 

@@ -5,14 +5,12 @@ import (
 	"flag"
 	"log"
 	"net/http"
-	"regexp"
 	"sort"
 	"strings"
 	"text/template"
 	"time"
 
 	"github.com/Masterminds/sprig"
-	"github.com/antchfx/htmlquery"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/arb"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/dart"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/genshared"
@@ -24,11 +22,6 @@ const (
 	emptyZero = "XXX"
 
 	listUrl = "https://www.currency-iso.org/dam/downloads/lists/list_one.xml"
-
-	symbolsUrl          = "https://www.xe.com/symbols.php"
-	symbolsXpath        = `//table[@class="currencySymblTable"]/tbody/tr`
-	symbolsNameXpath    = "//td[2]"
-	symbolsUnicodeXpath = "//td[7]"
 )
 
 var (
@@ -36,13 +29,7 @@ var (
 		LowerCamelCase: "currency",
 		Version:        1,
 	}
-
-	unicodeFindRegexp = regexp.MustCompile(`[[:xdigit:]]+`)
 )
-
-func init() {
-	http.DefaultTransport = &BrowserTransport{http.DefaultTransport}
-}
 
 const protoTplStr = genshared.UnitsProtoHead + `
 import "protos/l10n/l10n.proto";
@@ -58,6 +45,7 @@ enum {{ EntityV }} {
 `
 
 const dartTplStr = genshared.DartHead + `
+import './currency_format.dart';
 import './units.l10n.dart';
 
 abstract class _Valuer {
@@ -79,14 +67,15 @@ class _XXX implements _Valuer {
 class {{ EntityV }} {
 	final String ccy;
 	final int ccyNbr;
-	final String unicode;
 	final _Valuer _v;
-	const {{ EntityV }}._(this.ccy, this.ccyNbr, this.unicode, this._v);
-	String l10n(UnitsLocalization l10n) => _v.of(l10n) ?? ccy;
+	const {{ EntityV }}._(this.ccy, this.ccyNbr, this._v);
+	String Function(dynamic) get format => getCurrencyFormat(ccy).format;
+	String Function(dynamic) get formatSimple => getSimpleCurrencyFormat(ccy).format;
+	String l10n(UnitsLocalization l10n) => l10n == null ? ccy : _v.of(l10n) ?? ccy;
 
-	static const XXX = const {{ EntityV }}._('', 0, null, const _XXX());
+	static const XXX = const {{ EntityV }}._('', 0, const _XXX());
 	{{- range .CcyNtry }}
-	static const {{ .Ccy }} = const {{ EntityV }}._('{{ .Ccy }}', {{ .CcyNbr }}, {{ .DartUnicode }}, const _{{ .Ccy }}());
+	static const {{ .Ccy }} = const {{ EntityV }}._('{{ .Ccy }}', {{ .CcyNbr }}, const _{{ .Ccy }}());
 	{{- end }}
 }
 `
@@ -114,11 +103,8 @@ func main() {
 	rs.OpenAll()
 	defer rs.Close()
 
-	symbols := extractSymbols()
 	v := extractISO4217()
-
 	filterISO4217(v)
-	equipSymbols(v, symbols)
 
 	err := rs.Render(v)
 	if err != nil {
@@ -204,43 +190,4 @@ func filterISO4217(v *ISO_4217) {
 
 	sort.Slice(s, func(i, j int) bool { return s[i].CcyNbr < s[j].CcyNbr })
 	v.CcyNtry = s
-}
-
-func extractSymbols() map[string][]string {
-	log.Println("Get", symbolsUrl)
-	doc, err := htmlquery.LoadURL(symbolsUrl)
-	if err != nil {
-		log.Fatalf("html: %v\n", err)
-	}
-
-	log.Println("Parse response")
-	docs := htmlquery.Find(doc, symbolsXpath)
-	if len(docs) == 0 {
-		log.Fatalf("xpath query failed: %s\n", symbolsXpath)
-	}
-
-	ccys := make(map[string][]string)
-	for _, n := range docs[1:] {
-		ccy := htmlquery.InnerText(htmlquery.FindOne(n, symbolsNameXpath))
-		unicode := htmlquery.InnerText(htmlquery.FindOne(n, symbolsUnicodeXpath))
-		ccys[ccy] = unicodeFindRegexp.FindAllString(unicode, -1)
-	}
-	return ccys
-}
-
-func equipSymbols(v *ISO_4217, symbols map[string][]string) {
-	for _, n := range v.CcyNtry {
-		n.Unicode = symbols[n.Ccy]
-	}
-}
-
-type BrowserTransport struct {
-	http.RoundTripper
-}
-
-func (t *BrowserTransport) RoundTrip(req *http.Request) (*http.Response, error) {
-	req.Header.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
-	req.Header.Add("Accept-Language", "zh-CN,en-US;q=0.7,en;q=0.3")
-	req.Header.Add("User-Agent", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:66.0) Gecko/20100101 Firefox/66.0")
-	return t.RoundTripper.RoundTrip(req)
 }

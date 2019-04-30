@@ -57,9 +57,9 @@ class _No{{ Entity }} implements _Valuer {
     const _{{ Field . }}();
     String of(UnitsLocalization l, bool p) =>
       {{ if .Plural }}
-        p ? l?.{{ entity }}{{ FieldPlural . }} : l?.{{ entity }}{{ Field . }}
+        p ? l.{{ entity }}{{ FieldPlural . }} : l.{{ entity }}{{ Field . }}
       {{ else }}
-        l?.{{ entity }}{{ Field . }}
+        l.{{ entity }}{{ Field . }}
       {{ end }}
     ;
   }
@@ -75,7 +75,7 @@ class {{ EntityV }} {
   final String symbol;
   final _Valuer _v;
   const {{ EntityV }}._(this.symbol, this._v);
-  String l10n(UnitsLocalization l10n, bool plural) => _v.of(l10n, plural) ?? symbol;
+  String l10n(UnitsLocalization l10n, bool plural) => l10n == null ? symbol : _v.of(l10n, plural) ?? symbol;
 }
 `
 

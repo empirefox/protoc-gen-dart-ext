@@ -1,83 +1,95 @@
-import './units.l10n.dart';
+import '../plural/plural.dart';
 
 import './atom.dart';
-import './prefix.dart';
 import './currency.dart';
+import './number_format.dart';
+import './prefix.dart';
+import './units.l10n.dart';
 
 class Unit {
-  final String Function(dynamic) format;
-  final List<Cell> dots;
-  final List<Cell> per;
-  const Unit({this.format, this.dots, this.per});
+  static const prefixSymbol = const _PrefixSymbolValuer();
+  static const prefixName = const _PrefixNameValuer();
 
-  String get symbol => l10n(null, false);
+  static const atomSymbol = const _AtomSymbolValuer();
+  static const atomSingular = const _AtomOneValuer();
+  static const atomPlural = const _AtomOtherValuer();
+  static const atomParse = const _AtomParseValuer();
 
-  String l10n(UnitsLocalization l, bool p) =>
-      _join(dots, l, p) + (per == null ? '' : ('/' + _join(per, l, p)));
+  final CurrencyUnit currency;
+  final int decimalLeft;
+  final _PrefixValuer _pv;
+  final _AtomValuer _av;
+  final String numberLocale;
+  final NumberFormatterGetter numberFmtGetter;
+  final bool ordinal;
+  final List<Cell> _dots;
+  final List<Cell> _per;
 
-  String _join(List<Cell> cells, UnitsLocalization l, bool p) =>
-      cells == null ? '' : cells.map((c) => c.l10n(l, p)).join('.');
+  const Unit(
+      this.currency,
+      this.decimalLeft,
+      this._pv,
+      this._av,
+      this.numberLocale,
+      this.numberFmtGetter,
+      this.ordinal,
+      this._dots,
+      this._per);
+
+  String get symbol => l10n(null, Form.one);
+
+  String l10n(UnitsLocalization l, Form p) =>
+      _join(_dots, l, p) + (_per == null ? '' : ('/' + _join(_per, l, p)));
+
+  String _join(List<Cell> cells, UnitsLocalization l, Form p) =>
+      cells == null ? '' : cells.map((c) => c.l10n(_pv, _av, l, p)).join('.');
 }
 
-class CurrencyUnit extends CellUnit {
+class CurrencyUnit {
+  static const _code = const _CurrencyCodeFormatter();
+  static const _symbol = const _CurrencySymbolFormatter();
+  static const _name = const _CurrencyNameFormatter();
+
   final CurrencyV1 _c;
-  CurrencyUnit(this._c);
-  @override
-  String from([UnitsLocalization l, bool p]) => _c.l10n(l);
+  final _CurrencyFormatter _fmt;
+
+  const CurrencyUnit.code(this._c) : _fmt = _code;
+  const CurrencyUnit.symbol(this._c) : _fmt = _symbol;
+  const CurrencyUnit.name(this._c) : _fmt = _name;
+
+  String format(v, [UnitsLocalization l]) => _fmt.format(_c, v, l);
 }
 
 class Cell {
   final String exponent;
-  final CellPrefix prefix;
-  final CellUnit unit;
-  const Cell({this.exponent = '', this.prefix, this.unit});
-  String l10n(UnitsLocalization l, bool p) =>
-      '${prefix.from(l)}${unit.from(l, p)}$exponent';
+  final PrefixV1 prefix;
+  final AtomV1 atom;
+  const Cell({this.exponent = '', this.prefix, this.atom});
+  String l10n(_PrefixValuer pv, _AtomValuer av, UnitsLocalization l, Form p) =>
+      '${pv.from(prefix, l)}${av.from(atom, l, p)}$exponent';
 }
 
-class CellPrefix {
-  static const _symbol = const _PrefixSymbolValuer();
-  static const _name = const _PrefixNameValuer();
-
-  final PrefixV1 _p;
-  final _PrefixValuer _v;
-
-  const CellPrefix.symbol(this._p) : _v = _symbol;
-  const CellPrefix.name(this._p) : _v = _name;
-
-  String from([UnitsLocalization l]) => _v.from(_p, l);
+// _CurrencyFormatter
+abstract class _CurrencyFormatter {
+  String format(CurrencyV1 c, v, [UnitsLocalization l]);
 }
 
-abstract class CellUnit {
-  const CellUnit();
-  String from([UnitsLocalization l, bool p]);
-}
-
-// AtomUnit
-class AtomUnit extends CellUnit {
-  static const _symbol = const _AtomSymbolValuer();
-  static const _singular = const _AtomSingularValuer();
-  static const _plural = const _AtomPluralValuer();
-  static const _parse = const _AtomParseValuer();
-
-  final AtomV1 _c;
-  final _AtomValuer _v;
-
-  const AtomUnit.symbol(this._c) : _v = _symbol;
-  const AtomUnit.singular(this._c) : _v = _singular;
-  const AtomUnit.plural(this._c) : _v = _plural;
-  const AtomUnit.parse(this._c) : _v = _parse;
-
+class _CurrencyCodeFormatter implements _CurrencyFormatter {
+  const _CurrencyCodeFormatter();
   @override
-  String from([UnitsLocalization l, bool p]) => _v.from(_c, l, p);
+  String format(CurrencyV1 c, v, [UnitsLocalization l]) => c.format(v);
 }
 
-// SymbolUnit
-class SymbolUnit extends CellUnit {
-  final String _s;
-  const SymbolUnit(this._s);
+class _CurrencySymbolFormatter implements _CurrencyFormatter {
+  const _CurrencySymbolFormatter();
   @override
-  String from([UnitsLocalization l, bool p]) => _s;
+  String format(CurrencyV1 c, v, [UnitsLocalization l]) => c.formatSimple(v);
+}
+
+class _CurrencyNameFormatter implements _CurrencyFormatter {
+  const _CurrencyNameFormatter();
+  @override
+  String format(CurrencyV1 c, v, [UnitsLocalization l]) => c.formatName(v, l);
 }
 
 // _PrefixValuer
@@ -99,29 +111,29 @@ class _PrefixNameValuer implements _PrefixValuer {
 
 // _AtomValuer
 abstract class _AtomValuer {
-  String from(AtomV1 a, [UnitsLocalization l, bool p]);
+  String from(AtomV1 a, [UnitsLocalization l, Form p]);
 }
 
 class _AtomSymbolValuer implements _AtomValuer {
   const _AtomSymbolValuer();
   @override
-  String from(AtomV1 a, [UnitsLocalization l, bool p]) => a.symbol;
+  String from(AtomV1 a, [UnitsLocalization l, Form p]) => a.symbol;
 }
 
-class _AtomSingularValuer implements _AtomValuer {
-  const _AtomSingularValuer();
+class _AtomOneValuer implements _AtomValuer {
+  const _AtomOneValuer();
   @override
-  String from(AtomV1 a, [UnitsLocalization l, bool p]) => a.l10n(l, false);
+  String from(AtomV1 a, [UnitsLocalization l, Form p]) => a.l10n(l, Form.one);
 }
 
-class _AtomPluralValuer implements _AtomValuer {
-  const _AtomPluralValuer();
+class _AtomOtherValuer implements _AtomValuer {
+  const _AtomOtherValuer();
   @override
-  String from(AtomV1 a, [UnitsLocalization l, bool p]) => a.l10n(l, true);
+  String from(AtomV1 a, [UnitsLocalization l, Form p]) => a.l10n(l, Form.other);
 }
 
 class _AtomParseValuer implements _AtomValuer {
   const _AtomParseValuer();
   @override
-  String from(AtomV1 a, [UnitsLocalization l, bool p]) => a.l10n(l, p);
+  String from(AtomV1 a, [UnitsLocalization l, Form p]) => a.l10n(l, p);
 }

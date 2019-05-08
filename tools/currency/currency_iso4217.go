@@ -71,6 +71,8 @@ class {{ EntityV }} {
 	const {{ EntityV }}._(this.ccy, this.ccyNbr, this._v);
 	String Function(dynamic) get format => getCurrencyFormat(ccy).format;
 	String Function(dynamic) get formatSimple => getSimpleCurrencyFormat(ccy).format;
+	String Function(dynamic) get formatNumber => getCurrencyNumberFormat(ccy).format;
+	String formatName(v, UnitsLocalization l) => (l == null || _v.of(l) == null) ? format(v) : (formatNumber(v) + _v.of(l));
 	String l10n(UnitsLocalization l10n) => l10n == null ? ccy : _v.of(l10n) ?? ccy;
 
 	static const XXX = const {{ EntityV }}._('', 0, const _XXX());

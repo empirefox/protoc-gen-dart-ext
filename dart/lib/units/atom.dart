@@ -445,6 +445,7 @@ class AtomV1 {
   final String symbol;
   final _Valuer _v;
   const AtomV1._(this.symbol, this._v);
+  const AtomV1.symbol(this.symbol) : _v = null;
   String l10n(UnitsLocalization l10n, Form form) =>
-      l10n == null ? symbol : _v.of(l10n, form) ?? symbol;
+      l10n == null ? symbol : _v?.of(l10n, form) ?? symbol;
 }

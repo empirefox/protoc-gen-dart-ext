@@ -910,8 +910,12 @@ class CurrencyV1 {
   String Function(dynamic) get format => getCurrencyFormat(ccy).format;
   String Function(dynamic) get formatSimple =>
       getSimpleCurrencyFormat(ccy).format;
-  String l10n(UnitsLocalization l10n) =>
-      l10n == null ? ccy : _v.of(l10n) ?? ccy;
+  String Function(dynamic) get formatNumber =>
+      getCurrencyNumberFormat(ccy).format;
+  String formatName(v, UnitsLocalization l) => (l == null || _v.of(l) == null)
+      ? format(v)
+      : (formatNumber(v) + _v.of(l));
+  String l10n(UnitsLocalization l10n) => l10n == null ? ccy : _v.of(l10n);
 
   static const XXX = const CurrencyV1._('', 0, const _XXX());
   static const ALL = const CurrencyV1._('ALL', 8, const _ALL());

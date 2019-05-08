@@ -11,10 +11,34 @@ import "protos/units/prefix.proto";
 import "protos/units/atom.proto";
 
 extend google.protobuf.FieldOptions {
+  units.Unit unit = 919111;
+}
+
+message Unit {
   // ISO 4217
-  units.CurrencyUnit currency = 919111;
-  // Define unit options for number based field.
-  units.Unit unit = 919112;
+  CurrencyUnit currency = 1;
+
+  // decimalLeft affects both Currency and Atom
+  // only valid for int type
+  // move decimal point left when showing
+  // move decimal point right back when saving
+  // need promise the visible fractional digits when showing
+  int32 decimalLeft = 2;
+
+  // belows are only for Atom
+
+  enum PrefixType {
+    symbol = 0;
+    name = 1;
+  }
+  PrefixType prefix = 3;
+  AtomType atom = 4;
+
+  Format format = 5;
+  bool ordinal = 6;
+
+  repeated Cell dots = 7;
+  repeated Cell per = 8;
 }
 
 message CurrencyUnit {
@@ -23,28 +47,36 @@ message CurrencyUnit {
     CurrencyV1 symbol = 2;
     CurrencyV1 name = 3;
   }
-  // divided before format
-  int32 dividedBy = 4;
-  // custom format name, which must be provided by user.
-  string format = 5;
 }
 
-message Unit {
-  enum PrefixType {
-    symbol = 0;
-    name = 1;
+message Format {
+  enum Builtin {
+    decimal = 0;
+    percent = 1;
+    scientific = 2;
+    currency = 3;
+    currencySimple = 4;
   }
-  PrefixType prefixType = 1;
-  AtomType atomType = 2;
-  string lang = 3;
-  repeated Cell dots = 4;
-  repeated Cell per = 5;
+
+  string locale = 2;
+
+  oneof type {
+    Builtin builtin = 3;
+    // user provided format name which is imported
+    string imported = 4;
+    // user provided format name which is registered
+    // do not support literal pattern here, because it depends on language
+    string custom = 5;
+  }
 }
 
 enum AtomType {
   symbol = 0;
-  singular = 1;
-  plural = 2;
+  // plural Form.one
+  one = 1;
+  // plural Form.other
+  other = 2;
+  // parse Form from plural tool
   parse = 3;
 }
 

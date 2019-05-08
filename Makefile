@@ -39,8 +39,8 @@ gen_prefix:
 		-arb=${dart_lib}/units/prefix.arb
 	@dartfmt -w ${dart_lib}/units/prefix.dart
 
-.PHONY: gen_units_gtt
-gen_units_gtt:
+.PHONY: gen_units_gtt_to_dart
+gen_units_gtt_to_dart:
 	@GTT_DIR=${dart_lib}/units \
 		go run ${cmd_path}/gtt_to_dart/*.go \
 		-gtt=${dart_lib}/units/gtt.toml \

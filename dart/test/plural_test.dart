@@ -48,6 +48,582 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
+  group('bg', () {
+    final fn = rules['bg'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('ce', () {
+    final fn = rules['ce'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('el', () {
+    final fn = rules['el'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('es', () {
+    final fn = rules['es'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('eu', () {
+    final fn = rules['eu'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('gsw', () {
+    final fn = rules['gsw'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('ky', () {
+    final fn = rules['ky'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('ml', () {
+    final fn = rules['ml'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('mn', () {
+    final fn = rules['mn'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('nb', () {
+    final fn = rules['nb'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('ps', () {
+    final fn = rules['ps'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('sd', () {
+    final fn = rules['sd'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('ta', () {
+    final fn = rules['ta'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('te', () {
+    final fn = rules['te'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('tr', () {
+    final fn = rules['tr'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('uz', () {
+    final fn = rules['uz'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
   group('ak', () {
     final fn = rules['ak'];
 
@@ -80,8 +656,334 @@ void main() {
     _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
     _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
   });
+  group('bh', () {
+    final fn = rules['bh'];
+
+    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 0.00, Form.one, 'fn(0.00, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 0.000, Form.one, 'fn(0.000, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 0.0000, Form.one, 'fn(0.0000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.1, Form.other, 'fn(0.1, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.7, Form.other, 'fn(1.7, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('guw', () {
+    final fn = rules['guw'];
+
+    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 0.00, Form.one, 'fn(0.00, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 0.000, Form.one, 'fn(0.000, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 0.0000, Form.one, 'fn(0.0000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.1, Form.other, 'fn(0.1, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.7, Form.other, 'fn(1.7, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('ln', () {
+    final fn = rules['ln'];
+
+    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 0.00, Form.one, 'fn(0.00, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 0.000, Form.one, 'fn(0.000, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 0.0000, Form.one, 'fn(0.0000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.1, Form.other, 'fn(0.1, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.7, Form.other, 'fn(1.7, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('mg', () {
+    final fn = rules['mg'];
+
+    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 0.00, Form.one, 'fn(0.00, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 0.000, Form.one, 'fn(0.000, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 0.0000, Form.one, 'fn(0.0000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.1, Form.other, 'fn(0.1, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.7, Form.other, 'fn(1.7, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('nso', () {
+    final fn = rules['nso'];
+
+    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 0.00, Form.one, 'fn(0.00, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 0.000, Form.one, 'fn(0.000, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 0.0000, Form.one, 'fn(0.0000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.1, Form.other, 'fn(0.1, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.7, Form.other, 'fn(1.7, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('ti', () {
+    final fn = rules['ti'];
+
+    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 0.00, Form.one, 'fn(0.00, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 0.000, Form.one, 'fn(0.000, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 0.0000, Form.one, 'fn(0.0000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.1, Form.other, 'fn(0.1, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.7, Form.other, 'fn(1.7, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('wa', () {
+    final fn = rules['wa'];
+
+    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 0.00, Form.one, 'fn(0.00, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 0.000, Form.one, 'fn(0.000, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 0.0000, Form.one, 'fn(0.0000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.1, Form.other, 'fn(0.1, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.7, Form.other, 'fn(1.7, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
   group('am', () {
     final fn = rules['am'];
+
+    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 0.00, Form.one, 'fn(0.00, false)', false);
+    _testNamedKey(fn, 0.04, Form.one, 'fn(0.04, false)', false);
+
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 2.6, Form.other, 'fn(2.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('fa', () {
+    final fn = rules['fa'];
+
+    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 0.00, Form.one, 'fn(0.00, false)', false);
+    _testNamedKey(fn, 0.04, Form.one, 'fn(0.04, false)', false);
+
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 2.6, Form.other, 'fn(2.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('kn', () {
+    final fn = rules['kn'];
+
+    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 0.00, Form.one, 'fn(0.00, false)', false);
+    _testNamedKey(fn, 0.04, Form.one, 'fn(0.04, false)', false);
+
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 2.6, Form.other, 'fn(2.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('zu', () {
+    final fn = rules['zu'];
 
     _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
     _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
@@ -325,6 +1227,53 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
+  group('bn', () {
+    final fn = rules['bn'];
+
+    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 0.00, Form.one, 'fn(0.00, false)', false);
+    _testNamedKey(fn, 0.04, Form.one, 'fn(0.04, false)', false);
+
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 2.6, Form.other, 'fn(2.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, true)', true);
+    _testNamedKey(fn, 5, Form.one, 'fn(5, true)', true);
+    _testNamedKey(fn, 7, Form.one, 'fn(7, true)', true);
+    _testNamedKey(fn, 10, Form.one, 'fn(10, true)', true);
+
+    _testNamedKey(fn, 2, Form.two, 'fn(2, true)', true);
+    _testNamedKey(fn, 3, Form.two, 'fn(3, true)', true);
+
+    _testNamedKey(fn, 4, Form.few, 'fn(4, true)', true);
+
+    _testNamedKey(fn, 6, Form.many, 'fn(6, true)', true);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 11, Form.other, 'fn(11, true)', true);
+    _testNamedKey(fn, 25, Form.other, 'fn(25, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
   group('asa', () {
     final fn = rules['asa'];
 
@@ -353,8 +1302,1776 @@ void main() {
     _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
     _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
   });
+  group('bem', () {
+    final fn = rules['bem'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('bez', () {
+    final fn = rules['bez'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('brx', () {
+    final fn = rules['brx'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('cgg', () {
+    final fn = rules['cgg'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('chr', () {
+    final fn = rules['chr'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('ckb', () {
+    final fn = rules['ckb'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('dv', () {
+    final fn = rules['dv'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('ee', () {
+    final fn = rules['ee'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('eo', () {
+    final fn = rules['eo'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('fo', () {
+    final fn = rules['fo'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('fur', () {
+    final fn = rules['fur'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('ha', () {
+    final fn = rules['ha'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('haw', () {
+    final fn = rules['haw'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('jgo', () {
+    final fn = rules['jgo'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('jmc', () {
+    final fn = rules['jmc'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('kaj', () {
+    final fn = rules['kaj'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('kcg', () {
+    final fn = rules['kcg'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('kkj', () {
+    final fn = rules['kkj'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('kl', () {
+    final fn = rules['kl'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('ks', () {
+    final fn = rules['ks'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('ksb', () {
+    final fn = rules['ksb'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('ku', () {
+    final fn = rules['ku'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('lb', () {
+    final fn = rules['lb'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('lg', () {
+    final fn = rules['lg'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('mas', () {
+    final fn = rules['mas'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('mgo', () {
+    final fn = rules['mgo'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('nah', () {
+    final fn = rules['nah'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('nd', () {
+    final fn = rules['nd'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('nn', () {
+    final fn = rules['nn'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('nnh', () {
+    final fn = rules['nnh'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('no', () {
+    final fn = rules['no'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('nr', () {
+    final fn = rules['nr'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('ny', () {
+    final fn = rules['ny'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('nyn', () {
+    final fn = rules['nyn'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('om', () {
+    final fn = rules['om'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('os', () {
+    final fn = rules['os'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('pap', () {
+    final fn = rules['pap'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('rm', () {
+    final fn = rules['rm'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('rof', () {
+    final fn = rules['rof'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('rwk', () {
+    final fn = rules['rwk'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('saq', () {
+    final fn = rules['saq'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('sdh', () {
+    final fn = rules['sdh'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('seh', () {
+    final fn = rules['seh'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('sn', () {
+    final fn = rules['sn'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('so', () {
+    final fn = rules['so'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('ss', () {
+    final fn = rules['ss'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('ssy', () {
+    final fn = rules['ssy'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('st', () {
+    final fn = rules['st'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('syr', () {
+    final fn = rules['syr'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('teo', () {
+    final fn = rules['teo'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('tig', () {
+    final fn = rules['tig'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('tn', () {
+    final fn = rules['tn'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('ts', () {
+    final fn = rules['ts'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('ug', () {
+    final fn = rules['ug'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('ve', () {
+    final fn = rules['ve'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('vo', () {
+    final fn = rules['vo'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('vun', () {
+    final fn = rules['vun'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('wae', () {
+    final fn = rules['wae'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('xh', () {
+    final fn = rules['xh'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('xog', () {
+    final fn = rules['xog'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
   group('ast', () {
     final fn = rules['ast'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('io', () {
+    final fn = rules['io'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('ji', () {
+    final fn = rules['ji'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('pt-PT', () {
+    final fn = rules['pt-PT'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('yi', () {
+    final fn = rules['yi'];
 
     _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
 
@@ -572,177 +3289,6 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
-  group('bem', () {
-    final fn = rules['bem'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('bez', () {
-    final fn = rules['bez'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('bg', () {
-    final fn = rules['bg'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('bh', () {
-    final fn = rules['bh'];
-
-    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 0.00, Form.one, 'fn(0.00, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 0.000, Form.one, 'fn(0.000, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 0.0000, Form.one, 'fn(0.0000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.1, Form.other, 'fn(0.1, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.7, Form.other, 'fn(1.7, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('bn', () {
-    final fn = rules['bn'];
-
-    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 0.00, Form.one, 'fn(0.00, false)', false);
-    _testNamedKey(fn, 0.04, Form.one, 'fn(0.04, false)', false);
-
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 2.6, Form.other, 'fn(2.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, true)', true);
-    _testNamedKey(fn, 5, Form.one, 'fn(5, true)', true);
-    _testNamedKey(fn, 7, Form.one, 'fn(7, true)', true);
-    _testNamedKey(fn, 10, Form.one, 'fn(10, true)', true);
-
-    _testNamedKey(fn, 2, Form.two, 'fn(2, true)', true);
-    _testNamedKey(fn, 3, Form.two, 'fn(3, true)', true);
-
-    _testNamedKey(fn, 4, Form.few, 'fn(4, true)', true);
-
-    _testNamedKey(fn, 6, Form.many, 'fn(6, true)', true);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 11, Form.other, 'fn(11, true)', true);
-    _testNamedKey(fn, 25, Form.other, 'fn(25, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
   group('br', () {
     final fn = rules['br'];
 
@@ -833,36 +3379,340 @@ void main() {
     _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
     _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
   });
-  group('brx', () {
-    final fn = rules['brx'];
+  group('bs', () {
+    final fn = rules['bs'];
 
     _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+    _testNamedKey(fn, 21, Form.one, 'fn(21, false)', false);
+    _testNamedKey(fn, 31, Form.one, 'fn(31, false)', false);
+    _testNamedKey(fn, 41, Form.one, 'fn(41, false)', false);
+    _testNamedKey(fn, 51, Form.one, 'fn(51, false)', false);
+    _testNamedKey(fn, 61, Form.one, 'fn(61, false)', false);
+    _testNamedKey(fn, 71, Form.one, 'fn(71, false)', false);
+    _testNamedKey(fn, 81, Form.one, 'fn(81, false)', false);
+    _testNamedKey(fn, 101, Form.one, 'fn(101, false)', false);
+    _testNamedKey(fn, 1001, Form.one, 'fn(1001, false)', false);
+    _testNamedKey(fn, 0.1, Form.one, 'fn(0.1, false)', false);
+    _testNamedKey(fn, 1.1, Form.one, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 2.1, Form.one, 'fn(2.1, false)', false);
+    _testNamedKey(fn, 3.1, Form.one, 'fn(3.1, false)', false);
+    _testNamedKey(fn, 4.1, Form.one, 'fn(4.1, false)', false);
+    _testNamedKey(fn, 5.1, Form.one, 'fn(5.1, false)', false);
+    _testNamedKey(fn, 6.1, Form.one, 'fn(6.1, false)', false);
+    _testNamedKey(fn, 7.1, Form.one, 'fn(7.1, false)', false);
+    _testNamedKey(fn, 10.1, Form.one, 'fn(10.1, false)', false);
+    _testNamedKey(fn, 100.1, Form.one, 'fn(100.1, false)', false);
+    _testNamedKey(fn, 1000.1, Form.one, 'fn(1000.1, false)', false);
+
+    _testNamedKey(fn, 2, Form.few, 'fn(2, false)', false);
+    _testNamedKey(fn, 4, Form.few, 'fn(4, false)', false);
+    _testNamedKey(fn, 22, Form.few, 'fn(22, false)', false);
+    _testNamedKey(fn, 24, Form.few, 'fn(24, false)', false);
+    _testNamedKey(fn, 32, Form.few, 'fn(32, false)', false);
+    _testNamedKey(fn, 34, Form.few, 'fn(34, false)', false);
+    _testNamedKey(fn, 42, Form.few, 'fn(42, false)', false);
+    _testNamedKey(fn, 44, Form.few, 'fn(44, false)', false);
+    _testNamedKey(fn, 52, Form.few, 'fn(52, false)', false);
+    _testNamedKey(fn, 54, Form.few, 'fn(54, false)', false);
+    _testNamedKey(fn, 62, Form.few, 'fn(62, false)', false);
+    _testNamedKey(fn, 102, Form.few, 'fn(102, false)', false);
+    _testNamedKey(fn, 1002, Form.few, 'fn(1002, false)', false);
+    _testNamedKey(fn, 0.2, Form.few, 'fn(0.2, false)', false);
+    _testNamedKey(fn, 0.4, Form.few, 'fn(0.4, false)', false);
+    _testNamedKey(fn, 1.2, Form.few, 'fn(1.2, false)', false);
+    _testNamedKey(fn, 1.4, Form.few, 'fn(1.4, false)', false);
+    _testNamedKey(fn, 2.2, Form.few, 'fn(2.2, false)', false);
+    _testNamedKey(fn, 2.4, Form.few, 'fn(2.4, false)', false);
+    _testNamedKey(fn, 3.2, Form.few, 'fn(3.2, false)', false);
+    _testNamedKey(fn, 3.4, Form.few, 'fn(3.4, false)', false);
+    _testNamedKey(fn, 4.2, Form.few, 'fn(4.2, false)', false);
+    _testNamedKey(fn, 4.4, Form.few, 'fn(4.4, false)', false);
+    _testNamedKey(fn, 5.2, Form.few, 'fn(5.2, false)', false);
+    _testNamedKey(fn, 10.2, Form.few, 'fn(10.2, false)', false);
+    _testNamedKey(fn, 100.2, Form.few, 'fn(100.2, false)', false);
+    _testNamedKey(fn, 1000.2, Form.few, 'fn(1000.2, false)', false);
 
     _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 5, Form.other, 'fn(5, false)', false);
+    _testNamedKey(fn, 19, Form.other, 'fn(19, false)', false);
     _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
     _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
     _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
     _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 0.5, Form.other, 'fn(0.5, false)', false);
+    _testNamedKey(fn, 1.0, Form.other, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 2.0, Form.other, 'fn(2.0, false)', false);
+    _testNamedKey(fn, 2.5, Form.other, 'fn(2.5, false)', false);
+    _testNamedKey(fn, 2.7, Form.other, 'fn(2.7, false)', false);
     _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
     _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
     _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
     _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
     _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
     _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
-  group('bs', () {
-    final fn = rules['bs'];
+  group('hr', () {
+    final fn = rules['hr'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 21, Form.one, 'fn(21, false)', false);
+    _testNamedKey(fn, 31, Form.one, 'fn(31, false)', false);
+    _testNamedKey(fn, 41, Form.one, 'fn(41, false)', false);
+    _testNamedKey(fn, 51, Form.one, 'fn(51, false)', false);
+    _testNamedKey(fn, 61, Form.one, 'fn(61, false)', false);
+    _testNamedKey(fn, 71, Form.one, 'fn(71, false)', false);
+    _testNamedKey(fn, 81, Form.one, 'fn(81, false)', false);
+    _testNamedKey(fn, 101, Form.one, 'fn(101, false)', false);
+    _testNamedKey(fn, 1001, Form.one, 'fn(1001, false)', false);
+    _testNamedKey(fn, 0.1, Form.one, 'fn(0.1, false)', false);
+    _testNamedKey(fn, 1.1, Form.one, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 2.1, Form.one, 'fn(2.1, false)', false);
+    _testNamedKey(fn, 3.1, Form.one, 'fn(3.1, false)', false);
+    _testNamedKey(fn, 4.1, Form.one, 'fn(4.1, false)', false);
+    _testNamedKey(fn, 5.1, Form.one, 'fn(5.1, false)', false);
+    _testNamedKey(fn, 6.1, Form.one, 'fn(6.1, false)', false);
+    _testNamedKey(fn, 7.1, Form.one, 'fn(7.1, false)', false);
+    _testNamedKey(fn, 10.1, Form.one, 'fn(10.1, false)', false);
+    _testNamedKey(fn, 100.1, Form.one, 'fn(100.1, false)', false);
+    _testNamedKey(fn, 1000.1, Form.one, 'fn(1000.1, false)', false);
+
+    _testNamedKey(fn, 2, Form.few, 'fn(2, false)', false);
+    _testNamedKey(fn, 4, Form.few, 'fn(4, false)', false);
+    _testNamedKey(fn, 22, Form.few, 'fn(22, false)', false);
+    _testNamedKey(fn, 24, Form.few, 'fn(24, false)', false);
+    _testNamedKey(fn, 32, Form.few, 'fn(32, false)', false);
+    _testNamedKey(fn, 34, Form.few, 'fn(34, false)', false);
+    _testNamedKey(fn, 42, Form.few, 'fn(42, false)', false);
+    _testNamedKey(fn, 44, Form.few, 'fn(44, false)', false);
+    _testNamedKey(fn, 52, Form.few, 'fn(52, false)', false);
+    _testNamedKey(fn, 54, Form.few, 'fn(54, false)', false);
+    _testNamedKey(fn, 62, Form.few, 'fn(62, false)', false);
+    _testNamedKey(fn, 102, Form.few, 'fn(102, false)', false);
+    _testNamedKey(fn, 1002, Form.few, 'fn(1002, false)', false);
+    _testNamedKey(fn, 0.2, Form.few, 'fn(0.2, false)', false);
+    _testNamedKey(fn, 0.4, Form.few, 'fn(0.4, false)', false);
+    _testNamedKey(fn, 1.2, Form.few, 'fn(1.2, false)', false);
+    _testNamedKey(fn, 1.4, Form.few, 'fn(1.4, false)', false);
+    _testNamedKey(fn, 2.2, Form.few, 'fn(2.2, false)', false);
+    _testNamedKey(fn, 2.4, Form.few, 'fn(2.4, false)', false);
+    _testNamedKey(fn, 3.2, Form.few, 'fn(3.2, false)', false);
+    _testNamedKey(fn, 3.4, Form.few, 'fn(3.4, false)', false);
+    _testNamedKey(fn, 4.2, Form.few, 'fn(4.2, false)', false);
+    _testNamedKey(fn, 4.4, Form.few, 'fn(4.4, false)', false);
+    _testNamedKey(fn, 5.2, Form.few, 'fn(5.2, false)', false);
+    _testNamedKey(fn, 10.2, Form.few, 'fn(10.2, false)', false);
+    _testNamedKey(fn, 100.2, Form.few, 'fn(100.2, false)', false);
+    _testNamedKey(fn, 1000.2, Form.few, 'fn(1000.2, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 5, Form.other, 'fn(5, false)', false);
+    _testNamedKey(fn, 19, Form.other, 'fn(19, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.5, Form.other, 'fn(0.5, false)', false);
+    _testNamedKey(fn, 1.0, Form.other, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 2.0, Form.other, 'fn(2.0, false)', false);
+    _testNamedKey(fn, 2.5, Form.other, 'fn(2.5, false)', false);
+    _testNamedKey(fn, 2.7, Form.other, 'fn(2.7, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('sh', () {
+    final fn = rules['sh'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 21, Form.one, 'fn(21, false)', false);
+    _testNamedKey(fn, 31, Form.one, 'fn(31, false)', false);
+    _testNamedKey(fn, 41, Form.one, 'fn(41, false)', false);
+    _testNamedKey(fn, 51, Form.one, 'fn(51, false)', false);
+    _testNamedKey(fn, 61, Form.one, 'fn(61, false)', false);
+    _testNamedKey(fn, 71, Form.one, 'fn(71, false)', false);
+    _testNamedKey(fn, 81, Form.one, 'fn(81, false)', false);
+    _testNamedKey(fn, 101, Form.one, 'fn(101, false)', false);
+    _testNamedKey(fn, 1001, Form.one, 'fn(1001, false)', false);
+    _testNamedKey(fn, 0.1, Form.one, 'fn(0.1, false)', false);
+    _testNamedKey(fn, 1.1, Form.one, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 2.1, Form.one, 'fn(2.1, false)', false);
+    _testNamedKey(fn, 3.1, Form.one, 'fn(3.1, false)', false);
+    _testNamedKey(fn, 4.1, Form.one, 'fn(4.1, false)', false);
+    _testNamedKey(fn, 5.1, Form.one, 'fn(5.1, false)', false);
+    _testNamedKey(fn, 6.1, Form.one, 'fn(6.1, false)', false);
+    _testNamedKey(fn, 7.1, Form.one, 'fn(7.1, false)', false);
+    _testNamedKey(fn, 10.1, Form.one, 'fn(10.1, false)', false);
+    _testNamedKey(fn, 100.1, Form.one, 'fn(100.1, false)', false);
+    _testNamedKey(fn, 1000.1, Form.one, 'fn(1000.1, false)', false);
+
+    _testNamedKey(fn, 2, Form.few, 'fn(2, false)', false);
+    _testNamedKey(fn, 4, Form.few, 'fn(4, false)', false);
+    _testNamedKey(fn, 22, Form.few, 'fn(22, false)', false);
+    _testNamedKey(fn, 24, Form.few, 'fn(24, false)', false);
+    _testNamedKey(fn, 32, Form.few, 'fn(32, false)', false);
+    _testNamedKey(fn, 34, Form.few, 'fn(34, false)', false);
+    _testNamedKey(fn, 42, Form.few, 'fn(42, false)', false);
+    _testNamedKey(fn, 44, Form.few, 'fn(44, false)', false);
+    _testNamedKey(fn, 52, Form.few, 'fn(52, false)', false);
+    _testNamedKey(fn, 54, Form.few, 'fn(54, false)', false);
+    _testNamedKey(fn, 62, Form.few, 'fn(62, false)', false);
+    _testNamedKey(fn, 102, Form.few, 'fn(102, false)', false);
+    _testNamedKey(fn, 1002, Form.few, 'fn(1002, false)', false);
+    _testNamedKey(fn, 0.2, Form.few, 'fn(0.2, false)', false);
+    _testNamedKey(fn, 0.4, Form.few, 'fn(0.4, false)', false);
+    _testNamedKey(fn, 1.2, Form.few, 'fn(1.2, false)', false);
+    _testNamedKey(fn, 1.4, Form.few, 'fn(1.4, false)', false);
+    _testNamedKey(fn, 2.2, Form.few, 'fn(2.2, false)', false);
+    _testNamedKey(fn, 2.4, Form.few, 'fn(2.4, false)', false);
+    _testNamedKey(fn, 3.2, Form.few, 'fn(3.2, false)', false);
+    _testNamedKey(fn, 3.4, Form.few, 'fn(3.4, false)', false);
+    _testNamedKey(fn, 4.2, Form.few, 'fn(4.2, false)', false);
+    _testNamedKey(fn, 4.4, Form.few, 'fn(4.4, false)', false);
+    _testNamedKey(fn, 5.2, Form.few, 'fn(5.2, false)', false);
+    _testNamedKey(fn, 10.2, Form.few, 'fn(10.2, false)', false);
+    _testNamedKey(fn, 100.2, Form.few, 'fn(100.2, false)', false);
+    _testNamedKey(fn, 1000.2, Form.few, 'fn(1000.2, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 5, Form.other, 'fn(5, false)', false);
+    _testNamedKey(fn, 19, Form.other, 'fn(19, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.5, Form.other, 'fn(0.5, false)', false);
+    _testNamedKey(fn, 1.0, Form.other, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 2.0, Form.other, 'fn(2.0, false)', false);
+    _testNamedKey(fn, 2.5, Form.other, 'fn(2.5, false)', false);
+    _testNamedKey(fn, 2.7, Form.other, 'fn(2.7, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('sr', () {
+    final fn = rules['sr'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 21, Form.one, 'fn(21, false)', false);
+    _testNamedKey(fn, 31, Form.one, 'fn(31, false)', false);
+    _testNamedKey(fn, 41, Form.one, 'fn(41, false)', false);
+    _testNamedKey(fn, 51, Form.one, 'fn(51, false)', false);
+    _testNamedKey(fn, 61, Form.one, 'fn(61, false)', false);
+    _testNamedKey(fn, 71, Form.one, 'fn(71, false)', false);
+    _testNamedKey(fn, 81, Form.one, 'fn(81, false)', false);
+    _testNamedKey(fn, 101, Form.one, 'fn(101, false)', false);
+    _testNamedKey(fn, 1001, Form.one, 'fn(1001, false)', false);
+    _testNamedKey(fn, 0.1, Form.one, 'fn(0.1, false)', false);
+    _testNamedKey(fn, 1.1, Form.one, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 2.1, Form.one, 'fn(2.1, false)', false);
+    _testNamedKey(fn, 3.1, Form.one, 'fn(3.1, false)', false);
+    _testNamedKey(fn, 4.1, Form.one, 'fn(4.1, false)', false);
+    _testNamedKey(fn, 5.1, Form.one, 'fn(5.1, false)', false);
+    _testNamedKey(fn, 6.1, Form.one, 'fn(6.1, false)', false);
+    _testNamedKey(fn, 7.1, Form.one, 'fn(7.1, false)', false);
+    _testNamedKey(fn, 10.1, Form.one, 'fn(10.1, false)', false);
+    _testNamedKey(fn, 100.1, Form.one, 'fn(100.1, false)', false);
+    _testNamedKey(fn, 1000.1, Form.one, 'fn(1000.1, false)', false);
+
+    _testNamedKey(fn, 2, Form.few, 'fn(2, false)', false);
+    _testNamedKey(fn, 4, Form.few, 'fn(4, false)', false);
+    _testNamedKey(fn, 22, Form.few, 'fn(22, false)', false);
+    _testNamedKey(fn, 24, Form.few, 'fn(24, false)', false);
+    _testNamedKey(fn, 32, Form.few, 'fn(32, false)', false);
+    _testNamedKey(fn, 34, Form.few, 'fn(34, false)', false);
+    _testNamedKey(fn, 42, Form.few, 'fn(42, false)', false);
+    _testNamedKey(fn, 44, Form.few, 'fn(44, false)', false);
+    _testNamedKey(fn, 52, Form.few, 'fn(52, false)', false);
+    _testNamedKey(fn, 54, Form.few, 'fn(54, false)', false);
+    _testNamedKey(fn, 62, Form.few, 'fn(62, false)', false);
+    _testNamedKey(fn, 102, Form.few, 'fn(102, false)', false);
+    _testNamedKey(fn, 1002, Form.few, 'fn(1002, false)', false);
+    _testNamedKey(fn, 0.2, Form.few, 'fn(0.2, false)', false);
+    _testNamedKey(fn, 0.4, Form.few, 'fn(0.4, false)', false);
+    _testNamedKey(fn, 1.2, Form.few, 'fn(1.2, false)', false);
+    _testNamedKey(fn, 1.4, Form.few, 'fn(1.4, false)', false);
+    _testNamedKey(fn, 2.2, Form.few, 'fn(2.2, false)', false);
+    _testNamedKey(fn, 2.4, Form.few, 'fn(2.4, false)', false);
+    _testNamedKey(fn, 3.2, Form.few, 'fn(3.2, false)', false);
+    _testNamedKey(fn, 3.4, Form.few, 'fn(3.4, false)', false);
+    _testNamedKey(fn, 4.2, Form.few, 'fn(4.2, false)', false);
+    _testNamedKey(fn, 4.4, Form.few, 'fn(4.4, false)', false);
+    _testNamedKey(fn, 5.2, Form.few, 'fn(5.2, false)', false);
+    _testNamedKey(fn, 10.2, Form.few, 'fn(10.2, false)', false);
+    _testNamedKey(fn, 100.2, Form.few, 'fn(100.2, false)', false);
+    _testNamedKey(fn, 1000.2, Form.few, 'fn(1000.2, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 5, Form.other, 'fn(5, false)', false);
+    _testNamedKey(fn, 19, Form.other, 'fn(19, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.5, Form.other, 'fn(0.5, false)', false);
+    _testNamedKey(fn, 1.0, Form.other, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 2.0, Form.other, 'fn(2.0, false)', false);
+    _testNamedKey(fn, 2.5, Form.other, 'fn(2.5, false)', false);
+    _testNamedKey(fn, 2.7, Form.other, 'fn(2.7, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('sr-Latn', () {
+    final fn = rules['sr-Latn'];
 
     _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
     _testNamedKey(fn, 21, Form.one, 'fn(21, false)', false);
@@ -982,42 +3832,6 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
-  group('ce', () {
-    final fn = rules['ce'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
   group('ceb', () {
     final fn = rules['ceb'];
 
@@ -1079,92 +3893,42 @@ void main() {
     _testNamedKey(fn, 100.4, Form.other, 'fn(100.4, false)', false);
     _testNamedKey(fn, 1000.4, Form.other, 'fn(1000.4, false)', false);
   });
-  group('cgg', () {
-    final fn = rules['cgg'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('chr', () {
-    final fn = rules['chr'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('ckb', () {
-    final fn = rules['ckb'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
   group('cs', () {
     final fn = rules['cs'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+
+    _testNamedKey(fn, 2, Form.few, 'fn(2, false)', false);
+    _testNamedKey(fn, 4, Form.few, 'fn(4, false)', false);
+
+    _testNamedKey(fn, 0.0, Form.many, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.many, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 10.0, Form.many, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.many, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.many, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.many, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.many, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.many, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 5, Form.other, 'fn(5, false)', false);
+    _testNamedKey(fn, 19, Form.other, 'fn(19, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('sk', () {
+    final fn = rules['sk'];
 
     _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
 
@@ -1335,6 +4099,246 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
+  group('et', () {
+    final fn = rules['et'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('fi', () {
+    final fn = rules['fi'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('fy', () {
+    final fn = rules['fy'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('gl', () {
+    final fn = rules['gl'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('ia', () {
+    final fn = rules['ia'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('nl', () {
+    final fn = rules['nl'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('sw', () {
+    final fn = rules['sw'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('ur', () {
+    final fn = rules['ur'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
   group('dsb', () {
     final fn = rules['dsb'];
 
@@ -1447,83 +4451,103 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
-  group('dv', () {
-    final fn = rules['dv'];
+  group('hsb', () {
+    final fn = rules['hsb'];
 
     _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+    _testNamedKey(fn, 101, Form.one, 'fn(101, false)', false);
+    _testNamedKey(fn, 201, Form.one, 'fn(201, false)', false);
+    _testNamedKey(fn, 301, Form.one, 'fn(301, false)', false);
+    _testNamedKey(fn, 401, Form.one, 'fn(401, false)', false);
+    _testNamedKey(fn, 501, Form.one, 'fn(501, false)', false);
+    _testNamedKey(fn, 601, Form.one, 'fn(601, false)', false);
+    _testNamedKey(fn, 701, Form.one, 'fn(701, false)', false);
+    _testNamedKey(fn, 1001, Form.one, 'fn(1001, false)', false);
+    _testNamedKey(fn, 0.1, Form.one, 'fn(0.1, false)', false);
+    _testNamedKey(fn, 1.1, Form.one, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 2.1, Form.one, 'fn(2.1, false)', false);
+    _testNamedKey(fn, 3.1, Form.one, 'fn(3.1, false)', false);
+    _testNamedKey(fn, 4.1, Form.one, 'fn(4.1, false)', false);
+    _testNamedKey(fn, 5.1, Form.one, 'fn(5.1, false)', false);
+    _testNamedKey(fn, 6.1, Form.one, 'fn(6.1, false)', false);
+    _testNamedKey(fn, 7.1, Form.one, 'fn(7.1, false)', false);
+    _testNamedKey(fn, 10.1, Form.one, 'fn(10.1, false)', false);
+    _testNamedKey(fn, 100.1, Form.one, 'fn(100.1, false)', false);
+    _testNamedKey(fn, 1000.1, Form.one, 'fn(1000.1, false)', false);
+
+    _testNamedKey(fn, 2, Form.two, 'fn(2, false)', false);
+    _testNamedKey(fn, 102, Form.two, 'fn(102, false)', false);
+    _testNamedKey(fn, 202, Form.two, 'fn(202, false)', false);
+    _testNamedKey(fn, 302, Form.two, 'fn(302, false)', false);
+    _testNamedKey(fn, 402, Form.two, 'fn(402, false)', false);
+    _testNamedKey(fn, 502, Form.two, 'fn(502, false)', false);
+    _testNamedKey(fn, 602, Form.two, 'fn(602, false)', false);
+    _testNamedKey(fn, 702, Form.two, 'fn(702, false)', false);
+    _testNamedKey(fn, 1002, Form.two, 'fn(1002, false)', false);
+    _testNamedKey(fn, 0.2, Form.two, 'fn(0.2, false)', false);
+    _testNamedKey(fn, 1.2, Form.two, 'fn(1.2, false)', false);
+    _testNamedKey(fn, 2.2, Form.two, 'fn(2.2, false)', false);
+    _testNamedKey(fn, 3.2, Form.two, 'fn(3.2, false)', false);
+    _testNamedKey(fn, 4.2, Form.two, 'fn(4.2, false)', false);
+    _testNamedKey(fn, 5.2, Form.two, 'fn(5.2, false)', false);
+    _testNamedKey(fn, 6.2, Form.two, 'fn(6.2, false)', false);
+    _testNamedKey(fn, 7.2, Form.two, 'fn(7.2, false)', false);
+    _testNamedKey(fn, 10.2, Form.two, 'fn(10.2, false)', false);
+    _testNamedKey(fn, 100.2, Form.two, 'fn(100.2, false)', false);
+    _testNamedKey(fn, 1000.2, Form.two, 'fn(1000.2, false)', false);
+
+    _testNamedKey(fn, 3, Form.few, 'fn(3, false)', false);
+    _testNamedKey(fn, 4, Form.few, 'fn(4, false)', false);
+    _testNamedKey(fn, 103, Form.few, 'fn(103, false)', false);
+    _testNamedKey(fn, 104, Form.few, 'fn(104, false)', false);
+    _testNamedKey(fn, 203, Form.few, 'fn(203, false)', false);
+    _testNamedKey(fn, 204, Form.few, 'fn(204, false)', false);
+    _testNamedKey(fn, 303, Form.few, 'fn(303, false)', false);
+    _testNamedKey(fn, 304, Form.few, 'fn(304, false)', false);
+    _testNamedKey(fn, 403, Form.few, 'fn(403, false)', false);
+    _testNamedKey(fn, 404, Form.few, 'fn(404, false)', false);
+    _testNamedKey(fn, 503, Form.few, 'fn(503, false)', false);
+    _testNamedKey(fn, 504, Form.few, 'fn(504, false)', false);
+    _testNamedKey(fn, 603, Form.few, 'fn(603, false)', false);
+    _testNamedKey(fn, 604, Form.few, 'fn(604, false)', false);
+    _testNamedKey(fn, 703, Form.few, 'fn(703, false)', false);
+    _testNamedKey(fn, 704, Form.few, 'fn(704, false)', false);
+    _testNamedKey(fn, 1003, Form.few, 'fn(1003, false)', false);
+    _testNamedKey(fn, 0.3, Form.few, 'fn(0.3, false)', false);
+    _testNamedKey(fn, 0.4, Form.few, 'fn(0.4, false)', false);
+    _testNamedKey(fn, 1.3, Form.few, 'fn(1.3, false)', false);
+    _testNamedKey(fn, 1.4, Form.few, 'fn(1.4, false)', false);
+    _testNamedKey(fn, 2.3, Form.few, 'fn(2.3, false)', false);
+    _testNamedKey(fn, 2.4, Form.few, 'fn(2.4, false)', false);
+    _testNamedKey(fn, 3.3, Form.few, 'fn(3.3, false)', false);
+    _testNamedKey(fn, 3.4, Form.few, 'fn(3.4, false)', false);
+    _testNamedKey(fn, 4.3, Form.few, 'fn(4.3, false)', false);
+    _testNamedKey(fn, 4.4, Form.few, 'fn(4.4, false)', false);
+    _testNamedKey(fn, 5.3, Form.few, 'fn(5.3, false)', false);
+    _testNamedKey(fn, 5.4, Form.few, 'fn(5.4, false)', false);
+    _testNamedKey(fn, 6.3, Form.few, 'fn(6.3, false)', false);
+    _testNamedKey(fn, 6.4, Form.few, 'fn(6.4, false)', false);
+    _testNamedKey(fn, 7.3, Form.few, 'fn(7.3, false)', false);
+    _testNamedKey(fn, 7.4, Form.few, 'fn(7.4, false)', false);
+    _testNamedKey(fn, 10.3, Form.few, 'fn(10.3, false)', false);
+    _testNamedKey(fn, 100.3, Form.few, 'fn(100.3, false)', false);
+    _testNamedKey(fn, 1000.3, Form.few, 'fn(1000.3, false)', false);
 
     _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 5, Form.other, 'fn(5, false)', false);
+    _testNamedKey(fn, 19, Form.other, 'fn(19, false)', false);
     _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
     _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
     _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
     _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('ee', () {
-    final fn = rules['ee'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('el', () {
-    final fn = rules['el'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 0.5, Form.other, 'fn(0.5, false)', false);
+    _testNamedKey(fn, 1.0, Form.other, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 2.0, Form.other, 'fn(2.0, false)', false);
+    _testNamedKey(fn, 2.5, Form.other, 'fn(2.5, false)', false);
+    _testNamedKey(fn, 2.7, Form.other, 'fn(2.7, false)', false);
     _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
     _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
     _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
@@ -1603,170 +4627,6 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
-  group('eo', () {
-    final fn = rules['eo'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('es', () {
-    final fn = rules['es'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('et', () {
-    final fn = rules['et'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('eu', () {
-    final fn = rules['eu'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('fa', () {
-    final fn = rules['fa'];
-
-    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 0.00, Form.one, 'fn(0.00, false)', false);
-    _testNamedKey(fn, 0.04, Form.one, 'fn(0.04, false)', false);
-
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 2.6, Form.other, 'fn(2.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
   group('ff', () {
     final fn = rules['ff'];
 
@@ -1791,35 +4651,29 @@ void main() {
     _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
     _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
   });
-  group('fi', () {
-    final fn = rules['fi'];
+  group('kab', () {
+    final fn = rules['kab'];
 
+    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
     _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.one, 'fn(1.5, false)', false);
 
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
     _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
     _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
     _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
     _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 2.0, Form.other, 'fn(2.0, false)', false);
+    _testNamedKey(fn, 3.5, Form.other, 'fn(3.5, false)', false);
     _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
     _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
     _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
     _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
     _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
     _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
   group('fil', () {
     final fn = rules['fil'];
@@ -1893,33 +4747,77 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
-  group('fo', () {
-    final fn = rules['fo'];
+  group('tl', () {
+    final fn = rules['tl'];
 
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
+    _testNamedKey(fn, 3, Form.one, 'fn(3, false)', false);
+    _testNamedKey(fn, 5, Form.one, 'fn(5, false)', false);
+    _testNamedKey(fn, 7, Form.one, 'fn(7, false)', false);
+    _testNamedKey(fn, 8, Form.one, 'fn(8, false)', false);
+    _testNamedKey(fn, 10, Form.one, 'fn(10, false)', false);
+    _testNamedKey(fn, 13, Form.one, 'fn(13, false)', false);
+    _testNamedKey(fn, 15, Form.one, 'fn(15, false)', false);
+    _testNamedKey(fn, 17, Form.one, 'fn(17, false)', false);
+    _testNamedKey(fn, 18, Form.one, 'fn(18, false)', false);
+    _testNamedKey(fn, 20, Form.one, 'fn(20, false)', false);
+    _testNamedKey(fn, 21, Form.one, 'fn(21, false)', false);
+    _testNamedKey(fn, 100, Form.one, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.one, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.one, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.one, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.one, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.3, Form.one, 'fn(0.3, false)', false);
+    _testNamedKey(fn, 0.5, Form.one, 'fn(0.5, false)', false);
+    _testNamedKey(fn, 0.7, Form.one, 'fn(0.7, false)', false);
+    _testNamedKey(fn, 0.8, Form.one, 'fn(0.8, false)', false);
     _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+    _testNamedKey(fn, 1.3, Form.one, 'fn(1.3, false)', false);
+    _testNamedKey(fn, 1.5, Form.one, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 1.7, Form.one, 'fn(1.7, false)', false);
+    _testNamedKey(fn, 1.8, Form.one, 'fn(1.8, false)', false);
+    _testNamedKey(fn, 2.0, Form.one, 'fn(2.0, false)', false);
+    _testNamedKey(fn, 2.1, Form.one, 'fn(2.1, false)', false);
+    _testNamedKey(fn, 10.0, Form.one, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.one, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.one, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.one, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.one, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.one, 'fn(1000000.0, false)', false);
 
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 4, Form.other, 'fn(4, false)', false);
+    _testNamedKey(fn, 6, Form.other, 'fn(6, false)', false);
+    _testNamedKey(fn, 9, Form.other, 'fn(9, false)', false);
+    _testNamedKey(fn, 14, Form.other, 'fn(14, false)', false);
     _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 19, Form.other, 'fn(19, false)', false);
+    _testNamedKey(fn, 24, Form.other, 'fn(24, false)', false);
+    _testNamedKey(fn, 26, Form.other, 'fn(26, false)', false);
+    _testNamedKey(fn, 104, Form.other, 'fn(104, false)', false);
+    _testNamedKey(fn, 1004, Form.other, 'fn(1004, false)', false);
+    _testNamedKey(fn, 0.4, Form.other, 'fn(0.4, false)', false);
+    _testNamedKey(fn, 0.6, Form.other, 'fn(0.6, false)', false);
     _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.4, Form.other, 'fn(1.4, false)', false);
     _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+    _testNamedKey(fn, 1.9, Form.other, 'fn(1.9, false)', false);
+    _testNamedKey(fn, 2.4, Form.other, 'fn(2.4, false)', false);
+    _testNamedKey(fn, 2.6, Form.other, 'fn(2.6, false)', false);
+    _testNamedKey(fn, 10.4, Form.other, 'fn(10.4, false)', false);
+    _testNamedKey(fn, 100.4, Form.other, 'fn(100.4, false)', false);
+    _testNamedKey(fn, 1000.4, Form.other, 'fn(1000.4, false)', false);
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, true)', true);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, true)', true);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
   group('fr', () {
     final fn = rules['fr'];
@@ -1956,58 +4854,35 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
-  group('fur', () {
-    final fn = rules['fur'];
+  group('hy', () {
+    final fn = rules['hy'];
 
+    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
     _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.one, 'fn(1.5, false)', false);
 
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
     _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
     _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
     _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
     _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 2.0, Form.other, 'fn(2.0, false)', false);
+    _testNamedKey(fn, 3.5, Form.other, 'fn(3.5, false)', false);
     _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
     _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
     _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
     _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
     _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
     _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('fy', () {
-    final fn = rules['fy'];
 
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+    _testNamedKey(fn, 1, Form.one, 'fn(1, true)', true);
 
     _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, true)', true);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, true)', true);
     _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
     _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
     _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
@@ -2180,72 +5055,6 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
-  group('gl', () {
-    final fn = rules['gl'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('gsw', () {
-    final fn = rules['gsw'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
   group('gu', () {
     final fn = rules['gu'];
 
@@ -2291,19 +5100,15 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
-  group('guw', () {
-    final fn = rules['guw'];
+  group('hi', () {
+    final fn = rules['hi'];
 
     _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
     _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
     _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
     _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
     _testNamedKey(fn, 0.00, Form.one, 'fn(0.00, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 0.000, Form.one, 'fn(0.000, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 0.0000, Form.one, 'fn(0.0000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+    _testNamedKey(fn, 0.04, Form.one, 'fn(0.04, false)', false);
 
     _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
     _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
@@ -2312,16 +5117,33 @@ void main() {
     _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.1, Form.other, 'fn(0.1, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
     _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.7, Form.other, 'fn(1.7, false)', false);
+    _testNamedKey(fn, 2.6, Form.other, 'fn(2.6, false)', false);
     _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
     _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
     _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
     _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
     _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
     _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, true)', true);
+
+    _testNamedKey(fn, 2, Form.two, 'fn(2, true)', true);
+    _testNamedKey(fn, 3, Form.two, 'fn(3, true)', true);
+
+    _testNamedKey(fn, 4, Form.few, 'fn(4, true)', true);
+
+    _testNamedKey(fn, 6, Form.many, 'fn(6, true)', true);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 5, Form.other, 'fn(5, true)', true);
+    _testNamedKey(fn, 7, Form.other, 'fn(7, true)', true);
+    _testNamedKey(fn, 20, Form.other, 'fn(20, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
   group('gv', () {
     final fn = rules['gv'];
@@ -2378,62 +5200,6 @@ void main() {
     _testNamedKey(fn, 103, Form.other, 'fn(103, false)', false);
     _testNamedKey(fn, 1003, Form.other, 'fn(1003, false)', false);
   });
-  group('ha', () {
-    final fn = rules['ha'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('haw', () {
-    final fn = rules['haw'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
   group('he', () {
     final fn = rules['he'];
 
@@ -2477,231 +5243,34 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
-  group('hi', () {
-    final fn = rules['hi'];
-
-    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 0.00, Form.one, 'fn(0.00, false)', false);
-    _testNamedKey(fn, 0.04, Form.one, 'fn(0.04, false)', false);
-
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 2.6, Form.other, 'fn(2.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, true)', true);
-
-    _testNamedKey(fn, 2, Form.two, 'fn(2, true)', true);
-    _testNamedKey(fn, 3, Form.two, 'fn(3, true)', true);
-
-    _testNamedKey(fn, 4, Form.few, 'fn(4, true)', true);
-
-    _testNamedKey(fn, 6, Form.many, 'fn(6, true)', true);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 5, Form.other, 'fn(5, true)', true);
-    _testNamedKey(fn, 7, Form.other, 'fn(7, true)', true);
-    _testNamedKey(fn, 20, Form.other, 'fn(20, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('hr', () {
-    final fn = rules['hr'];
+  group('iw', () {
+    final fn = rules['iw'];
 
     _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 21, Form.one, 'fn(21, false)', false);
-    _testNamedKey(fn, 31, Form.one, 'fn(31, false)', false);
-    _testNamedKey(fn, 41, Form.one, 'fn(41, false)', false);
-    _testNamedKey(fn, 51, Form.one, 'fn(51, false)', false);
-    _testNamedKey(fn, 61, Form.one, 'fn(61, false)', false);
-    _testNamedKey(fn, 71, Form.one, 'fn(71, false)', false);
-    _testNamedKey(fn, 81, Form.one, 'fn(81, false)', false);
-    _testNamedKey(fn, 101, Form.one, 'fn(101, false)', false);
-    _testNamedKey(fn, 1001, Form.one, 'fn(1001, false)', false);
-    _testNamedKey(fn, 0.1, Form.one, 'fn(0.1, false)', false);
-    _testNamedKey(fn, 1.1, Form.one, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 2.1, Form.one, 'fn(2.1, false)', false);
-    _testNamedKey(fn, 3.1, Form.one, 'fn(3.1, false)', false);
-    _testNamedKey(fn, 4.1, Form.one, 'fn(4.1, false)', false);
-    _testNamedKey(fn, 5.1, Form.one, 'fn(5.1, false)', false);
-    _testNamedKey(fn, 6.1, Form.one, 'fn(6.1, false)', false);
-    _testNamedKey(fn, 7.1, Form.one, 'fn(7.1, false)', false);
-    _testNamedKey(fn, 10.1, Form.one, 'fn(10.1, false)', false);
-    _testNamedKey(fn, 100.1, Form.one, 'fn(100.1, false)', false);
-    _testNamedKey(fn, 1000.1, Form.one, 'fn(1000.1, false)', false);
-
-    _testNamedKey(fn, 2, Form.few, 'fn(2, false)', false);
-    _testNamedKey(fn, 4, Form.few, 'fn(4, false)', false);
-    _testNamedKey(fn, 22, Form.few, 'fn(22, false)', false);
-    _testNamedKey(fn, 24, Form.few, 'fn(24, false)', false);
-    _testNamedKey(fn, 32, Form.few, 'fn(32, false)', false);
-    _testNamedKey(fn, 34, Form.few, 'fn(34, false)', false);
-    _testNamedKey(fn, 42, Form.few, 'fn(42, false)', false);
-    _testNamedKey(fn, 44, Form.few, 'fn(44, false)', false);
-    _testNamedKey(fn, 52, Form.few, 'fn(52, false)', false);
-    _testNamedKey(fn, 54, Form.few, 'fn(54, false)', false);
-    _testNamedKey(fn, 62, Form.few, 'fn(62, false)', false);
-    _testNamedKey(fn, 102, Form.few, 'fn(102, false)', false);
-    _testNamedKey(fn, 1002, Form.few, 'fn(1002, false)', false);
-    _testNamedKey(fn, 0.2, Form.few, 'fn(0.2, false)', false);
-    _testNamedKey(fn, 0.4, Form.few, 'fn(0.4, false)', false);
-    _testNamedKey(fn, 1.2, Form.few, 'fn(1.2, false)', false);
-    _testNamedKey(fn, 1.4, Form.few, 'fn(1.4, false)', false);
-    _testNamedKey(fn, 2.2, Form.few, 'fn(2.2, false)', false);
-    _testNamedKey(fn, 2.4, Form.few, 'fn(2.4, false)', false);
-    _testNamedKey(fn, 3.2, Form.few, 'fn(3.2, false)', false);
-    _testNamedKey(fn, 3.4, Form.few, 'fn(3.4, false)', false);
-    _testNamedKey(fn, 4.2, Form.few, 'fn(4.2, false)', false);
-    _testNamedKey(fn, 4.4, Form.few, 'fn(4.4, false)', false);
-    _testNamedKey(fn, 5.2, Form.few, 'fn(5.2, false)', false);
-    _testNamedKey(fn, 10.2, Form.few, 'fn(10.2, false)', false);
-    _testNamedKey(fn, 100.2, Form.few, 'fn(100.2, false)', false);
-    _testNamedKey(fn, 1000.2, Form.few, 'fn(1000.2, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 5, Form.other, 'fn(5, false)', false);
-    _testNamedKey(fn, 19, Form.other, 'fn(19, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.5, Form.other, 'fn(0.5, false)', false);
-    _testNamedKey(fn, 1.0, Form.other, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 2.0, Form.other, 'fn(2.0, false)', false);
-    _testNamedKey(fn, 2.5, Form.other, 'fn(2.5, false)', false);
-    _testNamedKey(fn, 2.7, Form.other, 'fn(2.7, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('hsb', () {
-    final fn = rules['hsb'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 101, Form.one, 'fn(101, false)', false);
-    _testNamedKey(fn, 201, Form.one, 'fn(201, false)', false);
-    _testNamedKey(fn, 301, Form.one, 'fn(301, false)', false);
-    _testNamedKey(fn, 401, Form.one, 'fn(401, false)', false);
-    _testNamedKey(fn, 501, Form.one, 'fn(501, false)', false);
-    _testNamedKey(fn, 601, Form.one, 'fn(601, false)', false);
-    _testNamedKey(fn, 701, Form.one, 'fn(701, false)', false);
-    _testNamedKey(fn, 1001, Form.one, 'fn(1001, false)', false);
-    _testNamedKey(fn, 0.1, Form.one, 'fn(0.1, false)', false);
-    _testNamedKey(fn, 1.1, Form.one, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 2.1, Form.one, 'fn(2.1, false)', false);
-    _testNamedKey(fn, 3.1, Form.one, 'fn(3.1, false)', false);
-    _testNamedKey(fn, 4.1, Form.one, 'fn(4.1, false)', false);
-    _testNamedKey(fn, 5.1, Form.one, 'fn(5.1, false)', false);
-    _testNamedKey(fn, 6.1, Form.one, 'fn(6.1, false)', false);
-    _testNamedKey(fn, 7.1, Form.one, 'fn(7.1, false)', false);
-    _testNamedKey(fn, 10.1, Form.one, 'fn(10.1, false)', false);
-    _testNamedKey(fn, 100.1, Form.one, 'fn(100.1, false)', false);
-    _testNamedKey(fn, 1000.1, Form.one, 'fn(1000.1, false)', false);
 
     _testNamedKey(fn, 2, Form.two, 'fn(2, false)', false);
-    _testNamedKey(fn, 102, Form.two, 'fn(102, false)', false);
-    _testNamedKey(fn, 202, Form.two, 'fn(202, false)', false);
-    _testNamedKey(fn, 302, Form.two, 'fn(302, false)', false);
-    _testNamedKey(fn, 402, Form.two, 'fn(402, false)', false);
-    _testNamedKey(fn, 502, Form.two, 'fn(502, false)', false);
-    _testNamedKey(fn, 602, Form.two, 'fn(602, false)', false);
-    _testNamedKey(fn, 702, Form.two, 'fn(702, false)', false);
-    _testNamedKey(fn, 1002, Form.two, 'fn(1002, false)', false);
-    _testNamedKey(fn, 0.2, Form.two, 'fn(0.2, false)', false);
-    _testNamedKey(fn, 1.2, Form.two, 'fn(1.2, false)', false);
-    _testNamedKey(fn, 2.2, Form.two, 'fn(2.2, false)', false);
-    _testNamedKey(fn, 3.2, Form.two, 'fn(3.2, false)', false);
-    _testNamedKey(fn, 4.2, Form.two, 'fn(4.2, false)', false);
-    _testNamedKey(fn, 5.2, Form.two, 'fn(5.2, false)', false);
-    _testNamedKey(fn, 6.2, Form.two, 'fn(6.2, false)', false);
-    _testNamedKey(fn, 7.2, Form.two, 'fn(7.2, false)', false);
-    _testNamedKey(fn, 10.2, Form.two, 'fn(10.2, false)', false);
-    _testNamedKey(fn, 100.2, Form.two, 'fn(100.2, false)', false);
-    _testNamedKey(fn, 1000.2, Form.two, 'fn(1000.2, false)', false);
 
-    _testNamedKey(fn, 3, Form.few, 'fn(3, false)', false);
-    _testNamedKey(fn, 4, Form.few, 'fn(4, false)', false);
-    _testNamedKey(fn, 103, Form.few, 'fn(103, false)', false);
-    _testNamedKey(fn, 104, Form.few, 'fn(104, false)', false);
-    _testNamedKey(fn, 203, Form.few, 'fn(203, false)', false);
-    _testNamedKey(fn, 204, Form.few, 'fn(204, false)', false);
-    _testNamedKey(fn, 303, Form.few, 'fn(303, false)', false);
-    _testNamedKey(fn, 304, Form.few, 'fn(304, false)', false);
-    _testNamedKey(fn, 403, Form.few, 'fn(403, false)', false);
-    _testNamedKey(fn, 404, Form.few, 'fn(404, false)', false);
-    _testNamedKey(fn, 503, Form.few, 'fn(503, false)', false);
-    _testNamedKey(fn, 504, Form.few, 'fn(504, false)', false);
-    _testNamedKey(fn, 603, Form.few, 'fn(603, false)', false);
-    _testNamedKey(fn, 604, Form.few, 'fn(604, false)', false);
-    _testNamedKey(fn, 703, Form.few, 'fn(703, false)', false);
-    _testNamedKey(fn, 704, Form.few, 'fn(704, false)', false);
-    _testNamedKey(fn, 1003, Form.few, 'fn(1003, false)', false);
-    _testNamedKey(fn, 0.3, Form.few, 'fn(0.3, false)', false);
-    _testNamedKey(fn, 0.4, Form.few, 'fn(0.4, false)', false);
-    _testNamedKey(fn, 1.3, Form.few, 'fn(1.3, false)', false);
-    _testNamedKey(fn, 1.4, Form.few, 'fn(1.4, false)', false);
-    _testNamedKey(fn, 2.3, Form.few, 'fn(2.3, false)', false);
-    _testNamedKey(fn, 2.4, Form.few, 'fn(2.4, false)', false);
-    _testNamedKey(fn, 3.3, Form.few, 'fn(3.3, false)', false);
-    _testNamedKey(fn, 3.4, Form.few, 'fn(3.4, false)', false);
-    _testNamedKey(fn, 4.3, Form.few, 'fn(4.3, false)', false);
-    _testNamedKey(fn, 4.4, Form.few, 'fn(4.4, false)', false);
-    _testNamedKey(fn, 5.3, Form.few, 'fn(5.3, false)', false);
-    _testNamedKey(fn, 5.4, Form.few, 'fn(5.4, false)', false);
-    _testNamedKey(fn, 6.3, Form.few, 'fn(6.3, false)', false);
-    _testNamedKey(fn, 6.4, Form.few, 'fn(6.4, false)', false);
-    _testNamedKey(fn, 7.3, Form.few, 'fn(7.3, false)', false);
-    _testNamedKey(fn, 7.4, Form.few, 'fn(7.4, false)', false);
-    _testNamedKey(fn, 10.3, Form.few, 'fn(10.3, false)', false);
-    _testNamedKey(fn, 100.3, Form.few, 'fn(100.3, false)', false);
-    _testNamedKey(fn, 1000.3, Form.few, 'fn(1000.3, false)', false);
+    _testNamedKey(fn, 20, Form.many, 'fn(20, false)', false);
+    _testNamedKey(fn, 30, Form.many, 'fn(30, false)', false);
+    _testNamedKey(fn, 40, Form.many, 'fn(40, false)', false);
+    _testNamedKey(fn, 50, Form.many, 'fn(50, false)', false);
+    _testNamedKey(fn, 60, Form.many, 'fn(60, false)', false);
+    _testNamedKey(fn, 70, Form.many, 'fn(70, false)', false);
+    _testNamedKey(fn, 80, Form.many, 'fn(80, false)', false);
+    _testNamedKey(fn, 90, Form.many, 'fn(90, false)', false);
+    _testNamedKey(fn, 100, Form.many, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.many, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.many, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.many, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.many, 'fn(1000000, false)', false);
 
     _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 5, Form.other, 'fn(5, false)', false);
-    _testNamedKey(fn, 19, Form.other, 'fn(19, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 3, Form.other, 'fn(3, false)', false);
+    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
+    _testNamedKey(fn, 101, Form.other, 'fn(101, false)', false);
+    _testNamedKey(fn, 1001, Form.other, 'fn(1001, false)', false);
     _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.5, Form.other, 'fn(0.5, false)', false);
-    _testNamedKey(fn, 1.0, Form.other, 'fn(1.0, false)', false);
     _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 2.0, Form.other, 'fn(2.0, false)', false);
-    _testNamedKey(fn, 2.5, Form.other, 'fn(2.5, false)', false);
-    _testNamedKey(fn, 2.7, Form.other, 'fn(2.7, false)', false);
     _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
     _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
     _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
@@ -2758,93 +5327,6 @@ void main() {
     _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('hy', () {
-    final fn = rules['hy'];
-
-    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.5, Form.one, 'fn(1.5, false)', false);
-
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 2.0, Form.other, 'fn(2.0, false)', false);
-    _testNamedKey(fn, 3.5, Form.other, 'fn(3.5, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, true)', true);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, true)', true);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('ia', () {
-    final fn = rules['ia'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('io', () {
-    final fn = rules['io'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
   });
   group('is', () {
     final fn = rules['is'];
@@ -2935,6 +5417,84 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
+  group('sc', () {
+    final fn = rules['sc'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 8, Form.many, 'fn(8, true)', true);
+    _testNamedKey(fn, 11, Form.many, 'fn(11, true)', true);
+    _testNamedKey(fn, 80, Form.many, 'fn(80, true)', true);
+    _testNamedKey(fn, 800, Form.many, 'fn(800, true)', true);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 7, Form.other, 'fn(7, true)', true);
+    _testNamedKey(fn, 9, Form.other, 'fn(9, true)', true);
+    _testNamedKey(fn, 10, Form.other, 'fn(10, true)', true);
+    _testNamedKey(fn, 12, Form.other, 'fn(12, true)', true);
+    _testNamedKey(fn, 17, Form.other, 'fn(17, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('scn', () {
+    final fn = rules['scn'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 8, Form.many, 'fn(8, true)', true);
+    _testNamedKey(fn, 11, Form.many, 'fn(11, true)', true);
+    _testNamedKey(fn, 80, Form.many, 'fn(80, true)', true);
+    _testNamedKey(fn, 800, Form.many, 'fn(800, true)', true);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 7, Form.other, 'fn(7, true)', true);
+    _testNamedKey(fn, 9, Form.other, 'fn(9, true)', true);
+    _testNamedKey(fn, 10, Form.other, 'fn(10, true)', true);
+    _testNamedKey(fn, 12, Form.other, 'fn(12, true)', true);
+    _testNamedKey(fn, 17, Form.other, 'fn(17, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
   group('iu', () {
     final fn = rules['iu'];
 
@@ -2969,51 +5529,8 @@ void main() {
     _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
     _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
   });
-  group('iw', () {
-    final fn = rules['iw'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-
-    _testNamedKey(fn, 2, Form.two, 'fn(2, false)', false);
-
-    _testNamedKey(fn, 20, Form.many, 'fn(20, false)', false);
-    _testNamedKey(fn, 30, Form.many, 'fn(30, false)', false);
-    _testNamedKey(fn, 40, Form.many, 'fn(40, false)', false);
-    _testNamedKey(fn, 50, Form.many, 'fn(50, false)', false);
-    _testNamedKey(fn, 60, Form.many, 'fn(60, false)', false);
-    _testNamedKey(fn, 70, Form.many, 'fn(70, false)', false);
-    _testNamedKey(fn, 80, Form.many, 'fn(80, false)', false);
-    _testNamedKey(fn, 90, Form.many, 'fn(90, false)', false);
-    _testNamedKey(fn, 100, Form.many, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.many, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.many, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.many, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.many, 'fn(1000000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 3, Form.other, 'fn(3, false)', false);
-    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
-    _testNamedKey(fn, 101, Form.other, 'fn(101, false)', false);
-    _testNamedKey(fn, 1001, Form.other, 'fn(1001, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('jgo', () {
-    final fn = rules['jgo'];
+  group('naq', () {
+    final fn = rules['naq'];
 
     _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
     _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
@@ -3021,9 +5538,15 @@ void main() {
     _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
     _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
 
+    _testNamedKey(fn, 2, Form.two, 'fn(2, false)', false);
+    _testNamedKey(fn, 2.0, Form.two, 'fn(2.0, false)', false);
+    _testNamedKey(fn, 2.00, Form.two, 'fn(2.00, false)', false);
+    _testNamedKey(fn, 2.000, Form.two, 'fn(2.000, false)', false);
+    _testNamedKey(fn, 2.0000, Form.two, 'fn(2.0000, false)', false);
+
     _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 3, Form.other, 'fn(3, false)', false);
+    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
     _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
     _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
     _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
@@ -3040,30 +5563,8 @@ void main() {
     _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
     _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
   });
-  group('ji', () {
-    final fn = rules['ji'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('jmc', () {
-    final fn = rules['jmc'];
+  group('se', () {
+    final fn = rules['se'];
 
     _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
     _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
@@ -3071,9 +5572,185 @@ void main() {
     _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
     _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
 
+    _testNamedKey(fn, 2, Form.two, 'fn(2, false)', false);
+    _testNamedKey(fn, 2.0, Form.two, 'fn(2.0, false)', false);
+    _testNamedKey(fn, 2.00, Form.two, 'fn(2.00, false)', false);
+    _testNamedKey(fn, 2.000, Form.two, 'fn(2.000, false)', false);
+    _testNamedKey(fn, 2.0000, Form.two, 'fn(2.0000, false)', false);
+
     _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
+    _testNamedKey(fn, 3, Form.other, 'fn(3, false)', false);
+    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('sma', () {
+    final fn = rules['sma'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 2, Form.two, 'fn(2, false)', false);
+    _testNamedKey(fn, 2.0, Form.two, 'fn(2.0, false)', false);
+    _testNamedKey(fn, 2.00, Form.two, 'fn(2.00, false)', false);
+    _testNamedKey(fn, 2.000, Form.two, 'fn(2.000, false)', false);
+    _testNamedKey(fn, 2.0000, Form.two, 'fn(2.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 3, Form.other, 'fn(3, false)', false);
+    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('smi', () {
+    final fn = rules['smi'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 2, Form.two, 'fn(2, false)', false);
+    _testNamedKey(fn, 2.0, Form.two, 'fn(2.0, false)', false);
+    _testNamedKey(fn, 2.00, Form.two, 'fn(2.00, false)', false);
+    _testNamedKey(fn, 2.000, Form.two, 'fn(2.000, false)', false);
+    _testNamedKey(fn, 2.0000, Form.two, 'fn(2.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 3, Form.other, 'fn(3, false)', false);
+    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('smj', () {
+    final fn = rules['smj'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 2, Form.two, 'fn(2, false)', false);
+    _testNamedKey(fn, 2.0, Form.two, 'fn(2.0, false)', false);
+    _testNamedKey(fn, 2.00, Form.two, 'fn(2.00, false)', false);
+    _testNamedKey(fn, 2.000, Form.two, 'fn(2.000, false)', false);
+    _testNamedKey(fn, 2.0000, Form.two, 'fn(2.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 3, Form.other, 'fn(3, false)', false);
+    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('smn', () {
+    final fn = rules['smn'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 2, Form.two, 'fn(2, false)', false);
+    _testNamedKey(fn, 2.0, Form.two, 'fn(2.0, false)', false);
+    _testNamedKey(fn, 2.00, Form.two, 'fn(2.00, false)', false);
+    _testNamedKey(fn, 2.000, Form.two, 'fn(2.000, false)', false);
+    _testNamedKey(fn, 2.0000, Form.two, 'fn(2.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 3, Form.other, 'fn(3, false)', false);
+    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
+    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+  });
+  group('sms', () {
+    final fn = rules['sms'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
+    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
+    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
+    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+
+    _testNamedKey(fn, 2, Form.two, 'fn(2, false)', false);
+    _testNamedKey(fn, 2.0, Form.two, 'fn(2.0, false)', false);
+    _testNamedKey(fn, 2.00, Form.two, 'fn(2.00, false)', false);
+    _testNamedKey(fn, 2.000, Form.two, 'fn(2.000, false)', false);
+    _testNamedKey(fn, 2.0000, Form.two, 'fn(2.0000, false)', false);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 3, Form.other, 'fn(3, false)', false);
+    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
     _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
     _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
     _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
@@ -3134,86 +5811,6 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
-  group('kab', () {
-    final fn = rules['kab'];
-
-    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.5, Form.one, 'fn(1.5, false)', false);
-
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 2.0, Form.other, 'fn(2.0, false)', false);
-    _testNamedKey(fn, 3.5, Form.other, 'fn(3.5, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('kaj', () {
-    final fn = rules['kaj'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('kcg', () {
-    final fn = rules['kcg'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
   group('kk', () {
     final fn = rules['kk'];
 
@@ -3272,152 +5869,6 @@ void main() {
     _testNamedKey(fn, 101, Form.other, 'fn(101, true)', true);
     _testNamedKey(fn, 1001, Form.other, 'fn(1001, true)', true);
   });
-  group('kkj', () {
-    final fn = rules['kkj'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('kl', () {
-    final fn = rules['kl'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('kn', () {
-    final fn = rules['kn'];
-
-    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 0.00, Form.one, 'fn(0.00, false)', false);
-    _testNamedKey(fn, 0.04, Form.one, 'fn(0.04, false)', false);
-
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 2.6, Form.other, 'fn(2.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('ks', () {
-    final fn = rules['ks'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('ksb', () {
-    final fn = rules['ksb'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
   group('ksh', () {
     final fn = rules['ksh'];
 
@@ -3444,34 +5895,6 @@ void main() {
     _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
     _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
     _testNamedKey(fn, 1.7, Form.other, 'fn(1.7, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('ku', () {
-    final fn = rules['ku'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
     _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
     _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
     _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
@@ -3596,42 +6019,6 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
-  group('ky', () {
-    final fn = rules['ky'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
   group('lag', () {
     final fn = rules['lag'];
 
@@ -3661,96 +6048,68 @@ void main() {
     _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
     _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
   });
-  group('lb', () {
-    final fn = rules['lb'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('lg', () {
-    final fn = rules['lg'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('ln', () {
-    final fn = rules['ln'];
-
-    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 0.00, Form.one, 'fn(0.00, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 0.000, Form.one, 'fn(0.000, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 0.0000, Form.one, 'fn(0.0000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.1, Form.other, 'fn(0.1, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.7, Form.other, 'fn(1.7, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
   group('lo', () {
     final fn = rules['lo'];
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, true)', true);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, true)', true);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('ms', () {
+    final fn = rules['ms'];
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, true)', true);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, true)', true);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('vi', () {
+    final fn = rules['vi'];
 
     _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
     _testNamedKey(fn, 15, Form.other, 'fn(15, false)', false);
@@ -3937,93 +6296,79 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
-  group('mas', () {
-    final fn = rules['mas'];
+  group('prg', () {
+    final fn = rules['prg'];
 
     _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+    _testNamedKey(fn, 21, Form.one, 'fn(21, false)', false);
+    _testNamedKey(fn, 31, Form.one, 'fn(31, false)', false);
+    _testNamedKey(fn, 41, Form.one, 'fn(41, false)', false);
+    _testNamedKey(fn, 51, Form.one, 'fn(51, false)', false);
+    _testNamedKey(fn, 61, Form.one, 'fn(61, false)', false);
+    _testNamedKey(fn, 71, Form.one, 'fn(71, false)', false);
+    _testNamedKey(fn, 81, Form.one, 'fn(81, false)', false);
+    _testNamedKey(fn, 101, Form.one, 'fn(101, false)', false);
+    _testNamedKey(fn, 1001, Form.one, 'fn(1001, false)', false);
+    _testNamedKey(fn, 0.1, Form.one, 'fn(0.1, false)', false);
     _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
+    _testNamedKey(fn, 1.1, Form.one, 'fn(1.1, false)', false);
+    _testNamedKey(fn, 2.1, Form.one, 'fn(2.1, false)', false);
+    _testNamedKey(fn, 3.1, Form.one, 'fn(3.1, false)', false);
+    _testNamedKey(fn, 4.1, Form.one, 'fn(4.1, false)', false);
+    _testNamedKey(fn, 5.1, Form.one, 'fn(5.1, false)', false);
+    _testNamedKey(fn, 6.1, Form.one, 'fn(6.1, false)', false);
+    _testNamedKey(fn, 7.1, Form.one, 'fn(7.1, false)', false);
+    _testNamedKey(fn, 10.1, Form.one, 'fn(10.1, false)', false);
+    _testNamedKey(fn, 100.1, Form.one, 'fn(100.1, false)', false);
+    _testNamedKey(fn, 1000.1, Form.one, 'fn(1000.1, false)', false);
 
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
+    _testNamedKey(fn, 0, Form.zero, 'fn(0, false)', false);
+    _testNamedKey(fn, 10, Form.zero, 'fn(10, false)', false);
+    _testNamedKey(fn, 20, Form.zero, 'fn(20, false)', false);
+    _testNamedKey(fn, 30, Form.zero, 'fn(30, false)', false);
+    _testNamedKey(fn, 40, Form.zero, 'fn(40, false)', false);
+    _testNamedKey(fn, 50, Form.zero, 'fn(50, false)', false);
+    _testNamedKey(fn, 60, Form.zero, 'fn(60, false)', false);
+    _testNamedKey(fn, 100, Form.zero, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.zero, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.zero, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.zero, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.zero, 'fn(1000000, false)', false);
+    _testNamedKey(fn, 0.0, Form.zero, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 10.0, Form.zero, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 11.0, Form.zero, 'fn(11.0, false)', false);
+    _testNamedKey(fn, 12.0, Form.zero, 'fn(12.0, false)', false);
+    _testNamedKey(fn, 13.0, Form.zero, 'fn(13.0, false)', false);
+    _testNamedKey(fn, 14.0, Form.zero, 'fn(14.0, false)', false);
+    _testNamedKey(fn, 15.0, Form.zero, 'fn(15.0, false)', false);
+    _testNamedKey(fn, 16.0, Form.zero, 'fn(16.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.zero, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.zero, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.zero, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.zero, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.zero, 'fn(1000000.0, false)', false);
+
     _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 9, Form.other, 'fn(9, false)', false);
+    _testNamedKey(fn, 22, Form.other, 'fn(22, false)', false);
+    _testNamedKey(fn, 29, Form.other, 'fn(29, false)', false);
+    _testNamedKey(fn, 102, Form.other, 'fn(102, false)', false);
+    _testNamedKey(fn, 1002, Form.other, 'fn(1002, false)', false);
+    _testNamedKey(fn, 0.2, Form.other, 'fn(0.2, false)', false);
     _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('mg', () {
-    final fn = rules['mg'];
+    _testNamedKey(fn, 1.2, Form.other, 'fn(1.2, false)', false);
+    _testNamedKey(fn, 1.9, Form.other, 'fn(1.9, false)', false);
+    _testNamedKey(fn, 10.2, Form.other, 'fn(10.2, false)', false);
+    _testNamedKey(fn, 100.2, Form.other, 'fn(100.2, false)', false);
+    _testNamedKey(fn, 1000.2, Form.other, 'fn(1000.2, false)', false);
 
-    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 0.00, Form.one, 'fn(0.00, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 0.000, Form.one, 'fn(0.000, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 0.0000, Form.one, 'fn(0.0000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.1, Form.other, 'fn(0.1, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.7, Form.other, 'fn(1.7, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('mgo', () {
-    final fn = rules['mgo'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
   group('mk', () {
     final fn = rules['mk'];
@@ -4122,80 +6467,84 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
-  group('ml', () {
-    final fn = rules['ml'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('mn', () {
-    final fn = rules['mn'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
   group('mo', () {
     final fn = rules['mo'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+
+    _testNamedKey(fn, 0, Form.few, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.few, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.few, 'fn(16, false)', false);
+    _testNamedKey(fn, 102, Form.few, 'fn(102, false)', false);
+    _testNamedKey(fn, 1002, Form.few, 'fn(1002, false)', false);
+    _testNamedKey(fn, 0.0, Form.few, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.few, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 10.0, Form.few, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.few, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.few, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.few, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.few, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.few, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 20, Form.other, 'fn(20, false)', false);
+    _testNamedKey(fn, 35, Form.other, 'fn(35, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, true)', true);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, true)', true);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('ro', () {
+    final fn = rules['ro'];
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
+
+    _testNamedKey(fn, 0, Form.few, 'fn(0, false)', false);
+    _testNamedKey(fn, 2, Form.few, 'fn(2, false)', false);
+    _testNamedKey(fn, 16, Form.few, 'fn(16, false)', false);
+    _testNamedKey(fn, 102, Form.few, 'fn(102, false)', false);
+    _testNamedKey(fn, 1002, Form.few, 'fn(1002, false)', false);
+    _testNamedKey(fn, 0.0, Form.few, 'fn(0.0, false)', false);
+    _testNamedKey(fn, 1.5, Form.few, 'fn(1.5, false)', false);
+    _testNamedKey(fn, 10.0, Form.few, 'fn(10.0, false)', false);
+    _testNamedKey(fn, 100.0, Form.few, 'fn(100.0, false)', false);
+    _testNamedKey(fn, 1000.0, Form.few, 'fn(1000.0, false)', false);
+    _testNamedKey(fn, 10000.0, Form.few, 'fn(10000.0, false)', false);
+    _testNamedKey(fn, 100000.0, Form.few, 'fn(100000.0, false)', false);
+    _testNamedKey(fn, 1000000.0, Form.few, 'fn(1000000.0, false)', false);
+
+    _testNamedKey(fn, 20, Form.other, 'fn(20, false)', false);
+    _testNamedKey(fn, 35, Form.other, 'fn(35, false)', false);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
+
+    _testNamedKey(fn, 1, Form.one, 'fn(1, true)', true);
+
+    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
+    _testNamedKey(fn, 2, Form.other, 'fn(2, true)', true);
+    _testNamedKey(fn, 16, Form.other, 'fn(16, true)', true);
+    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
+    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
+    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
+    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
+    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
+  });
+  group('ro-MD', () {
+    final fn = rules['ro-MD'];
 
     _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
 
@@ -4276,36 +6625,6 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
-  group('ms', () {
-    final fn = rules['ms'];
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, true)', true);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, true)', true);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
   group('mt', () {
     final fn = rules['mt'];
 
@@ -4367,132 +6686,6 @@ void main() {
     _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
     _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
   });
-  group('nah', () {
-    final fn = rules['nah'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('naq', () {
-    final fn = rules['naq'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 2, Form.two, 'fn(2, false)', false);
-    _testNamedKey(fn, 2.0, Form.two, 'fn(2.0, false)', false);
-    _testNamedKey(fn, 2.00, Form.two, 'fn(2.00, false)', false);
-    _testNamedKey(fn, 2.000, Form.two, 'fn(2.000, false)', false);
-    _testNamedKey(fn, 2.0000, Form.two, 'fn(2.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 3, Form.other, 'fn(3, false)', false);
-    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('nb', () {
-    final fn = rules['nb'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('nd', () {
-    final fn = rules['nd'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
   group('ne', () {
     final fn = rules['ne'];
 
@@ -4532,264 +6725,6 @@ void main() {
     _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('nl', () {
-    final fn = rules['nl'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('nn', () {
-    final fn = rules['nn'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('nnh', () {
-    final fn = rules['nnh'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('no', () {
-    final fn = rules['no'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('nr', () {
-    final fn = rules['nr'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('nso', () {
-    final fn = rules['nso'];
-
-    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 0.00, Form.one, 'fn(0.00, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 0.000, Form.one, 'fn(0.000, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 0.0000, Form.one, 'fn(0.0000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.1, Form.other, 'fn(0.1, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.7, Form.other, 'fn(1.7, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('ny', () {
-    final fn = rules['ny'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('nyn', () {
-    final fn = rules['nyn'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('om', () {
-    final fn = rules['om'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
   });
   group('or', () {
     final fn = rules['or'];
@@ -4840,34 +6775,6 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
-  group('os', () {
-    final fn = rules['os'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
   group('pa', () {
     final fn = rules['pa'];
 
@@ -4908,34 +6815,6 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
-  group('pap', () {
-    final fn = rules['pap'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
   group('pl', () {
     final fn = rules['pl'];
 
@@ -4966,116 +6845,6 @@ void main() {
 
     _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
     _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('prg', () {
-    final fn = rules['prg'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 21, Form.one, 'fn(21, false)', false);
-    _testNamedKey(fn, 31, Form.one, 'fn(31, false)', false);
-    _testNamedKey(fn, 41, Form.one, 'fn(41, false)', false);
-    _testNamedKey(fn, 51, Form.one, 'fn(51, false)', false);
-    _testNamedKey(fn, 61, Form.one, 'fn(61, false)', false);
-    _testNamedKey(fn, 71, Form.one, 'fn(71, false)', false);
-    _testNamedKey(fn, 81, Form.one, 'fn(81, false)', false);
-    _testNamedKey(fn, 101, Form.one, 'fn(101, false)', false);
-    _testNamedKey(fn, 1001, Form.one, 'fn(1001, false)', false);
-    _testNamedKey(fn, 0.1, Form.one, 'fn(0.1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.1, Form.one, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 2.1, Form.one, 'fn(2.1, false)', false);
-    _testNamedKey(fn, 3.1, Form.one, 'fn(3.1, false)', false);
-    _testNamedKey(fn, 4.1, Form.one, 'fn(4.1, false)', false);
-    _testNamedKey(fn, 5.1, Form.one, 'fn(5.1, false)', false);
-    _testNamedKey(fn, 6.1, Form.one, 'fn(6.1, false)', false);
-    _testNamedKey(fn, 7.1, Form.one, 'fn(7.1, false)', false);
-    _testNamedKey(fn, 10.1, Form.one, 'fn(10.1, false)', false);
-    _testNamedKey(fn, 100.1, Form.one, 'fn(100.1, false)', false);
-    _testNamedKey(fn, 1000.1, Form.one, 'fn(1000.1, false)', false);
-
-    _testNamedKey(fn, 0, Form.zero, 'fn(0, false)', false);
-    _testNamedKey(fn, 10, Form.zero, 'fn(10, false)', false);
-    _testNamedKey(fn, 20, Form.zero, 'fn(20, false)', false);
-    _testNamedKey(fn, 30, Form.zero, 'fn(30, false)', false);
-    _testNamedKey(fn, 40, Form.zero, 'fn(40, false)', false);
-    _testNamedKey(fn, 50, Form.zero, 'fn(50, false)', false);
-    _testNamedKey(fn, 60, Form.zero, 'fn(60, false)', false);
-    _testNamedKey(fn, 100, Form.zero, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.zero, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.zero, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.zero, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.zero, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.zero, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 10.0, Form.zero, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 11.0, Form.zero, 'fn(11.0, false)', false);
-    _testNamedKey(fn, 12.0, Form.zero, 'fn(12.0, false)', false);
-    _testNamedKey(fn, 13.0, Form.zero, 'fn(13.0, false)', false);
-    _testNamedKey(fn, 14.0, Form.zero, 'fn(14.0, false)', false);
-    _testNamedKey(fn, 15.0, Form.zero, 'fn(15.0, false)', false);
-    _testNamedKey(fn, 16.0, Form.zero, 'fn(16.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.zero, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.zero, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.zero, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.zero, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.zero, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 9, Form.other, 'fn(9, false)', false);
-    _testNamedKey(fn, 22, Form.other, 'fn(22, false)', false);
-    _testNamedKey(fn, 29, Form.other, 'fn(29, false)', false);
-    _testNamedKey(fn, 102, Form.other, 'fn(102, false)', false);
-    _testNamedKey(fn, 1002, Form.other, 'fn(1002, false)', false);
-    _testNamedKey(fn, 0.2, Form.other, 'fn(0.2, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.2, Form.other, 'fn(1.2, false)', false);
-    _testNamedKey(fn, 1.9, Form.other, 'fn(1.9, false)', false);
-    _testNamedKey(fn, 10.2, Form.other, 'fn(10.2, false)', false);
-    _testNamedKey(fn, 100.2, Form.other, 'fn(100.2, false)', false);
-    _testNamedKey(fn, 1000.2, Form.other, 'fn(1000.2, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('ps', () {
-    final fn = rules['ps'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
     _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
     _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
     _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
@@ -5123,122 +6892,6 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
-  group('pt-PT', () {
-    final fn = rules['pt-PT'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('rm', () {
-    final fn = rules['rm'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('ro', () {
-    final fn = rules['ro'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-
-    _testNamedKey(fn, 0, Form.few, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.few, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.few, 'fn(16, false)', false);
-    _testNamedKey(fn, 102, Form.few, 'fn(102, false)', false);
-    _testNamedKey(fn, 1002, Form.few, 'fn(1002, false)', false);
-    _testNamedKey(fn, 0.0, Form.few, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.5, Form.few, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 10.0, Form.few, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.few, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.few, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.few, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.few, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.few, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 20, Form.other, 'fn(20, false)', false);
-    _testNamedKey(fn, 35, Form.other, 'fn(35, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, true)', true);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, true)', true);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('rof', () {
-    final fn = rules['rof'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
   group('ru', () {
     final fn = rules['ru'];
 
@@ -5278,349 +6931,6 @@ void main() {
 
     _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
     _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('rwk', () {
-    final fn = rules['rwk'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('saq', () {
-    final fn = rules['saq'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('sc', () {
-    final fn = rules['sc'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 8, Form.many, 'fn(8, true)', true);
-    _testNamedKey(fn, 11, Form.many, 'fn(11, true)', true);
-    _testNamedKey(fn, 80, Form.many, 'fn(80, true)', true);
-    _testNamedKey(fn, 800, Form.many, 'fn(800, true)', true);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 7, Form.other, 'fn(7, true)', true);
-    _testNamedKey(fn, 9, Form.other, 'fn(9, true)', true);
-    _testNamedKey(fn, 10, Form.other, 'fn(10, true)', true);
-    _testNamedKey(fn, 12, Form.other, 'fn(12, true)', true);
-    _testNamedKey(fn, 17, Form.other, 'fn(17, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('scn', () {
-    final fn = rules['scn'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 8, Form.many, 'fn(8, true)', true);
-    _testNamedKey(fn, 11, Form.many, 'fn(11, true)', true);
-    _testNamedKey(fn, 80, Form.many, 'fn(80, true)', true);
-    _testNamedKey(fn, 800, Form.many, 'fn(800, true)', true);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 7, Form.other, 'fn(7, true)', true);
-    _testNamedKey(fn, 9, Form.other, 'fn(9, true)', true);
-    _testNamedKey(fn, 10, Form.other, 'fn(10, true)', true);
-    _testNamedKey(fn, 12, Form.other, 'fn(12, true)', true);
-    _testNamedKey(fn, 17, Form.other, 'fn(17, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('sd', () {
-    final fn = rules['sd'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('sdh', () {
-    final fn = rules['sdh'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('se', () {
-    final fn = rules['se'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 2, Form.two, 'fn(2, false)', false);
-    _testNamedKey(fn, 2.0, Form.two, 'fn(2.0, false)', false);
-    _testNamedKey(fn, 2.00, Form.two, 'fn(2.00, false)', false);
-    _testNamedKey(fn, 2.000, Form.two, 'fn(2.000, false)', false);
-    _testNamedKey(fn, 2.0000, Form.two, 'fn(2.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 3, Form.other, 'fn(3, false)', false);
-    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('seh', () {
-    final fn = rules['seh'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('sh', () {
-    final fn = rules['sh'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 21, Form.one, 'fn(21, false)', false);
-    _testNamedKey(fn, 31, Form.one, 'fn(31, false)', false);
-    _testNamedKey(fn, 41, Form.one, 'fn(41, false)', false);
-    _testNamedKey(fn, 51, Form.one, 'fn(51, false)', false);
-    _testNamedKey(fn, 61, Form.one, 'fn(61, false)', false);
-    _testNamedKey(fn, 71, Form.one, 'fn(71, false)', false);
-    _testNamedKey(fn, 81, Form.one, 'fn(81, false)', false);
-    _testNamedKey(fn, 101, Form.one, 'fn(101, false)', false);
-    _testNamedKey(fn, 1001, Form.one, 'fn(1001, false)', false);
-    _testNamedKey(fn, 0.1, Form.one, 'fn(0.1, false)', false);
-    _testNamedKey(fn, 1.1, Form.one, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 2.1, Form.one, 'fn(2.1, false)', false);
-    _testNamedKey(fn, 3.1, Form.one, 'fn(3.1, false)', false);
-    _testNamedKey(fn, 4.1, Form.one, 'fn(4.1, false)', false);
-    _testNamedKey(fn, 5.1, Form.one, 'fn(5.1, false)', false);
-    _testNamedKey(fn, 6.1, Form.one, 'fn(6.1, false)', false);
-    _testNamedKey(fn, 7.1, Form.one, 'fn(7.1, false)', false);
-    _testNamedKey(fn, 10.1, Form.one, 'fn(10.1, false)', false);
-    _testNamedKey(fn, 100.1, Form.one, 'fn(100.1, false)', false);
-    _testNamedKey(fn, 1000.1, Form.one, 'fn(1000.1, false)', false);
-
-    _testNamedKey(fn, 2, Form.few, 'fn(2, false)', false);
-    _testNamedKey(fn, 4, Form.few, 'fn(4, false)', false);
-    _testNamedKey(fn, 22, Form.few, 'fn(22, false)', false);
-    _testNamedKey(fn, 24, Form.few, 'fn(24, false)', false);
-    _testNamedKey(fn, 32, Form.few, 'fn(32, false)', false);
-    _testNamedKey(fn, 34, Form.few, 'fn(34, false)', false);
-    _testNamedKey(fn, 42, Form.few, 'fn(42, false)', false);
-    _testNamedKey(fn, 44, Form.few, 'fn(44, false)', false);
-    _testNamedKey(fn, 52, Form.few, 'fn(52, false)', false);
-    _testNamedKey(fn, 54, Form.few, 'fn(54, false)', false);
-    _testNamedKey(fn, 62, Form.few, 'fn(62, false)', false);
-    _testNamedKey(fn, 102, Form.few, 'fn(102, false)', false);
-    _testNamedKey(fn, 1002, Form.few, 'fn(1002, false)', false);
-    _testNamedKey(fn, 0.2, Form.few, 'fn(0.2, false)', false);
-    _testNamedKey(fn, 0.4, Form.few, 'fn(0.4, false)', false);
-    _testNamedKey(fn, 1.2, Form.few, 'fn(1.2, false)', false);
-    _testNamedKey(fn, 1.4, Form.few, 'fn(1.4, false)', false);
-    _testNamedKey(fn, 2.2, Form.few, 'fn(2.2, false)', false);
-    _testNamedKey(fn, 2.4, Form.few, 'fn(2.4, false)', false);
-    _testNamedKey(fn, 3.2, Form.few, 'fn(3.2, false)', false);
-    _testNamedKey(fn, 3.4, Form.few, 'fn(3.4, false)', false);
-    _testNamedKey(fn, 4.2, Form.few, 'fn(4.2, false)', false);
-    _testNamedKey(fn, 4.4, Form.few, 'fn(4.4, false)', false);
-    _testNamedKey(fn, 5.2, Form.few, 'fn(5.2, false)', false);
-    _testNamedKey(fn, 10.2, Form.few, 'fn(10.2, false)', false);
-    _testNamedKey(fn, 100.2, Form.few, 'fn(100.2, false)', false);
-    _testNamedKey(fn, 1000.2, Form.few, 'fn(1000.2, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 5, Form.other, 'fn(5, false)', false);
-    _testNamedKey(fn, 19, Form.other, 'fn(19, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.5, Form.other, 'fn(0.5, false)', false);
-    _testNamedKey(fn, 1.0, Form.other, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 2.0, Form.other, 'fn(2.0, false)', false);
-    _testNamedKey(fn, 2.5, Form.other, 'fn(2.5, false)', false);
-    _testNamedKey(fn, 2.7, Form.other, 'fn(2.7, false)', false);
     _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
     _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
     _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
@@ -5727,40 +7037,6 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
-  group('sk', () {
-    final fn = rules['sk'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-
-    _testNamedKey(fn, 2, Form.few, 'fn(2, false)', false);
-    _testNamedKey(fn, 4, Form.few, 'fn(4, false)', false);
-
-    _testNamedKey(fn, 0.0, Form.many, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.5, Form.many, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 10.0, Form.many, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.many, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.many, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.many, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.many, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.many, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 5, Form.other, 'fn(5, false)', false);
-    _testNamedKey(fn, 19, Form.other, 'fn(19, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
   group('sl', () {
     final fn = rules['sl'];
 
@@ -5827,232 +7103,6 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
-  group('sma', () {
-    final fn = rules['sma'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 2, Form.two, 'fn(2, false)', false);
-    _testNamedKey(fn, 2.0, Form.two, 'fn(2.0, false)', false);
-    _testNamedKey(fn, 2.00, Form.two, 'fn(2.00, false)', false);
-    _testNamedKey(fn, 2.000, Form.two, 'fn(2.000, false)', false);
-    _testNamedKey(fn, 2.0000, Form.two, 'fn(2.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 3, Form.other, 'fn(3, false)', false);
-    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('smi', () {
-    final fn = rules['smi'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 2, Form.two, 'fn(2, false)', false);
-    _testNamedKey(fn, 2.0, Form.two, 'fn(2.0, false)', false);
-    _testNamedKey(fn, 2.00, Form.two, 'fn(2.00, false)', false);
-    _testNamedKey(fn, 2.000, Form.two, 'fn(2.000, false)', false);
-    _testNamedKey(fn, 2.0000, Form.two, 'fn(2.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 3, Form.other, 'fn(3, false)', false);
-    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('smj', () {
-    final fn = rules['smj'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 2, Form.two, 'fn(2, false)', false);
-    _testNamedKey(fn, 2.0, Form.two, 'fn(2.0, false)', false);
-    _testNamedKey(fn, 2.00, Form.two, 'fn(2.00, false)', false);
-    _testNamedKey(fn, 2.000, Form.two, 'fn(2.000, false)', false);
-    _testNamedKey(fn, 2.0000, Form.two, 'fn(2.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 3, Form.other, 'fn(3, false)', false);
-    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('smn', () {
-    final fn = rules['smn'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 2, Form.two, 'fn(2, false)', false);
-    _testNamedKey(fn, 2.0, Form.two, 'fn(2.0, false)', false);
-    _testNamedKey(fn, 2.00, Form.two, 'fn(2.00, false)', false);
-    _testNamedKey(fn, 2.000, Form.two, 'fn(2.000, false)', false);
-    _testNamedKey(fn, 2.0000, Form.two, 'fn(2.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 3, Form.other, 'fn(3, false)', false);
-    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('sms', () {
-    final fn = rules['sms'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 2, Form.two, 'fn(2, false)', false);
-    _testNamedKey(fn, 2.0, Form.two, 'fn(2.0, false)', false);
-    _testNamedKey(fn, 2.00, Form.two, 'fn(2.00, false)', false);
-    _testNamedKey(fn, 2.000, Form.two, 'fn(2.000, false)', false);
-    _testNamedKey(fn, 2.0000, Form.two, 'fn(2.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 3, Form.other, 'fn(3, false)', false);
-    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('sn', () {
-    final fn = rules['sn'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('so', () {
-    final fn = rules['so'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
   group('sq', () {
     final fn = rules['sq'];
 
@@ -6105,173 +7155,6 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
-  group('sr', () {
-    final fn = rules['sr'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 21, Form.one, 'fn(21, false)', false);
-    _testNamedKey(fn, 31, Form.one, 'fn(31, false)', false);
-    _testNamedKey(fn, 41, Form.one, 'fn(41, false)', false);
-    _testNamedKey(fn, 51, Form.one, 'fn(51, false)', false);
-    _testNamedKey(fn, 61, Form.one, 'fn(61, false)', false);
-    _testNamedKey(fn, 71, Form.one, 'fn(71, false)', false);
-    _testNamedKey(fn, 81, Form.one, 'fn(81, false)', false);
-    _testNamedKey(fn, 101, Form.one, 'fn(101, false)', false);
-    _testNamedKey(fn, 1001, Form.one, 'fn(1001, false)', false);
-    _testNamedKey(fn, 0.1, Form.one, 'fn(0.1, false)', false);
-    _testNamedKey(fn, 1.1, Form.one, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 2.1, Form.one, 'fn(2.1, false)', false);
-    _testNamedKey(fn, 3.1, Form.one, 'fn(3.1, false)', false);
-    _testNamedKey(fn, 4.1, Form.one, 'fn(4.1, false)', false);
-    _testNamedKey(fn, 5.1, Form.one, 'fn(5.1, false)', false);
-    _testNamedKey(fn, 6.1, Form.one, 'fn(6.1, false)', false);
-    _testNamedKey(fn, 7.1, Form.one, 'fn(7.1, false)', false);
-    _testNamedKey(fn, 10.1, Form.one, 'fn(10.1, false)', false);
-    _testNamedKey(fn, 100.1, Form.one, 'fn(100.1, false)', false);
-    _testNamedKey(fn, 1000.1, Form.one, 'fn(1000.1, false)', false);
-
-    _testNamedKey(fn, 2, Form.few, 'fn(2, false)', false);
-    _testNamedKey(fn, 4, Form.few, 'fn(4, false)', false);
-    _testNamedKey(fn, 22, Form.few, 'fn(22, false)', false);
-    _testNamedKey(fn, 24, Form.few, 'fn(24, false)', false);
-    _testNamedKey(fn, 32, Form.few, 'fn(32, false)', false);
-    _testNamedKey(fn, 34, Form.few, 'fn(34, false)', false);
-    _testNamedKey(fn, 42, Form.few, 'fn(42, false)', false);
-    _testNamedKey(fn, 44, Form.few, 'fn(44, false)', false);
-    _testNamedKey(fn, 52, Form.few, 'fn(52, false)', false);
-    _testNamedKey(fn, 54, Form.few, 'fn(54, false)', false);
-    _testNamedKey(fn, 62, Form.few, 'fn(62, false)', false);
-    _testNamedKey(fn, 102, Form.few, 'fn(102, false)', false);
-    _testNamedKey(fn, 1002, Form.few, 'fn(1002, false)', false);
-    _testNamedKey(fn, 0.2, Form.few, 'fn(0.2, false)', false);
-    _testNamedKey(fn, 0.4, Form.few, 'fn(0.4, false)', false);
-    _testNamedKey(fn, 1.2, Form.few, 'fn(1.2, false)', false);
-    _testNamedKey(fn, 1.4, Form.few, 'fn(1.4, false)', false);
-    _testNamedKey(fn, 2.2, Form.few, 'fn(2.2, false)', false);
-    _testNamedKey(fn, 2.4, Form.few, 'fn(2.4, false)', false);
-    _testNamedKey(fn, 3.2, Form.few, 'fn(3.2, false)', false);
-    _testNamedKey(fn, 3.4, Form.few, 'fn(3.4, false)', false);
-    _testNamedKey(fn, 4.2, Form.few, 'fn(4.2, false)', false);
-    _testNamedKey(fn, 4.4, Form.few, 'fn(4.4, false)', false);
-    _testNamedKey(fn, 5.2, Form.few, 'fn(5.2, false)', false);
-    _testNamedKey(fn, 10.2, Form.few, 'fn(10.2, false)', false);
-    _testNamedKey(fn, 100.2, Form.few, 'fn(100.2, false)', false);
-    _testNamedKey(fn, 1000.2, Form.few, 'fn(1000.2, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 5, Form.other, 'fn(5, false)', false);
-    _testNamedKey(fn, 19, Form.other, 'fn(19, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.5, Form.other, 'fn(0.5, false)', false);
-    _testNamedKey(fn, 1.0, Form.other, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 2.0, Form.other, 'fn(2.0, false)', false);
-    _testNamedKey(fn, 2.5, Form.other, 'fn(2.5, false)', false);
-    _testNamedKey(fn, 2.7, Form.other, 'fn(2.7, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('ss', () {
-    final fn = rules['ss'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('ssy', () {
-    final fn = rules['ssy'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('st', () {
-    final fn = rules['st'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
   group('sv', () {
     final fn = rules['sv'];
 
@@ -6321,224 +7204,6 @@ void main() {
     _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('sw', () {
-    final fn = rules['sw'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('syr', () {
-    final fn = rules['syr'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('ta', () {
-    final fn = rules['ta'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('te', () {
-    final fn = rules['te'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('teo', () {
-    final fn = rules['teo'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('ti', () {
-    final fn = rules['ti'];
-
-    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 0.00, Form.one, 'fn(0.00, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 0.000, Form.one, 'fn(0.000, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 0.0000, Form.one, 'fn(0.0000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.1, Form.other, 'fn(0.1, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.7, Form.other, 'fn(1.7, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('tig', () {
-    final fn = rules['tig'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
   });
   group('tk', () {
     final fn = rules['tk'];
@@ -6595,170 +7260,6 @@ void main() {
     _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
     _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
   });
-  group('tl', () {
-    final fn = rules['tl'];
-
-    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
-    _testNamedKey(fn, 3, Form.one, 'fn(3, false)', false);
-    _testNamedKey(fn, 5, Form.one, 'fn(5, false)', false);
-    _testNamedKey(fn, 7, Form.one, 'fn(7, false)', false);
-    _testNamedKey(fn, 8, Form.one, 'fn(8, false)', false);
-    _testNamedKey(fn, 10, Form.one, 'fn(10, false)', false);
-    _testNamedKey(fn, 13, Form.one, 'fn(13, false)', false);
-    _testNamedKey(fn, 15, Form.one, 'fn(15, false)', false);
-    _testNamedKey(fn, 17, Form.one, 'fn(17, false)', false);
-    _testNamedKey(fn, 18, Form.one, 'fn(18, false)', false);
-    _testNamedKey(fn, 20, Form.one, 'fn(20, false)', false);
-    _testNamedKey(fn, 21, Form.one, 'fn(21, false)', false);
-    _testNamedKey(fn, 100, Form.one, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.one, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.one, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.one, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.one, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.3, Form.one, 'fn(0.3, false)', false);
-    _testNamedKey(fn, 0.5, Form.one, 'fn(0.5, false)', false);
-    _testNamedKey(fn, 0.7, Form.one, 'fn(0.7, false)', false);
-    _testNamedKey(fn, 0.8, Form.one, 'fn(0.8, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.3, Form.one, 'fn(1.3, false)', false);
-    _testNamedKey(fn, 1.5, Form.one, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 1.7, Form.one, 'fn(1.7, false)', false);
-    _testNamedKey(fn, 1.8, Form.one, 'fn(1.8, false)', false);
-    _testNamedKey(fn, 2.0, Form.one, 'fn(2.0, false)', false);
-    _testNamedKey(fn, 2.1, Form.one, 'fn(2.1, false)', false);
-    _testNamedKey(fn, 10.0, Form.one, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.one, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.one, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.one, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.one, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.one, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 4, Form.other, 'fn(4, false)', false);
-    _testNamedKey(fn, 6, Form.other, 'fn(6, false)', false);
-    _testNamedKey(fn, 9, Form.other, 'fn(9, false)', false);
-    _testNamedKey(fn, 14, Form.other, 'fn(14, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 19, Form.other, 'fn(19, false)', false);
-    _testNamedKey(fn, 24, Form.other, 'fn(24, false)', false);
-    _testNamedKey(fn, 26, Form.other, 'fn(26, false)', false);
-    _testNamedKey(fn, 104, Form.other, 'fn(104, false)', false);
-    _testNamedKey(fn, 1004, Form.other, 'fn(1004, false)', false);
-    _testNamedKey(fn, 0.4, Form.other, 'fn(0.4, false)', false);
-    _testNamedKey(fn, 0.6, Form.other, 'fn(0.6, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.4, Form.other, 'fn(1.4, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 1.9, Form.other, 'fn(1.9, false)', false);
-    _testNamedKey(fn, 2.4, Form.other, 'fn(2.4, false)', false);
-    _testNamedKey(fn, 2.6, Form.other, 'fn(2.6, false)', false);
-    _testNamedKey(fn, 10.4, Form.other, 'fn(10.4, false)', false);
-    _testNamedKey(fn, 100.4, Form.other, 'fn(100.4, false)', false);
-    _testNamedKey(fn, 1000.4, Form.other, 'fn(1000.4, false)', false);
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, true)', true);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, true)', true);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('tn', () {
-    final fn = rules['tn'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('tr', () {
-    final fn = rules['tr'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('ts', () {
-    final fn = rules['ts'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
   group('tzm', () {
     final fn = rules['tzm'];
 
@@ -6795,34 +7296,6 @@ void main() {
     _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
     _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
     _testNamedKey(fn, 1.7, Form.other, 'fn(1.7, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('ug', () {
-    final fn = rules['ug'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
     _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
     _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
     _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
@@ -6891,358 +7364,6 @@ void main() {
     _testNamedKey(fn, 2, Form.other, 'fn(2, true)', true);
     _testNamedKey(fn, 4, Form.other, 'fn(4, true)', true);
     _testNamedKey(fn, 16, Form.other, 'fn(16, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('ur', () {
-    final fn = rules['ur'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('uz', () {
-    final fn = rules['uz'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('ve', () {
-    final fn = rules['ve'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('vi', () {
-    final fn = rules['vi'];
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, true)', true);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, true)', true);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, true)', true);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, true)', true);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, true)', true);
-  });
-  group('vo', () {
-    final fn = rules['vo'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('vun', () {
-    final fn = rules['vun'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('wa', () {
-    final fn = rules['wa'];
-
-    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 0.00, Form.one, 'fn(0.00, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 0.000, Form.one, 'fn(0.000, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 0.0000, Form.one, 'fn(0.0000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.1, Form.other, 'fn(0.1, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.7, Form.other, 'fn(1.7, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('wae', () {
-    final fn = rules['wae'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('xh', () {
-    final fn = rules['xh'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('xog', () {
-    final fn = rules['xog'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 1.00, Form.one, 'fn(1.00, false)', false);
-    _testNamedKey(fn, 1.000, Form.one, 'fn(1.000, false)', false);
-    _testNamedKey(fn, 1.0000, Form.one, 'fn(1.0000, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 0.9, Form.other, 'fn(0.9, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 1.6, Form.other, 'fn(1.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('yi', () {
-    final fn = rules['yi'];
-
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, false)', false);
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 16, Form.other, 'fn(16, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 0.0, Form.other, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.5, Form.other, 'fn(1.5, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-  });
-  group('zu', () {
-    final fn = rules['zu'];
-
-    _testNamedKey(fn, 0, Form.one, 'fn(0, false)', false);
-    _testNamedKey(fn, 1, Form.one, 'fn(1, false)', false);
-    _testNamedKey(fn, 0.0, Form.one, 'fn(0.0, false)', false);
-    _testNamedKey(fn, 1.0, Form.one, 'fn(1.0, false)', false);
-    _testNamedKey(fn, 0.00, Form.one, 'fn(0.00, false)', false);
-    _testNamedKey(fn, 0.04, Form.one, 'fn(0.04, false)', false);
-
-    _testNamedKey(fn, 2, Form.other, 'fn(2, false)', false);
-    _testNamedKey(fn, 17, Form.other, 'fn(17, false)', false);
-    _testNamedKey(fn, 100, Form.other, 'fn(100, false)', false);
-    _testNamedKey(fn, 1000, Form.other, 'fn(1000, false)', false);
-    _testNamedKey(fn, 10000, Form.other, 'fn(10000, false)', false);
-    _testNamedKey(fn, 100000, Form.other, 'fn(100000, false)', false);
-    _testNamedKey(fn, 1000000, Form.other, 'fn(1000000, false)', false);
-    _testNamedKey(fn, 1.1, Form.other, 'fn(1.1, false)', false);
-    _testNamedKey(fn, 2.6, Form.other, 'fn(2.6, false)', false);
-    _testNamedKey(fn, 10.0, Form.other, 'fn(10.0, false)', false);
-    _testNamedKey(fn, 100.0, Form.other, 'fn(100.0, false)', false);
-    _testNamedKey(fn, 1000.0, Form.other, 'fn(1000.0, false)', false);
-    _testNamedKey(fn, 10000.0, Form.other, 'fn(10000.0, false)', false);
-    _testNamedKey(fn, 100000.0, Form.other, 'fn(100000.0, false)', false);
-    _testNamedKey(fn, 1000000.0, Form.other, 'fn(1000000.0, false)', false);
-
-    _testNamedKey(fn, 0, Form.other, 'fn(0, true)', true);
-    _testNamedKey(fn, 15, Form.other, 'fn(15, true)', true);
     _testNamedKey(fn, 100, Form.other, 'fn(100, true)', true);
     _testNamedKey(fn, 1000, Form.other, 'fn(1000, true)', true);
     _testNamedKey(fn, 10000, Form.other, 'fn(10000, true)', true);

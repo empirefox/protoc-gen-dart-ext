@@ -23,11 +23,23 @@ type ArbAttributes struct {
 
 type ArbPlaceholders []*ArbPlaceholder
 
-func (s ArbPlaceholders) LangPrams(lang string) []*LangParam {
+func (s ArbPlaceholders) LangParam(lang, param string) *LangParam {
+	for _, holder := range s {
+		if holder.LangInfos != nil && holder.Name == param {
+			if li := holder.LangInfos.GetLang(lang); li != nil {
+				return &LangParam{Name: param, Info: li.Info, Import: li.Import}
+			}
+			return nil
+		}
+	}
+	return nil
+}
+
+func (s ArbPlaceholders) LangParams(lang string) []*LangParam {
 	ps := make([]*LangParam, len(s))
 	for i, holder := range s {
-		if holder.LangInfo != nil {
-			ps[i] = &LangParam{Name: holder.Name, Info: holder.LangInfo[lang]}
+		if li := holder.LangInfos.GetLang(lang); li != nil {
+			ps[i] = &LangParam{Name: holder.Name, Info: li.Info, Import: li.Import}
 		} else {
 			ps[i] = &LangParam{Name: holder.Name}
 		}
@@ -71,13 +83,33 @@ func (s *ArbPlaceholders) UnmarshalJSON(data []byte) error {
 
 //easyjson:json
 type ArbPlaceholder struct {
-	Name        string            `json:"-"`
-	LangInfo    map[string]string `json:"x-lang-info,omitempty"`
-	Description string            `json:"description,omitempty"`
-	Example     interface{}       `json:"example,omitempty"`
+	Name        string       `json:"-"`
+	LangInfos   ArbLangInfos `json:"x-lang-info,omitempty"`
+	Description string       `json:"description,omitempty"`
+	Example     interface{}  `json:"example,omitempty"`
+}
+
+//easyjson:json
+type ArbLangInfos []*ArbLangInfo
+
+func (s ArbLangInfos) GetLang(lang string) *ArbLangInfo {
+	for _, li := range s {
+		if li.Lang == lang {
+			return li
+		}
+	}
+	return nil
+}
+
+//easyjson:json
+type ArbLangInfo struct {
+	Lang   string
+	Info   string
+	Import string
 }
 
 type LangParam struct {
-	Name string
-	Info string
+	Name   string
+	Info   string
+	Import string
 }

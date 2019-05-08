@@ -4,6 +4,8 @@ import 'dart:collection' show HashSet;
 import 'package:flutter/foundation.dart' show SynchronousFuture;
 import 'package:flutter/material.dart' show Locale, LocalizationsDelegate;
 
+import 'package:pgde/plural/plural.dart';
+
 class _UnitsLocalizationDelegate
     extends LocalizationsDelegate<UnitsLocalization> {
   const _UnitsLocalizationDelegate();
@@ -21,29 +23,31 @@ class _UnitsLocalizationDelegate
 
   static final Set<String> kSupportedLanguages =
       HashSet<String>.from(const <String>[
-    'as',
+    'ar',
     'en',
-    'zh-Hans',
+    'zh',
   ]);
 
   static UnitsLocalization _getTranslation(Locale locale) {
     switch (locale.languageCode) {
-      case 'as':
+      case 'ar':
         {
-          return UnitsLocalizationAs();
+          return UnitsLocalizationAr();
         }
 
       case 'en':
         {
+          switch (locale.countryCode) {
+            case 'US':
+              return UnitsLocalizationEnUs();
+          }
+
           return UnitsLocalizationEn();
         }
 
       case 'zh':
         {
-          switch (locale.countryCode) {
-            case 'Hans':
-              return UnitsLocalizationZhHans();
-          }
+          return UnitsLocalizationZh();
         }
     }
     assert(false, 'getTranslation() called for unsupported locale "$locale"');
@@ -51,248 +55,134 @@ class _UnitsLocalizationDelegate
   }
 }
 
-/// last_modified: 2019-04-29 04:05:20 +0000 UTC
+/// last_modified: 2019-05-07 11:03:40 +0000 UTC
 
 abstract class UnitsLocalization {
   static const delegate = _UnitsLocalizationDelegate();
 
   const UnitsLocalization();
 
-  String get atomMeter;
+  String atomMeter(Form form);
 
-  String get atomMeters;
+  String atomFoot(Form form);
 
-  String get atomFoot;
+  String atomInch(Form form);
 
-  String get atomFeet;
+  String atomYard(Form form);
 
-  String get atomInch;
+  String atomMile(Form form);
 
-  String get atomInches;
+  String atomNauticalMile(Form form);
 
-  String get atomYard;
+  String atomLightYear(Form form);
 
-  String get atomYards;
+  String atomHectare(Form form);
 
-  String get atomMile;
+  String atomAre(Form form);
 
-  String get atomMiles;
+  String atomLiter(Form form);
 
-  String get atomNauticalMile;
+  String atomGallon(Form form);
 
-  String get atomNauticalMiles;
+  String atomBarrel(Form form);
 
-  String get atomLightYear;
+  String atomGram(Form form);
 
-  String get atomLightYears;
+  String atomTon(Form form);
 
-  String get atomHectare;
+  String atomPound(Form form);
 
-  String get atomHectares;
+  String atomOunce(Form form);
 
-  String get atomAre;
+  String atomSecond(Form form);
 
-  String get atomAres;
+  String atomMinute(Form form);
 
-  String get atomLiter;
+  String atomHour(Form form);
 
-  String get atomLiters;
+  String atomDay(Form form);
 
-  String get atomGallon;
+  String atomWeek(Form form);
 
-  String get atomGallons;
+  String atomMonth(Form form);
 
-  String get atomBarrel;
+  String atomYear(Form form);
 
-  String get atomBarrels;
+  String atomCentury(Form form);
 
-  String get atomGram;
+  String atomSecondAngle(Form form);
 
-  String get atomGrams;
+  String atomMinuteAngle(Form form);
 
-  String get atomTon;
+  String atomDegree(Form form);
 
-  String get atomTons;
+  String atomAmpere(Form form);
 
-  String get atomPound;
+  String atomElectronvolt(Form form);
 
-  String get atomPounds;
+  String atomBel(Form form);
 
-  String get atomOunce;
+  String atomKelvin(Form form);
 
-  String get atomOunces;
+  String atomMole(Form form);
 
-  String get atomSecond;
+  String atomCandela(Form form);
 
-  String get atomSeconds;
+  String atomPercent(Form form);
 
-  String get atomMinute;
+  String atomPerThousand(Form form);
 
-  String get atomMinutes;
+  String atomBit(Form form);
 
-  String get atomHour;
+  String atomByte(Form form);
 
-  String get atomHours;
+  String atomCharacter(Form form);
 
-  String get atomDay;
+  String atomWord(Form form);
 
-  String get atomDays;
+  String atomRadian(Form form);
 
-  String get atomWeek;
+  String atomSteradian(Form form);
 
-  String get atomWeeks;
+  String atomHertz(Form form);
 
-  String get atomMonth;
+  String atomNewton(Form form);
 
-  String get atomMonths;
+  String atomPascal(Form form);
 
-  String get atomYear;
+  String atomJoule(Form form);
 
-  String get atomYears;
+  String atomWatt(Form form);
 
-  String get atomCentury;
+  String atomCoulomb(Form form);
 
-  String get atomCenturies;
+  String atomVolt(Form form);
 
-  String get atomSecondAngle;
+  String atomFarad(Form form);
 
-  String get atomSecondsAngle;
+  String atomOhm(Form form);
 
-  String get atomMinuteAngle;
+  String atomSiemens(Form form);
 
-  String get atomMinutesAngle;
+  String atomWeber(Form form);
 
-  String get atomDegree;
+  String atomTesla(Form form);
 
-  String get atomDegrees;
+  String atomHenry(Form form);
 
-  String get atomAmpere;
+  String atomDegreeCelsius(Form form);
 
-  String get atomAmperes;
+  String atomLumen(Form form);
 
-  String get atomElectronvolt;
+  String atomLux(Form form);
 
-  String get atomElectronvolts;
+  String atomBecquerel(Form form);
 
-  String get atomBel;
+  String atomGray(Form form);
 
-  String get atomBels;
+  String atomSievert(Form form);
 
-  String get atomKelvin;
-
-  String get atomKelvins;
-
-  String get atomMole;
-
-  String get atomMoles;
-
-  String get atomCandela;
-
-  String get atomCandelas;
-
-  String get atomPercent;
-
-  String get atomPerThousand;
-
-  String get atomBit;
-
-  String get atomBits;
-
-  String get atomByte;
-
-  String get atomBytes;
-
-  String get atomCharacter;
-
-  String get atomCharacters;
-
-  String get atomWord;
-
-  String get atomWords;
-
-  String get atomRadian;
-
-  String get atomRadians;
-
-  String get atomSteradian;
-
-  String get atomSteradians;
-
-  String get atomHertz;
-
-  String get atomNewton;
-
-  String get atomNewtons;
-
-  String get atomPascal;
-
-  String get atomPascals;
-
-  String get atomJoule;
-
-  String get atomJoules;
-
-  String get atomWatt;
-
-  String get atomWatts;
-
-  String get atomCoulomb;
-
-  String get atomCoulombs;
-
-  String get atomVolt;
-
-  String get atomVolts;
-
-  String get atomFarad;
-
-  String get atomFarads;
-
-  String get atomOhm;
-
-  String get atomOhms;
-
-  String get atomSiemens;
-
-  String get atomWeber;
-
-  String get atomWebers;
-
-  String get atomTesla;
-
-  String get atomTeslas;
-
-  String get atomHenry;
-
-  String get atomHenries;
-
-  String get atomDegreeCelsius;
-
-  String get atomDegreesCelsius;
-
-  String get atomLumen;
-
-  String get atomLumens;
-
-  String get atomLux;
-
-  String get atomLuxes;
-
-  String get atomBecquerel;
-
-  String get atomBecquerels;
-
-  String get atomGray;
-
-  String get atomGrays;
-
-  String get atomSievert;
-
-  String get atomSieverts;
-
-  String get atomKatal;
-
-  String get atomKatals;
+  String atomKatal(Form form);
 
   String get prefixYotta;
 
@@ -706,241 +596,615 @@ abstract class UnitsLocalization {
 class UnitsLocalizationEn extends UnitsLocalization {
   const UnitsLocalizationEn();
 
-  String get atomMeter => r'meter';
-
-  String get atomMeters => r'meters';
-
-  String get atomFoot => r'foot';
-
-  String get atomFeet => r'feet';
-
-  String get atomInch => r'inch';
-
-  String get atomInches => r'inches';
-
-  String get atomYard => r'yard';
-
-  String get atomYards => r'yards';
-
-  String get atomMile => r'mile';
-
-  String get atomMiles => r'miles';
-
-  String get atomNauticalMile => r'nautical mile';
-
-  String get atomNauticalMiles => r'nautical miles';
-
-  String get atomLightYear => r'light year';
-
-  String get atomLightYears => r'light years';
-
-  String get atomHectare => r'hectare';
-
-  String get atomHectares => r'hectares';
-
-  String get atomAre => r'are';
-
-  String get atomAres => r'ares';
-
-  String get atomLiter => r'liter';
-
-  String get atomLiters => r'liters';
-
-  String get atomGallon => r'gallon';
-
-  String get atomGallons => r'gallons';
-
-  String get atomBarrel => r'barrel';
-
-  String get atomBarrels => r'barrels';
-
-  String get atomGram => r'gram';
-
-  String get atomGrams => r'grams';
-
-  String get atomTon => r'ton';
-
-  String get atomTons => r'tons';
-
-  String get atomPound => r'pound';
-
-  String get atomPounds => r'pounds';
-
-  String get atomOunce => r'ounce';
-
-  String get atomOunces => r'ounces';
-
-  String get atomSecond => r'second';
-
-  String get atomSeconds => r'seconds';
-
-  String get atomMinute => r'minute';
-
-  String get atomMinutes => r'minutes';
-
-  String get atomHour => r'hour';
-
-  String get atomHours => r'hours';
-
-  String get atomDay => r'day';
-
-  String get atomDays => r'days';
-
-  String get atomWeek => r'week';
-
-  String get atomWeeks => r'weeks';
-
-  String get atomMonth => r'month';
-
-  String get atomMonths => r'months';
-
-  String get atomYear => r'year';
-
-  String get atomYears => r'years';
-
-  String get atomCentury => r'century';
-
-  String get atomCenturies => r'centuries';
-
-  String get atomSecondAngle => r'second';
-
-  String get atomSecondsAngle => r'seconds';
-
-  String get atomMinuteAngle => r'minute';
-
-  String get atomMinutesAngle => r'minutes';
-
-  String get atomDegree => r'degree';
-
-  String get atomDegrees => r'degrees';
-
-  String get atomAmpere => r'ampere';
-
-  String get atomAmperes => r'amperes';
-
-  String get atomElectronvolt => r'electronvolt';
-
-  String get atomElectronvolts => r'electronvolts';
-
-  String get atomBel => r'bel';
-
-  String get atomBels => r'bels';
-
-  String get atomKelvin => r'kelvin';
-
-  String get atomKelvins => r'kelvins';
-
-  String get atomMole => r'mole';
-
-  String get atomMoles => r'moles';
-
-  String get atomCandela => r'candela';
-
-  String get atomCandelas => r'candelas';
-
-  String get atomPercent => r'percent';
-
-  String get atomPerThousand => r'per thousand';
-
-  String get atomBit => r'bit';
-
-  String get atomBits => r'bits';
-
-  String get atomByte => r'byte';
-
-  String get atomBytes => r'bytes';
-
-  String get atomCharacter => r'character';
-
-  String get atomCharacters => r'characters';
-
-  String get atomWord => r'word';
-
-  String get atomWords => r'words';
-
-  String get atomRadian => r'radian';
-
-  String get atomRadians => r'radians';
-
-  String get atomSteradian => r'steradian';
-
-  String get atomSteradians => r'steradians';
-
-  String get atomHertz => r'hertz';
-
-  String get atomNewton => r'newton';
-
-  String get atomNewtons => r'newtons';
-
-  String get atomPascal => r'pascal';
-
-  String get atomPascals => r'pascals';
-
-  String get atomJoule => r'joule';
-
-  String get atomJoules => r'joules';
-
-  String get atomWatt => r'watt';
-
-  String get atomWatts => r'watts';
-
-  String get atomCoulomb => r'coulomb';
-
-  String get atomCoulombs => r'coulombs';
-
-  String get atomVolt => r'volt';
-
-  String get atomVolts => r'volts';
-
-  String get atomFarad => r'farad';
-
-  String get atomFarads => r'farads';
-
-  String get atomOhm => r'ohm';
-
-  String get atomOhms => r'ohms';
-
-  String get atomSiemens => r'siemens';
-
-  String get atomWeber => r'weber';
-
-  String get atomWebers => r'webers';
-
-  String get atomTesla => r'tesla';
-
-  String get atomTeslas => r'teslas';
-
-  String get atomHenry => r'henry';
-
-  String get atomHenries => r'henries';
-
-  String get atomDegreeCelsius => r'degree Celsius';
-
-  String get atomDegreesCelsius => r'degrees Celsius';
-
-  String get atomLumen => r'lumen';
-
-  String get atomLumens => r'lumens';
-
-  String get atomLux => r'lux';
-
-  String get atomLuxes => r'luxes';
-
-  String get atomBecquerel => r'becquerel';
-
-  String get atomBecquerels => r'becquerels';
-
-  String get atomGray => r'gray';
-
-  String get atomGrays => r'grays';
-
-  String get atomSievert => r'sievert';
-
-  String get atomSieverts => r'sieverts';
-
-  String get atomKatal => r'katal';
-
-  String get atomKatals => r'katals';
+  String atomMeter(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'meter';
+
+      default:
+        return r'meters';
+    }
+  }
+
+  String atomFoot(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'foot';
+
+      default:
+        return r'feet';
+    }
+  }
+
+  String atomInch(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'inch';
+
+      default:
+        return r'inches';
+    }
+  }
+
+  String atomYard(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'yard';
+
+      default:
+        return r'yards';
+    }
+  }
+
+  String atomMile(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'mile';
+
+      default:
+        return r'miles';
+    }
+  }
+
+  String atomNauticalMile(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'nautical mile';
+
+      default:
+        return r'nautical miles';
+    }
+  }
+
+  String atomLightYear(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'light year';
+
+      default:
+        return r'light years';
+    }
+  }
+
+  String atomHectare(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'hectare';
+
+      default:
+        return r'hectares';
+    }
+  }
+
+  String atomAre(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'are';
+
+      default:
+        return r'ares';
+    }
+  }
+
+  String atomLiter(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'liter';
+
+      default:
+        return r'liters';
+    }
+  }
+
+  String atomGallon(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'gallon';
+
+      default:
+        return r'gallons';
+    }
+  }
+
+  String atomBarrel(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'barrel';
+
+      default:
+        return r'barrels';
+    }
+  }
+
+  String atomGram(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'gram';
+
+      default:
+        return r'grams';
+    }
+  }
+
+  String atomTon(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'ton';
+
+      default:
+        return r'tons';
+    }
+  }
+
+  String atomPound(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'pound';
+
+      default:
+        return r'pounds';
+    }
+  }
+
+  String atomOunce(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'ounce';
+
+      default:
+        return r'ounces';
+    }
+  }
+
+  String atomSecond(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'second';
+
+      default:
+        return r'seconds';
+    }
+  }
+
+  String atomMinute(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'minute';
+
+      default:
+        return r'minutes';
+    }
+  }
+
+  String atomHour(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'hour';
+
+      default:
+        return r'hours';
+    }
+  }
+
+  String atomDay(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'day';
+
+      default:
+        return r'days';
+    }
+  }
+
+  String atomWeek(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'week';
+
+      default:
+        return r'weeks';
+    }
+  }
+
+  String atomMonth(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'month';
+
+      default:
+        return r'months';
+    }
+  }
+
+  String atomYear(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'year';
+
+      default:
+        return r'years';
+    }
+  }
+
+  String atomCentury(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'century';
+
+      default:
+        return r'centuries';
+    }
+  }
+
+  String atomSecondAngle(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'second';
+
+      default:
+        return r'seconds';
+    }
+  }
+
+  String atomMinuteAngle(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'minute';
+
+      default:
+        return r'minutes';
+    }
+  }
+
+  String atomDegree(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'degree';
+
+      default:
+        return r'degrees';
+    }
+  }
+
+  String atomAmpere(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'ampere';
+
+      default:
+        return r'amperes';
+    }
+  }
+
+  String atomElectronvolt(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'electronvolt';
+
+      default:
+        return r'electronvolts';
+    }
+  }
+
+  String atomBel(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'bel';
+
+      default:
+        return r'bels';
+    }
+  }
+
+  String atomKelvin(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'kelvin';
+
+      default:
+        return r'kelvins';
+    }
+  }
+
+  String atomMole(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'mole';
+
+      default:
+        return r'moles';
+    }
+  }
+
+  String atomCandela(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'candela';
+
+      default:
+        return r'candelas';
+    }
+  }
+
+  String atomPercent(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'percent';
+
+      default:
+        return r'percent';
+    }
+  }
+
+  String atomPerThousand(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'per thousand';
+
+      default:
+        return r'per thousand';
+    }
+  }
+
+  String atomBit(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'bit';
+
+      default:
+        return r'bits';
+    }
+  }
+
+  String atomByte(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'byte';
+
+      default:
+        return r'bytes';
+    }
+  }
+
+  String atomCharacter(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'character';
+
+      default:
+        return r'characters';
+    }
+  }
+
+  String atomWord(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'word';
+
+      default:
+        return r'words';
+    }
+  }
+
+  String atomRadian(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'radian';
+
+      default:
+        return r'radians';
+    }
+  }
+
+  String atomSteradian(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'steradian';
+
+      default:
+        return r'steradians';
+    }
+  }
+
+  String atomHertz(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'hertz';
+
+      default:
+        return r'hertz';
+    }
+  }
+
+  String atomNewton(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'newton';
+
+      default:
+        return r'newtons';
+    }
+  }
+
+  String atomPascal(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'pascal';
+
+      default:
+        return r'pascals';
+    }
+  }
+
+  String atomJoule(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'joule';
+
+      default:
+        return r'joules';
+    }
+  }
+
+  String atomWatt(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'watt';
+
+      default:
+        return r'watts';
+    }
+  }
+
+  String atomCoulomb(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'coulomb';
+
+      default:
+        return r'coulombs';
+    }
+  }
+
+  String atomVolt(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'volt';
+
+      default:
+        return r'volts';
+    }
+  }
+
+  String atomFarad(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'farad';
+
+      default:
+        return r'farads';
+    }
+  }
+
+  String atomOhm(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'ohm';
+
+      default:
+        return r'ohms';
+    }
+  }
+
+  String atomSiemens(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'siemens';
+
+      default:
+        return r'siemens';
+    }
+  }
+
+  String atomWeber(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'weber';
+
+      default:
+        return r'webers';
+    }
+  }
+
+  String atomTesla(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'tesla';
+
+      default:
+        return r'teslas';
+    }
+  }
+
+  String atomHenry(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'henry';
+
+      default:
+        return r'henries';
+    }
+  }
+
+  String atomDegreeCelsius(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'degree Celsius';
+
+      default:
+        return r'degrees Celsius';
+    }
+  }
+
+  String atomLumen(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'lumen';
+
+      default:
+        return r'lumens';
+    }
+  }
+
+  String atomLux(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'lux';
+
+      default:
+        return r'luxes';
+    }
+  }
+
+  String atomBecquerel(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'becquerel';
+
+      default:
+        return r'becquerels';
+    }
+  }
+
+  String atomGray(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'gray';
+
+      default:
+        return r'grays';
+    }
+  }
+
+  String atomSievert(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'sievert';
+
+      default:
+        return r'sieverts';
+    }
+  }
+
+  String atomKatal(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'katal';
+
+      default:
+        return r'katals';
+    }
+  }
 
   String get prefixYotta => r'yotta';
 
@@ -1355,244 +1619,1350 @@ class UnitsLocalizationEn extends UnitsLocalization {
   String get currencyUsn => r'US Dollar (Next day)';
 }
 
-class UnitsLocalizationAs extends UnitsLocalization {
-  const UnitsLocalizationAs();
+class UnitsLocalizationAr extends UnitsLocalization {
+  const UnitsLocalizationAr();
 
-  String get atomMeter => r'meter';
+  String atomMeter(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'meters';
 
-  String get atomMeters => r'meters';
+      case Form.many:
+        return r'meters';
 
-  String get atomFoot => r'foot';
+      case Form.one:
+        return r'meter';
 
-  String get atomFeet => r'feet';
+      case Form.two:
+        return r'meters';
 
-  String get atomInch => r'inch';
+      case Form.zero:
+        return r'meters';
 
-  String get atomInches => r'inches';
+      default:
+        return r'meters';
+    }
+  }
 
-  String get atomYard => r'yard';
+  String atomFoot(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'feet';
 
-  String get atomYards => r'yards';
+      case Form.many:
+        return r'feet';
 
-  String get atomMile => r'mile';
+      case Form.one:
+        return r'foot';
 
-  String get atomMiles => r'miles';
+      case Form.two:
+        return r'feet';
 
-  String get atomNauticalMile => r'nautical mile';
+      case Form.zero:
+        return r'feet';
 
-  String get atomNauticalMiles => r'nautical miles';
+      default:
+        return r'feet';
+    }
+  }
 
-  String get atomLightYear => r'light year';
+  String atomInch(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'inches';
 
-  String get atomLightYears => r'light years';
+      case Form.many:
+        return r'inches';
 
-  String get atomHectare => r'hectare';
+      case Form.one:
+        return r'inch';
 
-  String get atomHectares => r'hectares';
+      case Form.two:
+        return r'inches';
 
-  String get atomAre => r'are';
+      case Form.zero:
+        return r'inches';
 
-  String get atomAres => r'ares';
+      default:
+        return r'inches';
+    }
+  }
 
-  String get atomLiter => r'liter';
+  String atomYard(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'yards';
 
-  String get atomLiters => r'liters';
+      case Form.many:
+        return r'yards';
 
-  String get atomGallon => r'gallon';
+      case Form.one:
+        return r'yard';
 
-  String get atomGallons => r'gallons';
+      case Form.two:
+        return r'yards';
 
-  String get atomBarrel => r'barrel';
+      case Form.zero:
+        return r'yards';
 
-  String get atomBarrels => r'barrels';
+      default:
+        return r'yards';
+    }
+  }
 
-  String get atomGram => r'gram';
+  String atomMile(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'miles';
 
-  String get atomGrams => r'grams';
+      case Form.many:
+        return r'miles';
 
-  String get atomTon => r'ton';
+      case Form.one:
+        return r'mile';
 
-  String get atomTons => r'tons';
+      case Form.two:
+        return r'miles';
 
-  String get atomPound => r'pound';
+      case Form.zero:
+        return r'miles';
 
-  String get atomPounds => r'pounds';
+      default:
+        return r'miles';
+    }
+  }
 
-  String get atomOunce => r'ounce';
+  String atomNauticalMile(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'nautical miles';
 
-  String get atomOunces => r'ounces';
+      case Form.many:
+        return r'nautical miles';
 
-  String get atomSecond => r'second';
+      case Form.one:
+        return r'nautical mile';
 
-  String get atomSeconds => r'seconds';
+      case Form.two:
+        return r'nautical miles';
 
-  String get atomMinute => r'minute';
+      case Form.zero:
+        return r'nautical miles';
 
-  String get atomMinutes => r'minutes';
+      default:
+        return r'nautical miles';
+    }
+  }
 
-  String get atomHour => r'hour';
+  String atomLightYear(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'light years';
 
-  String get atomHours => r'hours';
+      case Form.many:
+        return r'light years';
 
-  String get atomDay => r'day';
+      case Form.one:
+        return r'light year';
 
-  String get atomDays => r'days';
+      case Form.two:
+        return r'light years';
 
-  String get atomWeek => r'week';
+      case Form.zero:
+        return r'light years';
 
-  String get atomWeeks => r'weeks';
+      default:
+        return r'light years';
+    }
+  }
 
-  String get atomMonth => r'month';
+  String atomHectare(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'hectares';
 
-  String get atomMonths => r'months';
+      case Form.many:
+        return r'hectares';
 
-  String get atomYear => r'year';
+      case Form.one:
+        return r'hectare';
 
-  String get atomYears => r'years';
+      case Form.two:
+        return r'hectares';
 
-  String get atomCentury => r'century';
+      case Form.zero:
+        return r'hectares';
 
-  String get atomCenturies => r'centuries';
+      default:
+        return r'hectares';
+    }
+  }
 
-  String get atomSecondAngle => r'second';
+  String atomAre(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'ares';
 
-  String get atomSecondsAngle => r'seconds';
+      case Form.many:
+        return r'ares';
 
-  String get atomMinuteAngle => r'minute';
+      case Form.one:
+        return r'are';
 
-  String get atomMinutesAngle => r'minutes';
+      case Form.two:
+        return r'ares';
 
-  String get atomDegree => r'degree';
+      case Form.zero:
+        return r'ares';
 
-  String get atomDegrees => r'degrees';
+      default:
+        return r'ares';
+    }
+  }
 
-  String get atomAmpere => r'ampere';
+  String atomLiter(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'liters';
 
-  String get atomAmperes => r'amperes';
+      case Form.many:
+        return r'liters';
 
-  String get atomElectronvolt => r'electronvolt';
+      case Form.one:
+        return r'liter';
 
-  String get atomElectronvolts => r'electronvolts';
+      case Form.two:
+        return r'liters';
 
-  String get atomBel => r'bel';
+      case Form.zero:
+        return r'liters';
 
-  String get atomBels => r'bels';
+      default:
+        return r'liters';
+    }
+  }
 
-  String get atomKelvin => r'kelvin';
+  String atomGallon(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'gallons';
 
-  String get atomKelvins => r'kelvins';
+      case Form.many:
+        return r'gallons';
 
-  String get atomMole => r'mole';
+      case Form.one:
+        return r'gallon';
 
-  String get atomMoles => r'moles';
+      case Form.two:
+        return r'gallons';
 
-  String get atomCandela => r'candela';
+      case Form.zero:
+        return r'gallons';
 
-  String get atomCandelas => r'candelas';
+      default:
+        return r'gallons';
+    }
+  }
 
-  String get atomPercent => r'percent';
+  String atomBarrel(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'barrels';
 
-  String get atomPerThousand => r'per thousand';
+      case Form.many:
+        return r'barrels';
 
-  String get atomBit => r'bit';
+      case Form.one:
+        return r'barrel';
 
-  String get atomBits => r'bits';
+      case Form.two:
+        return r'barrels';
 
-  String get atomByte => r'byte';
+      case Form.zero:
+        return r'barrels';
 
-  String get atomBytes => r'bytes';
+      default:
+        return r'barrels';
+    }
+  }
 
-  String get atomCharacter => r'character';
+  String atomGram(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'grams';
 
-  String get atomCharacters => r'characters';
+      case Form.many:
+        return r'grams';
 
-  String get atomWord => r'word';
+      case Form.one:
+        return r'gram';
 
-  String get atomWords => r'words';
+      case Form.two:
+        return r'grams';
 
-  String get atomRadian => r'radian';
+      case Form.zero:
+        return r'grams';
 
-  String get atomRadians => r'radians';
+      default:
+        return r'grams';
+    }
+  }
 
-  String get atomSteradian => r'steradian';
+  String atomTon(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'tons';
 
-  String get atomSteradians => r'steradians';
+      case Form.many:
+        return r'tons';
 
-  String get atomHertz => r'hertz';
+      case Form.one:
+        return r'ton';
 
-  String get atomNewton => r'newton';
+      case Form.two:
+        return r'tons';
 
-  String get atomNewtons => r'newtons';
+      case Form.zero:
+        return r'tons';
 
-  String get atomPascal => r'pascal';
+      default:
+        return r'tons';
+    }
+  }
 
-  String get atomPascals => r'pascals';
+  String atomPound(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'pounds';
 
-  String get atomJoule => r'joule';
+      case Form.many:
+        return r'pounds';
 
-  String get atomJoules => r'joules';
+      case Form.one:
+        return r'pound';
 
-  String get atomWatt => r'watt';
+      case Form.two:
+        return r'pounds';
 
-  String get atomWatts => r'watts';
+      case Form.zero:
+        return r'pounds';
 
-  String get atomCoulomb => r'coulomb';
+      default:
+        return r'pounds';
+    }
+  }
 
-  String get atomCoulombs => r'coulombs';
+  String atomOunce(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'ounces';
 
-  String get atomVolt => r'volt';
+      case Form.many:
+        return r'ounces';
 
-  String get atomVolts => r'volts';
+      case Form.one:
+        return r'ounce';
 
-  String get atomFarad => r'farad';
+      case Form.two:
+        return r'ounces';
 
-  String get atomFarads => r'farads';
+      case Form.zero:
+        return r'ounces';
 
-  String get atomOhm => r'ohm';
+      default:
+        return r'ounces';
+    }
+  }
 
-  String get atomOhms => r'ohms';
+  String atomSecond(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'seconds';
 
-  String get atomSiemens => r'siemens';
+      case Form.many:
+        return r'seconds';
 
-  String get atomWeber => r'weber';
+      case Form.one:
+        return r'second';
 
-  String get atomWebers => r'webers';
+      case Form.two:
+        return r'seconds';
 
-  String get atomTesla => r'tesla';
+      case Form.zero:
+        return r'seconds';
 
-  String get atomTeslas => r'teslas';
+      default:
+        return r'seconds';
+    }
+  }
 
-  String get atomHenry => r'henry';
+  String atomMinute(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'minutes';
 
-  String get atomHenries => r'henries';
+      case Form.many:
+        return r'minutes';
 
-  String get atomDegreeCelsius => r'degree Celsius';
+      case Form.one:
+        return r'minute';
 
-  String get atomDegreesCelsius => r'degrees Celsius';
+      case Form.two:
+        return r'minutes';
 
-  String get atomLumen => r'lumen';
+      case Form.zero:
+        return r'minutes';
 
-  String get atomLumens => r'lumens';
+      default:
+        return r'minutes';
+    }
+  }
 
-  String get atomLux => r'lux';
+  String atomHour(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'hours';
 
-  String get atomLuxes => r'luxes';
+      case Form.many:
+        return r'hours';
 
-  String get atomBecquerel => r'becquerel';
+      case Form.one:
+        return r'hour';
 
-  String get atomBecquerels => r'becquerels';
+      case Form.two:
+        return r'hours';
 
-  String get atomGray => r'gray';
+      case Form.zero:
+        return r'hours';
 
-  String get atomGrays => r'grays';
+      default:
+        return r'hours';
+    }
+  }
 
-  String get atomSievert => r'sievert';
+  String atomDay(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'days';
 
-  String get atomSieverts => r'sieverts';
+      case Form.many:
+        return r'days';
 
-  String get atomKatal => r'katal';
+      case Form.one:
+        return r'day';
 
-  String get atomKatals => r'katals';
+      case Form.two:
+        return r'days';
+
+      case Form.zero:
+        return r'days';
+
+      default:
+        return r'days';
+    }
+  }
+
+  String atomWeek(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'weeks';
+
+      case Form.many:
+        return r'weeks';
+
+      case Form.one:
+        return r'week';
+
+      case Form.two:
+        return r'weeks';
+
+      case Form.zero:
+        return r'weeks';
+
+      default:
+        return r'weeks';
+    }
+  }
+
+  String atomMonth(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'months';
+
+      case Form.many:
+        return r'months';
+
+      case Form.one:
+        return r'month';
+
+      case Form.two:
+        return r'months';
+
+      case Form.zero:
+        return r'months';
+
+      default:
+        return r'months';
+    }
+  }
+
+  String atomYear(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'years';
+
+      case Form.many:
+        return r'years';
+
+      case Form.one:
+        return r'year';
+
+      case Form.two:
+        return r'years';
+
+      case Form.zero:
+        return r'years';
+
+      default:
+        return r'years';
+    }
+  }
+
+  String atomCentury(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'centuries';
+
+      case Form.many:
+        return r'centuries';
+
+      case Form.one:
+        return r'century';
+
+      case Form.two:
+        return r'centuries';
+
+      case Form.zero:
+        return r'centuries';
+
+      default:
+        return r'centuries';
+    }
+  }
+
+  String atomSecondAngle(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'seconds';
+
+      case Form.many:
+        return r'seconds';
+
+      case Form.one:
+        return r'second';
+
+      case Form.two:
+        return r'seconds';
+
+      case Form.zero:
+        return r'seconds';
+
+      default:
+        return r'seconds';
+    }
+  }
+
+  String atomMinuteAngle(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'minutes';
+
+      case Form.many:
+        return r'minutes';
+
+      case Form.one:
+        return r'minute';
+
+      case Form.two:
+        return r'minutes';
+
+      case Form.zero:
+        return r'minutes';
+
+      default:
+        return r'minutes';
+    }
+  }
+
+  String atomDegree(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'degrees';
+
+      case Form.many:
+        return r'degrees';
+
+      case Form.one:
+        return r'degree';
+
+      case Form.two:
+        return r'degrees';
+
+      case Form.zero:
+        return r'degrees';
+
+      default:
+        return r'degrees';
+    }
+  }
+
+  String atomAmpere(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'amperes';
+
+      case Form.many:
+        return r'amperes';
+
+      case Form.one:
+        return r'ampere';
+
+      case Form.two:
+        return r'amperes';
+
+      case Form.zero:
+        return r'amperes';
+
+      default:
+        return r'amperes';
+    }
+  }
+
+  String atomElectronvolt(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'electronvolts';
+
+      case Form.many:
+        return r'electronvolts';
+
+      case Form.one:
+        return r'electronvolt';
+
+      case Form.two:
+        return r'electronvolts';
+
+      case Form.zero:
+        return r'electronvolts';
+
+      default:
+        return r'electronvolts';
+    }
+  }
+
+  String atomBel(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'bels';
+
+      case Form.many:
+        return r'bels';
+
+      case Form.one:
+        return r'bel';
+
+      case Form.two:
+        return r'bels';
+
+      case Form.zero:
+        return r'bels';
+
+      default:
+        return r'bels';
+    }
+  }
+
+  String atomKelvin(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'kelvins';
+
+      case Form.many:
+        return r'kelvins';
+
+      case Form.one:
+        return r'kelvin';
+
+      case Form.two:
+        return r'kelvins';
+
+      case Form.zero:
+        return r'kelvins';
+
+      default:
+        return r'kelvins';
+    }
+  }
+
+  String atomMole(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'moles';
+
+      case Form.many:
+        return r'moles';
+
+      case Form.one:
+        return r'mole';
+
+      case Form.two:
+        return r'moles';
+
+      case Form.zero:
+        return r'moles';
+
+      default:
+        return r'moles';
+    }
+  }
+
+  String atomCandela(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'candelas';
+
+      case Form.many:
+        return r'candelas';
+
+      case Form.one:
+        return r'candela';
+
+      case Form.two:
+        return r'candelas';
+
+      case Form.zero:
+        return r'candelas';
+
+      default:
+        return r'candelas';
+    }
+  }
+
+  String atomPercent(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'percent';
+
+      case Form.many:
+        return r'percent';
+
+      case Form.one:
+        return r'percent';
+
+      case Form.two:
+        return r'percent';
+
+      case Form.zero:
+        return r'percent';
+
+      default:
+        return r'percent';
+    }
+  }
+
+  String atomPerThousand(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'per thousand';
+
+      case Form.many:
+        return r'per thousand';
+
+      case Form.one:
+        return r'per thousand';
+
+      case Form.two:
+        return r'per thousand';
+
+      case Form.zero:
+        return r'per thousand';
+
+      default:
+        return r'per thousand';
+    }
+  }
+
+  String atomBit(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'bits';
+
+      case Form.many:
+        return r'bits';
+
+      case Form.one:
+        return r'bit';
+
+      case Form.two:
+        return r'bits';
+
+      case Form.zero:
+        return r'bits';
+
+      default:
+        return r'bits';
+    }
+  }
+
+  String atomByte(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'bytes';
+
+      case Form.many:
+        return r'bytes';
+
+      case Form.one:
+        return r'byte';
+
+      case Form.two:
+        return r'bytes';
+
+      case Form.zero:
+        return r'bytes';
+
+      default:
+        return r'bytes';
+    }
+  }
+
+  String atomCharacter(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'characters';
+
+      case Form.many:
+        return r'characters';
+
+      case Form.one:
+        return r'character';
+
+      case Form.two:
+        return r'characters';
+
+      case Form.zero:
+        return r'characters';
+
+      default:
+        return r'characters';
+    }
+  }
+
+  String atomWord(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'words';
+
+      case Form.many:
+        return r'words';
+
+      case Form.one:
+        return r'word';
+
+      case Form.two:
+        return r'words';
+
+      case Form.zero:
+        return r'words';
+
+      default:
+        return r'words';
+    }
+  }
+
+  String atomRadian(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'radians';
+
+      case Form.many:
+        return r'radians';
+
+      case Form.one:
+        return r'radian';
+
+      case Form.two:
+        return r'radians';
+
+      case Form.zero:
+        return r'radians';
+
+      default:
+        return r'radians';
+    }
+  }
+
+  String atomSteradian(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'steradians';
+
+      case Form.many:
+        return r'steradians';
+
+      case Form.one:
+        return r'steradian';
+
+      case Form.two:
+        return r'steradians';
+
+      case Form.zero:
+        return r'steradians';
+
+      default:
+        return r'steradians';
+    }
+  }
+
+  String atomHertz(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'hertz';
+
+      case Form.many:
+        return r'hertz';
+
+      case Form.one:
+        return r'hertz';
+
+      case Form.two:
+        return r'hertz';
+
+      case Form.zero:
+        return r'hertz';
+
+      default:
+        return r'hertz';
+    }
+  }
+
+  String atomNewton(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'newtons';
+
+      case Form.many:
+        return r'newtons';
+
+      case Form.one:
+        return r'newton';
+
+      case Form.two:
+        return r'newtons';
+
+      case Form.zero:
+        return r'newtons';
+
+      default:
+        return r'newtons';
+    }
+  }
+
+  String atomPascal(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'pascals';
+
+      case Form.many:
+        return r'pascals';
+
+      case Form.one:
+        return r'pascal';
+
+      case Form.two:
+        return r'pascals';
+
+      case Form.zero:
+        return r'pascals';
+
+      default:
+        return r'pascals';
+    }
+  }
+
+  String atomJoule(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'joules';
+
+      case Form.many:
+        return r'joules';
+
+      case Form.one:
+        return r'joule';
+
+      case Form.two:
+        return r'joules';
+
+      case Form.zero:
+        return r'joules';
+
+      default:
+        return r'joules';
+    }
+  }
+
+  String atomWatt(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'watts';
+
+      case Form.many:
+        return r'watts';
+
+      case Form.one:
+        return r'watt';
+
+      case Form.two:
+        return r'watts';
+
+      case Form.zero:
+        return r'watts';
+
+      default:
+        return r'watts';
+    }
+  }
+
+  String atomCoulomb(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'coulombs';
+
+      case Form.many:
+        return r'coulombs';
+
+      case Form.one:
+        return r'coulomb';
+
+      case Form.two:
+        return r'coulombs';
+
+      case Form.zero:
+        return r'coulombs';
+
+      default:
+        return r'coulombs';
+    }
+  }
+
+  String atomVolt(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'volts';
+
+      case Form.many:
+        return r'volts';
+
+      case Form.one:
+        return r'volt';
+
+      case Form.two:
+        return r'volts';
+
+      case Form.zero:
+        return r'volts';
+
+      default:
+        return r'volts';
+    }
+  }
+
+  String atomFarad(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'farads';
+
+      case Form.many:
+        return r'farads';
+
+      case Form.one:
+        return r'farad';
+
+      case Form.two:
+        return r'farads';
+
+      case Form.zero:
+        return r'farads';
+
+      default:
+        return r'farads';
+    }
+  }
+
+  String atomOhm(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'ohms';
+
+      case Form.many:
+        return r'ohms';
+
+      case Form.one:
+        return r'ohm';
+
+      case Form.two:
+        return r'ohms';
+
+      case Form.zero:
+        return r'ohms';
+
+      default:
+        return r'ohms';
+    }
+  }
+
+  String atomSiemens(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'siemens';
+
+      case Form.many:
+        return r'siemens';
+
+      case Form.one:
+        return r'siemens';
+
+      case Form.two:
+        return r'siemens';
+
+      case Form.zero:
+        return r'siemens';
+
+      default:
+        return r'siemens';
+    }
+  }
+
+  String atomWeber(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'webers';
+
+      case Form.many:
+        return r'webers';
+
+      case Form.one:
+        return r'weber';
+
+      case Form.two:
+        return r'webers';
+
+      case Form.zero:
+        return r'webers';
+
+      default:
+        return r'webers';
+    }
+  }
+
+  String atomTesla(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'teslas';
+
+      case Form.many:
+        return r'teslas';
+
+      case Form.one:
+        return r'tesla';
+
+      case Form.two:
+        return r'teslas';
+
+      case Form.zero:
+        return r'teslas';
+
+      default:
+        return r'teslas';
+    }
+  }
+
+  String atomHenry(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'henries';
+
+      case Form.many:
+        return r'henries';
+
+      case Form.one:
+        return r'henry';
+
+      case Form.two:
+        return r'henries';
+
+      case Form.zero:
+        return r'henries';
+
+      default:
+        return r'henries';
+    }
+  }
+
+  String atomDegreeCelsius(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'degrees Celsius';
+
+      case Form.many:
+        return r'degrees Celsius';
+
+      case Form.one:
+        return r'degree Celsius';
+
+      case Form.two:
+        return r'degrees Celsius';
+
+      case Form.zero:
+        return r'degrees Celsius';
+
+      default:
+        return r'degrees Celsius';
+    }
+  }
+
+  String atomLumen(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'lumens';
+
+      case Form.many:
+        return r'lumens';
+
+      case Form.one:
+        return r'lumen';
+
+      case Form.two:
+        return r'lumens';
+
+      case Form.zero:
+        return r'lumens';
+
+      default:
+        return r'lumens';
+    }
+  }
+
+  String atomLux(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'luxes';
+
+      case Form.many:
+        return r'luxes';
+
+      case Form.one:
+        return r'lux';
+
+      case Form.two:
+        return r'luxes';
+
+      case Form.zero:
+        return r'luxes';
+
+      default:
+        return r'luxes';
+    }
+  }
+
+  String atomBecquerel(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'becquerels';
+
+      case Form.many:
+        return r'becquerels';
+
+      case Form.one:
+        return r'becquerel';
+
+      case Form.two:
+        return r'becquerels';
+
+      case Form.zero:
+        return r'becquerels';
+
+      default:
+        return r'becquerels';
+    }
+  }
+
+  String atomGray(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'grays';
+
+      case Form.many:
+        return r'grays';
+
+      case Form.one:
+        return r'gray';
+
+      case Form.two:
+        return r'grays';
+
+      case Form.zero:
+        return r'grays';
+
+      default:
+        return r'grays';
+    }
+  }
+
+  String atomSievert(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'sieverts';
+
+      case Form.many:
+        return r'sieverts';
+
+      case Form.one:
+        return r'sievert';
+
+      case Form.two:
+        return r'sieverts';
+
+      case Form.zero:
+        return r'sieverts';
+
+      default:
+        return r'sieverts';
+    }
+  }
+
+  String atomKatal(Form form) {
+    switch (form) {
+      case Form.few:
+        return r'katals';
+
+      case Form.many:
+        return r'katals';
+
+      case Form.one:
+        return r'katal';
+
+      case Form.two:
+        return r'katals';
+
+      case Form.zero:
+        return r'katals';
+
+      default:
+        return r'katals';
+    }
+  }
 
   String get prefixYotta => r'yotta';
 
@@ -2007,244 +3377,1278 @@ class UnitsLocalizationAs extends UnitsLocalization {
   String get currencyUsn => r'US Dollar (Next day)';
 }
 
-class UnitsLocalizationZhHans extends UnitsLocalization {
-  const UnitsLocalizationZhHans();
+class UnitsLocalizationEnUs extends UnitsLocalization {
+  const UnitsLocalizationEnUs();
+
+  String atomMeter(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'meter';
+
+      default:
+        return r'meters';
+    }
+  }
+
+  String atomFoot(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'foot';
+
+      default:
+        return r'feet';
+    }
+  }
+
+  String atomInch(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'inch';
+
+      default:
+        return r'inches';
+    }
+  }
+
+  String atomYard(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'yard';
+
+      default:
+        return r'yards';
+    }
+  }
+
+  String atomMile(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'mile';
+
+      default:
+        return r'miles';
+    }
+  }
+
+  String atomNauticalMile(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'nautical mile';
+
+      default:
+        return r'nautical miles';
+    }
+  }
+
+  String atomLightYear(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'light year';
+
+      default:
+        return r'light years';
+    }
+  }
+
+  String atomHectare(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'hectare';
+
+      default:
+        return r'hectares';
+    }
+  }
+
+  String atomAre(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'are';
+
+      default:
+        return r'ares';
+    }
+  }
+
+  String atomLiter(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'liter';
+
+      default:
+        return r'liters';
+    }
+  }
+
+  String atomGallon(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'gallon';
+
+      default:
+        return r'gallons';
+    }
+  }
+
+  String atomBarrel(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'barrel';
+
+      default:
+        return r'barrels';
+    }
+  }
+
+  String atomGram(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'gram';
+
+      default:
+        return r'grams';
+    }
+  }
+
+  String atomTon(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'ton';
+
+      default:
+        return r'tons';
+    }
+  }
+
+  String atomPound(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'pound';
+
+      default:
+        return r'pounds';
+    }
+  }
+
+  String atomOunce(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'ounce';
+
+      default:
+        return r'ounces';
+    }
+  }
+
+  String atomSecond(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'second';
+
+      default:
+        return r'seconds';
+    }
+  }
+
+  String atomMinute(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'minute';
+
+      default:
+        return r'minutes';
+    }
+  }
+
+  String atomHour(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'hour';
+
+      default:
+        return r'hours';
+    }
+  }
+
+  String atomDay(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'day';
+
+      default:
+        return r'days';
+    }
+  }
+
+  String atomWeek(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'week';
+
+      default:
+        return r'weeks';
+    }
+  }
+
+  String atomMonth(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'month';
+
+      default:
+        return r'months';
+    }
+  }
+
+  String atomYear(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'year';
+
+      default:
+        return r'years';
+    }
+  }
+
+  String atomCentury(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'century';
+
+      default:
+        return r'centuries';
+    }
+  }
+
+  String atomSecondAngle(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'second';
+
+      default:
+        return r'seconds';
+    }
+  }
+
+  String atomMinuteAngle(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'minute';
+
+      default:
+        return r'minutes';
+    }
+  }
+
+  String atomDegree(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'degree';
+
+      default:
+        return r'degrees';
+    }
+  }
+
+  String atomAmpere(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'ampere';
+
+      default:
+        return r'amperes';
+    }
+  }
+
+  String atomElectronvolt(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'electronvolt';
+
+      default:
+        return r'electronvolts';
+    }
+  }
+
+  String atomBel(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'bel';
+
+      default:
+        return r'bels';
+    }
+  }
+
+  String atomKelvin(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'kelvin';
+
+      default:
+        return r'kelvins';
+    }
+  }
+
+  String atomMole(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'mole';
+
+      default:
+        return r'moles';
+    }
+  }
+
+  String atomCandela(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'candela';
+
+      default:
+        return r'candelas';
+    }
+  }
+
+  String atomPercent(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'percent';
+
+      default:
+        return r'percent';
+    }
+  }
+
+  String atomPerThousand(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'per thousand';
+
+      default:
+        return r'per thousand';
+    }
+  }
+
+  String atomBit(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'bit';
+
+      default:
+        return r'bits';
+    }
+  }
+
+  String atomByte(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'byte';
+
+      default:
+        return r'bytes';
+    }
+  }
+
+  String atomCharacter(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'character';
+
+      default:
+        return r'characters';
+    }
+  }
+
+  String atomWord(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'word';
+
+      default:
+        return r'words';
+    }
+  }
+
+  String atomRadian(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'radian';
+
+      default:
+        return r'radians';
+    }
+  }
+
+  String atomSteradian(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'steradian';
+
+      default:
+        return r'steradians';
+    }
+  }
+
+  String atomHertz(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'hertz';
+
+      default:
+        return r'hertz';
+    }
+  }
+
+  String atomNewton(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'newton';
+
+      default:
+        return r'newtons';
+    }
+  }
+
+  String atomPascal(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'pascal';
+
+      default:
+        return r'pascals';
+    }
+  }
+
+  String atomJoule(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'joule';
+
+      default:
+        return r'joules';
+    }
+  }
+
+  String atomWatt(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'watt';
+
+      default:
+        return r'watts';
+    }
+  }
+
+  String atomCoulomb(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'coulomb';
+
+      default:
+        return r'coulombs';
+    }
+  }
+
+  String atomVolt(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'volt';
+
+      default:
+        return r'volts';
+    }
+  }
+
+  String atomFarad(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'farad';
+
+      default:
+        return r'farads';
+    }
+  }
+
+  String atomOhm(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'ohm';
+
+      default:
+        return r'ohms';
+    }
+  }
+
+  String atomSiemens(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'siemens';
+
+      default:
+        return r'siemens';
+    }
+  }
+
+  String atomWeber(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'weber';
+
+      default:
+        return r'webers';
+    }
+  }
+
+  String atomTesla(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'tesla';
+
+      default:
+        return r'teslas';
+    }
+  }
+
+  String atomHenry(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'henry';
+
+      default:
+        return r'henries';
+    }
+  }
+
+  String atomDegreeCelsius(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'degree Celsius';
+
+      default:
+        return r'degrees Celsius';
+    }
+  }
+
+  String atomLumen(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'lumen';
+
+      default:
+        return r'lumens';
+    }
+  }
+
+  String atomLux(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'lux';
+
+      default:
+        return r'luxes';
+    }
+  }
+
+  String atomBecquerel(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'becquerel';
+
+      default:
+        return r'becquerels';
+    }
+  }
+
+  String atomGray(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'gray';
+
+      default:
+        return r'grays';
+    }
+  }
+
+  String atomSievert(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'sievert';
+
+      default:
+        return r'sieverts';
+    }
+  }
+
+  String atomKatal(Form form) {
+    switch (form) {
+      case Form.one:
+        return r'katal';
+
+      default:
+        return r'katals';
+    }
+  }
+
+  String get prefixYotta => r'yotta';
+
+  String get prefixZetta => r'zetta';
 
-  String get atomMeter => r'meter';
+  String get prefixExa => r'exa';
 
-  String get atomMeters => r'meters';
+  String get prefixPeta => r'peta';
 
-  String get atomFoot => r'foot';
+  String get prefixTera => r'tera';
 
-  String get atomFeet => r'feet';
+  String get prefixGiga => r'giga';
 
-  String get atomInch => r'inch';
+  String get prefixMega => r'mega';
 
-  String get atomInches => r'inches';
+  String get prefixKilo => r'kilo';
 
-  String get atomYard => r'yard';
+  String get prefixHecto => r'hecto';
 
-  String get atomYards => r'yards';
+  String get prefixDeka => r'deka';
 
-  String get atomMile => r'mile';
+  String get prefixDeci => r'deci';
 
-  String get atomMiles => r'miles';
+  String get prefixCenti => r'centi';
 
-  String get atomNauticalMile => r'nautical mile';
+  String get prefixMilli => r'milli';
 
-  String get atomNauticalMiles => r'nautical miles';
+  String get prefixMicro => r'micro';
 
-  String get atomLightYear => r'light year';
+  String get prefixNano => r'nano';
 
-  String get atomLightYears => r'light years';
+  String get prefixPico => r'pico';
 
-  String get atomHectare => r'hectare';
+  String get prefixFemto => r'femto';
 
-  String get atomHectares => r'hectares';
+  String get prefixAtto => r'atto';
 
-  String get atomAre => r'are';
+  String get prefixZepto => r'zepto';
 
-  String get atomAres => r'ares';
+  String get prefixYocto => r'yocto';
 
-  String get atomLiter => r'liter';
+  String get prefixKibi => r'kibi';
 
-  String get atomLiters => r'liters';
+  String get prefixMebi => r'mebi';
 
-  String get atomGallon => r'gallon';
+  String get prefixGibi => r'gibi';
 
-  String get atomGallons => r'gallons';
+  String get prefixTebi => r'tebi';
 
-  String get atomBarrel => r'barrel';
+  String get prefixPebi => r'pebi';
 
-  String get atomBarrels => r'barrels';
+  String get prefixExbi => r'exbi';
 
-  String get atomGram => r'gram';
+  String get currencyAll => r'Lek';
 
-  String get atomGrams => r'grams';
+  String get currencyDzd => r'Algerian Dinar';
 
-  String get atomTon => r'ton';
+  String get currencyArs => r'Argentine Peso';
 
-  String get atomTons => r'tons';
+  String get currencyAud => r'Australian Dollar';
 
-  String get atomPound => r'pound';
+  String get currencyBsd => r'Bahamian Dollar';
 
-  String get atomPounds => r'pounds';
+  String get currencyBhd => r'Bahraini Dinar';
 
-  String get atomOunce => r'ounce';
+  String get currencyBdt => r'Taka';
 
-  String get atomOunces => r'ounces';
+  String get currencyAmd => r'Armenian Dram';
 
-  String get atomSecond => r'second';
+  String get currencyBbd => r'Barbados Dollar';
 
-  String get atomSeconds => r'seconds';
+  String get currencyBmd => r'Bermudian Dollar';
 
-  String get atomMinute => r'minute';
+  String get currencyBtn => r'Ngultrum';
 
-  String get atomMinutes => r'minutes';
+  String get currencyBob => r'Boliviano';
 
-  String get atomHour => r'hour';
+  String get currencyBwp => r'Pula';
 
-  String get atomHours => r'hours';
+  String get currencyBzd => r'Belize Dollar';
 
-  String get atomDay => r'day';
+  String get currencySbd => r'Solomon Islands Dollar';
 
-  String get atomDays => r'days';
+  String get currencyBnd => r'Brunei Dollar';
 
-  String get atomWeek => r'week';
+  String get currencyMmk => r'Kyat';
 
-  String get atomWeeks => r'weeks';
+  String get currencyBif => r'Burundi Franc';
 
-  String get atomMonth => r'month';
+  String get currencyKhr => r'Riel';
 
-  String get atomMonths => r'months';
+  String get currencyCad => r'Canadian Dollar';
 
-  String get atomYear => r'year';
+  String get currencyCve => r'Cabo Verde Escudo';
 
-  String get atomYears => r'years';
+  String get currencyKyd => r'Cayman Islands Dollar';
 
-  String get atomCentury => r'century';
+  String get currencyLkr => r'Sri Lanka Rupee';
 
-  String get atomCenturies => r'centuries';
+  String get currencyClp => r'Chilean Peso';
 
-  String get atomSecondAngle => r'second';
+  String get currencyCny => r'Yuan Renminbi';
 
-  String get atomSecondsAngle => r'seconds';
+  String get currencyCop => r'Colombian Peso';
 
-  String get atomMinuteAngle => r'minute';
+  String get currencyKmf => r'Comorian Franc ';
 
-  String get atomMinutesAngle => r'minutes';
+  String get currencyCrc => r'Costa Rican Colon';
 
-  String get atomDegree => r'degree';
+  String get currencyHrk => r'Kuna';
 
-  String get atomDegrees => r'degrees';
+  String get currencyCup => r'Cuban Peso';
 
-  String get atomAmpere => r'ampere';
+  String get currencyCzk => r'Czech Koruna';
 
-  String get atomAmperes => r'amperes';
+  String get currencyDkk => r'Danish Krone';
 
-  String get atomElectronvolt => r'electronvolt';
+  String get currencyDop => r'Dominican Peso';
 
-  String get atomElectronvolts => r'electronvolts';
+  String get currencySvc => r'El Salvador Colon';
 
-  String get atomBel => r'bel';
+  String get currencyEtb => r'Ethiopian Birr';
 
-  String get atomBels => r'bels';
+  String get currencyErn => r'Nakfa';
 
-  String get atomKelvin => r'kelvin';
+  String get currencyFkp => r'Falkland Islands Pound';
 
-  String get atomKelvins => r'kelvins';
+  String get currencyFjd => r'Fiji Dollar';
 
-  String get atomMole => r'mole';
+  String get currencyDjf => r'Djibouti Franc';
 
-  String get atomMoles => r'moles';
+  String get currencyGmd => r'Dalasi';
 
-  String get atomCandela => r'candela';
+  String get currencyGip => r'Gibraltar Pound';
 
-  String get atomCandelas => r'candelas';
+  String get currencyGtq => r'Quetzal';
 
-  String get atomPercent => r'percent';
+  String get currencyGnf => r'Guinean Franc';
 
-  String get atomPerThousand => r'per thousand';
+  String get currencyGyd => r'Guyana Dollar';
 
-  String get atomBit => r'bit';
+  String get currencyHtg => r'Gourde';
 
-  String get atomBits => r'bits';
+  String get currencyHnl => r'Lempira';
 
-  String get atomByte => r'byte';
+  String get currencyHkd => r'Hong Kong Dollar';
 
-  String get atomBytes => r'bytes';
+  String get currencyHuf => r'Forint';
 
-  String get atomCharacter => r'character';
+  String get currencyIsk => r'Iceland Krona';
 
-  String get atomCharacters => r'characters';
+  String get currencyInr => r'Indian Rupee';
 
-  String get atomWord => r'word';
+  String get currencyIdr => r'Rupiah';
 
-  String get atomWords => r'words';
+  String get currencyIrr => r'Iranian Rial';
 
-  String get atomRadian => r'radian';
+  String get currencyIqd => r'Iraqi Dinar';
 
-  String get atomRadians => r'radians';
+  String get currencyIls => r'New Israeli Sheqel';
 
-  String get atomSteradian => r'steradian';
+  String get currencyJmd => r'Jamaican Dollar';
 
-  String get atomSteradians => r'steradians';
+  String get currencyJpy => r'Yen';
 
-  String get atomHertz => r'hertz';
+  String get currencyKzt => r'Tenge';
 
-  String get atomNewton => r'newton';
+  String get currencyJod => r'Jordanian Dinar';
 
-  String get atomNewtons => r'newtons';
+  String get currencyKes => r'Kenyan Shilling';
 
-  String get atomPascal => r'pascal';
+  String get currencyKpw => r'North Korean Won';
 
-  String get atomPascals => r'pascals';
+  String get currencyKrw => r'Won';
 
-  String get atomJoule => r'joule';
+  String get currencyKwd => r'Kuwaiti Dinar';
 
-  String get atomJoules => r'joules';
+  String get currencyKgs => r'Som';
 
-  String get atomWatt => r'watt';
+  String get currencyLak => r'Lao Kip';
 
-  String get atomWatts => r'watts';
+  String get currencyLbp => r'Lebanese Pound';
 
-  String get atomCoulomb => r'coulomb';
+  String get currencyLsl => r'Loti';
 
-  String get atomCoulombs => r'coulombs';
+  String get currencyLrd => r'Liberian Dollar';
 
-  String get atomVolt => r'volt';
+  String get currencyLyd => r'Libyan Dinar';
 
-  String get atomVolts => r'volts';
+  String get currencyMop => r'Pataca';
 
-  String get atomFarad => r'farad';
+  String get currencyMwk => r'Malawi Kwacha';
 
-  String get atomFarads => r'farads';
+  String get currencyMyr => r'Malaysian Ringgit';
 
-  String get atomOhm => r'ohm';
+  String get currencyMvr => r'Rufiyaa';
 
-  String get atomOhms => r'ohms';
+  String get currencyMur => r'Mauritius Rupee';
 
-  String get atomSiemens => r'siemens';
+  String get currencyMxn => r'Mexican Peso';
 
-  String get atomWeber => r'weber';
+  String get currencyMnt => r'Tugrik';
 
-  String get atomWebers => r'webers';
+  String get currencyMdl => r'Moldovan Leu';
 
-  String get atomTesla => r'tesla';
+  String get currencyMad => r'Moroccan Dirham';
 
-  String get atomTeslas => r'teslas';
+  String get currencyOmr => r'Rial Omani';
 
-  String get atomHenry => r'henry';
+  String get currencyNad => r'Namibia Dollar';
 
-  String get atomHenries => r'henries';
+  String get currencyNpr => r'Nepalese Rupee';
 
-  String get atomDegreeCelsius => r'degree Celsius';
+  String get currencyAng => r'Netherlands Antillean Guilder';
 
-  String get atomDegreesCelsius => r'degrees Celsius';
+  String get currencyAwg => r'Aruban Florin';
 
-  String get atomLumen => r'lumen';
+  String get currencyVuv => r'Vatu';
 
-  String get atomLumens => r'lumens';
+  String get currencyNzd => r'New Zealand Dollar';
 
-  String get atomLux => r'lux';
+  String get currencyNio => r'Cordoba Oro';
 
-  String get atomLuxes => r'luxes';
+  String get currencyNgn => r'Naira';
 
-  String get atomBecquerel => r'becquerel';
+  String get currencyNok => r'Norwegian Krone';
 
-  String get atomBecquerels => r'becquerels';
+  String get currencyPkr => r'Pakistan Rupee';
 
-  String get atomGray => r'gray';
+  String get currencyPab => r'Balboa';
 
-  String get atomGrays => r'grays';
+  String get currencyPgk => r'Kina';
 
-  String get atomSievert => r'sievert';
+  String get currencyPyg => r'Guarani';
 
-  String get atomSieverts => r'sieverts';
+  String get currencyPen => r'Sol';
 
-  String get atomKatal => r'katal';
+  String get currencyPhp => r'Philippine Peso';
 
-  String get atomKatals => r'katals';
+  String get currencyQar => r'Qatari Rial';
+
+  String get currencyRub => r'Russian Ruble';
+
+  String get currencyRwf => r'Rwanda Franc';
+
+  String get currencyShp => r'Saint Helena Pound';
+
+  String get currencySar => r'Saudi Riyal';
+
+  String get currencyScr => r'Seychelles Rupee';
+
+  String get currencySll => r'Leone';
+
+  String get currencySgd => r'Singapore Dollar';
+
+  String get currencyVnd => r'Dong';
+
+  String get currencySos => r'Somali Shilling';
+
+  String get currencyZar => r'Rand';
+
+  String get currencySsp => r'South Sudanese Pound';
+
+  String get currencySzl => r'Lilangeni';
+
+  String get currencySek => r'Swedish Krona';
+
+  String get currencyChf => r'Swiss Franc';
+
+  String get currencySyp => r'Syrian Pound';
+
+  String get currencyThb => r'Baht';
+
+  String get currencyTop => r'Pa’anga';
+
+  String get currencyTtd => r'Trinidad and Tobago Dollar';
+
+  String get currencyAed => r'UAE Dirham';
+
+  String get currencyTnd => r'Tunisian Dinar';
+
+  String get currencyUgx => r'Uganda Shilling';
+
+  String get currencyMkd => r'Denar';
+
+  String get currencyEgp => r'Egyptian Pound';
+
+  String get currencyGbp => r'Pound Sterling';
+
+  String get currencyTzs => r'Tanzanian Shilling';
+
+  String get currencyUsd => r'US Dollar';
+
+  String get currencyUyu => r'Peso Uruguayo';
+
+  String get currencyUzs => r'Uzbekistan Sum';
+
+  String get currencyWst => r'Tala';
+
+  String get currencyYer => r'Yemeni Rial';
+
+  String get currencyTwd => r'New Taiwan Dollar';
+
+  String get currencyUyw => r'Unidad Previsional';
+
+  String get currencyVes => r'Bolívar Soberano';
+
+  String get currencyMru => r'Ouguiya';
+
+  String get currencyStn => r'Dobra';
+
+  String get currencyCuc => r'Peso Convertible';
+
+  String get currencyZwl => r'Zimbabwe Dollar';
+
+  String get currencyByn => r'Belarusian Ruble';
+
+  String get currencyTmt => r'Turkmenistan New Manat';
+
+  String get currencyGhs => r'Ghana Cedi';
+
+  String get currencySdg => r'Sudanese Pound';
+
+  String get currencyUyi => r'Uruguay Peso en Unidades Indexadas (UI)';
+
+  String get currencyRsd => r'Serbian Dinar';
+
+  String get currencyMzn => r'Mozambique Metical';
+
+  String get currencyAzn => r'Azerbaijan Manat';
+
+  String get currencyRon => r'Romanian Leu';
+
+  String get currencyChe => r'WIR Euro';
+
+  String get currencyChw => r'WIR Franc';
+
+  String get currencyTry => r'Turkish Lira';
+
+  String get currencyXaf => r'CFA Franc BEAC';
+
+  String get currencyXcd => r'East Caribbean Dollar';
+
+  String get currencyXof => r'CFA Franc BCEAO';
+
+  String get currencyXpf => r'CFP Franc';
+
+  String get currencyXba =>
+      r'Bond Markets Unit European Composite Unit (EURCO)';
+
+  String get currencyXbb =>
+      r'Bond Markets Unit European Monetary Unit (E.M.U.-6)';
+
+  String get currencyXbc =>
+      r'Bond Markets Unit European Unit of Account 9 (E.U.A.-9)';
+
+  String get currencyXbd =>
+      r'Bond Markets Unit European Unit of Account 17 (E.U.A.-17)';
+
+  String get currencyXau => r'Gold';
+
+  String get currencyXdr => r'SDR (Special Drawing Right)';
+
+  String get currencyXag => r'Silver';
+
+  String get currencyXpt => r'Platinum';
+
+  String get currencyXts => r'Codes specifically reserved for testing purposes';
+
+  String get currencyXpd => r'Palladium';
+
+  String get currencyXua => r'ADB Unit of Account';
+
+  String get currencyZmw => r'Zambian Kwacha';
+
+  String get currencySrd => r'Surinam Dollar';
+
+  String get currencyMga => r'Malagasy Ariary';
+
+  String get currencyCou => r'Unidad de Valor Real';
+
+  String get currencyAfn => r'Afghani';
+
+  String get currencyTjs => r'Somoni';
+
+  String get currencyAoa => r'Kwanza';
+
+  String get currencyBgn => r'Bulgarian Lev';
+
+  String get currencyCdf => r'Congolese Franc';
+
+  String get currencyBam => r'Convertible Mark';
+
+  String get currencyEur => r'Euro';
+
+  String get currencyMxv => r'Mexican Unidad de Inversion (UDI)';
+
+  String get currencyUah => r'Hryvnia';
+
+  String get currencyGel => r'Lari';
+
+  String get currencyBov => r'Mvdol';
+
+  String get currencyPln => r'Zloty';
+
+  String get currencyBrl => r'Brazilian Real';
+
+  String get currencyClf => r'Unidad de Fomento';
+
+  String get currencyXsu => r'Sucre';
+
+  String get currencyUsn => r'US Dollar (Next day)';
+}
+
+class UnitsLocalizationZh extends UnitsLocalization {
+  const UnitsLocalizationZh();
+
+  String atomMeter(Form form) {
+    return r'meter';
+  }
+
+  String atomFoot(Form form) {
+    return r'foot';
+  }
+
+  String atomInch(Form form) {
+    return r'inch';
+  }
+
+  String atomYard(Form form) {
+    return r'yard';
+  }
+
+  String atomMile(Form form) {
+    return r'mile';
+  }
+
+  String atomNauticalMile(Form form) {
+    return r'nautical mile';
+  }
+
+  String atomLightYear(Form form) {
+    return r'light year';
+  }
+
+  String atomHectare(Form form) {
+    return r'hectare';
+  }
+
+  String atomAre(Form form) {
+    return r'are';
+  }
+
+  String atomLiter(Form form) {
+    return r'liter';
+  }
+
+  String atomGallon(Form form) {
+    return r'gallon';
+  }
+
+  String atomBarrel(Form form) {
+    return r'barrel';
+  }
+
+  String atomGram(Form form) {
+    return r'gram';
+  }
+
+  String atomTon(Form form) {
+    return r'ton';
+  }
+
+  String atomPound(Form form) {
+    return r'pound';
+  }
+
+  String atomOunce(Form form) {
+    return r'ounce';
+  }
+
+  String atomSecond(Form form) {
+    return r'second';
+  }
+
+  String atomMinute(Form form) {
+    return r'minute';
+  }
+
+  String atomHour(Form form) {
+    return r'hour';
+  }
+
+  String atomDay(Form form) {
+    return r'day';
+  }
+
+  String atomWeek(Form form) {
+    return r'week';
+  }
+
+  String atomMonth(Form form) {
+    return r'month';
+  }
+
+  String atomYear(Form form) {
+    return r'year';
+  }
+
+  String atomCentury(Form form) {
+    return r'century';
+  }
+
+  String atomSecondAngle(Form form) {
+    return r'second';
+  }
+
+  String atomMinuteAngle(Form form) {
+    return r'minute';
+  }
+
+  String atomDegree(Form form) {
+    return r'degree';
+  }
+
+  String atomAmpere(Form form) {
+    return r'ampere';
+  }
+
+  String atomElectronvolt(Form form) {
+    return r'electronvolt';
+  }
+
+  String atomBel(Form form) {
+    return r'bel';
+  }
+
+  String atomKelvin(Form form) {
+    return r'kelvin';
+  }
+
+  String atomMole(Form form) {
+    return r'mole';
+  }
+
+  String atomCandela(Form form) {
+    return r'candela';
+  }
+
+  String atomPercent(Form form) {
+    return r'percent';
+  }
+
+  String atomPerThousand(Form form) {
+    return r'per thousand';
+  }
+
+  String atomBit(Form form) {
+    return r'bit';
+  }
+
+  String atomByte(Form form) {
+    return r'byte';
+  }
+
+  String atomCharacter(Form form) {
+    return r'character';
+  }
+
+  String atomWord(Form form) {
+    return r'word';
+  }
+
+  String atomRadian(Form form) {
+    return r'radian';
+  }
+
+  String atomSteradian(Form form) {
+    return r'steradian';
+  }
+
+  String atomHertz(Form form) {
+    return r'hertz';
+  }
+
+  String atomNewton(Form form) {
+    return r'newton';
+  }
+
+  String atomPascal(Form form) {
+    return r'pascal';
+  }
+
+  String atomJoule(Form form) {
+    return r'joule';
+  }
+
+  String atomWatt(Form form) {
+    return r'watt';
+  }
+
+  String atomCoulomb(Form form) {
+    return r'coulomb';
+  }
+
+  String atomVolt(Form form) {
+    return r'volt';
+  }
+
+  String atomFarad(Form form) {
+    return r'farad';
+  }
+
+  String atomOhm(Form form) {
+    return r'ohm';
+  }
+
+  String atomSiemens(Form form) {
+    return r'siemens';
+  }
+
+  String atomWeber(Form form) {
+    return r'weber';
+  }
+
+  String atomTesla(Form form) {
+    return r'tesla';
+  }
+
+  String atomHenry(Form form) {
+    return r'henry';
+  }
+
+  String atomDegreeCelsius(Form form) {
+    return r'degree Celsius';
+  }
+
+  String atomLumen(Form form) {
+    return r'lumen';
+  }
+
+  String atomLux(Form form) {
+    return r'lux';
+  }
+
+  String atomBecquerel(Form form) {
+    return r'becquerel';
+  }
+
+  String atomGray(Form form) {
+    return r'gray';
+  }
+
+  String atomSievert(Form form) {
+    return r'sievert';
+  }
+
+  String atomKatal(Form form) {
+    return r'katal';
+  }
 
   String get prefixYotta => r'yotta';
 

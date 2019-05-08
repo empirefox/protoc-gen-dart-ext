@@ -7,7 +7,7 @@ import './finvtw.dart';
 enum Form { other, zero, one, two, few, many }
 
 typedef PluralFunc = Form Function(num value, bool ordinal);
-Form matchAf(num value, bool ordinal) {
+Form matchAfBgCeElEsEuGswKyMlMnNbPsSdTaTeTrUz(num value, bool ordinal) {
   final n = value.abs();
 
   if (ordinal) {
@@ -18,7 +18,7 @@ Form matchAf(num value, bool ordinal) {
   return Form.other;
 }
 
-Form matchAk(num value, bool ordinal) {
+Form matchAkBhGuwLnMgNsoTiWa(num value, bool ordinal) {
   final n = value.abs();
   final p = n.toInt() == n;
 
@@ -30,7 +30,7 @@ Form matchAk(num value, bool ordinal) {
   return Form.other;
 }
 
-Form matchAm(num value, bool ordinal) {
+Form matchAmFaKnZu(num value, bool ordinal) {
   final n = value.abs();
   final i = n.toInt();
 
@@ -51,11 +51,11 @@ Form matchAr(num value, bool ordinal) {
     return Form.other;
   }
 
-  if (p && n100 >= 3 && n100 <= 10) return Form.few;
-  if (p && n100 >= 11 && n100 <= 99) return Form.many;
+  if (n == 0) return Form.zero;
   if (n == 1) return Form.one;
   if (n == 2) return Form.two;
-  if (n == 0) return Form.zero;
+  if (p && n100 >= 3 && n100 <= 10) return Form.few;
+  if (p && n100 >= 11 && n100 <= 99) return Form.many;
   return Form.other;
 }
 
@@ -68,24 +68,24 @@ Form matchArs(num value, bool ordinal) {
     return Form.other;
   }
 
-  if (p && n100 >= 3 && n100 <= 10) return Form.few;
-  if (p && n100 >= 11 && n100 <= 99) return Form.many;
+  if (n == 0) return Form.zero;
   if (n == 1) return Form.one;
   if (n == 2) return Form.two;
-  if (n == 0) return Form.zero;
+  if (p && n100 >= 3 && n100 <= 10) return Form.few;
+  if (p && n100 >= 11 && n100 <= 99) return Form.many;
   return Form.other;
 }
 
-Form matchAs(num value, bool ordinal) {
+Form matchAsBn(num value, bool ordinal) {
   final n = value.abs();
   final i = n.toInt();
 
   if (ordinal) {
-    if (n == 4) return Form.few;
-    if (n == 6) return Form.many;
     if (n == 1 || n == 5 || n == 7 || n == 8 || n == 9 || n == 10)
       return Form.one;
     if (n == 2 || n == 3) return Form.two;
+    if (n == 4) return Form.few;
+    if (n == 6) return Form.many;
     return Form.other;
   }
 
@@ -93,7 +93,9 @@ Form matchAs(num value, bool ordinal) {
   return Form.other;
 }
 
-Form matchAsa(num value, bool ordinal) {
+Form
+    matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog(
+        num value, bool ordinal) {
   final n = value.abs();
 
   if (ordinal) {
@@ -104,7 +106,7 @@ Form matchAsa(num value, bool ordinal) {
   return Form.other;
 }
 
-Form matchAst(num value, bool ordinal) {
+Form matchAstIoJiPtPtYi(num value, bool ordinal) {
   return finvtw(value, (f, i, n, v, t, w) {
     if (ordinal) {
       return Form.other;
@@ -123,6 +125,15 @@ Form matchAz(num value, bool ordinal) {
   final i1000 = i % 1000;
 
   if (ordinal) {
+    if (i10 == 1 ||
+        i10 == 2 ||
+        i10 == 5 ||
+        i10 == 7 ||
+        i10 == 8 ||
+        i100 == 20 ||
+        i100 == 50 ||
+        i100 == 70 ||
+        i100 == 80) return Form.one;
     if (i10 == 3 ||
         i10 == 4 ||
         i1000 == 100 ||
@@ -136,15 +147,6 @@ Form matchAz(num value, bool ordinal) {
         i1000 == 900) return Form.few;
     if (i == 0 || i10 == 6 || i100 == 40 || i100 == 60 || i100 == 90)
       return Form.many;
-    if (i10 == 1 ||
-        i10 == 2 ||
-        i10 == 5 ||
-        i10 == 7 ||
-        i10 == 8 ||
-        i100 == 20 ||
-        i100 == 50 ||
-        i100 == 70 ||
-        i100 == 80) return Form.one;
     return Form.other;
   }
 
@@ -163,72 +165,10 @@ Form matchBe(num value, bool ordinal) {
     return Form.other;
   }
 
+  if (n10 == 1 && n100 != 11) return Form.one;
   if (p && n10 >= 2 && n10 <= 4 && (n100 < 12 || n100 > 14)) return Form.few;
   if (n10 == 0 || p && n10 >= 5 && n10 <= 9 || p && n100 >= 11 && n100 <= 14)
     return Form.many;
-  if (n10 == 1 && n100 != 11) return Form.one;
-  return Form.other;
-}
-
-Form matchBem(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchBez(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchBg(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchBh(num value, bool ordinal) {
-  final n = value.abs();
-  final p = n.toInt() == n;
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (p && n >= 0 && n <= 1) return Form.one;
-  return Form.other;
-}
-
-Form matchBn(num value, bool ordinal) {
-  final n = value.abs();
-  final i = n.toInt();
-
-  if (ordinal) {
-    if (n == 4) return Form.few;
-    if (n == 6) return Form.many;
-    if (n == 1 || n == 5 || n == 7 || n == 8 || n == 9 || n == 10)
-      return Form.one;
-    if (n == 2 || n == 3) return Form.two;
-    return Form.other;
-  }
-
-  if (i == 0 || n == 1) return Form.one;
   return Form.other;
 }
 
@@ -243,29 +183,18 @@ Form matchBr(num value, bool ordinal) {
     return Form.other;
   }
 
+  if (n10 == 1 && n100 != 11 && n100 != 71 && n100 != 91) return Form.one;
+  if (n10 == 2 && n100 != 12 && n100 != 72 && n100 != 92) return Form.two;
   if (p &&
       (p && n10 >= 3 && n10 <= 4 || n10 == 9) &&
       (n100 < 10 || n100 > 19) &&
       (n100 < 70 || n100 > 79) &&
       (n100 < 90 || n100 > 99)) return Form.few;
   if (n != 0 && n1000000 == 0) return Form.many;
-  if (n10 == 1 && n100 != 11 && n100 != 71 && n100 != 91) return Form.one;
-  if (n10 == 2 && n100 != 12 && n100 != 72 && n100 != 92) return Form.two;
   return Form.other;
 }
 
-Form matchBrx(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchBs(num value, bool ordinal) {
+Form matchBsHrShSrSrLatn(num value, bool ordinal) {
   return finvtw(value, (f, i, n, v, t, w) {
     final i10 = i % 10;
     final i100 = i % 100;
@@ -276,10 +205,10 @@ Form matchBs(num value, bool ordinal) {
       return Form.other;
     }
 
-    if (v == 0 && i10 >= 2 && i10 <= 4 && (i100 < 12 || i100 > 14) ||
-        f10 >= 2 && f10 <= 4 && (f100 < 12 || f100 > 14)) return Form.few;
     if (v == 0 && i10 == 1 && i100 != 11 || f10 == 1 && f100 != 11)
       return Form.one;
+    if (v == 0 && i10 >= 2 && i10 <= 4 && (i100 < 12 || i100 > 14) ||
+        f10 >= 2 && f10 <= 4 && (f100 < 12 || f100 > 14)) return Form.few;
     return Form.other;
   });
 }
@@ -287,26 +216,15 @@ Form matchBs(num value, bool ordinal) {
 Form matchCa(num value, bool ordinal) {
   return finvtw(value, (f, i, n, v, t, w) {
     if (ordinal) {
-      if (n == 4) return Form.few;
       if (n == 1 || n == 3) return Form.one;
       if (n == 2) return Form.two;
+      if (n == 4) return Form.few;
       return Form.other;
     }
 
     if (i == 1 && v == 0) return Form.one;
     return Form.other;
   });
-}
-
-Form matchCe(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
 }
 
 Form matchCeb(num value, bool ordinal) {
@@ -325,48 +243,15 @@ Form matchCeb(num value, bool ordinal) {
   });
 }
 
-Form matchCgg(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchChr(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchCkb(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchCs(num value, bool ordinal) {
+Form matchCsSk(num value, bool ordinal) {
   return finvtw(value, (f, i, n, v, t, w) {
     if (ordinal) {
       return Form.other;
     }
 
+    if (i == 1 && v == 0) return Form.one;
     if (i >= 2 && i <= 4 && v == 0) return Form.few;
     if (v != 0) return Form.many;
-    if (i == 1 && v == 0) return Form.one;
     return Form.other;
   });
 }
@@ -375,19 +260,19 @@ Form matchCy(num value, bool ordinal) {
   final n = value.abs();
 
   if (ordinal) {
-    if (n == 3 || n == 4) return Form.few;
-    if (n == 5 || n == 6) return Form.many;
+    if (n == 0 || n == 7 || n == 8 || n == 9) return Form.zero;
     if (n == 1) return Form.one;
     if (n == 2) return Form.two;
-    if (n == 0 || n == 7 || n == 8 || n == 9) return Form.zero;
+    if (n == 3 || n == 4) return Form.few;
+    if (n == 5 || n == 6) return Form.many;
     return Form.other;
   }
 
-  if (n == 3) return Form.few;
-  if (n == 6) return Form.many;
+  if (n == 0) return Form.zero;
   if (n == 1) return Form.one;
   if (n == 2) return Form.two;
-  if (n == 0) return Form.zero;
+  if (n == 3) return Form.few;
+  if (n == 6) return Form.many;
   return Form.other;
 }
 
@@ -402,7 +287,7 @@ Form matchDa(num value, bool ordinal) {
   });
 }
 
-Form matchDe(num value, bool ordinal) {
+Form matchDeEtFiFyGlIaNlSwUr(num value, bool ordinal) {
   return finvtw(value, (f, i, n, v, t, w) {
     if (ordinal) {
       return Form.other;
@@ -413,7 +298,7 @@ Form matchDe(num value, bool ordinal) {
   });
 }
 
-Form matchDsb(num value, bool ordinal) {
+Form matchDsbHsb(num value, bool ordinal) {
   return finvtw(value, (f, i, n, v, t, w) {
     final i100 = i % 100;
     final f100 = f % 100;
@@ -422,45 +307,12 @@ Form matchDsb(num value, bool ordinal) {
       return Form.other;
     }
 
-    if (v == 0 && i100 >= 3 && i100 <= 4 || f100 >= 3 && f100 <= 4)
-      return Form.few;
     if (v == 0 && i100 == 1 || f100 == 1) return Form.one;
     if (v == 0 && i100 == 2 || f100 == 2) return Form.two;
+    if (v == 0 && i100 >= 3 && i100 <= 4 || f100 >= 3 && f100 <= 4)
+      return Form.few;
     return Form.other;
   });
-}
-
-Form matchDv(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchEe(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchEl(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
 }
 
 Form matchEn(num value, bool ordinal) {
@@ -469,9 +321,9 @@ Form matchEn(num value, bool ordinal) {
     final n100 = n % 100;
 
     if (ordinal) {
-      if (n10 == 3 && n100 != 13) return Form.few;
       if (n10 == 1 && n100 != 11) return Form.one;
       if (n10 == 2 && n100 != 12) return Form.two;
+      if (n10 == 3 && n100 != 13) return Form.few;
       return Form.other;
     }
 
@@ -480,63 +332,7 @@ Form matchEn(num value, bool ordinal) {
   });
 }
 
-Form matchEo(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchEs(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchEt(num value, bool ordinal) {
-  return finvtw(value, (f, i, n, v, t, w) {
-    if (ordinal) {
-      return Form.other;
-    }
-
-    if (i == 1 && v == 0) return Form.one;
-    return Form.other;
-  });
-}
-
-Form matchEu(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchFa(num value, bool ordinal) {
-  final n = value.abs();
-  final i = n.toInt();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (i == 0 || n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchFf(num value, bool ordinal) {
+Form matchFfKab(num value, bool ordinal) {
   final i = value.abs().toInt();
 
   if (ordinal) {
@@ -547,18 +343,7 @@ Form matchFf(num value, bool ordinal) {
   return Form.other;
 }
 
-Form matchFi(num value, bool ordinal) {
-  return finvtw(value, (f, i, n, v, t, w) {
-    if (ordinal) {
-      return Form.other;
-    }
-
-    if (i == 1 && v == 0) return Form.one;
-    return Form.other;
-  });
-}
-
-Form matchFil(num value, bool ordinal) {
+Form matchFilTl(num value, bool ordinal) {
   return finvtw(value, (f, i, n, v, t, w) {
     final i10 = i % 10;
     final f10 = f % 10;
@@ -575,18 +360,7 @@ Form matchFil(num value, bool ordinal) {
   });
 }
 
-Form matchFo(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchFr(num value, bool ordinal) {
+Form matchFrHy(num value, bool ordinal) {
   final n = value.abs();
   final i = n.toInt();
 
@@ -599,28 +373,6 @@ Form matchFr(num value, bool ordinal) {
   return Form.other;
 }
 
-Form matchFur(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchFy(num value, bool ordinal) {
-  return finvtw(value, (f, i, n, v, t, w) {
-    if (ordinal) {
-      return Form.other;
-    }
-
-    if (i == 1 && v == 0) return Form.one;
-    return Form.other;
-  });
-}
-
 Form matchGa(num value, bool ordinal) {
   final n = value.abs();
   final p = n.toInt() == n;
@@ -630,10 +382,10 @@ Form matchGa(num value, bool ordinal) {
     return Form.other;
   }
 
-  if (p && n >= 3 && n <= 6) return Form.few;
-  if (p && n >= 7 && n <= 10) return Form.many;
   if (n == 1) return Form.one;
   if (n == 2) return Form.two;
+  if (p && n >= 3 && n <= 6) return Form.few;
+  if (p && n >= 7 && n <= 10) return Form.many;
   return Form.other;
 }
 
@@ -642,65 +394,31 @@ Form matchGd(num value, bool ordinal) {
   final p = n.toInt() == n;
 
   if (ordinal) {
-    if (n == 3 || n == 13) return Form.few;
     if (n == 1 || n == 11) return Form.one;
     if (n == 2 || n == 12) return Form.two;
+    if (n == 3 || n == 13) return Form.few;
     return Form.other;
   }
 
-  if (p && n >= 3 && n <= 10 || p && n >= 13 && n <= 19) return Form.few;
   if (n == 1 || n == 11) return Form.one;
   if (n == 2 || n == 12) return Form.two;
+  if (p && n >= 3 && n <= 10 || p && n >= 13 && n <= 19) return Form.few;
   return Form.other;
 }
 
-Form matchGl(num value, bool ordinal) {
-  return finvtw(value, (f, i, n, v, t, w) {
-    if (ordinal) {
-      return Form.other;
-    }
-
-    if (i == 1 && v == 0) return Form.one;
-    return Form.other;
-  });
-}
-
-Form matchGsw(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchGu(num value, bool ordinal) {
+Form matchGuHi(num value, bool ordinal) {
   final n = value.abs();
   final i = n.toInt();
 
   if (ordinal) {
-    if (n == 4) return Form.few;
-    if (n == 6) return Form.many;
     if (n == 1) return Form.one;
     if (n == 2 || n == 3) return Form.two;
+    if (n == 4) return Form.few;
+    if (n == 6) return Form.many;
     return Form.other;
   }
 
   if (i == 0 || n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchGuw(num value, bool ordinal) {
-  final n = value.abs();
-  final p = n.toInt() == n;
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (p && n >= 0 && n <= 1) return Form.one;
   return Form.other;
 }
 
@@ -713,39 +431,17 @@ Form matchGv(num value, bool ordinal) {
       return Form.other;
     }
 
+    if (v == 0 && i10 == 1) return Form.one;
+    if (v == 0 && i10 == 2) return Form.two;
     if (v == 0 &&
         (i100 == 0 || i100 == 20 || i100 == 40 || i100 == 60 || i100 == 80))
       return Form.few;
     if (v != 0) return Form.many;
-    if (v == 0 && i10 == 1) return Form.one;
-    if (v == 0 && i10 == 2) return Form.two;
     return Form.other;
   });
 }
 
-Form matchHa(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchHaw(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchHe(num value, bool ordinal) {
+Form matchHeIw(num value, bool ordinal) {
   return finvtw(value, (f, i, n, v, t, w) {
     final p = w == 0;
     final n10 = n % 10;
@@ -754,61 +450,9 @@ Form matchHe(num value, bool ordinal) {
       return Form.other;
     }
 
-    if (p && v == 0 && (n < 0 || n > 10) && n10 == 0) return Form.many;
     if (i == 1 && v == 0) return Form.one;
     if (i == 2 && v == 0) return Form.two;
-    return Form.other;
-  });
-}
-
-Form matchHi(num value, bool ordinal) {
-  final n = value.abs();
-  final i = n.toInt();
-
-  if (ordinal) {
-    if (n == 4) return Form.few;
-    if (n == 6) return Form.many;
-    if (n == 1) return Form.one;
-    if (n == 2 || n == 3) return Form.two;
-    return Form.other;
-  }
-
-  if (i == 0 || n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchHr(num value, bool ordinal) {
-  return finvtw(value, (f, i, n, v, t, w) {
-    final i10 = i % 10;
-    final i100 = i % 100;
-    final f10 = f % 10;
-    final f100 = f % 100;
-
-    if (ordinal) {
-      return Form.other;
-    }
-
-    if (v == 0 && i10 >= 2 && i10 <= 4 && (i100 < 12 || i100 > 14) ||
-        f10 >= 2 && f10 <= 4 && (f100 < 12 || f100 > 14)) return Form.few;
-    if (v == 0 && i10 == 1 && i100 != 11 || f10 == 1 && f100 != 11)
-      return Form.one;
-    return Form.other;
-  });
-}
-
-Form matchHsb(num value, bool ordinal) {
-  return finvtw(value, (f, i, n, v, t, w) {
-    final i100 = i % 100;
-    final f100 = f % 100;
-
-    if (ordinal) {
-      return Form.other;
-    }
-
-    if (v == 0 && i100 >= 3 && i100 <= 4 || f100 >= 3 && f100 <= 4)
-      return Form.few;
-    if (v == 0 && i100 == 1 || f100 == 1) return Form.one;
-    if (v == 0 && i100 == 2 || f100 == 2) return Form.two;
+    if (p && v == 0 && (n < 0 || n > 10) && n10 == 0) return Form.many;
     return Form.other;
   });
 }
@@ -825,41 +469,6 @@ Form matchHu(num value, bool ordinal) {
   return Form.other;
 }
 
-Form matchHy(num value, bool ordinal) {
-  final n = value.abs();
-  final i = n.toInt();
-
-  if (ordinal) {
-    if (n == 1) return Form.one;
-    return Form.other;
-  }
-
-  if (i == 0 || i == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchIa(num value, bool ordinal) {
-  return finvtw(value, (f, i, n, v, t, w) {
-    if (ordinal) {
-      return Form.other;
-    }
-
-    if (i == 1 && v == 0) return Form.one;
-    return Form.other;
-  });
-}
-
-Form matchIo(num value, bool ordinal) {
-  return finvtw(value, (f, i, n, v, t, w) {
-    if (ordinal) {
-      return Form.other;
-    }
-
-    if (i == 1 && v == 0) return Form.one;
-    return Form.other;
-  });
-}
-
 Form matchIs(num value, bool ordinal) {
   return finvtw(value, (f, i, n, v, t, w) {
     final i10 = i % 10;
@@ -874,7 +483,7 @@ Form matchIs(num value, bool ordinal) {
   });
 }
 
-Form matchIt(num value, bool ordinal) {
+Form matchItScScn(num value, bool ordinal) {
   return finvtw(value, (f, i, n, v, t, w) {
     if (ordinal) {
       if (n == 11 || n == 8 || n == 80 || n == 800) return Form.many;
@@ -886,7 +495,7 @@ Form matchIt(num value, bool ordinal) {
   });
 }
 
-Form matchIu(num value, bool ordinal) {
+Form matchIuNaqSeSmaSmiSmjSmnSms(num value, bool ordinal) {
   final n = value.abs();
 
   if (ordinal) {
@@ -898,100 +507,18 @@ Form matchIu(num value, bool ordinal) {
   return Form.other;
 }
 
-Form matchIw(num value, bool ordinal) {
-  return finvtw(value, (f, i, n, v, t, w) {
-    final p = w == 0;
-    final n10 = n % 10;
-
-    if (ordinal) {
-      return Form.other;
-    }
-
-    if (p && v == 0 && (n < 0 || n > 10) && n10 == 0) return Form.many;
-    if (i == 1 && v == 0) return Form.one;
-    if (i == 2 && v == 0) return Form.two;
-    return Form.other;
-  });
-}
-
-Form matchJgo(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchJi(num value, bool ordinal) {
-  return finvtw(value, (f, i, n, v, t, w) {
-    if (ordinal) {
-      return Form.other;
-    }
-
-    if (i == 1 && v == 0) return Form.one;
-    return Form.other;
-  });
-}
-
-Form matchJmc(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
 Form matchKa(num value, bool ordinal) {
   final n = value.abs();
   final i = n.toInt();
   final i100 = i % 100;
 
   if (ordinal) {
+    if (i == 1) return Form.one;
     if (i == 0 ||
         i100 >= 2 && i100 <= 20 ||
         i100 == 40 ||
         i100 == 60 ||
         i100 == 80) return Form.many;
-    if (i == 1) return Form.one;
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchKab(num value, bool ordinal) {
-  final i = value.abs().toInt();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (i == 0 || i == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchKaj(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchKcg(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
     return Form.other;
   }
 
@@ -1012,62 +539,6 @@ Form matchKk(num value, bool ordinal) {
   return Form.other;
 }
 
-Form matchKkj(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchKl(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchKn(num value, bool ordinal) {
-  final n = value.abs();
-  final i = n.toInt();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (i == 0 || n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchKs(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchKsb(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
 Form matchKsh(num value, bool ordinal) {
   final n = value.abs();
 
@@ -1075,18 +546,7 @@ Form matchKsh(num value, bool ordinal) {
     return Form.other;
   }
 
-  if (n == 1) return Form.one;
   if (n == 0) return Form.zero;
-  return Form.other;
-}
-
-Form matchKu(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
   if (n == 1) return Form.one;
   return Form.other;
 }
@@ -1097,36 +557,25 @@ Form matchKw(num value, bool ordinal) {
   final n100 = n % 100;
 
   if (ordinal) {
-    if (n == 5 || n100 == 5) return Form.many;
     if (p && n >= 1 && n <= 4 ||
         p && n100 >= 1 && n100 <= 4 ||
         p && n100 >= 21 && n100 <= 24 ||
         p && n100 >= 41 && n100 <= 44 ||
         p && n100 >= 61 && n100 <= 64 ||
         p && n100 >= 81 && n100 <= 84) return Form.one;
+    if (n == 5 || n100 == 5) return Form.many;
     return Form.other;
   }
 
+  if (n == 0) return Form.zero;
+  if (n == 1) return Form.one;
+  if (n100 == 2 || n100 == 22 || n100 == 42 || n100 == 62 || n100 == 82)
+    return Form.two;
   if (n100 == 3 || n100 == 23 || n100 == 43 || n100 == 63 || n100 == 83)
     return Form.few;
   if (n != 1 &&
       (n100 == 1 || n100 == 21 || n100 == 41 || n100 == 61 || n100 == 81))
     return Form.many;
-  if (n == 1) return Form.one;
-  if (n100 == 2 || n100 == 22 || n100 == 42 || n100 == 62 || n100 == 82)
-    return Form.two;
-  if (n == 0) return Form.zero;
-  return Form.other;
-}
-
-Form matchKy(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
   return Form.other;
 }
 
@@ -1138,46 +587,12 @@ Form matchLag(num value, bool ordinal) {
     return Form.other;
   }
 
-  if ((i == 0 || i == 1) && n != 0) return Form.one;
   if (n == 0) return Form.zero;
+  if ((i == 0 || i == 1) && n != 0) return Form.one;
   return Form.other;
 }
 
-Form matchLb(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchLg(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchLn(num value, bool ordinal) {
-  final n = value.abs();
-  final p = n.toInt() == n;
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (p && n >= 0 && n <= 1) return Form.one;
-  return Form.other;
-}
-
-Form matchLo(num value, bool ordinal) {
+Form matchLoMsVi(num value, bool ordinal) {
   final n = value.abs();
 
   if (ordinal) {
@@ -1198,14 +613,14 @@ Form matchLt(num value, bool ordinal) {
       return Form.other;
     }
 
+    if (p && n10 == 1 && (n100 < 11 || n100 > 19)) return Form.one;
     if (p && n10 >= 2 && n10 <= 9 && (n100 < 11 || n100 > 19)) return Form.few;
     if (f != 0) return Form.many;
-    if (p && n10 == 1 && (n100 < 11 || n100 > 19)) return Form.one;
     return Form.other;
   });
 }
 
-Form matchLv(num value, bool ordinal) {
+Form matchLvPrg(num value, bool ordinal) {
   return finvtw(value, (f, i, n, v, t, w) {
     final p = w == 0;
     final n10 = n % 10;
@@ -1217,48 +632,14 @@ Form matchLv(num value, bool ordinal) {
       return Form.other;
     }
 
-    if (n10 == 1 && n100 != 11 ||
-        v == 2 && f10 == 1 && f100 != 11 ||
-        v != 2 && f10 == 1) return Form.one;
     if (n10 == 0 ||
         p && n100 >= 11 && n100 <= 19 ||
         v == 2 && f100 >= 11 && f100 <= 19) return Form.zero;
+    if (n10 == 1 && n100 != 11 ||
+        v == 2 && f10 == 1 && f100 != 11 ||
+        v != 2 && f10 == 1) return Form.one;
     return Form.other;
   });
-}
-
-Form matchMas(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchMg(num value, bool ordinal) {
-  final n = value.abs();
-  final p = n.toInt() == n;
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (p && n >= 0 && n <= 1) return Form.one;
-  return Form.other;
-}
-
-Form matchMgo(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
 }
 
 Form matchMk(num value, bool ordinal) {
@@ -1269,9 +650,9 @@ Form matchMk(num value, bool ordinal) {
     final f100 = f % 100;
 
     if (ordinal) {
-      if ((i10 == 7 || i10 == 8) && i100 != 17 && i100 != 18) return Form.many;
       if (i10 == 1 && i100 != 11) return Form.one;
       if (i10 == 2 && i100 != 12) return Form.two;
+      if ((i10 == 7 || i10 == 8) && i100 != 17 && i100 != 18) return Form.many;
       return Form.other;
     }
 
@@ -1281,29 +662,7 @@ Form matchMk(num value, bool ordinal) {
   });
 }
 
-Form matchMl(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchMn(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchMo(num value, bool ordinal) {
+Form matchMoRoRoMd(num value, bool ordinal) {
   return finvtw(value, (f, i, n, v, t, w) {
     final p = w == 0;
     final n100 = n % 100;
@@ -1313,8 +672,8 @@ Form matchMo(num value, bool ordinal) {
       return Form.other;
     }
 
-    if (v != 0 || n == 0 || p && n100 >= 2 && n100 <= 19) return Form.few;
     if (i == 1 && v == 0) return Form.one;
+    if (v != 0 || n == 0 || p && n100 >= 2 && n100 <= 19) return Form.few;
     return Form.other;
   });
 }
@@ -1323,24 +682,13 @@ Form matchMr(num value, bool ordinal) {
   final n = value.abs();
 
   if (ordinal) {
-    if (n == 4) return Form.few;
     if (n == 1) return Form.one;
     if (n == 2 || n == 3) return Form.two;
+    if (n == 4) return Form.few;
     return Form.other;
   }
 
   if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchMs(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    if (n == 1) return Form.one;
-    return Form.other;
-  }
-
   return Form.other;
 }
 
@@ -1353,54 +701,9 @@ Form matchMt(num value, bool ordinal) {
     return Form.other;
   }
 
+  if (n == 1) return Form.one;
   if (n == 0 || p && n100 >= 2 && n100 <= 10) return Form.few;
   if (p && n100 >= 11 && n100 <= 19) return Form.many;
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchNah(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchNaq(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  if (n == 2) return Form.two;
-  return Form.other;
-}
-
-Form matchNb(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchNd(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
   return Form.other;
 }
 
@@ -1417,126 +720,15 @@ Form matchNe(num value, bool ordinal) {
   return Form.other;
 }
 
-Form matchNl(num value, bool ordinal) {
-  return finvtw(value, (f, i, n, v, t, w) {
-    if (ordinal) {
-      return Form.other;
-    }
-
-    if (i == 1 && v == 0) return Form.one;
-    return Form.other;
-  });
-}
-
-Form matchNn(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchNnh(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchNo(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchNr(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchNso(num value, bool ordinal) {
-  final n = value.abs();
-  final p = n.toInt() == n;
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (p && n >= 0 && n <= 1) return Form.one;
-  return Form.other;
-}
-
-Form matchNy(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchNyn(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchOm(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
 Form matchOr(num value, bool ordinal) {
   final n = value.abs();
   final p = n.toInt() == n;
 
   if (ordinal) {
-    if (n == 4) return Form.few;
-    if (n == 6) return Form.many;
     if (n == 1 || n == 5 || p && n >= 7 && n <= 9) return Form.one;
     if (n == 2 || n == 3) return Form.two;
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchOs(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
+    if (n == 4) return Form.few;
+    if (n == 6) return Form.many;
     return Form.other;
   }
 
@@ -1556,17 +748,6 @@ Form matchPa(num value, bool ordinal) {
   return Form.other;
 }
 
-Form matchPap(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
 Form matchPl(num value, bool ordinal) {
   return finvtw(value, (f, i, n, v, t, w) {
     final i10 = i % 10;
@@ -1576,47 +757,14 @@ Form matchPl(num value, bool ordinal) {
       return Form.other;
     }
 
+    if (i == 1 && v == 0) return Form.one;
     if (v == 0 && i10 >= 2 && i10 <= 4 && (i100 < 12 || i100 > 14))
       return Form.few;
     if (v == 0 && i != 1 && i10 >= 0 && i10 <= 1 ||
         v == 0 && i10 >= 5 && i10 <= 9 ||
         v == 0 && i100 >= 12 && i100 <= 14) return Form.many;
-    if (i == 1 && v == 0) return Form.one;
     return Form.other;
   });
-}
-
-Form matchPrg(num value, bool ordinal) {
-  return finvtw(value, (f, i, n, v, t, w) {
-    final p = w == 0;
-    final n10 = n % 10;
-    final n100 = n % 100;
-    final f100 = f % 100;
-    final f10 = f % 10;
-
-    if (ordinal) {
-      return Form.other;
-    }
-
-    if (n10 == 1 && n100 != 11 ||
-        v == 2 && f10 == 1 && f100 != 11 ||
-        v != 2 && f10 == 1) return Form.one;
-    if (n10 == 0 ||
-        p && n100 >= 11 && n100 <= 19 ||
-        v == 2 && f100 >= 11 && f100 <= 19) return Form.zero;
-    return Form.other;
-  });
-}
-
-Form matchPs(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
 }
 
 Form matchPt(num value, bool ordinal) {
@@ -1630,55 +778,6 @@ Form matchPt(num value, bool ordinal) {
   return Form.other;
 }
 
-Form matchPtPt(num value, bool ordinal) {
-  return finvtw(value, (f, i, n, v, t, w) {
-    if (ordinal) {
-      return Form.other;
-    }
-
-    if (i == 1 && v == 0) return Form.one;
-    return Form.other;
-  });
-}
-
-Form matchRm(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchRo(num value, bool ordinal) {
-  return finvtw(value, (f, i, n, v, t, w) {
-    final p = w == 0;
-    final n100 = n % 100;
-
-    if (ordinal) {
-      if (n == 1) return Form.one;
-      return Form.other;
-    }
-
-    if (v != 0 || n == 0 || p && n100 >= 2 && n100 <= 19) return Form.few;
-    if (i == 1 && v == 0) return Form.one;
-    return Form.other;
-  });
-}
-
-Form matchRof(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
 Form matchRu(num value, bool ordinal) {
   return finvtw(value, (f, i, n, v, t, w) {
     final i10 = i % 10;
@@ -1688,122 +787,12 @@ Form matchRu(num value, bool ordinal) {
       return Form.other;
     }
 
+    if (v == 0 && i10 == 1 && i100 != 11) return Form.one;
     if (v == 0 && i10 >= 2 && i10 <= 4 && (i100 < 12 || i100 > 14))
       return Form.few;
     if (v == 0 && i10 == 0 ||
         v == 0 && i10 >= 5 && i10 <= 9 ||
         v == 0 && i100 >= 11 && i100 <= 14) return Form.many;
-    if (v == 0 && i10 == 1 && i100 != 11) return Form.one;
-    return Form.other;
-  });
-}
-
-Form matchRwk(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchSaq(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchSc(num value, bool ordinal) {
-  return finvtw(value, (f, i, n, v, t, w) {
-    if (ordinal) {
-      if (n == 11 || n == 8 || n == 80 || n == 800) return Form.many;
-      return Form.other;
-    }
-
-    if (i == 1 && v == 0) return Form.one;
-    return Form.other;
-  });
-}
-
-Form matchScn(num value, bool ordinal) {
-  return finvtw(value, (f, i, n, v, t, w) {
-    if (ordinal) {
-      if (n == 11 || n == 8 || n == 80 || n == 800) return Form.many;
-      return Form.other;
-    }
-
-    if (i == 1 && v == 0) return Form.one;
-    return Form.other;
-  });
-}
-
-Form matchSd(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchSdh(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchSe(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  if (n == 2) return Form.two;
-  return Form.other;
-}
-
-Form matchSeh(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchSh(num value, bool ordinal) {
-  return finvtw(value, (f, i, n, v, t, w) {
-    final i10 = i % 10;
-    final i100 = i % 100;
-    final f10 = f % 10;
-    final f100 = f % 100;
-
-    if (ordinal) {
-      return Form.other;
-    }
-
-    if (v == 0 && i10 >= 2 && i10 <= 4 && (i100 < 12 || i100 > 14) ||
-        f10 >= 2 && f10 <= 4 && (f100 < 12 || f100 > 14)) return Form.few;
-    if (v == 0 && i10 == 1 && i100 != 11 || f10 == 1 && f100 != 11)
-      return Form.one;
     return Form.other;
   });
 }
@@ -1817,8 +806,8 @@ Form matchShi(num value, bool ordinal) {
     return Form.other;
   }
 
-  if (p && n >= 2 && n <= 10) return Form.few;
   if (i == 0 || n == 1) return Form.one;
+  if (p && n >= 2 && n <= 10) return Form.few;
   return Form.other;
 }
 
@@ -1833,19 +822,6 @@ Form matchSi(num value, bool ordinal) {
   });
 }
 
-Form matchSk(num value, bool ordinal) {
-  return finvtw(value, (f, i, n, v, t, w) {
-    if (ordinal) {
-      return Form.other;
-    }
-
-    if (i >= 2 && i <= 4 && v == 0) return Form.few;
-    if (v != 0) return Form.many;
-    if (i == 1 && v == 0) return Form.one;
-    return Form.other;
-  });
-}
-
 Form matchSl(num value, bool ordinal) {
   return finvtw(value, (f, i, n, v, t, w) {
     final i100 = i % 100;
@@ -1854,93 +830,11 @@ Form matchSl(num value, bool ordinal) {
       return Form.other;
     }
 
-    if (v == 0 && i100 >= 3 && i100 <= 4 || v != 0) return Form.few;
     if (v == 0 && i100 == 1) return Form.one;
     if (v == 0 && i100 == 2) return Form.two;
+    if (v == 0 && i100 >= 3 && i100 <= 4 || v != 0) return Form.few;
     return Form.other;
   });
-}
-
-Form matchSma(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  if (n == 2) return Form.two;
-  return Form.other;
-}
-
-Form matchSmi(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  if (n == 2) return Form.two;
-  return Form.other;
-}
-
-Form matchSmj(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  if (n == 2) return Form.two;
-  return Form.other;
-}
-
-Form matchSmn(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  if (n == 2) return Form.two;
-  return Form.other;
-}
-
-Form matchSms(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  if (n == 2) return Form.two;
-  return Form.other;
-}
-
-Form matchSn(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchSo(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
 }
 
 Form matchSq(num value, bool ordinal) {
@@ -1949,60 +843,8 @@ Form matchSq(num value, bool ordinal) {
   final n100 = n % 100;
 
   if (ordinal) {
-    if (n10 == 4 && n100 != 14) return Form.many;
     if (n == 1) return Form.one;
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchSr(num value, bool ordinal) {
-  return finvtw(value, (f, i, n, v, t, w) {
-    final i10 = i % 10;
-    final i100 = i % 100;
-    final f10 = f % 10;
-    final f100 = f % 100;
-
-    if (ordinal) {
-      return Form.other;
-    }
-
-    if (v == 0 && i10 >= 2 && i10 <= 4 && (i100 < 12 || i100 > 14) ||
-        f10 >= 2 && f10 <= 4 && (f100 < 12 || f100 > 14)) return Form.few;
-    if (v == 0 && i10 == 1 && i100 != 11 || f10 == 1 && f100 != 11)
-      return Form.one;
-    return Form.other;
-  });
-}
-
-Form matchSs(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchSsy(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchSt(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
+    if (n10 == 4 && n100 != 14) return Form.many;
     return Form.other;
   }
 
@@ -2025,140 +867,12 @@ Form matchSv(num value, bool ordinal) {
   });
 }
 
-Form matchSw(num value, bool ordinal) {
-  return finvtw(value, (f, i, n, v, t, w) {
-    if (ordinal) {
-      return Form.other;
-    }
-
-    if (i == 1 && v == 0) return Form.one;
-    return Form.other;
-  });
-}
-
-Form matchSyr(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchTa(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchTe(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchTeo(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchTi(num value, bool ordinal) {
-  final n = value.abs();
-  final p = n.toInt() == n;
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (p && n >= 0 && n <= 1) return Form.one;
-  return Form.other;
-}
-
-Form matchTig(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
 Form matchTk(num value, bool ordinal) {
   final n = value.abs();
   final n10 = n % 10;
 
   if (ordinal) {
     if (n10 == 6 || n10 == 9 || n == 10) return Form.few;
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchTl(num value, bool ordinal) {
-  return finvtw(value, (f, i, n, v, t, w) {
-    final i10 = i % 10;
-    final f10 = f % 10;
-
-    if (ordinal) {
-      if (n == 1) return Form.one;
-      return Form.other;
-    }
-
-    if (v == 0 && (i == 1 || i == 2 || i == 3) ||
-        v == 0 && i10 != 4 && i10 != 6 && i10 != 9 ||
-        v != 0 && f10 != 4 && f10 != 6 && f10 != 9) return Form.one;
-    return Form.other;
-  });
-}
-
-Form matchTn(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchTr(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchTs(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
     return Form.other;
   }
 
@@ -2178,17 +892,6 @@ Form matchTzm(num value, bool ordinal) {
   return Form.other;
 }
 
-Form matchUg(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
 Form matchUk(num value, bool ordinal) {
   return finvtw(value, (f, i, n, v, t, w) {
     final n10 = n % 10;
@@ -2201,333 +904,262 @@ Form matchUk(num value, bool ordinal) {
       return Form.other;
     }
 
+    if (v == 0 && i10 == 1 && i100 != 11) return Form.one;
     if (v == 0 && i10 >= 2 && i10 <= 4 && (i100 < 12 || i100 > 14))
       return Form.few;
     if (v == 0 && i10 == 0 ||
         v == 0 && i10 >= 5 && i10 <= 9 ||
         v == 0 && i100 >= 11 && i100 <= 14) return Form.many;
-    if (v == 0 && i10 == 1 && i100 != 11) return Form.one;
     return Form.other;
   });
-}
-
-Form matchUr(num value, bool ordinal) {
-  return finvtw(value, (f, i, n, v, t, w) {
-    if (ordinal) {
-      return Form.other;
-    }
-
-    if (i == 1 && v == 0) return Form.one;
-    return Form.other;
-  });
-}
-
-Form matchUz(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchVe(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchVi(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    if (n == 1) return Form.one;
-    return Form.other;
-  }
-
-  return Form.other;
-}
-
-Form matchVo(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchVun(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchWa(num value, bool ordinal) {
-  final n = value.abs();
-  final p = n.toInt() == n;
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (p && n >= 0 && n <= 1) return Form.one;
-  return Form.other;
-}
-
-Form matchWae(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchXh(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchXog(num value, bool ordinal) {
-  final n = value.abs();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (n == 1) return Form.one;
-  return Form.other;
-}
-
-Form matchYi(num value, bool ordinal) {
-  return finvtw(value, (f, i, n, v, t, w) {
-    if (ordinal) {
-      return Form.other;
-    }
-
-    if (i == 1 && v == 0) return Form.one;
-    return Form.other;
-  });
-}
-
-Form matchZu(num value, bool ordinal) {
-  final n = value.abs();
-  final i = n.toInt();
-
-  if (ordinal) {
-    return Form.other;
-  }
-
-  if (i == 0 || n == 1) return Form.one;
-  return Form.other;
 }
 
 Form matchOther(num value, bool ordinal) => Form.other;
 
 final Map<String, PluralFunc> rules = {
-  "af": matchAf,
-  "ak": matchAk,
-  "am": matchAm,
+  "af": matchAfBgCeElEsEuGswKyMlMnNbPsSdTaTeTrUz,
+  "bg": matchAfBgCeElEsEuGswKyMlMnNbPsSdTaTeTrUz,
+  "ce": matchAfBgCeElEsEuGswKyMlMnNbPsSdTaTeTrUz,
+  "el": matchAfBgCeElEsEuGswKyMlMnNbPsSdTaTeTrUz,
+  "es": matchAfBgCeElEsEuGswKyMlMnNbPsSdTaTeTrUz,
+  "eu": matchAfBgCeElEsEuGswKyMlMnNbPsSdTaTeTrUz,
+  "gsw": matchAfBgCeElEsEuGswKyMlMnNbPsSdTaTeTrUz,
+  "ky": matchAfBgCeElEsEuGswKyMlMnNbPsSdTaTeTrUz,
+  "ml": matchAfBgCeElEsEuGswKyMlMnNbPsSdTaTeTrUz,
+  "mn": matchAfBgCeElEsEuGswKyMlMnNbPsSdTaTeTrUz,
+  "nb": matchAfBgCeElEsEuGswKyMlMnNbPsSdTaTeTrUz,
+  "ps": matchAfBgCeElEsEuGswKyMlMnNbPsSdTaTeTrUz,
+  "sd": matchAfBgCeElEsEuGswKyMlMnNbPsSdTaTeTrUz,
+  "ta": matchAfBgCeElEsEuGswKyMlMnNbPsSdTaTeTrUz,
+  "te": matchAfBgCeElEsEuGswKyMlMnNbPsSdTaTeTrUz,
+  "tr": matchAfBgCeElEsEuGswKyMlMnNbPsSdTaTeTrUz,
+  "uz": matchAfBgCeElEsEuGswKyMlMnNbPsSdTaTeTrUz,
+  "ak": matchAkBhGuwLnMgNsoTiWa,
+  "bh": matchAkBhGuwLnMgNsoTiWa,
+  "guw": matchAkBhGuwLnMgNsoTiWa,
+  "ln": matchAkBhGuwLnMgNsoTiWa,
+  "mg": matchAkBhGuwLnMgNsoTiWa,
+  "nso": matchAkBhGuwLnMgNsoTiWa,
+  "ti": matchAkBhGuwLnMgNsoTiWa,
+  "wa": matchAkBhGuwLnMgNsoTiWa,
+  "am": matchAmFaKnZu,
+  "fa": matchAmFaKnZu,
+  "kn": matchAmFaKnZu,
+  "zu": matchAmFaKnZu,
   "ar": matchAr,
   "ars": matchArs,
-  "as": matchAs,
-  "asa": matchAsa,
-  "ast": matchAst,
+  "as": matchAsBn,
+  "bn": matchAsBn,
+  "asa":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "bem":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "bez":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "brx":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "cgg":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "chr":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "ckb":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "dv":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "ee":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "eo":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "fo":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "fur":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "ha":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "haw":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "jgo":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "jmc":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "kaj":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "kcg":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "kkj":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "kl":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "ks":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "ksb":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "ku":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "lb":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "lg":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "mas":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "mgo":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "nah":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "nd":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "nn":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "nnh":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "no":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "nr":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "ny":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "nyn":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "om":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "os":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "pap":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "rm":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "rof":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "rwk":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "saq":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "sdh":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "seh":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "sn":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "so":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "ss":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "ssy":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "st":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "syr":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "teo":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "tig":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "tn":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "ts":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "ug":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "ve":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "vo":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "vun":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "wae":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "xh":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "xog":
+      matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
+  "ast": matchAstIoJiPtPtYi,
+  "io": matchAstIoJiPtPtYi,
+  "ji": matchAstIoJiPtPtYi,
+  "pt-PT": matchAstIoJiPtPtYi,
+  "yi": matchAstIoJiPtPtYi,
   "az": matchAz,
   "be": matchBe,
-  "bem": matchBem,
-  "bez": matchBez,
-  "bg": matchBg,
-  "bh": matchBh,
-  "bn": matchBn,
   "br": matchBr,
-  "brx": matchBrx,
-  "bs": matchBs,
+  "bs": matchBsHrShSrSrLatn,
+  "hr": matchBsHrShSrSrLatn,
+  "sh": matchBsHrShSrSrLatn,
+  "sr": matchBsHrShSrSrLatn,
+  "sr-Latn": matchBsHrShSrSrLatn,
   "ca": matchCa,
-  "ce": matchCe,
   "ceb": matchCeb,
-  "cgg": matchCgg,
-  "chr": matchChr,
-  "ckb": matchCkb,
-  "cs": matchCs,
+  "cs": matchCsSk,
+  "sk": matchCsSk,
   "cy": matchCy,
   "da": matchDa,
-  "de": matchDe,
-  "dsb": matchDsb,
-  "dv": matchDv,
-  "ee": matchEe,
-  "el": matchEl,
+  "de": matchDeEtFiFyGlIaNlSwUr,
+  "et": matchDeEtFiFyGlIaNlSwUr,
+  "fi": matchDeEtFiFyGlIaNlSwUr,
+  "fy": matchDeEtFiFyGlIaNlSwUr,
+  "gl": matchDeEtFiFyGlIaNlSwUr,
+  "ia": matchDeEtFiFyGlIaNlSwUr,
+  "nl": matchDeEtFiFyGlIaNlSwUr,
+  "sw": matchDeEtFiFyGlIaNlSwUr,
+  "ur": matchDeEtFiFyGlIaNlSwUr,
+  "dsb": matchDsbHsb,
+  "hsb": matchDsbHsb,
   "en": matchEn,
-  "eo": matchEo,
-  "es": matchEs,
-  "et": matchEt,
-  "eu": matchEu,
-  "fa": matchFa,
-  "ff": matchFf,
-  "fi": matchFi,
-  "fil": matchFil,
-  "fo": matchFo,
-  "fr": matchFr,
-  "fur": matchFur,
-  "fy": matchFy,
+  "ff": matchFfKab,
+  "kab": matchFfKab,
+  "fil": matchFilTl,
+  "tl": matchFilTl,
+  "fr": matchFrHy,
+  "hy": matchFrHy,
   "ga": matchGa,
   "gd": matchGd,
-  "gl": matchGl,
-  "gsw": matchGsw,
-  "gu": matchGu,
-  "guw": matchGuw,
+  "gu": matchGuHi,
+  "hi": matchGuHi,
   "gv": matchGv,
-  "ha": matchHa,
-  "haw": matchHaw,
-  "he": matchHe,
-  "hi": matchHi,
-  "hr": matchHr,
-  "hsb": matchHsb,
+  "he": matchHeIw,
+  "iw": matchHeIw,
   "hu": matchHu,
-  "hy": matchHy,
-  "ia": matchIa,
-  "io": matchIo,
   "is": matchIs,
-  "it": matchIt,
-  "iu": matchIu,
-  "iw": matchIw,
-  "jgo": matchJgo,
-  "ji": matchJi,
-  "jmc": matchJmc,
+  "it": matchItScScn,
+  "sc": matchItScScn,
+  "scn": matchItScScn,
+  "iu": matchIuNaqSeSmaSmiSmjSmnSms,
+  "naq": matchIuNaqSeSmaSmiSmjSmnSms,
+  "se": matchIuNaqSeSmaSmiSmjSmnSms,
+  "sma": matchIuNaqSeSmaSmiSmjSmnSms,
+  "smi": matchIuNaqSeSmaSmiSmjSmnSms,
+  "smj": matchIuNaqSeSmaSmiSmjSmnSms,
+  "smn": matchIuNaqSeSmaSmiSmjSmnSms,
+  "sms": matchIuNaqSeSmaSmiSmjSmnSms,
   "ka": matchKa,
-  "kab": matchKab,
-  "kaj": matchKaj,
-  "kcg": matchKcg,
   "kk": matchKk,
-  "kkj": matchKkj,
-  "kl": matchKl,
-  "kn": matchKn,
-  "ks": matchKs,
-  "ksb": matchKsb,
   "ksh": matchKsh,
-  "ku": matchKu,
   "kw": matchKw,
-  "ky": matchKy,
   "lag": matchLag,
-  "lb": matchLb,
-  "lg": matchLg,
-  "ln": matchLn,
-  "lo": matchLo,
+  "lo": matchLoMsVi,
+  "ms": matchLoMsVi,
+  "vi": matchLoMsVi,
   "lt": matchLt,
-  "lv": matchLv,
-  "mas": matchMas,
-  "mg": matchMg,
-  "mgo": matchMgo,
+  "lv": matchLvPrg,
+  "prg": matchLvPrg,
   "mk": matchMk,
-  "ml": matchMl,
-  "mn": matchMn,
-  "mo": matchMo,
+  "mo": matchMoRoRoMd,
+  "ro": matchMoRoRoMd,
+  "ro-MD": matchMoRoRoMd,
   "mr": matchMr,
-  "ms": matchMs,
   "mt": matchMt,
-  "nah": matchNah,
-  "naq": matchNaq,
-  "nb": matchNb,
-  "nd": matchNd,
   "ne": matchNe,
-  "nl": matchNl,
-  "nn": matchNn,
-  "nnh": matchNnh,
-  "no": matchNo,
-  "nr": matchNr,
-  "nso": matchNso,
-  "ny": matchNy,
-  "nyn": matchNyn,
-  "om": matchOm,
   "or": matchOr,
-  "os": matchOs,
   "pa": matchPa,
-  "pap": matchPap,
   "pl": matchPl,
-  "prg": matchPrg,
-  "ps": matchPs,
   "pt": matchPt,
-  "pt-PT": matchPtPt,
-  "rm": matchRm,
-  "ro": matchRo,
-  "rof": matchRof,
   "ru": matchRu,
-  "rwk": matchRwk,
-  "saq": matchSaq,
-  "sc": matchSc,
-  "scn": matchScn,
-  "sd": matchSd,
-  "sdh": matchSdh,
-  "se": matchSe,
-  "seh": matchSeh,
-  "sh": matchSh,
   "shi": matchShi,
   "si": matchSi,
-  "sk": matchSk,
   "sl": matchSl,
-  "sma": matchSma,
-  "smi": matchSmi,
-  "smj": matchSmj,
-  "smn": matchSmn,
-  "sms": matchSms,
-  "sn": matchSn,
-  "so": matchSo,
   "sq": matchSq,
-  "sr": matchSr,
-  "ss": matchSs,
-  "ssy": matchSsy,
-  "st": matchSt,
   "sv": matchSv,
-  "sw": matchSw,
-  "syr": matchSyr,
-  "ta": matchTa,
-  "te": matchTe,
-  "teo": matchTeo,
-  "ti": matchTi,
-  "tig": matchTig,
   "tk": matchTk,
-  "tl": matchTl,
-  "tn": matchTn,
-  "tr": matchTr,
-  "ts": matchTs,
   "tzm": matchTzm,
-  "ug": matchUg,
   "uk": matchUk,
-  "ur": matchUr,
-  "uz": matchUz,
-  "ve": matchVe,
-  "vi": matchVi,
-  "vo": matchVo,
-  "vun": matchVun,
-  "wa": matchWa,
-  "wae": matchWae,
-  "xh": matchXh,
-  "xog": matchXog,
-  "yi": matchYi,
-  "zu": matchZu,
   "bm": matchOther,
   "bo": matchOther,
   "dz": matchOther,

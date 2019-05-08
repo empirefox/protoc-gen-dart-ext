@@ -33,15 +33,6 @@ type Arb struct {
 	attrs       map[string]*ArbAttributes `json:"-"`
 }
 
-func (a *Arb) LocaleLang() (lang language.Base) {
-	lang, _ = a.Locale.Base()
-	return
-}
-func (a *Arb) LocaleRegion() (region language.Region) {
-	region, _ = a.Locale.Region()
-	return
-}
-
 func (a *Arb) SetAttrs(en *Arb) { a.attrs = en.Attrs() }
 
 func (a *Arb) Attrs() map[string]*ArbAttributes {

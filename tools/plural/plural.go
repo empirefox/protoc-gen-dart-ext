@@ -5,7 +5,8 @@ import (
 	"log"
 	"text/template"
 
-	"github.com/empirefox/makeplural/cases"
+	"github.com/Masterminds/sprig"
+
 	"github.com/empirefox/makeplural/plural"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/genshared"
 )
@@ -55,8 +56,8 @@ const bodyTplStr = `
 `
 
 const casesTplStr = `
-{{- range $form, $cases := . }}
-  if ({{ $cases }}) return Form.{{ $form }};
+{{- range . }}
+  if ({{ .Cond }}) return Form.{{ .Form }};
 {{- end }}
   return Form.other;
 `
@@ -81,7 +82,7 @@ enum Form { other, zero, one, two, few, many }
 typedef PluralFunc = Form Function(num value, bool ordinal);
 
 {{- range .Cultures }}
-Form match{{ powerCamel .Name }}(num value, bool ordinal) {
+Form match{{ .Langs | join "_" | powerCamel }}(num value, bool ordinal) {
   {{ template "rule" . }}
 }
 {{- end }}
@@ -89,8 +90,10 @@ Form match{{ powerCamel .Name }}(num value, bool ordinal) {
 Form matchOther(num value, bool ordinal) => Form.other;
 
 final Map<String, PluralFunc> rules = {
-  {{- range .Cultures }}
-  "{{ .Name }}": match{{ powerCamel .Name }},
+  {{- range .Cultures }}{{ $func := .Langs | join "_" | powerCamel }}
+    {{- range .Langs }}
+    "{{ . }}": match{{ $func }},
+    {{- end }}
   {{- end }}
   {{- range .Others }}
   "{{ . }}": matchOther,
@@ -131,16 +134,18 @@ void _testNamedKey(
 }
 
 void main() {
-  {{- range .Cultures }}
-  group('{{ .Name }}', () {
-    final fn = rules['{{ .Name }}'];
-    {{- range .Tests.Cardinal }}
-      {{ template "cardinal" . }}
+  {{- range .Cultures }}{{ $tests := .Tests }}
+    {{- range .Langs }}
+      group('{{ . }}', () {
+        final fn = rules['{{ . }}'];
+        {{- range $tests.Cardinal }}
+          {{ template "cardinal" . }}
+        {{- end }}
+        {{- range $tests.Ordinal }}
+          {{ template "ordinal" . }}
+        {{- end }}
+      });
     {{- end }}
-    {{- range .Tests.Ordinal }}
-      {{ template "ordinal" . }}
-    {{- end }}
-  });
   {{- end }}
 }
 `
@@ -150,6 +155,7 @@ var pluralTestTpl *template.Template
 
 func init() {
 	pluralTpl = template.Must(template.New("dart").
+		Funcs(sprig.HermeticTxtFuncMap()).
 		Funcs(genshared.Funcs).
 		Parse(pluralTplStr))
 	template.Must(pluralTpl.New("rule").Parse(ruleTplStr))
@@ -162,23 +168,15 @@ func init() {
 }
 
 func main() {
-	rs := genshared.NewGoTplRenderers(pluralTpl, pluralTestTpl)
+	rs := genshared.NewGoTplGroupRenderer(pluralTpl, pluralTestTpl)
 	flag.Parse()
-	rs.OpenAll()
+	rs.Open()
 	defer rs.Close()
 
-	err := rs.Render(&Data{
-		Cultures: plural.Cultures,
-		Others:   plural.Others,
-	})
+	err := rs.Render(&plural.Info)
 	if err != nil {
 		log.Fatalf("executing template: %v", err)
 	}
 
 	log.Println("Done.")
-}
-
-type Data struct {
-	Cultures []cases.Culture
-	Others   []string
 }

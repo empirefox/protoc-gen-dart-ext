@@ -98,9 +98,9 @@ var (
 )
 
 func main() {
-	rs := genshared.NewGoTplRenderers(protoTpl, dartTpl, arbTpl)
+	rs := genshared.NewGoTplGroupRenderer(protoTpl, dartTpl, arbTpl)
 	flag.Parse()
-	rs.OpenAll()
+	rs.Open()
 	defer rs.Close()
 
 	v := extractISO4217()

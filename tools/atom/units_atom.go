@@ -2,11 +2,15 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"log"
+	"sort"
+	"strings"
 	"text/template"
 	"time"
 
 	"github.com/Masterminds/sprig"
+	"github.com/empirefox/makeplural/plural"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/arb"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/dart"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/genshared"
@@ -41,27 +45,22 @@ enum {{ EntityV }} {
 `
 
 const dartTplStr = genshared.DartHead + `
+import '../plural/plural.dart';
 import './units.l10n.dart';
 
 abstract class _Valuer {
-	String of(UnitsLocalization l, bool p);
+	String of(UnitsLocalization l, Form p);
 }
 
 class _No{{ Entity }} implements _Valuer {
   const _No{{ Entity }}();
-  String of(UnitsLocalization l, bool p) => '';
+  String of(UnitsLocalization l, Form p) => '';
 }
 
 {{ range .Atoms }}
   class _{{ Field . }} implements _Valuer {
     const _{{ Field . }}();
-    String of(UnitsLocalization l, bool p) =>
-      {{ if .Plural }}
-        p ? l.{{ entity }}{{ FieldPlural . }} : l.{{ entity }}{{ Field . }}
-      {{ else }}
-        l.{{ entity }}{{ Field . }}
-      {{ end }}
-    ;
+    String of(UnitsLocalization l, Form p) => l.{{ entity }}{{ Field . }}(p);
   }
 {{ end }}
 
@@ -75,11 +74,11 @@ class {{ EntityV }} {
   final String symbol;
   final _Valuer _v;
   const {{ EntityV }}._(this.symbol, this._v);
-  String l10n(UnitsLocalization l10n, bool plural) => l10n == null ? symbol : _v.of(l10n, plural) ?? symbol;
+  String l10n(UnitsLocalization l10n, Form form) => l10n == null ? symbol : _v.of(l10n, form) ?? symbol;
 }
 `
 
-const arbTplStr = `{{ toPrettyJson .Arb }}`
+const arbTplStr = `{{ . | toPrettyJson }}`
 
 var (
 	toField = func(a *atom.Atom) (s string) {
@@ -87,14 +86,6 @@ var (
 			s = a.Name + "Angle"
 		} else {
 			s = a.Name
-		}
-		return util.PowerCamel(s)
-	}
-	toFieldPlural = func(a *atom.Atom) (s string) {
-		if a.Symbol == "''" || a.Symbol == "'" {
-			s = a.Plural + "Angle"
-		} else {
-			s = a.Plural
 		}
 		return util.PowerCamel(s)
 	}
@@ -106,14 +97,6 @@ var (
 		}
 		return util.PowerLowerCamel(s)
 	}
-	toLowerFieldPlural = func(a *atom.Atom) (s string) {
-		if a.Symbol == "''" || a.Symbol == "'" {
-			s = a.Plural + "Angle"
-		} else {
-			s = a.Plural
-		}
-		return util.PowerLowerCamel(s)
-	}
 
 	sharedFuncs = genshared.JoinFuncs(
 		sprig.HermeticTxtFuncMap(),
@@ -121,10 +104,8 @@ var (
 		genshared.Funcs,
 		genshared.VersionEntityFuncs(entity),
 		template.FuncMap{
-			"field":       toLowerField,
-			"fieldPlural": toLowerFieldPlural,
-			"Field":       toField,
-			"FieldPlural": toFieldPlural,
+			"field": toLowerField,
+			"Field": toField,
 		},
 	)
 
@@ -133,10 +114,16 @@ var (
 	arbTpl   = template.Must(template.New("arb").Funcs(sharedFuncs).Parse(arbTplStr))
 )
 
+var langs = flag.String("lang", "", "language subset")
+
 func main() {
-	rs := genshared.NewGoTplRenderers(protoTpl, dartTpl, arbTpl)
+	vr := genshared.NewGoTplVariantRenderer(arbTpl, getLangs, makeArbData, makeArbPath)
+	gr := genshared.NewGoTplGroupRenderer(protoTpl, dartTpl)
+	rs := genshared.MultiRenderer{vr, gr}
+
 	flag.Parse()
-	rs.OpenAll()
+
+	rs.Open()
 	defer rs.Close()
 
 	err := rs.Render(&Data{Atoms: atom.Atoms})
@@ -151,28 +138,85 @@ type Data struct {
 	Atoms []*atom.Atom
 }
 
-func (d Data) Arb() *arb.Arb {
+func (d *Data) Arb(lang string) *arb.Arb {
+	culture := language.MustParse(lang)
 	a := &arb.Arb{
 		LastModified: iso8601.Time{time.Now()},
-		Locale:       language.English,
+		Locale:       culture,
 		Entity:       entity.UpperCamelV(),
-		Resources:    make([]*arb.ArbResource, 0, len(d.Atoms)*2),
+		Resources:    make([]*arb.ArbResource, 0, len(d.Atoms)),
 	}
 
 	for _, ua := range d.Atoms {
-		ar := arb.NewResource(a, toLowerField(ua), ua.Name, &arb.ArbAttributes{
+		ar := arb.NewResource(a, toLowerField(ua), toICU(culture, ua), &arb.ArbAttributes{
 			Type:        "text",
-			Description: "SI units (singular)",
+			Description: "SI unit",
+			Placeholders: arb.ArbPlaceholders{
+				&arb.ArbPlaceholder{
+					Name: "form",
+					LangInfos: arb.ArbLangInfos{
+						&arb.ArbLangInfo{
+							Lang:   "dart",
+							Info:   "Form",
+							Import: "package:pgde/plural/plural.dart",
+						},
+					},
+				},
+			},
 		})
 		a.Resources = append(a.Resources, ar)
-		if ua.Plural != "" {
-			ar = arb.NewResource(a, toLowerFieldPlural(ua), ua.Plural, &arb.ArbAttributes{
-				Type:          "text",
-				Description:   "SI units (plural), empty means no plural form",
-				MaybeSameWith: toField(ua),
-			})
-			a.Resources = append(a.Resources, ar)
-		}
 	}
 	return a
+}
+
+func toICU(culture language.Tag, ua *atom.Atom) string {
+	lang, _, _ := plural.Info.Find(culture)
+	if lang == nil {
+		return ua.Name
+	}
+
+	var builder strings.Builder
+	builder.WriteString("{form, select, ")
+	cardinal := lang.Cardinal
+	for i := range cardinal {
+		c := cardinal[i].Form
+		builder.WriteString(c)
+		builder.WriteByte('{')
+		if c == "one" {
+			builder.WriteString(ua.Name)
+		} else {
+			builder.WriteString(ua.GetPlural())
+		}
+		builder.WriteByte('}')
+	}
+	// other
+	builder.WriteString("other{")
+	builder.WriteString(ua.GetPlural())
+	builder.WriteByte('}')
+
+	builder.WriteByte('}')
+	return builder.String()
+}
+
+func makeArbData(data interface{}, variant string) interface{} {
+	return data.(*Data).Arb(variant)
+}
+
+func makeArbPath(pathPrefix, variant string) string {
+	return fmt.Sprintf("%s_%s.arb", pathPrefix, variant)
+}
+
+func getLangs() []string {
+	if *langs == "" {
+		plural.Info.Langs()
+	}
+
+	raw := strings.Split(*langs, ",")
+	sort.Strings(raw)
+	parseFailed, findFailed, ok := plural.Info.Validate(raw)
+	if !ok {
+		log.Fatalf("language parse failed: %v\n\tfind failed: %v",
+			parseFailed, findFailed)
+	}
+	return raw
 }

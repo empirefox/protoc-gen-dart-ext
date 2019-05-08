@@ -3,8 +3,9 @@ package main
 import (
 	"text/template"
 
+	"github.com/Masterminds/sprig"
+
 	"github.com/empirefox/messageformat"
-	"github.com/empirefox/protoc-gen-dart-ext/pkg/arb"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/dart"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/genshared"
 )
@@ -110,7 +111,7 @@ class {{ $Entity }}Localization{{ powerCamel .Locale.String }} extends {{ $Entit
 
 const resourceBaseTplStr = `
 {{ if and .Attr .Attr.Placeholders }}
-	String {{ .Id }}({{ arbDartParams .Attr.Placeholders true }});
+	String {{ .Id }}({{ dartArbParams .Attr.Placeholders true }});
 {{ else }}
 	String get {{ .Id }};
 {{ end }}
@@ -118,12 +119,12 @@ const resourceBaseTplStr = `
 
 const resourceTplStr = `
 {{ if and .Attr .Attr.Placeholders }}
-	String {{ .Id }}({{ arbDartParams .Attr.Placeholders true }})
+	String {{ .Id }}({{ dartArbParams .Attr.Placeholders true }})
 	{{ if .SameWith }}
-		=> {{ .SameWith }}({{ arbDartParams .Attr.Placeholders false }});
+		=> {{ .SameWith }}({{ dartArbParams .Attr.Placeholders false }});
 	{{ else }}
 		{
-			{{ template "root" (mfPluralNode .LocaleLang.String .Value) }}
+			{{ template "root" (mfPluralNodeWithData .Arb.Locale .Value .) }}
 		}
 	{{ end }}
 {{ else }}
@@ -132,28 +133,44 @@ const resourceTplStr = `
 `
 
 const rootTplStr = `
-final output = StringBuffer();
-{{ template "container" . }}
-return output.toString();
+{{ if .Complexity.IsComplex }}
+	final output = StringBuffer();
+	{{ template "container" . }}
+	return output.toString();
+{{ else }}
+	{{ template "container" . }}
+{{ end }}
 `
 
 // Type: literal, var, select, selectordinal, plural
 const nodeTplStr = `{{ renderNode .Type . }}`
 
 const containerTplStr = `
-{{ range .Children }}
-	{{ template "node" . }}
-{{ end }}
+{{- range .Children }}
+	{{ template "node" . -}}
+{{- end -}}
 `
 
 const literalTplStr = `
-{{ range .Content }}
-	{{ if . }}
-		output.write({{ dartRawStr . }});
-	{{ else if $.Varname }}
-		output.write('${{ $.Varname }}');
-	{{ else }}
-		output.writeCharCode(35);
+{{ if .Complexity.IsComplex }}
+	{{ range .Content }}
+		{{ if . -}}
+			output.write({{ dartRawStr . }});
+		{{ else if $.Varname -}}
+			output.write(${{ $.Data.TplAsString $.Varname }});
+		{{ else -}}
+			output.writeCharCode(35);
+		{{ end -}}
+	{{ end -}}
+{{ else }}
+	{{ range .Content }}
+		{{ if . -}}
+			return {{ dartRawStr . }};
+		{{ else if $.Varname -}}
+			return ${{ $.Data.TplAsString $.Varname }};
+		{{ else -}}
+			return '#';
+		{{ end -}}
 	{{ end }}
 {{ end }}
 `
@@ -162,83 +179,86 @@ const varTplStr = `output.write('${{ . }}');`
 const selectTplStr = `
 {{ if .Choices }}
 switch ({{ .Varname }}) {
-	{{ range $k, $v := .Choices }}
-	case '{{ $k }}':
-		{{ template "node" $v }};
-		break;
+	{{ range .Choices }}
+	case {{ $.Data.TplSelectCaseCond $.Varname .Key }}:
+		{{ template "node" .Node -}}
+		{{ if $.Complexity.IsComplex }}break;{{ end }}
 	{{ end }}
 	default:
-		{{ template "node" .Other }};
-		break;
+		{{ template "node" .Other -}}
+		{{ if $.Complexity.IsComplex }}break;{{ end }}
 }
 {{ else }}
-	{{ template "node" .Other }};
-{{ end }}
+	{{ template "node" .Other -}}
+{{ end -}}
 `
 
 const selectOrdinalTplStr = `
 {{ if .Choices }}
 switch (plural.match{{ powerCamel .Culture }}({{ .Varname }}, true)) {
-	{{ range $k, $v := .Choices }}
-	case Form.{{ $k }}:
-		{{ template "node" $v }};
-		break;
+	{{ range .Choices }}
+	case Form.{{ .Key }}:
+		{{ template "node" .Node -}}
+		{{ if $.Complexity.IsComplex }}break;{{ end }}
 	{{ end }}
 	default:
-		{{ template "node" .Other }};
-		break;
+		{{ template "node" .Other -}}
+		{{ if $.Complexity.IsComplex }}break;{{ end }}
 }
 {{ else }}
-	{{ template "node" .Other }};
-{{ end }}
+	{{ template "node" .Other -}}
+{{ end -}}
 `
 
 const pluralTplStr = `
 {{ if .Equals }}
-	{{ template "equalsPlural" . }}
+	{{ template "equalsPlural" . -}}
 {{ else }}
-	{{ template "formedPlural" . }}
+	{{ template "formedPlural" . -}}
 {{ end }}
 `
 
 const equalsPluralTplStr = `
 switch ({{ .Varname }}) {
-	{{ range $k, $v := .Equals }}
-	case {{ $k }}:
-		{{ template "node" $v }};
-		break;
+	{{ range .Equals }}
+	case {{ .Key }}:
+		{{ template "node" .Node -}}
+		{{ if $.Complexity.IsComplex }}break;{{ end }}
 	{{ end }}
 	default:
-		{{ template "formedPlural" . }}
-		break;
+		{{ template "formedPlural" . -}}
+		{{ if $.Complexity.IsComplex }}break;{{ end }}
 }
 `
 
 const formedPluralTplStr = `
 {{ if .Choices }}
-switch (plural.match{{ powerCamel .Culture }}({{ .Varname }}, false)) {
-	{{ range $k, $v := .Choices }}
-	case Form.{{ $k }}:
-		{{ template "node" $v }};
-		break;
-	{{ end }}
+switch (plural.match{{ powerCamel .Culture }}(
+	{{ .Varname }} {{ if .Offset }}{{ .Offset | sub 0 | printf "%+d" }}{{ end }},
+	false)) {
+
+	{{- range .Choices }}
+	case Form.{{ .Key }}:
+		{{ template "node" .Node -}}
+		{{ if $.Complexity.IsComplex }}break;{{ end }}
+	{{- end }}
 	default:
-		{{ template "node" .Other }};
-		break;
+		{{ template "node" .Other -}}
+		{{ if $.Complexity.IsComplex }}break;{{ end }}
 }
 {{ else }}
-	{{ template "node" .Other }};
+	{{ template "node" .Other -}}
 {{ end }}
 `
 
-var dartOutTpl *template.Template
+var dartOutTpl = template.New("dart_out")
 
 func init() {
 	funcs := genshared.JoinFuncs(messageformat.Funcs,
-		arb.Funcs,
 		dart.Funcs,
+		sprig.HermeticTxtFuncMap(),
 		genshared.FuncsWithRender("renderNode", dartOutTpl))
-	dartOutTpl = template.Must(template.New("dart_out").Funcs(funcs).Parse(dartOutTplStr))
+	template.Must(dartOutTpl.Funcs(funcs).Parse(dartOutTplStr))
 	template.Must(dartOutTpl.New("delegate").Parse(delegateTplStr))
 	template.Must(dartOutTpl.New("arbBase").Parse(arbBaseTplStr))
 	template.Must(dartOutTpl.New("arb").Parse(arbTplStr))

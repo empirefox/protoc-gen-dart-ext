@@ -37,25 +37,7 @@ func easyjson5edff16dDecodeGithubComEmpirefoxProtocGenDartExtPkgArb(in *jlexer.L
 		}
 		switch key {
 		case "x-lang-info":
-			if in.IsNull() {
-				in.Skip()
-			} else {
-				in.Delim('{')
-				if !in.IsDelim('}') {
-					out.LangInfo = make(map[string]string)
-				} else {
-					out.LangInfo = nil
-				}
-				for !in.IsDelim('}') {
-					key := string(in.String())
-					in.WantColon()
-					var v1 string
-					v1 = string(in.String())
-					(out.LangInfo)[key] = v1
-					in.WantComma()
-				}
-				in.Delim('}')
-			}
+			(out.LangInfos).UnmarshalEasyJSON(in)
 		case "description":
 			out.Description = string(in.String())
 		case "example":
@@ -80,7 +62,7 @@ func easyjson5edff16dEncodeGithubComEmpirefoxProtocGenDartExtPkgArb(out *jwriter
 	out.RawByte('{')
 	first := true
 	_ = first
-	if len(in.LangInfo) != 0 {
+	if len(in.LangInfos) != 0 {
 		const prefix string = ",\"x-lang-info\":"
 		if first {
 			first = false
@@ -88,21 +70,7 @@ func easyjson5edff16dEncodeGithubComEmpirefoxProtocGenDartExtPkgArb(out *jwriter
 		} else {
 			out.RawString(prefix)
 		}
-		{
-			out.RawByte('{')
-			v2First := true
-			for v2Name, v2Value := range in.LangInfo {
-				if v2First {
-					v2First = false
-				} else {
-					out.RawByte(',')
-				}
-				out.String(string(v2Name))
-				out.RawByte(':')
-				out.String(string(v2Value))
-			}
-			out.RawByte('}')
-		}
+		(in.LangInfos).MarshalEasyJSON(out)
 	}
 	if in.Description != "" {
 		const prefix string = ",\"description\":"
@@ -156,7 +124,168 @@ func (v *ArbPlaceholder) UnmarshalJSON(data []byte) error {
 func (v *ArbPlaceholder) UnmarshalEasyJSON(l *jlexer.Lexer) {
 	easyjson5edff16dDecodeGithubComEmpirefoxProtocGenDartExtPkgArb(l, v)
 }
-func easyjson5edff16dDecodeGithubComEmpirefoxProtocGenDartExtPkgArb1(in *jlexer.Lexer, out *ArbAttributes) {
+func easyjson5edff16dDecodeGithubComEmpirefoxProtocGenDartExtPkgArb1(in *jlexer.Lexer, out *ArbLangInfos) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		in.Skip()
+		*out = nil
+	} else {
+		in.Delim('[')
+		if *out == nil {
+			if !in.IsDelim(']') {
+				*out = make(ArbLangInfos, 0, 8)
+			} else {
+				*out = ArbLangInfos{}
+			}
+		} else {
+			*out = (*out)[:0]
+		}
+		for !in.IsDelim(']') {
+			var v1 *ArbLangInfo
+			if in.IsNull() {
+				in.Skip()
+				v1 = nil
+			} else {
+				if v1 == nil {
+					v1 = new(ArbLangInfo)
+				}
+				(*v1).UnmarshalEasyJSON(in)
+			}
+			*out = append(*out, v1)
+			in.WantComma()
+		}
+		in.Delim(']')
+	}
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson5edff16dEncodeGithubComEmpirefoxProtocGenDartExtPkgArb1(out *jwriter.Writer, in ArbLangInfos) {
+	if in == nil && (out.Flags&jwriter.NilSliceAsEmpty) == 0 {
+		out.RawString("null")
+	} else {
+		out.RawByte('[')
+		for v2, v3 := range in {
+			if v2 > 0 {
+				out.RawByte(',')
+			}
+			if v3 == nil {
+				out.RawString("null")
+			} else {
+				(*v3).MarshalEasyJSON(out)
+			}
+		}
+		out.RawByte(']')
+	}
+}
+
+// MarshalJSON supports json.Marshaler interface
+func (v ArbLangInfos) MarshalJSON() ([]byte, error) {
+	w := jwriter.Writer{}
+	easyjson5edff16dEncodeGithubComEmpirefoxProtocGenDartExtPkgArb1(&w, v)
+	return w.Buffer.BuildBytes(), w.Error
+}
+
+// MarshalEasyJSON supports easyjson.Marshaler interface
+func (v ArbLangInfos) MarshalEasyJSON(w *jwriter.Writer) {
+	easyjson5edff16dEncodeGithubComEmpirefoxProtocGenDartExtPkgArb1(w, v)
+}
+
+// UnmarshalJSON supports json.Unmarshaler interface
+func (v *ArbLangInfos) UnmarshalJSON(data []byte) error {
+	r := jlexer.Lexer{Data: data}
+	easyjson5edff16dDecodeGithubComEmpirefoxProtocGenDartExtPkgArb1(&r, v)
+	return r.Error()
+}
+
+// UnmarshalEasyJSON supports easyjson.Unmarshaler interface
+func (v *ArbLangInfos) UnmarshalEasyJSON(l *jlexer.Lexer) {
+	easyjson5edff16dDecodeGithubComEmpirefoxProtocGenDartExtPkgArb1(l, v)
+}
+func easyjson5edff16dDecodeGithubComEmpirefoxProtocGenDartExtPkgArb2(in *jlexer.Lexer, out *ArbLangInfo) {
+	isTopLevel := in.IsStart()
+	if in.IsNull() {
+		if isTopLevel {
+			in.Consumed()
+		}
+		in.Skip()
+		return
+	}
+	in.Delim('{')
+	for !in.IsDelim('}') {
+		key := in.UnsafeString()
+		in.WantColon()
+		if in.IsNull() {
+			in.Skip()
+			in.WantComma()
+			continue
+		}
+		switch key {
+		case "Lang":
+			out.Lang = string(in.String())
+		case "Info":
+			out.Info = string(in.String())
+		default:
+			in.SkipRecursive()
+		}
+		in.WantComma()
+	}
+	in.Delim('}')
+	if isTopLevel {
+		in.Consumed()
+	}
+}
+func easyjson5edff16dEncodeGithubComEmpirefoxProtocGenDartExtPkgArb2(out *jwriter.Writer, in ArbLangInfo) {
+	out.RawByte('{')
+	first := true
+	_ = first
+	{
+		const prefix string = ",\"Lang\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
+		}
+		out.String(string(in.Lang))
+	}
+	{
+		const prefix string = ",\"Info\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
+		}
+		out.String(string(in.Info))
+	}
+	out.RawByte('}')
+}
+
+// MarshalJSON supports json.Marshaler interface
+func (v ArbLangInfo) MarshalJSON() ([]byte, error) {
+	w := jwriter.Writer{}
+	easyjson5edff16dEncodeGithubComEmpirefoxProtocGenDartExtPkgArb2(&w, v)
+	return w.Buffer.BuildBytes(), w.Error
+}
+
+// MarshalEasyJSON supports easyjson.Marshaler interface
+func (v ArbLangInfo) MarshalEasyJSON(w *jwriter.Writer) {
+	easyjson5edff16dEncodeGithubComEmpirefoxProtocGenDartExtPkgArb2(w, v)
+}
+
+// UnmarshalJSON supports json.Unmarshaler interface
+func (v *ArbLangInfo) UnmarshalJSON(data []byte) error {
+	r := jlexer.Lexer{Data: data}
+	easyjson5edff16dDecodeGithubComEmpirefoxProtocGenDartExtPkgArb2(&r, v)
+	return r.Error()
+}
+
+// UnmarshalEasyJSON supports easyjson.Unmarshaler interface
+func (v *ArbLangInfo) UnmarshalEasyJSON(l *jlexer.Lexer) {
+	easyjson5edff16dDecodeGithubComEmpirefoxProtocGenDartExtPkgArb2(l, v)
+}
+func easyjson5edff16dDecodeGithubComEmpirefoxProtocGenDartExtPkgArb3(in *jlexer.Lexer, out *ArbAttributes) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -199,7 +328,7 @@ func easyjson5edff16dDecodeGithubComEmpirefoxProtocGenDartExtPkgArb1(in *jlexer.
 		in.Consumed()
 	}
 }
-func easyjson5edff16dEncodeGithubComEmpirefoxProtocGenDartExtPkgArb1(out *jwriter.Writer, in ArbAttributes) {
+func easyjson5edff16dEncodeGithubComEmpirefoxProtocGenDartExtPkgArb3(out *jwriter.Writer, in ArbAttributes) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -269,23 +398,23 @@ func easyjson5edff16dEncodeGithubComEmpirefoxProtocGenDartExtPkgArb1(out *jwrite
 // MarshalJSON supports json.Marshaler interface
 func (v ArbAttributes) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjson5edff16dEncodeGithubComEmpirefoxProtocGenDartExtPkgArb1(&w, v)
+	easyjson5edff16dEncodeGithubComEmpirefoxProtocGenDartExtPkgArb3(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v ArbAttributes) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjson5edff16dEncodeGithubComEmpirefoxProtocGenDartExtPkgArb1(w, v)
+	easyjson5edff16dEncodeGithubComEmpirefoxProtocGenDartExtPkgArb3(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *ArbAttributes) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjson5edff16dDecodeGithubComEmpirefoxProtocGenDartExtPkgArb1(&r, v)
+	easyjson5edff16dDecodeGithubComEmpirefoxProtocGenDartExtPkgArb3(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *ArbAttributes) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjson5edff16dDecodeGithubComEmpirefoxProtocGenDartExtPkgArb1(l, v)
+	easyjson5edff16dDecodeGithubComEmpirefoxProtocGenDartExtPkgArb3(l, v)
 }

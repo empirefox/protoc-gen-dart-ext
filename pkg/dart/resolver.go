@@ -2,7 +2,7 @@ package dart
 
 import (
 	"fmt"
-	"sort"
+	"strconv"
 	"strings"
 
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/arb"
@@ -10,6 +10,7 @@ import (
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/imports"
 )
 
+//go:generate pie ImportEntries.ToStrings.Unselect
 type ImportEntries []*ImportEntry
 
 func (s ImportEntries) ToDartSource() string {
@@ -53,6 +54,55 @@ func (nty *ImportEntry) Right() string {
 
 type ImportItems []*ImportItem
 
+func (s *ImportItems) DartType(imp, typ string) string {
+	as := s.Add(imp)
+	if as == 0 {
+		return typ
+	}
+	return fmt.Sprintf("$i%d.%s", as, typ)
+}
+
+func (s *ImportItems) AddNoAs(imp string) {
+	if s.SetNoAs(imp) {
+		return
+	}
+
+	s2 := make(ImportItems, len(*s)+1)
+	s2[0] = &ImportItem{Path: imp}
+	copy(s2[1:], *s)
+	*s = s2
+}
+
+func (s *ImportItems) SetNoAs(imp string) bool {
+	if imp == "" {
+		return false
+	}
+
+	for _, item := range *s {
+		if item.Path == imp {
+			item.As = 0
+			return true
+		}
+	}
+	return false
+}
+
+func (s *ImportItems) Add(imp string) int {
+	if imp == "" {
+		return 0
+	}
+
+	for _, item := range *s {
+		if item.Path == imp {
+			return item.As
+		}
+	}
+
+	as := len(*s) + 1
+	*s = append(*s, &ImportItem{Path: imp, As: as})
+	return as
+}
+
 func (s ImportItems) ToDartSource() string {
 	if len(s) == 0 {
 		return ""
@@ -62,16 +112,46 @@ func (s ImportItems) ToDartSource() string {
 	for _, item := range s {
 		builder.WriteString("import '")
 		builder.WriteString(item.Path)
-		builder.WriteString("' as ")
-		builder.WriteString(item.As)
-		builder.WriteString(";\n")
+		if item.As == 0 {
+			builder.WriteString("';\n")
+		} else {
+			builder.WriteString("' as $i")
+			builder.WriteString(strconv.Itoa(item.As))
+			builder.WriteString(";\n")
+		}
 	}
 	return builder.String()
 }
 
 type ImportItem struct {
 	Path string
-	As   string
+	As   int
+}
+
+type Resource struct {
+	*arb.ArbResource
+	Resolved *Resolved
+}
+
+func (r Resource) TplAsString(varname string) string {
+	lp := r.Attr().Placeholders.LangParam("dart", varname)
+	if lp.Info == "String" {
+		return varname
+	}
+	return fmt.Sprintf(`'$%s'`, varname)
+}
+
+func (r Resource) TplSelectCaseCond(varname, key string) string {
+	// varname: form
+	// key: zero one two...
+	lp := r.Attr().Placeholders.LangParam("dart", varname)
+	if lp.Info == "String" {
+		return RawString(key)
+	}
+	if lp.Info == "" {
+		return r.Resolved.Imports.DartType(lp.Import, key)
+	}
+	return r.Resolved.Imports.DartType(lp.Import, lp.Info) + "." + key
 }
 
 type Resolved struct {
@@ -80,14 +160,16 @@ type Resolved struct {
 	Entries ImportEntries
 }
 
+func ResolveWithExports(es *exports.Exports, a *arb.Arb) (*Resolved, error) {
+	var resolver *arb.Resolver
+	if es != nil {
+		resolver = arb.NewResolver(es)
+	}
+	return Resolve(resolver, a)
+}
+
 func Resolve(resolver *arb.Resolver, a *arb.Arb) (*Resolved, error) {
-	selfResolver := arb.NewResolver(&exports.Exports{
-		Packages: map[string]*exports.Package{
-			"": &exports.Package{
-				Entities: []*exports.Entity{a.ExportProto()},
-			},
-		},
-	})
+	selfResolver := a.ExportResolver()
 
 	ra := Resolved{
 		Arb:     a,
@@ -101,10 +183,17 @@ func Resolve(resolver *arb.Resolver, a *arb.Arb) (*Resolved, error) {
 		}
 
 		self := true
-		nty, err := selfResolver.Resolve(r.Ref)
+		var nty *arb.ResolveEntry
+		if selfResolver != nil {
+			nty, err = selfResolver.Resolve(r.Ref)
+		} else {
+			err = fmt.Errorf("resolve failed: %s", r.Ref)
+		}
 		if err != nil {
 			self = false
-			nty, err = resolver.Resolve(r.Ref)
+			if resolver != nil {
+				nty, err = resolver.Resolve(r.Ref)
+			}
 		}
 		if err != nil {
 			return nil, err
@@ -121,25 +210,17 @@ func Resolve(resolver *arb.Resolver, a *arb.Arb) (*Resolved, error) {
 	}
 
 	// get sorted import path list
-	pathMap := make(map[string]struct{}, len(ra.Entries))
-	for _, nty := range ra.Entries {
-		if !nty.self {
-			pathMap[nty.resolved.Import] = struct{}{}
-		}
-	}
-	paths := make([]string, len(pathMap))
-	i := 0
-	for p := range pathMap {
-		paths[i] = p
-		i++
-	}
-	sort.Strings(paths)
+	paths := ra.Entries.
+		Unselect(func(nty *ImportEntry) bool { return nty.self }).
+		ToStrings(func(nty *ImportEntry) string { return nty.resolved.Import }).
+		Unique().
+		Sort()
 
 	ra.Imports = make(ImportItems, len(paths))
 	for i, p := range paths {
 		ra.Imports[i] = &ImportItem{
 			Path: p,
-			As:   fmt.Sprintf("$i%d", i),
+			As:   i + 1,
 		}
 	}
 
@@ -155,7 +236,29 @@ func Resolve(resolver *arb.Resolver, a *arb.Arb) (*Resolved, error) {
 		}
 	}
 
+	for _, r := range a.Resources {
+		for _, p := range r.Attr().Placeholders.LangParams("dart") {
+			ra.Imports.Add(p.Import)
+		}
+	}
+
 	return &ra, nil
+}
+
+func (ra *Resolved) Resources() []Resource {
+	rs := make([]Resource, len(ra.Arb.Resources))
+	for i, r := range ra.Arb.Resources {
+		rs[i] = Resource{ArbResource: r, Resolved: ra}
+	}
+	return rs
+}
+
+func (ra *Resolved) WithArb(a *arb.Arb) *Resolved {
+	return &Resolved{
+		Arb:     a,
+		Imports: ra.Imports,
+		Entries: ra.Entries,
+	}
 }
 
 func (ra *Resolved) ImportProto() *imports.Entity {

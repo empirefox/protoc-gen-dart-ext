@@ -19,7 +19,8 @@ gen_atom:
 	@go run ${tools_path}/atom/units_atom.go \
 		-proto=${units_path}/atom.proto \
 		-dart=${dart_lib}/units/atom.dart \
-		-arb=${dart_lib}/units/atom.arb
+		-arb=${dart_lib}/units/atom \
+		-lang="en,en-US,zh,ar"
 	@dartfmt -w ${dart_lib}/units/atom.dart
 
 .PHONY: gen_currency
@@ -59,14 +60,20 @@ gen_golang:
 	@easyjson ${pkg_path}/arb/arb_attr.go
 	@easyjson ${pkg_path}/arb/resolve.go
 	@easyjson -no_std_marshalers ${pkg_path}/arb/arb.go
+	@go generate ${pkg_path}/dart
+	@go generate ${pkg_path}/genshared
 
-.PHONY: gen_dart
-gen_dart:
+.PHONY: gen_plural
+gen_plural:
 	@go run ${tools_path}/plural/plural.go \
 		-dart=${dart_lib}/plural/plural.dart \
 		-dart_test=${dart_test}/plural_test.dart
 	@dartfmt -w ${dart_lib}/plural/plural.dart
 	@dartfmt -w ${dart_test}/plural_test.dart
+
+.PHONY: test_plural
+test_plural:
+	@cd ${dart_path} && flutter pub pub run test ./test/plural_test.dart
 
 .PHONY: protoc
 protoc:

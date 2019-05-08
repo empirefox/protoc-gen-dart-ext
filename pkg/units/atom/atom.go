@@ -6,6 +6,13 @@ type Atom struct {
 	Plural string
 }
 
+func (a *Atom) GetPlural() string {
+	if a.Plural != "" {
+		return a.Plural
+	}
+	return a.Name
+}
+
 func (a *Atom) PrintSymbol(plural bool) string {
 	if a.Symbol != "" {
 		return a.Symbol

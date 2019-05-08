@@ -908,7 +908,8 @@ class CurrencyV1 {
   final _Valuer _v;
   const CurrencyV1._(this.ccy, this.ccyNbr, this._v);
   String Function(dynamic) get format => getCurrencyFormat(ccy).format;
-  String Function(dynamic) get formatSimple => getSimpleCurrencyFormat(ccy).format;
+  String Function(dynamic) get formatSimple =>
+      getSimpleCurrencyFormat(ccy).format;
   String l10n(UnitsLocalization l10n) =>
       l10n == null ? ccy : _v.of(l10n) ?? ccy;
 

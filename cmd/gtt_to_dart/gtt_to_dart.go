@@ -28,7 +28,7 @@ func main() {
 	}
 
 	// flags:
-	rs := genshared.NewTplRenderers(
+	rs := genshared.NewTplGroupRenderer(
 		&genshared.Template{Template: dartOutTpl},
 		exportsOutTpl,
 		importsOutTpl)
@@ -46,7 +46,7 @@ func main() {
 		log.Fatalf("parser.Parse: %v", err)
 	}
 
-	rs.OpenAll()
+	rs.Open()
 	defer rs.Close()
 
 	as, err := arb.FromArchive(&filesData.Gtt)
@@ -61,20 +61,22 @@ func main() {
 
 	data := Data{
 		BaseArb:    BaseArb{Arb: as[0], Delegate: delegate},
-		Arbs:       as,
+		Arbs:       make([]*dart.Resolved, len(as)),
 		Gtt:        &filesData.Gtt,
 		ExportsOut: NewSingleEntityExportsOut(*dartImportPath, as[0].ExportProto()),
 	}
 
-	if filesData.Exports != nil {
-		resolver := arb.NewResolver(filesData.Exports)
-		resolved, err := dart.Resolve(resolver, as[0])
-		if err != nil {
-			log.Fatalf("resolve arb: %v", err)
-		}
-		data.Imports = resolved.Imports.ToDartSource()
-		data.BaseArb.Imports = resolved.Entries.ToDartSource()
-		data.ImportsOut = NewSingleEntityImportsOut(resolved.ImportProto())
+	resolved, err := dart.ResolveWithExports(filesData.Exports, as[0])
+	if err != nil {
+		log.Fatalf("resolve arb: %v", err)
+	}
+	resolved.Imports.AddNoAs("package:pgde/plural/plural.dart")
+	data.Imports = resolved.Imports.ToDartSource()
+	data.BaseArb.Imports = resolved.Entries.ToDartSource()
+	data.ImportsOut = NewSingleEntityImportsOut(resolved.ImportProto())
+
+	for i, a := range as {
+		data.Arbs[i] = resolved.WithArb(a)
 	}
 
 	err = rs.Render(&data)
@@ -88,12 +90,12 @@ func main() {
 type BaseArb struct {
 	*arb.Arb
 	Delegate []arb.SupportedLocale
-	Imports string
+	Imports  string
 }
 
 type Data struct {
 	BaseArb    BaseArb
-	Arbs       []*arb.Arb
+	Arbs       []*dart.Resolved
 	Gtt        *arb.GttArchive
 	Imports    string
 	ExportsOut ExportsOut

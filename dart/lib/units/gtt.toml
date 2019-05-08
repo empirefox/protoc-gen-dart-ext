@@ -4,7 +4,7 @@ OriginLocale = "en"
 PackageEntity = "Units"
 
 [[ArbInfos]]
-OriginFile = "$GTT_DIR/atom.arb"
+OriginFile = "$GTT_DIR/atom_en.arb"
 InZipFileName = "atom.arb"
 Entity = "Atom"
 

@@ -63,6 +63,20 @@ func (r *Resolver) Resolve(ref string) (*ResolveEntry, error) {
 	return nty, nil
 }
 
+func (a *Arb) ExportResolver() *Resolver {
+	selfExports := a.ExportProto()
+	if selfExports == nil {
+		return nil
+	}
+	return NewResolver(&exports.Exports{
+		Packages: map[string]*exports.Package{
+			"": &exports.Package{
+				Entities: []*exports.Entity{selfExports},
+			},
+		},
+	})
+}
+
 func (a *Arb) ExportProto() *exports.Entity {
 	fields := make([]*exports.Field, 0, len(a.Resources))
 	for _, r := range a.Resources {

@@ -1,3 +1,5 @@
+library units;
+
 import '../plural/plural.dart';
 
 import './atom.dart';
@@ -5,6 +7,13 @@ import './currency.dart';
 import './number_format.dart';
 import './prefix.dart';
 import './units.l10n.dart';
+
+export './atom.dart';
+export './currency_format.dart';
+export './currency.dart';
+export './number_format.dart';
+export './prefix.dart';
+export './units.l10n.dart';
 
 class Unit {
   static const prefixSymbol = const _PrefixSymbolValuer();
@@ -19,7 +28,7 @@ class Unit {
   final int decimalLeft;
   final _PrefixValuer _pv;
   final _AtomValuer _av;
-  final String numberLocale;
+  final String fmtLocale;
   final NumberFormatterGetter numberFmtGetter;
   final bool ordinal;
   final List<Cell> _dots;
@@ -30,7 +39,7 @@ class Unit {
       this.decimalLeft,
       this._pv,
       this._av,
-      this.numberLocale,
+      this.fmtLocale,
       this.numberFmtGetter,
       this.ordinal,
       this._dots,

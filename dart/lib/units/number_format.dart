@@ -1,6 +1,8 @@
 import 'dart:collection';
 import 'package:intl/intl.dart';
 
+import '../plural/plural.dart';
+
 final HashMap<String, NumberFormat> _decimal = HashMap();
 final HashMap<String, NumberFormat> _percent = HashMap();
 final HashMap<String, NumberFormat> _scientific = HashMap();
@@ -26,13 +28,19 @@ abstract class NumberFormatterGetter {
   NumberFormat from(String key);
 }
 
+String pluralLocale(String locale) =>
+    Intl.verifiedLocale(locale, rules.containsKey,
+        onFailure: (locale) => 'root');
+
+PluralFunc pluralRule(String locale) => rules[pluralLocale(locale)];
+
 abstract class _LocaleFormatterGetter implements NumberFormatterGetter {
   HashMap<String, NumberFormat> get formatters;
 
   const _LocaleFormatterGetter();
 
   NumberFormat from(String locale) {
-    locale = Intl.verifiedLocale(locale, NumberFormat.localeExists);
+    locale = pluralLocale(locale);
     if (!formatters.containsKey(locale)) {
       formatters[locale] = create(locale);
     }

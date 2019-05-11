@@ -7,6 +7,7 @@ cmd_path := $(abspath $(makefile_dir)/cmd)
 pkg_path := $(abspath $(makefile_dir)/pkg)
 protos_path := $(abspath $(makefile_dir)/protos)
 tools_path := $(abspath $(makefile_dir)/tools)
+format_path := $(abspath $(makefile_dir)/protos/format)
 units_path := $(abspath $(makefile_dir)/protos/units)
 form_path := $(abspath $(makefile_dir)/protos/form)
 
@@ -26,7 +27,7 @@ gen_atom:
 .PHONY: gen_currency
 gen_currency:
 	@go run ${tools_path}/currency/currency_iso4217.go \
-		-proto=${units_path}/currency.proto \
+		-proto=${format_path}/currency.proto \
 		-dart=${dart_lib}/units/currency.dart \
 		-arb=${dart_lib}/units/currency.arb
 	@dartfmt -w ${dart_lib}/units/currency.dart
@@ -80,6 +81,7 @@ protoc:
 	@protoc -I. --go_out=${go_out} --dart_out=${dart_lib} ./protos/exports/*.proto
 	@protoc -I. --go_out=${go_out} ./protos/imports/*.proto
 	@protoc -I. --go_out=${go_out} ./protos/l10n/*.proto
+	@protoc -I. --go_out=${go_out} ./protos/format/*.proto
 	@protoc -I. --go_out=${go_out} ./protos/units/*.proto
 	@protoc -I. --go_out=${go_out} --dart_out=${dart_lib} ./protos/form/*.proto
 	# @protoc -I. --go_out=${go_out} --dart_out=${dart_lib} ./test/*.proto

@@ -96,7 +96,7 @@ const SignatureInput$json = const {
 const NumberInput$json = const {
   '1': 'NumberInput',
   '2': const [
-    const {'1': 'fullUnit', '3': 1, '4': 1, '5': 8, '10': 'fullUnit'},
+    const {'1': 'unit', '3': 1, '4': 1, '5': 11, '6': '.units.Show', '10': 'unit'},
     const {'1': 'unitPlace', '3': 2, '4': 1, '5': 14, '6': '.form.UnitPlace', '10': 'unitPlace'},
   ],
 };
@@ -104,7 +104,7 @@ const NumberInput$json = const {
 const StepperInput$json = const {
   '1': 'StepperInput',
   '2': const [
-    const {'1': 'fullUnit', '3': 1, '4': 1, '5': 8, '10': 'fullUnit'},
+    const {'1': 'unit', '3': 1, '4': 1, '5': 11, '6': '.units.Show', '10': 'unit'},
     const {'1': 'unitPlace', '3': 2, '4': 1, '5': 14, '6': '.form.UnitPlace', '10': 'unitPlace'},
     const {'1': 'step', '3': 3, '4': 1, '5': 13, '10': 'step'},
   ],
@@ -113,7 +113,7 @@ const StepperInput$json = const {
 const SliderInput$json = const {
   '1': 'SliderInput',
   '2': const [
-    const {'1': 'fullUnit', '3': 1, '4': 1, '5': 8, '10': 'fullUnit'},
+    const {'1': 'unit', '3': 1, '4': 1, '5': 11, '6': '.units.Show', '10': 'unit'},
     const {'1': 'unitPlace', '3': 2, '4': 1, '5': 14, '6': '.form.UnitPlace', '10': 'unitPlace'},
     const {'1': 'divisions', '3': 3, '4': 1, '5': 13, '10': 'divisions'},
   ],
@@ -179,18 +179,17 @@ const ListInput_Type$json = const {
 const DatetimePickerInput$json = const {
   '1': 'DatetimePickerInput',
   '2': const [
-    const {'1': 'type', '3': 1, '4': 1, '5': 14, '6': '.form.DatetimePickerInput.Type', '10': 'type'},
-    const {'1': 'format', '3': 2, '4': 1, '5': 9, '10': 'format'},
+    const {'1': 'datePickerMode', '3': 1, '4': 1, '5': 14, '6': '.form.DatetimePickerInput.DatePickerMode', '10': 'datePickerMode'},
+    const {'1': 'editable', '3': 2, '4': 1, '5': 8, '10': 'editable'},
   ],
-  '4': const [DatetimePickerInput_Type$json],
+  '4': const [DatetimePickerInput_DatePickerMode$json],
 };
 
-const DatetimePickerInput_Type$json = const {
-  '1': 'Type',
+const DatetimePickerInput_DatePickerMode$json = const {
+  '1': 'DatePickerMode',
   '2': const [
-    const {'1': 'date', '2': 0},
-    const {'1': 'time', '2': 1},
-    const {'1': 'both', '2': 2},
+    const {'1': 'day', '2': 0},
+    const {'1': 'year', '2': 1},
   ],
 };
 
@@ -201,17 +200,6 @@ const InputDecoration$json = const {
     const {'1': 'prefixIcon', '3': 2, '4': 1, '5': 14, '6': '.form.MaterialIcon', '10': 'prefixIcon'},
     const {'1': 'suffixIcon', '3': 3, '4': 1, '5': 14, '6': '.form.MaterialIcon', '10': 'suffixIcon'},
     const {'1': 'hasCounter', '3': 4, '4': 1, '5': 8, '10': 'hasCounter'},
-  ],
-};
-
-const Date$json = const {
-  '1': 'Date',
-  '2': const [
-    const {'1': 'unix', '3': 1, '4': 1, '5': 3, '9': 0, '10': 'unix'},
-    const {'1': 'rfc3339', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'rfc3339'},
-  ],
-  '8': const [
-    const {'1': 'utc'},
   ],
 };
 

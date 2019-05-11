@@ -4,8 +4,10 @@ import (
 	"encoding/xml"
 	"flag"
 	"log"
+	"math"
 	"net/http"
 	"sort"
+	"strconv"
 	"strings"
 	"text/template"
 	"time"
@@ -31,7 +33,7 @@ var (
 	}
 )
 
-const protoTplStr = genshared.UnitsProtoHead + `
+const protoTplStr = genshared.FormatProtoHead + `
 import "protos/l10n/l10n.proto";
 
 // ISO 4217, publish date: {{ .Pblshd }}
@@ -66,18 +68,19 @@ class _XXX implements _Valuer {
 
 class {{ EntityV }} {
 	final String ccy;
-	final int ccyNbr;
+	final int nbr;
+	final int mnrFactor;
 	final _Valuer _v;
-	const {{ EntityV }}._(this.ccy, this.ccyNbr, this._v);
+	const {{ EntityV }}._(this.ccy, this.nbr, this.mnrFactor, this._v);
 	String Function(dynamic) get format => getCurrencyFormat(ccy).format;
 	String Function(dynamic) get formatSimple => getSimpleCurrencyFormat(ccy).format;
 	String Function(dynamic) get formatNumber => getCurrencyNumberFormat(ccy).format;
 	String formatName(v, UnitsLocalization l) => (l == null || _v.of(l) == null) ? format(v) : (formatNumber(v) + _v.of(l));
 	String l10n(UnitsLocalization l10n) => l10n == null ? ccy : _v.of(l10n) ?? ccy;
 
-	static const XXX = const {{ EntityV }}._('', 0, const _XXX());
+	static const XXX = const {{ EntityV }}._('', 0, 0, const _XXX());
 	{{- range .CcyNtry }}
-	static const {{ .Ccy }} = const {{ EntityV }}._('{{ .Ccy }}', {{ .CcyNbr }}, const _{{ .Ccy }}());
+	static const {{ .Ccy }} = const {{ EntityV }}._('{{ .Ccy }}', {{ .CcyNbr }}, {{ .CcyMnrUnts }}, const _{{ .Ccy }}());
 	{{- end }}
 }
 `
@@ -185,6 +188,15 @@ func filterISO4217(v *ISO_4217) {
 		if !exist[e.CcyNbr] {
 			exist[e.CcyNbr] = true
 			if e.Ccy != emptyZero {
+				if mnrUnts, err := strconv.Atoi(e.CcyMnrUnts); err == nil {
+					if mnrUnts != 0 {
+						e.CcyMnrUnts = strconv.Itoa(int(math.Pow10(mnrUnts)))
+					} else {
+						e.CcyMnrUnts = "1"
+					}
+				} else {
+					e.CcyMnrUnts = "null"
+				}
 				s = append(s, e)
 			}
 		}

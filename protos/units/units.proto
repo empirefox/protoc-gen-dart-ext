@@ -6,78 +6,41 @@ package units;
 option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/units";
 
 import "google/protobuf/descriptor.proto";
-import "protos/units/currency.proto";
 import "protos/units/prefix.proto";
 import "protos/units/atom.proto";
 
 extend google.protobuf.FieldOptions {
-  units.Unit unit = 919111;
+  units.Unit unit = 919112;
 }
 
 message Unit {
-  // ISO 4217
-  CurrencyUnit currency = 1;
+  Show show = 1;
+  bool ordinal = 2;
 
-  // decimalLeft affects both Currency and Atom
-  // only valid for int type
-  // move decimal point left when showing
-  // move decimal point right back when saving
-  // need promise the visible fractional digits when showing
-  int32 decimalLeft = 2;
+  repeated Cell dots = 3;
+  repeated Cell per = 4;
+}
 
-  // belows are only for Atom
+message Show {
+  bool off = 1;
 
-  enum PrefixType {
+  PrefixType prefix = 2;
+
+  enum AtomType {
     symbol = 0;
-    name = 1;
+    // plural Form.one
+    one = 1;
+    // plural Form.other
+    other = 2;
+    // parse Form from plural tool
+    parse = 3;
   }
-  PrefixType prefix = 3;
-  AtomType atom = 4;
-
-  Format format = 5;
-  bool ordinal = 6;
-
-  repeated Cell dots = 7;
-  repeated Cell per = 8;
+  AtomType atom = 3;
 }
 
-message CurrencyUnit {
-  oneof type {
-    CurrencyV1 code = 1;
-    CurrencyV1 symbol = 2;
-    CurrencyV1 name = 3;
-  }
-}
-
-message Format {
-  enum Builtin {
-    decimal = 0;
-    percent = 1;
-    scientific = 2;
-    currency = 3;
-    currencySimple = 4;
-  }
-
-  string locale = 2;
-
-  oneof type {
-    Builtin builtin = 3;
-    // user provided format name which is imported
-    string imported = 4;
-    // user provided format name which is registered
-    // do not support literal pattern here, because it depends on language
-    string custom = 5;
-  }
-}
-
-enum AtomType {
+enum PrefixType {
   symbol = 0;
-  // plural Form.one
-  one = 1;
-  // plural Form.other
-  other = 2;
-  // parse Form from plural tool
-  parse = 3;
+  name = 1;
 }
 
 message Cell {

@@ -6,6 +6,7 @@ import './atom.dart';
 import './currency.dart';
 import './number_format.dart';
 import './prefix.dart';
+import './time_format.dart';
 import './units.l10n.dart';
 
 export './atom.dart';
@@ -13,39 +14,40 @@ export './currency_format.dart';
 export './currency.dart';
 export './number_format.dart';
 export './prefix.dart';
+export './time_format.dart';
 export './units.l10n.dart';
 
-class Unit {
-  static const prefixSymbol = const _PrefixSymbolValuer();
-  static const prefixName = const _PrefixNameValuer();
+class Unit<F, T> {
+  static const symbolPrefix = const _PrefixSymbolValuer();
+  static const namePrefix = const _PrefixNameValuer();
 
-  static const atomSymbol = const _AtomSymbolValuer();
-  static const atomSingular = const _AtomOneValuer();
-  static const atomPlural = const _AtomOtherValuer();
-  static const atomParse = const _AtomParseValuer();
+  static const symbolAtom = const _AtomSymbolValuer();
+  static const singularAtom = const _AtomOneValuer();
+  static const pluralAtom = const _AtomOtherValuer();
+  static const parseAtom = const _AtomParseValuer();
 
-  final CurrencyUnit currency;
-  final int decimalLeft;
+  // just place them here
+  final TimeFormatter<F, T> time;
+  final CurrencyFormatter currency;
+  final NumberFormatterGetter _numberFmtGetter;
+
   final _PrefixValuer _pv;
   final _AtomValuer _av;
-  final String fmtLocale;
-  final NumberFormatterGetter numberFmtGetter;
-  final bool ordinal;
+  final String _fmtLocale;
+  final bool _ordinal;
   final List<Cell> _dots;
   final List<Cell> _per;
 
-  const Unit(
-      this.currency,
-      this.decimalLeft,
-      this._pv,
-      this._av,
-      this.fmtLocale,
-      this.numberFmtGetter,
-      this.ordinal,
-      this._dots,
-      this._per);
+  const Unit(this.time, this.currency, this._numberFmtGetter, this._pv,
+      this._av, this._fmtLocale, this._ordinal, this._dots, this._per);
 
   String get symbol => l10n(null, Form.one);
+
+  String formatNumber(v) =>
+      _numberFmtGetter?.from(_fmtLocale)?.format(v) ?? '$v';
+
+  Form plural(v, [bool ordinal]) =>
+      pluralRule(_fmtLocale)(v, ordinal ?? _ordinal ?? false);
 
   String l10n(UnitsLocalization l, Form p) =>
       _join(_dots, l, p) + (_per == null ? '' : ('/' + _join(_per, l, p)));
@@ -54,19 +56,26 @@ class Unit {
       cells == null ? '' : cells.map((c) => c.l10n(_pv, _av, l, p)).join('.');
 }
 
-class CurrencyUnit {
+class CurrencyFormatter {
   static const _code = const _CurrencyCodeFormatter();
   static const _symbol = const _CurrencySymbolFormatter();
   static const _name = const _CurrencyNameFormatter();
 
   final CurrencyV1 _c;
-  final _CurrencyFormatter _fmt;
+  final _CurrencyFormatterter _fmt;
+  final bool _centMode;
 
-  const CurrencyUnit.code(this._c) : _fmt = _code;
-  const CurrencyUnit.symbol(this._c) : _fmt = _symbol;
-  const CurrencyUnit.name(this._c) : _fmt = _name;
+  const CurrencyFormatter.code(this._c, this._centMode) : _fmt = _code;
+  const CurrencyFormatter.symbol(this._c, this._centMode) : _fmt = _symbol;
+  const CurrencyFormatter.name(this._c, this._centMode) : _fmt = _name;
 
-  String format(v, [UnitsLocalization l]) => _fmt.format(_c, v, l);
+  bool get convert => _centMode && _c.mnrFactor != null && _c.mnrFactor != 1;
+
+  double toDolar(int v) => convert ? v / _c.mnrFactor : v.toDouble();
+
+  int toCent(double v) => (convert ? v * _c.mnrFactor : v).toInt();
+
+  String format(v, [UnitsLocalization l]) => _fmt.format(_c, toDolar(v), l);
 }
 
 class Cell {
@@ -78,24 +87,24 @@ class Cell {
       '${pv.from(prefix, l)}${av.from(atom, l, p)}$exponent';
 }
 
-// _CurrencyFormatter
-abstract class _CurrencyFormatter {
+// _CurrencyFormatterter
+abstract class _CurrencyFormatterter {
   String format(CurrencyV1 c, v, [UnitsLocalization l]);
 }
 
-class _CurrencyCodeFormatter implements _CurrencyFormatter {
+class _CurrencyCodeFormatter implements _CurrencyFormatterter {
   const _CurrencyCodeFormatter();
   @override
   String format(CurrencyV1 c, v, [UnitsLocalization l]) => c.format(v);
 }
 
-class _CurrencySymbolFormatter implements _CurrencyFormatter {
+class _CurrencySymbolFormatter implements _CurrencyFormatterter {
   const _CurrencySymbolFormatter();
   @override
   String format(CurrencyV1 c, v, [UnitsLocalization l]) => c.formatSimple(v);
 }
 
-class _CurrencyNameFormatter implements _CurrencyFormatter {
+class _CurrencyNameFormatter implements _CurrencyFormatterter {
   const _CurrencyNameFormatter();
   @override
   String format(CurrencyV1 c, v, [UnitsLocalization l]) => c.formatName(v, l);

@@ -84,20 +84,18 @@ class ListInput_Type extends $pb.ProtobufEnum {
   const ListInput_Type._($core.int v, $core.String n) : super(v, n);
 }
 
-class DatetimePickerInput_Type extends $pb.ProtobufEnum {
-  static const DatetimePickerInput_Type date = DatetimePickerInput_Type._(0, 'date');
-  static const DatetimePickerInput_Type time = DatetimePickerInput_Type._(1, 'time');
-  static const DatetimePickerInput_Type both = DatetimePickerInput_Type._(2, 'both');
+class DatetimePickerInput_DatePickerMode extends $pb.ProtobufEnum {
+  static const DatetimePickerInput_DatePickerMode day = DatetimePickerInput_DatePickerMode._(0, 'day');
+  static const DatetimePickerInput_DatePickerMode year = DatetimePickerInput_DatePickerMode._(1, 'year');
 
-  static const $core.List<DatetimePickerInput_Type> values = <DatetimePickerInput_Type> [
-    date,
-    time,
-    both,
+  static const $core.List<DatetimePickerInput_DatePickerMode> values = <DatetimePickerInput_DatePickerMode> [
+    day,
+    year,
   ];
 
-  static final $core.Map<$core.int, DatetimePickerInput_Type> _byValue = $pb.ProtobufEnum.initByValue(values);
-  static DatetimePickerInput_Type valueOf($core.int value) => _byValue[value];
+  static final $core.Map<$core.int, DatetimePickerInput_DatePickerMode> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static DatetimePickerInput_DatePickerMode valueOf($core.int value) => _byValue[value];
 
-  const DatetimePickerInput_Type._($core.int v, $core.String n) : super(v, n);
+  const DatetimePickerInput_DatePickerMode._($core.int v, $core.String n) : super(v, n);
 }
 

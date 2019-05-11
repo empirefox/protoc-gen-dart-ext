@@ -6,19 +6,19 @@
 
 import 'dart:core' as $core show bool, Deprecated, double, int, List, Map, override, String;
 
-import 'package:fixnum/fixnum.dart';
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'color.pb.dart' as $0;
+import '../units/units.pb.dart' as $1;
 
-import 'icon.pbenum.dart' as $1;
+import 'icon.pbenum.dart' as $2;
 import 'form.pbenum.dart';
 
 export 'form.pbenum.dart';
 
 class InputOption extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('InputOption', package: const $pb.PackageName('form'))
-    ..e<$1.MaterialIcon>(1, 'icon', $pb.PbFieldType.OE, $1.MaterialIcon.noMaterialIcon, $1.MaterialIcon.valueOf, $1.MaterialIcon.values)
+    ..e<$2.MaterialIcon>(1, 'icon', $pb.PbFieldType.OE, $2.MaterialIcon.noMaterialIcon, $2.MaterialIcon.valueOf, $2.MaterialIcon.values)
     ..hasRequiredFields = false
   ;
 
@@ -34,8 +34,8 @@ class InputOption extends $pb.GeneratedMessage {
   static InputOption getDefault() => _defaultInstance ??= create()..freeze();
   static InputOption _defaultInstance;
 
-  $1.MaterialIcon get icon => $_getN(0);
-  set icon($1.MaterialIcon v) { setField(1, v); }
+  $2.MaterialIcon get icon => $_getN(0);
+  set icon($2.MaterialIcon v) { setField(1, v); }
   $core.bool hasIcon() => $_has(0);
   void clearIcon() => clearField(1);
 }
@@ -330,7 +330,7 @@ class SignatureInput extends $pb.GeneratedMessage {
 
 class NumberInput extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('NumberInput', package: const $pb.PackageName('form'))
-    ..aOB(1, 'fullUnit')
+    ..a<$1.Show>(1, 'unit', $pb.PbFieldType.OM, $1.Show.getDefault, $1.Show.create)
     ..e<UnitPlace>(2, 'unitPlace', $pb.PbFieldType.OE, UnitPlace.noUnitPlace, UnitPlace.valueOf, UnitPlace.values)
     ..hasRequiredFields = false
   ;
@@ -347,10 +347,10 @@ class NumberInput extends $pb.GeneratedMessage {
   static NumberInput getDefault() => _defaultInstance ??= create()..freeze();
   static NumberInput _defaultInstance;
 
-  $core.bool get fullUnit => $_get(0, false);
-  set fullUnit($core.bool v) { $_setBool(0, v); }
-  $core.bool hasFullUnit() => $_has(0);
-  void clearFullUnit() => clearField(1);
+  $1.Show get unit => $_getN(0);
+  set unit($1.Show v) { setField(1, v); }
+  $core.bool hasUnit() => $_has(0);
+  void clearUnit() => clearField(1);
 
   UnitPlace get unitPlace => $_getN(1);
   set unitPlace(UnitPlace v) { setField(2, v); }
@@ -360,7 +360,7 @@ class NumberInput extends $pb.GeneratedMessage {
 
 class StepperInput extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('StepperInput', package: const $pb.PackageName('form'))
-    ..aOB(1, 'fullUnit')
+    ..a<$1.Show>(1, 'unit', $pb.PbFieldType.OM, $1.Show.getDefault, $1.Show.create)
     ..e<UnitPlace>(2, 'unitPlace', $pb.PbFieldType.OE, UnitPlace.noUnitPlace, UnitPlace.valueOf, UnitPlace.values)
     ..a<$core.int>(3, 'step', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false
@@ -378,10 +378,10 @@ class StepperInput extends $pb.GeneratedMessage {
   static StepperInput getDefault() => _defaultInstance ??= create()..freeze();
   static StepperInput _defaultInstance;
 
-  $core.bool get fullUnit => $_get(0, false);
-  set fullUnit($core.bool v) { $_setBool(0, v); }
-  $core.bool hasFullUnit() => $_has(0);
-  void clearFullUnit() => clearField(1);
+  $1.Show get unit => $_getN(0);
+  set unit($1.Show v) { setField(1, v); }
+  $core.bool hasUnit() => $_has(0);
+  void clearUnit() => clearField(1);
 
   UnitPlace get unitPlace => $_getN(1);
   set unitPlace(UnitPlace v) { setField(2, v); }
@@ -396,7 +396,7 @@ class StepperInput extends $pb.GeneratedMessage {
 
 class SliderInput extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('SliderInput', package: const $pb.PackageName('form'))
-    ..aOB(1, 'fullUnit')
+    ..a<$1.Show>(1, 'unit', $pb.PbFieldType.OM, $1.Show.getDefault, $1.Show.create)
     ..e<UnitPlace>(2, 'unitPlace', $pb.PbFieldType.OE, UnitPlace.noUnitPlace, UnitPlace.valueOf, UnitPlace.values)
     ..a<$core.int>(3, 'divisions', $pb.PbFieldType.OU3)
     ..hasRequiredFields = false
@@ -414,10 +414,10 @@ class SliderInput extends $pb.GeneratedMessage {
   static SliderInput getDefault() => _defaultInstance ??= create()..freeze();
   static SliderInput _defaultInstance;
 
-  $core.bool get fullUnit => $_get(0, false);
-  set fullUnit($core.bool v) { $_setBool(0, v); }
-  $core.bool hasFullUnit() => $_has(0);
-  void clearFullUnit() => clearField(1);
+  $1.Show get unit => $_getN(0);
+  set unit($1.Show v) { setField(1, v); }
+  $core.bool hasUnit() => $_has(0);
+  void clearUnit() => clearField(1);
 
   UnitPlace get unitPlace => $_getN(1);
   set unitPlace(UnitPlace v) { setField(2, v); }
@@ -432,7 +432,7 @@ class SliderInput extends $pb.GeneratedMessage {
 
 class RateInput extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('RateInput', package: const $pb.PackageName('form'))
-    ..e<$1.MaterialIcon>(1, 'icon', $pb.PbFieldType.OE, $1.MaterialIcon.noMaterialIcon, $1.MaterialIcon.valueOf, $1.MaterialIcon.values)
+    ..e<$2.MaterialIcon>(1, 'icon', $pb.PbFieldType.OE, $2.MaterialIcon.noMaterialIcon, $2.MaterialIcon.valueOf, $2.MaterialIcon.values)
     ..hasRequiredFields = false
   ;
 
@@ -448,8 +448,8 @@ class RateInput extends $pb.GeneratedMessage {
   static RateInput getDefault() => _defaultInstance ??= create()..freeze();
   static RateInput _defaultInstance;
 
-  $1.MaterialIcon get icon => $_getN(0);
-  set icon($1.MaterialIcon v) { setField(1, v); }
+  $2.MaterialIcon get icon => $_getN(0);
+  set icon($2.MaterialIcon v) { setField(1, v); }
   $core.bool hasIcon() => $_has(0);
   void clearIcon() => clearField(1);
 }
@@ -582,8 +582,8 @@ class ListInput extends $pb.GeneratedMessage {
 
 class DatetimePickerInput extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('DatetimePickerInput', package: const $pb.PackageName('form'))
-    ..e<DatetimePickerInput_Type>(1, 'type', $pb.PbFieldType.OE, DatetimePickerInput_Type.date, DatetimePickerInput_Type.valueOf, DatetimePickerInput_Type.values)
-    ..aOS(2, 'format')
+    ..e<DatetimePickerInput_DatePickerMode>(1, 'datePickerMode', $pb.PbFieldType.OE, DatetimePickerInput_DatePickerMode.day, DatetimePickerInput_DatePickerMode.valueOf, DatetimePickerInput_DatePickerMode.values)
+    ..aOB(2, 'editable')
     ..hasRequiredFields = false
   ;
 
@@ -599,22 +599,22 @@ class DatetimePickerInput extends $pb.GeneratedMessage {
   static DatetimePickerInput getDefault() => _defaultInstance ??= create()..freeze();
   static DatetimePickerInput _defaultInstance;
 
-  DatetimePickerInput_Type get type => $_getN(0);
-  set type(DatetimePickerInput_Type v) { setField(1, v); }
-  $core.bool hasType() => $_has(0);
-  void clearType() => clearField(1);
+  DatetimePickerInput_DatePickerMode get datePickerMode => $_getN(0);
+  set datePickerMode(DatetimePickerInput_DatePickerMode v) { setField(1, v); }
+  $core.bool hasDatePickerMode() => $_has(0);
+  void clearDatePickerMode() => clearField(1);
 
-  $core.String get format => $_getS(1, '');
-  set format($core.String v) { $_setString(1, v); }
-  $core.bool hasFormat() => $_has(1);
-  void clearFormat() => clearField(2);
+  $core.bool get editable => $_get(1, false);
+  set editable($core.bool v) { $_setBool(1, v); }
+  $core.bool hasEditable() => $_has(1);
+  void clearEditable() => clearField(2);
 }
 
 class InputDecoration extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('InputDecoration', package: const $pb.PackageName('form'))
-    ..e<$1.MaterialIcon>(1, 'icon', $pb.PbFieldType.OE, $1.MaterialIcon.noMaterialIcon, $1.MaterialIcon.valueOf, $1.MaterialIcon.values)
-    ..e<$1.MaterialIcon>(2, 'prefixIcon', $pb.PbFieldType.OE, $1.MaterialIcon.noMaterialIcon, $1.MaterialIcon.valueOf, $1.MaterialIcon.values)
-    ..e<$1.MaterialIcon>(3, 'suffixIcon', $pb.PbFieldType.OE, $1.MaterialIcon.noMaterialIcon, $1.MaterialIcon.valueOf, $1.MaterialIcon.values)
+    ..e<$2.MaterialIcon>(1, 'icon', $pb.PbFieldType.OE, $2.MaterialIcon.noMaterialIcon, $2.MaterialIcon.valueOf, $2.MaterialIcon.values)
+    ..e<$2.MaterialIcon>(2, 'prefixIcon', $pb.PbFieldType.OE, $2.MaterialIcon.noMaterialIcon, $2.MaterialIcon.valueOf, $2.MaterialIcon.values)
+    ..e<$2.MaterialIcon>(3, 'suffixIcon', $pb.PbFieldType.OE, $2.MaterialIcon.noMaterialIcon, $2.MaterialIcon.valueOf, $2.MaterialIcon.values)
     ..aOB(4, 'hasCounter')
     ..hasRequiredFields = false
   ;
@@ -631,18 +631,18 @@ class InputDecoration extends $pb.GeneratedMessage {
   static InputDecoration getDefault() => _defaultInstance ??= create()..freeze();
   static InputDecoration _defaultInstance;
 
-  $1.MaterialIcon get icon => $_getN(0);
-  set icon($1.MaterialIcon v) { setField(1, v); }
+  $2.MaterialIcon get icon => $_getN(0);
+  set icon($2.MaterialIcon v) { setField(1, v); }
   $core.bool hasIcon() => $_has(0);
   void clearIcon() => clearField(1);
 
-  $1.MaterialIcon get prefixIcon => $_getN(1);
-  set prefixIcon($1.MaterialIcon v) { setField(2, v); }
+  $2.MaterialIcon get prefixIcon => $_getN(1);
+  set prefixIcon($2.MaterialIcon v) { setField(2, v); }
   $core.bool hasPrefixIcon() => $_has(1);
   void clearPrefixIcon() => clearField(2);
 
-  $1.MaterialIcon get suffixIcon => $_getN(2);
-  set suffixIcon($1.MaterialIcon v) { setField(3, v); }
+  $2.MaterialIcon get suffixIcon => $_getN(2);
+  set suffixIcon($2.MaterialIcon v) { setField(3, v); }
   $core.bool hasSuffixIcon() => $_has(2);
   void clearSuffixIcon() => clearField(3);
 
@@ -650,51 +650,6 @@ class InputDecoration extends $pb.GeneratedMessage {
   set hasCounter($core.bool v) { $_setBool(3, v); }
   $core.bool hasHasCounter() => $_has(3);
   void clearHasCounter() => clearField(4);
-}
-
-enum Date_Utc {
-  unix, 
-  rfc3339, 
-  notSet
-}
-
-class Date extends $pb.GeneratedMessage {
-  static const $core.Map<$core.int, Date_Utc> _Date_UtcByTag = {
-    1 : Date_Utc.unix,
-    2 : Date_Utc.rfc3339,
-    0 : Date_Utc.notSet
-  };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Date', package: const $pb.PackageName('form'))
-    ..aInt64(1, 'unix')
-    ..aOS(2, 'rfc3339')
-    ..oo(0, [1, 2])
-    ..hasRequiredFields = false
-  ;
-
-  Date() : super();
-  Date.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) : super.fromBuffer(i, r);
-  Date.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) : super.fromJson(i, r);
-  Date clone() => Date()..mergeFromMessage(this);
-  Date copyWith(void Function(Date) updates) => super.copyWith((message) => updates(message as Date));
-  $pb.BuilderInfo get info_ => _i;
-  static Date create() => Date();
-  Date createEmptyInstance() => create();
-  static $pb.PbList<Date> createRepeated() => $pb.PbList<Date>();
-  static Date getDefault() => _defaultInstance ??= create()..freeze();
-  static Date _defaultInstance;
-
-  Date_Utc whichUtc() => _Date_UtcByTag[$_whichOneof(0)];
-  void clearUtc() => clearField($_whichOneof(0));
-
-  Int64 get unix => $_getI64(0);
-  set unix(Int64 v) { $_setInt64(0, v); }
-  $core.bool hasUnix() => $_has(0);
-  void clearUnix() => clearField(1);
-
-  $core.String get rfc3339 => $_getS(1, '');
-  set rfc3339($core.String v) { $_setString(1, v); }
-  $core.bool hasRfc3339() => $_has(1);
-  void clearRfc3339() => clearField(2);
 }
 
 class Form {

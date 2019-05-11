@@ -8,7 +8,6 @@ import "google/protobuf/descriptor.proto";
 
 import "protos/form/color.proto";
 import "protos/form/icon.proto";
-import "protos/units/currency.proto";
 import "protos/units/units.proto";
 
 extend google.protobuf.EnumOptions {
@@ -87,6 +86,7 @@ message SignatureInput {
   double penStrokeWidth = 5;
 }
 
+// configurable on all number fields
 enum UnitPlace {
   noUnitPlace = 0;
 
@@ -94,16 +94,16 @@ enum UnitPlace {
   labelSuffix = 2;
 }
 message NumberInput {
-  bool fullUnit = 1;
+  units.Show unit = 1;
   UnitPlace unitPlace = 2;
 }
 message StepperInput {
-  bool fullUnit = 1;
+  units.Show unit = 1;
   UnitPlace unitPlace = 2;
   uint32 step = 3;
 }
 message SliderInput {
-  bool fullUnit = 1;
+  units.Show unit = 1;
   UnitPlace unitPlace = 2;
   uint32 divisions = 3;
 }
@@ -146,16 +146,14 @@ message ListInput {
   }
 }
 
+// type and format are defined by format.Format
 message DatetimePickerInput {
-  enum Type {
-    date = 0;
-    time = 1;
-    both = 2;
+  enum DatePickerMode {
+    day = 0;
+    year = 1;
   }
-  Type type = 1;
-
-  // format must in target_package.TimeFormatNameRegister
-  string format = 2;
+  DatePickerMode datePickerMode = 1;
+  bool editable = 2;
 }
 
 message InputDecoration {
@@ -163,14 +161,4 @@ message InputDecoration {
   MaterialIcon prefixIcon = 2;
   MaterialIcon suffixIcon = 3;
   bool hasCounter = 4;
-}
-
-// TODO move to validate
-message Date {
-  oneof utc {
-    // seconds from January 1, 1970 UTC
-    int64 unix = 1;
-    // 2006-01-02
-    string rfc3339 = 2;
-  }
 }

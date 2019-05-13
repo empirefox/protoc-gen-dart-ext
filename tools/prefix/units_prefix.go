@@ -45,21 +45,21 @@ enum {{ EntityV }} {
 `
 
 const dartTplStr = genshared.DartHead + `
-import './units.l10n.dart';
+import '../l10n/pgde.l10n.dart';
 
 abstract class _Valuer {
-	String of(UnitsLocalization l);
+	String of(PgdeLocalization l);
 }
 
 class _No{{ Entity }} implements _Valuer {
   const _No{{ Entity }}();
-  String of(UnitsLocalization l) => '';
+  String of(PgdeLocalization l) => '';
 }
 
 {{- range .AllPrefix }}
   class _{{ .Name | powerCamel }} implements _Valuer {
     const _{{ .Name | powerCamel }}();
-    String of(UnitsLocalization l) => l.{{ entity }}{{ .Name | powerCamel }};
+    String of(PgdeLocalization l) => l.{{ entity }}{{ .Name | powerCamel }};
   }
 {{- end }}
 
@@ -74,7 +74,7 @@ class {{ EntityV }} {
   final int exponent;
   final _Valuer _v;
   const {{ EntityV }}._(this.symbol, this.base, this.exponent, this._v);
-  String l10n(UnitsLocalization l10n) => _v.of(l10n) ?? symbol;
+  String l10n(PgdeLocalization l10n) => _v.of(l10n) ?? symbol;
 }
 `
 

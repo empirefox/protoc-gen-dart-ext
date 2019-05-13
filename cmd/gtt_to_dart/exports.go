@@ -9,7 +9,7 @@ import (
 )
 
 const exportsOutTplStr = `// ignore_for_file: lines_longer_than_80_chars
-import 'package:pgde/exports/register.dart';
+import 'package:pgde/exports.dart';
 
 void register() {
   {{- range .ExportsOut }}

@@ -73,9 +73,7 @@ const ruleTplStr = `
 `
 
 const pluralTplStr = genshared.DartHead + `
-library plural;
-
-import './finvtw.dart';
+import 'finvtw.dart';
 
 enum Form { other, zero, one, two, few, many }
 
@@ -123,7 +121,7 @@ const ordinalTplStr = `
 
 const pluralTestTplStr = genshared.DartHead + `
 import "package:test/test.dart";
-import '../lib/plural/plural.dart';
+import 'package:pgde/src/plural/plural.dart';
 
 void _testNamedKey(
     PluralFunc fn, num input, Form expected, String name, bool ordinal) {

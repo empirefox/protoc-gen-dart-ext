@@ -1,0 +1,135 @@
+{
+  "@@last_modified": "2019-05-13T04:17:04Z",
+  "@@locale": "en",
+  "@@x-entity": "PrefixV1",
+  "yotta": "yotta",
+  "@yotta": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "zetta": "zetta",
+  "@zetta": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "exa": "exa",
+  "@exa": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "peta": "peta",
+  "@peta": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "tera": "tera",
+  "@tera": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "giga": "giga",
+  "@giga": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "mega": "mega",
+  "@mega": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "kilo": "kilo",
+  "@kilo": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "hecto": "hecto",
+  "@hecto": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "deka": "deka",
+  "@deka": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "deci": "deci",
+  "@deci": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "centi": "centi",
+  "@centi": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "milli": "milli",
+  "@milli": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "micro": "micro",
+  "@micro": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "nano": "nano",
+  "@nano": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "pico": "pico",
+  "@pico": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "femto": "femto",
+  "@femto": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "atto": "atto",
+  "@atto": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "zepto": "zepto",
+  "@zepto": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "yocto": "yocto",
+  "@yocto": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "kibi": "kibi",
+  "@kibi": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "mebi": "mebi",
+  "@mebi": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "gibi": "gibi",
+  "@gibi": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "tebi": "tebi",
+  "@tebi": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "pebi": "pebi",
+  "@pebi": {
+    "type": "text",
+    "description": "SI units prefix"
+  },
+  "exbi": "exbi",
+  "@exbi": {
+    "type": "text",
+    "description": "SI units prefix"
+  }
+}

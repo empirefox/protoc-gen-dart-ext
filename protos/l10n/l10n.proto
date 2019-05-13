@@ -1,6 +1,5 @@
 syntax = "proto3";
 
-// most of it is for form
 package l10n;
 
 option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/l10n";
@@ -39,7 +38,7 @@ message OneofArb {
   string suffix = 6;
 }
 
-// all Arb(s) must sync with imports
+// all Arb(s) must sync with import.proto
 message Arb {
   bool ignore = 1;
   string value = 2;

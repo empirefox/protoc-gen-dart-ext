@@ -70,7 +70,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("resolve arb: %v", err)
 	}
-	resolved.Imports.AddNoAs("package:pgde/plural/plural.dart")
+	resolved.Imports.AddNoAs("package:pgde/plural.dart")
 	data.Imports = resolved.Imports.ToDartSource()
 	data.BaseArb.Imports = resolved.Entries.ToDartSource()
 	data.ImportsOut = NewSingleEntityImportsOut(resolved.ImportProto())

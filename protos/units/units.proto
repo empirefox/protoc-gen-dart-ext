@@ -15,10 +15,9 @@ extend google.protobuf.FieldOptions {
 
 message Unit {
   Show show = 1;
-  bool ordinal = 2;
 
-  repeated Cell dots = 3;
-  repeated Cell per = 4;
+  repeated Cell dots = 2;
+  repeated Cell per = 3;
 }
 
 message Show {
@@ -47,7 +46,7 @@ message Cell {
   int32 exponent = 1;
   PrefixV1 prefix = 2;
 
-  oneof unit {
+  oneof type {
     AtomV1 atom = 3;
 
     // universal symbol

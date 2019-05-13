@@ -3,6 +3,10 @@
 
 package l10n // import "github.com/empirefox/protoc-gen-dart-ext/pkg/l10n"
 
+/*
+most of it is for form
+*/
+
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
@@ -32,7 +36,7 @@ func (m *ValueArb) Reset()         { *m = ValueArb{} }
 func (m *ValueArb) String() string { return proto.CompactTextString(m) }
 func (*ValueArb) ProtoMessage()    {}
 func (*ValueArb) Descriptor() ([]byte, []int) {
-	return fileDescriptor_l10n_2d95d67895c045b0, []int{0}
+	return fileDescriptor_l10n_dd5bd2395b5e0cb6, []int{0}
 }
 func (m *ValueArb) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ValueArb.Unmarshal(m, b)
@@ -90,7 +94,7 @@ func (m *OneofArb) Reset()         { *m = OneofArb{} }
 func (m *OneofArb) String() string { return proto.CompactTextString(m) }
 func (*OneofArb) ProtoMessage()    {}
 func (*OneofArb) Descriptor() ([]byte, []int) {
-	return fileDescriptor_l10n_2d95d67895c045b0, []int{1}
+	return fileDescriptor_l10n_dd5bd2395b5e0cb6, []int{1}
 }
 func (m *OneofArb) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_OneofArb.Unmarshal(m, b)
@@ -172,7 +176,7 @@ func (m *Arb) Reset()         { *m = Arb{} }
 func (m *Arb) String() string { return proto.CompactTextString(m) }
 func (*Arb) ProtoMessage()    {}
 func (*Arb) Descriptor() ([]byte, []int) {
-	return fileDescriptor_l10n_2d95d67895c045b0, []int{2}
+	return fileDescriptor_l10n_dd5bd2395b5e0cb6, []int{2}
 }
 func (m *Arb) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Arb.Unmarshal(m, b)
@@ -252,11 +256,49 @@ type FieldArb struct {
 	Ignore bool   `protobuf:"varint,1,opt,name=ignore,proto3" json:"ignore,omitempty"`
 	Value  string `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
 	// can be "$" to use label
-	Desc                 string   `protobuf:"bytes,3,opt,name=desc,proto3" json:"desc,omitempty"`
-	Label                string   `protobuf:"bytes,4,opt,name=label,proto3" json:"label,omitempty"`
-	Helper               string   `protobuf:"bytes,5,opt,name=helper,proto3" json:"helper,omitempty"`
-	Hint                 string   `protobuf:"bytes,6,opt,name=hint,proto3" json:"hint,omitempty"`
-	Prefix               string   `protobuf:"bytes,7,opt,name=prefix,proto3" json:"prefix,omitempty"`
+	Desc  string `protobuf:"bytes,3,opt,name=desc,proto3" json:"desc,omitempty"`
+	Label string `protobuf:"bytes,4,opt,name=label,proto3" json:"label,omitempty"`
+	// / Text that provides context about the input [child]'s value, such as how
+	// / the value will be used.
+	// /
+	// / If non-null, the text is displayed below the input [child], in the same
+	// / location as [errorText]. If a non-null [errorText] value is specified then
+	// / the helper text is not shown.
+	Helper string `protobuf:"bytes,5,opt,name=helper,proto3" json:"helper,omitempty"`
+	// / Text that suggests what sort of input the field accepts.
+	// /
+	// / Displayed on top of the input [child] (i.e., at the same location on the
+	// / screen where text may be entered in the input [child]) when the input
+	// / [isEmpty] and either (a) [labelText] is null or (b) the input has the
+	// / focus.
+	Hint string `protobuf:"bytes,6,opt,name=hint,proto3" json:"hint,omitempty"`
+	// / Optional text prefix to place on the line before the input.
+	// /
+	// / Uses the [prefixStyle]. Uses [hintStyle] if [prefixStyle] isn't specified.
+	// / The prefix text is not returned as part of the user's input.
+	// /
+	// / If a more elaborate prefix is required, consider using [prefix] instead.
+	// / Only one of [prefix] and [prefixText] can be specified.
+	// /
+	// / The [prefixText] appears after the [prefixIcon], if both are specified.
+	// /
+	// / See also:
+	// /
+	// /  * [suffixText], the equivalent but on the trailing edge.
+	Prefix string `protobuf:"bytes,7,opt,name=prefix,proto3" json:"prefix,omitempty"`
+	// / Optional text suffix to place on the line after the input.
+	// /
+	// / Uses the [suffixStyle]. Uses [hintStyle] if [suffixStyle] isn't specified.
+	// / The suffix text is not returned as part of the user's input.
+	// /
+	// / If a more elaborate suffix is required, consider using [suffix] instead.
+	// / Only one of [suffix] and [suffixText] can be specified.
+	// /
+	// / The [suffixText] appears before the [suffixIcon], if both are specified.
+	// /
+	// / See also:
+	// /
+	// /  * [prefixText], the equivalent but on the leading edge.
 	Suffix               string   `protobuf:"bytes,8,opt,name=suffix,proto3" json:"suffix,omitempty"`
 	BoolTrue             string   `protobuf:"bytes,9,opt,name=boolTrue,proto3" json:"boolTrue,omitempty"`
 	BoolFalse            string   `protobuf:"bytes,10,opt,name=boolFalse,proto3" json:"boolFalse,omitempty"`
@@ -269,7 +311,7 @@ func (m *FieldArb) Reset()         { *m = FieldArb{} }
 func (m *FieldArb) String() string { return proto.CompactTextString(m) }
 func (*FieldArb) ProtoMessage()    {}
 func (*FieldArb) Descriptor() ([]byte, []int) {
-	return fileDescriptor_l10n_2d95d67895c045b0, []int{3}
+	return fileDescriptor_l10n_dd5bd2395b5e0cb6, []int{3}
 }
 func (m *FieldArb) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FieldArb.Unmarshal(m, b)
@@ -416,9 +458,9 @@ func init() {
 	proto.RegisterExtension(E_FieldArb)
 }
 
-func init() { proto.RegisterFile("protos/l10n/l10n.proto", fileDescriptor_l10n_2d95d67895c045b0) }
+func init() { proto.RegisterFile("protos/l10n/l10n.proto", fileDescriptor_l10n_dd5bd2395b5e0cb6) }
 
-var fileDescriptor_l10n_2d95d67895c045b0 = []byte{
+var fileDescriptor_l10n_dd5bd2395b5e0cb6 = []byte{
 	// 430 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x09, 0x6e, 0x88, 0x02, 0xff, 0xd4, 0x94, 0xbd, 0xee, 0xd3, 0x30,
 	0x14, 0xc5, 0x15, 0xfe, 0x6d, 0x9a, 0x18, 0x89, 0x21, 0x42, 0x55, 0x54, 0x15, 0x51, 0x3a, 0xb1,

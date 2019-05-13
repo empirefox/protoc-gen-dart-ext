@@ -6,6 +6,7 @@ option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/format";
 
 import "google/protobuf/descriptor.proto";
 import "protos/format/currency.proto";
+import "protos/units/units.proto";
 
 extend google.protobuf.FieldOptions {
   format.Format format = 919111;
@@ -121,4 +122,6 @@ message NumberFormat {
   }
 
   string locale = 4;
+  bool ordinal = 5;
+  units.Unit unit = 6;
 }

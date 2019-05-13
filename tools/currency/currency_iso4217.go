@@ -47,22 +47,22 @@ enum {{ EntityV }} {
 `
 
 const dartTplStr = genshared.DartHead + `
-import './currency_format.dart';
-import './units.l10n.dart';
+import '../l10n/pgde.l10n.dart';
+import 'currency_formats.dart';
 
 abstract class _Valuer {
-	String of(UnitsLocalization l);
+	String of(PgdeLocalization l);
 }
 
 class _XXX implements _Valuer {
   const _XXX();
-  String of(UnitsLocalization l) => '';
+  String of(PgdeLocalization l) => '';
 }
 
 {{- range .CcyNtry }}
   class _{{ .Ccy }} implements _Valuer {
     const _{{ .Ccy }}();
-    String of(UnitsLocalization l) => l.{{ entity }}{{ .Ccy | powerCamel }};
+    String of(PgdeLocalization l) => l.{{ entity }}{{ .Ccy | powerCamel }};
   }
 {{- end }}
 
@@ -75,8 +75,8 @@ class {{ EntityV }} {
 	String Function(dynamic) get format => getCurrencyFormat(ccy).format;
 	String Function(dynamic) get formatSimple => getSimpleCurrencyFormat(ccy).format;
 	String Function(dynamic) get formatNumber => getCurrencyNumberFormat(ccy).format;
-	String formatName(v, UnitsLocalization l) => (l == null || _v.of(l) == null) ? format(v) : (formatNumber(v) + _v.of(l));
-	String l10n(UnitsLocalization l10n) => l10n == null ? ccy : _v.of(l10n) ?? ccy;
+	String formatName(v, PgdeLocalization l) => (l == null || _v.of(l) == null) ? format(v) : (formatNumber(v) + _v.of(l));
+	String l10n(PgdeLocalization l10n) => l10n == null ? ccy : _v.of(l10n) ?? ccy;
 
 	static const XXX = const {{ EntityV }}._('', 0, 0, const _XXX());
 	{{- range .CcyNtry }}

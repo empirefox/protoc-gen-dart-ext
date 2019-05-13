@@ -1,5 +1,5 @@
 import "package:test/test.dart";
-import '../lib/plural/finvtw.dart';
+import 'package:pgde/src/plural/finvtw.dart';
 
 void _testVars(num value, int fExpected, int iExpected, double nExpected,
     int vExpected, int tExpected, int wExpected) {

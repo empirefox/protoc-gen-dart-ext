@@ -1,0 +1,256 @@
+{
+	"@@last_modified": "2019-05-15T19:23:47Z",
+	"@@locale": "en",
+	"fieldLength": "{field} length",
+	"@fieldLength": {
+		"type": "text",
+		"placeholders": {
+			"field": {
+				"x-lang-info": [
+					{
+						"lang": "dart",
+						"info": "String"
+					}
+				]
+			}
+		}
+	},
+	"fieldItems": "The quantity of {field}",
+	"@fieldItems": {
+		"type": "text",
+		"placeholders": {
+			"field": {
+				"x-lang-info": [
+					{
+						"lang": "dart",
+						"info": "String"
+					}
+				]
+			}
+		}
+	},
+	"now": "now",
+	"@now": {
+		"type": "text"
+	},
+	"eq": "equal",
+	"@eq": {
+		"type": "text"
+	},
+	"gt": "be greater than",
+	"@gt": {
+		"type": "text"
+	},
+	"gte": "be greater than or equal to",
+	"@gte": {
+		"type": "text"
+	},
+	"lt": "less than",
+	"@lt": {
+		"type": "text"
+	},
+	"lte": "less than or equal to",
+	"@lte": {
+		"type": "text"
+	},
+	"oneof": "be one of",
+	"@oneof": {
+		"type": "text"
+	},
+	"oneofx": "not be one of",
+	"@oneofx": {
+		"type": "text"
+	},
+	"range": "be inside range",
+	"@range": {
+		"type": "text"
+	},
+	"rangex": "be outside range",
+	"@rangex": {
+		"type": "text"
+	},
+	"pattern": "match the pattern",
+	"@pattern": {
+		"type": "text"
+	},
+	"prefix": "have prefix",
+	"@prefix": {
+		"type": "text"
+	},
+	"suffix": "have suffix",
+	"@suffix": {
+		"type": "text"
+	},
+	"contains": "contain",
+	"@contains": {
+		"type": "text"
+	},
+	"mustConst": "{field} must {rule} {kConstWithUnit}",
+	"@mustConst": {
+		"type": "text",
+		"placeholders": {
+			"field": {
+				"x-lang-info": [
+					{
+						"lang": "dart",
+						"info": "String"
+					}
+				]
+			},
+			"rule": {
+				"x-lang-info": [
+					{
+						"lang": "dart",
+						"info": "String"
+					}
+				]
+			},
+			"kConstWithUnit": {
+				"x-lang-info": [
+					{
+						"lang": "dart",
+						"info": "String"
+					}
+				]
+			}
+		}
+	},
+	"unique": "unique",
+	"@unique": {
+		"type": "text"
+	},
+	"noSparse": "a non-sparse map, all pairs must be non-nil",
+	"@noSparse": {
+		"type": "text"
+	},
+	"email": "email",
+	"@email": {
+		"type": "text"
+	},
+	"hostname": "hostname",
+	"@hostname": {
+		"type": "text"
+	},
+	"ip": "ip",
+	"@ip": {
+		"type": "text"
+	},
+	"ipv4": "ipv4",
+	"@ipv4": {
+		"type": "text"
+	},
+	"ipv6": "ipv6",
+	"@ipv6": {
+		"type": "text"
+	},
+	"uri": "uri",
+	"@uri": {
+		"type": "text"
+	},
+	"uriRef": "uri ref",
+	"@uriRef": {
+		"type": "text"
+	},
+	"mustBe": "{field} must be {something}",
+	"@mustBe": {
+		"type": "text",
+		"placeholders": {
+			"field": {
+				"x-lang-info": [
+					{
+						"lang": "dart",
+						"info": "String"
+					}
+				]
+			},
+			"something": {
+				"x-lang-info": [
+					{
+						"lang": "dart",
+						"info": "String"
+					}
+				]
+			}
+		}
+	},
+	"mustWithinNow": "{field} must be within {duration} of now",
+	"@mustWithinNow": {
+		"type": "text",
+		"placeholders": {
+			"field": {
+				"x-lang-info": [
+					{
+						"lang": "dart",
+						"info": "String"
+					}
+				]
+			},
+			"duration": {
+				"x-lang-info": [
+					{
+						"lang": "dart",
+						"info": "String"
+					}
+				]
+			}
+		}
+	},
+	"mustWithinGtNow": "{field} must be greater than now within {duration}",
+	"@mustWithinGtNow": {
+		"type": "text",
+		"placeholders": {
+			"field": {
+				"x-lang-info": [
+					{
+						"lang": "dart",
+						"info": "String"
+					}
+				]
+			},
+			"duration": {
+				"x-lang-info": [
+					{
+						"lang": "dart",
+						"info": "String"
+					}
+				]
+			}
+		}
+	},
+	"mustWithinLtNow": "{field} must be less than now within {duration}",
+	"@mustWithinLtNow": {
+		"type": "text",
+		"placeholders": {
+			"field": {
+				"x-lang-info": [
+					{
+						"lang": "dart",
+						"info": "String"
+					}
+				]
+			},
+			"duration": {
+				"x-lang-info": [
+					{
+						"lang": "dart",
+						"info": "String"
+					}
+				]
+			}
+		}
+	},
+	"required": "{field} is required",
+	"@required": {
+		"type": "text",
+		"placeholders": {
+			"field": {
+				"x-lang-info": [
+					{
+						"lang": "dart",
+						"info": "String"
+					}
+				]
+			}
+		}
+	}
+}

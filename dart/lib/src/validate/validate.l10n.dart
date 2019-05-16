@@ -1,8 +1,8 @@
 import 'package:intl/intl.dart';
 
-// TODO PgdeLocalization implements Translator
-// flutter pub pub run intl_translation:extract_to_arb --output-dir=lib lib/translate.dart
-// flutter pub pub run intl_translation:generate_from_arb --output-dir=lib --no-use-deferred-loading lib/translate.dart lib/*.arb
+// Only used to generate arb!
+// make gen_validate_arb
+// make rewrite_validate_arb
 class Translator {
   const Translator();
 
@@ -29,11 +29,10 @@ class Translator {
   String get suffix => Intl.message('have suffix', name: 'suffix');
   String get contains => Intl.message('contain', name: 'contains');
 
-  String mustConst(String field, String rule, kConst, [String unit = '']) =>
-      Intl.message(
-        "$field must $rule $kConst$unit",
+  String mustConst(String field, String rule, kConstWithUnit) => Intl.message(
+        "$field must $rule $kConstWithUnit",
         name: 'mustConst',
-        args: [field, rule, kConst, unit],
+        args: [field, rule, kConstWithUnit],
       );
 
   String get unique => Intl.message('unique', name: 'unique');

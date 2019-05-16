@@ -8,7 +8,7 @@ export 'atom.dart';
 export 'prefix.dart';
 
 class Unit {
-  static const showSymbol = const Show(false, Show.symbolPrefix, Show.symbol);
+  static const showSymbol = Show(false, Show.symbolPrefix, Show.symbol);
 
   final Show show;
   final List<Cell> _dots;
@@ -37,13 +37,15 @@ class Unit {
 }
 
 class Show {
-  static const symbolPrefix = const _PrefixSymbolValuer();
-  static const namePrefix = const _PrefixNameValuer();
+  static const disabled = Show._disabled();
 
-  static const symbol = const _AtomSymbolValuer();
-  static const one = const _AtomOneValuer();
-  static const other = const _AtomOtherValuer();
-  static const parse = const _AtomParseValuer();
+  static const symbolPrefix = _PrefixSymbolValuer();
+  static const namePrefix = _PrefixNameValuer();
+
+  static const symbol = _AtomSymbolValuer();
+  static const one = _AtomOneValuer();
+  static const other = _AtomOtherValuer();
+  static const parse = _AtomParseValuer();
 
   final bool off;
   final _PrefixValuer prefix;
@@ -53,6 +55,11 @@ class Show {
       : assert(off != null),
         assert(prefix != null),
         assert(atom != null);
+
+  const Show._disabled()
+      : off = true,
+        prefix = null,
+        atom = null;
 
   bool get willParse => !off && atom == parse;
 }

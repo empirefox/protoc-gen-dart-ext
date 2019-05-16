@@ -916,8 +916,7 @@ class CurrencyV1 {
   String formatName(v, PgdeLocalization l) => (l == null || _v.of(l) == null)
       ? format(v)
       : (formatNumber(v) + _v.of(l));
-  String l10n(PgdeLocalization l10n) =>
-      l10n == null ? ccy : _v.of(l10n) ?? ccy;
+  String l10n(PgdeLocalization l10n) => l10n == null ? ccy : _v.of(l10n) ?? ccy;
 
   static const XXX = const CurrencyV1._('', 0, 0, const _XXX());
   static const ALL = const CurrencyV1._('ALL', 8, 100, const _ALL());

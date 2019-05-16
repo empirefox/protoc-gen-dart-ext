@@ -3,7 +3,6 @@ ZipFile = "$SRC_DIR/l10n/archive.zip"
 OriginLocale = "en"
 PackageEntity = "Pgde"
 
-# TODO add validate.arb
 # TODO add from.arb
 
 [[ArbInfos]]
@@ -20,3 +19,8 @@ Entity = "Prefix"
 OriginFile = "$SRC_DIR/format/currency.arb"
 InZipFileName = "currency.arb"
 Entity = "Currency"
+
+[[ArbInfos]]
+OriginFile = "$SRC_DIR/validate/validate.arb"
+InZipFileName = "validate.arb"
+Entity = "Validate"

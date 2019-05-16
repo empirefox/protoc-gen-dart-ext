@@ -3,6 +3,7 @@ package arb
 import (
 	"encoding/json"
 	"fmt"
+	"sort"
 
 	"github.com/emirpasic/gods/maps/linkedhashmap"
 )
@@ -19,6 +20,20 @@ type ArbAttributes struct {
 	MaybeSameWith string `json:"x-maybe_same_with,omitempty"`
 
 	Export string `json:"x-export,omitempty"`
+}
+
+func (attr *ArbAttributes) LangParam(lang, param string) *LangParam {
+	if len(attr.Placeholders) == 0 {
+		return nil
+	}
+	return attr.Placeholders.LangParam(lang, param)
+}
+
+func (attr *ArbAttributes) LangParams(lang string) []*LangParam {
+	if len(attr.Placeholders) == 0 {
+		return nil
+	}
+	return attr.Placeholders.LangParams(lang)
 }
 
 type ArbPlaceholders []*ArbPlaceholder
@@ -50,6 +65,9 @@ func (s ArbPlaceholders) LangParams(lang string) []*LangParam {
 func (s ArbPlaceholders) MarshalJSON() ([]byte, error) {
 	m := linkedhashmap.New()
 	for _, holder := range s {
+		if len(holder.LangInfos) > 1 {
+			sort.Sort(holder.LangInfos)
+		}
 		m.Put(holder.Name, holder)
 	}
 	return m.ToJSON()
@@ -92,6 +110,10 @@ type ArbPlaceholder struct {
 //easyjson:json
 type ArbLangInfos []*ArbLangInfo
 
+func (s ArbLangInfos) Len() int           { return len(s) }
+func (s ArbLangInfos) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
+func (s ArbLangInfos) Less(i, j int) bool { return s[i].Lang < s[j].Lang }
+
 func (s ArbLangInfos) GetLang(lang string) *ArbLangInfo {
 	for _, li := range s {
 		if li.Lang == lang {
@@ -101,11 +123,20 @@ func (s ArbLangInfos) GetLang(lang string) *ArbLangInfo {
 	return nil
 }
 
+func (s ArbLangInfos) Clone() ArbLangInfos {
+	clones := make(ArbLangInfos, len(s))
+	for i, info := range s {
+		clone := *info
+		clones[i] = &clone
+	}
+	return clones
+}
+
 //easyjson:json
 type ArbLangInfo struct {
-	Lang   string
-	Info   string
-	Import string
+	Lang   string `toml:",omitempty" json:"lang,omitempty"`
+	Info   string `toml:",omitempty" json:"info,omitempty"`
+	Import string `toml:",omitempty" json:"import,omitempty"`
 }
 
 type LangParam struct {

@@ -4,6 +4,19 @@ import (
 	"github.com/elliotchance/pie/pie"
 )
 
+// FilterNot works the same as Filter, with a negated condition. That is, it will
+// return a new slice only containing the elements that returned false from the
+// condition. The returned slice may contain zero elements (nil).
+func (ss ImportEntries) FilterNot(condition func(*ImportEntry) bool) (ss2 ImportEntries) {
+	for _, s := range ss {
+		if !condition(s) {
+			ss2 = append(ss2, s)
+		}
+	}
+
+	return
+}
+
 // ToStrings transforms each element to a string.
 func (ss ImportEntries) ToStrings(transform func(*ImportEntry) string) pie.Strings {
 	l := len(ss)
@@ -19,17 +32,4 @@ func (ss ImportEntries) ToStrings(transform func(*ImportEntry) string) pie.Strin
 	}
 
 	return result
-}
-
-// Unselect works the same as Select, with a negated condition. That is, it will
-// return a new slice only containing the elements that returned false from the
-// condition. The returned slice may contain zero elements (nil).
-func (ss ImportEntries) Unselect(condition func(*ImportEntry) bool) (ss2 ImportEntries) {
-	for _, s := range ss {
-		if !condition(s) {
-			ss2 = append(ss2, s)
-		}
-	}
-
-	return
 }

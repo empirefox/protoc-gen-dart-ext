@@ -45,7 +45,7 @@ func (a *Arb) Attrs() map[string]*ArbAttributes {
 	return a.attrs
 }
 
-func (a *Arb) resources() map[string]*ArbResource {
+func (a *Arb) ResourceMap() map[string]*ArbResource {
 	if a.resourceMap == nil {
 		a.resourceMap = make(map[string]*ArbResource, len(a.Resources))
 		for _, r := range a.Resources {
@@ -158,7 +158,7 @@ func (ar *ArbResource) SameWith() (string, error) {
 	if other == "" {
 		return "", nil
 	}
-	r, ok := ar.Arb.resources()[other]
+	r, ok := ar.Arb.ResourceMap()[other]
 	if !ok {
 		return "", fmt.Errorf("other resource not found: x-maybe_same_with=%s", other)
 	}

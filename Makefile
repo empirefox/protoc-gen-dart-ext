@@ -13,6 +13,21 @@ dart_lib := ${dart_path}/lib
 dart_src := ${dart_lib}/src
 dart_test := ${dart_path}/test
 
+.PHONY: gen_validate_arb
+gen_validate_arb:
+	@cd ${dart_path} && \
+		flutter pub pub run intl_translation:extract_to_arb \
+		--locale=en \
+		--output-dir=lib/src/validate \
+		--output-file=validate.arb \
+		lib/src/validate/validate.l10n.dart
+
+.PHONY: rewrite_validate_arb
+rewrite_validate_arb:
+	@go run ${cmd_path}/rewrite_arb_langs/*.go \
+		-arb=${dart_src}/validate/validate.arb \
+		-langs=${dart_src}/validate/validate.arb.toml
+
 .PHONY: gen_golang
 gen_golang:
 	@easyjson ${pkg_path}/arb/arb_attr.go
@@ -20,6 +35,7 @@ gen_golang:
 	@easyjson -no_std_marshalers ${pkg_path}/arb/arb.go
 	@go generate ${pkg_path}/dart
 	@go generate ${pkg_path}/genshared
+	@cd ${cmd_path}/rewrite_arb_langs && go generate
 
 .PHONY: gen_plural
 gen_plural:

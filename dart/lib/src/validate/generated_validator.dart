@@ -7,8 +7,6 @@ import '../l10n/pgde.l10n.dart';
 import '../plural/plural.dart';
 import '../units/units.dart';
 
-import 'translate.dart';
-
 /// The base interface for all generated PGV validators.
 /// Asserts validation rules on a protobuf object.
 /// Throw [ValidationError] with the first validation error encountered.
@@ -23,25 +21,24 @@ abstract class TranslateContext {
   String enumName(Type pbEnumType);
   String enumValue(ProtobufEnum value);
   String protoName(Type msgType);
-  String oneofName(Type msgType, int oneof);
+  String oneofName(Type msgType, Type oneofEnumType);
   String fieldName(Type msgType, int tagNumber);
   String boolFieldValue(Type msgType, int tagNumber);
 
   // fallback format
-  String fallbackFormat(kConst) => kConst is String ? kConst : '$kConst';
+  String fallbackFormat(ErrorRequiredInfo info, kConst);
 }
 
-class ValidateErrorInfo {
+class ErrorRequiredInfo {
   final MaterialLocalizations md;
   final PgdeLocalization l10n;
   final Formatter fmt;
-  final Translator tr;
   final TranslateContext ctx;
   final GeneratedMessage proto;
   final int tagNumber;
 
-  const ValidateErrorInfo(this.md, this.l10n, this.fmt, this.tr, this.ctx,
-      this.proto, this.tagNumber);
+  const ErrorRequiredInfo(
+      this.md, this.l10n, this.fmt, this.ctx, this.proto, this.tagNumber);
 
   Type get pbType => proto.runtimeType;
   get value => tagNumber != null ? proto.getFieldOrNull(tagNumber) : null;
@@ -60,69 +57,39 @@ class ValidateErrorInfo {
 
   Form plural(v, [bool ordinal]) => numFmt.plural(v, ordinal);
 
-  ValidateErrorInfo notField() =>
-      ValidateErrorInfo(md, l10n, fmt, tr, ctx, proto, null);
+  ErrorRequiredInfo notField() =>
+      ErrorRequiredInfo(md, l10n, fmt, ctx, proto, null);
 }
 
 abstract class ValidateError extends Error {
-  final ValidateErrorInfo info;
+  final ErrorRequiredInfo info;
 
   final Type pbType;
-
+  final String fieldName;
   final dynamic value;
 
+  final PgdeLocalization l10n;
   final Formatter fmt;
+  final TranslateContext ctx;
 
-  // for string_len string_len_bytes bytes_len
-  // eq_const_len
-  final AtomV1 lenAtom;
-
-  final bool isItems;
-
-  ValidateError(this.info, {this.lenAtom, this.isItems})
+  ValidateError(this.info)
       : pbType = info.pbType,
+        fieldName = info.fieldName,
         value = info.value,
+        l10n = info.l10n,
         fmt = info.fmt,
-        assert(lenAtom == null ||
-            lenAtom == AtomV1.bit ||
-            lenAtom == AtomV1.byte ||
-            lenAtom == AtomV1.character),
-        assert(lenAtom == null || !isItems);
+        ctx = info.ctx;
 
-  bool get isLen => lenAtom != null;
-  bool get isLenOrItems => isLen || isItems;
-
-  String get fieldLenOrItemsOrName => isLen
-      ? tr.fieldLength(fieldName)
-      : (isItems ? tr.fieldItems(fieldName) : fieldName);
-
-  String get fieldName => info.fieldName;
-  Translator get tr => info.tr;
-  TranslateContext get ctx => info.ctx;
-
-  // only aviliable when lenAtom exist
-  String lenUnit(kConst) => info.atomForm(lenAtom, info.plural(kConst, false));
-  String get lenOther => info.atomForm(lenAtom, Form.other);
-
-  // only aviliable when isNum
-  String get unitOtherOr => info.isNum ? info.unitForm(Form.other) : null;
-  String unitL10nOr(v) => info.isNum ? info.unitForm(info.plural(v)) : null;
-
-  String format(v) {
-    if (lenAtom != null) return '$v';
-
-    if (info.fmt != null) return info.fmt.format(v, info.md, info.l10n);
+  String format(v, [bool unitOff = false]) {
+    if (info.fmt != null)
+      return info.fmt
+          .format(v, info.md, info.l10n, show: unitOff ? Show.disabled : null);
 
     // v is kConst
     if (v is ProtobufEnum) return ctx.enumValue(v);
 
-    final pf = formatPreFallback(v);
-    if (pf != null) return pf;
-
-    return ctx.fallbackFormat(v);
+    return ctx.fallbackFormat(info, v) ?? (v is String ? v : '$v');
   }
-
-  String formatPreFallback(v) => null;
 
   @override
   String toString() => throw UnimplementedError('$runtimeType.toString');
@@ -133,17 +100,18 @@ abstract class ValidateError extends Error {
 //
 
 class RequiredError extends ValidateError {
-  RequiredError(ValidateErrorInfo info) : super(info);
+  RequiredError(ErrorRequiredInfo info) : super(info);
   @override
-  String toString() => tr.required(fieldName);
+  String toString() => l10n.validateRequired(fieldName);
 }
 
 class OneofRequiredError extends RequiredError {
-  final int oneof;
-  OneofRequiredError(ValidateErrorInfo info, this.oneof)
+  // eg MaterialColor_Color
+  final Type oneofEnumType;
+  OneofRequiredError(ErrorRequiredInfo info, this.oneofEnumType)
       : super(info.notField());
   @override
-  String get fieldName => ctx.oneofName(pbType, oneof);
+  String get fieldName => ctx.oneofName(pbType, oneofEnumType);
 }
 
 //
@@ -151,41 +119,70 @@ class OneofRequiredError extends RequiredError {
 //
 
 class BeSomethingError extends ValidateError {
-  /// something: tr.email, tr.ipv4...
+  /// something: l10n.email, l10n.ipv4...
   final String something;
-  BeSomethingError(ValidateErrorInfo info, this.something) : super(info);
+  BeSomethingError(ErrorRequiredInfo info, this.something) : super(info);
   @override
-  String toString() => tr.mustBe(fieldName, something);
+  String toString() => l10n.validateMustBe(fieldName, something);
 }
 
 //
-// eq const
+// eq gt lte pattern contains const
 //
 
 class ConstError extends ValidateError {
-  final dynamic kConst;
+  /// any mustConst rule: l10n.eq, l10n.gt, l10n.lte...
+  final String rule;
+
+  // kConst can be l10n.now
+  final kConst;
+
   // for bytes
   final String kConstPrint;
 
-  ConstError(ValidateErrorInfo info, this.kConst,
-      {this.kConstPrint, final AtomV1 lenAtom})
-      : super(info, lenAtom: lenAtom);
+  ConstError(ErrorRequiredInfo info, this.rule, this.kConst, [this.kConstPrint])
+      : super(info);
 
-  String get fConst => format(kConst);
+  @override
+  String toString() =>
+      l10n.validateMustConst(fieldName, rule, kConstPrint ?? format(kConst));
+}
+
+class LenConstError extends ValidateError {
+  /// any int or time mustConst rule: l10n.eq, l10n.gt, l10n.lte...
+  final String rule;
+  final int kConst;
+  final AtomV1 lenAtom;
+
+  LenConstError.byte(ErrorRequiredInfo info, this.rule, this.kConst)
+      : lenAtom = AtomV1.byte,
+        super(info);
+
+  LenConstError.character(ErrorRequiredInfo info, this.rule, this.kConst)
+      : lenAtom = AtomV1.character,
+        super(info);
+
+  String get lenUnit => info.atomForm(lenAtom, info.plural(kConst, false));
 
   @override
   String toString() {
-    // string_len, string_len_bytes..., kConstPrint is empty
-    if (isLen)
-      return tr.mustConst(
-          tr.fieldLength(fieldName), tr.eq, fConst, lenUnit(kConst));
-    // bytes already converted to string
-    if (kConstPrint != null) return tr.mustConst(fieldName, tr.eq, kConstPrint);
-    // get from l10n
-    if (kConst is bool) return ctx.boolFieldValue(pbType, info.tagNumber);
-    // others like bytes ProtobufEnum Duration and Datetime or any other numbers
-    return tr.mustConst(fieldName, tr.eq, fConst, unitL10nOr(kConst));
+    return l10n.validateMustConst(
+        l10n.validateFieldLength(fieldName), rule, '$kConst$lenUnit');
   }
+}
+
+class ItemsLenConstError extends ValidateError {
+  final int kConst;
+  ItemsLenConstError(ErrorRequiredInfo info, this.kConst) : super(info);
+  @override
+  String toString() => l10n.validateMustConst(
+      l10n.validateFieldItems(fieldName), l10n.validateEq, '$kConst');
+}
+
+class BoolError extends ValidateError {
+  BoolError(ErrorRequiredInfo info) : super(info);
+  @override
+  String toString() => ctx.boolFieldValue(pbType, info.tagNumber);
 }
 
 //
@@ -193,51 +190,22 @@ class ConstError extends ValidateError {
 //
 
 class InError extends ValidateError {
+  final String rule;
   final List kConst;
   final List<String> kConstPrint;
-  final bool isNot;
 
-  InError(ValidateErrorInfo info, this.kConst,
-      {this.kConstPrint, this.isNot = false})
-      : super(info);
+  InError.inList(ErrorRequiredInfo info, this.kConst, {this.kConstPrint})
+      : rule = info.l10n.validateOneof,
+        super(info);
 
-  InError.not(ValidateErrorInfo info, List kConst, {List<String> kConstPrint})
-      : this(info, kConst, kConstPrint: kConstPrint, isNot: true);
-
-  @override
-  String toString() {
-    return tr.mustConst(
-        fieldName,
-        isNot ? tr.oneofx : tr.oneof,
-        // number_in string_in bytes_in any_in
-        kConstPrint ??
-            // others like enum.defined_only duration.in
-            kConst.map((v) => format(v)).toList(),
-        unitOtherOr);
-  }
-}
-
-//  Overflow of uint or int32?
-
-//
-// gt or lt
-//
-
-class GtLtError extends ValidateError {
-  // kConst can be tr.now
-  final dynamic kConst;
-
-  /// rule: tr.gt, tr.lte...
-  final String rule;
-
-  GtLtError(ValidateErrorInfo info, this.rule, this.kConst,
-      {AtomV1 lenAtom, bool isItems})
-      : super(info, lenAtom: lenAtom, isItems: isItems);
+  InError.notInList(ErrorRequiredInfo info, this.kConst, {this.kConstPrint})
+      : rule = info.l10n.validateOneofx,
+        super(info);
 
   @override
   String toString() {
-    return tr.mustConst(
-        fieldLenOrItemsOrName, rule, kConst, unitL10nOr(kConst));
+    final kConstWithUnit = kConstPrint ?? kConst.map((v) => format(v)).toList();
+    return l10n.validateMustConst(fieldName, rule, '$kConstWithUnit');
   }
 }
 
@@ -245,31 +213,58 @@ class GtLtError extends ValidateError {
 // range in or out
 //
 
-class RangeError extends ValidateError {
-  dynamic start;
-  dynamic end;
+class ErrorRange {
+  final ErrorRequiredInfo info;
+  final start;
+  final end;
   final bool isOut;
   final bool canEqStart;
   final bool canEqEnd;
 
-  RangeError(ValidateErrorInfo info, this.start, this.end,
-      {AtomV1 lenAtom,
-      bool isItems,
-      this.isOut = false,
-      this.canEqStart = false,
-      this.canEqEnd = false})
-      : super(info, lenAtom: lenAtom, isItems: isItems);
+  const ErrorRange(this.info, this.start, this.end,
+      {this.isOut = false, this.canEqStart = false, this.canEqEnd = false});
+
+  String get rule => isOut ? info.l10n.validateRangex : info.l10n.validateRange;
 
   String get prefix => (isOut ? !canEqStart : canEqStart) ? '[' : '(';
   String get suffix => (isOut ? !canEqEnd : canEqEnd) ? ']' : ')';
+}
+
+class RangeError extends ValidateError {
+  final ErrorRange r;
+
+  RangeError(this.r) : super(r.info);
+
+  String get trField => fieldName;
+  String get unit => info.isNum ? info.unitForm(Form.other) : '';
+
   // example: [1, 30)
-  String get range => "$prefix${format(start)}, ${format(end)}$suffix";
+  String get range =>
+      "${r.prefix}${format(r.start, true)}, ${format(r.end, true)}${r.suffix}$unit";
 
   @override
-  String toString() {
-    return tr.mustConst(fieldLenOrItemsOrName, isOut ? tr.rangex : tr.range,
-        range, isLen ? lenOther : unitOtherOr);
-  }
+  String toString() => l10n.validateMustConst(trField, r.rule, range);
+}
+
+class RangeLenError extends RangeError {
+  final AtomV1 lenAtom;
+
+  RangeLenError.byte(ErrorRange r)
+      : lenAtom = AtomV1.byte,
+        super(r);
+
+  RangeLenError.character(ErrorRange r)
+      : lenAtom = AtomV1.character,
+        super(r);
+
+  String get trField => l10n.validateFieldLength(fieldName);
+  String get unit => info.atomForm(lenAtom, Form.other);
+}
+
+class RangeItemsLenError extends RangeError {
+  RangeItemsLenError(ErrorRange r) : super(r);
+  String get trField => l10n.validateFieldItems(fieldName);
+  String get unit => '';
 }
 
 //
@@ -280,14 +275,15 @@ class WithinNowError extends ValidateError {
   final bool isGtNow;
   final Duration kConst;
 
-  WithinNowError(ValidateErrorInfo info, this.isGtNow, this.kConst)
+  WithinNowError(ErrorRequiredInfo info, this.isGtNow, this.kConst)
       : super(info);
 
   @override
   String toString() {
     return isGtNow == null
-        ? tr.mustWithinNow
-        : (isGtNow ? tr.mustWithinGtNow : tr.mustWithinLtNow)(
-            fieldLenOrItemsOrName, format(kConst));
+        ? l10n.validateMustWithinNow
+        : (isGtNow
+            ? l10n.validateMustWithinGtNow
+            : l10n.validateMustWithinLtNow)(fieldName, format(kConst));
   }
 }

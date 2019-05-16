@@ -4,7 +4,6 @@ import (
 	"text/template"
 
 	"github.com/Masterminds/sprig"
-
 	"github.com/empirefox/messageformat"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/dart"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/genshared"
@@ -174,7 +173,7 @@ const literalTplStr = `
 	{{ end }}
 {{ end }}
 `
-const varTplStr = `output.write('${{ . }}');`
+const varTplStr = `output.write({{ .Data.TplAsString .Varname }});`
 
 const selectTplStr = `
 {{ if .Choices }}

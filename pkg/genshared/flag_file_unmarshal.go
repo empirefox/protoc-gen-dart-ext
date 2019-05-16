@@ -37,6 +37,14 @@ var DefaultFileUnmarshalers = FileUnmarshalers{
 	},
 }
 
+type PreUnmarshaler interface {
+	PreUnmarshal()
+}
+
+type PostUnmarshaler interface {
+	PostUnmarshal() error
+}
+
 func NewInputParser(v interface{}) (*InputFilesParser, error) {
 	return DefaultFileUnmarshalers.NewInputParser(v)
 }
@@ -156,9 +164,20 @@ func (fs *InputFilesParser) Parse() (err error) {
 			return err
 		}
 
+		if pu, ok := arg.ptr.(PreUnmarshaler); ok {
+			pu.PreUnmarshal()
+		}
+
 		err = arg.unmarshal(b, arg.ptr)
 		if err != nil {
 			return err
+		}
+
+		if pu, ok := arg.ptr.(PostUnmarshaler); ok {
+			err = pu.PostUnmarshal()
+			if err != nil {
+				return err
+			}
 		}
 
 		if arg.isNil {

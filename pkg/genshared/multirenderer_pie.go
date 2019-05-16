@@ -1,12 +1,15 @@
 package genshared
 
-// Append will return a new slice with the elements appended to the end. It is a
-// wrapper for the internal append(). It is offered as a function so that it can
-// more easily chained.
+// Append will return a new slice with the elements appended to the end.
 //
 // It is acceptable to provide zero arguments.
 func (ss MultiRenderer) Append(elements ...Renderer) MultiRenderer {
-	return append(ss, elements...)
+	// Copy ss, to make sure no memory is overlapping between input and
+	// output. See issue #97.
+	result := append(MultiRenderer{}, ss...)
+
+	result = append(result, elements...)
+	return result
 }
 
 // Extend will return a new slice with the slices of elements appended to the

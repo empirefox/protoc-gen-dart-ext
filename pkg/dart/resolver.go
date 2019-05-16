@@ -10,7 +10,7 @@ import (
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/imports"
 )
 
-//go:generate pie ImportEntries.ToStrings.Unselect
+//go:generate pie ImportEntries.ToStrings.FilterNot
 type ImportEntries []*ImportEntry
 
 func (s ImportEntries) ToDartSource() string {
@@ -134,8 +134,8 @@ type Resource struct {
 }
 
 func (r Resource) TplAsString(varname string) string {
-	lp := r.Attr().Placeholders.LangParam("dart", varname)
-	if lp.Info == "String" {
+	lp := r.Attr().LangParam("dart", varname)
+	if lp != nil && lp.Info == "String" {
 		return varname
 	}
 	return fmt.Sprintf(`'$%s'`, varname)
@@ -144,7 +144,12 @@ func (r Resource) TplAsString(varname string) string {
 func (r Resource) TplSelectCaseCond(varname, key string) string {
 	// varname: form
 	// key: zero one two...
-	lp := r.Attr().Placeholders.LangParam("dart", varname)
+	lp := r.Attr().LangParam("dart", varname)
+	if lp == nil {
+		// TODO how?
+		return key
+	}
+
 	if lp.Info == "String" {
 		return RawString(key)
 	}
@@ -211,7 +216,7 @@ func Resolve(resolver *arb.Resolver, a *arb.Arb) (*Resolved, error) {
 
 	// get sorted import path list
 	paths := ra.Entries.
-		Unselect(func(nty *ImportEntry) bool { return nty.self }).
+		FilterNot(func(nty *ImportEntry) bool { return nty.self }).
 		ToStrings(func(nty *ImportEntry) string { return nty.resolved.Import }).
 		Unique().
 		Sort()
@@ -245,10 +250,10 @@ func Resolve(resolver *arb.Resolver, a *arb.Arb) (*Resolved, error) {
 	return &ra, nil
 }
 
-func (ra *Resolved) Resources() []Resource {
-	rs := make([]Resource, len(ra.Arb.Resources))
+func (ra *Resolved) Resources() []*Resource {
+	rs := make([]*Resource, len(ra.Arb.Resources))
 	for i, r := range ra.Arb.Resources {
-		rs[i] = Resource{ArbResource: r, Resolved: ra}
+		rs[i] = &Resource{ArbResource: r, Resolved: ra}
 	}
 	return rs
 }

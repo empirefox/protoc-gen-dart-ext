@@ -221,11 +221,11 @@ func easyjson5edff16dDecodeGithubComEmpirefoxProtocGenDartExtPkgArb2(in *jlexer.
 			continue
 		}
 		switch key {
-		case "Lang":
+		case "lang":
 			out.Lang = string(in.String())
-		case "Info":
+		case "info":
 			out.Info = string(in.String())
-		case "Import":
+		case "import":
 			out.Import = string(in.String())
 		default:
 			in.SkipRecursive()
@@ -241,8 +241,8 @@ func easyjson5edff16dEncodeGithubComEmpirefoxProtocGenDartExtPkgArb2(out *jwrite
 	out.RawByte('{')
 	first := true
 	_ = first
-	{
-		const prefix string = ",\"Lang\":"
+	if in.Lang != "" {
+		const prefix string = ",\"lang\":"
 		if first {
 			first = false
 			out.RawString(prefix[1:])
@@ -251,8 +251,8 @@ func easyjson5edff16dEncodeGithubComEmpirefoxProtocGenDartExtPkgArb2(out *jwrite
 		}
 		out.String(string(in.Lang))
 	}
-	{
-		const prefix string = ",\"Info\":"
+	if in.Info != "" {
+		const prefix string = ",\"info\":"
 		if first {
 			first = false
 			out.RawString(prefix[1:])
@@ -261,8 +261,8 @@ func easyjson5edff16dEncodeGithubComEmpirefoxProtocGenDartExtPkgArb2(out *jwrite
 		}
 		out.String(string(in.Info))
 	}
-	{
-		const prefix string = ",\"Import\":"
+	if in.Import != "" {
+		const prefix string = ",\"import\":"
 		if first {
 			first = false
 			out.RawString(prefix[1:])

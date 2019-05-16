@@ -1,0 +1,13 @@
+# [[Placeholders]]
+# Resource = "fieldLength"
+# Name = "field"
+# Action = "add"
+# Regexp = false
+
+# [[Placeholders.LangInfos]]
+# Lang = "go"
+# Info = "string"
+
+[[Default]]
+Lang = "dart"
+Info = "String"

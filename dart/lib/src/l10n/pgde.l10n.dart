@@ -55,7 +55,7 @@ class _PgdeLocalizationDelegate
   }
 }
 
-/// last_modified: 2019-05-13 04:17:04 +0000 UTC
+/// last_modified: 2019-05-16 08:10:49 +0000 UTC
 
 abstract class PgdeLocalization {
   static const delegate = _PgdeLocalizationDelegate();
@@ -591,6 +591,68 @@ abstract class PgdeLocalization {
   String get currencyXsu;
 
   String get currencyUsn;
+
+  String validateFieldLength(String field);
+
+  String validateFieldItems(String field);
+
+  String get validateNow;
+
+  String get validateEq;
+
+  String get validateGt;
+
+  String get validateGte;
+
+  String get validateLt;
+
+  String get validateLte;
+
+  String get validateOneof;
+
+  String get validateOneofx;
+
+  String get validateRange;
+
+  String get validateRangex;
+
+  String get validatePattern;
+
+  String get validatePrefix;
+
+  String get validateSuffix;
+
+  String get validateContains;
+
+  String validateMustConst(String field, String rule, String kConstWithUnit);
+
+  String get validateUnique;
+
+  String get validateNoSparse;
+
+  String get validateEmail;
+
+  String get validateHostname;
+
+  String get validateIp;
+
+  String get validateIpv4;
+
+  String get validateIpv6;
+
+  String get validateUri;
+
+  String get validateUriRef;
+
+  String validateMustBe(String field, String something);
+
+  String validateMustWithinNow(String field, String duration);
+
+  String validateMustWithinGtNow(String field, String duration);
+
+  String validateMustWithinLtNow(String field, String duration);
+
+  String validateRequired(String field);
 }
 
 class PgdeLocalizationEn extends PgdeLocalization {
@@ -1617,6 +1679,143 @@ class PgdeLocalizationEn extends PgdeLocalization {
   String get currencyXsu => r'Sucre';
 
   String get currencyUsn => r'US Dollar (Next day)';
+
+  String validateFieldLength(String field) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' length');
+
+    return output.toString();
+  }
+
+  String validateFieldItems(String field) {
+    final output = StringBuffer();
+
+    output.write(r'The quantity of ');
+
+    output.write(field);
+    return output.toString();
+  }
+
+  String get validateNow => r'now';
+
+  String get validateEq => r'equal';
+
+  String get validateGt => r'be greater than';
+
+  String get validateGte => r'be greater than or equal to';
+
+  String get validateLt => r'less than';
+
+  String get validateLte => r'less than or equal to';
+
+  String get validateOneof => r'be one of';
+
+  String get validateOneofx => r'not be one of';
+
+  String get validateRange => r'be inside range';
+
+  String get validateRangex => r'be outside range';
+
+  String get validatePattern => r'match the pattern';
+
+  String get validatePrefix => r'have prefix';
+
+  String get validateSuffix => r'have suffix';
+
+  String get validateContains => r'contain';
+
+  String validateMustConst(String field, String rule, String kConstWithUnit) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' must ');
+
+    output.write(rule);
+
+    output.write(r' ');
+
+    output.write(kConstWithUnit);
+    return output.toString();
+  }
+
+  String get validateUnique => r'unique';
+
+  String get validateNoSparse => r'a non-sparse map, all pairs must be non-nil';
+
+  String get validateEmail => r'email';
+
+  String get validateHostname => r'hostname';
+
+  String get validateIp => r'ip';
+
+  String get validateIpv4 => r'ipv4';
+
+  String get validateIpv6 => r'ipv6';
+
+  String get validateUri => r'uri';
+
+  String get validateUriRef => r'uri ref';
+
+  String validateMustBe(String field, String something) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' must be ');
+
+    output.write(something);
+    return output.toString();
+  }
+
+  String validateMustWithinNow(String field, String duration) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' must be within ');
+
+    output.write(duration);
+
+    output.write(r' of now');
+
+    return output.toString();
+  }
+
+  String validateMustWithinGtNow(String field, String duration) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' must be greater than now within ');
+
+    output.write(duration);
+    return output.toString();
+  }
+
+  String validateMustWithinLtNow(String field, String duration) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' must be less than now within ');
+
+    output.write(duration);
+    return output.toString();
+  }
+
+  String validateRequired(String field) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' is required');
+
+    return output.toString();
+  }
 }
 
 class PgdeLocalizationAr extends PgdeLocalization {
@@ -3375,6 +3574,143 @@ class PgdeLocalizationAr extends PgdeLocalization {
   String get currencyXsu => r'Sucre';
 
   String get currencyUsn => r'US Dollar (Next day)';
+
+  String validateFieldLength(String field) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' length');
+
+    return output.toString();
+  }
+
+  String validateFieldItems(String field) {
+    final output = StringBuffer();
+
+    output.write(r'The quantity of ');
+
+    output.write(field);
+    return output.toString();
+  }
+
+  String get validateNow => r'now';
+
+  String get validateEq => r'equal';
+
+  String get validateGt => r'be greater than';
+
+  String get validateGte => r'be greater than or equal to';
+
+  String get validateLt => r'less than';
+
+  String get validateLte => r'less than or equal to';
+
+  String get validateOneof => r'be one of';
+
+  String get validateOneofx => r'not be one of';
+
+  String get validateRange => r'be inside range';
+
+  String get validateRangex => r'be outside range';
+
+  String get validatePattern => r'match the pattern';
+
+  String get validatePrefix => r'have prefix';
+
+  String get validateSuffix => r'have suffix';
+
+  String get validateContains => r'contain';
+
+  String validateMustConst(String field, String rule, String kConstWithUnit) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' must ');
+
+    output.write(rule);
+
+    output.write(r' ');
+
+    output.write(kConstWithUnit);
+    return output.toString();
+  }
+
+  String get validateUnique => r'unique';
+
+  String get validateNoSparse => r'a non-sparse map, all pairs must be non-nil';
+
+  String get validateEmail => r'email';
+
+  String get validateHostname => r'hostname';
+
+  String get validateIp => r'ip';
+
+  String get validateIpv4 => r'ipv4';
+
+  String get validateIpv6 => r'ipv6';
+
+  String get validateUri => r'uri';
+
+  String get validateUriRef => r'uri ref';
+
+  String validateMustBe(String field, String something) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' must be ');
+
+    output.write(something);
+    return output.toString();
+  }
+
+  String validateMustWithinNow(String field, String duration) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' must be within ');
+
+    output.write(duration);
+
+    output.write(r' of now');
+
+    return output.toString();
+  }
+
+  String validateMustWithinGtNow(String field, String duration) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' must be greater than now within ');
+
+    output.write(duration);
+    return output.toString();
+  }
+
+  String validateMustWithinLtNow(String field, String duration) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' must be less than now within ');
+
+    output.write(duration);
+    return output.toString();
+  }
+
+  String validateRequired(String field) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' is required');
+
+    return output.toString();
+  }
 }
 
 class PgdeLocalizationEnUs extends PgdeLocalization {
@@ -4401,6 +4737,143 @@ class PgdeLocalizationEnUs extends PgdeLocalization {
   String get currencyXsu => r'Sucre';
 
   String get currencyUsn => r'US Dollar (Next day)';
+
+  String validateFieldLength(String field) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' length');
+
+    return output.toString();
+  }
+
+  String validateFieldItems(String field) {
+    final output = StringBuffer();
+
+    output.write(r'The quantity of ');
+
+    output.write(field);
+    return output.toString();
+  }
+
+  String get validateNow => r'now';
+
+  String get validateEq => r'equal';
+
+  String get validateGt => r'be greater than';
+
+  String get validateGte => r'be greater than or equal to';
+
+  String get validateLt => r'less than';
+
+  String get validateLte => r'less than or equal to';
+
+  String get validateOneof => r'be one of';
+
+  String get validateOneofx => r'not be one of';
+
+  String get validateRange => r'be inside range';
+
+  String get validateRangex => r'be outside range';
+
+  String get validatePattern => r'match the pattern';
+
+  String get validatePrefix => r'have prefix';
+
+  String get validateSuffix => r'have suffix';
+
+  String get validateContains => r'contain';
+
+  String validateMustConst(String field, String rule, String kConstWithUnit) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' must ');
+
+    output.write(rule);
+
+    output.write(r' ');
+
+    output.write(kConstWithUnit);
+    return output.toString();
+  }
+
+  String get validateUnique => r'unique';
+
+  String get validateNoSparse => r'a non-sparse map, all pairs must be non-nil';
+
+  String get validateEmail => r'email';
+
+  String get validateHostname => r'hostname';
+
+  String get validateIp => r'ip';
+
+  String get validateIpv4 => r'ipv4';
+
+  String get validateIpv6 => r'ipv6';
+
+  String get validateUri => r'uri';
+
+  String get validateUriRef => r'uri ref';
+
+  String validateMustBe(String field, String something) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' must be ');
+
+    output.write(something);
+    return output.toString();
+  }
+
+  String validateMustWithinNow(String field, String duration) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' must be within ');
+
+    output.write(duration);
+
+    output.write(r' of now');
+
+    return output.toString();
+  }
+
+  String validateMustWithinGtNow(String field, String duration) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' must be greater than now within ');
+
+    output.write(duration);
+    return output.toString();
+  }
+
+  String validateMustWithinLtNow(String field, String duration) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' must be less than now within ');
+
+    output.write(duration);
+    return output.toString();
+  }
+
+  String validateRequired(String field) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' is required');
+
+    return output.toString();
+  }
 }
 
 class PgdeLocalizationZh extends PgdeLocalization {
@@ -5061,4 +5534,141 @@ class PgdeLocalizationZh extends PgdeLocalization {
   String get currencyXsu => r'Sucre';
 
   String get currencyUsn => r'US Dollar (Next day)';
+
+  String validateFieldLength(String field) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' length');
+
+    return output.toString();
+  }
+
+  String validateFieldItems(String field) {
+    final output = StringBuffer();
+
+    output.write(r'The quantity of ');
+
+    output.write(field);
+    return output.toString();
+  }
+
+  String get validateNow => r'now';
+
+  String get validateEq => r'equal';
+
+  String get validateGt => r'be greater than';
+
+  String get validateGte => r'be greater than or equal to';
+
+  String get validateLt => r'less than';
+
+  String get validateLte => r'less than or equal to';
+
+  String get validateOneof => r'be one of';
+
+  String get validateOneofx => r'not be one of';
+
+  String get validateRange => r'be inside range';
+
+  String get validateRangex => r'be outside range';
+
+  String get validatePattern => r'match the pattern';
+
+  String get validatePrefix => r'have prefix';
+
+  String get validateSuffix => r'have suffix';
+
+  String get validateContains => r'contain';
+
+  String validateMustConst(String field, String rule, String kConstWithUnit) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' must ');
+
+    output.write(rule);
+
+    output.write(r' ');
+
+    output.write(kConstWithUnit);
+    return output.toString();
+  }
+
+  String get validateUnique => r'unique';
+
+  String get validateNoSparse => r'a non-sparse map, all pairs must be non-nil';
+
+  String get validateEmail => r'email';
+
+  String get validateHostname => r'hostname';
+
+  String get validateIp => r'ip';
+
+  String get validateIpv4 => r'ipv4';
+
+  String get validateIpv6 => r'ipv6';
+
+  String get validateUri => r'uri';
+
+  String get validateUriRef => r'uri ref';
+
+  String validateMustBe(String field, String something) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' must be ');
+
+    output.write(something);
+    return output.toString();
+  }
+
+  String validateMustWithinNow(String field, String duration) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' must be within ');
+
+    output.write(duration);
+
+    output.write(r' of now');
+
+    return output.toString();
+  }
+
+  String validateMustWithinGtNow(String field, String duration) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' must be greater than now within ');
+
+    output.write(duration);
+    return output.toString();
+  }
+
+  String validateMustWithinLtNow(String field, String duration) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' must be less than now within ');
+
+    output.write(duration);
+    return output.toString();
+  }
+
+  String validateRequired(String field) {
+    final output = StringBuffer();
+
+    output.write(field);
+
+    output.write(r' is required');
+
+    return output.toString();
+  }
 }

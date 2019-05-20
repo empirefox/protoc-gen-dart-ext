@@ -8,13 +8,13 @@ export 'atom.dart';
 export 'prefix.dart';
 
 class Unit {
-  static const showSymbol = Show(false, Show.symbolPrefix, Show.symbol);
+  static const showSymbol = Show();
 
   final Show show;
-  final List<Cell> _dots;
-  final List<Cell> _per;
+  final List<Cell> dots;
+  final List<Cell> per;
 
-  const Unit(this.show, this._dots, this._per) : assert(show != null);
+  const Unit({this.show = showSymbol, this.dots, this.per});
 
   String get symbol => l10n(null, Form.one, showSymbol);
 
@@ -22,8 +22,8 @@ class Unit {
     show = show ?? this.show;
     if (show.off) return '';
     final buf = StringBuffer();
-    _join(buf, null, _dots, l, p, show);
-    _join(buf, '/', _per, l, p, show);
+    _join(buf, null, dots, l, p, show);
+    _join(buf, '/', per, l, p, show);
     return buf.toString();
   }
 
@@ -51,10 +51,8 @@ class Show {
   final _PrefixValuer prefix;
   final _AtomValuer atom;
 
-  const Show(this.off, this.prefix, this.atom)
-      : assert(off != null),
-        assert(prefix != null),
-        assert(atom != null);
+  const Show(
+      {this.off = false, this.prefix = symbolPrefix, this.atom = symbol});
 
   const Show._disabled()
       : off = true,

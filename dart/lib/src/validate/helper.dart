@@ -2,20 +2,53 @@ import 'package:collection/collection.dart';
 
 const maxUint8 = 1 << 8 - 1;
 
+class Lists {
+  static int len(List s) => s == null ? 0 : s.length;
+  static bool isEmpty(List s) => s == null || s.isEmpty;
+  static bool isNotEmpty(List s) => s != null && s.isNotEmpty;
+}
+
 class Bytes {
+  static const _listEquality = const ListEquality<int>();
+
   static final bool Function(List<int> list1, List<int> list2) equal =
-      const ListEquality<int>().equals;
+      _listEquality.equals;
+
+  static int indexOfList(List<List<int>> list, List<int> target) {
+    if (Lists.isEmpty(target)) return 0;
+    if (Lists.isEmpty(list)) return -1;
+    return list.indexWhere((array) => equal(array, target));
+  }
+
+  static int indexOf(List<int> array, List<int> target) {
+    if (Lists.isEmpty(target)) return 0;
+    if (Lists.isEmpty(array)) return -1;
+
+    final targetLen = target.length;
+    final arrayRange = array.length - targetLen + 1;
+
+    outer:
+    for (var i = 0; i < arrayRange; i++) {
+      for (var j = 0; j < targetLen; j++) {
+        if (array[i + j] != target[j]) {
+          continue outer;
+        }
+      }
+      return i;
+    }
+    return -1;
+  }
 
   static bool hasPrefix(List<int> s, List<int> prefix) {
-    if (isEmpty(prefix)) return true;
-    if (isEmpty(s)) return false;
+    if (Lists.isEmpty(prefix)) return true;
+    if (Lists.isEmpty(s)) return false;
     return s.length >= prefix.length &&
         equal(s.sublist(0, prefix.length), prefix);
   }
 
   static bool hasSuffix(List<int> s, List<int> suffix) {
-    if (isEmpty(suffix)) return true;
-    if (isEmpty(s)) return false;
+    if (Lists.isEmpty(suffix)) return true;
+    if (Lists.isEmpty(s)) return false;
     return s.length >= suffix.length &&
         equal(s.sublist(s.length - suffix.length), suffix);
   }
@@ -52,7 +85,14 @@ class Bytes {
     return true;
   }
 
-  static int len(List<int> s) => s == null ? 0 : s.length;
-  static bool isEmpty(List<int> s) => s == null || s.isEmpty;
-  static bool isNotEmpty(List<int> s) => s != null && s.isNotEmpty;
+  final List<int> _bytes;
+
+  const Bytes(this._bytes);
+
+  @override
+  int get hashCode => _listEquality.hash(_bytes);
+
+  @override
+  bool operator ==(Object other) =>
+      other is Bytes && equal(_bytes, other._bytes);
 }

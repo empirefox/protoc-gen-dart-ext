@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package zero;
+package pgde.zero;
 
 option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/zero";
 

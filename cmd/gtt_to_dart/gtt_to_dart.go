@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"log"
+	"path/filepath"
 
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/arb"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/dart"
@@ -12,7 +13,9 @@ import (
 
 var (
 	withDelegate   = flag.Bool("with_delegate", true, "generate delegate")
-	dartImportPath = flag.String("dart_import_path", "", "the required dart import path to exports_out")
+	dartImportFile = flag.String("dart_import_file", "",
+		"the dart import full path or file base name to overwrite `dart_out`,\n"+
+			" the `package:pkga` can be auto computed")
 )
 
 type FilesData struct {
@@ -35,11 +38,6 @@ func main() {
 
 	flag.Parse()
 
-	if *dartImportPath == "" {
-		flag.PrintDefaults()
-		log.Fatalf("missing dart_import_path")
-	}
-
 	err = parser.Parse()
 	if err != nil {
 		flag.PrintDefaults()
@@ -59,11 +57,15 @@ func main() {
 		delegate = arb.SupportedLocales(as)
 	}
 
+	if *dartImportFile == "" {
+		*dartImportFile = filepath.Base(flag.Lookup(dart_out).Value.String())
+	}
+
 	data := Data{
 		BaseArb:    BaseArb{Arb: as[0], Delegate: delegate},
 		Arbs:       make([]*dart.Resolved, len(as)),
 		Gtt:        &filesData.Gtt,
-		ExportsOut: NewSingleEntityExportsOut(*dartImportPath, as[0].ExportProto()),
+		ExportsOut: NewSingleEntityExportsOut(*dartImportFile, as[0].ExportProto()),
 	}
 
 	resolved, err := dart.ResolveWithExports(filesData.Exports, as[0])

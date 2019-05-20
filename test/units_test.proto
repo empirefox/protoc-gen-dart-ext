@@ -5,11 +5,12 @@ option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/test";
 
 import "protos/units/units.proto";
 import "protos/form/form.proto";
+import "protos/format/format.proto";
 
 enum HowManyEnum {
-  ZERO = 0 [(form.inputOption).icon = star];
-  ONE = 1 [(form.inputOption).icon = timer];
-  TWO = 2 [(form.inputOption).icon = vibration];
+  ZERO = 0 [(pgde.form.inputOption).icon = star];
+  ONE = 1 [(pgde.form.inputOption).icon = timer];
+  TWO = 2 [(pgde.form.inputOption).icon = vibration];
 }
 
 enum TimeFormatNameRegister {
@@ -19,34 +20,37 @@ enum TimeFormatNameRegister {
 }
 
 message MyProfile {
-  uint32 length = 1 [(units.unit).dots = {
-    prefix: {is: kilo},
-    atom: {is: meter},
+  uint32 price = 1 [(pgde.format.format).number = {
+    builtin: currencySimple,
+    locale: "en",
+    unit: {
+      per: [
+        {symbol: "BTC"},
+        {
+          prefix: kilo,
+          atom: meter,
+        }
+      ]
+    }
   }];
 
-  uint32 volume = 2 [(units.unit) = {
-    dots: {prefix: {is: mebi}, atom: {is: byte}},
-    per: {exponent: 2, prefix: {is: kilo}, atom: {is: meter}},
+  uint32 volume = 2 [(pgde.units.unit) = {
+    dots: {prefix: mebi, atom: byte},
+    per: {exponent: 2, prefix: kilo, atom: meter},
   }];
 
-  int32 price1 = 3 [(units.unit) = {
-    dots: {currency: {is: USD}},
-    per: {
-      prefix: {is: kilo},
-      atom: {is: gram},
-    },
-  }];
+  int32 price1 = 3;
 
-  int32 price2 = 4 [(units.unit) = {
+  int32 price2 = 4 [(pgde.units.unit) = {
     dots: {symbol: "BTC"},
     per: {symbol: "block"},
   }];
 
-  HowManyEnum howMany = 5 [(form.field) = {
+  HowManyEnum howMany = 5 [(pgde.form.field) = {
     typeAhead: {fromEnum: true},
   }];
 
-  bytes sign = 6 [(form.field) = {
+  bytes sign = 6 [(pgde.form.field) = {
     signature: {
       backgroundColor: {primary: {color: purple, shade: s100}},
     },

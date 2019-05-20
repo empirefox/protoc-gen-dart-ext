@@ -9,7 +9,7 @@ import 'dart:core' as $core show bool, Deprecated, double, int, List, Map, overr
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class Field extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Field', package: const $pb.PackageName('exports'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Field', package: const $pb.PackageName('pgde.exports'))
     ..aOS(1, 'ref')
     ..aOS(2, 'name')
     ..hasRequiredFields = false
@@ -39,7 +39,7 @@ class Field extends $pb.GeneratedMessage {
 }
 
 class Entity extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Entity', package: const $pb.PackageName('exports'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Entity', package: const $pb.PackageName('pgde.exports'))
     ..aOS(1, 'name')
     ..pc<Field>(2, 'fields', $pb.PbFieldType.PM,Field.create)
     ..hasRequiredFields = false
@@ -66,8 +66,9 @@ class Entity extends $pb.GeneratedMessage {
 }
 
 class Package extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Package', package: const $pb.PackageName('exports'))
-    ..pc<Entity>(1, 'entities', $pb.PbFieldType.PM,Entity.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Package', package: const $pb.PackageName('pgde.exports'))
+    ..aOS(1, 'path')
+    ..pc<Entity>(2, 'entities', $pb.PbFieldType.PM,Entity.create)
     ..hasRequiredFields = false
   ;
 
@@ -83,12 +84,45 @@ class Package extends $pb.GeneratedMessage {
   static Package getDefault() => _defaultInstance ??= create()..freeze();
   static Package _defaultInstance;
 
-  $core.List<Entity> get entities => $_getList(0);
+  $core.String get path => $_getS(0, '');
+  set path($core.String v) { $_setString(0, v); }
+  $core.bool hasPath() => $_has(0);
+  void clearPath() => clearField(1);
+
+  $core.List<Entity> get entities => $_getList(1);
+}
+
+class Validator extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Validator', package: const $pb.PackageName('pgde.exports'))
+    ..aOS(1, 'path')
+    ..pPS(2, 'entities')
+    ..hasRequiredFields = false
+  ;
+
+  Validator() : super();
+  Validator.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) : super.fromBuffer(i, r);
+  Validator.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) : super.fromJson(i, r);
+  Validator clone() => Validator()..mergeFromMessage(this);
+  Validator copyWith(void Function(Validator) updates) => super.copyWith((message) => updates(message as Validator));
+  $pb.BuilderInfo get info_ => _i;
+  static Validator create() => Validator();
+  Validator createEmptyInstance() => create();
+  static $pb.PbList<Validator> createRepeated() => $pb.PbList<Validator>();
+  static Validator getDefault() => _defaultInstance ??= create()..freeze();
+  static Validator _defaultInstance;
+
+  $core.String get path => $_getS(0, '');
+  set path($core.String v) { $_setString(0, v); }
+  $core.bool hasPath() => $_has(0);
+  void clearPath() => clearField(1);
+
+  $core.List<$core.String> get entities => $_getList(1);
 }
 
 class Exports extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Exports', package: const $pb.PackageName('exports'))
-    ..m<$core.String, Package>(1, 'packages', 'Exports.PackagesEntry',$pb.PbFieldType.OS, $pb.PbFieldType.OM, Package.create, null, null , const $pb.PackageName('exports'))
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo('Exports', package: const $pb.PackageName('pgde.exports'))
+    ..pc<Package>(1, 'packages', $pb.PbFieldType.PM,Package.create)
+    ..pc<Validator>(2, 'validators', $pb.PbFieldType.PM,Validator.create)
     ..hasRequiredFields = false
   ;
 
@@ -104,6 +138,8 @@ class Exports extends $pb.GeneratedMessage {
   static Exports getDefault() => _defaultInstance ??= create()..freeze();
   static Exports _defaultInstance;
 
-  $core.Map<$core.String, Package> get packages => $_getMap(0);
+  $core.List<Package> get packages => $_getList(0);
+
+  $core.List<Validator> get validators => $_getList(1);
 }
 

@@ -1,26 +1,37 @@
 syntax = "proto3";
 
-package exports;
+package pgde.exports;
 
 option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/exports";
 
 message Field {
-  // the unique id of field which is assosiated to an Entity.
+  // The unique id of field which is assosiated to an Entity.
   string ref = 1;
-  // the field name which is converted from an Entity name after merged.
+  // The field name which is converted from an Entity name after merged.
   string name = 2;
 }
 
 message Entity {
   string name = 1;
+  // Root Entity only exports children entity names as Field.
   repeated Field fields = 2;
 }
 
 message Package {
-  repeated Entity entities = 1;
+  string path = 1;
+  repeated Entity entities = 2;
+}
+
+message Validator {
+  // package path to import
+  string path = 1;
+
+  // fully qualified proto name
+  repeated string entities = 2;
 }
 
 // describe whats to use.
 message Exports {
-  map<string, Package> packages = 1;
+  repeated Package packages = 1;
+  repeated Validator validators = 2;
 }

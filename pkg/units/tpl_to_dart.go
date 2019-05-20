@@ -10,27 +10,27 @@ import (
 )
 
 const dartUnitTplStr = `const Unit(
-	{{ if .Dots }}dots: {{ template "cells" .Dots }},{{ end }}
-	{{ if .Per }}per: {{ template "cells" .Per }},{{ end }}
+	{{ if .Show }}show: {{ template "unit_show" .Show }},{{ end }}
+	{{ if .Dots }}dots: {{ template "unit_cells" .Dots }},{{ end }}
+	{{ if .Per }}per: {{ template "unit_cells" .Per }},{{ end }}
+)`
+
+const dartShowTplStr = `const Show(
+	{{ if .Off }}off: true,{{ end }}
+	{{ if .Prefix }}prefix: Show.{{ .Prefix.String }}Prefix,{{ end }}
+	{{ if .Atom }}atom: Show.{{ .Atom.String }},{{ end }}
 )`
 
 const dartCellsTplStr = `[
 {{ range . }}
 	Cell(
 		{{ if .Exponent }}exponent: '{{ .Exponent | toString | superscript }}',{{ end }}
-		{{ if .Prefix.Valid }}prefix: {{ template "prefix" .Prefix }},{{ end }}
-		{{ if .GetCurrency.Valid }}unit: {{ template "currency" .GetCurrency }},{{ end }}
-		{{ if .GetAtom.Valid }}unit: {{ template "atom" .GetAtom }},{{ end }}
-		{{ if .GetSymbol }}unit: {{ template "symbol" .GetSymbol }},{{ end }}
+		{{ if .Prefix.Valid }}prefix: PrefixV1.{{ .Prefix.String }},{{ end }}
+		{{ if .GetAtom.Valid }}atom: AtomV1.{{ .GetAtom.String }},{{ end }}
+		{{ if .GetSymbol }}atom: const AtomV1.symbol({{ .GetSymbol | dartRawStr }}){{ end }}
 	),
 {{ end }}
 ]`
-
-const dartPrefixTplStr = `const CellPrefix.{{ .Type }}(PrefixV1.{{ .Is }})`
-
-const dartCurrencyTplStr = `const CurrencyUnit.{{ .Type }}(CurrencyV1.{{ .Is }})`
-const dartAtomTplStr = `const AtomUnit.{{ .Type }}(AtomV1.{{ .Is }})`
-const dartSymbolTplStr = `const SymbolUnit({{ . | dartRawStr }})`
 
 var dartOutTpl *template.Template
 
@@ -40,12 +40,9 @@ func init() {
 		dart.Funcs,
 		genshared.Funcs,
 	)
-	dartOutTpl = template.Must(template.New("dart_out").Funcs(funcs).Parse(dartUnitTplStr))
-	template.Must(dartOutTpl.New("cells").Parse(dartCellsTplStr))
-	template.Must(dartOutTpl.New("prefix").Parse(dartPrefixTplStr))
-	template.Must(dartOutTpl.New("currency").Parse(dartCurrencyTplStr))
-	template.Must(dartOutTpl.New("atom").Parse(dartAtomTplStr))
-	template.Must(dartOutTpl.New("symbol").Parse(dartSymbolTplStr))
+	dartOutTpl = template.Must(template.New("unit").Funcs(funcs).Parse(dartUnitTplStr))
+	template.Must(dartOutTpl.New("unit_show").Parse(dartShowTplStr))
+	template.Must(dartOutTpl.New("unit_cells").Parse(dartCellsTplStr))
 }
 
 func (u *Unit) ToDartSource() (string, error) {
@@ -54,12 +51,5 @@ func (u *Unit) ToDartSource() (string, error) {
 	return buf.String(), err
 }
 
-func (p *CellPrefix) Valid() bool {
-	return p.GetIs() != PrefixV1_noPrefix
-}
-func (c *CurrencyUnit) Valid() bool {
-	return c.GetIs() != CurrencyV1_XXX
-}
-func (a *AtomUnit) Valid() bool {
-	return a.GetIs() != AtomV1_noAtom
-}
+func (p PrefixV1) Valid() bool { return p != PrefixV1_noPrefix }
+func (a AtomV1) Valid() bool   { return a != AtomV1_noAtom }

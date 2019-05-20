@@ -11,9 +11,13 @@ import (
 const exportsOutTplStr = `// ignore_for_file: lines_longer_than_80_chars
 import 'package:pgde/exports.dart';
 
-void register() {
+var _done = false;
+
+void register(String pkgUri) {
+  if (_done) return;
+  _done = true;
   {{- range .ExportsOut }}
-  registerPkgBytes('{{ .Name }}', const <int>[{{ .Package | proto | bytes }}]);
+  registerPkgBytes(pkgUri, const <int>[{{ .Package | proto | bytes }}]);
   {{- end }}
 }
 `
@@ -21,7 +25,7 @@ void register() {
 var (
 	exportsOutTpl = &genshared.Template{
 		Template: template.Must(template.
-			New("exports_out").
+			New("exports_package_out").
 			Funcs(genshared.Funcs).
 			Parse(exportsOutTplStr)),
 		IgnoreIfData: func(v interface{}) bool {
@@ -32,22 +36,21 @@ var (
 
 type ExportsPackage struct {
 	*exports.Package
-	Name string
 }
 
 type ExportsOut []*ExportsPackage
 
-func NewSingleEntitiesExportsOut(pkgToNty map[string]*exports.Entity) ExportsOut {
-	if len(pkgToNty) == 0 {
+func NewSingleEntitiesExportsOut(fileBaseToNty map[string]*exports.Entity) ExportsOut {
+	if len(fileBaseToNty) == 0 {
 		return nil
 	}
-	data := make(ExportsOut, len(pkgToNty))
+	data := make(ExportsOut, len(fileBaseToNty))
 	i := 0
-	for pkgName, nty := range pkgToNty {
+	for fileBaseName, nty := range fileBaseToNty {
 		sort.Sort(nty)
 		data[i] = &ExportsPackage{
-			Name: pkgName,
 			Package: &exports.Package{
+				Path:     fileBaseName,
 				Entities: []*exports.Entity{nty},
 			},
 		}
@@ -56,15 +59,15 @@ func NewSingleEntitiesExportsOut(pkgToNty map[string]*exports.Entity) ExportsOut
 	return data
 }
 
-func NewSingleEntityExportsOut(pkgName string, nty *exports.Entity) ExportsOut {
+func NewSingleEntityExportsOut(fileBaseName string, nty *exports.Entity) ExportsOut {
 	if nty == nil {
 		return nil
 	}
 	sort.Sort(nty)
 	return ExportsOut{
 		&ExportsPackage{
-			Name: pkgName,
 			Package: &exports.Package{
+				Path:     fileBaseName,
 				Entities: []*exports.Entity{nty},
 			},
 		},

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package l10n;
+package pgde.l10n;
 
 option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/l10n";
 

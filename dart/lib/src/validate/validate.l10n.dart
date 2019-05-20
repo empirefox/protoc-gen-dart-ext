@@ -10,7 +10,7 @@ class Translator {
       Intl.message('$field length', name: 'fieldLength', args: [field]);
 
   String fieldItems(String field) =>
-      Intl.message('The quantity of $field', name: 'fieldItems', args: [field]);
+      Intl.message('The items of $field', name: 'fieldItems', args: [field]);
 
   /// used as kConst by GtLtError
   String get now => Intl.message('now', name: 'now');
@@ -35,10 +35,16 @@ class Translator {
         args: [field, rule, kConstWithUnit],
       );
 
-  String get unique => Intl.message('unique', name: 'unique');
-  String get noSparse =>
-      Intl.message('a non-sparse map, all pairs must be non-nil',
-          name: 'noSparse');
+  String unique(int position) => Intl.message(
+        'unique, but the No.$position item is repeated',
+        name: 'unique',
+        args: [position],
+      );
+  String noSparse(String key) => Intl.message(
+        'a non-sparse map, but the value of `$key` is nil',
+        name: 'noSparse',
+        args: [key],
+      );
   String get email => Intl.message('email', name: 'email');
   String get hostname => Intl.message('hostname', name: 'hostname');
   String get ip => Intl.message('ip', name: 'ip');

@@ -19,6 +19,7 @@ type ArbAttributes struct {
 	// return the id when the self value is not set or equals the id's.
 	MaybeSameWith string `json:"x-maybe_same_with,omitempty"`
 
+	// fully qualified proto name
 	Export string `json:"x-export,omitempty"`
 }
 

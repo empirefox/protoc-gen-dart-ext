@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package format;
+package pgde.format;
 
 option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/format";
 

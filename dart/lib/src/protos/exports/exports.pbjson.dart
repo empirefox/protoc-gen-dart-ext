@@ -16,31 +16,31 @@ const Entity$json = const {
   '1': 'Entity',
   '2': const [
     const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
-    const {'1': 'fields', '3': 2, '4': 3, '5': 11, '6': '.exports.Field', '10': 'fields'},
+    const {'1': 'fields', '3': 2, '4': 3, '5': 11, '6': '.pgde.exports.Field', '10': 'fields'},
   ],
 };
 
 const Package$json = const {
   '1': 'Package',
   '2': const [
-    const {'1': 'entities', '3': 1, '4': 3, '5': 11, '6': '.exports.Entity', '10': 'entities'},
+    const {'1': 'path', '3': 1, '4': 1, '5': 9, '10': 'path'},
+    const {'1': 'entities', '3': 2, '4': 3, '5': 11, '6': '.pgde.exports.Entity', '10': 'entities'},
+  ],
+};
+
+const Validator$json = const {
+  '1': 'Validator',
+  '2': const [
+    const {'1': 'path', '3': 1, '4': 1, '5': 9, '10': 'path'},
+    const {'1': 'entities', '3': 2, '4': 3, '5': 9, '10': 'entities'},
   ],
 };
 
 const Exports$json = const {
   '1': 'Exports',
   '2': const [
-    const {'1': 'packages', '3': 1, '4': 3, '5': 11, '6': '.exports.Exports.PackagesEntry', '10': 'packages'},
+    const {'1': 'packages', '3': 1, '4': 3, '5': 11, '6': '.pgde.exports.Package', '10': 'packages'},
+    const {'1': 'validators', '3': 2, '4': 3, '5': 11, '6': '.pgde.exports.Validator', '10': 'validators'},
   ],
-  '3': const [Exports_PackagesEntry$json],
-};
-
-const Exports_PackagesEntry$json = const {
-  '1': 'PackagesEntry',
-  '2': const [
-    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
-    const {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.exports.Package', '10': 'value'},
-  ],
-  '7': const {'7': true},
 };
 

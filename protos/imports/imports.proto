@@ -3,7 +3,7 @@ syntax = "proto3";
 // The genarated *.pbdata is used when generating form.
 // TODO geneate *.dart like exports? But it looks useless, because the form
 // is already generated.
-package imports;
+package pgde.imports;
 
 option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/imports";
 

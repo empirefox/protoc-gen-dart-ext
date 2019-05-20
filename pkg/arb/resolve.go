@@ -37,12 +37,12 @@ type Resolver struct {
 
 func NewResolver(e *exports.Exports) *Resolver {
 	entries := make(map[string]*ResolveEntry, 256)
-	for impPath, pkg := range e.Packages {
+	for _, pkg := range e.Packages {
 		for _, entity := range pkg.Entities {
 			for _, field := range entity.Fields {
 				nty := &ResolveEntry{
 					Ref:    field.Ref,
-					Import: impPath,
+					Import: pkg.Path,
 					Entity: entity.Name,
 					Field:  field.Name,
 				}
@@ -58,7 +58,7 @@ func NewResolver(e *exports.Exports) *Resolver {
 func (r *Resolver) Resolve(ref string) (*ResolveEntry, error) {
 	nty, ok := r.entries[ref]
 	if !ok {
-		return nil, fmt.Errorf("Ref not found: %s", ref)
+		return nil, fmt.Errorf("Ref not found for arb: %s", ref)
 	}
 	return nty, nil
 }
@@ -69,8 +69,9 @@ func (a *Arb) ExportResolver() *Resolver {
 		return nil
 	}
 	return NewResolver(&exports.Exports{
-		Packages: map[string]*exports.Package{
-			"": &exports.Package{
+		Packages: []*exports.Package{
+			&exports.Package{
+				Path:     "",
 				Entities: []*exports.Entity{selfExports},
 			},
 		},

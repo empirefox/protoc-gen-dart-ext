@@ -2,3 +2,5 @@
 /android
 /ios
 /build
+
+*.imports.pbdata

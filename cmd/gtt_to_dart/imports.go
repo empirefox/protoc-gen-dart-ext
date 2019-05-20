@@ -12,7 +12,7 @@ const importsOutTplStr = `{{ .ImportsOut | proto | printf "%s" }}`
 var (
 	importsOutTpl = &genshared.Template{
 		Template: template.Must(template.
-			New("imports_out").
+			New("imports_package_out").
 			Funcs(genshared.Funcs).
 			Parse(importsOutTplStr)),
 		IgnoreIfData: func(v interface{}) bool {

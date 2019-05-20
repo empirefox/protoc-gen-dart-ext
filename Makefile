@@ -73,13 +73,13 @@ gen_prefix:
 .PHONY: gen_protoc
 gen_protoc:
 	@protoc -I. --go_out=${go_out} --dart_out=${dart_src} ./protos/exports/*.proto
-	@protoc -I. --go_out=${go_out} --dart_out=${dart_src} ./protos/imports/*.proto
+	@protoc -I. --go_out=${go_out} ./protos/imports/*.proto
 	@protoc -I. --go_out=${go_out} ./protos/l10n/*.proto
 	@protoc -I. --go_out=${go_out} ./protos/format/*.proto
 	@protoc -I. --go_out=${go_out} ./protos/units/*.proto
 	@protoc -I. --go_out=${go_out} ./protos/zero/*.proto
 	@protoc -I. --go_out=${go_out} ./protos/form/*.proto
-	# @protoc -I. --go_out=${go_out} ./test/*.proto
+	@protoc -I. --go_out=${go_out} ./test/*.proto
 
 # generate PgdeLocalization
 .PHONY: gen_pgde_gtt_to_dart
@@ -87,11 +87,11 @@ gen_pgde_gtt_to_dart:
 	@SRC_DIR=${dart_src} \
 		go run ${cmd_path}/gtt_to_dart/*.go \
 		-gtt=${dart_src}/l10n/gtt.toml \
-		-dart_import_path="package:pgde/pgde.dart" \
+		-dart_import_file="pgde.dart" \
 		-dart_out=${dart_src}/l10n/pgde.l10n.dart \
 		-with_delegate \
-		-exports_out=${dart_lib}/pgde.exports.dart \
-		-imports_out=${dart_lib}/pgde.imports.pbdata
+		-exports_package_out=${dart_lib}/pgde.exports.package.dart \
+		-imports_package_out=${dart_lib}/pgde.imports.package.pbdata
 	@dartfmt -w ${dart_src}/l10n/pgde.l10n.dart
 
 # merge all deps exports, then do: gtt_to_dart -resolve=${lib}.export.dart

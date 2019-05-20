@@ -250,7 +250,9 @@ switch (plural.match{{ powerCamel .Culture }}(
 {{ end }}
 `
 
-var dartOutTpl = template.New("dart_out")
+const dart_out = "dart_out"
+
+var dartOutTpl = template.New(dart_out)
 
 func init() {
 	funcs := genshared.JoinFuncs(messageformat.Funcs,

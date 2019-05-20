@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 // https://physics.nist.gov/cuu/Units/units.html
-package units;
+package pgde.units;
 
 option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/units";
 
@@ -39,7 +39,7 @@ message Show {
 
 enum PrefixType {
   symbol = 0;
-  name = 1;
+  title = 1;
 }
 
 message Cell {

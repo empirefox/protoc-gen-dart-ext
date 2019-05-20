@@ -6,7 +6,7 @@ import 'package:pgde/exports.dart';
 // import 'package:pkga/pkga.exports.dart' as $pkga;
 
 void register() {
-  // $pkga.register();
+  // invoke($pkga.register);
 }
 
 const output = 'output';

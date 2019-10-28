@@ -1,60 +1,48 @@
 package pgvt
 
 const msgTpl = `
-{{- $file := fileBase . }}
-{{- $ShortType := name . -}}
-{{- $Type := $Type | printf "$0.%s" -}}
+/// Validates [{{ .FullPbClass }}] protobuf objects.
+class {{ .ClassName }} extends {{ .PgdeFile.As }}.GeneratedValidator<{{ .FullPbClass }}> {
+	{{ .MaterialFile.As }}.BuildContext {{ .Validator.BuildContextAccessor }};
 
-/// Validates [{{ $Type }}] protobuf objects.
-class {{ $ShortType }}Validator extends $pgde.GeneratedValidator<{{ $Type }}> {
-	static {{ $ShortType }}Validator _instance = {{ $ShortType }}Validator._();
+	{{ .PgdeFile.As }}.ValidateInfo<{{ .FullPbClass }}> {{ .Validator.InfoAccessor }};
 
-	factory {{ $ShortType }}Validator() => _instance;
+	{{ .L10nFile.As }}.{{ .L10n.ClassName }} {{ .Validator.L10nAccessor }};
 
-	{{ $ShortType }}Validator._();
+	{{ .ClassName }}({{ .MaterialFile.As }}.BuildContext context, {{ .PgdeFile.As }}.ValidateInfo<{{ .FullPbClass }}> info)
+		: {{ .Validator.BuildContextAccessor }} = context,
+		  {{ .Validator.InfoAccessor }} = info,
+		  {{ .Validator.L10nAccessor }} = {{ .MaterialFile.As }}.Localizations.of<{{ .Validator.FullL10nClass }}>(context, {{ .Validator.FullL10nClass }});
 
 	{{- range .NonOneOfFields }}
-		{{ renderConstants (context .) }}
+		{{ renderConstants .Validate }}
 	{{ end }}
 	{{ range .OneOfs }}
-		{{ template "oneOfConst" . }}
+		{{ template "oneOfConst" .Validate }}
 	{{ end }}
 
-	void assertProto($pgde.ValidateInfo info, $l10n.{{ $file }}Localizations _l10n) {
-		{{ if disabled . }}
-			// Validate is disabled for {{ $Type }}
+	void assertProto() {
+		{{ if .Disabled }}
+			// Validate is disabled for {{ .FullPbClass }}
 		{{- else -}}
 			{{ range .NonOneOfFields -}}
-				{{ $ctx := . | context | dartContext }}
-				assertField_{{ .Name }}({{ $ctx.Accessor }});
+				assertField_{{ .DartName }}();
 			{{ end -}}
 			{{ range .OneOfs }}
-				{{ $ctx := . | oneofContext }}
-				assertOneof_{{ .Name.UpperCamelCase }}(proto, {{ $ctx.Rules.GetRequired }});
+				assertOneof_{{ .DartName }}();
 			{{- end -}}
 		{{- end }}
 	}
 
 	{{ range .Fields -}}
-		{{ $ctx := . | context | dartContext }}
-		void assertField_{{ .Name }}({{ $ctx.FieldOriginType }} _v) {
-			{{ render $ctx }}
+		void assertField_{{ .DartName }}() {
+			{{ render .Validate }}
 		}
 	{{ end -}}
 
 	{{ range .OneOfs }}
-		{{ $ctx := . | oneofContext }}
-		{{- $OneofType := dartNameOf . | printf "$0.%s_%s" -}}
-		{{- $oname := .Name.UpperCamelCase -}}
-		void assertOneofRequired_{{ .Name.UpperCamelCase }}({{ $OneofType }}_{{ $oname }} which) {
-			{{ if $ctx.Rules.GetRequired }}
-				if (which == null || which == {{ $OneofType }}_{{ $oname }}.notSet)
-					throw $pgde.OneofRequiredError(info, {{ $ctx.L10nOneofName }});
-			{{ end }}
-		}
-
-		void assertOneof_{{ .Name.UpperCamelCase }}({{ $Type }} proto, bool required) {
-			{{ template "oneOf" . }}
+		void assertOneof_{{ .DartName }}() {
+			{{ template "oneOf" .Validate }}
 		}
 	{{- end -}}
 }

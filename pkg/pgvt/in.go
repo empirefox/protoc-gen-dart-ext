@@ -24,10 +24,10 @@ const inTplDef = `{{ $r := .Rules }}
 const inTpl = inTplDef + `
 {{- if $r.In }}
 	if (!{{ $kIn }}.containsKey(_v))
-		throw $pgde.InError({{ $kIn }}.keys);
+		throw {{ .PgdeFile.As }}.InError({{ $kIn }}.keys);
 {{- end -}}
 {{- if $r.NotIn }}
 	if ({{ $kNotIn }}.containsKey(_v))
-		throw $pgde.InError.not({{ $kNotIn }}.keys);
+		throw {{ .PgdeFile.As }}.InError.not({{ $kNotIn }}.keys);
 {{- end -}}
 `

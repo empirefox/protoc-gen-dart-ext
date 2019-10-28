@@ -27,11 +27,11 @@ const anyTpl = anyTplDef + `
 {{ .IfHasBegin }}
 	{{- if $r.In }}
 		if (!{{ $kIn }}.containsKey(_v.typeUrl))
-			throw $pgde.InError(info, {{ $.Number }}, {{ $.L10nField }}, {{ $kIn }}.keys);
+			throw {{ .PgdeFile.As }}.InError(info, {{ $.Number }}, {{ $.L10nField }}, {{ $kIn }}.keys);
 	{{- end -}}
 	{{- if $r.NotIn }}
 		if ({{ $kNotIn }}.containsKey(_v.typeUrl))
-			throw $pgde.InError.not(info, {{ $.Number }}, {{ $.L10nField }}, {{ $kNotIn }}.keys);
+			throw {{ .PgdeFile.As }}.InError.not(info, {{ $.Number }}, {{ $.L10nField }}, {{ $kNotIn }}.keys);
 	{{- end -}}
 {{ .IfHasEnd }}
 `

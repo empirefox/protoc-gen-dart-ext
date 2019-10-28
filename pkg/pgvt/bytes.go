@@ -62,75 +62,75 @@ const bytesTplDef = `{{ $r := .Rules }}
 
 const bytesTpl = bytesTplDef + `
 {{ if or $r.Len $r.MinLen $r.MaxLen }}
-	final _vl = $pgde.Lists.len(_v);
+	final _vl = {{ .PgdeFile.As }}.Lists.len(_v);
 {{ end }}
 
 {{ if or $r.Len (and $r.MinLen $r.MaxLen (eq $r.GetMinLen $r.GetMaxLen)) }}
 	{{ if $r.Len }}
 		if (_vl != {{ $r.GetLen }})
-			throw $pgde.LenConstError.byte(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateEq, {{ $r.GetLen }});
+			throw {{ .PgdeFile.As }}.LenConstError.byte(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateEq, {{ $r.GetLen }});
 	{{ else }}
 		if (_vl != {{ $r.GetMinLen }})
-			throw $pgde.LenConstError.byte(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateEq, {{ $r.GetMinLen }});
+			throw {{ .PgdeFile.As }}.LenConstError.byte(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateEq, {{ $r.GetMinLen }});
 	{{ end }}
 {{ else if $r.MinLen }}
 	{{ if $r.MaxLen }}
 		if (_vl < {{ $r.GetMinLen }} || _vl > {{ $r.GetMaxLen }})
-			throw $pgde.RangeLenError.byte(const ErrorRange.inEE(info, {{ $.Number }}, {{ $.L10nField }}, {{ $r.GetMinLen }}, {{ $r.GetMaxLen }}));
+			throw {{ .PgdeFile.As }}.RangeLenError.byte(const ErrorRange.inEE(info, {{ $.Number }}, {{ $.L10nField }}, {{ $r.GetMinLen }}, {{ $r.GetMaxLen }}));
 	{{ else }}
 		if (_vl < {{ $r.GetMinLen }})
-			throw $pgde.LenConstError.byte(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateGte, {{ $r.GetMinLen }});
+			throw {{ .PgdeFile.As }}.LenConstError.byte(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateGte, {{ $r.GetMinLen }});
 	{{ end }}
 {{ else if $r.MaxLen }}
 	if (_vl > {{ $r.GetMaxLen }})
-		throw $pgde.LenConstError.byte(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateLte, {{ $r.GetMaxLen }});
+		throw {{ .PgdeFile.As }}.LenConstError.byte(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateLte, {{ $r.GetMaxLen }});
 {{ end }}
 
 {{ if $r.Prefix }}
-	if (!$pgde.Bytes.hasPrefix(_v, {{ $kPrefix }}))
-		throw $pgde.ConstError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validatePrefix, {{ $kPrefixPrint }});
+	if (!{{ .PgdeFile.As }}.Bytes.hasPrefix(_v, {{ $kPrefix }}))
+		throw {{ .PgdeFile.As }}.ConstError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validatePrefix, {{ $kPrefixPrint }});
 {{ end }}
 
 {{ if $r.Suffix }}
-	if (!$pgde.Bytes.hasSuffix(_v, {{ $kSuffix }}))
-		throw $pgde.ConstError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateSuffix, {{ $kSuffixPrint }});
+	if (!{{ .PgdeFile.As }}.Bytes.hasSuffix(_v, {{ $kSuffix }}))
+		throw {{ .PgdeFile.As }}.ConstError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateSuffix, {{ $kSuffixPrint }});
 {{ end }}
 
 {{ if $r.Contains }}
-	if ($pgde.Bytes.indexOf(_v, {{ $kContains }}) == -1)
-		throw $pgde.ConstError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateContains, {{ $kContainsPrint }});
+	if ({{ .PgdeFile.As }}.Bytes.indexOf(_v, {{ $kContains }}) == -1)
+		throw {{ .PgdeFile.As }}.ConstError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateContains, {{ $kContainsPrint }});
 {{ end }}
 
 {{ if $r.In }}
-	if ($pgde.Bytes.indexOfList({{ $kIn }}, _v) == -1)
-		throw $pgde.InError(info, {{ $.Number }}, {{ $.L10nField }}, {{ $kInPrint }});
+	if ({{ .PgdeFile.As }}.Bytes.indexOfList({{ $kIn }}, _v) == -1)
+		throw {{ .PgdeFile.As }}.InError(info, {{ $.Number }}, {{ $.L10nField }}, {{ $kInPrint }});
 {{ else if $r.NotIn }}
-	if ($pgde.Bytes.indexOfList({{ $kNotIn }}, _v) != -1)
-		throw $pgde.InError.not(info, {{ $.Number }}, {{ $.L10nField }}, {{ $kNotInPrint }});
+	if ({{ .PgdeFile.As }}.Bytes.indexOfList({{ $kNotIn }}, _v) != -1)
+		throw {{ .PgdeFile.As }}.InError.not(info, {{ $.Number }}, {{ $.L10nField }}, {{ $kNotInPrint }});
 {{ end }}
 
 {{ if $r.Const }}
-	if (!$pgde.Bytes.equal(_v, {{ $kConst }}))
-		throw $pgde.ConstError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateEq, {{ $kConstPrint }});
+	if (!{{ .PgdeFile.As }}.Bytes.equal(_v, {{ $kConst }}))
+		throw {{ .PgdeFile.As }}.ConstError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateEq, {{ $kConstPrint }});
 {{ end }}
 
 {{ if $r.GetIp }}
-	if (!$pgde.Bytes.isIP(_v))
-		throw $pgde.BeSomethingError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateIp);
+	if (!{{ .PgdeFile.As }}.Bytes.isIP(_v))
+		throw {{ .PgdeFile.As }}.BeSomethingError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateIp);
 {{ else if $r.GetIpv4 }}
-	if (!$pgde.Bytes.isIpv4(_v))
-		throw $pgde.BeSomethingError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateIpv4);
+	if (!{{ .PgdeFile.As }}.Bytes.isIpv4(_v))
+		throw {{ .PgdeFile.As }}.BeSomethingError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateIpv4);
 {{ else if $r.GetIpv6 }}
-	if (!$pgde.Bytes.isIpv6(_v))
-		throw $pgde.BeSomethingError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateIpv6);
+	if (!{{ .PgdeFile.As }}.Bytes.isIpv6(_v))
+		throw {{ .PgdeFile.As }}.BeSomethingError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateIpv6);
 {{ end }}
 
 {{ if $r.Pattern }}
 	try {
 		if (!{{ $kPattern }}.hasMatch(utf8.decode(_v)))
-			throw $pgde.ConstError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validatePattern, {{ $kPattern }}.pattern);
+			throw {{ .PgdeFile.As }}.ConstError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validatePattern, {{ $kPattern }}.pattern);
 	} on FormatException {
-		throw $pgde.ConstError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validatePattern, {{ $kPattern }}.pattern);
+		throw {{ .PgdeFile.As }}.ConstError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validatePattern, {{ $kPattern }}.pattern);
 	}
 {{ end }}
 `

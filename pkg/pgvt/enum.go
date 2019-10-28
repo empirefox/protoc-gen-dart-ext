@@ -35,9 +35,9 @@ const enumTpl = `
 
 {{- if $r.In }}
 	if (!{{ $kIn }}.containsKey(_v))
-		throw $pgde.InError(info, {{ $.Number }}, {{ $.L10nField }}, {{ .L10nEnumValues $r.GetIn }});
+		throw {{ .PgdeFile.As }}.InError(info, {{ $.Number }}, {{ $.L10nField }}, {{ .L10nEnumValues $r.GetIn }});
 {{ else if $r.NotIn }}
 	if ({{ $kNotIn }}.containsKey(_v))
-		throw $pgde.InError.not(info, {{ $.Number }}, {{ $.L10nField }}, {{ .L10nEnumValues $r.GetNotIn }});
+		throw {{ .PgdeFile.As }}.InError.not(info, {{ $.Number }}, {{ $.L10nField }}, {{ .L10nEnumValues $r.GetNotIn }});
 {{ end }}
 `

@@ -11,16 +11,16 @@ import '../units/units.dart';
 /// Asserts validation rules on a protobuf object.
 /// Throw [ValidationError] with the first validation error encountered.
 abstract class GeneratedValidator<T extends GeneratedMessage> {
-  void assertProto(T proto);
-  void assertField(T proto, int tag);
-  void assertOneof(T proto, int oneof);
+  void assertProto();
+  void assertField(int tag);
+  void assertOneof(int oneof);
 }
 
-class ValidateInfo {
+class ValidateInfo<T extends GeneratedMessage> {
   final MaterialLocalizations md;
   final PgdeLocalization l10n;
   final Formatter fmt;
-  final GeneratedMessage proto;
+  final T proto;
 
   const ValidateInfo(this.md, this.l10n, this.fmt, this.proto);
 
@@ -36,6 +36,9 @@ class ValidateInfo {
   NumberFormatter get numFmt => fmt as NumberFormatter;
 
   Form plural(v, [bool ordinal]) => numFmt.plural(v, ordinal);
+
+  ValidateInfo<C> clone<C extends GeneratedMessage>(C proto) =>
+      ValidateInfo(md, l10n, fmt, proto);
 }
 
 abstract class ValidateError extends Error {

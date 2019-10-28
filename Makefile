@@ -31,11 +31,10 @@ rewrite_validate_arb:
 .PHONY: gen_golang
 gen_golang:
 	@easyjson ${pkg_path}/arb/arb_attr.go
-	@easyjson ${pkg_path}/arb/resolve.go
 	@easyjson -no_std_marshalers ${pkg_path}/arb/arb.go
 	@go generate ${pkg_path}/dart
 	@go generate ${pkg_path}/genshared
-	@cd ${cmd_path}/rewrite_arb_langs && go generate
+	# @cd ${cmd_path}/rewrite_arb_langs && go generate
 
 .PHONY: gen_plural
 gen_plural:
@@ -72,8 +71,6 @@ gen_prefix:
 
 .PHONY: gen_protoc
 gen_protoc:
-	@protoc -I. --go_out=${go_out} --dart_out=${dart_src} ./protos/exports/*.proto
-	@protoc -I. --go_out=${go_out} ./protos/imports/*.proto
 	@protoc -I. --go_out=${go_out} ./protos/l10n/*.proto
 	@protoc -I. --go_out=${go_out} ./protos/format/*.proto
 	@protoc -I. --go_out=${go_out} ./protos/units/*.proto
@@ -87,17 +84,9 @@ gen_pgde_gtt_to_dart:
 	@SRC_DIR=${dart_src} \
 		go run ${cmd_path}/gtt_to_dart/*.go \
 		-gtt=${dart_src}/l10n/gtt.toml \
-		-dart_import_file="pgde.dart" \
 		-dart_out=${dart_src}/l10n/pgde.l10n.dart \
-		-with_delegate \
-		-exports_package_out=${dart_lib}/pgde.exports.package.dart \
-		-imports_package_out=${dart_lib}/pgde.imports.package.pbdata
+		-with_delegate
 	@dartfmt -w ${dart_src}/l10n/pgde.l10n.dart
-
-# merge all deps exports, then do: gtt_to_dart -resolve=${lib}.export.dart
-.PHONY: gen_exports
-gen_exports:
-	@cd ${dart_path} && ./bin/exports.dart -o ${dart_path}/pgde.exports.dart
 
 .PHONY: gen_proto
 gen_proto:
@@ -126,15 +115,8 @@ gen_gtt_to_dart:
 	@PROJECT_DIR=${makefile_dir} \
 		go run ${cmd_path}/gtt_to_dart/*.go \
 		-gtt=${test_path}/gtt_to_dart/gtt.toml \
-		-dart_import_path="package:pgde/test/app.l10n.exports.dart" \
 		-dart_out=${dart_lib}/test/app.l10n.dart \
-		-exports_out=${dart_lib}/test/app.l10n.exports.dart \
-		-imports_out=${dart_lib}/test/app.l10n.imports.pbdata
 	@dartfmt -w ${dart_lib}/test/app.l10n.dart
-
-.PHONY: gen_exports_go
-gen_exports_go:
-	@go run ${tools_path}/goexports/goexports.go -dartExports ${dart_lib}/pgde.exports.dart
 
 .PHONY: gen_fieldmask
 gen_fieldmask:

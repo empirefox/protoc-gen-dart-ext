@@ -152,11 +152,6 @@ var fileLines = map[string]line{
 		ext:    ".default.dart",
 		tplStr: defaultsTplStr,
 	},
-
-	"l10n_arb_base": {
-		ext:    ".l10n_en.arb",
-		tplStr: l10n_arb,
-	},
 }
 
 var pkgLines = map[string]line{

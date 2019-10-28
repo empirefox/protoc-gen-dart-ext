@@ -11,12 +11,14 @@ import (
 
 const dartOutTplStr = genshared.DartHead + `
 {{ if .BaseArb.Delegate }}
-	import 'dart:collection' show HashSet;
-	import 'package:flutter/foundation.dart' show SynchronousFuture;
-	import 'package:flutter/material.dart' show Locale, LocalizationsDelegate;
+	import 'dart:collection' as {{ .EmailValidatorFile.As }} show HashSet;
+	import 'package:flutter/foundation.dart' as {{ .PgdeFile.As }} show SynchronousFuture;
+	import 'package:flutter/material.dart' as {{ .L10nFile.As }} show BuildContext, Locale, Localizations, LocalizationsDelegate;
 {{ end }}
 
-{{ .Imports }}
+{{ range .BaseArb.ImportedFiles }}
+	import '{{ .Name }}' as {{ .As }};
+{{ end }}
 
 {{ if .BaseArb.Delegate }}
 	{{ template "delegate" .BaseArb }}
@@ -31,19 +33,19 @@ const dartOutTplStr = genshared.DartHead + `
 `
 
 const delegateTplStr = `{{ $Entity := powerCamel .Entity }}
-class _{{ $Entity }}LocalizationDelegate extends LocalizationsDelegate<{{ $Entity }}Localization> {
+class _{{ $Entity }}LocalizationDelegate extends {{ .L10nFile.As }}.LocalizationsDelegate<{{ $Entity }}Localization> {
   const _{{ $Entity }}LocalizationDelegate();
 
   @override
-  bool isSupported(Locale locale) => kSupportedLanguages.contains(locale.languageCode);
+  bool isSupported({{ .L10nFile.As }}.Locale locale) => kSupportedLanguages.contains(locale.languageCode);
 
   @override
-  Future<{{ $Entity }}Localization> load(Locale locale) => SynchronousFuture<{{ $Entity }}Localization>(_getTranslation(locale));
+  Future<{{ $Entity }}Localization> load({{ .L10nFile.As }}.Locale locale) => {{ .PgdeFile.As }}.SynchronousFuture<{{ $Entity }}Localization>(_getTranslation(locale));
 
   @override
   bool shouldReload(_{{ $Entity }}LocalizationDelegate old) => false;
 
-  static final Set<String> kSupportedLanguages = HashSet<String>.from(const <String>[
+  static final Set<String> kSupportedLanguages = {{ .EmailValidatorFile.As }}.HashSet<String>.from(const <String>[
 	{{ range .Delegate }}{{ $lang := .Lang }}
 		{{ if .Fallback }}
 			'{{ $lang }}',
@@ -55,7 +57,7 @@ class _{{ $Entity }}LocalizationDelegate extends LocalizationsDelegate<{{ $Entit
 	{{ end }}
   ]);
 
-  static {{ $Entity }}Localization _getTranslation(Locale locale) {
+  static {{ $Entity }}Localization _getTranslation({{ .L10nFile.As }}.Locale locale) {
     switch (locale.languageCode) {
 		{{ range .Delegate }}{{ $lang := .Lang }}
 		case '{{ $lang }}': {
@@ -84,12 +86,18 @@ abstract class {{ $Entity }}Localization {
 	{{ if .Delegate }}
 		static const delegate = _{{ $Entity }}LocalizationDelegate();
 	{{ end }}
-	const {{ $Entity }}Localization();
 
-	{{ .Imports }}
+	static {{ $Entity }}Localization of({{ .L10nFile.As }}.BuildContext context) =>
+		{{ .L10nFile.As }}.Localizations.of<{{ $Entity }}Localization>(context, {{ $Entity }}Localization)
+		  {{ range .InstanceClasses }}
+		  	..{{ .Instance }} = {{ .FullName }}.of(context)
+		  {{ end }}
+		;
 
-	{{ range .Nils }}
-		String get {{ . }} => null;
+	{{ .Const }} {{ $Entity }}Localization();
+
+	{{ range .InstanceClasses }}
+		{{ .FullName }} {{ .Instance }};
 	{{ end }}
 
 	{{ range .Resources }}
@@ -100,7 +108,7 @@ abstract class {{ $Entity }}Localization {
 
 const arbTplStr = `{{ $Entity := powerCamel .Entity }}
 class {{ $Entity }}Localization{{ powerCamel .Locale.String }} extends {{ $Entity }}Localization {
-	const {{ $Entity }}Localization{{ powerCamel .Locale.String }}();
+	{{ .Const }} {{ $Entity }}Localization{{ powerCamel .Locale.String }}();
 
 	{{ range .Resources }}
 		{{ template "resource" . }}
@@ -109,25 +117,25 @@ class {{ $Entity }}Localization{{ powerCamel .Locale.String }} extends {{ $Entit
 `
 
 const resourceBaseTplStr = `
-{{ if and .Attr .Attr.Placeholders }}
-	String {{ .Id }}({{ dartArbParams .Attr.Placeholders true }});
+{{ if and .Attr .Attr.DartParams.JoinWithType }}
+	String {{ .Id }}({{ .Attr.DartParams.JoinWithType }});
 {{ else }}
 	String get {{ .Id }};
 {{ end }}
 `
 
-const resourceTplStr = `
-{{ if and .Attr .Attr.Placeholders }}
-	String {{ .Id }}({{ dartArbParams .Attr.Placeholders true }})
-	{{ if .SameWith }}
-		=> {{ .SameWith }}({{ dartArbParams .Attr.Placeholders false }});
+const resourceTplStr = `{{ $kSameWith := .SameWith }}
+{{ if and .Attr .Attr.DartParams.JoinWithType }}
+	String {{ .Id }}({{ .Attr.DartParams.JoinWithType }});
+	{{ if $kSameWith }}
+		=> {{ $kSameWith }}({{ .Attr.DartParams.JoinWithoutType }});
 	{{ else }}
 		{
 			{{ template "root" (mfPluralNodeWithData .Arb.Locale .Value .) }}
 		}
 	{{ end }}
 {{ else }}
-	String get {{ .Id }} => {{ dartRawStr .Value }};
+	String get {{ .Id }} => {{ if $kSameWith }} {{ $kSameWith }} {{ else }} {{ dartRawStr .Value }} {{ end }};
 {{ end }}
 `
 
@@ -156,7 +164,7 @@ const literalTplStr = `
 		{{ if . -}}
 			output.write({{ dartRawStr . }});
 		{{ else if $.Varname -}}
-			output.write(${{ $.Data.TplAsString $.Varname }});
+			output.write({{ $.Data.Attr.DartPlaceholderReplace $.Varname }});
 		{{ else -}}
 			output.writeCharCode(35);
 		{{ end -}}
@@ -166,20 +174,20 @@ const literalTplStr = `
 		{{ if . -}}
 			return {{ dartRawStr . }};
 		{{ else if $.Varname -}}
-			return ${{ $.Data.TplAsString $.Varname }};
+			return {{ $.Data.Attr.DartPlaceholderReplace $.Varname }};
 		{{ else -}}
 			return '#';
 		{{ end -}}
 	{{ end }}
 {{ end }}
 `
-const varTplStr = `output.write({{ .Data.TplAsString .Varname }});`
+const varTplStr = `output.write({{ $.Data.Attr.DartPlaceholderReplace $.Varname }});`
 
 const selectTplStr = `
 {{ if .Choices }}
-switch ({{ .Varname }}) {
+switch ({{ .Data.Attr.DartPlaceholderReplace .Varname }}) {
 	{{ range .Choices }}
-	case {{ $.Data.TplSelectCaseCond $.Varname .Key }}:
+	case {{ $.Data.Attr.DartSelectCaseCond $.Varname .Key }}:
 		{{ template "node" .Node -}}
 		{{ if $.Complexity.IsComplex }}break;{{ end }}
 	{{ end }}
@@ -194,9 +202,11 @@ switch ({{ .Varname }}) {
 
 const selectOrdinalTplStr = `
 {{ if .Choices }}
-switch (plural.match{{ powerCamel .Culture }}({{ .Varname }}, true)) {
+{{ $kPluralAs := .Data.Attr.DartParamImport .Varname | getAs }}
+switch ({{ $kPluralAs }}.match{{ powerCamel .Culture }}(
+	{{ .Data.Attr.DartPlaceholderReplace .Varname }}, true)) {
 	{{ range .Choices }}
-	case Form.{{ .Key }}:
+	case {{ $kPluralAs }}.Form.{{ .Key }}:
 		{{ template "node" .Node -}}
 		{{ if $.Complexity.IsComplex }}break;{{ end }}
 	{{ end }}
@@ -218,7 +228,7 @@ const pluralTplStr = `
 `
 
 const equalsPluralTplStr = `
-switch ({{ .Varname }}) {
+switch ({{ .Data.Attr.DartPlaceholderReplace .Varname }}) {
 	{{ range .Equals }}
 	case {{ .Key }}:
 		{{ template "node" .Node -}}
@@ -232,12 +242,14 @@ switch ({{ .Varname }}) {
 
 const formedPluralTplStr = `
 {{ if .Choices }}
-switch (plural.match{{ powerCamel .Culture }}(
-	{{ .Varname }} {{ if .Offset }}{{ .Offset | sub 0 | printf "%+d" }}{{ end }},
+{{ $kPluralAs := .Data.Attr.DartParamImport .Varname | getAs }}
+switch ({{ $kPluralAs }}.match{{ powerCamel .Culture }}(
+	{{ .Data.Attr.DartPlaceholderReplace .Varname }}
+	{{- if .Offset }}{{ .Offset | sub 0 | printf "%+d" }}{{ end }},
 	false)) {
 
 	{{- range .Choices }}
-	case Form.{{ .Key }}:
+	case {{ $kPluralAs }}.Form.{{ .Key }}:
 		{{ template "node" .Node -}}
 		{{ if $.Complexity.IsComplex }}break;{{ end }}
 	{{- end }}
@@ -252,13 +264,19 @@ switch (plural.match{{ powerCamel .Culture }}(
 
 const dart_out = "dart_out"
 
-var dartOutTpl = template.New(dart_out)
+var (
+	dartOutTpl = template.New(dart_out)
+	im         = dart.NewDefaultImportManager()
+)
 
 func init() {
 	funcs := genshared.JoinFuncs(messageformat.Funcs,
 		dart.Funcs,
 		sprig.HermeticTxtFuncMap(),
-		genshared.FuncsWithRender("renderNode", dartOutTpl))
+		genshared.FuncsWithRender("renderNode", dartOutTpl),
+		template.FuncMap{
+			"getAs": im.GetAs,
+		})
 	template.Must(dartOutTpl.Funcs(funcs).Parse(dartOutTplStr))
 	template.Must(dartOutTpl.New("delegate").Parse(delegateTplStr))
 	template.Must(dartOutTpl.New("arbBase").Parse(arbBaseTplStr))

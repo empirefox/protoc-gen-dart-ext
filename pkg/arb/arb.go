@@ -19,13 +19,8 @@ type Arb struct {
 	Context      string       `json:"@@context,omitempty"`
 	Locale       language.Tag `json:"@@locale,omitempty"`
 	Author       string       `json:"@@author,omitempty"`
-	Entity       string       `json:"@@x-entity,omitempty"`
 
-	// Imports resoures import from other resources
-	// which export unique id of entity.
-	Imports []*ArbImport `json:"@@x-imports,omitempty"`
-
-	Nils []string `json:"@@x-nils,omitempty"`
+	Entity string `json:"@@x-entity,omitempty"`
 
 	Resources []*ArbResource `json:"-"`
 
@@ -53,6 +48,13 @@ func (a *Arb) ResourceMap() map[string]*ArbResource {
 		}
 	}
 	return a.resourceMap
+}
+
+func (a *Arb) Clone() *Arb {
+	var clone Arb
+	b, _ := a.MarshalJSON()
+	clone.UnmarshalJSON(b)
+	return &clone
 }
 
 func (a *Arb) MarshalJSON() ([]byte, error) {
@@ -131,10 +133,6 @@ func (a *Arb) addToJsonMap(m *linkedhashmap.Map) {
 	if a.Author != "" {
 		m.Put("@@author", a.Author)
 	}
-
-	if a.Entity != "" {
-		m.Put("@@x-entity", a.Entity)
-	}
 }
 
 type ArbResource struct {
@@ -154,7 +152,11 @@ func NewResource(a *Arb, id, value string, attr *ArbAttributes) *ArbResource {
 }
 
 func (ar *ArbResource) SameWith() (string, error) {
-	other := ar.Attr().MaybeSameWith
+	attr := ar.Attr()
+	if attr == nil {
+		return "", nil
+	}
+	other := attr.MaybeSameWith
 	if other == "" {
 		return "", nil
 	}
@@ -170,35 +172,26 @@ func (ar *ArbResource) SameWith() (string, error) {
 
 func (ar *ArbResource) Attr() *ArbAttributes {
 	attr, ok := ar.Arb.attrs[ar.Id]
-	if ok {
-		return attr
+	if !ok {
+		attr = ar.attr
 	}
-	return ar.attr
+	if attr == nil {
+		attr = new(ArbAttributes)
+		ar.attr = attr
+		ar.Arb.attrs[ar.Id] = attr
+	}
+	return attr
 }
 
 func (ar *ArbResource) addToJsonMap(m *linkedhashmap.Map) {
 	m.Put(ar.Id, ar.Value)
-	if ar.attr != nil {
+	if !ar.attr.IsEmpty() {
 		m.Put("@"+ar.Id, ar.attr)
 	}
 }
 
 func ShallowMerge(from []*Arb, to *Arb) {
-	total := len(to.Imports)
-	for _, a := range from {
-		total += len(a.Imports)
-	}
-	newImp := make([]*ArbImport, 0, total)
-	newImp = append(newImp, to.Imports...)
-
-	total = len(to.Nils)
-	for _, a := range from {
-		total += len(a.Nils)
-	}
-	newNils := make([]string, 0, total)
-	newNils = append(newNils, to.Nils...)
-
-	total = len(to.Resources)
+	total := len(to.Resources)
 	for _, a := range from {
 		total += len(a.Resources)
 	}
@@ -209,21 +202,9 @@ func ShallowMerge(from []*Arb, to *Arb) {
 		if a.LastModified.After(to.LastModified.Time) {
 			to.LastModified = a.LastModified
 		}
+
 		// TODO merge authors
-		for _, r1 := range a.Imports {
-			if r1.Id == "" {
-				continue
-			}
-			r2 := *r1
-			r2.Id = util.JoinEntityId(a.Entity, r2.Id)
-			newImp = append(newImp, &r2)
-		}
-		for _, n := range a.Nils {
-			if n == "" {
-				continue
-			}
-			newNils = append(newNils, util.JoinEntityId(a.Entity, n))
-		}
+
 		for _, r1 := range a.Resources {
 			if r1.Id == "" {
 				continue
@@ -244,8 +225,6 @@ func ShallowMerge(from []*Arb, to *Arb) {
 			newRs = append(newRs, &r2)
 		}
 	}
-	to.Imports = newImp
-	to.Nils = newNils
 	to.Resources = newRs
 	to.resourceMap = nil
 	to.attrs = nil

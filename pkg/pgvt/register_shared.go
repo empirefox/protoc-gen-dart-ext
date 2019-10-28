@@ -1,6 +1,7 @@
 package pgvt
 
 import (
+	"bytes"
 	"fmt"
 	"reflect"
 	"strings"
@@ -8,45 +9,39 @@ import (
 	"unicode"
 
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/dart"
+	"github.com/empirefox/protoc-gen-dart-ext/pkg/dartpb"
 
 	"github.com/envoyproxy/protoc-gen-validate/templates/shared"
 	"github.com/golang/protobuf/ptypes"
 	"github.com/golang/protobuf/ptypes/duration"
 	"github.com/golang/protobuf/ptypes/timestamp"
-	"github.com/lyft/protoc-gen-star"
-	"github.com/lyft/protoc-gen-star/lang/go"
+	pgs "github.com/lyft/protoc-gen-star"
+	pgsgo "github.com/lyft/protoc-gen-star/lang/go"
 )
 
 func Register(tpl *template.Template, params pgs.Parameters) {
 	fns := dartFuncs{pgsgo.InitContext(params)}
 
 	tpl.Funcs(map[string]interface{}{
-		"byteStr":       fns.byteStr,
-		"cmt":           pgs.C80,
-		"durGt":         fns.durGt,
-		"durLit":        fns.durLit,
-		"durStr":        fns.durStr,
-		"err":           fns.err,
-		"errCause":      fns.errCause,
-		"errIdx":        fns.errIdx,
-		"errIdxCause":   fns.errIdxCause,
-		"errname":       fns.errName,
-		"inKey":         fns.inKey,
-		"inType":        fns.inType,
-		"isBytes":       fns.isBytes,
-		"lit":           fns.lit,
-		"lookup":        fns.lookup,
-		"msgTyp":        fns.msgTyp,
-		"name":          fns.Name,
-		"oneof":         fns.oneofTypeName,
-		"pkg":           fns.PackageName,
-		"tsGt":          fns.tsGt,
-		"tsLit":         fns.tsLit,
-		"tsStr":         fns.tsStr,
-		"typ":           fns.Type,
-		"unwrap":        fns.unwrap,
-		"externalEnums": fns.externalEnums,
-		"enumPackages":  fns.enumPackages,
+		"byteStr": fns.byteStr,
+		"cmt":     pgs.C80,
+		"durGt":   fns.durGt,
+		"durLit":  fns.durLit,
+		"durStr":  fns.durStr,
+		"inKey":   fns.inKey,
+		"inType":  fns.inType,
+		"isBytes": fns.isBytes,
+		"lit":     fns.lit,
+		"lookup":  fns.lookup,
+		"tsGt":    fns.tsGt,
+		"tsLit":   fns.tsLit,
+		"tsStr":   fns.tsStr,
+		"typ":     fns.Type,
+		"unwrap":  fns.unwrap,
+
+		"isOfMessageType": fns.isOfMessageType,
+		"render":          Render(tpl),
+		"renderConstants": fns.renderConstants(tpl),
 	})
 
 	template.Must(tpl.New("msg").Parse(msgTpl))
@@ -87,57 +82,6 @@ func Register(tpl *template.Template, params pgs.Parameters) {
 }
 
 type dartFuncs struct{ pgsgo.Context }
-
-func (fns dartFuncs) errName(m pgs.Message) pgs.Name {
-	return fns.Name(m) + "ValidationError"
-}
-
-func (fns dartFuncs) errIdxCause(ctx shared.RuleContext, idx, cause string, reason ...interface{}) string {
-	f := ctx.Field
-	n := fns.Name(f)
-
-	var fld string
-	if idx != "" {
-		fld = fmt.Sprintf(`fmt.Sprintf("%s[%%v]", %s)`, n, idx)
-	} else if ctx.Index != "" {
-		fld = fmt.Sprintf(`fmt.Sprintf("%s[%%v]", %s)`, n, ctx.Index)
-	} else {
-		fld = fmt.Sprintf("%q", n)
-	}
-
-	causeFld := ""
-	if cause != "nil" && cause != "" {
-		causeFld = fmt.Sprintf("cause: %s,", cause)
-	}
-
-	keyFld := ""
-	if ctx.OnKey {
-		keyFld = "key: true,"
-	}
-
-	return fmt.Sprintf(`%s{
-		field: %s,
-		reason: %q,
-		%s%s
-	}`,
-		fns.errName(f.Message()),
-		fld,
-		fmt.Sprint(reason...),
-		causeFld,
-		keyFld)
-}
-
-func (fns dartFuncs) err(ctx shared.RuleContext, reason ...interface{}) string {
-	return fns.errIdxCause(ctx, "", "nil", reason...)
-}
-
-func (fns dartFuncs) errCause(ctx shared.RuleContext, cause string, reason ...interface{}) string {
-	return fns.errIdxCause(ctx, "", cause, reason...)
-}
-
-func (fns dartFuncs) errIdx(ctx shared.RuleContext, idx string, reason ...interface{}) string {
-	return fns.errIdxCause(ctx, idx, "nil", reason...)
-}
 
 func (fns dartFuncs) lookup(f pgs.Field, name string) string {
 	return fmt.Sprintf(
@@ -195,10 +139,6 @@ func (fns dartFuncs) byteStr(x []byte) string {
 		return dart.RawString(string(x))
 	}
 	return fmt.Sprintf(`'%s'`, strings.Join(elms, ""))
-}
-
-func (fns dartFuncs) oneofTypeName(f pgs.Field) pgsgo.TypeName {
-	return pgsgo.TypeName(fns.OneofOption(f)).Pointer()
 }
 
 func (fns dartFuncs) inType(f pgs.Field, x interface{}) string {
@@ -292,30 +232,34 @@ func (fns dartFuncs) unwrap(ctx shared.RuleContext, name string) (shared.RuleCon
 	return ctx, nil
 }
 
-func (fns dartFuncs) msgTyp(message pgs.Message) pgsgo.TypeName {
-	return pgsgo.TypeName(fns.Name(message))
+func (fns dartFuncs) isOfMessageType(f *dartpb.ValidateField) bool {
+	return f.Pgs.Type().ProtoType() == pgs.MessageT
 }
 
-func (fns dartFuncs) externalEnums(file pgs.File) []pgs.Enum {
-	var out []pgs.Enum
+func Render(tpl *template.Template) func(v *dartpb.ValidateField) (string, error) {
+	return func(v *dartpb.ValidateField) (string, error) {
+		var b bytes.Buffer
+		err := tpl.ExecuteTemplate(&b, v.Pgv.Typ, v)
+		return b.String(), err
+	}
+}
 
-	for _, msg := range file.AllMessages() {
-		for _, fld := range msg.Fields() {
-			if en := fld.Type().Enum(); fld.Type().IsEnum() && en.Package().ProtoName() != fld.Package().ProtoName() && fns.PackageName(en) != fns.PackageName(fld) {
-				out = append(out, en)
+func (fns dartFuncs) renderConstants(tpl *template.Template) func(v *dartpb.ValidateField) (string, error) {
+	return func(v *dartpb.ValidateField) (string, error) {
+		var b bytes.Buffer
+		var err error
+
+		hasConstTemplate := false
+		for _, t := range tpl.Templates() {
+			if t.Name() == v.Pgv.Typ+"Const" {
+				hasConstTemplate = true
 			}
 		}
+
+		if hasConstTemplate {
+			err = tpl.ExecuteTemplate(&b, v.Typ+"Const", v)
+		}
+
+		return b.String(), err
 	}
-
-	return out
-}
-
-func (fns dartFuncs) enumPackages(enums []pgs.Enum) map[pgs.FilePath]pgs.Name {
-	out := make(map[pgs.FilePath]pgs.Name, len(enums))
-
-	for _, en := range enums {
-		out[fns.ImportPath(en)] = fns.PackageName(en)
-	}
-
-	return out
 }

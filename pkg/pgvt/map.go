@@ -14,17 +14,17 @@ const mapTpl = `{{ $r := .Rules }}
 {{ if $r.GetMinPairs }}
 	{{ if eq $r.GetMinPairs $r.GetMaxPairs }}
 		if (_vl != {{ $r.GetMinPairs }})
-			throw $pgde.ItemsLenConstError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateEq, {{ $r.GetMinPairs }});
+			throw {{ .PgdeFile.As }}.ItemsLenConstError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateEq, {{ $r.GetMinPairs }});
 	{{ else if $r.MaxPairs }}
 		if (_vl < {{ $r.GetMinPairs }} || _vl > {{ $r.GetMaxPairs }})
-			throw $pgde.RangeError(ErrorRange.outEE(info, {{ $.Number }}, {{ $.L10nField }}, {{ $r.GetMinPairs }}, {{ $r.GetMaxPairs }}));
+			throw {{ .PgdeFile.As }}.RangeError(ErrorRange.outEE(info, {{ $.Number }}, {{ $.L10nField }}, {{ $r.GetMinPairs }}, {{ $r.GetMaxPairs }}));
 	{{ else }}
 		if (_vl < {{ $r.GetMinPairs }})
-			throw $pgde.ConstError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateGte, {{ $r.GetMinPairs }});
+			throw {{ .PgdeFile.As }}.ConstError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateGte, {{ $r.GetMinPairs }});
 	{{ end }}
 {{ else if $r.MaxPairs }}
 	if (_vl > {{ $r.GetMaxPairs }})
-		throw $pgde.ConstError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateLte, {{ $r.GetMaxPairs }});
+		throw {{ .PgdeFile.As }}.ConstError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateLte, {{ $r.GetMaxPairs }});
 {{ end }}
 
 {{ if or $r.GetNoSparse (ne (.Elem "" "").Typ "none") (ne (.Key "" "").Typ "none") }}

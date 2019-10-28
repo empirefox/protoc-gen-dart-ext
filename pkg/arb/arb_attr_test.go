@@ -11,7 +11,7 @@ func TestLangParam(t *testing.T) {
 			LangInfos: ArbLangInfos{
 				&ArbLangInfo{
 					Lang:   "dart",
-					Info:   "Form",
+					Type:   "Form",
 					Import: "package:pgde/plural.dart",
 				},
 			},
@@ -23,7 +23,7 @@ func TestLangParam(t *testing.T) {
 		t.Fatalf("form field should be found")
 	}
 
-	if lp.Info != "Form" {
-		t.Fatalf("form field info should be Form, but got: %s", lp.Info)
+	if lp.Type != "Form" {
+		t.Fatalf("form field info should be Form, but got: %s", lp.Type)
 	}
 }

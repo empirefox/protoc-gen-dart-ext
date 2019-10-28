@@ -1,23 +1,18 @@
 package pgvt
 
-const oneOfTpl = `
-{{- $OneofType := dartNameOf . | printf "$0.%s_%s" -}}
-{{- $oneofName := .Name.UpperCamelCase -}}
-
-switch (info.proto.which{{ $oneofName }}()) {
-	{{ range .Fields -}}
-	case {{ $OneofType }}_{{ $oneofName }}.{{ .Name }}:
-		{{ $ctx := . | context | dartContext }}
-		assertField_{{ .Name }}({{ $ctx.Accessor }});
-		break;
-	{{ end -}}
-	default:
-		if (required)
-			throw $pgde.OneofRequiredError(info, {{ .L10nOneofName }});
-}
+const oneOfConstTpl = `
+{{ range .Fields }}{{ renderConstants .Validate }}{{ end }}
 `
 
-type OneofContext struct {
+const oneOfTpl = `
+switch ({{ .InfoAccessor }}.proto.{{ .WhichOneofMethodName }}()) {
+	{{ range .Fields -}}
+		case {{ $.FullPbWhichEnum }}.{{ .DartName }}:
+			assertField_{{ .DartName }}();
+			break;
+	{{ end -}}
+	{{ if .Required }}
+		default: throw {{ .PgdeFile.As }}.OneofRequiredError({{ .InfoAccessor }}, {{ .L10nAccessor }}.{{ .L10n.ResourceId }});
+	{{ end }}
 }
-
-func (ctx *OneofContext) L10nOneofName() string { return "_l10n." }
+`

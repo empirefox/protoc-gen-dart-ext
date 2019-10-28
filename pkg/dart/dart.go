@@ -2,8 +2,10 @@ package dart
 
 import (
 	"fmt"
+	"path/filepath"
 
 	pgs "github.com/lyft/protoc-gen-star"
+	strcase "github.com/stoewer/go-strcase"
 )
 
 type UsedNames []map[pgs.Name]bool
@@ -36,36 +38,108 @@ func (un UsedNames) Used(name pgs.Name) bool {
 	return false
 }
 
-type Entity struct {
-	Name      pgs.Name
+type Names interface {
+	Name() pgs.Name
+}
+
+type names struct {
+	name      pgs.Name
 	usedNames UsedNames
 }
 
+func (ns *names) Name() pgs.Name { return ns.name }
+
+type FieldNames interface {
+	Names
+	HasMethodName() pgs.Name
+	ClearMethodName() pgs.Name
+	EnsureMethodName() pgs.Name
+}
+
+type fieldNames struct {
+	fieldName        pgs.Name
+	hasMethodName    pgs.Name
+	clearMethodName  pgs.Name
+	ensureMethodName pgs.Name
+}
+
+func (ns *fieldNames) Name() pgs.Name             { return ns.fieldName }
+func (ns *fieldNames) HasMethodName() pgs.Name    { return ns.hasMethodName }
+func (ns *fieldNames) ClearMethodName() pgs.Name  { return ns.clearMethodName }
+func (ns *fieldNames) EnsureMethodName() pgs.Name { return ns.ensureMethodName }
+
+type OneOfNames interface {
+	Names
+	WhichOneofMethodName() pgs.Name
+	ClearMethodName() pgs.Name
+	OneofEnumName() pgs.Name
+}
+
+type oneOfNames struct {
+	oneofName            pgs.Name
+	whichOneofMethodName pgs.Name
+	clearMethodName      pgs.Name
+	oneofEnumName        pgs.Name
+}
+
+func (ns *oneOfNames) Name() pgs.Name                 { return ns.oneofName }
+func (ns *oneOfNames) WhichOneofMethodName() pgs.Name { return ns.whichOneofMethodName }
+func (ns *oneOfNames) ClearMethodName() pgs.Name      { return ns.clearMethodName }
+func (ns *oneOfNames) OneofEnumName() pgs.Name        { return ns.oneofEnumName }
+
 type Dart struct {
-	files      map[pgs.File]*Entity
-	messages   map[pgs.Message]*Entity
-	fields     map[pgs.Field]*Entity
-	oneofs     map[pgs.OneOf]*Entity
-	enums      map[pgs.Enum]*Entity
-	enumValues map[pgs.EnumValue]*Entity
+	pkgs       map[pgs.Package]pgs.Name
+	files      map[pgs.File]*names
+	messages   map[pgs.Message]*names
+	fields     map[pgs.Field]*fieldNames
+	oneofs     map[pgs.OneOf]*oneOfNames
+	enums      map[pgs.Enum]*names
+	enumValues map[pgs.EnumValue]*names
 }
 
 func NewDart() *Dart {
 	return &Dart{
-		files:      make(map[pgs.File]*Entity),
-		messages:   make(map[pgs.Message]*Entity),
-		fields:     make(map[pgs.Field]*Entity),
-		oneofs:     make(map[pgs.OneOf]*Entity),
-		enums:      make(map[pgs.Enum]*Entity),
-		enumValues: make(map[pgs.EnumValue]*Entity),
+		pkgs:       make(map[pgs.Package]pgs.Name),
+		files:      make(map[pgs.File]*names),
+		messages:   make(map[pgs.Message]*names),
+		fields:     make(map[pgs.Field]*fieldNames),
+		oneofs:     make(map[pgs.OneOf]*oneOfNames),
+		enums:      make(map[pgs.Enum]*names),
+		enumValues: make(map[pgs.EnumValue]*names),
 	}
 }
 
-func (d *Dart) NameOf(e pgs.Entity) pgs.Name {
-	return d.entityOf(e).Name
+func (d *Dart) EntityNameOf(p pgs.Package) pgs.Name {
+	name, ok := d.pkgs[p]
+	if !ok {
+		name = pgs.Name(entityNameOfPkg(p))
+		d.pkgs[p] = name
+	}
+	return name
 }
 
-func (d *Dart) entityOf(e pgs.Entity) *Entity {
+func entityNameOfPkg(pkg pgs.Package) string {
+	pkgName := pkg.ProtoName().String()
+	ext := filepath.Ext(pkgName)
+	if ext != "" {
+		pkgName = ext[1:]
+	}
+	return strcase.UpperCamelCase(pkgName)
+}
+
+func (d *Dart) NameOf(e pgs.Entity) pgs.Name {
+	return d.entityOf(e).Name()
+}
+
+func (d *Dart) FieldNames(e pgs.Field) FieldNames {
+	return d.entityOfField(e)
+}
+
+func (d *Dart) OneOfNames(e pgs.OneOf) OneOfNames {
+	return d.entityOfOneof(e)
+}
+
+func (d *Dart) entityOf(e pgs.Entity) Names {
 	switch i := e.(type) {
 	case pgs.File:
 		return d.entityOfFile(i)
@@ -83,11 +157,11 @@ func (d *Dart) entityOf(e pgs.Entity) *Entity {
 	return nil
 }
 
-func (d *Dart) entityOfFile(i pgs.File) *Entity {
+func (d *Dart) entityOfFile(i pgs.File) *names {
 	nty, ok := d.files[i]
 	if !ok {
-		nty = &Entity{
-			Name:      "",
+		nty = &names{
+			name:      "",
 			usedNames: usedTopLevelNames(),
 		}
 		d.files[i] = nty
@@ -95,19 +169,19 @@ func (d *Dart) entityOfFile(i pgs.File) *Entity {
 	return nty
 }
 
-func (d *Dart) entityOfMessage(i pgs.Message) *Entity {
+func (d *Dart) entityOfMessage(i pgs.Message) *names {
 	nty, ok := d.messages[i]
 	if !ok {
-		parentEntry := d.entityOf(i.Parent())
-		name := messageOrEnumClassName(i.Name(), parentEntry.usedNames, parentEntry.Name)
+		parentEntry := d.entityOf(i.Parent()).(*names)
+		name := messageOrEnumClassName(i.Name(), parentEntry.usedNames, parentEntry.name)
 		parentEntry.usedNames.Add(name)
 
 		var reserved map[pgs.Name]bool // compute?
 		existingNames := reservedMemberNames()
 		existingNames.AddMap(reserved)
 
-		nty = &Entity{
-			Name:      name, // check dart_options.dart_name?
+		nty = &names{
+			name:      name, // check dart_options.dart_name?
 			usedNames: existingNames,
 		}
 		d.messages[i] = nty
@@ -115,33 +189,48 @@ func (d *Dart) entityOfMessage(i pgs.Message) *Entity {
 	return nty
 }
 
-func (d *Dart) entityOfOneof(i pgs.OneOf) *Entity {
+func (d *Dart) entityOfOneof(i pgs.OneOf) *oneOfNames {
 	nty, ok := d.oneofs[i]
 	if !ok {
-		parentEntry := d.entityOf(i.Message())
+		parentEntry := d.entityOfMessage(i.Message())
 		oneofNameVariants := func(name pgs.Name) []pgs.Name {
 			return []pgs.Name{
 				_defaultWhichMethodName(name),
 				_defaultClearMethodName(name),
 			}
 		}
-		name := disambiguateName(i.Name().UpperCamelCase(),
+		oneofName := disambiguateName(
+			pgs.Name(strcase.UpperCamelCase(i.Name().String())),
 			parentEntry.usedNames, new(defaultSuffixes), oneofNameVariants)
-		parentEntry.usedNames.Add(name)
+		parentEntry.usedNames.Add(oneofName)
 
-		nty = &Entity{
-			Name:      name.UpperCamelCase(),
-			usedNames: nil,
+		f := d.entityOfFile(i.File())
+		oneofEnumName := oneofEnumClassName(i.Name(),
+			f.usedNames,
+			parentEntry.Name())
+		f.usedNames.Add(oneofEnumName)
+
+		enumMapName := disambiguateName(
+			pgs.Name(fmt.Sprintf("_$%sByTag", oneofEnumName)),
+			parentEntry.usedNames, new(defaultSuffixes),
+			nil)
+		parentEntry.usedNames.Add(enumMapName)
+
+		nty = &oneOfNames{
+			oneofName:            oneofName,
+			oneofEnumName:        oneofEnumName,
+			clearMethodName:      _defaultClearMethodName(oneofName),
+			whichOneofMethodName: _defaultWhichMethodName(oneofName),
 		}
 		d.oneofs[i] = nty
 	}
 	return nty
 }
 
-func (d *Dart) entityOfField(i pgs.Field) *Entity {
+func (d *Dart) entityOfField(i pgs.Field) *fieldNames {
 	nty, ok := d.fields[i]
 	if !ok {
-		parentEntry := d.entityOf(i.Message())
+		parentEntry := d.entityOfMessage(i.Message())
 		suffix := newMemberNamesSuffix(i.Descriptor().GetNumber())
 		var generateNameVariants generateVariantsFunc
 		if !i.Required() {
@@ -153,27 +242,35 @@ func (d *Dart) entityOfField(i pgs.Field) *Entity {
 				}
 			}
 		}
-		name := disambiguateName(i.Name(), parentEntry.usedNames, suffix, generateNameVariants)
+		name := disambiguateName(pgs.Name(strcase.UpperCamelCase(i.Name().String())),
+			parentEntry.usedNames, suffix, generateNameVariants)
 		parentEntry.usedNames.Add(name)
 
-		nty = &Entity{
-			Name:      name.LowerCamelCase(),
-			usedNames: nil,
+		var ensureMethodName pgs.Name
+		if i.Type().IsEmbed() {
+			ensureMethodName = _defaultEnsureMethodName(name)
+		}
+
+		nty = &fieldNames{
+			fieldName:        name.LowerCamelCase(),
+			hasMethodName:    _defaultHasMethodName(name),
+			clearMethodName:  _defaultClearMethodName(name),
+			ensureMethodName: ensureMethodName,
 		}
 		d.fields[i] = nty
 	}
 	return nty
 }
 
-func (d *Dart) entityOfEnum(i pgs.Enum) *Entity {
+func (d *Dart) entityOfEnum(i pgs.Enum) *names {
 	nty, ok := d.enums[i]
 	if !ok {
-		parentEntry := d.entityOf(i.Parent())
-		name := messageOrEnumClassName(i.Name(), parentEntry.usedNames, parentEntry.Name)
+		parentEntry := d.entityOf(i.Parent()).(*names)
+		name := messageOrEnumClassName(i.Name(), parentEntry.usedNames, parentEntry.name)
 		parentEntry.usedNames.Add(name)
 
-		nty = &Entity{
-			Name:      name,
+		nty = &names{
+			name:      name,
 			usedNames: reservedEnumNames(),
 		}
 		d.enums[i] = nty
@@ -181,16 +278,16 @@ func (d *Dart) entityOfEnum(i pgs.Enum) *Entity {
 	return nty
 }
 
-func (d *Dart) entityOfEnumValue(i pgs.EnumValue) *Entity {
+func (d *Dart) entityOfEnumValue(i pgs.EnumValue) *names {
 	nty, ok := d.enumValues[i]
 	if !ok {
-		parentEntry := d.entityOf(i.Enum())
+		parentEntry := d.entityOfEnum(i.Enum())
 		name := disambiguateName(avoidInitialUnderscore(i.Name()),
 			parentEntry.usedNames, new(enumSuffixes), nil)
 		parentEntry.usedNames.Add(name)
 
-		nty = &Entity{
-			Name:      name,
+		nty = &names{
+			name:      name,
 			usedNames: nil,
 		}
 		d.enumValues[i] = nty
@@ -286,9 +383,12 @@ func _defaultClearMethodName(fieldMethodSuffix pgs.Name) pgs.Name {
 func _defaultWhichMethodName(oneofMethodSuffix pgs.Name) pgs.Name {
 	return "which" + oneofMethodSuffix
 }
+func _defaultEnsureMethodName(fieldMethodSuffix pgs.Name) pgs.Name {
+	return "ensure" + fieldMethodSuffix
+}
 
 func oneofEnumClassName(descriptorName pgs.Name, usedNames UsedNames, parent pgs.Name) pgs.Name {
-	descriptorName = descriptorName.UpperCamelCase()
+	descriptorName = pgs.Name(strcase.UpperCamelCase(descriptorName.String()))
 	descriptorName = pgs.Name(fmt.Sprintf("%s_%s", parent, descriptorName))
 	avoidName := avoidInitialUnderscore(descriptorName)
 	return disambiguateName(avoidName, usedNames, new(defaultSuffixes), nil)

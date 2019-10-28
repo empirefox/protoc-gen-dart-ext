@@ -19,8 +19,16 @@ type ArbAttributes struct {
 	// return the id when the self value is not set or equals the id's.
 	MaybeSameWith string `json:"x-maybe_same_with,omitempty"`
 
-	// fully qualified proto name
-	Export string `json:"x-export,omitempty"`
+	// DartParams used in template file
+	DartParams *DartParams `json:"-"`
+}
+
+func (attr *ArbAttributes) IsEmpty() bool {
+	return attr.Type == "" &&
+		attr.Context == "" &&
+		attr.Description == "" &&
+		len(attr.Placeholders) == 0 &&
+		attr.MaybeSameWith == ""
 }
 
 func (attr *ArbAttributes) LangParam(lang, param string) *LangParam {
@@ -43,7 +51,7 @@ func (s ArbPlaceholders) LangParam(lang, param string) *LangParam {
 	for _, holder := range s {
 		if holder.LangInfos != nil && holder.Name == param {
 			if li := holder.LangInfos.GetLang(lang); li != nil {
-				return &LangParam{Name: param, Info: li.Info, Import: li.Import}
+				return &LangParam{Name: param, Type: li.Type, Replace: li.Replace, Import: li.Import}
 			}
 			return nil
 		}
@@ -55,7 +63,7 @@ func (s ArbPlaceholders) LangParams(lang string) []*LangParam {
 	ps := make([]*LangParam, len(s))
 	for i, holder := range s {
 		if li := holder.LangInfos.GetLang(lang); li != nil {
-			ps[i] = &LangParam{Name: holder.Name, Info: li.Info, Import: li.Import}
+			ps[i] = &LangParam{Name: holder.Name, Type: li.Type, Replace: li.Replace, Import: li.Import}
 		} else {
 			ps[i] = &LangParam{Name: holder.Name}
 		}
@@ -134,14 +142,58 @@ func (s ArbLangInfos) Clone() ArbLangInfos {
 }
 
 //easyjson:json
+//
+// For dart:
+//
+// Type=&&.Meter, Replace=&.name, Import=myplural.dart
+//   myplural.dart as $$plural:
+//   {meter} => ($$plural.Meter meter)=>meter.name
+//
+// Type=, Replace=&&.Atom.&, Import=myunits.dart
+//   myunits.dart as $$units:
+//   {meter} => $$units.Atom.meter
+//
+// Type=, Replace='${&&.&}', Import=math.dart
+//   math.dart as $$math:
+//   {pi} => '${$$math.pi}'
+//
+// Type=, Replace=&&.&.toString(), Import=math.dart
+//   math.dart as $$math:
+//   {pi} => $$math.pi.toString()
+//
+// high priority:
+// Type=, Replace=&&&.UnitsLocalization.atomMeter, Import=units.dart
+//   add field: $$units.UnitsLocalization _units;
+//   construct: ..units=$$units.UnitsLocalization.of(BuildContext context)
+//   100{meter} => '100'+_units.atomMeter
+//
+// Type=String, Replace=&, Import=
+//   { form,select,one{xxx} } => (String form)=>
+//     switch (form) { case 'one' }
+//
+// Type=&&.Form, Replace=&, Import=package:pgde/plural.dart
+//   { form,plural,one{xxx} } => ($0.Form form)=>
+//     switch (form) { case $0.Form.one }
+//
+// Type=String, Replace=&, Import=
+//   {field} => (String field)=>field
+//
+// Type=AnyType, Replace='${&}', Import=
+//   {field} => (AnyType field)=>'${field}'
+//
+// special:
+// Type=, Replace=, Import=
+//   {field} => (field)=>'${field}'
 type ArbLangInfo struct {
-	Lang   string `toml:",omitempty" json:"lang,omitempty"`
-	Info   string `toml:",omitempty" json:"info,omitempty"`
-	Import string `toml:",omitempty" json:"import,omitempty"`
+	Lang    string `toml:",omitempty" json:"lang,omitempty"`
+	Type    string `toml:",omitempty" json:"type,omitempty"`
+	Replace string `toml:",omitempty" json:"replace,omitempty"`
+	Import  string `toml:",omitempty" json:"import,omitempty"`
 }
 
 type LangParam struct {
-	Name   string
-	Info   string
-	Import string
+	Name    string
+	Type    string
+	Replace string
+	Import  string
 }

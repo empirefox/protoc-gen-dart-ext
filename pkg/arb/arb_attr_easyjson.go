@@ -223,8 +223,10 @@ func easyjson5edff16dDecodeGithubComEmpirefoxProtocGenDartExtPkgArb2(in *jlexer.
 		switch key {
 		case "lang":
 			out.Lang = string(in.String())
-		case "info":
-			out.Info = string(in.String())
+		case "type":
+			out.Type = string(in.String())
+		case "replace":
+			out.Replace = string(in.String())
 		case "import":
 			out.Import = string(in.String())
 		default:
@@ -251,15 +253,25 @@ func easyjson5edff16dEncodeGithubComEmpirefoxProtocGenDartExtPkgArb2(out *jwrite
 		}
 		out.String(string(in.Lang))
 	}
-	if in.Info != "" {
-		const prefix string = ",\"info\":"
+	if in.Type != "" {
+		const prefix string = ",\"type\":"
 		if first {
 			first = false
 			out.RawString(prefix[1:])
 		} else {
 			out.RawString(prefix)
 		}
-		out.String(string(in.Info))
+		out.String(string(in.Type))
+	}
+	if in.Replace != "" {
+		const prefix string = ",\"replace\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
+		}
+		out.String(string(in.Replace))
 	}
 	if in.Import != "" {
 		const prefix string = ",\"import\":"
@@ -328,8 +340,6 @@ func easyjson5edff16dDecodeGithubComEmpirefoxProtocGenDartExtPkgArb3(in *jlexer.
 			}
 		case "x-maybe_same_with":
 			out.MaybeSameWith = string(in.String())
-		case "x-export":
-			out.Export = string(in.String())
 		default:
 			in.SkipRecursive()
 		}
@@ -393,16 +403,6 @@ func easyjson5edff16dEncodeGithubComEmpirefoxProtocGenDartExtPkgArb3(out *jwrite
 			out.RawString(prefix)
 		}
 		out.String(string(in.MaybeSameWith))
-	}
-	if in.Export != "" {
-		const prefix string = ",\"x-export\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
-		}
-		out.String(string(in.Export))
 	}
 	out.RawByte('}')
 }

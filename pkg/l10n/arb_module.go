@@ -72,3 +72,8 @@ func (m *ArbModule) Execute(targets map[string]pgs.File, pkgs map[string]pgs.Pac
 
 	return m.Artifacts()
 }
+
+// TODO
+func PackageToArb(d *dart.Dart, locale language.Tag, pkg pgs.Package) (*arb.Arb, error) {
+	return nil, nil
+}

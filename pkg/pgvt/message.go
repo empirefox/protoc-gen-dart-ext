@@ -1,12 +1,12 @@
 package pgvt
 
 const messageTpl = `
-	{{ $f := .Field }}{{ $r := .Rules }}
-	{{ template "required" . }}
-
-	{{ if $r.GetSkip }}
-		// skipping validation for {{ $f.Name }}
+	{{ if .Pgv.MessageRules.GetSkip }}
+		// skipping validation for {{ .DartName }}
 	{{ else }}
-		{{ .MessageValidator }}.assertProto({{ .Accessor }});
+		{{ template "required" . }}
+		{{ if (isOfMessageType .) }}
+			{{ .FullFieldTypeMessage }}.assertProto({{ .Validator.BuildContextAccessor }}, {{ .Validator.InfoAccessor }}.clone({{ .Accessor }}));
+		{{ end }}
 	{{ end }}
 `

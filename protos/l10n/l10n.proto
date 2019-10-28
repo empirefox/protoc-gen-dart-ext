@@ -51,10 +51,13 @@ message Arb {
   string suffix = 8;
 }
 
+// use '-' to disable assets[label, helper, prefix, suffix, boolTrue, boolFalse]
 message FieldArb {
   bool ignore = 1;
 
+  // can be "$" to use the field name of itself, just to generate the seed arb file.
   string value = 2;
+
   // can be "$" to use label
   string desc = 3;
 

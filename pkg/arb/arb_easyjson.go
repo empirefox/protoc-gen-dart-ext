@@ -50,60 +50,6 @@ func easyjsonAf4d4e0fDecodeGithubComEmpirefoxProtocGenDartExtPkgArb(in *jlexer.L
 			out.Author = string(in.String())
 		case "@@x-entity":
 			out.Entity = string(in.String())
-		case "@@x-imports":
-			if in.IsNull() {
-				in.Skip()
-				out.Imports = nil
-			} else {
-				in.Delim('[')
-				if out.Imports == nil {
-					if !in.IsDelim(']') {
-						out.Imports = make([]*ArbImport, 0, 8)
-					} else {
-						out.Imports = []*ArbImport{}
-					}
-				} else {
-					out.Imports = (out.Imports)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v1 *ArbImport
-					if in.IsNull() {
-						in.Skip()
-						v1 = nil
-					} else {
-						if v1 == nil {
-							v1 = new(ArbImport)
-						}
-						(*v1).UnmarshalEasyJSON(in)
-					}
-					out.Imports = append(out.Imports, v1)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
-		case "@@x-nils":
-			if in.IsNull() {
-				in.Skip()
-				out.Nils = nil
-			} else {
-				in.Delim('[')
-				if out.Nils == nil {
-					if !in.IsDelim(']') {
-						out.Nils = make([]string, 0, 4)
-					} else {
-						out.Nils = []string{}
-					}
-				} else {
-					out.Nils = (out.Nils)[:0]
-				}
-				for !in.IsDelim(']') {
-					var v2 string
-					v2 = string(in.String())
-					out.Nils = append(out.Nils, v2)
-					in.WantComma()
-				}
-				in.Delim(']')
-			}
 		default:
 			in.SkipRecursive()
 		}
@@ -167,48 +113,6 @@ func easyjsonAf4d4e0fEncodeGithubComEmpirefoxProtocGenDartExtPkgArb(out *jwriter
 			out.RawString(prefix)
 		}
 		out.String(string(in.Entity))
-	}
-	if len(in.Imports) != 0 {
-		const prefix string = ",\"@@x-imports\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
-		}
-		{
-			out.RawByte('[')
-			for v3, v4 := range in.Imports {
-				if v3 > 0 {
-					out.RawByte(',')
-				}
-				if v4 == nil {
-					out.RawString("null")
-				} else {
-					(*v4).MarshalEasyJSON(out)
-				}
-			}
-			out.RawByte(']')
-		}
-	}
-	if len(in.Nils) != 0 {
-		const prefix string = ",\"@@x-nils\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
-		}
-		{
-			out.RawByte('[')
-			for v5, v6 := range in.Nils {
-				if v5 > 0 {
-					out.RawByte(',')
-				}
-				out.String(string(v6))
-			}
-			out.RawByte(']')
-		}
 	}
 	out.RawByte('}')
 }

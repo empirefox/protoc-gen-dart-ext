@@ -5,8 +5,6 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/empirefox/protoc-gen-dart-ext/pkg/arb"
-
 	pgs "github.com/lyft/protoc-gen-star"
 )
 
@@ -14,7 +12,6 @@ var Funcs = template.FuncMap{
 	"dartPgsPkgName":            PackageName,
 	"dartPgsFileNameFromEntity": FileName,
 	"dartRawStr":                RawString,
-	"dartArbParams":             ArbParams,
 }
 
 func (d *Dart) Funcs() template.FuncMap {
@@ -58,16 +55,4 @@ func RawString(s string) string {
 		output.WriteRune(squot)
 	}
 	return output.String()
-}
-
-func ArbParams(holders arb.ArbPlaceholders, withType bool) string {
-	ps := make([]string, len(holders))
-	for i, lp := range holders.LangParams("dart") {
-		if withType {
-			ps[i] = lp.Info + " " + lp.Name
-		} else {
-			ps[i] = lp.Name
-		}
-	}
-	return strings.Join(ps, ",")
 }

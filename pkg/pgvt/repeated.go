@@ -1,55 +1,55 @@
 package pgvt
 
-const repeatedConstTpl = `{{ $r := .Rules }}
+const repeatedConstTpl = `{{ $r := .Pgv.Rules }}
 {{ if or $r.GetUnique (ne (.Elem "" "").Typ "none") }}
 	{{ renderConstants (.Elem "" "") }}
 {{ end }}`
 
-const repeatedTpl = `{{ $f := .Field }}{{ $r := .Rules }}
+const repeatedTpl = `{{ $f := .Field }}{{ $r := .Pgv.Rules }}
 {{ if or $r.GetMinItems $r.GetMaxItems }}
-	final _vl = {{ .PgdeFile.As }}.Lists.len(_v);
+	final _rl = {{ .PgdeFile.As }}.Lists.len({{ .Accessor }});
 {{ end }}
 {{ if $r.GetMinItems }}
 	{{ if eq $r.GetMinItems $r.GetMaxItems }}
-		if (_vl != {{ $r.GetMinItems }})
-			throw {{ .PgdeFile.As }}.ItemsLenConstError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateEq, {{ $r.GetMinItems }});
+		if (_rl != {{ $r.GetMinItems }})
+			throw {{ .PgdeFile.As }}.ItemsLenConstError({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ $r.GetMinItems }});
 	{{ else if $r.MaxItems }}
-		if (_vl < {{ $r.GetMinItems }} || _vl > {{ $r.GetMaxItems }})
-			throw {{ .PgdeFile.As }}.RangeError(ErrorRange.outEE(info, {{ $.Number }}, {{ $.L10nField }}, {{ $r.GetMinItems }}, {{ $r.GetMaxItems }}));
+		if (_rl < {{ $r.GetMinItems }} || _rl > {{ $r.GetMaxItems }})
+			throw {{ .PgdeFile.As }}.RangeError(ErrorRange.outEE ({{ .Err3Args }}, {{ $r.GetMinItems }}, {{ $r.GetMaxItems }}));
 	{{ else }}
-		if (_vl < {{ $r.GetMinItems }})
-			throw {{ .PgdeFile.As }}.ConstError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateGte, {{ $r.GetMinItems }});
+		if (_rl < {{ $r.GetMinItems }})
+			throw {{ .PgdeFile.As }}.ConstError({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateGte, {{ $r.GetMinItems }});
 	{{ end }}
 {{ else if $r.MaxItems }}
-	if (_vl > {{ $r.GetMaxItems }})
-		throw {{ .PgdeFile.As }}.ConstError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateLte, {{ $r.GetMaxItems }});
+	if (_rl > {{ $r.GetMaxItems }})
+		throw {{ .PgdeFile.As }}.ConstError({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateLte, {{ $r.GetMaxItems }});
 {{ end }}
 
 {{ if $r.GetUnique }}
 	final Set<
-		{{- if isBytes $f.Type.Element -}}
+		{{- if .RepeatedElemIsBytes -}}
 			{{ .PgdeFile.As }}.Bytes
 		{{- else -}}
-			{{ (typ $f).Element }}
+			{{ .RepeatedElemType }}
 		{{- end -}}
 	> 
 		_unique = HashSet();
 {{ end }}
 
 {{ if or $r.GetUnique (ne (.Elem "" "").Typ "none") }}
-	for var idx = 0; idx < _v.length; idx++ {
-		final item = _v[idx];
+	for var _ridx = 0; _ridx < {{ .Accessor }}.length; _ridx++ {
+		final _ritem = {{ .Accessor }}[_ridx];
 		{{ if $r.GetUnique }}
 			if (!_unique.add(
-				{{- if isBytes $f.Type.Element -}}
-					{{ .PgdeFile.As }}.Bytes(item)
+				{{- if .RepeatedElemIsBytes -}}
+					{{ .PgdeFile.As }}.Bytes(_ritem)
 				{{- else -}}
-					item
+					_ritem
 				{{- end -}}
-			)) throw {{ .PgdeFile.As }}.BeSomethingError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateUnique(idx+1));
+			)) throw {{ .PgdeFile.As }}.BeSomethingError({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateUnique(_ridx+1));
 		{{ end }}
 
-		{{ render (.Elem "item" "idx") }}
+		{{ render (.Elem "_ritem" "_ridx") }}
 	}
 {{ end }}
 `

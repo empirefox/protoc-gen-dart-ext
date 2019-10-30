@@ -2,12 +2,18 @@ package dartpb
 
 import (
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/l10n"
+	"github.com/envoyproxy/protoc-gen-validate/templates/shared"
 	pgs "github.com/lyft/protoc-gen-star"
 )
 
 func (p *Package) addMessage(g *PackageGroup, pgsNty pgs.Message) error {
+	validateDisabled, err := shared.Disabled(pgsNty)
+	if err != nil {
+		return err
+	}
+
 	var a MsgOrEnumArb
-	_, err := pgsNty.Extension(l10n.E_MsgArb, &a.Extension)
+	_, err = pgsNty.Extension(l10n.E_MsgArb, &a.Extension)
 	if err != nil {
 		return err
 	}
@@ -19,11 +25,14 @@ func (p *Package) addMessage(g *PackageGroup, pgsNty pgs.Message) error {
 		},
 		Pgs:            pgsNty,
 		Arb:            &a,
-		PbRootFilePath: pgsNty.File().InputPath().SetExt(".pb.dart"),
+		PbRootFilePath: pgsNty.File().InputPath().SetExt(".pb.dart").String(),
+
+		Validate: &ValidateMessage{Disabled: validateDisabled},
 	}
 
 	g.PgsToMsg[pgsNty] = nty
 	a.Message = nty
+	nty.Validate.Message = nty
 	p.Messages = append(p.Messages, nty)
 
 	for _, child := range pgsNty.OneOfs() {
@@ -42,8 +51,13 @@ func (p *Package) addMessage(g *PackageGroup, pgsNty pgs.Message) error {
 }
 
 func (msg *Message) addField(g *PackageGroup, pgsNty pgs.Field) error {
+	pgvCtx, err := rulesContext(pgsNty)
+	if err != nil {
+		return err
+	}
+
 	var a FieldArb
-	_, err := pgsNty.Extension(l10n.E_FieldArb, &a.Extension)
+	_, err = pgsNty.Extension(l10n.E_FieldArb, &a.Extension)
 	if err != nil {
 		return err
 	}
@@ -56,17 +70,25 @@ func (msg *Message) addField(g *PackageGroup, pgsNty pgs.Field) error {
 		Pgs:     pgsNty,
 		Arb:     &a,
 		Message: msg,
+
+		Validate: &ValidateField{Pgv: &pgvCtx},
 	}
 
 	g.PgsToField[pgsNty] = nty
 	a.Entity = nty
+	nty.Validate.Field = nty
 	msg.Fields = append(msg.Fields, nty)
 	return nil
 }
 
 func (msg *Message) addOneof(g *PackageGroup, pgsNty pgs.OneOf) error {
+	validateRequired, err := shared.RequiredOneOf(pgsNty)
+	if err != nil {
+		return err
+	}
+
 	var a OneOfArb
-	_, err := pgsNty.Extension(l10n.E_OneofArb, &a.Extension)
+	_, err = pgsNty.Extension(l10n.E_OneofArb, &a.Extension)
 	if err != nil {
 		return err
 	}
@@ -79,10 +101,13 @@ func (msg *Message) addOneof(g *PackageGroup, pgsNty pgs.OneOf) error {
 		Pgs:     pgsNty,
 		Arb:     &a,
 		Message: msg,
+
+		Validate: &ValidateOneOf{Required: validateRequired},
 	}
 
 	g.PgsToOneOf[pgsNty] = nty
 	a.Entity = nty
+	nty.Validate.OneOf = nty
 	msg.OneOfs = append(msg.OneOfs, nty)
 	return nil
 }
@@ -103,7 +128,7 @@ func (p *Package) addEnum(g *PackageGroup, pgsNty pgs.Enum) error {
 		},
 		Pgs:            pgsNty,
 		Arb:            &a,
-		PbRootFilePath: pgsNty.File().InputPath().SetExt(".pb.dart"),
+		PbRootFilePath: pgsNty.File().InputPath().SetExt(".pb.dart").String(),
 	}
 
 	g.PgsToEnum[pgsNty] = nty

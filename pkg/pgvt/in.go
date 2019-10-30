@@ -1,33 +1,34 @@
 package pgvt
 
+// num and string
 const inConstTpl = inTplDef + `
 {{- if $r.In }}
-	static const Map<{{ .FieldType }}, Null> {{ $kIn }} = {
+	static const Map<{{ .DartConstRefDefineType }}, Null> {{ $kIn }} = {
 		{{- range $r.In }}
-		{{ lit . }}: null,
+		{{ lit $ . }}: null,
 		{{- end }}
 	};
 {{- end -}}
 {{- if $r.NotIn }}
-	static const Map<{{ .FieldType }}, Null> {{ $kNotIn }} = {
+	static const Map<{{ .DartConstRefDefineType }}, Null> {{ $kNotIn }} = {
 		{{- range $r.NotIn }}
-		{{ lit . }}: null,
+		{{ lit $ . }}: null,
 		{{- end }}
 	};
 {{- end -}}`
 
-const inTplDef = `{{ $r := .Rules }}
+const inTplDef = `{{ $r := .Pgv.Rules }}
 {{- $kIn := constRef . "kIn" }}
 {{- $kNotIn := constRef . "kNotIn" }}
 `
 
 const inTpl = inTplDef + `
 {{- if $r.In }}
-	if (!{{ $kIn }}.containsKey(_v))
-		throw {{ .PgdeFile.As }}.InError({{ $kIn }}.keys);
+	if (!{{ $kIn }}.containsKey({{ .Accessor }}))
+		throw {{ .PgdeFile.As }}.InError({{ .Err3Args }}, {{ $kIn }}.keys);
 {{- end -}}
 {{- if $r.NotIn }}
-	if ({{ $kNotIn }}.containsKey(_v))
-		throw {{ .PgdeFile.As }}.InError.not({{ $kNotIn }}.keys);
+	if ({{ $kNotIn }}.containsKey({{ .Accessor }}))
+		throw {{ .PgdeFile.As }}.InError.not({{ .Err3Args }}, {{ $kNotIn }}.keys);
 {{- end -}}
 `

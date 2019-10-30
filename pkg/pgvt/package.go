@@ -13,10 +13,5 @@ const packageTpl = `
 	// source: {{ .InputPath }}
 {{ end }}
 
-{{- range .Validator.ImportManager.Files }}
-	import '{{ .Name }}'
-		{{- if .As }} as {{ .As }}{{ end -}}
-		{{- if .IsShow }} show {{ .Show }}{{ end -}}
-	;
-{{- end }}
+{{ .Validator.ImportManager.RenderImports }}
 `

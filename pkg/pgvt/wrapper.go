@@ -1,11 +1,17 @@
 package pgvt
 
-const wrapperConstTpl = `{{ $r := .Rules }}			
+const wrapperConstTpl = `
 {{- renderConstants (unwrap .) }}
 `
 
-const wrapperTpl = `{{ $r := .Rules }}
+const wrapperTpl = `
 {{ .IfHasBegin }}
-	{{ render (unwrap . "wrapper") }}
+	{{ render (unwrap .) }}
 {{ .IfHasEnd }}
+
+{{- $maybeEmpty := .IfHasBegin -}}
+
+{{ if and $maybeEmpty .MessageRules.GetRequired }} else {
+	throw {{ .PgdeFile.As }}.RequiredError({{ .Err3Args }});
+} {{ end }}
 `

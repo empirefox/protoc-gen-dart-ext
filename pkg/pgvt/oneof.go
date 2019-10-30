@@ -5,7 +5,7 @@ const oneOfConstTpl = `
 `
 
 const oneOfTpl = `
-switch ({{ .InfoAccessor }}.proto.{{ .WhichOneofMethodName }}()) {
+switch ({{ .InfoAccessor }}.proto.{{ .Names.WhichOneofMethodName }}()) {
 	{{ range .Fields -}}
 		case {{ $.FullPbWhichEnum }}.{{ .DartName }}:
 			assertField_{{ .DartName }}();

@@ -95,7 +95,7 @@ func NewPackageGroup(d *dart.Dart, locale language.Tag, pkgs []pgs.Package, spli
 
 type Package struct {
 	Group    *PackageGroup
-	DartName pgs.Name
+	DartName dart.Qualifier
 	Pgs      pgs.Package
 
 	L10n *L10n
@@ -113,7 +113,7 @@ func newPackage(g *PackageGroup, locale language.Tag, pgsPkg pgs.Package) (*Pack
 		DartName: pkgNtyDartName,
 		L10n: &L10n{
 			RootFilePath: "pgde/" + pgsPkg.ProtoName().String() + ".l10n.dart",
-			ClassName:    pkgNtyDartName.UpperCamelCase().String() + "Localization",
+			ClassName:    pkgNtyDartName.ToCamel() + "Localization",
 			Arb: &arb.Arb{
 				LastModified: iso8601.Time{time.Now()},
 				Locale:       locale,
@@ -123,18 +123,28 @@ func newPackage(g *PackageGroup, locale language.Tag, pgsPkg pgs.Package) (*Pack
 			ImportManager: dart.NewDefaultImportManager(),
 		},
 		Validator: &Validator{
-			RootFilePath:         "pgde/" + pgsPkg.ProtoName().String() + ".validate.dart",
-			ClassName:            pkgNtyDartName.UpperCamelCase().String() + "Validator",
-			BuildContextAccessor: "_context",
-			InfoAccessor:         "_info",
-			L10nAccessor:         "_l10n",
-			FieldAccessor:        "_v",
-			ImportManager:        dart.NewDefaultImportManager(),
+			RootFilePath:          "pgde/" + pgsPkg.ProtoName().String() + ".validate.dart",
+			ClassName:             pkgNtyDartName.ToCamel() + "Validator",
+			BuildContextAccessor:  "_context",
+			InfoAccessor:          "_info",
+			L10nAccessor:          "_l10n",
+			FieldAccessor:         "_v",
+			EnumFieldL10nAccessor: "_enumL10n",
+			ImportManager:         dart.NewDefaultImportManager(),
 		},
 		Pgs: pgsPkg,
 	}
 	p.Validator.Package = p
 
+	l10nFileResolvedImport, err := ResolveImport(p.Validator.RootFilePath, p.L10n.RootFilePath)
+	if err != nil {
+		return nil, err
+	}
+
+	p.Validator.DartConvertLib = p.Validator.ImportManager.
+		GetFile("dart:convert").
+		AddShow("utf8").
+		EnableShow()
 	p.Validator.MaterialFile = p.Validator.ImportManager.
 		GetFile("package:flutter/material.dart").
 		AddShow("BuildContext").
@@ -146,9 +156,9 @@ func newPackage(g *PackageGroup, locale language.Tag, pgsPkg pgs.Package) (*Pack
 		EnableShow()
 	p.Validator.EmailValidatorFile = p.Validator.ImportManager.GetFile("package:email_validator/email_validator.dart")
 	p.Validator.PgdeFile = p.Validator.ImportManager.GetFile("package:pgde/pgde.dart")
-	p.Validator.L10nFile = p.Validator.ImportManager.GetFile(ResolveImport(p.Validator.RootFilePath, p.L10n.RootFilePath))
+	p.Validator.L10nFile = p.Validator.ImportManager.GetFile(l10nFileResolvedImport)
 
-	p.Validator.FullL10nClass = p.Validator.L10nFile.As + "." + p.L10n.ClassName
+	p.Validator.FullL10nClass = p.Validator.L10nFile.As.Append(p.L10n.ClassName)
 
 	g.PgsToPkg[pgsPkg] = p
 

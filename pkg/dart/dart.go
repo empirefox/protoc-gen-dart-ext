@@ -5,31 +5,30 @@ import (
 	"path/filepath"
 
 	pgs "github.com/lyft/protoc-gen-star"
-	strcase "github.com/stoewer/go-strcase"
 )
 
-type UsedNames []map[pgs.Name]bool
+type UsedNames []map[Qualifier]bool
 
-func (un UsedNames) Add(name pgs.Name) {
+func (un UsedNames) Add(name Qualifier) {
 	if un[0] == nil {
-		un[0] = make(map[pgs.Name]bool)
+		un[0] = make(map[Qualifier]bool)
 	}
 	un[0][name] = true
 }
-func (un *UsedNames) AddMap(m map[pgs.Name]bool) {
+func (un *UsedNames) AddMap(m map[Qualifier]bool) {
 	if len(*un) == 0 {
 		return
 	}
 	*un = append(*un, m)
 }
-func (un *UsedNames) AddSlice(names []pgs.Name) {
-	m := make(map[pgs.Name]bool, len(names))
+func (un *UsedNames) AddSlice(names []Qualifier) {
+	m := make(map[Qualifier]bool, len(names))
 	for _, n := range names {
 		m[n] = true
 	}
 	un.AddMap(m)
 }
-func (un UsedNames) Used(name pgs.Name) bool {
+func (un UsedNames) Used(name Qualifier) bool {
 	for _, m := range un {
 		if m[name] {
 			return true
@@ -39,56 +38,56 @@ func (un UsedNames) Used(name pgs.Name) bool {
 }
 
 type Names interface {
-	Name() pgs.Name
+	Name() Qualifier
 }
 
 type names struct {
-	name      pgs.Name
+	name      Qualifier
 	usedNames UsedNames
 }
 
-func (ns *names) Name() pgs.Name { return ns.name }
+func (ns *names) Name() Qualifier { return ns.name }
 
 type FieldNames interface {
 	Names
-	HasMethodName() pgs.Name
-	ClearMethodName() pgs.Name
-	EnsureMethodName() pgs.Name
+	HasMethodName() Qualifier
+	ClearMethodName() Qualifier
+	EnsureMethodName() Qualifier
 }
 
 type fieldNames struct {
-	fieldName        pgs.Name
-	hasMethodName    pgs.Name
-	clearMethodName  pgs.Name
-	ensureMethodName pgs.Name
+	fieldName        Qualifier
+	hasMethodName    Qualifier
+	clearMethodName  Qualifier
+	ensureMethodName Qualifier
 }
 
-func (ns *fieldNames) Name() pgs.Name             { return ns.fieldName }
-func (ns *fieldNames) HasMethodName() pgs.Name    { return ns.hasMethodName }
-func (ns *fieldNames) ClearMethodName() pgs.Name  { return ns.clearMethodName }
-func (ns *fieldNames) EnsureMethodName() pgs.Name { return ns.ensureMethodName }
+func (ns *fieldNames) Name() Qualifier             { return ns.fieldName }
+func (ns *fieldNames) HasMethodName() Qualifier    { return ns.hasMethodName }
+func (ns *fieldNames) ClearMethodName() Qualifier  { return ns.clearMethodName }
+func (ns *fieldNames) EnsureMethodName() Qualifier { return ns.ensureMethodName }
 
 type OneOfNames interface {
 	Names
-	WhichOneofMethodName() pgs.Name
-	ClearMethodName() pgs.Name
-	OneofEnumName() pgs.Name
+	WhichOneofMethodName() Qualifier
+	ClearMethodName() Qualifier
+	OneofEnumName() Qualifier
 }
 
 type oneOfNames struct {
-	oneofName            pgs.Name
-	whichOneofMethodName pgs.Name
-	clearMethodName      pgs.Name
-	oneofEnumName        pgs.Name
+	oneofName            Qualifier
+	whichOneofMethodName Qualifier
+	clearMethodName      Qualifier
+	oneofEnumName        Qualifier
 }
 
-func (ns *oneOfNames) Name() pgs.Name                 { return ns.oneofName }
-func (ns *oneOfNames) WhichOneofMethodName() pgs.Name { return ns.whichOneofMethodName }
-func (ns *oneOfNames) ClearMethodName() pgs.Name      { return ns.clearMethodName }
-func (ns *oneOfNames) OneofEnumName() pgs.Name        { return ns.oneofEnumName }
+func (ns *oneOfNames) Name() Qualifier                 { return ns.oneofName }
+func (ns *oneOfNames) WhichOneofMethodName() Qualifier { return ns.whichOneofMethodName }
+func (ns *oneOfNames) ClearMethodName() Qualifier      { return ns.clearMethodName }
+func (ns *oneOfNames) OneofEnumName() Qualifier        { return ns.oneofEnumName }
 
 type Dart struct {
-	pkgs       map[pgs.Package]pgs.Name
+	pkgs       map[pgs.Package]Qualifier
 	files      map[pgs.File]*names
 	messages   map[pgs.Message]*names
 	fields     map[pgs.Field]*fieldNames
@@ -99,7 +98,7 @@ type Dart struct {
 
 func NewDart() *Dart {
 	return &Dart{
-		pkgs:       make(map[pgs.Package]pgs.Name),
+		pkgs:       make(map[pgs.Package]Qualifier),
 		files:      make(map[pgs.File]*names),
 		messages:   make(map[pgs.Message]*names),
 		fields:     make(map[pgs.Field]*fieldNames),
@@ -109,25 +108,25 @@ func NewDart() *Dart {
 	}
 }
 
-func (d *Dart) EntityNameOf(p pgs.Package) pgs.Name {
+func (d *Dart) EntityNameOf(p pgs.Package) Qualifier {
 	name, ok := d.pkgs[p]
 	if !ok {
-		name = pgs.Name(entityNameOfPkg(p))
+		name = entityNameOfPkg(p)
 		d.pkgs[p] = name
 	}
 	return name
 }
 
-func entityNameOfPkg(pkg pgs.Package) string {
+func entityNameOfPkg(pkg pgs.Package) Qualifier {
 	pkgName := pkg.ProtoName().String()
 	ext := filepath.Ext(pkgName)
 	if ext != "" {
 		pkgName = ext[1:]
 	}
-	return strcase.UpperCamelCase(pkgName)
+	return Qualifier(pkgName).ToCamel()
 }
 
-func (d *Dart) NameOf(e pgs.Entity) pgs.Name {
+func (d *Dart) NameOf(e pgs.Entity) Qualifier {
 	return d.entityOf(e).Name()
 }
 
@@ -173,10 +172,10 @@ func (d *Dart) entityOfMessage(i pgs.Message) *names {
 	nty, ok := d.messages[i]
 	if !ok {
 		parentEntry := d.entityOf(i.Parent()).(*names)
-		name := messageOrEnumClassName(i.Name(), parentEntry.usedNames, parentEntry.name)
+		name := messageOrEnumClassName(Qualifier(i.Name()), parentEntry.usedNames, parentEntry.name)
 		parentEntry.usedNames.Add(name)
 
-		var reserved map[pgs.Name]bool // compute?
+		var reserved map[Qualifier]bool // compute?
 		existingNames := reservedMemberNames()
 		existingNames.AddMap(reserved)
 
@@ -193,25 +192,25 @@ func (d *Dart) entityOfOneof(i pgs.OneOf) *oneOfNames {
 	nty, ok := d.oneofs[i]
 	if !ok {
 		parentEntry := d.entityOfMessage(i.Message())
-		oneofNameVariants := func(name pgs.Name) []pgs.Name {
-			return []pgs.Name{
+		oneofNameVariants := func(name Qualifier) []Qualifier {
+			return []Qualifier{
 				_defaultWhichMethodName(name),
 				_defaultClearMethodName(name),
 			}
 		}
 		oneofName := disambiguateName(
-			pgs.Name(strcase.UpperCamelCase(i.Name().String())),
+			Qualifier(i.Name()).ToCamel(),
 			parentEntry.usedNames, new(defaultSuffixes), oneofNameVariants)
 		parentEntry.usedNames.Add(oneofName)
 
 		f := d.entityOfFile(i.File())
-		oneofEnumName := oneofEnumClassName(i.Name(),
+		oneofEnumName := oneofEnumClassName(Qualifier(i.Name()),
 			f.usedNames,
 			parentEntry.Name())
 		f.usedNames.Add(oneofEnumName)
 
 		enumMapName := disambiguateName(
-			pgs.Name(fmt.Sprintf("_$%sByTag", oneofEnumName)),
+			Qualifier(fmt.Sprintf("_$%sByTag", oneofEnumName)),
 			parentEntry.usedNames, new(defaultSuffixes),
 			nil)
 		parentEntry.usedNames.Add(enumMapName)
@@ -234,25 +233,24 @@ func (d *Dart) entityOfField(i pgs.Field) *fieldNames {
 		suffix := newMemberNamesSuffix(i.Descriptor().GetNumber())
 		var generateNameVariants generateVariantsFunc
 		if !i.Required() {
-			generateNameVariants = func(name pgs.Name) []pgs.Name {
-				return []pgs.Name{
-					name.LowerCamelCase(),
+			generateNameVariants = func(name Qualifier) []Qualifier {
+				return []Qualifier{
+					name.ToLowerCamel(),
 					_defaultHasMethodName(name),
 					_defaultClearMethodName(name),
 				}
 			}
 		}
-		name := disambiguateName(pgs.Name(strcase.UpperCamelCase(i.Name().String())),
-			parentEntry.usedNames, suffix, generateNameVariants)
+		name := disambiguateName(Qualifier(i.Name()), parentEntry.usedNames, suffix, generateNameVariants)
 		parentEntry.usedNames.Add(name)
 
-		var ensureMethodName pgs.Name
+		var ensureMethodName Qualifier
 		if i.Type().IsEmbed() {
 			ensureMethodName = _defaultEnsureMethodName(name)
 		}
 
 		nty = &fieldNames{
-			fieldName:        name.LowerCamelCase(),
+			fieldName:        name.ToLowerCamel(),
 			hasMethodName:    _defaultHasMethodName(name),
 			clearMethodName:  _defaultClearMethodName(name),
 			ensureMethodName: ensureMethodName,
@@ -266,7 +264,7 @@ func (d *Dart) entityOfEnum(i pgs.Enum) *names {
 	nty, ok := d.enums[i]
 	if !ok {
 		parentEntry := d.entityOf(i.Parent()).(*names)
-		name := messageOrEnumClassName(i.Name(), parentEntry.usedNames, parentEntry.name)
+		name := messageOrEnumClassName(Qualifier(i.Name()), parentEntry.usedNames, parentEntry.name)
 		parentEntry.usedNames.Add(name)
 
 		nty = &names{
@@ -282,7 +280,7 @@ func (d *Dart) entityOfEnumValue(i pgs.EnumValue) *names {
 	nty, ok := d.enumValues[i]
 	if !ok {
 		parentEntry := d.entityOfEnum(i.Enum())
-		name := disambiguateName(avoidInitialUnderscore(i.Name()),
+		name := disambiguateName(avoidInitialUnderscore(Qualifier(i.Name())),
 			parentEntry.usedNames, new(enumSuffixes), nil)
 		parentEntry.usedNames.Add(name)
 
@@ -297,7 +295,7 @@ func (d *Dart) entityOfEnumValue(i pgs.EnumValue) *names {
 
 type suffixGetter interface {
 	hasNext() bool
-	next() pgs.Name
+	next() Qualifier
 }
 
 type defaultSuffixes struct {
@@ -305,49 +303,49 @@ type defaultSuffixes struct {
 }
 
 func (s *defaultSuffixes) hasNext() bool { return true }
-func (s *defaultSuffixes) next() pgs.Name {
+func (s *defaultSuffixes) next() Qualifier {
 	defer func() { s.idx++ }()
 	if s.idx == 0 {
 		return "_"
 	}
-	return pgs.Name(fmt.Sprintf("_%d", s.idx))
+	return Qualifier(fmt.Sprintf("_%d", s.idx))
 }
 
 type _memberNamesSuffix struct {
-	last   pgs.Name
-	suffix pgs.Name
+	last   Qualifier
+	suffix Qualifier
 }
 
 func newMemberNamesSuffix(number int32) *_memberNamesSuffix {
 	return &_memberNamesSuffix{
-		suffix: pgs.Name(fmt.Sprintf("_%d", number)),
+		suffix: Qualifier(fmt.Sprintf("_%d", number)),
 	}
 }
 func (s *_memberNamesSuffix) hasNext() bool { return true }
-func (s *_memberNamesSuffix) next() pgs.Name {
+func (s *_memberNamesSuffix) next() Qualifier {
 	s.suffix += s.last
 	s.last = s.suffix
 	return s.suffix
 }
 
 type enumSuffixes struct {
-	currentSuffix pgs.Name
+	currentSuffix Qualifier
 }
 
 func (s *enumSuffixes) hasNext() bool { return true }
-func (s *enumSuffixes) next() pgs.Name {
+func (s *enumSuffixes) next() Qualifier {
 	s.currentSuffix += "_"
 	return s.currentSuffix
 }
 
-type generateVariantsFunc func(name pgs.Name) []pgs.Name
+type generateVariantsFunc func(name Qualifier) []Qualifier
 
-func disambiguateName(name pgs.Name, usedNames UsedNames, getter suffixGetter, generateVariants generateVariantsFunc) pgs.Name {
+func disambiguateName(name Qualifier, usedNames UsedNames, getter suffixGetter, generateVariants generateVariantsFunc) Qualifier {
 	if generateVariants == nil {
-		generateVariants = func(name pgs.Name) []pgs.Name { return []pgs.Name{name} }
+		generateVariants = func(name Qualifier) []Qualifier { return []Qualifier{name} }
 	}
 
-	allVariantsAvailable := func(variants []pgs.Name) bool {
+	allVariantsAvailable := func(variants []Qualifier) bool {
 		for _, v := range variants {
 			if usedNames.Used(v) {
 				return false
@@ -356,7 +354,7 @@ func disambiguateName(name pgs.Name, usedNames UsedNames, getter suffixGetter, g
 		return true
 	}
 
-	var usedSuffix pgs.Name
+	var usedSuffix Qualifier
 	candidateVariants := generateVariants(name)
 
 	if !allVariantsAvailable(candidateVariants) {
@@ -374,35 +372,34 @@ func disambiguateName(name pgs.Name, usedNames UsedNames, getter suffixGetter, g
 	return name + usedSuffix
 }
 
-func _defaultHasMethodName(fieldMethodSuffix pgs.Name) pgs.Name {
+func _defaultHasMethodName(fieldMethodSuffix Qualifier) Qualifier {
 	return "has" + fieldMethodSuffix
 }
-func _defaultClearMethodName(fieldMethodSuffix pgs.Name) pgs.Name {
+func _defaultClearMethodName(fieldMethodSuffix Qualifier) Qualifier {
 	return "clear" + fieldMethodSuffix
 }
-func _defaultWhichMethodName(oneofMethodSuffix pgs.Name) pgs.Name {
+func _defaultWhichMethodName(oneofMethodSuffix Qualifier) Qualifier {
 	return "which" + oneofMethodSuffix
 }
-func _defaultEnsureMethodName(fieldMethodSuffix pgs.Name) pgs.Name {
+func _defaultEnsureMethodName(fieldMethodSuffix Qualifier) Qualifier {
 	return "ensure" + fieldMethodSuffix
 }
 
-func oneofEnumClassName(descriptorName pgs.Name, usedNames UsedNames, parent pgs.Name) pgs.Name {
-	descriptorName = pgs.Name(strcase.UpperCamelCase(descriptorName.String()))
-	descriptorName = pgs.Name(fmt.Sprintf("%s_%s", parent, descriptorName))
+func oneofEnumClassName(descriptorName Qualifier, usedNames UsedNames, parent Qualifier) Qualifier {
+	descriptorName = Qualifier(fmt.Sprintf("%s_%s", parent, descriptorName.ToCamel()))
 	avoidName := avoidInitialUnderscore(descriptorName)
 	return disambiguateName(avoidName, usedNames, new(defaultSuffixes), nil)
 }
 
-func messageOrEnumClassName(descriptorName pgs.Name, usedNames UsedNames, parent pgs.Name) pgs.Name {
+func messageOrEnumClassName(descriptorName Qualifier, usedNames UsedNames, parent Qualifier) Qualifier {
 	if parent != "" {
-		descriptorName = pgs.Name(fmt.Sprintf("%s_%s", parent, descriptorName))
+		descriptorName = Qualifier(fmt.Sprintf("%s_%s", parent, descriptorName))
 	}
 	avoidName := avoidInitialUnderscore(descriptorName)
 	return disambiguateName(avoidName, usedNames, new(defaultSuffixes), nil)
 }
 
-func avoidInitialUnderscore(input pgs.Name) pgs.Name {
+func avoidInitialUnderscore(input Qualifier) Qualifier {
 	for input[0] == '_' {
 		input = input[1:] + "_"
 	}
@@ -424,7 +421,7 @@ func reservedMemberNames() UsedNames {
 		_generatedMessageNames}
 }
 
-var toplevelReservedCapitalizedNames = map[pgs.Name]bool{
+var toplevelReservedCapitalizedNames = map[Qualifier]bool{
 	"List":     true,
 	"Function": true,
 	"Map":      true,
@@ -432,7 +429,7 @@ var toplevelReservedCapitalizedNames = map[pgs.Name]bool{
 
 // List of Dart language reserved words in names which cannot be used in a
 // subclass of GeneratedMessage.
-var _dartReservedWords = map[pgs.Name]bool{
+var _dartReservedWords = map[Qualifier]bool{
 	"assert":   true,
 	"bool":     true,
 	"break":    true,
@@ -475,7 +472,7 @@ var _dartReservedWords = map[pgs.Name]bool{
 //
 // This is in addition to GeneratedMessage_reservedNames, which are names from
 // the base GeneratedMessage class determined by reflection.
-var _generatedMessageNames = map[pgs.Name]bool{
+var _generatedMessageNames = map[Qualifier]bool{
 	"create":         true,
 	"createRepeated": true,
 	"getDefault":     true,
@@ -487,13 +484,13 @@ var _generatedMessageNames = map[pgs.Name]bool{
 //
 // This is in addition to ProtobufEnum_reservedNames, which are names from the
 // base ProtobufEnum class determined by reflection.
-var _protobufEnumNames = map[pgs.Name]bool{
+var _protobufEnumNames = map[Qualifier]bool{
 	"List":    true,
 	"valueOf": true,
 	"values":  true,
 }
 
-var GeneratedMessage_reservedNames = map[pgs.Name]bool{
+var GeneratedMessage_reservedNames = map[Qualifier]bool{
 	"hashCode":                   true,
 	"noSuchMethod":               true,
 	"copyWith":                   true,
@@ -559,7 +556,7 @@ var GeneratedMessage_reservedNames = map[pgs.Name]bool{
 	"toDebugString":              true,
 }
 
-var ProtobufEnum_reservedNames = map[pgs.Name]bool{
+var ProtobufEnum_reservedNames = map[Qualifier]bool{
 	"==":           true,
 	"Object":       true,
 	"ProtobufEnum": true,

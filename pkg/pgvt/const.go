@@ -1,9 +1,9 @@
 package pgvt
 
-const constTpl = `{{ $r := .Rules }}
+const constTpl = `{{ $r := .Pgv.Rules }}
 
-{{ if $r.Const }}{{ $constLiteral := lit $r.GetConst }}
-	if (_v != {{ $constLiteral }})
-		throw ConstError(info, {{ $.Number }}, {{ $.L10nField }}, info.l10n.validateEq, {{ $constLiteral }});
+{{ if $r.Const }}{{ $constLiteral := lit . $r.GetConst }}
+	if ({{ .Accessor }} != {{ $constLiteral }})
+		throw ConstError({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ $constLiteral }});
 {{ end }}
 `

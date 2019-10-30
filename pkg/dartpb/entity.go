@@ -1,8 +1,10 @@
 package dartpb
 
 import (
+	"fmt"
 	"path/filepath"
 
+	"github.com/empirefox/protoc-gen-dart-ext/pkg/dart"
 	pgs "github.com/lyft/protoc-gen-star"
 )
 
@@ -14,7 +16,7 @@ func ResolveImport(source, target string) (string, error) {
 }
 
 type Entity struct {
-	DartName pgs.Name
+	DartName dart.Qualifier
 	Package  *Package
 }
 
@@ -75,8 +77,6 @@ type Enum struct {
 	PbRootFilePath string
 
 	Values []*EnumValue
-
-	Validate *ValidateEnum
 }
 
 type EnumValue struct {
@@ -87,6 +87,15 @@ type EnumValue struct {
 	Arb *EnumValueArb
 
 	Enum *Enum
+}
 
-	Validate *ValidateEnumValue
+func (f *Field) Number() int32 { return f.Pgs.Descriptor().GetNumber() }
+
+func (f *Field) parseEnumValue(v int32) (*EnumValue, error) {
+	for _, ev := range f.Pgs.Type().Enum().Values() {
+		if ev.Value() == v {
+			return f.Package.Group.PgsToValue[ev], nil
+		}
+	}
+	return nil, fmt.Errorf("%s value not found: %d", f.Pgs.Type().Enum().FullyQualifiedName(), v)
 }

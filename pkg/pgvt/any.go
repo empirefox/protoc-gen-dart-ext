@@ -16,7 +16,7 @@ const anyConstTpl = anyTplDef + `
 	};
 {{- end -}}`
 
-const anyTplDef = `{{ $r := .Rules }}
+const anyTplDef = `{{ $r := .Pgv.Rules }}
 {{- $kIn := constRef . "kIn" }}
 {{- $kNotIn := constRef . "kNotIn" }}
 `
@@ -24,14 +24,14 @@ const anyTplDef = `{{ $r := .Rules }}
 const anyTpl = anyTplDef + `
 {{- template "required" . -}}
 
-{{ .IfHasBegin }}
+{{ .IfHasValueBegin }}
 	{{- if $r.In }}
-		if (!{{ $kIn }}.containsKey(_v.typeUrl))
-			throw {{ .PgdeFile.As }}.InError(info, {{ $.Number }}, {{ $.L10nField }}, {{ $kIn }}.keys);
+		if (!{{ $kIn }}.containsKey({{ .Accessor }}.typeUrl))
+			throw {{ .PgdeFile.As }}.InError({{ .Err3Args }}, {{ $kIn }}.keys);
 	{{- end -}}
 	{{- if $r.NotIn }}
-		if ({{ $kNotIn }}.containsKey(_v.typeUrl))
-			throw {{ .PgdeFile.As }}.InError.not(info, {{ $.Number }}, {{ $.L10nField }}, {{ $kNotIn }}.keys);
+		if ({{ $kNotIn }}.containsKey({{ .Accessor }}.typeUrl))
+			throw {{ .PgdeFile.As }}.InError.not ({{ .Err3Args }}, {{ $kNotIn }}.keys);
 	{{- end -}}
-{{ .IfHasEnd }}
+{{ .IfHasValueEnd }}
 `

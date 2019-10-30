@@ -63,11 +63,11 @@ func (attr *ArbAttributes) DartSelectCaseCond(varname, key string) (string, erro
 }
 
 type DartParam struct {
-	Raw      *LangParam
-	IsEmpty  bool
-	As string
-	Type     string
-	Replace  string
+	Raw     *LangParam
+	IsEmpty bool
+	As      dart.Qualifier
+	Type    string
+	Replace string
 }
 
 type DartParams struct {
@@ -114,7 +114,7 @@ func NewDartParams(mgr *dart.ImportManager, holders ArbPlaceholders) (*DartParam
 				if lp.Import == "" {
 					return nil, fmt.Errorf("Import is required: %#v", *lp)
 				}
-				instance := mgr.ClassInstance(lp.Import, class)
+				instance := mgr.ClassInstance(lp.Import, dart.Qualifier(class)).String()
 				replace = strings.ReplaceAll(replace, "&&&."+class, instance)
 			}
 		}
@@ -134,10 +134,10 @@ func NewDartParams(mgr *dart.ImportManager, holders ArbPlaceholders) (*DartParam
 		}
 
 		all[i] = &DartParam{
-			Raw:      lp,
-			As: mgr.GetAs(lp.Import),
-			Type:     typ,
-			Replace:  replace,
+			Raw:     lp,
+			As:      mgr.GetAs(lp.Import),
+			Type:    typ,
+			Replace: replace,
 		}
 	}
 
@@ -172,7 +172,7 @@ func replaceAs(m *dart.ImportManager, s string, lp *LangParam) (string, error) {
 		if lp.Import == "" {
 			return "", fmt.Errorf("Import is required: %#v", *lp)
 		}
-		s = strings.ReplaceAll(s, "&&", m.GetAs(lp.Import))
+		s = strings.ReplaceAll(s, "&&", m.GetAs(lp.Import).String())
 	}
 
 	if strings.Contains(s, "&&") {

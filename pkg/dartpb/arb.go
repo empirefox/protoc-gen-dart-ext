@@ -2,7 +2,6 @@ package dartpb
 
 import (
 	"log"
-	"strings"
 
 	pgs "github.com/lyft/protoc-gen-star"
 
@@ -12,11 +11,11 @@ import (
 )
 
 const (
-	MsgAssetAsFieldPrefix       = "mAsset"
-	EnumAssetAsFieldPrefix      = "eAsset"
-	EnumValueAssetAsFieldPrefix = "vAsset"
-	FieldAssetAsFieldPrefix     = "fAsset"
-	OneOfAssetAsFieldPrefix     = "oAsset"
+	MsgAssetAsFieldPrefix       dart.Qualifier = "mAsset"
+	EnumAssetAsFieldPrefix      dart.Qualifier = "eAsset"
+	EnumValueAssetAsFieldPrefix dart.Qualifier = "vAsset"
+	FieldAssetAsFieldPrefix     dart.Qualifier = "fAsset"
+	OneOfAssetAsFieldPrefix     dart.Qualifier = "oAsset"
 )
 
 func (r *ArbRef) IsSamePkg() bool { return IsArbSamePkg(r.From, r.To) }
@@ -89,32 +88,36 @@ type FieldArb struct {
 
 func (a *FieldArb) RefSamePkg() bool { return IsArbSamePkg(a, a.Ref) }
 
-func (a *FieldArb) refResourceId() string {
-	if a.RefSamePkg() {
-		return a.Ref.ResourceId()
+func (a *FieldArb) refResourceId(assetName string) (dart.Qualifier, error) {
+	instance, err := a.L10n().ImportAsInstanceName(a.Ref.L10n())
+	if err != nil {
+		return "", err
 	}
-	return a.L10n().ImportAsInstanceName(a.Ref.L10n()) + "." + a.Ref.ResourceId()
+	return instance.Append(a.Ref.ResourceId()), nil
 }
 
-func (a *FieldArb) Value(lang *arb.Arb) string {
-	r := lang.ResourceMap()[a.ResourceId()]
+func (a *FieldArb) Value(lang *arb.Arb) (string, error) {
+	r := lang.ResourceMap()[a.ResourceId().String()]
 	if r.Value == "" {
 		if a.Ref != nil {
 			a.UseRef = true
-			return a.refResourceId()
+			rid, err := a.refResourceId("")
+			return rid.String(), err
 		}
 	}
 
-	return dart.RawString(r.Value)
+	return dart.RawString(r.Value), nil
 }
 
-func (a *FieldArb) Label(lang *arb.Arb) string     { return a.getRawArbString(lang, "Label") }
-func (a *FieldArb) Helper(lang *arb.Arb) string    { return a.getRawArbString(lang, "Helper") }
-func (a *FieldArb) Hint(lang *arb.Arb) string      { return a.getRawArbString(lang, "Hint") }
-func (a *FieldArb) Prefix(lang *arb.Arb) string    { return a.getRawArbString(lang, "Prefix") }
-func (a *FieldArb) Suffix(lang *arb.Arb) string    { return a.getRawArbString(lang, "Suffix") }
-func (a *FieldArb) BoolTrue(lang *arb.Arb) string  { return a.getRawArbString(lang, "BoolTrue") }
-func (a *FieldArb) BoolFalse(lang *arb.Arb) string { return a.getRawArbString(lang, "BoolFalse") }
+func (a *FieldArb) Label(lang *arb.Arb) (string, error)    { return a.getRawArbString(lang, "Label") }
+func (a *FieldArb) Helper(lang *arb.Arb) (string, error)   { return a.getRawArbString(lang, "Helper") }
+func (a *FieldArb) Hint(lang *arb.Arb) (string, error)     { return a.getRawArbString(lang, "Hint") }
+func (a *FieldArb) Prefix(lang *arb.Arb) (string, error)   { return a.getRawArbString(lang, "Prefix") }
+func (a *FieldArb) Suffix(lang *arb.Arb) (string, error)   { return a.getRawArbString(lang, "Suffix") }
+func (a *FieldArb) BoolTrue(lang *arb.Arb) (string, error) { return a.getRawArbString(lang, "BoolTrue") }
+func (a *FieldArb) BoolFalse(lang *arb.Arb) (string, error) {
+	return a.getRawArbString(lang, "BoolFalse")
+}
 
 // SetRef called after all packages parsed
 func (from *FieldArb) setRef(to *MsgOrEnumArb) {
@@ -137,9 +140,9 @@ func (a *FieldArb) IsAssetDisabled(assetName string) bool {
 	return a.DefaultAssetValue(assetName) == "-"
 }
 
-func dartNameAsValueIfEmpty(s string, dn pgs.Name) string {
+func dartNameAsValueIfEmpty(s string, dn dart.Qualifier) string {
 	if s == "" {
-		s = strings.Join(dn.UpperCamelCase().Split(), " ")
+		s = dn.ToDelimited(' ').String()
 	}
 	return s
 }
@@ -239,30 +242,30 @@ func (a *FieldArb) DefaultAssetValue(assetName string) string {
 	return v
 }
 
-func (a *MsgOrEnumArb) ResourceId() string {
+func (a *MsgOrEnumArb) ResourceId() dart.Qualifier {
 	prefix := MsgAssetAsFieldPrefix
 	if a.IsEnum {
 		prefix = EnumAssetAsFieldPrefix
 	}
-	return prefix + a.Entity().DartName.String()
+	return prefix + a.Entity().DartName
 }
 
-func (a *EnumValueArb) ResourceId() string {
+func (a *EnumValueArb) ResourceId() dart.Qualifier {
 	return EnumValueAssetAsFieldPrefix +
-		a.Entity.Enum.DartName.String() +
-		a.Entity.DartName.UpperCamelCase().String()
+		a.Entity.Enum.DartName +
+		a.Entity.DartName.ToCamel()
 }
 
-func (a *OneOfArb) ResourceId() string {
+func (a *OneOfArb) ResourceId() dart.Qualifier {
 	return OneOfAssetAsFieldPrefix +
-		a.Entity.Message.DartName.String() +
-		a.Entity.DartName.UpperCamelCase().String()
+		a.Entity.Message.DartName +
+		a.Entity.DartName.ToCamel()
 }
 
-func (a *FieldArb) ResourceId() string {
+func (a *FieldArb) ResourceId() dart.Qualifier {
 	return FieldAssetAsFieldPrefix +
-		a.Entity.Message.DartName.String() +
-		a.Entity.DartName.UpperCamelCase().String()
+		a.Entity.Message.DartName +
+		a.Entity.DartName.ToCamel()
 }
 
 func (a *MsgOrEnumArb) addValueResource() {
@@ -273,7 +276,7 @@ func (a *MsgOrEnumArb) addValueResource() {
 		desc = "[enum] " + desc
 	}
 	attr := &arb.ArbAttributes{Type: "text", Description: desc}
-	r := arb.NewResource(pa, a.ResourceId(), value, attr)
+	r := arb.NewResource(pa, a.ResourceId().String(), value, attr)
 	pa.Resources = append(pa.Resources, r)
 }
 
@@ -281,7 +284,7 @@ func (a *EnumValueArb) addValueResource() {
 	pa := a.L10n().Arb
 	value := dartNameAsValueIfEmpty(a.Extension.Value, a.Entity.DartName)
 	attr := &arb.ArbAttributes{Type: "text", Description: "[enum] " + a.Extension.Desc}
-	r := arb.NewResource(pa, a.ResourceId(), value, attr)
+	r := arb.NewResource(pa, a.ResourceId().String(), value, attr)
 	pa.Resources = append(pa.Resources, r)
 }
 
@@ -289,7 +292,7 @@ func (a *OneOfArb) addValueResource() {
 	pa := a.L10n().Arb
 	value := dartNameAsValueIfEmpty(a.Extension.Value, a.Entity.DartName)
 	attr := &arb.ArbAttributes{Type: "text", Description: "[oneof] " + a.Desc()}
-	r := arb.NewResource(pa, a.ResourceId(), value, attr)
+	r := arb.NewResource(pa, a.ResourceId().String(), value, attr)
 	pa.Resources = append(pa.Resources, r)
 }
 
@@ -306,13 +309,13 @@ func (a *FieldArb) addValueResource() {
 		}
 	}
 	attr := &arb.ArbAttributes{Type: "text", Description: a.Desc()}
-	r := arb.NewResource(pa, a.ResourceId(), value, attr)
+	r := arb.NewResource(pa, a.ResourceId().String(), value, attr)
 	pa.Resources = append(pa.Resources, r)
 }
 
 func (a *MsgOrEnumArb) addAssetResource(assetName string) {
 	pa := a.L10n().Arb
-	rid := a.ResourceId()
+	rid := a.ResourceId().String()
 
 	desc := assetName + " of " + rid
 	if a.IsEnum {
@@ -326,7 +329,7 @@ func (a *MsgOrEnumArb) addAssetResource(assetName string) {
 
 func (a *OneOfArb) addAssetResource(assetName string) {
 	pa := a.L10n().Arb
-	rid := a.ResourceId()
+	rid := a.ResourceId().String()
 
 	attr := &arb.ArbAttributes{
 		Type:        "text",
@@ -344,11 +347,11 @@ func (a *FieldArb) addAssetResource(assetName string) {
 	}
 
 	pa := a.L10n().Arb
-	rid := a.ResourceId()
+	rid := a.ResourceId().String()
 	desc := assetName + " of " + rid
 	if a.Ref != nil {
 		desc += ". Set empty to redirect to " + assetName + " of " +
-			a.Ref.L10n().ClassName + "." + a.Ref.ResourceId()
+			a.Ref.L10n().ClassName.Append(a.Ref.ResourceId()).String()
 	}
 
 	attr := &arb.ArbAttributes{
@@ -403,13 +406,13 @@ func (a *FieldArb) addAssetsResources() {
 // Desc only used to generate arb description.
 func (a *MsgOrEnumArb) Desc() string {
 	s := getDescOrLabel(a.Extension.Desc, a.Extension.Label)
-	s = dartNameAsValueIfEmpty(s, a.PgsEntity().Name())
+	s = dartNameAsValueIfEmpty(s, dart.Qualifier(a.PgsEntity().Name()))
 	return s
 }
 
 func (a *OneOfArb) Desc() string {
 	s := getDescOrLabel(a.Extension.Desc, a.Extension.Label)
-	s = dartNameAsValueIfEmpty(s, a.Entity.Pgs.Name())
+	s = dartNameAsValueIfEmpty(s, dart.Qualifier(a.Entity.Pgs.Name()))
 	return s
 }
 
@@ -424,7 +427,7 @@ func (a *FieldArb) Desc() string {
 	default:
 	}
 
-	s = dartNameAsValueIfEmpty(s, a.Entity.Pgs.Name())
+	s = dartNameAsValueIfEmpty(s, dart.Qualifier(a.Entity.Pgs.Name()))
 	return s
 }
 
@@ -440,29 +443,30 @@ func (a *OneOfArb) getRawArbString(lang *arb.Arb, assetName string) string {
 	return getRawArbString(lang, a.ResourceId(), assetName)
 }
 
-func getRawArbString(lang *arb.Arb, resourceId, assetName string) string {
-	r, ok := lang.ResourceMap()[resourceId+assetName]
+func getRawArbString(lang *arb.Arb, resourceId dart.Qualifier, assetName string) string {
+	r, ok := lang.ResourceMap()[resourceId.String()+assetName]
 	if !ok || r.Value == "" {
 		return "null"
 	}
 	return r.Value
 }
 
-func (a *FieldArb) getRawArbString(lang *arb.Arb, assetName string) string {
+func (a *FieldArb) getRawArbString(lang *arb.Arb, assetName string) (string, error) {
 	if a.IsAssetDisabled(assetName) {
-		return "null"
+		return "null", nil
 	}
 
-	r, ok := lang.ResourceMap()[a.ResourceId()+assetName]
+	r, ok := lang.ResourceMap()[a.ResourceId().String()+assetName]
 	if !ok || r.Value == "" {
 		if a.Ref != nil {
 			a.UseRef = true
-			return a.refResourceId() + assetName
+			rid, err := a.refResourceId(assetName)
+			return rid.String(), err
 		}
-		return "null"
+		return "null", nil
 	}
 
-	return dart.RawString(r.Value)
+	return dart.RawString(r.Value), nil
 }
 
 func (a *MsgOrEnumArb) setDartTo(lang *arb.Arb) {
@@ -487,7 +491,7 @@ func (a *FieldArb) setDartTo(lang *arb.Arb) {
 			continue
 		}
 
-		r := lang.ResourceMap()[a.ResourceId()+assetName]
+		r := lang.ResourceMap()[a.ResourceId().String()+assetName]
 		if r.Value != "" {
 			continue
 		}
@@ -498,12 +502,13 @@ func (a *FieldArb) setDartTo(lang *arb.Arb) {
 		if a.Ref == nil {
 			dartInfo.Replace = "null"
 		} else if a.RefSamePkg() {
-			dartInfo.Replace = a.Ref.ResourceId() + assetName
+			dartInfo.Replace = a.Ref.ResourceId().String() + assetName
 		} else {
 			a.UseRef = true
-			dartInfo.Replace = "&&&." + a.Ref.L10n().ClassName + "." +
-				a.Ref.ResourceId() + assetName
-			dartInfo.Import = a.Ref.L10n().FileName
+			dartInfo.Replace = "&&&." + a.Ref.L10n().ClassName.
+				Append(a.Ref.ResourceId()+dart.Qualifier(assetName)).
+				String()
+			dartInfo.Import = a.Ref.L10n().RootFilePath
 		}
 
 		r.Attr().Placeholders = arb.ArbPlaceholders{

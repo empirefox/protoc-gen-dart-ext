@@ -6,7 +6,7 @@ const messageTpl = `
 	{{ else }}
 		{{ template "required" . }}
 		{{ if (isOfMessageType .) }}
-			{{ .FullFieldTypeMessage }}.assertProto({{ .Validator.BuildContextAccessor }}, {{ .Validator.InfoAccessor }}.clone({{ .Accessor }}));
+			{{ .MessageFullValidatorClass }}({{ .BuildContextAccessor }}, {{ .InfoAccessor }}.clone({{ .Accessor }})).assertProto();
 		{{ end }}
 	{{ end }}
 `

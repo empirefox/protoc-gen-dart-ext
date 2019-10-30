@@ -16,9 +16,7 @@ const dartOutTplStr = genshared.DartHead + `
 	import 'package:flutter/material.dart' as {{ .L10nFile.As }} show BuildContext, Locale, Localizations, LocalizationsDelegate;
 {{ end }}
 
-{{ range .BaseArb.ImportedFiles }}
-	import '{{ .Name }}' as {{ .As }};
-{{ end }}
+{{ .BaseArb.RenderImports }}
 
 {{ if .BaseArb.Delegate }}
 	{{ template "delegate" .BaseArb }}
@@ -87,22 +85,22 @@ abstract class {{ $Entity }}Localization {
 		static const delegate = _{{ $Entity }}LocalizationDelegate();
 	{{ end }}
 
+	{{ .Const }} {{ $Entity }}Localization();
+
+	{{ range .Resources }}
+		{{ template "resourceBase" . }}
+	{{ end }}
+
+	{{ range .InstanceClasses }}
+		{{ .FullName }} {{ .Instance }};
+	{{ end }}
+
 	static {{ $Entity }}Localization of({{ .L10nFile.As }}.BuildContext context) =>
 		{{ .L10nFile.As }}.Localizations.of<{{ $Entity }}Localization>(context, {{ $Entity }}Localization)
 		  {{ range .InstanceClasses }}
 		  	..{{ .Instance }} = {{ .FullName }}.of(context)
 		  {{ end }}
 		;
-
-	{{ .Const }} {{ $Entity }}Localization();
-
-	{{ range .InstanceClasses }}
-		{{ .FullName }} {{ .Instance }};
-	{{ end }}
-
-	{{ range .Resources }}
-		{{ template "resourceBase" . }}
-	{{ end }}
 }
 `
 

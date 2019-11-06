@@ -7,14 +7,14 @@ const FormatProtoHead = NoEditCommentHead + `syntax = "proto3";
 
 package pgde.format;
 
-option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/format";
+option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/format";
 `
 
 const UnitsProtoHead = NoEditCommentHead + `syntax = "proto3";
 
 package pgde.units;
 
-option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/units";
+option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/units";
 `
 
 const DartHead = NoEditCommentHead

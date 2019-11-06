@@ -141,39 +141,39 @@ class _Exbi implements _Valuer {
   String of(PgdeLocalization l) => l.prefixExbi;
 }
 
-class PrefixV1 {
-  static const noPrefix = const PrefixV1._('', 1, 1, const _NoPrefix());
-  static const yotta = const PrefixV1._(r'Y', 10, 24, const _Yotta());
-  static const zetta = const PrefixV1._(r'Z', 10, 21, const _Zetta());
-  static const exa = const PrefixV1._(r'E', 10, 18, const _Exa());
-  static const peta = const PrefixV1._(r'P', 10, 15, const _Peta());
-  static const tera = const PrefixV1._(r'T', 10, 12, const _Tera());
-  static const giga = const PrefixV1._(r'G', 10, 9, const _Giga());
-  static const mega = const PrefixV1._(r'M', 10, 6, const _Mega());
-  static const kilo = const PrefixV1._(r'k', 10, 3, const _Kilo());
-  static const hecto = const PrefixV1._(r'h', 10, 2, const _Hecto());
-  static const deka = const PrefixV1._(r'da', 10, 1, const _Deka());
-  static const deci = const PrefixV1._(r'd', 10, -1, const _Deci());
-  static const centi = const PrefixV1._(r'c', 10, -2, const _Centi());
-  static const milli = const PrefixV1._(r'm', 10, -3, const _Milli());
-  static const micro = const PrefixV1._(r'µ', 10, -6, const _Micro());
-  static const nano = const PrefixV1._(r'n', 10, -9, const _Nano());
-  static const pico = const PrefixV1._(r'p', 10, -12, const _Pico());
-  static const femto = const PrefixV1._(r'f', 10, -15, const _Femto());
-  static const atto = const PrefixV1._(r'a', 10, -18, const _Atto());
-  static const zepto = const PrefixV1._(r'z', 10, -21, const _Zepto());
-  static const yocto = const PrefixV1._(r'y', 10, -24, const _Yocto());
-  static const kibi = const PrefixV1._(r'Ki', 2, 10, const _Kibi());
-  static const mebi = const PrefixV1._(r'Mi', 2, 20, const _Mebi());
-  static const gibi = const PrefixV1._(r'Gi', 2, 30, const _Gibi());
-  static const tebi = const PrefixV1._(r'Ti', 2, 40, const _Tebi());
-  static const pebi = const PrefixV1._(r'Pi', 2, 50, const _Pebi());
-  static const exbi = const PrefixV1._(r'Ei', 2, 60, const _Exbi());
+class Prefix {
+  static const noPrefix = const Prefix._('', 1, 1, const _NoPrefix());
+  static const yotta = const Prefix._(r'Y', 10, 24, const _Yotta());
+  static const zetta = const Prefix._(r'Z', 10, 21, const _Zetta());
+  static const exa = const Prefix._(r'E', 10, 18, const _Exa());
+  static const peta = const Prefix._(r'P', 10, 15, const _Peta());
+  static const tera = const Prefix._(r'T', 10, 12, const _Tera());
+  static const giga = const Prefix._(r'G', 10, 9, const _Giga());
+  static const mega = const Prefix._(r'M', 10, 6, const _Mega());
+  static const kilo = const Prefix._(r'k', 10, 3, const _Kilo());
+  static const hecto = const Prefix._(r'h', 10, 2, const _Hecto());
+  static const deka = const Prefix._(r'da', 10, 1, const _Deka());
+  static const deci = const Prefix._(r'd', 10, -1, const _Deci());
+  static const centi = const Prefix._(r'c', 10, -2, const _Centi());
+  static const milli = const Prefix._(r'm', 10, -3, const _Milli());
+  static const micro = const Prefix._(r'µ', 10, -6, const _Micro());
+  static const nano = const Prefix._(r'n', 10, -9, const _Nano());
+  static const pico = const Prefix._(r'p', 10, -12, const _Pico());
+  static const femto = const Prefix._(r'f', 10, -15, const _Femto());
+  static const atto = const Prefix._(r'a', 10, -18, const _Atto());
+  static const zepto = const Prefix._(r'z', 10, -21, const _Zepto());
+  static const yocto = const Prefix._(r'y', 10, -24, const _Yocto());
+  static const kibi = const Prefix._(r'Ki', 2, 10, const _Kibi());
+  static const mebi = const Prefix._(r'Mi', 2, 20, const _Mebi());
+  static const gibi = const Prefix._(r'Gi', 2, 30, const _Gibi());
+  static const tebi = const Prefix._(r'Ti', 2, 40, const _Tebi());
+  static const pebi = const Prefix._(r'Pi', 2, 50, const _Pebi());
+  static const exbi = const Prefix._(r'Ei', 2, 60, const _Exbi());
 
   final String symbol;
   final int base;
   final int exponent;
   final _Valuer _v;
-  const PrefixV1._(this.symbol, this.base, this.exponent, this._v);
+  const Prefix._(this.symbol, this.base, this.exponent, this._v);
   String l10n(PgdeLocalization l10n) => _v.of(l10n) ?? symbol;
 }

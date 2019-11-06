@@ -1,0 +1,115 @@
+syntax = "proto3";
+
+package pgde.l10n;
+
+option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/l10n";
+
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.EnumOptions {
+  l10n.MsgOrEnum enum = 919110;
+}
+extend google.protobuf.EnumValueOptions {
+  l10n.Value value = 919110;
+}
+extend google.protobuf.MessageOptions {
+  l10n.MsgOrEnum message = 919110;
+}
+extend google.protobuf.OneofOptions {
+  l10n.Oneof oneof = 919110;
+}
+extend google.protobuf.FieldOptions {
+  l10n.Field field = 919110;
+}
+
+message Value {
+  bool ignore = 1;
+  string value = 2;
+  string desc = 3;
+}
+
+message Oneof {
+  bool ignore = 1;
+  string value = 2;
+  // can be "$" to use label
+  string desc = 3;
+  string label = 4;
+  string prefix = 5;
+  string suffix = 6;
+}
+
+message MsgOrEnum {
+  bool ignore = 1;
+  string value = 2;
+  // can be "$" to use label
+  string desc = 3;
+  string label = 4;
+  string helper = 5;
+  string hint = 6;
+  string prefix = 7;
+  string suffix = 8;
+}
+
+// use '-' to disable assets[label, helper, hint, prefix, suffix, boolTrue, boolFalse]
+message Field {
+  bool ignore = 1;
+
+  // can be "$" to use the field name of itself, just to generate the seed arb
+  // file.
+  string value = 2;
+
+  // can be "$" to consider label as first choice
+  string desc = 3;
+
+  string label = 4;
+
+  /// Text that provides context about the input [child]'s value, such as how
+  /// the value will be used.
+  ///
+  /// If non-null, the text is displayed below the input [child], in the same
+  /// location as [errorText]. If a non-null [errorText] value is specified then
+  /// the helper text is not shown.
+  string helper = 5;
+
+  /// Text that suggests what sort of input the field accepts.
+  ///
+  /// Displayed on top of the input [child] (i.e., at the same location on the
+  /// screen where text may be entered in the input [child]) when the input
+  /// [isEmpty] and either (a) [labelText] is null or (b) the input has the
+  /// focus.
+  string hint = 6;
+
+  /// Optional text prefix to place on the line before the input.
+  ///
+  /// Uses the [prefixStyle]. Uses [hintStyle] if [prefixStyle] isn't specified.
+  /// The prefix text is not returned as part of the user's input.
+  ///
+  /// If a more elaborate prefix is required, consider using [prefix] instead.
+  /// Only one of [prefix] and [prefixText] can be specified.
+  ///
+  /// The [prefixText] appears after the [prefixIcon], if both are specified.
+  ///
+  /// See also:
+  ///
+  ///  * [suffixText], the equivalent but on the trailing edge.
+  string prefix = 7;
+
+  /// Optional text suffix to place on the line after the input.
+  ///
+  /// Uses the [suffixStyle]. Uses [hintStyle] if [suffixStyle] isn't specified.
+  /// The suffix text is not returned as part of the user's input.
+  ///
+  /// If a more elaborate suffix is required, consider using [suffix] instead.
+  /// Only one of [suffix] and [suffixText] can be specified.
+  ///
+  /// The [suffixText] appears before the [suffixIcon], if both are specified.
+  ///
+  /// See also:
+  ///
+  ///  * [prefixText], the equivalent but on the leading edge.
+  string suffix = 8;
+
+  string boolTrue = 9;
+
+  string boolFalse = 10;
+}

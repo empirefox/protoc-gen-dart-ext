@@ -1,0 +1,3952 @@
+syntax = "proto3";
+
+package pgde.form;
+
+option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/form";
+
+import "pgde/zero/zero.proto";
+
+// See https://github.com/flutter/flutter/wiki/Updating-Material-Design-Fonts
+enum MaterialIcon {
+  option (pgde.zero.defaultNotSet) = true;
+
+  noMaterialIcon = 0;
+
+  /// <i class="material-icons md-36">360</i> &#x2014; material icon named
+  /// "360".
+  threesixty = 1;
+
+  /// <i class="material-icons md-36">3d_rotation</i> &#x2014; material icon
+  /// named "3d rotation".
+  threed_rotation = 2;
+
+  /// <i class="material-icons md-36">4k</i> &#x2014; material icon named "4k".
+  four_k = 3;
+
+  /// <i class="material-icons md-36">ac_unit</i> &#x2014; material icon named
+  /// "ac unit".
+  ac_unit = 4;
+
+  /// <i class="material-icons md-36">access_alarm</i> &#x2014; material icon
+  /// named "access alarm".
+  access_alarm = 5;
+
+  /// <i class="material-icons md-36">access_alarms</i> &#x2014; material icon
+  /// named "access alarms".
+  access_alarms = 6;
+
+  /// <i class="material-icons md-36">access_time</i> &#x2014; material icon
+  /// named "access time".
+  access_time = 7;
+
+  /// <i class="material-icons md-36">accessibility</i> &#x2014; material icon
+  /// named "accessibility".
+  accessibility = 8;
+
+  /// <i class="material-icons md-36">accessibility_new</i> &#x2014; material
+  /// icon named "accessibility new".
+  accessibility_new = 9;
+
+  /// <i class="material-icons md-36">accessible</i> &#x2014; material icon
+  /// named "accessible".
+  accessible = 10;
+
+  /// <i class="material-icons md-36">accessible_forward</i> &#x2014; material
+  /// icon named "accessible forward".
+  accessible_forward = 11;
+
+  /// <i class="material-icons md-36">account_balance</i> &#x2014; material icon
+  /// named "account balance".
+  account_balance = 12;
+
+  /// <i class="material-icons md-36">account_balance_wallet</i> &#x2014;
+  /// material icon named "account balance wallet".
+  account_balance_wallet = 13;
+
+  /// <i class="material-icons md-36">account_box</i> &#x2014; material icon
+  /// named "account box".
+  account_box = 14;
+
+  /// <i class="material-icons md-36">account_circle</i> &#x2014; material icon
+  /// named "account circle".
+  account_circle = 15;
+
+  /// <i class="material-icons md-36">adb</i> &#x2014; material icon named
+  /// "adb".
+  adb = 16;
+
+  /// <i class="material-icons md-36">add</i> &#x2014; material icon named
+  /// "add".
+  add = 17;
+
+  /// <i class="material-icons md-36">add_a_photo</i> &#x2014; material icon
+  /// named "add a photo".
+  add_a_photo = 18;
+
+  /// <i class="material-icons md-36">add_alarm</i> &#x2014; material icon named
+  /// "add alarm".
+  add_alarm = 19;
+
+  /// <i class="material-icons md-36">add_alert</i> &#x2014; material icon named
+  /// "add alert".
+  add_alert = 20;
+
+  /// <i class="material-icons md-36">add_box</i> &#x2014; material icon named
+  /// "add box".
+  add_box = 21;
+
+  /// <i class="material-icons md-36">add_call</i> &#x2014; material icon named
+  /// "add call".
+  add_call = 22;
+
+  /// <i class="material-icons md-36">add_circle</i> &#x2014; material icon
+  /// named "add circle".
+  add_circle = 23;
+
+  /// <i class="material-icons md-36">add_circle_outline</i> &#x2014; material
+  /// icon named "add circle outline".
+  add_circle_outline = 24;
+
+  /// <i class="material-icons md-36">add_comment</i> &#x2014; material icon
+  /// named "add comment".
+  add_comment = 25;
+
+  /// <i class="material-icons md-36">add_location</i> &#x2014; material icon
+  /// named "add location".
+  add_location = 26;
+
+  /// <i class="material-icons md-36">add_photo_alternate</i> &#x2014; material
+  /// icon named "add photo alternate".
+  add_photo_alternate = 27;
+
+  /// <i class="material-icons md-36">add_shopping_cart</i> &#x2014; material
+  /// icon named "add shopping cart".
+  add_shopping_cart = 28;
+
+  /// <i class="material-icons md-36">add_to_home_screen</i> &#x2014; material
+  /// icon named "add to home screen".
+  add_to_home_screen = 29;
+
+  /// <i class="material-icons md-36">add_to_photos</i> &#x2014; material icon
+  /// named "add to photos".
+  add_to_photos = 30;
+
+  /// <i class="material-icons md-36">add_to_queue</i> &#x2014; material icon
+  /// named "add to queue".
+  add_to_queue = 31;
+
+  /// <i class="material-icons md-36">adjust</i> &#x2014; material icon named
+  /// "adjust".
+  adjust = 32;
+
+  /// <i class="material-icons md-36">airline_seat_flat</i> &#x2014; material
+  /// icon named "airline seat flat".
+  airline_seat_flat = 33;
+
+  /// <i class="material-icons md-36">airline_seat_flat_angled</i> &#x2014;
+  /// material icon named "airline seat flat angled".
+  airline_seat_flat_angled = 34;
+
+  /// <i class="material-icons md-36">airline_seat_individual_suite</i> &#x2014;
+  /// material icon named "airline seat individual suite".
+  airline_seat_individual_suite = 35;
+
+  /// <i class="material-icons md-36">airline_seat_legroom_extra</i> &#x2014;
+  /// material icon named "airline seat legroom extra".
+  airline_seat_legroom_extra = 36;
+
+  /// <i class="material-icons md-36">airline_seat_legroom_normal</i> &#x2014;
+  /// material icon named "airline seat legroom normal".
+  airline_seat_legroom_normal = 37;
+
+  /// <i class="material-icons md-36">airline_seat_legroom_reduced</i> &#x2014;
+  /// material icon named "airline seat legroom reduced".
+  airline_seat_legroom_reduced = 38;
+
+  /// <i class="material-icons md-36">airline_seat_recline_extra</i> &#x2014;
+  /// material icon named "airline seat recline extra".
+  airline_seat_recline_extra = 39;
+
+  /// <i class="material-icons md-36">airline_seat_recline_normal</i> &#x2014;
+  /// material icon named "airline seat recline normal".
+  airline_seat_recline_normal = 40;
+
+  /// <i class="material-icons md-36">airplanemode_active</i> &#x2014; material
+  /// icon named "airplanemode active".
+  airplanemode_active = 41;
+
+  /// <i class="material-icons md-36">airplanemode_inactive</i> &#x2014;
+  /// material icon named "airplanemode inactive".
+  airplanemode_inactive = 42;
+
+  /// <i class="material-icons md-36">airplay</i> &#x2014; material icon named
+  /// "airplay".
+  airplay = 43;
+
+  /// <i class="material-icons md-36">airport_shuttle</i> &#x2014; material icon
+  /// named "airport shuttle".
+  airport_shuttle = 44;
+
+  /// <i class="material-icons md-36">alarm</i> &#x2014; material icon named
+  /// "alarm".
+  alarm = 45;
+
+  /// <i class="material-icons md-36">alarm_add</i> &#x2014; material icon named
+  /// "alarm add".
+  alarm_add = 46;
+
+  /// <i class="material-icons md-36">alarm_off</i> &#x2014; material icon named
+  /// "alarm off".
+  alarm_off = 47;
+
+  /// <i class="material-icons md-36">alarm_on</i> &#x2014; material icon named
+  /// "alarm on".
+  alarm_on = 48;
+
+  /// <i class="material-icons md-36">album</i> &#x2014; material icon named
+  /// "album".
+  album = 49;
+
+  /// <i class="material-icons md-36">all_inclusive</i> &#x2014; material icon
+  /// named "all inclusive".
+  all_inclusive = 50;
+
+  /// <i class="material-icons md-36">all_out</i> &#x2014; material icon named
+  /// "all out".
+  all_out = 51;
+
+  /// <i class="material-icons md-36">alternate_email</i> &#x2014; material icon
+  /// named "alternate email".
+  alternate_email = 52;
+
+  /// <i class="material-icons md-36">android</i> &#x2014; material icon named
+  /// "android".
+  android = 53;
+
+  /// <i class="material-icons md-36">announcement</i> &#x2014; material icon
+  /// named "announcement".
+  announcement = 54;
+
+  /// <i class="material-icons md-36">apps</i> &#x2014; material icon named
+  /// "apps".
+  apps = 55;
+
+  /// <i class="material-icons md-36">archive</i> &#x2014; material icon named
+  /// "archive".
+  archive = 56;
+
+  /// <i class="material-icons md-36">arrow_back</i> &#x2014; material icon
+  /// named "arrow back".
+  arrow_back = 57;
+
+  /// <i class="material-icons md-36">arrow_back_ios</i> &#x2014; material icon
+  /// named "arrow back ios".
+  arrow_back_ios = 58;
+
+  /// <i class="material-icons md-36">arrow_downward</i> &#x2014; material icon
+  /// named "arrow downward".
+  arrow_downward = 59;
+
+  /// <i class="material-icons md-36">arrow_drop_down</i> &#x2014; material icon
+  /// named "arrow drop down".
+  arrow_drop_down = 60;
+
+  /// <i class="material-icons md-36">arrow_drop_down_circle</i> &#x2014;
+  /// material icon named "arrow drop down circle".
+  arrow_drop_down_circle = 61;
+
+  /// <i class="material-icons md-36">arrow_drop_up</i> &#x2014; material icon
+  /// named "arrow drop up".
+  arrow_drop_up = 62;
+
+  /// <i class="material-icons md-36">arrow_forward</i> &#x2014; material icon
+  /// named "arrow forward".
+  arrow_forward = 63;
+
+  /// <i class="material-icons md-36">arrow_forward_ios</i> &#x2014; material
+  /// icon named "arrow forward ios".
+  arrow_forward_ios = 64;
+
+  /// <i class="material-icons md-36">arrow_left</i> &#x2014; material icon
+  /// named "arrow left".
+  arrow_left = 65;
+
+  /// <i class="material-icons md-36">arrow_right</i> &#x2014; material icon
+  /// named "arrow right".
+  arrow_right = 66;
+
+  /// <i class="material-icons md-36">arrow_upward</i> &#x2014; material icon
+  /// named "arrow upward".
+  arrow_upward = 67;
+
+  /// <i class="material-icons md-36">art_track</i> &#x2014; material icon named
+  /// "art track".
+  art_track = 68;
+
+  /// <i class="material-icons md-36">aspect_ratio</i> &#x2014; material icon
+  /// named "aspect ratio".
+  aspect_ratio = 69;
+
+  /// <i class="material-icons md-36">assessment</i> &#x2014; material icon
+  /// named "assessment".
+  assessment = 70;
+
+  /// <i class="material-icons md-36">assignment</i> &#x2014; material icon
+  /// named "assignment".
+  assignment = 71;
+
+  /// <i class="material-icons md-36">assignment_ind</i> &#x2014; material icon
+  /// named "assignment ind".
+  assignment_ind = 72;
+
+  /// <i class="material-icons md-36">assignment_late</i> &#x2014; material icon
+  /// named "assignment late".
+  assignment_late = 73;
+
+  /// <i class="material-icons md-36">assignment_return</i> &#x2014; material
+  /// icon named "assignment return".
+  assignment_return = 74;
+
+  /// <i class="material-icons md-36">assignment_returned</i> &#x2014; material
+  /// icon named "assignment returned".
+  assignment_returned = 75;
+
+  /// <i class="material-icons md-36">assignment_turned_in</i> &#x2014; material
+  /// icon named "assignment turned in".
+  assignment_turned_in = 76;
+
+  /// <i class="material-icons md-36">assistant</i> &#x2014; material icon named
+  /// "assistant".
+  assistant = 77;
+
+  /// <i class="material-icons md-36">assistant_photo</i> &#x2014; material icon
+  /// named "assistant photo".
+  assistant_photo = 78;
+
+  /// <i class="material-icons md-36">atm</i> &#x2014; material icon named
+  /// "atm".
+  atm = 79;
+
+  /// <i class="material-icons md-36">attach_file</i> &#x2014; material icon
+  /// named "attach file".
+  attach_file = 80;
+
+  /// <i class="material-icons md-36">attach_money</i> &#x2014; material icon
+  /// named "attach money".
+  attach_money = 81;
+
+  /// <i class="material-icons md-36">attachment</i> &#x2014; material icon
+  /// named "attachment".
+  attachment = 82;
+
+  /// <i class="material-icons md-36">audiotrack</i> &#x2014; material icon
+  /// named "audiotrack".
+  audiotrack = 83;
+
+  /// <i class="material-icons md-36">autorenew</i> &#x2014; material icon named
+  /// "autorenew".
+  autorenew = 84;
+
+  /// <i class="material-icons md-36">av_timer</i> &#x2014; material icon named
+  /// "av timer".
+  av_timer = 85;
+
+  /// <i class="material-icons md-36">backspace</i> &#x2014; material icon named
+  /// "backspace".
+  backspace = 86;
+
+  /// <i class="material-icons md-36">backup</i> &#x2014; material icon named
+  /// "backup".
+  backup = 87;
+
+  /// <i class="material-icons md-36">battery_alert</i> &#x2014; material icon
+  /// named "battery alert".
+  battery_alert = 88;
+
+  /// <i class="material-icons md-36">battery_charging_full</i> &#x2014;
+  /// material icon named "battery charging full".
+  battery_charging_full = 89;
+
+  /// <i class="material-icons md-36">battery_full</i> &#x2014; material icon
+  /// named "battery full".
+  battery_full = 90;
+
+  /// <i class="material-icons md-36">battery_std</i> &#x2014; material icon
+  /// named "battery std".
+  battery_std = 91;
+
+  /// <i class="material-icons md-36">battery_unknown</i> &#x2014; material icon
+  /// named "battery unknown".
+  battery_unknown = 92;
+
+  /// <i class="material-icons md-36">beach_access</i> &#x2014; material icon
+  /// named "beach access".
+  beach_access = 93;
+
+  /// <i class="material-icons md-36">beenhere</i> &#x2014; material icon named
+  /// "beenhere".
+  beenhere = 94;
+
+  /// <i class="material-icons md-36">block</i> &#x2014; material icon named
+  /// "block".
+  block = 95;
+
+  /// <i class="material-icons md-36">bluetooth</i> &#x2014; material icon named
+  /// "bluetooth".
+  bluetooth = 96;
+
+  /// <i class="material-icons md-36">bluetooth_audio</i> &#x2014; material icon
+  /// named "bluetooth audio".
+  bluetooth_audio = 97;
+
+  /// <i class="material-icons md-36">bluetooth_connected</i> &#x2014; material
+  /// icon named "bluetooth connected".
+  bluetooth_connected = 98;
+
+  /// <i class="material-icons md-36">bluetooth_disabled</i> &#x2014; material
+  /// icon named "bluetooth disabled".
+  bluetooth_disabled = 99;
+
+  /// <i class="material-icons md-36">bluetooth_searching</i> &#x2014; material
+  /// icon named "bluetooth searching".
+  bluetooth_searching = 100;
+
+  /// <i class="material-icons md-36">blur_circular</i> &#x2014; material icon
+  /// named "blur circular".
+  blur_circular = 101;
+
+  /// <i class="material-icons md-36">blur_linear</i> &#x2014; material icon
+  /// named "blur linear".
+  blur_linear = 102;
+
+  /// <i class="material-icons md-36">blur_off</i> &#x2014; material icon named
+  /// "blur off".
+  blur_off = 103;
+
+  /// <i class="material-icons md-36">blur_on</i> &#x2014; material icon named
+  /// "blur on".
+  blur_on = 104;
+
+  /// <i class="material-icons md-36">book</i> &#x2014; material icon named
+  /// "book".
+  book = 105;
+
+  /// <i class="material-icons md-36">bookmark</i> &#x2014; material icon named
+  /// "bookmark".
+  bookmark = 106;
+
+  /// <i class="material-icons md-36">bookmark_border</i> &#x2014; material icon
+  /// named "bookmark border".
+  bookmark_border = 107;
+
+  /// <i class="material-icons md-36">border_all</i> &#x2014; material icon
+  /// named "border all".
+  border_all = 108;
+
+  /// <i class="material-icons md-36">border_bottom</i> &#x2014; material icon
+  /// named "border bottom".
+  border_bottom = 109;
+
+  /// <i class="material-icons md-36">border_clear</i> &#x2014; material icon
+  /// named "border clear".
+  border_clear = 110;
+
+  /// <i class="material-icons md-36">border_color</i> &#x2014; material icon
+  /// named "border color".
+  border_color = 111;
+
+  /// <i class="material-icons md-36">border_horizontal</i> &#x2014; material
+  /// icon named "border horizontal".
+  border_horizontal = 112;
+
+  /// <i class="material-icons md-36">border_inner</i> &#x2014; material icon
+  /// named "border inner".
+  border_inner = 113;
+
+  /// <i class="material-icons md-36">border_left</i> &#x2014; material icon
+  /// named "border left".
+  border_left = 114;
+
+  /// <i class="material-icons md-36">border_outer</i> &#x2014; material icon
+  /// named "border outer".
+  border_outer = 115;
+
+  /// <i class="material-icons md-36">border_right</i> &#x2014; material icon
+  /// named "border right".
+  border_right = 116;
+
+  /// <i class="material-icons md-36">border_style</i> &#x2014; material icon
+  /// named "border style".
+  border_style = 117;
+
+  /// <i class="material-icons md-36">border_top</i> &#x2014; material icon
+  /// named "border top".
+  border_top = 118;
+
+  /// <i class="material-icons md-36">border_vertical</i> &#x2014; material icon
+  /// named "border vertical".
+  border_vertical = 119;
+
+  /// <i class="material-icons md-36">branding_watermark</i> &#x2014; material
+  /// icon named "branding watermark".
+  branding_watermark = 120;
+
+  /// <i class="material-icons md-36">brightness_1</i> &#x2014; material icon
+  /// named "brightness 1".
+  brightness_1 = 121;
+
+  /// <i class="material-icons md-36">brightness_2</i> &#x2014; material icon
+  /// named "brightness 2".
+  brightness_2 = 122;
+
+  /// <i class="material-icons md-36">brightness_3</i> &#x2014; material icon
+  /// named "brightness 3".
+  brightness_3 = 123;
+
+  /// <i class="material-icons md-36">brightness_4</i> &#x2014; material icon
+  /// named "brightness 4".
+  brightness_4 = 124;
+
+  /// <i class="material-icons md-36">brightness_5</i> &#x2014; material icon
+  /// named "brightness 5".
+  brightness_5 = 125;
+
+  /// <i class="material-icons md-36">brightness_6</i> &#x2014; material icon
+  /// named "brightness 6".
+  brightness_6 = 126;
+
+  /// <i class="material-icons md-36">brightness_7</i> &#x2014; material icon
+  /// named "brightness 7".
+  brightness_7 = 127;
+
+  /// <i class="material-icons md-36">brightness_auto</i> &#x2014; material icon
+  /// named "brightness auto".
+  brightness_auto = 128;
+
+  /// <i class="material-icons md-36">brightness_high</i> &#x2014; material icon
+  /// named "brightness high".
+  brightness_high = 129;
+
+  /// <i class="material-icons md-36">brightness_low</i> &#x2014; material icon
+  /// named "brightness low".
+  brightness_low = 130;
+
+  /// <i class="material-icons md-36">brightness_medium</i> &#x2014; material
+  /// icon named "brightness medium".
+  brightness_medium = 131;
+
+  /// <i class="material-icons md-36">broken_image</i> &#x2014; material icon
+  /// named "broken image".
+  broken_image = 132;
+
+  /// <i class="material-icons md-36">brush</i> &#x2014; material icon named
+  /// "brush".
+  brush = 133;
+
+  /// <i class="material-icons md-36">bubble_chart</i> &#x2014; material icon
+  /// named "bubble chart".
+  bubble_chart = 134;
+
+  /// <i class="material-icons md-36">bug_report</i> &#x2014; material icon
+  /// named "bug report".
+  bug_report = 135;
+
+  /// <i class="material-icons md-36">build</i> &#x2014; material icon named
+  /// "build".
+  build = 136;
+
+  /// <i class="material-icons md-36">burst_mode</i> &#x2014; material icon
+  /// named "burst mode".
+  burst_mode = 137;
+
+  /// <i class="material-icons md-36">business</i> &#x2014; material icon named
+  /// "business".
+  business = 138;
+
+  /// <i class="material-icons md-36">business_center</i> &#x2014; material icon
+  /// named "business center".
+  business_center = 139;
+
+  /// <i class="material-icons md-36">cached</i> &#x2014; material icon named
+  /// "cached".
+  cached = 140;
+
+  /// <i class="material-icons md-36">cake</i> &#x2014; material icon named
+  /// "cake".
+  cake = 141;
+
+  /// <i class="material-icons md-36">calendar_today</i> &#x2014; material icon
+  /// named "calendar today".
+  calendar_today = 142;
+
+  /// <i class="material-icons md-36">calendar_view_day</i> &#x2014; material
+  /// icon named "calendar view day".
+  calendar_view_day = 143;
+
+  /// <i class="material-icons md-36">call</i> &#x2014; material icon named
+  /// "call".
+  call = 144;
+
+  /// <i class="material-icons md-36">call_end</i> &#x2014; material icon named
+  /// "call end".
+  call_end = 145;
+
+  /// <i class="material-icons md-36">call_made</i> &#x2014; material icon named
+  /// "call made".
+  call_made = 146;
+
+  /// <i class="material-icons md-36">call_merge</i> &#x2014; material icon
+  /// named "call merge".
+  call_merge = 147;
+
+  /// <i class="material-icons md-36">call_missed</i> &#x2014; material icon
+  /// named "call missed".
+  call_missed = 148;
+
+  /// <i class="material-icons md-36">call_missed_outgoing</i> &#x2014; material
+  /// icon named "call missed outgoing".
+  call_missed_outgoing = 149;
+
+  /// <i class="material-icons md-36">call_received</i> &#x2014; material icon
+  /// named "call received".
+  call_received = 150;
+
+  /// <i class="material-icons md-36">call_split</i> &#x2014; material icon
+  /// named "call split".
+  call_split = 151;
+
+  /// <i class="material-icons md-36">call_to_action</i> &#x2014; material icon
+  /// named "call to action".
+  call_to_action = 152;
+
+  /// <i class="material-icons md-36">camera</i> &#x2014; material icon named
+  /// "camera".
+  camera = 153;
+
+  /// <i class="material-icons md-36">camera_alt</i> &#x2014; material icon
+  /// named "camera alt".
+  camera_alt = 154;
+
+  /// <i class="material-icons md-36">camera_enhance</i> &#x2014; material icon
+  /// named "camera enhance".
+  camera_enhance = 155;
+
+  /// <i class="material-icons md-36">camera_front</i> &#x2014; material icon
+  /// named "camera front".
+  camera_front = 156;
+
+  /// <i class="material-icons md-36">camera_rear</i> &#x2014; material icon
+  /// named "camera rear".
+  camera_rear = 157;
+
+  /// <i class="material-icons md-36">camera_roll</i> &#x2014; material icon
+  /// named "camera roll".
+  camera_roll = 158;
+
+  /// <i class="material-icons md-36">cancel</i> &#x2014; material icon named
+  /// "cancel".
+  cancel = 159;
+
+  /// <i class="material-icons md-36">card_giftcard</i> &#x2014; material icon
+  /// named "card giftcard".
+  card_giftcard = 160;
+
+  /// <i class="material-icons md-36">card_membership</i> &#x2014; material icon
+  /// named "card membership".
+  card_membership = 161;
+
+  /// <i class="material-icons md-36">card_travel</i> &#x2014; material icon
+  /// named "card travel".
+  card_travel = 162;
+
+  /// <i class="material-icons md-36">casino</i> &#x2014; material icon named
+  /// "casino".
+  casino = 163;
+
+  /// <i class="material-icons md-36">cast</i> &#x2014; material icon named
+  /// "cast".
+  cast = 164;
+
+  /// <i class="material-icons md-36">cast_connected</i> &#x2014; material icon
+  /// named "cast connected".
+  cast_connected = 165;
+
+  /// <i class="material-icons md-36">category</i> &#x2014; material icon named
+  /// "category".
+  category = 166;
+
+  /// <i class="material-icons md-36">center_focus_strong</i> &#x2014; material
+  /// icon named "center focus strong".
+  center_focus_strong = 167;
+
+  /// <i class="material-icons md-36">center_focus_weak</i> &#x2014; material
+  /// icon named "center focus weak".
+  center_focus_weak = 168;
+
+  /// <i class="material-icons md-36">change_history</i> &#x2014; material icon
+  /// named "change history".
+  change_history = 169;
+
+  /// <i class="material-icons md-36">chat</i> &#x2014; material icon named
+  /// "chat".
+  chat = 170;
+
+  /// <i class="material-icons md-36">chat_bubble</i> &#x2014; material icon
+  /// named "chat bubble".
+  chat_bubble = 171;
+
+  /// <i class="material-icons md-36">chat_bubble_outline</i> &#x2014; material
+  /// icon named "chat bubble outline".
+  chat_bubble_outline = 172;
+
+  /// <i class="material-icons md-36">check</i> &#x2014; material icon named
+  /// "check".
+  check = 173;
+
+  /// <i class="material-icons md-36">check_box</i> &#x2014; material icon named
+  /// "check box".
+  check_box = 174;
+
+  /// <i class="material-icons md-36">check_box_outline_blank</i> &#x2014;
+  /// material icon named "check box outline blank".
+  check_box_outline_blank = 175;
+
+  /// <i class="material-icons md-36">check_circle</i> &#x2014; material icon
+  /// named "check circle".
+  check_circle = 176;
+
+  /// <i class="material-icons md-36">check_circle_outline</i> &#x2014; material
+  /// icon named "check circle outline".
+  check_circle_outline = 177;
+
+  /// <i class="material-icons md-36">chevron_left</i> &#x2014; material icon
+  /// named "chevron left".
+  chevron_left = 178;
+
+  /// <i class="material-icons md-36">chevron_right</i> &#x2014; material icon
+  /// named "chevron right".
+  chevron_right = 179;
+
+  /// <i class="material-icons md-36">child_care</i> &#x2014; material icon
+  /// named "child care".
+  child_care = 180;
+
+  /// <i class="material-icons md-36">child_friendly</i> &#x2014; material icon
+  /// named "child friendly".
+  child_friendly = 181;
+
+  /// <i class="material-icons md-36">chrome_reader_mode</i> &#x2014; material
+  /// icon named "chrome reader mode".
+  chrome_reader_mode = 182;
+
+  /// <i class="material-icons md-36">class</i> &#x2014; material icon named
+  /// "class".
+  class_ = 183;
+
+  /// <i class="material-icons md-36">clear</i> &#x2014; material icon named
+  /// "clear".
+  clear = 184;
+
+  /// <i class="material-icons md-36">clear_all</i> &#x2014; material icon named
+  /// "clear all".
+  clear_all = 185;
+
+  /// <i class="material-icons md-36">close</i> &#x2014; material icon named
+  /// "close".
+  close = 186;
+
+  /// <i class="material-icons md-36">closed_caption</i> &#x2014; material icon
+  /// named "closed caption".
+  closed_caption = 187;
+
+  /// <i class="material-icons md-36">cloud</i> &#x2014; material icon named
+  /// "cloud".
+  cloud = 188;
+
+  /// <i class="material-icons md-36">cloud_circle</i> &#x2014; material icon
+  /// named "cloud circle".
+  cloud_circle = 189;
+
+  /// <i class="material-icons md-36">cloud_done</i> &#x2014; material icon
+  /// named "cloud done".
+  cloud_done = 190;
+
+  /// <i class="material-icons md-36">cloud_download</i> &#x2014; material icon
+  /// named "cloud download".
+  cloud_download = 191;
+
+  /// <i class="material-icons md-36">cloud_off</i> &#x2014; material icon named
+  /// "cloud off".
+  cloud_off = 192;
+
+  /// <i class="material-icons md-36">cloud_queue</i> &#x2014; material icon
+  /// named "cloud queue".
+  cloud_queue = 193;
+
+  /// <i class="material-icons md-36">cloud_upload</i> &#x2014; material icon
+  /// named "cloud upload".
+  cloud_upload = 194;
+
+  /// <i class="material-icons md-36">code</i> &#x2014; material icon named
+  /// "code".
+  code = 195;
+
+  /// <i class="material-icons md-36">collections</i> &#x2014; material icon
+  /// named "collections".
+  collections = 196;
+
+  /// <i class="material-icons md-36">collections_bookmark</i> &#x2014; material
+  /// icon named "collections bookmark".
+  collections_bookmark = 197;
+
+  /// <i class="material-icons md-36">color_lens</i> &#x2014; material icon
+  /// named "color lens".
+  color_lens = 198;
+
+  /// <i class="material-icons md-36">colorize</i> &#x2014; material icon named
+  /// "colorize".
+  colorize = 199;
+
+  /// <i class="material-icons md-36">comment</i> &#x2014; material icon named
+  /// "comment".
+  comment = 200;
+
+  /// <i class="material-icons md-36">compare</i> &#x2014; material icon named
+  /// "compare".
+  compare = 201;
+
+  /// <i class="material-icons md-36">compare_arrows</i> &#x2014; material icon
+  /// named "compare arrows".
+  compare_arrows = 202;
+
+  /// <i class="material-icons md-36">computer</i> &#x2014; material icon named
+  /// "computer".
+  computer = 203;
+
+  /// <i class="material-icons md-36">confirmation_number</i> &#x2014; material
+  /// icon named "confirmation number".
+  confirmation_number = 204;
+
+  /// <i class="material-icons md-36">contact_mail</i> &#x2014; material icon
+  /// named "contact mail".
+  contact_mail = 205;
+
+  /// <i class="material-icons md-36">contact_phone</i> &#x2014; material icon
+  /// named "contact phone".
+  contact_phone = 206;
+
+  /// <i class="material-icons md-36">contacts</i> &#x2014; material icon named
+  /// "contacts".
+  contacts = 207;
+
+  /// <i class="material-icons md-36">content_copy</i> &#x2014; material icon
+  /// named "content copy".
+  content_copy = 208;
+
+  /// <i class="material-icons md-36">content_cut</i> &#x2014; material icon
+  /// named "content cut".
+  content_cut = 209;
+
+  /// <i class="material-icons md-36">content_paste</i> &#x2014; material icon
+  /// named "content paste".
+  content_paste = 210;
+
+  /// <i class="material-icons md-36">control_point</i> &#x2014; material icon
+  /// named "control point".
+  control_point = 211;
+
+  /// <i class="material-icons md-36">control_point_duplicate</i> &#x2014;
+  /// material icon named "control point duplicate".
+  control_point_duplicate = 212;
+
+  /// <i class="material-icons md-36">copyright</i> &#x2014; material icon named
+  /// "copyright".
+  copyright = 213;
+
+  /// <i class="material-icons md-36">create</i> &#x2014; material icon named
+  /// "create".
+  create = 214;
+
+  /// <i class="material-icons md-36">create_new_folder</i> &#x2014; material
+  /// icon named "create new folder".
+  create_new_folder = 215;
+
+  /// <i class="material-icons md-36">credit_card</i> &#x2014; material icon
+  /// named "credit card".
+  credit_card = 216;
+
+  /// <i class="material-icons md-36">crop</i> &#x2014; material icon named
+  /// "crop".
+  crop = 217;
+
+  /// <i class="material-icons md-36">crop_16_9</i> &#x2014; material icon named
+  /// "crop 16 9".
+  crop_16_9 = 218;
+
+  /// <i class="material-icons md-36">crop_3_2</i> &#x2014; material icon named
+  /// "crop 3 2".
+  crop_3_2 = 219;
+
+  /// <i class="material-icons md-36">crop_5_4</i> &#x2014; material icon named
+  /// "crop 5 4".
+  crop_5_4 = 220;
+
+  /// <i class="material-icons md-36">crop_7_5</i> &#x2014; material icon named
+  /// "crop 7 5".
+  crop_7_5 = 221;
+
+  /// <i class="material-icons md-36">crop_din</i> &#x2014; material icon named
+  /// "crop din".
+  crop_din = 222;
+
+  /// <i class="material-icons md-36">crop_free</i> &#x2014; material icon named
+  /// "crop free".
+  crop_free = 223;
+
+  /// <i class="material-icons md-36">crop_landscape</i> &#x2014; material icon
+  /// named "crop landscape".
+  crop_landscape = 224;
+
+  /// <i class="material-icons md-36">crop_original</i> &#x2014; material icon
+  /// named "crop original".
+  crop_original = 225;
+
+  /// <i class="material-icons md-36">crop_portrait</i> &#x2014; material icon
+  /// named "crop portrait".
+  crop_portrait = 226;
+
+  /// <i class="material-icons md-36">crop_rotate</i> &#x2014; material icon
+  /// named "crop rotate".
+  crop_rotate = 227;
+
+  /// <i class="material-icons md-36">crop_square</i> &#x2014; material icon
+  /// named "crop square".
+  crop_square = 228;
+
+  /// <i class="material-icons md-36">dashboard</i> &#x2014; material icon named
+  /// "dashboard".
+  dashboard = 229;
+
+  /// <i class="material-icons md-36">data_usage</i> &#x2014; material icon
+  /// named "data usage".
+  data_usage = 230;
+
+  /// <i class="material-icons md-36">date_range</i> &#x2014; material icon
+  /// named "date range".
+  date_range = 231;
+
+  /// <i class="material-icons md-36">dehaze</i> &#x2014; material icon named
+  /// "dehaze".
+  dehaze = 232;
+
+  /// <i class="material-icons md-36">delete</i> &#x2014; material icon named
+  /// "delete".
+  delete = 233;
+
+  /// <i class="material-icons md-36">delete_forever</i> &#x2014; material icon
+  /// named "delete forever".
+  delete_forever = 234;
+
+  /// <i class="material-icons md-36">delete_outline</i> &#x2014; material icon
+  /// named "delete outline".
+  delete_outline = 235;
+
+  /// <i class="material-icons md-36">delete_sweep</i> &#x2014; material icon
+  /// named "delete sweep".
+  delete_sweep = 236;
+
+  /// <i class="material-icons md-36">departure_board</i> &#x2014; material icon
+  /// named "departure board".
+  departure_board = 237;
+
+  /// <i class="material-icons md-36">description</i> &#x2014; material icon
+  /// named "description".
+  description = 238;
+
+  /// <i class="material-icons md-36">desktop_mac</i> &#x2014; material icon
+  /// named "desktop mac".
+  desktop_mac = 239;
+
+  /// <i class="material-icons md-36">desktop_windows</i> &#x2014; material icon
+  /// named "desktop windows".
+  desktop_windows = 240;
+
+  /// <i class="material-icons md-36">details</i> &#x2014; material icon named
+  /// "details".
+  details = 241;
+
+  /// <i class="material-icons md-36">developer_board</i> &#x2014; material icon
+  /// named "developer board".
+  developer_board = 242;
+
+  /// <i class="material-icons md-36">developer_mode</i> &#x2014; material icon
+  /// named "developer mode".
+  developer_mode = 243;
+
+  /// <i class="material-icons md-36">device_hub</i> &#x2014; material icon
+  /// named "device hub".
+  device_hub = 244;
+
+  /// <i class="material-icons md-36">device_unknown</i> &#x2014; material icon
+  /// named "device unknown".
+  device_unknown = 245;
+
+  /// <i class="material-icons md-36">devices</i> &#x2014; material icon named
+  /// "devices".
+  devices = 246;
+
+  /// <i class="material-icons md-36">devices_other</i> &#x2014; material icon
+  /// named "devices other".
+  devices_other = 247;
+
+  /// <i class="material-icons md-36">dialer_sip</i> &#x2014; material icon
+  /// named "dialer sip".
+  dialer_sip = 248;
+
+  /// <i class="material-icons md-36">dialpad</i> &#x2014; material icon named
+  /// "dialpad".
+  dialpad = 249;
+
+  /// <i class="material-icons md-36">directions</i> &#x2014; material icon
+  /// named "directions".
+  directions = 250;
+
+  /// <i class="material-icons md-36">directions_bike</i> &#x2014; material icon
+  /// named "directions bike".
+  directions_bike = 251;
+
+  /// <i class="material-icons md-36">directions_boat</i> &#x2014; material icon
+  /// named "directions boat".
+  directions_boat = 252;
+
+  /// <i class="material-icons md-36">directions_bus</i> &#x2014; material icon
+  /// named "directions bus".
+  directions_bus = 253;
+
+  /// <i class="material-icons md-36">directions_car</i> &#x2014; material icon
+  /// named "directions car".
+  directions_car = 254;
+
+  /// <i class="material-icons md-36">directions_railway</i> &#x2014; material
+  /// icon named "directions railway".
+  directions_railway = 255;
+
+  /// <i class="material-icons md-36">directions_run</i> &#x2014; material icon
+  /// named "directions run".
+  directions_run = 256;
+
+  /// <i class="material-icons md-36">directions_subway</i> &#x2014; material
+  /// icon named "directions subway".
+  directions_subway = 257;
+
+  /// <i class="material-icons md-36">directions_transit</i> &#x2014; material
+  /// icon named "directions transit".
+  directions_transit = 258;
+
+  /// <i class="material-icons md-36">directions_walk</i> &#x2014; material icon
+  /// named "directions walk".
+  directions_walk = 259;
+
+  /// <i class="material-icons md-36">disc_full</i> &#x2014; material icon named
+  /// "disc full".
+  disc_full = 260;
+
+  /// <i class="material-icons md-36">dns</i> &#x2014; material icon named
+  /// "dns".
+  dns = 261;
+
+  /// <i class="material-icons md-36">do_not_disturb</i> &#x2014; material icon
+  /// named "do not disturb".
+  do_not_disturb = 262;
+
+  /// <i class="material-icons md-36">do_not_disturb_alt</i> &#x2014; material
+  /// icon named "do not disturb alt".
+  do_not_disturb_alt = 263;
+
+  /// <i class="material-icons md-36">do_not_disturb_off</i> &#x2014; material
+  /// icon named "do not disturb off".
+  do_not_disturb_off = 264;
+
+  /// <i class="material-icons md-36">do_not_disturb_on</i> &#x2014; material
+  /// icon named "do not disturb on".
+  do_not_disturb_on = 265;
+
+  /// <i class="material-icons md-36">dock</i> &#x2014; material icon named
+  /// "dock".
+  dock = 266;
+
+  /// <i class="material-icons md-36">domain</i> &#x2014; material icon named
+  /// "domain".
+  domain = 267;
+
+  /// <i class="material-icons md-36">done</i> &#x2014; material icon named
+  /// "done".
+  done = 268;
+
+  /// <i class="material-icons md-36">done_all</i> &#x2014; material icon named
+  /// "done all".
+  done_all = 269;
+
+  /// <i class="material-icons md-36">done_outline</i> &#x2014; material icon
+  /// named "done outline".
+  done_outline = 270;
+
+  /// <i class="material-icons md-36">donut_large</i> &#x2014; material icon
+  /// named "donut large".
+  donut_large = 271;
+
+  /// <i class="material-icons md-36">donut_small</i> &#x2014; material icon
+  /// named "donut small".
+  donut_small = 272;
+
+  /// <i class="material-icons md-36">drafts</i> &#x2014; material icon named
+  /// "drafts".
+  drafts = 273;
+
+  /// <i class="material-icons md-36">drag_handle</i> &#x2014; material icon
+  /// named "drag handle".
+  drag_handle = 274;
+
+  /// <i class="material-icons md-36">drive_eta</i> &#x2014; material icon named
+  /// "drive eta".
+  drive_eta = 275;
+
+  /// <i class="material-icons md-36">dvr</i> &#x2014; material icon named
+  /// "dvr".
+  dvr = 276;
+
+  /// <i class="material-icons md-36">edit</i> &#x2014; material icon named
+  /// "edit".
+  edit = 277;
+
+  /// <i class="material-icons md-36">edit_attributes</i> &#x2014; material icon
+  /// named "edit attributes".
+  edit_attributes = 278;
+
+  /// <i class="material-icons md-36">edit_location</i> &#x2014; material icon
+  /// named "edit location".
+  edit_location = 279;
+
+  /// <i class="material-icons md-36">eject</i> &#x2014; material icon named
+  /// "eject".
+  eject = 280;
+
+  /// <i class="material-icons md-36">email</i> &#x2014; material icon named
+  /// "email".
+  email = 281;
+
+  /// <i class="material-icons md-36">enhanced_encryption</i> &#x2014; material
+  /// icon named "enhanced encryption".
+  enhanced_encryption = 282;
+
+  /// <i class="material-icons md-36">equalizer</i> &#x2014; material icon named
+  /// "equalizer".
+  equalizer = 283;
+
+  /// <i class="material-icons md-36">error</i> &#x2014; material icon named
+  /// "error".
+  error = 284;
+
+  /// <i class="material-icons md-36">error_outline</i> &#x2014; material icon
+  /// named "error outline".
+  error_outline = 285;
+
+  /// <i class="material-icons md-36">euro_symbol</i> &#x2014; material icon
+  /// named "euro symbol".
+  euro_symbol = 286;
+
+  /// <i class="material-icons md-36">ev_station</i> &#x2014; material icon
+  /// named "ev station".
+  ev_station = 287;
+
+  /// <i class="material-icons md-36">event</i> &#x2014; material icon named
+  /// "event".
+  event = 288;
+
+  /// <i class="material-icons md-36">event_available</i> &#x2014; material icon
+  /// named "event available".
+  event_available = 289;
+
+  /// <i class="material-icons md-36">event_busy</i> &#x2014; material icon
+  /// named "event busy".
+  event_busy = 290;
+
+  /// <i class="material-icons md-36">event_note</i> &#x2014; material icon
+  /// named "event note".
+  event_note = 291;
+
+  /// <i class="material-icons md-36">event_seat</i> &#x2014; material icon
+  /// named "event seat".
+  event_seat = 292;
+
+  /// <i class="material-icons md-36">exit_to_app</i> &#x2014; material icon
+  /// named "exit to app".
+  exit_to_app = 293;
+
+  /// <i class="material-icons md-36">expand_less</i> &#x2014; material icon
+  /// named "expand less".
+  expand_less = 294;
+
+  /// <i class="material-icons md-36">expand_more</i> &#x2014; material icon
+  /// named "expand more".
+  expand_more = 295;
+
+  /// <i class="material-icons md-36">explicit</i> &#x2014; material icon named
+  /// "explicit".
+  explicit = 296;
+
+  /// <i class="material-icons md-36">explore</i> &#x2014; material icon named
+  /// "explore".
+  explore = 297;
+
+  /// <i class="material-icons md-36">exposure</i> &#x2014; material icon named
+  /// "exposure".
+  exposure = 298;
+
+  /// <i class="material-icons md-36">exposure_neg_1</i> &#x2014; material icon
+  /// named "exposure neg 1".
+  exposure_neg_1 = 299;
+
+  /// <i class="material-icons md-36">exposure_neg_2</i> &#x2014; material icon
+  /// named "exposure neg 2".
+  exposure_neg_2 = 300;
+
+  /// <i class="material-icons md-36">exposure_plus_1</i> &#x2014; material icon
+  /// named "exposure plus 1".
+  exposure_plus_1 = 301;
+
+  /// <i class="material-icons md-36">exposure_plus_2</i> &#x2014; material icon
+  /// named "exposure plus 2".
+  exposure_plus_2 = 302;
+
+  /// <i class="material-icons md-36">exposure_zero</i> &#x2014; material icon
+  /// named "exposure zero".
+  exposure_zero = 303;
+
+  /// <i class="material-icons md-36">extension</i> &#x2014; material icon named
+  /// "extension".
+  extension = 304;
+
+  /// <i class="material-icons md-36">face</i> &#x2014; material icon named
+  /// "face".
+  face = 305;
+
+  /// <i class="material-icons md-36">fast_forward</i> &#x2014; material icon
+  /// named "fast forward".
+  fast_forward = 306;
+
+  /// <i class="material-icons md-36">fast_rewind</i> &#x2014; material icon
+  /// named "fast rewind".
+  fast_rewind = 307;
+
+  /// <i class="material-icons md-36">fastfood</i> &#x2014; material icon named
+  /// "fastfood".
+  fastfood = 308;
+
+  /// <i class="material-icons md-36">favorite</i> &#x2014; material icon named
+  /// "favorite".
+  favorite = 309;
+
+  /// <i class="material-icons md-36">favorite_border</i> &#x2014; material icon
+  /// named "favorite border".
+  favorite_border = 310;
+
+  /// <i class="material-icons md-36">featured_play_list</i> &#x2014; material
+  /// icon named "featured play list".
+  featured_play_list = 311;
+
+  /// <i class="material-icons md-36">featured_video</i> &#x2014; material icon
+  /// named "featured video".
+  featured_video = 312;
+
+  /// <i class="material-icons md-36">feedback</i> &#x2014; material icon named
+  /// "feedback".
+  feedback = 313;
+
+  /// <i class="material-icons md-36">fiber_dvr</i> &#x2014; material icon named
+  /// "fiber dvr".
+  fiber_dvr = 314;
+
+  /// <i class="material-icons md-36">fiber_manual_record</i> &#x2014; material
+  /// icon named "fiber manual record".
+  fiber_manual_record = 315;
+
+  /// <i class="material-icons md-36">fiber_new</i> &#x2014; material icon named
+  /// "fiber new".
+  fiber_new = 316;
+
+  /// <i class="material-icons md-36">fiber_pin</i> &#x2014; material icon named
+  /// "fiber pin".
+  fiber_pin = 317;
+
+  /// <i class="material-icons md-36">fiber_smart_record</i> &#x2014; material
+  /// icon named "fiber smart record".
+  fiber_smart_record = 318;
+
+  /// <i class="material-icons md-36">file_download</i> &#x2014; material icon
+  /// named "file download".
+  file_download = 319;
+
+  /// <i class="material-icons md-36">file_upload</i> &#x2014; material icon
+  /// named "file upload".
+  file_upload = 320;
+
+  /// <i class="material-icons md-36">filter</i> &#x2014; material icon named
+  /// "filter".
+  filter = 321;
+
+  /// <i class="material-icons md-36">filter_1</i> &#x2014; material icon named
+  /// "filter 1".
+  filter_1 = 322;
+
+  /// <i class="material-icons md-36">filter_2</i> &#x2014; material icon named
+  /// "filter 2".
+  filter_2 = 323;
+
+  /// <i class="material-icons md-36">filter_3</i> &#x2014; material icon named
+  /// "filter 3".
+  filter_3 = 324;
+
+  /// <i class="material-icons md-36">filter_4</i> &#x2014; material icon named
+  /// "filter 4".
+  filter_4 = 325;
+
+  /// <i class="material-icons md-36">filter_5</i> &#x2014; material icon named
+  /// "filter 5".
+  filter_5 = 326;
+
+  /// <i class="material-icons md-36">filter_6</i> &#x2014; material icon named
+  /// "filter 6".
+  filter_6 = 327;
+
+  /// <i class="material-icons md-36">filter_7</i> &#x2014; material icon named
+  /// "filter 7".
+  filter_7 = 328;
+
+  /// <i class="material-icons md-36">filter_8</i> &#x2014; material icon named
+  /// "filter 8".
+  filter_8 = 329;
+
+  /// <i class="material-icons md-36">filter_9</i> &#x2014; material icon named
+  /// "filter 9".
+  filter_9 = 330;
+
+  /// <i class="material-icons md-36">filter_9_plus</i> &#x2014; material icon
+  /// named "filter 9 plus".
+  filter_9_plus = 331;
+
+  /// <i class="material-icons md-36">filter_b_and_w</i> &#x2014; material icon
+  /// named "filter b and w".
+  filter_b_and_w = 332;
+
+  /// <i class="material-icons md-36">filter_center_focus</i> &#x2014; material
+  /// icon named "filter center focus".
+  filter_center_focus = 333;
+
+  /// <i class="material-icons md-36">filter_drama</i> &#x2014; material icon
+  /// named "filter drama".
+  filter_drama = 334;
+
+  /// <i class="material-icons md-36">filter_frames</i> &#x2014; material icon
+  /// named "filter frames".
+  filter_frames = 335;
+
+  /// <i class="material-icons md-36">filter_hdr</i> &#x2014; material icon
+  /// named "filter hdr".
+  filter_hdr = 336;
+
+  /// <i class="material-icons md-36">filter_list</i> &#x2014; material icon
+  /// named "filter list".
+  filter_list = 337;
+
+  /// <i class="material-icons md-36">filter_none</i> &#x2014; material icon
+  /// named "filter none".
+  filter_none = 338;
+
+  /// <i class="material-icons md-36">filter_tilt_shift</i> &#x2014; material
+  /// icon named "filter tilt shift".
+  filter_tilt_shift = 339;
+
+  /// <i class="material-icons md-36">filter_vintage</i> &#x2014; material icon
+  /// named "filter vintage".
+  filter_vintage = 340;
+
+  /// <i class="material-icons md-36">find_in_page</i> &#x2014; material icon
+  /// named "find in page".
+  find_in_page = 341;
+
+  /// <i class="material-icons md-36">find_replace</i> &#x2014; material icon
+  /// named "find replace".
+  find_replace = 342;
+
+  /// <i class="material-icons md-36">fingerprint</i> &#x2014; material icon
+  /// named "fingerprint".
+  fingerprint = 343;
+
+  /// <i class="material-icons md-36">first_page</i> &#x2014; material icon
+  /// named "first page".
+  first_page = 344;
+
+  /// <i class="material-icons md-36">fitness_center</i> &#x2014; material icon
+  /// named "fitness center".
+  fitness_center = 345;
+
+  /// <i class="material-icons md-36">flag</i> &#x2014; material icon named
+  /// "flag".
+  flag = 346;
+
+  /// <i class="material-icons md-36">flare</i> &#x2014; material icon named
+  /// "flare".
+  flare = 347;
+
+  /// <i class="material-icons md-36">flash_auto</i> &#x2014; material icon
+  /// named "flash auto".
+  flash_auto = 348;
+
+  /// <i class="material-icons md-36">flash_off</i> &#x2014; material icon named
+  /// "flash off".
+  flash_off = 349;
+
+  /// <i class="material-icons md-36">flash_on</i> &#x2014; material icon named
+  /// "flash on".
+  flash_on = 350;
+
+  /// <i class="material-icons md-36">flight</i> &#x2014; material icon named
+  /// "flight".
+  flight = 351;
+
+  /// <i class="material-icons md-36">flight_land</i> &#x2014; material icon
+  /// named "flight land".
+  flight_land = 352;
+
+  /// <i class="material-icons md-36">flight_takeoff</i> &#x2014; material icon
+  /// named "flight takeoff".
+  flight_takeoff = 353;
+
+  /// <i class="material-icons md-36">flip</i> &#x2014; material icon named
+  /// "flip".
+  flip = 354;
+
+  /// <i class="material-icons md-36">flip_to_back</i> &#x2014; material icon
+  /// named "flip to back".
+  flip_to_back = 355;
+
+  /// <i class="material-icons md-36">flip_to_front</i> &#x2014; material icon
+  /// named "flip to front".
+  flip_to_front = 356;
+
+  /// <i class="material-icons md-36">folder</i> &#x2014; material icon named
+  /// "folder".
+  folder = 357;
+
+  /// <i class="material-icons md-36">folder_open</i> &#x2014; material icon
+  /// named "folder open".
+  folder_open = 358;
+
+  /// <i class="material-icons md-36">folder_shared</i> &#x2014; material icon
+  /// named "folder shared".
+  folder_shared = 359;
+
+  /// <i class="material-icons md-36">folder_special</i> &#x2014; material icon
+  /// named "folder special".
+  folder_special = 360;
+
+  /// <i class="material-icons md-36">font_download</i> &#x2014; material icon
+  /// named "font download".
+  font_download = 361;
+
+  /// <i class="material-icons md-36">format_align_center</i> &#x2014; material
+  /// icon named "format align center".
+  format_align_center = 362;
+
+  /// <i class="material-icons md-36">format_align_justify</i> &#x2014; material
+  /// icon named "format align justify".
+  format_align_justify = 363;
+
+  /// <i class="material-icons md-36">format_align_left</i> &#x2014; material
+  /// icon named "format align left".
+  format_align_left = 364;
+
+  /// <i class="material-icons md-36">format_align_right</i> &#x2014; material
+  /// icon named "format align right".
+  format_align_right = 365;
+
+  /// <i class="material-icons md-36">format_bold</i> &#x2014; material icon
+  /// named "format bold".
+  format_bold = 366;
+
+  /// <i class="material-icons md-36">format_clear</i> &#x2014; material icon
+  /// named "format clear".
+  format_clear = 367;
+
+  /// <i class="material-icons md-36">format_color_fill</i> &#x2014; material
+  /// icon named "format color fill".
+  format_color_fill = 368;
+
+  /// <i class="material-icons md-36">format_color_reset</i> &#x2014; material
+  /// icon named "format color reset".
+  format_color_reset = 369;
+
+  /// <i class="material-icons md-36">format_color_text</i> &#x2014; material
+  /// icon named "format color text".
+  format_color_text = 370;
+
+  /// <i class="material-icons md-36">format_indent_decrease</i> &#x2014;
+  /// material icon named "format indent decrease".
+  format_indent_decrease = 371;
+
+  /// <i class="material-icons md-36">format_indent_increase</i> &#x2014;
+  /// material icon named "format indent increase".
+  format_indent_increase = 372;
+
+  /// <i class="material-icons md-36">format_italic</i> &#x2014; material icon
+  /// named "format italic".
+  format_italic = 373;
+
+  /// <i class="material-icons md-36">format_line_spacing</i> &#x2014; material
+  /// icon named "format line spacing".
+  format_line_spacing = 374;
+
+  /// <i class="material-icons md-36">format_list_bulleted</i> &#x2014; material
+  /// icon named "format list bulleted".
+  format_list_bulleted = 375;
+
+  /// <i class="material-icons md-36">format_list_numbered</i> &#x2014; material
+  /// icon named "format list numbered".
+  format_list_numbered = 376;
+
+  /// <i class="material-icons md-36">format_list_numbered_rtl</i> &#x2014;
+  /// material icon named "format list numbered rtl".
+  format_list_numbered_rtl = 377;
+
+  /// <i class="material-icons md-36">format_paint</i> &#x2014; material icon
+  /// named "format paint".
+  format_paint = 378;
+
+  /// <i class="material-icons md-36">format_quote</i> &#x2014; material icon
+  /// named "format quote".
+  format_quote = 379;
+
+  /// <i class="material-icons md-36">format_shapes</i> &#x2014; material icon
+  /// named "format shapes".
+  format_shapes = 380;
+
+  /// <i class="material-icons md-36">format_size</i> &#x2014; material icon
+  /// named "format size".
+  format_size = 381;
+
+  /// <i class="material-icons md-36">format_strikethrough</i> &#x2014; material
+  /// icon named "format strikethrough".
+  format_strikethrough = 382;
+
+  /// <i class="material-icons md-36">format_textdirection_l_to_r</i> &#x2014;
+  /// material icon named "format textdirection l to r".
+  format_textdirection_l_to_r = 383;
+
+  /// <i class="material-icons md-36">format_textdirection_r_to_l</i> &#x2014;
+  /// material icon named "format textdirection r to l".
+  format_textdirection_r_to_l = 384;
+
+  /// <i class="material-icons md-36">format_underlined</i> &#x2014; material
+  /// icon named "format underlined".
+  format_underlined = 385;
+
+  /// <i class="material-icons md-36">forum</i> &#x2014; material icon named
+  /// "forum".
+  forum = 386;
+
+  /// <i class="material-icons md-36">forward</i> &#x2014; material icon named
+  /// "forward".
+  forward = 387;
+
+  /// <i class="material-icons md-36">forward_10</i> &#x2014; material icon
+  /// named "forward 10".
+  forward_10 = 388;
+
+  /// <i class="material-icons md-36">forward_30</i> &#x2014; material icon
+  /// named "forward 30".
+  forward_30 = 389;
+
+  /// <i class="material-icons md-36">forward_5</i> &#x2014; material icon named
+  /// "forward 5".
+  forward_5 = 390;
+
+  /// <i class="material-icons md-36">free_breakfast</i> &#x2014; material icon
+  /// named "free breakfast".
+  free_breakfast = 391;
+
+  /// <i class="material-icons md-36">fullscreen</i> &#x2014; material icon
+  /// named "fullscreen".
+  fullscreen = 392;
+
+  /// <i class="material-icons md-36">fullscreen_exit</i> &#x2014; material icon
+  /// named "fullscreen exit".
+  fullscreen_exit = 393;
+
+  /// <i class="material-icons md-36">functions</i> &#x2014; material icon named
+  /// "functions".
+  functions = 394;
+
+  /// <i class="material-icons md-36">g_translate</i> &#x2014; material icon
+  /// named "g translate".
+  g_translate = 395;
+
+  /// <i class="material-icons md-36">gamepad</i> &#x2014; material icon named
+  /// "gamepad".
+  gamepad = 396;
+
+  /// <i class="material-icons md-36">games</i> &#x2014; material icon named
+  /// "games".
+  games = 397;
+
+  /// <i class="material-icons md-36">gavel</i> &#x2014; material icon named
+  /// "gavel".
+  gavel = 398;
+
+  /// <i class="material-icons md-36">gesture</i> &#x2014; material icon named
+  /// "gesture".
+  gesture = 399;
+
+  /// <i class="material-icons md-36">get_app</i> &#x2014; material icon named
+  /// "get app".
+  get_app = 400;
+
+  /// <i class="material-icons md-36">gif</i> &#x2014; material icon named
+  /// "gif".
+  gif = 401;
+
+  /// <i class="material-icons md-36">golf_course</i> &#x2014; material icon
+  /// named "golf course".
+  golf_course = 402;
+
+  /// <i class="material-icons md-36">gps_fixed</i> &#x2014; material icon named
+  /// "gps fixed".
+  gps_fixed = 403;
+
+  /// <i class="material-icons md-36">gps_not_fixed</i> &#x2014; material icon
+  /// named "gps not fixed".
+  gps_not_fixed = 404;
+
+  /// <i class="material-icons md-36">gps_off</i> &#x2014; material icon named
+  /// "gps off".
+  gps_off = 405;
+
+  /// <i class="material-icons md-36">grade</i> &#x2014; material icon named
+  /// "grade".
+  grade = 406;
+
+  /// <i class="material-icons md-36">gradient</i> &#x2014; material icon named
+  /// "gradient".
+  gradient = 407;
+
+  /// <i class="material-icons md-36">grain</i> &#x2014; material icon named
+  /// "grain".
+  grain = 408;
+
+  /// <i class="material-icons md-36">graphic_eq</i> &#x2014; material icon
+  /// named "graphic eq".
+  graphic_eq = 409;
+
+  /// <i class="material-icons md-36">grid_off</i> &#x2014; material icon named
+  /// "grid off".
+  grid_off = 410;
+
+  /// <i class="material-icons md-36">grid_on</i> &#x2014; material icon named
+  /// "grid on".
+  grid_on = 411;
+
+  /// <i class="material-icons md-36">group</i> &#x2014; material icon named
+  /// "group".
+  group = 412;
+
+  /// <i class="material-icons md-36">group_add</i> &#x2014; material icon named
+  /// "group add".
+  group_add = 413;
+
+  /// <i class="material-icons md-36">group_work</i> &#x2014; material icon
+  /// named "group work".
+  group_work = 414;
+
+  /// <i class="material-icons md-36">hd</i> &#x2014; material icon named "hd".
+  hd = 415;
+
+  /// <i class="material-icons md-36">hdr_off</i> &#x2014; material icon named
+  /// "hdr off".
+  hdr_off = 416;
+
+  /// <i class="material-icons md-36">hdr_on</i> &#x2014; material icon named
+  /// "hdr on".
+  hdr_on = 417;
+
+  /// <i class="material-icons md-36">hdr_strong</i> &#x2014; material icon
+  /// named "hdr strong".
+  hdr_strong = 418;
+
+  /// <i class="material-icons md-36">hdr_weak</i> &#x2014; material icon named
+  /// "hdr weak".
+  hdr_weak = 419;
+
+  /// <i class="material-icons md-36">headset</i> &#x2014; material icon named
+  /// "headset".
+  headset = 420;
+
+  /// <i class="material-icons md-36">headset_mic</i> &#x2014; material icon
+  /// named "headset mic".
+  headset_mic = 421;
+
+  /// <i class="material-icons md-36">headset_off</i> &#x2014; material icon
+  /// named "headset off".
+  headset_off = 422;
+
+  /// <i class="material-icons md-36">healing</i> &#x2014; material icon named
+  /// "healing".
+  healing = 423;
+
+  /// <i class="material-icons md-36">hearing</i> &#x2014; material icon named
+  /// "hearing".
+  hearing = 424;
+
+  /// <i class="material-icons md-36">help</i> &#x2014; material icon named
+  /// "help".
+  help = 425;
+
+  /// <i class="material-icons md-36">help_outline</i> &#x2014; material icon
+  /// named "help outline".
+  help_outline = 426;
+
+  /// <i class="material-icons md-36">high_quality</i> &#x2014; material icon
+  /// named "high quality".
+  high_quality = 427;
+
+  /// <i class="material-icons md-36">highlight</i> &#x2014; material icon named
+  /// "highlight".
+  highlight = 428;
+
+  /// <i class="material-icons md-36">highlight_off</i> &#x2014; material icon
+  /// named "highlight off".
+  highlight_off = 429;
+
+  /// <i class="material-icons md-36">history</i> &#x2014; material icon named
+  /// "history".
+  history = 430;
+
+  /// <i class="material-icons md-36">home</i> &#x2014; material icon named
+  /// "home".
+  home = 431;
+
+  /// <i class="material-icons md-36">hot_tub</i> &#x2014; material icon named
+  /// "hot tub".
+  hot_tub = 432;
+
+  /// <i class="material-icons md-36">hotel</i> &#x2014; material icon named
+  /// "hotel".
+  hotel = 433;
+
+  /// <i class="material-icons md-36">hourglass_empty</i> &#x2014; material icon
+  /// named "hourglass empty".
+  hourglass_empty = 434;
+
+  /// <i class="material-icons md-36">hourglass_full</i> &#x2014; material icon
+  /// named "hourglass full".
+  hourglass_full = 435;
+
+  /// <i class="material-icons md-36">http</i> &#x2014; material icon named
+  /// "http".
+  http = 436;
+
+  /// <i class="material-icons md-36">https</i> &#x2014; material icon named
+  /// "https".
+  https = 437;
+
+  /// <i class="material-icons md-36">image</i> &#x2014; material icon named
+  /// "image".
+  image = 438;
+
+  /// <i class="material-icons md-36">image_aspect_ratio</i> &#x2014; material
+  /// icon named "image aspect ratio".
+  image_aspect_ratio = 439;
+
+  /// <i class="material-icons md-36">import_contacts</i> &#x2014; material icon
+  /// named "import contacts".
+  import_contacts = 440;
+
+  /// <i class="material-icons md-36">import_export</i> &#x2014; material icon
+  /// named "import export".
+  import_export = 441;
+
+  /// <i class="material-icons md-36">important_devices</i> &#x2014; material
+  /// icon named "important devices".
+  important_devices = 442;
+
+  /// <i class="material-icons md-36">inbox</i> &#x2014; material icon named
+  /// "inbox".
+  inbox = 443;
+
+  /// <i class="material-icons md-36">indeterminate_check_box</i> &#x2014;
+  /// material icon named "indeterminate check box".
+  indeterminate_check_box = 444;
+
+  /// <i class="material-icons md-36">info</i> &#x2014; material icon named
+  /// "info".
+  info = 445;
+
+  /// <i class="material-icons md-36">info_outline</i> &#x2014; material icon
+  /// named "info outline".
+  info_outline = 446;
+
+  /// <i class="material-icons md-36">input</i> &#x2014; material icon named
+  /// "input".
+  input = 447;
+
+  /// <i class="material-icons md-36">insert_chart</i> &#x2014; material icon
+  /// named "insert chart".
+  insert_chart = 448;
+
+  /// <i class="material-icons md-36">insert_comment</i> &#x2014; material icon
+  /// named "insert comment".
+  insert_comment = 449;
+
+  /// <i class="material-icons md-36">insert_drive_file</i> &#x2014; material
+  /// icon named "insert drive file".
+  insert_drive_file = 450;
+
+  /// <i class="material-icons md-36">insert_emoticon</i> &#x2014; material icon
+  /// named "insert emoticon".
+  insert_emoticon = 451;
+
+  /// <i class="material-icons md-36">insert_invitation</i> &#x2014; material
+  /// icon named "insert invitation".
+  insert_invitation = 452;
+
+  /// <i class="material-icons md-36">insert_link</i> &#x2014; material icon
+  /// named "insert link".
+  insert_link = 453;
+
+  /// <i class="material-icons md-36">insert_photo</i> &#x2014; material icon
+  /// named "insert photo".
+  insert_photo = 454;
+
+  /// <i class="material-icons md-36">invert_colors</i> &#x2014; material icon
+  /// named "invert colors".
+  invert_colors = 455;
+
+  /// <i class="material-icons md-36">invert_colors_off</i> &#x2014; material
+  /// icon named "invert colors off".
+  invert_colors_off = 456;
+
+  /// <i class="material-icons md-36">iso</i> &#x2014; material icon named
+  /// "iso".
+  iso = 457;
+
+  /// <i class="material-icons md-36">keyboard</i> &#x2014; material icon named
+  /// "keyboard".
+  keyboard = 458;
+
+  /// <i class="material-icons md-36">keyboard_arrow_down</i> &#x2014; material
+  /// icon named "keyboard arrow down".
+  keyboard_arrow_down = 459;
+
+  /// <i class="material-icons md-36">keyboard_arrow_left</i> &#x2014; material
+  /// icon named "keyboard arrow left".
+  keyboard_arrow_left = 460;
+
+  /// <i class="material-icons md-36">keyboard_arrow_right</i> &#x2014; material
+  /// icon named "keyboard arrow right".
+  keyboard_arrow_right = 461;
+
+  /// <i class="material-icons md-36">keyboard_arrow_up</i> &#x2014; material
+  /// icon named "keyboard arrow up".
+  keyboard_arrow_up = 462;
+
+  /// <i class="material-icons md-36">keyboard_backspace</i> &#x2014; material
+  /// icon named "keyboard backspace".
+  keyboard_backspace = 463;
+
+  /// <i class="material-icons md-36">keyboard_capslock</i> &#x2014; material
+  /// icon named "keyboard capslock".
+  keyboard_capslock = 464;
+
+  /// <i class="material-icons md-36">keyboard_hide</i> &#x2014; material icon
+  /// named "keyboard hide".
+  keyboard_hide = 465;
+
+  /// <i class="material-icons md-36">keyboard_return</i> &#x2014; material icon
+  /// named "keyboard return".
+  keyboard_return = 466;
+
+  /// <i class="material-icons md-36">keyboard_tab</i> &#x2014; material icon
+  /// named "keyboard tab".
+  keyboard_tab = 467;
+
+  /// <i class="material-icons md-36">keyboard_voice</i> &#x2014; material icon
+  /// named "keyboard voice".
+  keyboard_voice = 468;
+
+  /// <i class="material-icons md-36">kitchen</i> &#x2014; material icon named
+  /// "kitchen".
+  kitchen = 469;
+
+  /// <i class="material-icons md-36">label</i> &#x2014; material icon named
+  /// "label".
+  label = 470;
+
+  /// <i class="material-icons md-36">label_important</i> &#x2014; material icon
+  /// named "label important".
+  label_important = 471;
+
+  /// <i class="material-icons md-36">label_outline</i> &#x2014; material icon
+  /// named "label outline".
+  label_outline = 472;
+
+  /// <i class="material-icons md-36">landscape</i> &#x2014; material icon named
+  /// "landscape".
+  landscape = 473;
+
+  /// <i class="material-icons md-36">language</i> &#x2014; material icon named
+  /// "language".
+  language = 474;
+
+  /// <i class="material-icons md-36">laptop</i> &#x2014; material icon named
+  /// "laptop".
+  laptop = 475;
+
+  /// <i class="material-icons md-36">laptop_chromebook</i> &#x2014; material
+  /// icon named "laptop chromebook".
+  laptop_chromebook = 476;
+
+  /// <i class="material-icons md-36">laptop_mac</i> &#x2014; material icon
+  /// named "laptop mac".
+  laptop_mac = 477;
+
+  /// <i class="material-icons md-36">laptop_windows</i> &#x2014; material icon
+  /// named "laptop windows".
+  laptop_windows = 478;
+
+  /// <i class="material-icons md-36">last_page</i> &#x2014; material icon named
+  /// "last page".
+  last_page = 479;
+
+  /// <i class="material-icons md-36">launch</i> &#x2014; material icon named
+  /// "launch".
+  launch = 480;
+
+  /// <i class="material-icons md-36">layers</i> &#x2014; material icon named
+  /// "layers".
+  layers = 481;
+
+  /// <i class="material-icons md-36">layers_clear</i> &#x2014; material icon
+  /// named "layers clear".
+  layers_clear = 482;
+
+  /// <i class="material-icons md-36">leak_add</i> &#x2014; material icon named
+  /// "leak add".
+  leak_add = 483;
+
+  /// <i class="material-icons md-36">leak_remove</i> &#x2014; material icon
+  /// named "leak remove".
+  leak_remove = 484;
+
+  /// <i class="material-icons md-36">lens</i> &#x2014; material icon named
+  /// "lens".
+  lens = 485;
+
+  /// <i class="material-icons md-36">library_add</i> &#x2014; material icon
+  /// named "library add".
+  library_add = 486;
+
+  /// <i class="material-icons md-36">library_books</i> &#x2014; material icon
+  /// named "library books".
+  library_books = 487;
+
+  /// <i class="material-icons md-36">library_music</i> &#x2014; material icon
+  /// named "library music".
+  library_music = 488;
+
+  /// <i class="material-icons md-36">lightbulb_outline</i> &#x2014; material
+  /// icon named "lightbulb outline".
+  lightbulb_outline = 489;
+
+  /// <i class="material-icons md-36">line_style</i> &#x2014; material icon
+  /// named "line style".
+  line_style = 490;
+
+  /// <i class="material-icons md-36">line_weight</i> &#x2014; material icon
+  /// named "line weight".
+  line_weight = 491;
+
+  /// <i class="material-icons md-36">linear_scale</i> &#x2014; material icon
+  /// named "linear scale".
+  linear_scale = 492;
+
+  /// <i class="material-icons md-36">link</i> &#x2014; material icon named
+  /// "link".
+  link = 493;
+
+  /// <i class="material-icons md-36">link_off</i> &#x2014; material icon named
+  /// "link off".
+  link_off = 494;
+
+  /// <i class="material-icons md-36">linked_camera</i> &#x2014; material icon
+  /// named "linked camera".
+  linked_camera = 495;
+
+  /// <i class="material-icons md-36">list</i> &#x2014; material icon named
+  /// "list".
+  list = 496;
+
+  /// <i class="material-icons md-36">live_help</i> &#x2014; material icon named
+  /// "live help".
+  live_help = 497;
+
+  /// <i class="material-icons md-36">live_tv</i> &#x2014; material icon named
+  /// "live tv".
+  live_tv = 498;
+
+  /// <i class="material-icons md-36">local_activity</i> &#x2014; material icon
+  /// named "local activity".
+  local_activity = 499;
+
+  /// <i class="material-icons md-36">local_airport</i> &#x2014; material icon
+  /// named "local airport".
+  local_airport = 500;
+
+  /// <i class="material-icons md-36">local_atm</i> &#x2014; material icon named
+  /// "local atm".
+  local_atm = 501;
+
+  /// <i class="material-icons md-36">local_bar</i> &#x2014; material icon named
+  /// "local bar".
+  local_bar = 502;
+
+  /// <i class="material-icons md-36">local_cafe</i> &#x2014; material icon
+  /// named "local cafe".
+  local_cafe = 503;
+
+  /// <i class="material-icons md-36">local_car_wash</i> &#x2014; material icon
+  /// named "local car wash".
+  local_car_wash = 504;
+
+  /// <i class="material-icons md-36">local_convenience_store</i> &#x2014;
+  /// material icon named "local convenience store".
+  local_convenience_store = 505;
+
+  /// <i class="material-icons md-36">local_dining</i> &#x2014; material icon
+  /// named "local dining".
+  local_dining = 506;
+
+  /// <i class="material-icons md-36">local_drink</i> &#x2014; material icon
+  /// named "local drink".
+  local_drink = 507;
+
+  /// <i class="material-icons md-36">local_florist</i> &#x2014; material icon
+  /// named "local florist".
+  local_florist = 508;
+
+  /// <i class="material-icons md-36">local_gas_station</i> &#x2014; material
+  /// icon named "local gas station".
+  local_gas_station = 509;
+
+  /// <i class="material-icons md-36">local_grocery_store</i> &#x2014; material
+  /// icon named "local grocery store".
+  local_grocery_store = 510;
+
+  /// <i class="material-icons md-36">local_hospital</i> &#x2014; material icon
+  /// named "local hospital".
+  local_hospital = 511;
+
+  /// <i class="material-icons md-36">local_hotel</i> &#x2014; material icon
+  /// named "local hotel".
+  local_hotel = 512;
+
+  /// <i class="material-icons md-36">local_laundry_service</i> &#x2014;
+  /// material icon named "local laundry service".
+  local_laundry_service = 513;
+
+  /// <i class="material-icons md-36">local_library</i> &#x2014; material icon
+  /// named "local library".
+  local_library = 514;
+
+  /// <i class="material-icons md-36">local_mall</i> &#x2014; material icon
+  /// named "local mall".
+  local_mall = 515;
+
+  /// <i class="material-icons md-36">local_movies</i> &#x2014; material icon
+  /// named "local movies".
+  local_movies = 516;
+
+  /// <i class="material-icons md-36">local_offer</i> &#x2014; material icon
+  /// named "local offer".
+  local_offer = 517;
+
+  /// <i class="material-icons md-36">local_parking</i> &#x2014; material icon
+  /// named "local parking".
+  local_parking = 518;
+
+  /// <i class="material-icons md-36">local_pharmacy</i> &#x2014; material icon
+  /// named "local pharmacy".
+  local_pharmacy = 519;
+
+  /// <i class="material-icons md-36">local_phone</i> &#x2014; material icon
+  /// named "local phone".
+  local_phone = 520;
+
+  /// <i class="material-icons md-36">local_pizza</i> &#x2014; material icon
+  /// named "local pizza".
+  local_pizza = 521;
+
+  /// <i class="material-icons md-36">local_play</i> &#x2014; material icon
+  /// named "local play".
+  local_play = 522;
+
+  /// <i class="material-icons md-36">local_post_office</i> &#x2014; material
+  /// icon named "local post office".
+  local_post_office = 523;
+
+  /// <i class="material-icons md-36">local_printshop</i> &#x2014; material icon
+  /// named "local printshop".
+  local_printshop = 524;
+
+  /// <i class="material-icons md-36">local_see</i> &#x2014; material icon named
+  /// "local see".
+  local_see = 525;
+
+  /// <i class="material-icons md-36">local_shipping</i> &#x2014; material icon
+  /// named "local shipping".
+  local_shipping = 526;
+
+  /// <i class="material-icons md-36">local_taxi</i> &#x2014; material icon
+  /// named "local taxi".
+  local_taxi = 527;
+
+  /// <i class="material-icons md-36">location_city</i> &#x2014; material icon
+  /// named "location city".
+  location_city = 528;
+
+  /// <i class="material-icons md-36">location_disabled</i> &#x2014; material
+  /// icon named "location disabled".
+  location_disabled = 529;
+
+  /// <i class="material-icons md-36">location_off</i> &#x2014; material icon
+  /// named "location off".
+  location_off = 530;
+
+  /// <i class="material-icons md-36">location_on</i> &#x2014; material icon
+  /// named "location on".
+  location_on = 531;
+
+  /// <i class="material-icons md-36">location_searching</i> &#x2014; material
+  /// icon named "location searching".
+  location_searching = 532;
+
+  /// <i class="material-icons md-36">lock</i> &#x2014; material icon named
+  /// "lock".
+  lock = 533;
+
+  /// <i class="material-icons md-36">lock_open</i> &#x2014; material icon named
+  /// "lock open".
+  lock_open = 534;
+
+  /// <i class="material-icons md-36">lock_outline</i> &#x2014; material icon
+  /// named "lock outline".
+  lock_outline = 535;
+
+  /// <i class="material-icons md-36">looks</i> &#x2014; material icon named
+  /// "looks".
+  looks = 536;
+
+  /// <i class="material-icons md-36">looks_3</i> &#x2014; material icon named
+  /// "looks 3".
+  looks_3 = 537;
+
+  /// <i class="material-icons md-36">looks_4</i> &#x2014; material icon named
+  /// "looks 4".
+  looks_4 = 538;
+
+  /// <i class="material-icons md-36">looks_5</i> &#x2014; material icon named
+  /// "looks 5".
+  looks_5 = 539;
+
+  /// <i class="material-icons md-36">looks_6</i> &#x2014; material icon named
+  /// "looks 6".
+  looks_6 = 540;
+
+  /// <i class="material-icons md-36">looks_one</i> &#x2014; material icon named
+  /// "looks one".
+  looks_one = 541;
+
+  /// <i class="material-icons md-36">looks_two</i> &#x2014; material icon named
+  /// "looks two".
+  looks_two = 542;
+
+  /// <i class="material-icons md-36">loop</i> &#x2014; material icon named
+  /// "loop".
+  loop = 543;
+
+  /// <i class="material-icons md-36">loupe</i> &#x2014; material icon named
+  /// "loupe".
+  loupe = 544;
+
+  /// <i class="material-icons md-36">low_priority</i> &#x2014; material icon
+  /// named "low priority".
+  low_priority = 545;
+
+  /// <i class="material-icons md-36">loyalty</i> &#x2014; material icon named
+  /// "loyalty".
+  loyalty = 546;
+
+  /// <i class="material-icons md-36">mail</i> &#x2014; material icon named
+  /// "mail".
+  mail = 547;
+
+  /// <i class="material-icons md-36">mail_outline</i> &#x2014; material icon
+  /// named "mail outline".
+  mail_outline = 548;
+
+  /// <i class="material-icons md-36">map</i> &#x2014; material icon named
+  /// "map".
+  map = 549;
+
+  /// <i class="material-icons md-36">markunread</i> &#x2014; material icon
+  /// named "markunread".
+  markunread = 550;
+
+  /// <i class="material-icons md-36">markunread_mailbox</i> &#x2014; material
+  /// icon named "markunread mailbox".
+  markunread_mailbox = 551;
+
+  /// <i class="material-icons md-36">maximize</i> &#x2014; material icon named
+  /// "maximize".
+  maximize = 552;
+
+  /// <i class="material-icons md-36">memory</i> &#x2014; material icon named
+  /// "memory".
+  memory = 553;
+
+  /// <i class="material-icons md-36">menu</i> &#x2014; material icon named
+  /// "menu".
+  menu = 554;
+
+  /// <i class="material-icons md-36">merge_type</i> &#x2014; material icon
+  /// named "merge type".
+  merge_type = 555;
+
+  /// <i class="material-icons md-36">message</i> &#x2014; material icon named
+  /// "message".
+  message = 556;
+
+  /// <i class="material-icons md-36">mic</i> &#x2014; material icon named
+  /// "mic".
+  mic = 557;
+
+  /// <i class="material-icons md-36">mic_none</i> &#x2014; material icon named
+  /// "mic none".
+  mic_none = 558;
+
+  /// <i class="material-icons md-36">mic_off</i> &#x2014; material icon named
+  /// "mic off".
+  mic_off = 559;
+
+  /// <i class="material-icons md-36">minimize</i> &#x2014; material icon named
+  /// "minimize".
+  minimize = 560;
+
+  /// <i class="material-icons md-36">missed_video_call</i> &#x2014; material
+  /// icon named "missed video call".
+  missed_video_call = 561;
+
+  /// <i class="material-icons md-36">mms</i> &#x2014; material icon named
+  /// "mms".
+  mms = 562;
+
+  /// <i class="material-icons md-36">mobile_screen_share</i> &#x2014; material
+  /// icon named "mobile screen share".
+  mobile_screen_share = 563;
+
+  /// <i class="material-icons md-36">mode_comment</i> &#x2014; material icon
+  /// named "mode comment".
+  mode_comment = 564;
+
+  /// <i class="material-icons md-36">mode_edit</i> &#x2014; material icon named
+  /// "mode edit".
+  mode_edit = 565;
+
+  /// <i class="material-icons md-36">monetization_on</i> &#x2014; material icon
+  /// named "monetization on".
+  monetization_on = 566;
+
+  /// <i class="material-icons md-36">money_off</i> &#x2014; material icon named
+  /// "money off".
+  money_off = 567;
+
+  /// <i class="material-icons md-36">monochrome_photos</i> &#x2014; material
+  /// icon named "monochrome photos".
+  monochrome_photos = 568;
+
+  /// <i class="material-icons md-36">mood</i> &#x2014; material icon named
+  /// "mood".
+  mood = 569;
+
+  /// <i class="material-icons md-36">mood_bad</i> &#x2014; material icon named
+  /// "mood bad".
+  mood_bad = 570;
+
+  /// <i class="material-icons md-36">more</i> &#x2014; material icon named
+  /// "more".
+  more = 571;
+
+  /// <i class="material-icons md-36">more_horiz</i> &#x2014; material icon
+  /// named "more horiz".
+  more_horiz = 572;
+
+  /// <i class="material-icons md-36">more_vert</i> &#x2014; material icon named
+  /// "more vert".
+  more_vert = 573;
+
+  /// <i class="material-icons md-36">motorcycle</i> &#x2014; material icon
+  /// named "motorcycle".
+  motorcycle = 574;
+
+  /// <i class="material-icons md-36">mouse</i> &#x2014; material icon named
+  /// "mouse".
+  mouse = 575;
+
+  /// <i class="material-icons md-36">move_to_inbox</i> &#x2014; material icon
+  /// named "move to inbox".
+  move_to_inbox = 576;
+
+  /// <i class="material-icons md-36">movie</i> &#x2014; material icon named
+  /// "movie".
+  movie = 577;
+
+  /// <i class="material-icons md-36">movie_creation</i> &#x2014; material icon
+  /// named "movie creation".
+  movie_creation = 578;
+
+  /// <i class="material-icons md-36">movie_filter</i> &#x2014; material icon
+  /// named "movie filter".
+  movie_filter = 579;
+
+  /// <i class="material-icons md-36">multiline_chart</i> &#x2014; material icon
+  /// named "multiline chart".
+  multiline_chart = 580;
+
+  /// <i class="material-icons md-36">music_note</i> &#x2014; material icon
+  /// named "music note".
+  music_note = 581;
+
+  /// <i class="material-icons md-36">music_video</i> &#x2014; material icon
+  /// named "music video".
+  music_video = 582;
+
+  /// <i class="material-icons md-36">my_location</i> &#x2014; material icon
+  /// named "my location".
+  my_location = 583;
+
+  /// <i class="material-icons md-36">nature</i> &#x2014; material icon named
+  /// "nature".
+  nature = 584;
+
+  /// <i class="material-icons md-36">nature_people</i> &#x2014; material icon
+  /// named "nature people".
+  nature_people = 585;
+
+  /// <i class="material-icons md-36">navigate_before</i> &#x2014; material icon
+  /// named "navigate before".
+  navigate_before = 586;
+
+  /// <i class="material-icons md-36">navigate_next</i> &#x2014; material icon
+  /// named "navigate next".
+  navigate_next = 587;
+
+  /// <i class="material-icons md-36">navigation</i> &#x2014; material icon
+  /// named "navigation".
+  navigation = 588;
+
+  /// <i class="material-icons md-36">near_me</i> &#x2014; material icon named
+  /// "near me".
+  near_me = 589;
+
+  /// <i class="material-icons md-36">network_cell</i> &#x2014; material icon
+  /// named "network cell".
+  network_cell = 590;
+
+  /// <i class="material-icons md-36">network_check</i> &#x2014; material icon
+  /// named "network check".
+  network_check = 591;
+
+  /// <i class="material-icons md-36">network_locked</i> &#x2014; material icon
+  /// named "network locked".
+  network_locked = 592;
+
+  /// <i class="material-icons md-36">network_wifi</i> &#x2014; material icon
+  /// named "network wifi".
+  network_wifi = 593;
+
+  /// <i class="material-icons md-36">new_releases</i> &#x2014; material icon
+  /// named "new releases".
+  new_releases = 594;
+
+  /// <i class="material-icons md-36">next_week</i> &#x2014; material icon named
+  /// "next week".
+  next_week = 595;
+
+  /// <i class="material-icons md-36">nfc</i> &#x2014; material icon named
+  /// "nfc".
+  nfc = 596;
+
+  /// <i class="material-icons md-36">no_encryption</i> &#x2014; material icon
+  /// named "no encryption".
+  no_encryption = 597;
+
+  /// <i class="material-icons md-36">no_sim</i> &#x2014; material icon named
+  /// "no sim".
+  no_sim = 598;
+
+  /// <i class="material-icons md-36">not_interested</i> &#x2014; material icon
+  /// named "not interested".
+  not_interested = 599;
+
+  /// <i class="material-icons md-36">not_listed_location</i> &#x2014; material
+  /// icon named "not listed location".
+  not_listed_location = 600;
+
+  /// <i class="material-icons md-36">note</i> &#x2014; material icon named
+  /// "note".
+  note = 601;
+
+  /// <i class="material-icons md-36">note_add</i> &#x2014; material icon named
+  /// "note add".
+  note_add = 602;
+
+  /// <i class="material-icons md-36">notification_important</i> &#x2014;
+  /// material icon named "notification important".
+  notification_important = 603;
+
+  /// <i class="material-icons md-36">notifications</i> &#x2014; material icon
+  /// named "notifications".
+  notifications = 604;
+
+  /// <i class="material-icons md-36">notifications_active</i> &#x2014; material
+  /// icon named "notifications active".
+  notifications_active = 605;
+
+  /// <i class="material-icons md-36">notifications_none</i> &#x2014; material
+  /// icon named "notifications none".
+  notifications_none = 606;
+
+  /// <i class="material-icons md-36">notifications_off</i> &#x2014; material
+  /// icon named "notifications off".
+  notifications_off = 607;
+
+  /// <i class="material-icons md-36">notifications_paused</i> &#x2014; material
+  /// icon named "notifications paused".
+  notifications_paused = 608;
+
+  /// <i class="material-icons md-36">offline_bolt</i> &#x2014; material icon
+  /// named "offline bolt".
+  offline_bolt = 609;
+
+  /// <i class="material-icons md-36">offline_pin</i> &#x2014; material icon
+  /// named "offline pin".
+  offline_pin = 610;
+
+  /// <i class="material-icons md-36">ondemand_video</i> &#x2014; material icon
+  /// named "ondemand video".
+  ondemand_video = 611;
+
+  /// <i class="material-icons md-36">opacity</i> &#x2014; material icon named
+  /// "opacity".
+  opacity = 612;
+
+  /// <i class="material-icons md-36">open_in_browser</i> &#x2014; material icon
+  /// named "open in browser".
+  open_in_browser = 613;
+
+  /// <i class="material-icons md-36">open_in_new</i> &#x2014; material icon
+  /// named "open in new".
+  open_in_new = 614;
+
+  /// <i class="material-icons md-36">open_with</i> &#x2014; material icon named
+  /// "open with".
+  open_with = 615;
+
+  /// <i class="material-icons md-36">outlined_flag</i> &#x2014; material icon
+  /// named "outlined flag".
+  outlined_flag = 616;
+
+  /// <i class="material-icons md-36">pages</i> &#x2014; material icon named
+  /// "pages".
+  pages = 617;
+
+  /// <i class="material-icons md-36">pageview</i> &#x2014; material icon named
+  /// "pageview".
+  pageview = 618;
+
+  /// <i class="material-icons md-36">palette</i> &#x2014; material icon named
+  /// "palette".
+  palette = 619;
+
+  /// <i class="material-icons md-36">pan_tool</i> &#x2014; material icon named
+  /// "pan tool".
+  pan_tool = 620;
+
+  /// <i class="material-icons md-36">panorama</i> &#x2014; material icon named
+  /// "panorama".
+  panorama = 621;
+
+  /// <i class="material-icons md-36">panorama_fish_eye</i> &#x2014; material
+  /// icon named "panorama fish eye".
+  panorama_fish_eye = 622;
+
+  /// <i class="material-icons md-36">panorama_horizontal</i> &#x2014; material
+  /// icon named "panorama horizontal".
+  panorama_horizontal = 623;
+
+  /// <i class="material-icons md-36">panorama_vertical</i> &#x2014; material
+  /// icon named "panorama vertical".
+  panorama_vertical = 624;
+
+  /// <i class="material-icons md-36">panorama_wide_angle</i> &#x2014; material
+  /// icon named "panorama wide angle".
+  panorama_wide_angle = 625;
+
+  /// <i class="material-icons md-36">party_mode</i> &#x2014; material icon
+  /// named "party mode".
+  party_mode = 626;
+
+  /// <i class="material-icons md-36">pause</i> &#x2014; material icon named
+  /// "pause".
+  pause = 627;
+
+  /// <i class="material-icons md-36">pause_circle_filled</i> &#x2014; material
+  /// icon named "pause circle filled".
+  pause_circle_filled = 628;
+
+  /// <i class="material-icons md-36">pause_circle_outline</i> &#x2014; material
+  /// icon named "pause circle outline".
+  pause_circle_outline = 629;
+
+  /// <i class="material-icons md-36">payment</i> &#x2014; material icon named
+  /// "payment".
+  payment = 630;
+
+  /// <i class="material-icons md-36">people</i> &#x2014; material icon named
+  /// "people".
+  people = 631;
+
+  /// <i class="material-icons md-36">people_outline</i> &#x2014; material icon
+  /// named "people outline".
+  people_outline = 632;
+
+  /// <i class="material-icons md-36">perm_camera_mic</i> &#x2014; material icon
+  /// named "perm camera mic".
+  perm_camera_mic = 633;
+
+  /// <i class="material-icons md-36">perm_contact_calendar</i> &#x2014;
+  /// material icon named "perm contact calendar".
+  perm_contact_calendar = 634;
+
+  /// <i class="material-icons md-36">perm_data_setting</i> &#x2014; material
+  /// icon named "perm data setting".
+  perm_data_setting = 635;
+
+  /// <i class="material-icons md-36">perm_device_information</i> &#x2014;
+  /// material icon named "perm device information".
+  perm_device_information = 636;
+
+  /// <i class="material-icons md-36">perm_identity</i> &#x2014; material icon
+  /// named "perm identity".
+  perm_identity = 637;
+
+  /// <i class="material-icons md-36">perm_media</i> &#x2014; material icon
+  /// named "perm media".
+  perm_media = 638;
+
+  /// <i class="material-icons md-36">perm_phone_msg</i> &#x2014; material icon
+  /// named "perm phone msg".
+  perm_phone_msg = 639;
+
+  /// <i class="material-icons md-36">perm_scan_wifi</i> &#x2014; material icon
+  /// named "perm scan wifi".
+  perm_scan_wifi = 640;
+
+  /// <i class="material-icons md-36">person</i> &#x2014; material icon named
+  /// "person".
+  person = 641;
+
+  /// <i class="material-icons md-36">person_add</i> &#x2014; material icon
+  /// named "person add".
+  person_add = 642;
+
+  /// <i class="material-icons md-36">person_outline</i> &#x2014; material icon
+  /// named "person outline".
+  person_outline = 643;
+
+  /// <i class="material-icons md-36">person_pin</i> &#x2014; material icon
+  /// named "person pin".
+  person_pin = 644;
+
+  /// <i class="material-icons md-36">person_pin_circle</i> &#x2014; material
+  /// icon named "person pin circle".
+  person_pin_circle = 645;
+
+  /// <i class="material-icons md-36">personal_video</i> &#x2014; material icon
+  /// named "personal video".
+  personal_video = 646;
+
+  /// <i class="material-icons md-36">pets</i> &#x2014; material icon named
+  /// "pets".
+  pets = 647;
+
+  /// <i class="material-icons md-36">phone</i> &#x2014; material icon named
+  /// "phone".
+  phone = 648;
+
+  /// <i class="material-icons md-36">phone_android</i> &#x2014; material icon
+  /// named "phone android".
+  phone_android = 649;
+
+  /// <i class="material-icons md-36">phone_bluetooth_speaker</i> &#x2014;
+  /// material icon named "phone bluetooth speaker".
+  phone_bluetooth_speaker = 650;
+
+  /// <i class="material-icons md-36">phone_forwarded</i> &#x2014; material icon
+  /// named "phone forwarded".
+  phone_forwarded = 651;
+
+  /// <i class="material-icons md-36">phone_in_talk</i> &#x2014; material icon
+  /// named "phone in talk".
+  phone_in_talk = 652;
+
+  /// <i class="material-icons md-36">phone_iphone</i> &#x2014; material icon
+  /// named "phone iphone".
+  phone_iphone = 653;
+
+  /// <i class="material-icons md-36">phone_locked</i> &#x2014; material icon
+  /// named "phone locked".
+  phone_locked = 654;
+
+  /// <i class="material-icons md-36">phone_missed</i> &#x2014; material icon
+  /// named "phone missed".
+  phone_missed = 655;
+
+  /// <i class="material-icons md-36">phone_paused</i> &#x2014; material icon
+  /// named "phone paused".
+  phone_paused = 656;
+
+  /// <i class="material-icons md-36">phonelink</i> &#x2014; material icon named
+  /// "phonelink".
+  phonelink = 657;
+
+  /// <i class="material-icons md-36">phonelink_erase</i> &#x2014; material icon
+  /// named "phonelink erase".
+  phonelink_erase = 658;
+
+  /// <i class="material-icons md-36">phonelink_lock</i> &#x2014; material icon
+  /// named "phonelink lock".
+  phonelink_lock = 659;
+
+  /// <i class="material-icons md-36">phonelink_off</i> &#x2014; material icon
+  /// named "phonelink off".
+  phonelink_off = 660;
+
+  /// <i class="material-icons md-36">phonelink_ring</i> &#x2014; material icon
+  /// named "phonelink ring".
+  phonelink_ring = 661;
+
+  /// <i class="material-icons md-36">phonelink_setup</i> &#x2014; material icon
+  /// named "phonelink setup".
+  phonelink_setup = 662;
+
+  /// <i class="material-icons md-36">photo</i> &#x2014; material icon named
+  /// "photo".
+  photo = 663;
+
+  /// <i class="material-icons md-36">photo_album</i> &#x2014; material icon
+  /// named "photo album".
+  photo_album = 664;
+
+  /// <i class="material-icons md-36">photo_camera</i> &#x2014; material icon
+  /// named "photo camera".
+  photo_camera = 665;
+
+  /// <i class="material-icons md-36">photo_filter</i> &#x2014; material icon
+  /// named "photo filter".
+  photo_filter = 666;
+
+  /// <i class="material-icons md-36">photo_library</i> &#x2014; material icon
+  /// named "photo library".
+  photo_library = 667;
+
+  /// <i class="material-icons md-36">photo_size_select_actual</i> &#x2014;
+  /// material icon named "photo size select actual".
+  photo_size_select_actual = 668;
+
+  /// <i class="material-icons md-36">photo_size_select_large</i> &#x2014;
+  /// material icon named "photo size select large".
+  photo_size_select_large = 669;
+
+  /// <i class="material-icons md-36">photo_size_select_small</i> &#x2014;
+  /// material icon named "photo size select small".
+  photo_size_select_small = 670;
+
+  /// <i class="material-icons md-36">picture_as_pdf</i> &#x2014; material icon
+  /// named "picture as pdf".
+  picture_as_pdf = 671;
+
+  /// <i class="material-icons md-36">picture_in_picture</i> &#x2014; material
+  /// icon named "picture in picture".
+  picture_in_picture = 672;
+
+  /// <i class="material-icons md-36">picture_in_picture_alt</i> &#x2014;
+  /// material icon named "picture in picture alt".
+  picture_in_picture_alt = 673;
+
+  /// <i class="material-icons md-36">pie_chart</i> &#x2014; material icon named
+  /// "pie chart".
+  pie_chart = 674;
+
+  /// <i class="material-icons md-36">pie_chart_outlined</i> &#x2014; material
+  /// icon named "pie chart outlined".
+  pie_chart_outlined = 675;
+
+  /// <i class="material-icons md-36">pin_drop</i> &#x2014; material icon named
+  /// "pin drop".
+  pin_drop = 676;
+
+  /// <i class="material-icons md-36">place</i> &#x2014; material icon named
+  /// "place".
+  place = 677;
+
+  /// <i class="material-icons md-36">play_arrow</i> &#x2014; material icon
+  /// named "play arrow".
+  play_arrow = 678;
+
+  /// <i class="material-icons md-36">play_circle_filled</i> &#x2014; material
+  /// icon named "play circle filled".
+  play_circle_filled = 679;
+
+  /// <i class="material-icons md-36">play_circle_outline</i> &#x2014; material
+  /// icon named "play circle outline".
+  play_circle_outline = 680;
+
+  /// <i class="material-icons md-36">play_for_work</i> &#x2014; material icon
+  /// named "play for work".
+  play_for_work = 681;
+
+  /// <i class="material-icons md-36">playlist_add</i> &#x2014; material icon
+  /// named "playlist add".
+  playlist_add = 682;
+
+  /// <i class="material-icons md-36">playlist_add_check</i> &#x2014; material
+  /// icon named "playlist add check".
+  playlist_add_check = 683;
+
+  /// <i class="material-icons md-36">playlist_play</i> &#x2014; material icon
+  /// named "playlist play".
+  playlist_play = 684;
+
+  /// <i class="material-icons md-36">plus_one</i> &#x2014; material icon named
+  /// "plus one".
+  plus_one = 685;
+
+  /// <i class="material-icons md-36">poll</i> &#x2014; material icon named
+  /// "poll".
+  poll = 686;
+
+  /// <i class="material-icons md-36">polymer</i> &#x2014; material icon named
+  /// "polymer".
+  polymer = 687;
+
+  /// <i class="material-icons md-36">pool</i> &#x2014; material icon named
+  /// "pool".
+  pool = 688;
+
+  /// <i class="material-icons md-36">portable_wifi_off</i> &#x2014; material
+  /// icon named "portable wifi off".
+  portable_wifi_off = 689;
+
+  /// <i class="material-icons md-36">portrait</i> &#x2014; material icon named
+  /// "portrait".
+  portrait = 690;
+
+  /// <i class="material-icons md-36">power</i> &#x2014; material icon named
+  /// "power".
+  power = 691;
+
+  /// <i class="material-icons md-36">power_input</i> &#x2014; material icon
+  /// named "power input".
+  power_input = 692;
+
+  /// <i class="material-icons md-36">power_settings_new</i> &#x2014; material
+  /// icon named "power settings new".
+  power_settings_new = 693;
+
+  /// <i class="material-icons md-36">pregnant_woman</i> &#x2014; material icon
+  /// named "pregnant woman".
+  pregnant_woman = 694;
+
+  /// <i class="material-icons md-36">present_to_all</i> &#x2014; material icon
+  /// named "present to all".
+  present_to_all = 695;
+
+  /// <i class="material-icons md-36">print</i> &#x2014; material icon named
+  /// "print".
+  print = 696;
+
+  /// <i class="material-icons md-36">priority_high</i> &#x2014; material icon
+  /// named "priority high".
+  priority_high = 697;
+
+  /// <i class="material-icons md-36">public</i> &#x2014; material icon named
+  /// "public".
+public
+  = 698;
+
+  /// <i class="material-icons md-36">publish</i> &#x2014; material icon named
+  /// "publish".
+  publish = 699;
+
+  /// <i class="material-icons md-36">query_builder</i> &#x2014; material icon
+  /// named "query builder".
+  query_builder = 700;
+
+  /// <i class="material-icons md-36">question_answer</i> &#x2014; material icon
+  /// named "question answer".
+  question_answer = 701;
+
+  /// <i class="material-icons md-36">queue</i> &#x2014; material icon named
+  /// "queue".
+  queue = 702;
+
+  /// <i class="material-icons md-36">queue_music</i> &#x2014; material icon
+  /// named "queue music".
+  queue_music = 703;
+
+  /// <i class="material-icons md-36">queue_play_next</i> &#x2014; material icon
+  /// named "queue play next".
+  queue_play_next = 704;
+
+  /// <i class="material-icons md-36">radio</i> &#x2014; material icon named
+  /// "radio".
+  radio = 705;
+
+  /// <i class="material-icons md-36">radio_button_checked</i> &#x2014; material
+  /// icon named "radio button checked".
+  radio_button_checked = 706;
+
+  /// <i class="material-icons md-36">radio_button_unchecked</i> &#x2014;
+  /// material icon named "radio button unchecked".
+  radio_button_unchecked = 707;
+
+  /// <i class="material-icons md-36">rate_review</i> &#x2014; material icon
+  /// named "rate review".
+  rate_review = 708;
+
+  /// <i class="material-icons md-36">receipt</i> &#x2014; material icon named
+  /// "receipt".
+  receipt = 709;
+
+  /// <i class="material-icons md-36">recent_actors</i> &#x2014; material icon
+  /// named "recent actors".
+  recent_actors = 710;
+
+  /// <i class="material-icons md-36">record_voice_over</i> &#x2014; material
+  /// icon named "record voice over".
+  record_voice_over = 711;
+
+  /// <i class="material-icons md-36">redeem</i> &#x2014; material icon named
+  /// "redeem".
+  redeem = 712;
+
+  /// <i class="material-icons md-36">redo</i> &#x2014; material icon named
+  /// "redo".
+  redo = 713;
+
+  /// <i class="material-icons md-36">refresh</i> &#x2014; material icon named
+  /// "refresh".
+  refresh = 714;
+
+  /// <i class="material-icons md-36">remove</i> &#x2014; material icon named
+  /// "remove".
+  remove = 715;
+
+  /// <i class="material-icons md-36">remove_circle</i> &#x2014; material icon
+  /// named "remove circle".
+  remove_circle = 716;
+
+  /// <i class="material-icons md-36">remove_circle_outline</i> &#x2014;
+  /// material icon named "remove circle outline".
+  remove_circle_outline = 717;
+
+  /// <i class="material-icons md-36">remove_from_queue</i> &#x2014; material
+  /// icon named "remove from queue".
+  remove_from_queue = 718;
+
+  /// <i class="material-icons md-36">remove_red_eye</i> &#x2014; material icon
+  /// named "remove red eye".
+  remove_red_eye = 719;
+
+  /// <i class="material-icons md-36">remove_shopping_cart</i> &#x2014; material
+  /// icon named "remove shopping cart".
+  remove_shopping_cart = 720;
+
+  /// <i class="material-icons md-36">reorder</i> &#x2014; material icon named
+  /// "reorder".
+  reorder = 721;
+
+  /// <i class="material-icons md-36">repeat</i> &#x2014; material icon named
+  /// "repeat".
+  repeat = 722;
+
+  /// <i class="material-icons md-36">repeat_one</i> &#x2014; material icon
+  /// named "repeat one".
+  repeat_one = 723;
+
+  /// <i class="material-icons md-36">replay</i> &#x2014; material icon named
+  /// "replay".
+  replay = 724;
+
+  /// <i class="material-icons md-36">replay_10</i> &#x2014; material icon named
+  /// "replay 10".
+  replay_10 = 725;
+
+  /// <i class="material-icons md-36">replay_30</i> &#x2014; material icon named
+  /// "replay 30".
+  replay_30 = 726;
+
+  /// <i class="material-icons md-36">replay_5</i> &#x2014; material icon named
+  /// "replay 5".
+  replay_5 = 727;
+
+  /// <i class="material-icons md-36">reply</i> &#x2014; material icon named
+  /// "reply".
+  reply = 728;
+
+  /// <i class="material-icons md-36">reply_all</i> &#x2014; material icon named
+  /// "reply all".
+  reply_all = 729;
+
+  /// <i class="material-icons md-36">report</i> &#x2014; material icon named
+  /// "report".
+  report = 730;
+
+  /// <i class="material-icons md-36">report_off</i> &#x2014; material icon
+  /// named "report off".
+  report_off = 731;
+
+  /// <i class="material-icons md-36">report_problem</i> &#x2014; material icon
+  /// named "report problem".
+  report_problem = 732;
+
+  /// <i class="material-icons md-36">restaurant</i> &#x2014; material icon
+  /// named "restaurant".
+  restaurant = 733;
+
+  /// <i class="material-icons md-36">restaurant_menu</i> &#x2014; material icon
+  /// named "restaurant menu".
+  restaurant_menu = 734;
+
+  /// <i class="material-icons md-36">restore</i> &#x2014; material icon named
+  /// "restore".
+  restore = 735;
+
+  /// <i class="material-icons md-36">restore_from_trash</i> &#x2014; material
+  /// icon named "restore from trash".
+  restore_from_trash = 736;
+
+  /// <i class="material-icons md-36">restore_page</i> &#x2014; material icon
+  /// named "restore page".
+  restore_page = 737;
+
+  /// <i class="material-icons md-36">ring_volume</i> &#x2014; material icon
+  /// named "ring volume".
+  ring_volume = 738;
+
+  /// <i class="material-icons md-36">room</i> &#x2014; material icon named
+  /// "room".
+  room = 739;
+
+  /// <i class="material-icons md-36">room_service</i> &#x2014; material icon
+  /// named "room service".
+  room_service = 740;
+
+  /// <i class="material-icons md-36">rotate_90_degrees_ccw</i> &#x2014;
+  /// material icon named "rotate 90 degrees ccw".
+  rotate_90_degrees_ccw = 741;
+
+  /// <i class="material-icons md-36">rotate_left</i> &#x2014; material icon
+  /// named "rotate left".
+  rotate_left = 742;
+
+  /// <i class="material-icons md-36">rotate_right</i> &#x2014; material icon
+  /// named "rotate right".
+  rotate_right = 743;
+
+  /// <i class="material-icons md-36">rounded_corner</i> &#x2014; material icon
+  /// named "rounded corner".
+  rounded_corner = 744;
+
+  /// <i class="material-icons md-36">router</i> &#x2014; material icon named
+  /// "router".
+  router = 745;
+
+  /// <i class="material-icons md-36">rowing</i> &#x2014; material icon named
+  /// "rowing".
+  rowing = 746;
+
+  /// <i class="material-icons md-36">rss_feed</i> &#x2014; material icon named
+  /// "rss feed".
+  rss_feed = 747;
+
+  /// <i class="material-icons md-36">rv_hookup</i> &#x2014; material icon named
+  /// "rv hookup".
+  rv_hookup = 748;
+
+  /// <i class="material-icons md-36">satellite</i> &#x2014; material icon named
+  /// "satellite".
+  satellite = 749;
+
+  /// <i class="material-icons md-36">save</i> &#x2014; material icon named
+  /// "save".
+  save = 750;
+
+  /// <i class="material-icons md-36">save_alt</i> &#x2014; material icon named
+  /// "save alt".
+  save_alt = 751;
+
+  /// <i class="material-icons md-36">scanner</i> &#x2014; material icon named
+  /// "scanner".
+  scanner = 752;
+
+  /// <i class="material-icons md-36">scatter_plot</i> &#x2014; material icon
+  /// named "scatter plot".
+  scatter_plot = 753;
+
+  /// <i class="material-icons md-36">schedule</i> &#x2014; material icon named
+  /// "schedule".
+  schedule = 754;
+
+  /// <i class="material-icons md-36">school</i> &#x2014; material icon named
+  /// "school".
+  school = 755;
+
+  /// <i class="material-icons md-36">score</i> &#x2014; material icon named
+  /// "score".
+  score = 756;
+
+  /// <i class="material-icons md-36">screen_lock_landscape</i> &#x2014;
+  /// material icon named "screen lock landscape".
+  screen_lock_landscape = 757;
+
+  /// <i class="material-icons md-36">screen_lock_portrait</i> &#x2014; material
+  /// icon named "screen lock portrait".
+  screen_lock_portrait = 758;
+
+  /// <i class="material-icons md-36">screen_lock_rotation</i> &#x2014; material
+  /// icon named "screen lock rotation".
+  screen_lock_rotation = 759;
+
+  /// <i class="material-icons md-36">screen_rotation</i> &#x2014; material icon
+  /// named "screen rotation".
+  screen_rotation = 760;
+
+  /// <i class="material-icons md-36">screen_share</i> &#x2014; material icon
+  /// named "screen share".
+  screen_share = 761;
+
+  /// <i class="material-icons md-36">sd_card</i> &#x2014; material icon named
+  /// "sd card".
+  sd_card = 762;
+
+  /// <i class="material-icons md-36">sd_storage</i> &#x2014; material icon
+  /// named "sd storage".
+  sd_storage = 763;
+
+  /// <i class="material-icons md-36">search</i> &#x2014; material icon named
+  /// "search".
+  search = 764;
+
+  /// <i class="material-icons md-36">security</i> &#x2014; material icon named
+  /// "security".
+  security = 765;
+
+  /// <i class="material-icons md-36">select_all</i> &#x2014; material icon
+  /// named "select all".
+  select_all = 766;
+
+  /// <i class="material-icons md-36">send</i> &#x2014; material icon named
+  /// "send".
+  send = 767;
+
+  /// <i class="material-icons md-36">sentiment_dissatisfied</i> &#x2014;
+  /// material icon named "sentiment dissatisfied".
+  sentiment_dissatisfied = 768;
+
+  /// <i class="material-icons md-36">sentiment_neutral</i> &#x2014; material
+  /// icon named "sentiment neutral".
+  sentiment_neutral = 769;
+
+  /// <i class="material-icons md-36">sentiment_satisfied</i> &#x2014; material
+  /// icon named "sentiment satisfied".
+  sentiment_satisfied = 770;
+
+  /// <i class="material-icons md-36">sentiment_very_dissatisfied</i> &#x2014;
+  /// material icon named "sentiment very dissatisfied".
+  sentiment_very_dissatisfied = 771;
+
+  /// <i class="material-icons md-36">sentiment_very_satisfied</i> &#x2014;
+  /// material icon named "sentiment very satisfied".
+  sentiment_very_satisfied = 772;
+
+  /// <i class="material-icons md-36">settings</i> &#x2014; material icon named
+  /// "settings".
+  settings = 773;
+
+  /// <i class="material-icons md-36">settings_applications</i> &#x2014;
+  /// material icon named "settings applications".
+  settings_applications = 774;
+
+  /// <i class="material-icons md-36">settings_backup_restore</i> &#x2014;
+  /// material icon named "settings backup restore".
+  settings_backup_restore = 775;
+
+  /// <i class="material-icons md-36">settings_bluetooth</i> &#x2014; material
+  /// icon named "settings bluetooth".
+  settings_bluetooth = 776;
+
+  /// <i class="material-icons md-36">settings_brightness</i> &#x2014; material
+  /// icon named "settings brightness".
+  settings_brightness = 777;
+
+  /// <i class="material-icons md-36">settings_cell</i> &#x2014; material icon
+  /// named "settings cell".
+  settings_cell = 778;
+
+  /// <i class="material-icons md-36">settings_ethernet</i> &#x2014; material
+  /// icon named "settings ethernet".
+  settings_ethernet = 779;
+
+  /// <i class="material-icons md-36">settings_input_antenna</i> &#x2014;
+  /// material icon named "settings input antenna".
+  settings_input_antenna = 780;
+
+  /// <i class="material-icons md-36">settings_input_component</i> &#x2014;
+  /// material icon named "settings input component".
+  settings_input_component = 781;
+
+  /// <i class="material-icons md-36">settings_input_composite</i> &#x2014;
+  /// material icon named "settings input composite".
+  settings_input_composite = 782;
+
+  /// <i class="material-icons md-36">settings_input_hdmi</i> &#x2014; material
+  /// icon named "settings input hdmi".
+  settings_input_hdmi = 783;
+
+  /// <i class="material-icons md-36">settings_input_svideo</i> &#x2014;
+  /// material icon named "settings input svideo".
+  settings_input_svideo = 784;
+
+  /// <i class="material-icons md-36">settings_overscan</i> &#x2014; material
+  /// icon named "settings overscan".
+  settings_overscan = 785;
+
+  /// <i class="material-icons md-36">settings_phone</i> &#x2014; material icon
+  /// named "settings phone".
+  settings_phone = 786;
+
+  /// <i class="material-icons md-36">settings_power</i> &#x2014; material icon
+  /// named "settings power".
+  settings_power = 787;
+
+  /// <i class="material-icons md-36">settings_remote</i> &#x2014; material icon
+  /// named "settings remote".
+  settings_remote = 788;
+
+  /// <i class="material-icons md-36">settings_system_daydream</i> &#x2014;
+  /// material icon named "settings system daydream".
+  settings_system_daydream = 789;
+
+  /// <i class="material-icons md-36">settings_voice</i> &#x2014; material icon
+  /// named "settings voice".
+  settings_voice = 790;
+
+  /// <i class="material-icons md-36">share</i> &#x2014; material icon named
+  /// "share".
+  share = 791;
+
+  /// <i class="material-icons md-36">shop</i> &#x2014; material icon named
+  /// "shop".
+  shop = 792;
+
+  /// <i class="material-icons md-36">shop_two</i> &#x2014; material icon named
+  /// "shop two".
+  shop_two = 793;
+
+  /// <i class="material-icons md-36">shopping_basket</i> &#x2014; material icon
+  /// named "shopping basket".
+  shopping_basket = 794;
+
+  /// <i class="material-icons md-36">shopping_cart</i> &#x2014; material icon
+  /// named "shopping cart".
+  shopping_cart = 795;
+
+  /// <i class="material-icons md-36">short_text</i> &#x2014; material icon
+  /// named "short text".
+  short_text = 796;
+
+  /// <i class="material-icons md-36">show_chart</i> &#x2014; material icon
+  /// named "show chart".
+  show_chart = 797;
+
+  /// <i class="material-icons md-36">shuffle</i> &#x2014; material icon named
+  /// "shuffle".
+  shuffle = 798;
+
+  /// <i class="material-icons md-36">shutter_speed</i> &#x2014; material icon
+  /// named "shutter speed".
+  shutter_speed = 799;
+
+  /// <i class="material-icons md-36">signal_cellular_4_bar</i> &#x2014;
+  /// material icon named "signal cellular 4 bar".
+  signal_cellular_4_bar = 800;
+
+  /// <i class="material-icons
+  /// md-36">signal_cellular_connected_no_internet_4_bar</i> &#x2014; material
+  /// icon named "signal cellular connected no internet 4 bar".
+  signal_cellular_connected_no_internet_4_bar = 801;
+
+  /// <i class="material-icons md-36">signal_cellular_no_sim</i> &#x2014;
+  /// material icon named "signal cellular no sim".
+  signal_cellular_no_sim = 802;
+
+  /// <i class="material-icons md-36">signal_cellular_null</i> &#x2014; material
+  /// icon named "signal cellular null".
+  signal_cellular_null = 803;
+
+  /// <i class="material-icons md-36">signal_cellular_off</i> &#x2014; material
+  /// icon named "signal cellular off".
+  signal_cellular_off = 804;
+
+  /// <i class="material-icons md-36">signal_wifi_4_bar</i> &#x2014; material
+  /// icon named "signal wifi 4 bar".
+  signal_wifi_4_bar = 805;
+
+  /// <i class="material-icons md-36">signal_wifi_4_bar_lock</i> &#x2014;
+  /// material icon named "signal wifi 4 bar lock".
+  signal_wifi_4_bar_lock = 806;
+
+  /// <i class="material-icons md-36">signal_wifi_off</i> &#x2014; material icon
+  /// named "signal wifi off".
+  signal_wifi_off = 807;
+
+  /// <i class="material-icons md-36">sim_card</i> &#x2014; material icon named
+  /// "sim card".
+  sim_card = 808;
+
+  /// <i class="material-icons md-36">sim_card_alert</i> &#x2014; material icon
+  /// named "sim card alert".
+  sim_card_alert = 809;
+
+  /// <i class="material-icons md-36">skip_next</i> &#x2014; material icon named
+  /// "skip next".
+  skip_next = 810;
+
+  /// <i class="material-icons md-36">skip_previous</i> &#x2014; material icon
+  /// named "skip previous".
+  skip_previous = 811;
+
+  /// <i class="material-icons md-36">slideshow</i> &#x2014; material icon named
+  /// "slideshow".
+  slideshow = 812;
+
+  /// <i class="material-icons md-36">slow_motion_video</i> &#x2014; material
+  /// icon named "slow motion video".
+  slow_motion_video = 813;
+
+  /// <i class="material-icons md-36">smartphone</i> &#x2014; material icon
+  /// named "smartphone".
+  smartphone = 814;
+
+  /// <i class="material-icons md-36">smoke_free</i> &#x2014; material icon
+  /// named "smoke free".
+  smoke_free = 815;
+
+  /// <i class="material-icons md-36">smoking_rooms</i> &#x2014; material icon
+  /// named "smoking rooms".
+  smoking_rooms = 816;
+
+  /// <i class="material-icons md-36">sms</i> &#x2014; material icon named
+  /// "sms".
+  sms = 817;
+
+  /// <i class="material-icons md-36">sms_failed</i> &#x2014; material icon
+  /// named "sms failed".
+  sms_failed = 818;
+
+  /// <i class="material-icons md-36">snooze</i> &#x2014; material icon named
+  /// "snooze".
+  snooze = 819;
+
+  /// <i class="material-icons md-36">sort</i> &#x2014; material icon named
+  /// "sort".
+  sort = 820;
+
+  /// <i class="material-icons md-36">sort_by_alpha</i> &#x2014; material icon
+  /// named "sort by alpha".
+  sort_by_alpha = 821;
+
+  /// <i class="material-icons md-36">spa</i> &#x2014; material icon named
+  /// "spa".
+  spa = 822;
+
+  /// <i class="material-icons md-36">space_bar</i> &#x2014; material icon named
+  /// "space bar".
+  space_bar = 823;
+
+  /// <i class="material-icons md-36">speaker</i> &#x2014; material icon named
+  /// "speaker".
+  speaker = 824;
+
+  /// <i class="material-icons md-36">speaker_group</i> &#x2014; material icon
+  /// named "speaker group".
+  speaker_group = 825;
+
+  /// <i class="material-icons md-36">speaker_notes</i> &#x2014; material icon
+  /// named "speaker notes".
+  speaker_notes = 826;
+
+  /// <i class="material-icons md-36">speaker_notes_off</i> &#x2014; material
+  /// icon named "speaker notes off".
+  speaker_notes_off = 827;
+
+  /// <i class="material-icons md-36">speaker_phone</i> &#x2014; material icon
+  /// named "speaker phone".
+  speaker_phone = 828;
+
+  /// <i class="material-icons md-36">spellcheck</i> &#x2014; material icon
+  /// named "spellcheck".
+  spellcheck = 829;
+
+  /// <i class="material-icons md-36">star</i> &#x2014; material icon named
+  /// "star".
+  star = 830;
+
+  /// <i class="material-icons md-36">star_border</i> &#x2014; material icon
+  /// named "star border".
+  star_border = 831;
+
+  /// <i class="material-icons md-36">star_half</i> &#x2014; material icon named
+  /// "star half".
+  star_half = 832;
+
+  /// <i class="material-icons md-36">stars</i> &#x2014; material icon named
+  /// "stars".
+  stars = 833;
+
+  /// <i class="material-icons md-36">stay_current_landscape</i> &#x2014;
+  /// material icon named "stay current landscape".
+  stay_current_landscape = 834;
+
+  /// <i class="material-icons md-36">stay_current_portrait</i> &#x2014;
+  /// material icon named "stay current portrait".
+  stay_current_portrait = 835;
+
+  /// <i class="material-icons md-36">stay_primary_landscape</i> &#x2014;
+  /// material icon named "stay primary landscape".
+  stay_primary_landscape = 836;
+
+  /// <i class="material-icons md-36">stay_primary_portrait</i> &#x2014;
+  /// material icon named "stay primary portrait".
+  stay_primary_portrait = 837;
+
+  /// <i class="material-icons md-36">stop</i> &#x2014; material icon named
+  /// "stop".
+  stop = 838;
+
+  /// <i class="material-icons md-36">stop_screen_share</i> &#x2014; material
+  /// icon named "stop screen share".
+  stop_screen_share = 839;
+
+  /// <i class="material-icons md-36">storage</i> &#x2014; material icon named
+  /// "storage".
+  storage = 840;
+
+  /// <i class="material-icons md-36">store</i> &#x2014; material icon named
+  /// "store".
+  store = 841;
+
+  /// <i class="material-icons md-36">store_mall_directory</i> &#x2014; material
+  /// icon named "store mall directory".
+  store_mall_directory = 842;
+
+  /// <i class="material-icons md-36">straighten</i> &#x2014; material icon
+  /// named "straighten".
+  straighten = 843;
+
+  /// <i class="material-icons md-36">streetview</i> &#x2014; material icon
+  /// named "streetview".
+  streetview = 844;
+
+  /// <i class="material-icons md-36">strikethrough_s</i> &#x2014; material icon
+  /// named "strikethrough s".
+  strikethrough_s = 845;
+
+  /// <i class="material-icons md-36">style</i> &#x2014; material icon named
+  /// "style".
+  style = 846;
+
+  /// <i class="material-icons md-36">subdirectory_arrow_left</i> &#x2014;
+  /// material icon named "subdirectory arrow left".
+  subdirectory_arrow_left = 847;
+
+  /// <i class="material-icons md-36">subdirectory_arrow_right</i> &#x2014;
+  /// material icon named "subdirectory arrow right".
+  subdirectory_arrow_right = 848;
+
+  /// <i class="material-icons md-36">subject</i> &#x2014; material icon named
+  /// "subject".
+  subject = 849;
+
+  /// <i class="material-icons md-36">subscriptions</i> &#x2014; material icon
+  /// named "subscriptions".
+  subscriptions = 850;
+
+  /// <i class="material-icons md-36">subtitles</i> &#x2014; material icon named
+  /// "subtitles".
+  subtitles = 851;
+
+  /// <i class="material-icons md-36">subway</i> &#x2014; material icon named
+  /// "subway".
+  subway = 852;
+
+  /// <i class="material-icons md-36">supervised_user_circle</i> &#x2014;
+  /// material icon named "supervised user circle".
+  supervised_user_circle = 853;
+
+  /// <i class="material-icons md-36">supervisor_account</i> &#x2014; material
+  /// icon named "supervisor account".
+  supervisor_account = 854;
+
+  /// <i class="material-icons md-36">surround_sound</i> &#x2014; material icon
+  /// named "surround sound".
+  surround_sound = 855;
+
+  /// <i class="material-icons md-36">swap_calls</i> &#x2014; material icon
+  /// named "swap calls".
+  swap_calls = 856;
+
+  /// <i class="material-icons md-36">swap_horiz</i> &#x2014; material icon
+  /// named "swap horiz".
+  swap_horiz = 857;
+
+  /// <i class="material-icons md-36">swap_horizontal_circle</i> &#x2014;
+  /// material icon named "swap horizontal circle".
+  swap_horizontal_circle = 858;
+
+  /// <i class="material-icons md-36">swap_vert</i> &#x2014; material icon named
+  /// "swap vert".
+  swap_vert = 859;
+
+  /// <i class="material-icons md-36">swap_vertical_circle</i> &#x2014; material
+  /// icon named "swap vertical circle".
+  swap_vertical_circle = 860;
+
+  /// <i class="material-icons md-36">switch_camera</i> &#x2014; material icon
+  /// named "switch camera".
+  switch_camera = 861;
+
+  /// <i class="material-icons md-36">switch_video</i> &#x2014; material icon
+  /// named "switch video".
+  switch_video = 862;
+
+  /// <i class="material-icons md-36">sync</i> &#x2014; material icon named
+  /// "sync".
+  sync = 863;
+
+  /// <i class="material-icons md-36">sync_disabled</i> &#x2014; material icon
+  /// named "sync disabled".
+  sync_disabled = 864;
+
+  /// <i class="material-icons md-36">sync_problem</i> &#x2014; material icon
+  /// named "sync problem".
+  sync_problem = 865;
+
+  /// <i class="material-icons md-36">system_update</i> &#x2014; material icon
+  /// named "system update".
+  system_update = 866;
+
+  /// <i class="material-icons md-36">system_update_alt</i> &#x2014; material
+  /// icon named "system update alt".
+  system_update_alt = 867;
+
+  /// <i class="material-icons md-36">tab</i> &#x2014; material icon named
+  /// "tab".
+  tab = 868;
+
+  /// <i class="material-icons md-36">tab_unselected</i> &#x2014; material icon
+  /// named "tab unselected".
+  tab_unselected = 869;
+
+  /// <i class="material-icons md-36">table_chart</i> &#x2014; material icon
+  /// named "table chart".
+  table_chart = 870;
+
+  /// <i class="material-icons md-36">tablet</i> &#x2014; material icon named
+  /// "tablet".
+  tablet = 871;
+
+  /// <i class="material-icons md-36">tablet_android</i> &#x2014; material icon
+  /// named "tablet android".
+  tablet_android = 872;
+
+  /// <i class="material-icons md-36">tablet_mac</i> &#x2014; material icon
+  /// named "tablet mac".
+  tablet_mac = 873;
+
+  /// <i class="material-icons md-36">tag_faces</i> &#x2014; material icon named
+  /// "tag faces".
+  tag_faces = 874;
+
+  /// <i class="material-icons md-36">tap_and_play</i> &#x2014; material icon
+  /// named "tap and play".
+  tap_and_play = 875;
+
+  /// <i class="material-icons md-36">terrain</i> &#x2014; material icon named
+  /// "terrain".
+  terrain = 876;
+
+  /// <i class="material-icons md-36">text_fields</i> &#x2014; material icon
+  /// named "text fields".
+  text_fields = 877;
+
+  /// <i class="material-icons md-36">text_format</i> &#x2014; material icon
+  /// named "text format".
+  text_format = 878;
+
+  /// <i class="material-icons md-36">text_rotate_up</i> &#x2014; material icon
+  /// named "text rotate up".
+  text_rotate_up = 879;
+
+  /// <i class="material-icons md-36">text_rotate_vertical</i> &#x2014; material
+  /// icon named "text rotate vertical".
+  text_rotate_vertical = 880;
+
+  /// <i class="material-icons md-36">text_rotation_angledown</i> &#x2014;
+  /// material icon named "text rotation angledown".
+  text_rotation_angledown = 881;
+
+  /// <i class="material-icons md-36">text_rotation_angleup</i> &#x2014;
+  /// material icon named "text rotation angleup".
+  text_rotation_angleup = 882;
+
+  /// <i class="material-icons md-36">text_rotation_down</i> &#x2014; material
+  /// icon named "text rotation down".
+  text_rotation_down = 883;
+
+  /// <i class="material-icons md-36">text_rotation_none</i> &#x2014; material
+  /// icon named "text rotation none".
+  text_rotation_none = 884;
+
+  /// <i class="material-icons md-36">textsms</i> &#x2014; material icon named
+  /// "textsms".
+  textsms = 885;
+
+  /// <i class="material-icons md-36">texture</i> &#x2014; material icon named
+  /// "texture".
+  texture = 886;
+
+  /// <i class="material-icons md-36">theaters</i> &#x2014; material icon named
+  /// "theaters".
+  theaters = 887;
+
+  /// <i class="material-icons md-36">thumb_down</i> &#x2014; material icon
+  /// named "thumb down".
+  thumb_down = 888;
+
+  /// <i class="material-icons md-36">thumb_up</i> &#x2014; material icon named
+  /// "thumb up".
+  thumb_up = 889;
+
+  /// <i class="material-icons md-36">thumbs_up_down</i> &#x2014; material icon
+  /// named "thumbs up down".
+  thumbs_up_down = 890;
+
+  /// <i class="material-icons md-36">time_to_leave</i> &#x2014; material icon
+  /// named "time to leave".
+  time_to_leave = 891;
+
+  /// <i class="material-icons md-36">timelapse</i> &#x2014; material icon named
+  /// "timelapse".
+  timelapse = 892;
+
+  /// <i class="material-icons md-36">timeline</i> &#x2014; material icon named
+  /// "timeline".
+  timeline = 893;
+
+  /// <i class="material-icons md-36">timer</i> &#x2014; material icon named
+  /// "timer".
+  timer = 894;
+
+  /// <i class="material-icons md-36">timer_10</i> &#x2014; material icon named
+  /// "timer 10".
+  timer_10 = 895;
+
+  /// <i class="material-icons md-36">timer_3</i> &#x2014; material icon named
+  /// "timer 3".
+  timer_3 = 896;
+
+  /// <i class="material-icons md-36">timer_off</i> &#x2014; material icon named
+  /// "timer off".
+  timer_off = 897;
+
+  /// <i class="material-icons md-36">title</i> &#x2014; material icon named
+  /// "title".
+  title = 898;
+
+  /// <i class="material-icons md-36">toc</i> &#x2014; material icon named
+  /// "toc".
+  toc = 899;
+
+  /// <i class="material-icons md-36">today</i> &#x2014; material icon named
+  /// "today".
+  today = 900;
+
+  /// <i class="material-icons md-36">toll</i> &#x2014; material icon named
+  /// "toll".
+  toll = 901;
+
+  /// <i class="material-icons md-36">tonality</i> &#x2014; material icon named
+  /// "tonality".
+  tonality = 902;
+
+  /// <i class="material-icons md-36">touch_app</i> &#x2014; material icon named
+  /// "touch app".
+  touch_app = 903;
+
+  /// <i class="material-icons md-36">toys</i> &#x2014; material icon named
+  /// "toys".
+  toys = 904;
+
+  /// <i class="material-icons md-36">track_changes</i> &#x2014; material icon
+  /// named "track changes".
+  track_changes = 905;
+
+  /// <i class="material-icons md-36">traffic</i> &#x2014; material icon named
+  /// "traffic".
+  traffic = 906;
+
+  /// <i class="material-icons md-36">train</i> &#x2014; material icon named
+  /// "train".
+  train = 907;
+
+  /// <i class="material-icons md-36">tram</i> &#x2014; material icon named
+  /// "tram".
+  tram = 908;
+
+  /// <i class="material-icons md-36">transfer_within_a_station</i> &#x2014;
+  /// material icon named "transfer within a station".
+  transfer_within_a_station = 909;
+
+  /// <i class="material-icons md-36">transform</i> &#x2014; material icon named
+  /// "transform".
+  transform = 910;
+
+  /// <i class="material-icons md-36">transit_enterexit</i> &#x2014; material
+  /// icon named "transit enterexit".
+  transit_enterexit = 911;
+
+  /// <i class="material-icons md-36">translate</i> &#x2014; material icon named
+  /// "translate".
+  translate = 912;
+
+  /// <i class="material-icons md-36">trending_down</i> &#x2014; material icon
+  /// named "trending down".
+  trending_down = 913;
+
+  /// <i class="material-icons md-36">trending_flat</i> &#x2014; material icon
+  /// named "trending flat".
+  trending_flat = 914;
+
+  /// <i class="material-icons md-36">trending_up</i> &#x2014; material icon
+  /// named "trending up".
+  trending_up = 915;
+
+  /// <i class="material-icons md-36">trip_origin</i> &#x2014; material icon
+  /// named "trip origin".
+  trip_origin = 916;
+
+  /// <i class="material-icons md-36">tune</i> &#x2014; material icon named
+  /// "tune".
+  tune = 917;
+
+  /// <i class="material-icons md-36">turned_in</i> &#x2014; material icon named
+  /// "turned in".
+  turned_in = 918;
+
+  /// <i class="material-icons md-36">turned_in_not</i> &#x2014; material icon
+  /// named "turned in not".
+  turned_in_not = 919;
+
+  /// <i class="material-icons md-36">tv</i> &#x2014; material icon named "tv".
+  tv = 920;
+
+  /// <i class="material-icons md-36">unarchive</i> &#x2014; material icon named
+  /// "unarchive".
+  unarchive = 921;
+
+  /// <i class="material-icons md-36">undo</i> &#x2014; material icon named
+  /// "undo".
+  undo = 922;
+
+  /// <i class="material-icons md-36">unfold_less</i> &#x2014; material icon
+  /// named "unfold less".
+  unfold_less = 923;
+
+  /// <i class="material-icons md-36">unfold_more</i> &#x2014; material icon
+  /// named "unfold more".
+  unfold_more = 924;
+
+  /// <i class="material-icons md-36">update</i> &#x2014; material icon named
+  /// "update".
+  update = 925;
+
+  /// <i class="material-icons md-36">usb</i> &#x2014; material icon named
+  /// "usb".
+  usb = 926;
+
+  /// <i class="material-icons md-36">verified_user</i> &#x2014; material icon
+  /// named "verified user".
+  verified_user = 927;
+
+  /// <i class="material-icons md-36">vertical_align_bottom</i> &#x2014;
+  /// material icon named "vertical align bottom".
+  vertical_align_bottom = 928;
+
+  /// <i class="material-icons md-36">vertical_align_center</i> &#x2014;
+  /// material icon named "vertical align center".
+  vertical_align_center = 929;
+
+  /// <i class="material-icons md-36">vertical_align_top</i> &#x2014; material
+  /// icon named "vertical align top".
+  vertical_align_top = 930;
+
+  /// <i class="material-icons md-36">vibration</i> &#x2014; material icon named
+  /// "vibration".
+  vibration = 931;
+
+  /// <i class="material-icons md-36">video_call</i> &#x2014; material icon
+  /// named "video call".
+  video_call = 932;
+
+  /// <i class="material-icons md-36">video_label</i> &#x2014; material icon
+  /// named "video label".
+  video_label = 933;
+
+  /// <i class="material-icons md-36">video_library</i> &#x2014; material icon
+  /// named "video library".
+  video_library = 934;
+
+  /// <i class="material-icons md-36">videocam</i> &#x2014; material icon named
+  /// "videocam".
+  videocam = 935;
+
+  /// <i class="material-icons md-36">videocam_off</i> &#x2014; material icon
+  /// named "videocam off".
+  videocam_off = 936;
+
+  /// <i class="material-icons md-36">videogame_asset</i> &#x2014; material icon
+  /// named "videogame asset".
+  videogame_asset = 937;
+
+  /// <i class="material-icons md-36">view_agenda</i> &#x2014; material icon
+  /// named "view agenda".
+  view_agenda = 938;
+
+  /// <i class="material-icons md-36">view_array</i> &#x2014; material icon
+  /// named "view array".
+  view_array = 939;
+
+  /// <i class="material-icons md-36">view_carousel</i> &#x2014; material icon
+  /// named "view carousel".
+  view_carousel = 940;
+
+  /// <i class="material-icons md-36">view_column</i> &#x2014; material icon
+  /// named "view column".
+  view_column = 941;
+
+  /// <i class="material-icons md-36">view_comfy</i> &#x2014; material icon
+  /// named "view comfy".
+  view_comfy = 942;
+
+  /// <i class="material-icons md-36">view_compact</i> &#x2014; material icon
+  /// named "view compact".
+  view_compact = 943;
+
+  /// <i class="material-icons md-36">view_day</i> &#x2014; material icon named
+  /// "view day".
+  view_day = 944;
+
+  /// <i class="material-icons md-36">view_headline</i> &#x2014; material icon
+  /// named "view headline".
+  view_headline = 945;
+
+  /// <i class="material-icons md-36">view_list</i> &#x2014; material icon named
+  /// "view list".
+  view_list = 946;
+
+  /// <i class="material-icons md-36">view_module</i> &#x2014; material icon
+  /// named "view module".
+  view_module = 947;
+
+  /// <i class="material-icons md-36">view_quilt</i> &#x2014; material icon
+  /// named "view quilt".
+  view_quilt = 948;
+
+  /// <i class="material-icons md-36">view_stream</i> &#x2014; material icon
+  /// named "view stream".
+  view_stream = 949;
+
+  /// <i class="material-icons md-36">view_week</i> &#x2014; material icon named
+  /// "view week".
+  view_week = 950;
+
+  /// <i class="material-icons md-36">vignette</i> &#x2014; material icon named
+  /// "vignette".
+  vignette = 951;
+
+  /// <i class="material-icons md-36">visibility</i> &#x2014; material icon
+  /// named "visibility".
+  visibility = 952;
+
+  /// <i class="material-icons md-36">visibility_off</i> &#x2014; material icon
+  /// named "visibility off".
+  visibility_off = 953;
+
+  /// <i class="material-icons md-36">voice_chat</i> &#x2014; material icon
+  /// named "voice chat".
+  voice_chat = 954;
+
+  /// <i class="material-icons md-36">voicemail</i> &#x2014; material icon named
+  /// "voicemail".
+  voicemail = 955;
+
+  /// <i class="material-icons md-36">volume_down</i> &#x2014; material icon
+  /// named "volume down".
+  volume_down = 956;
+
+  /// <i class="material-icons md-36">volume_mute</i> &#x2014; material icon
+  /// named "volume mute".
+  volume_mute = 957;
+
+  /// <i class="material-icons md-36">volume_off</i> &#x2014; material icon
+  /// named "volume off".
+  volume_off = 958;
+
+  /// <i class="material-icons md-36">volume_up</i> &#x2014; material icon named
+  /// "volume up".
+  volume_up = 959;
+
+  /// <i class="material-icons md-36">vpn_key</i> &#x2014; material icon named
+  /// "vpn key".
+  vpn_key = 960;
+
+  /// <i class="material-icons md-36">vpn_lock</i> &#x2014; material icon named
+  /// "vpn lock".
+  vpn_lock = 961;
+
+  /// <i class="material-icons md-36">wallpaper</i> &#x2014; material icon named
+  /// "wallpaper".
+  wallpaper = 962;
+
+  /// <i class="material-icons md-36">warning</i> &#x2014; material icon named
+  /// "warning".
+  warning = 963;
+
+  /// <i class="material-icons md-36">watch</i> &#x2014; material icon named
+  /// "watch".
+  watch = 964;
+
+  /// <i class="material-icons md-36">watch_later</i> &#x2014; material icon
+  /// named "watch later".
+  watch_later = 965;
+
+  /// <i class="material-icons md-36">wb_auto</i> &#x2014; material icon named
+  /// "wb auto".
+  wb_auto = 966;
+
+  /// <i class="material-icons md-36">wb_cloudy</i> &#x2014; material icon named
+  /// "wb cloudy".
+  wb_cloudy = 967;
+
+  /// <i class="material-icons md-36">wb_incandescent</i> &#x2014; material icon
+  /// named "wb incandescent".
+  wb_incandescent = 968;
+
+  /// <i class="material-icons md-36">wb_iridescent</i> &#x2014; material icon
+  /// named "wb iridescent".
+  wb_iridescent = 969;
+
+  /// <i class="material-icons md-36">wb_sunny</i> &#x2014; material icon named
+  /// "wb sunny".
+  wb_sunny = 970;
+
+  /// <i class="material-icons md-36">wc</i> &#x2014; material icon named "wc".
+  wc = 971;
+
+  /// <i class="material-icons md-36">web</i> &#x2014; material icon named
+  /// "web".
+  web = 972;
+
+  /// <i class="material-icons md-36">web_asset</i> &#x2014; material icon named
+  /// "web asset".
+  web_asset = 973;
+
+  /// <i class="material-icons md-36">weekend</i> &#x2014; material icon named
+  /// "weekend".
+  weekend = 974;
+
+  /// <i class="material-icons md-36">whatshot</i> &#x2014; material icon named
+  /// "whatshot".
+  whatshot = 975;
+
+  /// <i class="material-icons md-36">widgets</i> &#x2014; material icon named
+  /// "widgets".
+  widgets = 976;
+
+  /// <i class="material-icons md-36">wifi</i> &#x2014; material icon named
+  /// "wifi".
+  wifi = 977;
+
+  /// <i class="material-icons md-36">wifi_lock</i> &#x2014; material icon named
+  /// "wifi lock".
+  wifi_lock = 978;
+
+  /// <i class="material-icons md-36">wifi_tethering</i> &#x2014; material icon
+  /// named "wifi tethering".
+  wifi_tethering = 979;
+
+  /// <i class="material-icons md-36">work</i> &#x2014; material icon named
+  /// "work".
+  work = 980;
+
+  /// <i class="material-icons md-36">wrap_text</i> &#x2014; material icon named
+  /// "wrap text".
+  wrap_text = 981;
+
+  /// <i class="material-icons md-36">youtube_searched_for</i> &#x2014; material
+  /// icon named "youtube searched for".
+  youtube_searched_for = 982;
+
+  /// <i class="material-icons md-36">zoom_in</i> &#x2014; material icon named
+  /// "zoom in".
+  zoom_in = 983;
+
+  /// <i class="material-icons md-36">zoom_out</i> &#x2014; material icon named
+  /// "zoom out".
+  zoom_out = 984;
+
+  /// <i class="material-icons md-36">zoom_out_map</i> &#x2014; material icon
+  /// named "zoom out map".
+  zoom_out_map = 985;
+}

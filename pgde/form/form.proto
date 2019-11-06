@@ -1,0 +1,214 @@
+syntax = "proto3";
+
+package pgde.form;
+
+option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/form";
+
+import "google/protobuf/descriptor.proto";
+
+import "pgde/form/color.proto";
+import "pgde/form/icon.proto";
+import "pgde/units/units.proto";
+import "pgde/zero/zero.proto";
+
+extend google.protobuf.EnumOptions {
+  // default Field if not set in message.
+  pgde.form.Field defaultField = 919114;
+}
+extend google.protobuf.EnumValueOptions {
+  pgde.form.InputOption inputOption = 919114;
+}
+extend google.protobuf.MessageOptions {
+  pgde.form.Node node = 919114;
+}
+
+message InputOption {
+  MaterialIcon icon = 1;
+}
+
+message Node {
+  bool ignore = 1;
+  MaterialIcon icon = 2;
+}
+
+
+extend google.protobuf.FieldOptions {
+  pgde.form.Field field = 919114;
+}
+message Field {
+  enum Role {
+    justField = 0;
+    key = 1;
+    label = 2;
+  }
+  // key and label must be set once under Message
+  Role role = 1;
+
+  InputDecoration decoration = 2;
+  bool hide = 3;
+  bool disabled = 4;
+  bool ensureAgain = 5;
+
+  // If is zero, override FieldOptions.zero.
+  // If one of zero is set, show it as hint, when hint not set
+  // TODO generate arb resource
+  Empty empty = 6;
+
+  // TODO generate arb resources
+  pgde.zero.Zero advice = 7;
+
+  oneof type {
+    TextInput text = 11;
+    TypeAheadInput typeAhead = 12;
+    SignatureInput signature = 13;
+    NumberInput number = 14;
+    StepperInput stepper = 15;
+    SliderInput slider = 16;
+    RateInput rate = 17;
+    RadioInput radio = 18;
+    SwitchInput boolSwitch = 19;
+    ListInput list = 20;
+    DatetimePickerInput datetime = 21;
+  }
+}
+
+message Empty {
+  oneof is {
+    // not for bool?
+    bool noChange = 1;
+
+    // will keep it a real zero value
+    pgde.zero.Zero implicit = 2;
+
+    // will set to field
+    pgde.zero.Zero explicit = 3;
+  }
+}
+
+message TextInput {
+  enum Type {
+    autoByType = 0;
+
+    datetime = 2;
+    emailAddress = 3;
+    multiline = 4;
+    number = 5;
+    phone = 6;
+    text = 7;
+    url = 8;
+  }
+  Type keyboardType = 1;
+
+  bool obscureText = 2;
+  bool autocorrect = 3;
+  int32 maxLines = 4;
+  bool maxLengthEnforced = 5;
+}
+
+message TypeAheadInput {
+  oneof builder {
+    string codeAccessor = 1;
+    bool fromEnum = 2;
+  }
+}
+
+message SignatureInput {
+  double width = 1;
+  double height = 2;
+  MaterialColor backgroundColor = 3;
+  MaterialColor penColor = 4;
+  double penStrokeWidth = 5;
+}
+
+// configurable on all number fields
+enum UnitPlace {
+  option (pgde.zero.defaultNotSet) = true;
+  noUnitPlace = 0;
+
+  suffix = 1;
+  labelSuffix = 2;
+}
+message NumberInput {
+  pgde.units.Show unit = 1;
+  UnitPlace unitPlace = 2;
+}
+message StepperInput {
+  pgde.units.Show unit = 1;
+  UnitPlace unitPlace = 2;
+  uint32 step = 3;
+}
+message SliderInput {
+  pgde.units.Show unit = 1;
+  UnitPlace unitPlace = 2;
+  uint32 divisions = 3;
+}
+
+message RateInput {
+  MaterialIcon icon = 1;
+}
+
+message RadioInput {
+  enum Type {
+    radio = 0;
+    // extract a new message?
+    dropdown = 1;
+    segmentedControl = 2;
+  }
+  Type type = 1;
+
+  oneof builder {
+    string codeAccessor = 2;
+    bool fromEnum = 3;
+  }
+}
+
+message SwitchInput {
+  bool checkbox = 1;
+}
+
+message ListInput {
+  enum Type {
+    // values must be checked from fixed list
+    checkbox = 0;
+    // values can be others
+    chips = 1;
+  }
+  Type type = 1;
+
+  oneof builder {
+    string codeAccessor = 2;
+    bool fromEnum = 3;
+  }
+}
+
+// type and format are defined by format.Format
+message DatetimePickerInput {
+  enum DatePickerMode {
+    day = 0;
+    year = 1;
+  }
+  DatePickerMode datePickerMode = 1;
+  bool editable = 2;
+}
+
+message InputDecoration {
+  MaterialIcon icon = 1;
+  MaterialIcon prefixIcon = 2;
+  MaterialIcon suffixIcon = 3;
+
+  enum CounterType {
+    byte = 0;
+    character = 1;
+  }
+
+  /// Optional text to place below the line as a character count.
+  ///
+  /// Rendered using [counterStyle]. Uses [helperStyle] if [counterStyle] is
+  /// null.
+  ///
+  /// The semantic label can be replaced by providing a [semanticCounterText].
+  ///
+  /// If null or an empty string and [counter] isn't specified, then nothing
+  /// will appear in the counter's location.
+  repeated CounterType counter = 4;
+}

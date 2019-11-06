@@ -29,7 +29,7 @@ class ValidateInfo<T extends GeneratedMessage> {
   BuilderInfo get bi => proto.info_;
   String get messageName => bi.messageName;
 
-  String atomForm(AtomV1 a, Form p) => a.l10n(l10n, p);
+  String atomForm(Atom a, Form p) => a.l10n(l10n, p);
   String unitForm(Form p) => numFmt.unit.l10n(l10n, p);
 
   bool get isNum => fmt is NumberFormatter;
@@ -130,16 +130,16 @@ class LenConstError extends ValidateError {
   /// any int or time mustConst rule: l10n.eq, l10n.gt, l10n.lte...
   final String rule;
   final int kConst;
-  final AtomV1 lenAtom;
+  final Atom lenAtom;
 
   LenConstError.byte(ValidateInfo info, int tagNumber, String fieldName,
       this.rule, this.kConst)
-      : lenAtom = AtomV1.byte,
+      : lenAtom = Atom.byte,
         super(info, tagNumber, fieldName);
 
   LenConstError.character(ValidateInfo info, int tagNumber, String fieldName,
       this.rule, this.kConst)
-      : lenAtom = AtomV1.character,
+      : lenAtom = Atom.character,
         super(info, tagNumber, fieldName);
 
   String get lenUnit => info.atomForm(lenAtom, info.plural(kConst, false));
@@ -270,16 +270,16 @@ class RangeError extends ValidateError {
 }
 
 class RangeLenError extends RangeError {
-  final AtomV1 lenAtom;
+  final Atom lenAtom;
 
   RangeLenError.byte(
       ValidateInfo info, int tagNumber, String fieldName, ErrorRange r)
-      : lenAtom = AtomV1.byte,
+      : lenAtom = Atom.byte,
         super(info, tagNumber, fieldName, r);
 
   RangeLenError.character(
       ValidateInfo info, int tagNumber, String fieldName, ErrorRange r)
-      : lenAtom = AtomV1.character,
+      : lenAtom = Atom.character,
         super(info, tagNumber, fieldName, r);
 
   String get trField => l10n.validateFieldLength(fieldName);

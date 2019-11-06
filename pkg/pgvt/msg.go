@@ -2,7 +2,7 @@ package pgvt
 
 const msgTpl = `
 /// Validates [{{ .FullPbClass }}] protobuf objects.
-class {{ .ClassName }} extends {{ .PgdeFile.As }}.GeneratedValidator<{{ .FullPbClass }}> {
+class {{ .Names.ValidatorName }} extends {{ .PgdeFile.AsDot "GeneratedValidator" }}<{{ .FullPbClass }}> {
 	{{- range .NonOneOfFields }}
 		{{ renderConstants .Validate }}
 	{{ end }}
@@ -36,20 +36,20 @@ class {{ .ClassName }} extends {{ .PgdeFile.As }}.GeneratedValidator<{{ .FullPbC
 		}
 	{{- end -}}
 
-	{{ .MaterialFile.As }}.BuildContext {{ .Validator.BuildContextAccessor }};
+	{{ .MaterialFile.AsDot "BuildContext" }} {{ .Validator.BuildContextAccessor }};
 
-	{{ .PgdeFile.As }}.ValidateInfo<{{ .FullPbClass }}> {{ .Validator.InfoAccessor }};
+	{{ .PgdeFile.AsDot "ValidateInfo" }}<{{ .FullPbClass }}> {{ .Validator.InfoAccessor }};
 
-	{{ .L10nFile.As }}.{{ .L10n.ClassName }} {{ .Validator.L10nAccessor }};
+	{{ .L10nFile.AsDot .File.Names.L10nName }} {{ .Validator.L10nAccessor }};
 
 	{{ range .Validator.ImportManager.InstanceClasses }}
 		{{ .FullName }} {{ .Instance }};
 	{{ end }}
 
-	{{ .ClassName }}({{ .MaterialFile.As }}.BuildContext context, {{ .PgdeFile.As }}.ValidateInfo<{{ .FullPbClass }}> info)
+	{{ .Names.ValidatorName }}({{ .MaterialFile.AsDot "BuildContext" }} context, {{ .PgdeFile.AsDot "ValidateInfo" }}<{{ .FullPbClass }}> info)
 		: {{ .Validator.BuildContextAccessor }} = context,
 		  {{ .Validator.InfoAccessor }} = info,
-		  {{ .Validator.L10nAccessor }} = {{ .MaterialFile.As }}.Localizations.of<{{ .Validator.FullL10nClass }}>(context, {{ .Validator.FullL10nClass }})
+		  {{ .Validator.L10nAccessor }} = {{ .MaterialFile.AsDot "Localizations" }}.of<{{ .FullL10nClass }}>(context, {{ .FullL10nClass }})
 		  {{- range .Validator.ImportManager.InstanceClasses }}
 		  	,{{ .Instance }} = {{ .FullName }}.of(context)
 	  	  {{ end -}}

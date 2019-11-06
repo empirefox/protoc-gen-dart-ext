@@ -3,9 +3,9 @@ package test;
 
 option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/test";
 
-import "protos/units/units.proto";
-import "protos/form/form.proto";
-import "protos/format/format.proto";
+import "pgde/units/units.proto";
+import "pgde/form/form.proto";
+import "pgde/format/format.proto";
 
 enum HowManyEnum {
   ZERO = 0 [(pgde.form.inputOption).icon = star];
@@ -20,7 +20,7 @@ enum TimeFormatNameRegister {
 }
 
 message MyProfile {
-  uint32 price = 1 [(pgde.format.format).number = {
+  uint32 price = 1 [(pgde.format.to).number = {
     builtin: currencySimple,
     locale: "en",
     unit: {

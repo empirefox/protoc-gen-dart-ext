@@ -1,0 +1,105 @@
+syntax = "proto3";
+
+package pgde.form;
+
+option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/form";
+
+message MaterialColor {
+  oneof color {
+    NonColor non = 1;
+    PrimaryColor primary = 2;
+    AccentColor accent = 3;
+  }
+}
+
+message NonColor {
+  enum Color {
+    transparent = 0;
+
+    black = 1;
+    black87 = 2;
+    black54 = 3;
+    black45 = 4;
+    black38 = 5;
+    black26 = 6;
+    black12 = 7;
+
+    white = 8;
+    white70 = 9;
+    white30 = 10;
+    white12 = 11;
+    white10 = 12;
+  }
+  Color color = 1;
+}
+
+message PrimaryColor {
+  enum Color {
+    red = 0;
+    pink = 1;
+    purple = 2;
+    deepPurple = 3;
+    indigo = 4;
+    blue = 5;
+    lightBlue = 6;
+    cyan = 7;
+    teal = 8;
+    green = 9;
+    lightGreen = 10;
+    lime = 11;
+    yellow = 12;
+    amber = 13;
+    orange = 14;
+    deepOrange = 15;
+    brown = 16;
+    grey = 17;
+    blueGrey = 18;
+  }
+  enum Shade {
+    s50 = 0;
+    s100 = 1;
+    s200 = 2;
+    s300 = 3;
+    s400 = 4;
+    s500 = 5;
+    s600 = 6;
+    s700 = 7;
+    s800 = 8;
+    s900 = 9;
+  }
+
+  Color color = 1;
+  Shade shade = 2;
+}
+
+message AccentColor {
+  enum Color {
+    red = 0;
+    pink = 1;
+    purple = 2;
+    deepPurple = 3;
+    indigo = 4;
+    blue = 5;
+    lightBlue = 6;
+    cyan = 7;
+    teal = 8;
+    green = 9;
+    lightGreen = 10;
+    lime = 11;
+    yellow = 12;
+    amber = 13;
+    orange = 14;
+    deepOrange = 15;
+  }
+  enum Shade {
+    s50 = 0;
+    s100 = 1;
+    s200 = 2;
+    s300 = 3;
+    s400 = 4;
+    s700 = 5;
+  }
+
+  Color color = 1;
+  Shade shade = 2;
+}

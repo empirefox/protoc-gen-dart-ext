@@ -24,16 +24,12 @@ var Funcs = template.FuncMap{
 	"subscript":       supsub.ToSub,
 }
 
-func FuncsWithRender(pipe string, tpl *template.Template) template.FuncMap {
-	return JoinFuncs(RenderFuncs(pipe, tpl), Funcs)
-}
-
-func RenderFuncs(pipe string, tpl *template.Template) template.FuncMap {
-	return template.FuncMap{pipe: func(tplName string, data interface{}) (string, error) {
+func Render(tpl *template.Template) func(string, interface{}) (string, error) {
+	return func(tplName string, data interface{}) (string, error) {
 		var b bytes.Buffer
 		err := tpl.ExecuteTemplate(&b, tplName, data)
 		return b.String(), err
-	}}
+	}
 }
 
 func VersionEntityFuncs(ve *VersionEntity) template.FuncMap {

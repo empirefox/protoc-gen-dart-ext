@@ -5,10 +5,9 @@ dart_path := $(abspath $(makefile_dir)/dart)
 test_path := $(abspath $(makefile_dir)/test)
 cmd_path := $(abspath $(makefile_dir)/cmd)
 pkg_path := $(abspath $(makefile_dir)/pkg)
-protos_path := $(abspath $(makefile_dir)/protos)
+protos_path := $(abspath $(makefile_dir)/pgde)
 tools_path := $(abspath $(makefile_dir)/tools)
 
-go_out := ${GOPATH}/src
 dart_lib := ${dart_path}/lib
 dart_src := ${dart_lib}/src
 dart_test := ${dart_path}/test
@@ -34,7 +33,7 @@ gen_golang:
 	@easyjson -no_std_marshalers ${pkg_path}/arb/arb.go
 	@go generate ${pkg_path}/dart
 	@go generate ${pkg_path}/genshared
-	# @cd ${cmd_path}/rewrite_arb_langs && go generate
+	@cd ${cmd_path}/rewrite_arb_langs && go generate
 
 .PHONY: gen_plural
 gen_plural:
@@ -71,12 +70,12 @@ gen_prefix:
 
 .PHONY: gen_protoc
 gen_protoc:
-	@protoc -I. --go_out=${go_out} ./protos/l10n/*.proto
-	@protoc -I. --go_out=${go_out} ./protos/format/*.proto
-	@protoc -I. --go_out=${go_out} ./protos/units/*.proto
-	@protoc -I. --go_out=${go_out} ./protos/zero/*.proto
-	@protoc -I. --go_out=${go_out} ./protos/form/*.proto
-	@protoc -I. --go_out=${go_out} ./test/*.proto
+	@protoc -I${makefile_dir} --go_out=paths=source_relative:${makefile_dir}/pkg ${protos_path}/l10n/*.proto
+	@protoc -I${makefile_dir} --go_out=paths=source_relative:${makefile_dir}/pkg ${protos_path}/format/*.proto
+	@protoc -I${makefile_dir} --go_out=paths=source_relative:${makefile_dir}/pkg ${protos_path}/units/*.proto
+	@protoc -I${makefile_dir} --go_out=paths=source_relative:${makefile_dir}/pkg ${protos_path}/zero/*.proto
+	@protoc -I${makefile_dir} --go_out=paths=source_relative:${makefile_dir}/pkg ${protos_path}/form/*.proto
+	@protoc -I${makefile_dir} --go_out=paths=source_relative:${makefile_dir} ${test_path}/*.proto
 
 # generate PgdeLocalization
 .PHONY: gen_pgde_gtt_to_dart
@@ -108,7 +107,7 @@ protoc_clean:
 .PHONY: protoc_test
 protoc_test:
 	protoc -I. --dart-ext_out=dart_ext=pkg_l10n_base:${dart_lib} protos/units/*.proto
-	dartfmt -w ${dart_lib}/protos/**/*.l10n.base.dart
+	dartfmt -w ${dart_lib}/pgde/**/*.l10n.base.dart
 
 .PHONY: gen_gtt_to_dart
 gen_gtt_to_dart:
@@ -117,11 +116,3 @@ gen_gtt_to_dart:
 		-gtt=${test_path}/gtt_to_dart/gtt.toml \
 		-dart_out=${dart_lib}/test/app.l10n.dart \
 	@dartfmt -w ${dart_lib}/test/app.l10n.dart
-
-.PHONY: gen_fieldmask
-gen_fieldmask:
-		# -I${go_out}/github.com/TheThingsIndustries/protoc-gen-fieldmask/vendor
-	@protoc -I. \
-		--fieldmask_out=lang=go:${go_out} \
-		./protos/l10n/*.proto
-

@@ -1,6 +1,10 @@
 package util
 
-import strcase "github.com/stoewer/go-strcase"
+import (
+	"strings"
+
+	"github.com/iancoleman/strcase"
+)
 
 func JoinEntityId(entity, id string) string {
 	if entity == "" {
@@ -10,9 +14,9 @@ func JoinEntityId(entity, id string) string {
 }
 
 func PowerCamel(s string) string {
-	return strcase.UpperCamelCase(strcase.SnakeCase(s))
+	return strcase.ToCamel(strings.ReplaceAll(s, ".", "_"))
 }
 
 func PowerLowerCamel(s string) string {
-	return strcase.LowerCamelCase(strcase.SnakeCase(s))
+	return strcase.ToLowerCamel(strings.ReplaceAll(s, ".", "_"))
 }

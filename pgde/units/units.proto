@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+// https://physics.nist.gov/cuu/Units/units.html
+package pgde.units;
+
+option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/units";
+
+import "google/protobuf/descriptor.proto";
+import "pgde/units/prefix.proto";
+import "pgde/units/atom.proto";
+
+extend google.protobuf.FieldOptions {
+  pgde.units.Unit unit = 919112;
+}
+
+message Unit {
+  Show show = 1;
+
+  repeated Cell dots = 2;
+  repeated Cell per = 3;
+}
+
+message Show {
+  bool off = 1;
+
+  PrefixType prefix = 2;
+
+  enum AtomType {
+    symbol = 0;
+    // plural Form.one
+    one = 1;
+    // plural Form.other
+    other = 2;
+    // parse Form from plural tool
+    parse = 3;
+  }
+  AtomType atom = 3;
+}
+
+enum PrefixType {
+  symbol = 0;
+  title = 1;
+}
+
+message Cell {
+  int32 exponent = 1;
+  Prefix prefix = 2;
+
+  oneof type {
+    Atom atom = 3;
+
+    // universal symbol
+    string symbol = 4;
+  }
+}

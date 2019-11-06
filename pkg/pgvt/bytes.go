@@ -62,75 +62,75 @@ const bytesTplDef = `{{ $r := .Pgv.Rules }}
 
 const bytesTpl = bytesTplDef + `
 {{ if or $r.Len $r.MinLen $r.MaxLen }}
-	final _bl = {{ .PgdeFile.As }}.Lists.len({{ .Accessor }});
+	final _bl = {{ .PgdeFile.AsDot "Lists" }}.len({{ .Accessor }});
 {{ end }}
 
 {{ if or $r.Len (and $r.MinLen $r.MaxLen (eq $r.GetMinLen $r.GetMaxLen)) }}
 	{{ if $r.Len }}
 		if (_bl != {{ $r.GetLen }})
-			throw {{ .PgdeFile.As }}.LenConstError.byte ({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ $r.GetLen }});
+			throw {{ .PgdeFile.AsDot "LenConstError" }}.byte ({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ $r.GetLen }});
 	{{ else }}
 		if (_bl != {{ $r.GetMinLen }})
-			throw {{ .PgdeFile.As }}.LenConstError.byte ({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ $r.GetMinLen }});
+			throw {{ .PgdeFile.AsDot "LenConstError" }}.byte ({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ $r.GetMinLen }});
 	{{ end }}
 {{ else if $r.MinLen }}
 	{{ if $r.MaxLen }}
 		if (_bl < {{ $r.GetMinLen }} || _bl > {{ $r.GetMaxLen }})
-			throw {{ .PgdeFile.As }}.RangeLenError.byte(const ErrorRange.inEE ({{ .Err3Args }}, {{ $r.GetMinLen }}, {{ $r.GetMaxLen }}));
+			throw {{ .PgdeFile.AsDot "RangeLenError" }}.byte(const ErrorRange.inEE ({{ .Err3Args }}, {{ $r.GetMinLen }}, {{ $r.GetMaxLen }}));
 	{{ else }}
 		if (_bl < {{ $r.GetMinLen }})
-			throw {{ .PgdeFile.As }}.LenConstError.byte ({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateGte, {{ $r.GetMinLen }});
+			throw {{ .PgdeFile.AsDot "LenConstError" }}.byte ({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateGte, {{ $r.GetMinLen }});
 	{{ end }}
 {{ else if $r.MaxLen }}
 	if (_bl > {{ $r.GetMaxLen }})
-		throw {{ .PgdeFile.As }}.LenConstError.byte ({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateLte, {{ $r.GetMaxLen }});
+		throw {{ .PgdeFile.AsDot "LenConstError" }}.byte ({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateLte, {{ $r.GetMaxLen }});
 {{ end }}
 
 {{ if $r.Prefix }}
-	if (!{{ .PgdeFile.As }}.Bytes.hasPrefix({{ .Accessor }}, {{ $kPrefix }}))
-		throw {{ .PgdeFile.As }}.ConstError({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validatePrefix, {{ $kPrefixPrint }});
+	if (!{{ .PgdeFile.AsDot "Bytes" }}.hasPrefix({{ .Accessor }}, {{ $kPrefix }}))
+		throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validatePrefix, {{ $kPrefixPrint }});
 {{ end }}
 
 {{ if $r.Suffix }}
-	if (!{{ .PgdeFile.As }}.Bytes.hasSuffix({{ .Accessor }}, {{ $kSuffix }}))
-		throw {{ .PgdeFile.As }}.ConstError({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateSuffix, {{ $kSuffixPrint }});
+	if (!{{ .PgdeFile.AsDot "Bytes" }}.hasSuffix({{ .Accessor }}, {{ $kSuffix }}))
+		throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateSuffix, {{ $kSuffixPrint }});
 {{ end }}
 
 {{ if $r.Contains }}
-	if ({{ .PgdeFile.As }}.Bytes.indexOf({{ .Accessor }}, {{ $kContains }}) == -1)
-		throw {{ .PgdeFile.As }}.ConstError({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateContains, {{ $kContainsPrint }});
+	if ({{ .PgdeFile.AsDot "Bytes" }}.indexOf({{ .Accessor }}, {{ $kContains }}) == -1)
+		throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateContains, {{ $kContainsPrint }});
 {{ end }}
 
 {{ if $r.In }}
-	if ({{ .PgdeFile.As }}.Bytes.indexOfList({{ $kIn }}, {{ .Accessor }}) == -1)
-		throw {{ .PgdeFile.As }}.InError({{ .Err3Args }}, {{ $kInPrint }});
+	if ({{ .PgdeFile.AsDot "Bytes" }}.indexOfList({{ $kIn }}, {{ .Accessor }}) == -1)
+		throw {{ .PgdeFile.AsDot "InError" }}({{ .Err3Args }}, {{ $kInPrint }});
 {{ else if $r.NotIn }}
-	if ({{ .PgdeFile.As }}.Bytes.indexOfList({{ $kNotIn }}, {{ .Accessor }}) != -1)
-		throw {{ .PgdeFile.As }}.InError.not ({{ .Err3Args }}, {{ $kNotInPrint }});
+	if ({{ .PgdeFile.AsDot "Bytes" }}.indexOfList({{ $kNotIn }}, {{ .Accessor }}) != -1)
+		throw {{ .PgdeFile.AsDot "InError" }}.not ({{ .Err3Args }}, {{ $kNotInPrint }});
 {{ end }}
 
 {{ if $r.Const }}
-	if (!{{ .PgdeFile.As }}.Bytes.equal({{ .Accessor }}, {{ $kConst }}))
-		throw {{ .PgdeFile.As }}.ConstError({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ $kConstPrint }});
+	if (!{{ .PgdeFile.AsDot "Bytes" }}.equal({{ .Accessor }}, {{ $kConst }}))
+		throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ $kConstPrint }});
 {{ end }}
 
 {{ if $r.GetIp }}
-	if (!{{ .PgdeFile.As }}.Bytes.isIP({{ .Accessor }}))
-		throw {{ .PgdeFile.As }}.BeSomethingError({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateIp);
+	if (!{{ .PgdeFile.AsDot "Bytes" }}.isIP({{ .Accessor }}))
+		throw {{ .PgdeFile.AsDot "BeSomethingError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateIp);
 {{ else if $r.GetIpv4 }}
-	if (!{{ .PgdeFile.As }}.Bytes.isIpv4({{ .Accessor }}))
-		throw {{ .PgdeFile.As }}.BeSomethingError({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateIpv4);
+	if (!{{ .PgdeFile.AsDot "Bytes" }}.isIpv4({{ .Accessor }}))
+		throw {{ .PgdeFile.AsDot "BeSomethingError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateIpv4);
 {{ else if $r.GetIpv6 }}
-	if (!{{ .PgdeFile.As }}.Bytes.isIpv6({{ .Accessor }}))
-		throw {{ .PgdeFile.As }}.BeSomethingError({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateIpv6);
+	if (!{{ .PgdeFile.AsDot "Bytes" }}.isIpv6({{ .Accessor }}))
+		throw {{ .PgdeFile.AsDot "BeSomethingError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateIpv6);
 {{ end }}
 
 {{ if $r.Pattern }}
 	try {
-		if (!{{ $kPattern }}.hasMatch({{ .DartConvertLib.As }}.utf8.decode({{ .Accessor }})))
-			throw {{ .PgdeFile.As }}.ConstError({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validatePattern, {{ $kPattern }}.pattern);
+		if (!{{ $kPattern }}.hasMatch({{ .DartConvertLib.AsDot "utf8" }}.decode({{ .Accessor }})))
+			throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validatePattern, {{ $kPattern }}.pattern);
 	} on FormatException {
-		throw {{ .PgdeFile.As }}.ConstError({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validatePattern, {{ $kPattern }}.pattern);
+		throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validatePattern, {{ $kPattern }}.pattern);
 	}
 {{ end }}
 `

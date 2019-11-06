@@ -23,12 +23,14 @@ var (
 )
 
 const protoTplStr = genshared.UnitsProtoHead + `
-import "protos/l10n/l10n.proto";
+import "pgde/zero/zero.proto";
 
 // https://physics.nist.gov/cuu/Units/prefixes.html
 // https://physics.nist.gov/cuu/Units/binary.html
-enum {{ EntityV }} {
-  noPrefix = 0 [(l10n.valueArb).ignore = true];
+enum {{ Entity }} {
+  option (pgde.zero.defaultNotSet) = true;
+
+  noPrefix = 0;
 
   // SI
 {{- range $idx, $prefix := .SIPrefixes }}
@@ -63,17 +65,17 @@ class _No{{ Entity }} implements _Valuer {
   }
 {{- end }}
 
-class {{ EntityV }} {
-	static const no{{ Entity }} = const {{ EntityV }}._('', 1, 1, const _No{{ Entity }}());
+class {{ Entity }} {
+	static const no{{ Entity }} = const {{ Entity }}._('', 1, 1, const _No{{ Entity }}());
 	{{- range .AllPrefix }}
-		static const {{ .Name }} = const {{ EntityV }}._({{ dartRawStr .Symbol }}, {{ .Base }}, {{ .Exponent }}, const _{{ .Name | powerCamel }}());
+		static const {{ .Name }} = const {{ Entity }}._({{ dartRawStr .Symbol }}, {{ .Base }}, {{ .Exponent }}, const _{{ .Name | powerCamel }}());
 	{{- end }}
 
   final String symbol;
   final int base;
   final int exponent;
   final _Valuer _v;
-  const {{ EntityV }}._(this.symbol, this.base, this.exponent, this._v);
+  const {{ Entity }}._(this.symbol, this.base, this.exponent, this._v);
   String l10n(PgdeLocalization l10n) => _v.of(l10n) ?? symbol;
 }
 `
@@ -121,7 +123,7 @@ func (d Data) Arb() *arb.Arb {
 	a := &arb.Arb{
 		LastModified: iso8601.Time{time.Now()},
 		Locale:       language.English,
-		Entity:       entity.UpperCamelV(),
+		Entity:       entity.UpperCamel(),
 		Resources:    make([]*arb.ArbResource, len(d.AllPrefix)),
 	}
 

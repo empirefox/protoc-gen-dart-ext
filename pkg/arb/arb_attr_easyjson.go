@@ -245,12 +245,8 @@ func easyjson5edff16dEncodeGithubComEmpirefoxProtocGenDartExtPkgArb2(out *jwrite
 	_ = first
 	if in.Lang != "" {
 		const prefix string = ",\"lang\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
-		}
+		first = false
+		out.RawString(prefix[1:])
 		out.String(string(in.Lang))
 	}
 	if in.Type != "" {
@@ -356,12 +352,8 @@ func easyjson5edff16dEncodeGithubComEmpirefoxProtocGenDartExtPkgArb3(out *jwrite
 	_ = first
 	if in.Type != "" {
 		const prefix string = ",\"type\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
-		}
+		first = false
+		out.RawString(prefix[1:])
 		out.String(string(in.Type))
 	}
 	if in.Context != "" {

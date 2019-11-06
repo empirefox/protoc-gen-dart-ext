@@ -317,135 +317,135 @@ class _Katal implements _Valuer {
   String of(PgdeLocalization l, Form p) => l.atomKatal(p);
 }
 
-class AtomV1 {
-  static const noAtom = const AtomV1._('', const _NoAtom());
+class Atom {
+  static const noAtom = const Atom._('', const _NoAtom());
 
-  static const meter = const AtomV1._(r'm', const _Meter());
+  static const meter = const Atom._(r'm', const _Meter());
 
-  static const foot = const AtomV1._(r'ft', const _Foot());
+  static const foot = const Atom._(r'ft', const _Foot());
 
-  static const inch = const AtomV1._(r'in', const _Inch());
+  static const inch = const Atom._(r'in', const _Inch());
 
-  static const yard = const AtomV1._(r'yd', const _Yard());
+  static const yard = const Atom._(r'yd', const _Yard());
 
-  static const mile = const AtomV1._(r'mi', const _Mile());
+  static const mile = const Atom._(r'mi', const _Mile());
 
-  static const nauticalMile = const AtomV1._(r'NM', const _NauticalMile());
+  static const nauticalMile = const Atom._(r'NM', const _NauticalMile());
 
-  static const lightYear = const AtomV1._(r'LY', const _LightYear());
+  static const lightYear = const Atom._(r'LY', const _LightYear());
 
-  static const hectare = const AtomV1._(r'ha', const _Hectare());
+  static const hectare = const Atom._(r'ha', const _Hectare());
 
-  static const are = const AtomV1._(r'a', const _Are());
+  static const are = const Atom._(r'a', const _Are());
 
-  static const liter = const AtomV1._(r'L', const _Liter());
+  static const liter = const Atom._(r'L', const _Liter());
 
-  static const gallon = const AtomV1._(r'gal', const _Gallon());
+  static const gallon = const Atom._(r'gal', const _Gallon());
 
-  static const barrel = const AtomV1._(r'bbl', const _Barrel());
+  static const barrel = const Atom._(r'bbl', const _Barrel());
 
-  static const gram = const AtomV1._(r'g', const _Gram());
+  static const gram = const Atom._(r'g', const _Gram());
 
-  static const ton = const AtomV1._(r't', const _Ton());
+  static const ton = const Atom._(r't', const _Ton());
 
-  static const pound = const AtomV1._(r'lbs', const _Pound());
+  static const pound = const Atom._(r'lbs', const _Pound());
 
-  static const ounce = const AtomV1._(r'oz', const _Ounce());
+  static const ounce = const Atom._(r'oz', const _Ounce());
 
-  static const second = const AtomV1._(r's', const _Second());
+  static const second = const Atom._(r's', const _Second());
 
-  static const minute = const AtomV1._(r'min', const _Minute());
+  static const minute = const Atom._(r'min', const _Minute());
 
-  static const hour = const AtomV1._(r'h', const _Hour());
+  static const hour = const Atom._(r'h', const _Hour());
 
-  static const day = const AtomV1._(r'd', const _Day());
+  static const day = const Atom._(r'd', const _Day());
 
-  static const week = const AtomV1._(r'week', const _Week());
+  static const week = const Atom._(r'week', const _Week());
 
-  static const month = const AtomV1._(r'month', const _Month());
+  static const month = const Atom._(r'month', const _Month());
 
-  static const year = const AtomV1._(r'yr', const _Year());
+  static const year = const Atom._(r'yr', const _Year());
 
-  static const century = const AtomV1._(r'century', const _Century());
+  static const century = const Atom._(r'century', const _Century());
 
-  static const secondAngle = const AtomV1._("'" "'", const _SecondAngle());
+  static const secondAngle = const Atom._("'" "'", const _SecondAngle());
 
-  static const minuteAngle = const AtomV1._("'", const _MinuteAngle());
+  static const minuteAngle = const Atom._("'", const _MinuteAngle());
 
-  static const degree = const AtomV1._(r'°', const _Degree());
+  static const degree = const Atom._(r'°', const _Degree());
 
-  static const ampere = const AtomV1._(r'A', const _Ampere());
+  static const ampere = const Atom._(r'A', const _Ampere());
 
-  static const electronvolt = const AtomV1._(r'eV', const _Electronvolt());
+  static const electronvolt = const Atom._(r'eV', const _Electronvolt());
 
-  static const bel = const AtomV1._(r'B', const _Bel());
+  static const bel = const Atom._(r'B', const _Bel());
 
-  static const kelvin = const AtomV1._(r'K', const _Kelvin());
+  static const kelvin = const Atom._(r'K', const _Kelvin());
 
-  static const mole = const AtomV1._(r'mol', const _Mole());
+  static const mole = const Atom._(r'mol', const _Mole());
 
-  static const candela = const AtomV1._(r'cd', const _Candela());
+  static const candela = const Atom._(r'cd', const _Candela());
 
-  static const percent = const AtomV1._(r'%', const _Percent());
+  static const percent = const Atom._(r'%', const _Percent());
 
-  static const perThousand = const AtomV1._(r'‰', const _PerThousand());
+  static const perThousand = const Atom._(r'‰', const _PerThousand());
 
-  static const bit = const AtomV1._(r'b', const _Bit());
+  static const bit = const Atom._(r'b', const _Bit());
 
-  static const byte = const AtomV1._(r'B', const _Byte());
+  static const byte = const Atom._(r'B', const _Byte());
 
-  static const character = const AtomV1._(r'character', const _Character());
+  static const character = const Atom._(r'character', const _Character());
 
-  static const word = const AtomV1._(r'word', const _Word());
+  static const word = const Atom._(r'word', const _Word());
 
-  static const radian = const AtomV1._(r'rad', const _Radian());
+  static const radian = const Atom._(r'rad', const _Radian());
 
-  static const steradian = const AtomV1._(r'sr', const _Steradian());
+  static const steradian = const Atom._(r'sr', const _Steradian());
 
-  static const hertz = const AtomV1._(r'Hz', const _Hertz());
+  static const hertz = const Atom._(r'Hz', const _Hertz());
 
-  static const newton = const AtomV1._(r'N', const _Newton());
+  static const newton = const Atom._(r'N', const _Newton());
 
-  static const pascal = const AtomV1._(r'Pa', const _Pascal());
+  static const pascal = const Atom._(r'Pa', const _Pascal());
 
-  static const joule = const AtomV1._(r'J', const _Joule());
+  static const joule = const Atom._(r'J', const _Joule());
 
-  static const watt = const AtomV1._(r'W', const _Watt());
+  static const watt = const Atom._(r'W', const _Watt());
 
-  static const coulomb = const AtomV1._(r'C', const _Coulomb());
+  static const coulomb = const Atom._(r'C', const _Coulomb());
 
-  static const volt = const AtomV1._(r'V', const _Volt());
+  static const volt = const Atom._(r'V', const _Volt());
 
-  static const farad = const AtomV1._(r'F', const _Farad());
+  static const farad = const Atom._(r'F', const _Farad());
 
-  static const ohm = const AtomV1._(r'Ω', const _Ohm());
+  static const ohm = const Atom._(r'Ω', const _Ohm());
 
-  static const siemens = const AtomV1._(r'S', const _Siemens());
+  static const siemens = const Atom._(r'S', const _Siemens());
 
-  static const weber = const AtomV1._(r'Wb', const _Weber());
+  static const weber = const Atom._(r'Wb', const _Weber());
 
-  static const tesla = const AtomV1._(r'T', const _Tesla());
+  static const tesla = const Atom._(r'T', const _Tesla());
 
-  static const henry = const AtomV1._(r'H', const _Henry());
+  static const henry = const Atom._(r'H', const _Henry());
 
-  static const degreeCelsius = const AtomV1._(r'°C', const _DegreeCelsius());
+  static const degreeCelsius = const Atom._(r'°C', const _DegreeCelsius());
 
-  static const lumen = const AtomV1._(r'lm', const _Lumen());
+  static const lumen = const Atom._(r'lm', const _Lumen());
 
-  static const lux = const AtomV1._(r'lx', const _Lux());
+  static const lux = const Atom._(r'lx', const _Lux());
 
-  static const becquerel = const AtomV1._(r'Bq', const _Becquerel());
+  static const becquerel = const Atom._(r'Bq', const _Becquerel());
 
-  static const gray = const AtomV1._(r'Gy', const _Gray());
+  static const gray = const Atom._(r'Gy', const _Gray());
 
-  static const sievert = const AtomV1._(r'Sv', const _Sievert());
+  static const sievert = const Atom._(r'Sv', const _Sievert());
 
-  static const katal = const AtomV1._(r'kat', const _Katal());
+  static const katal = const Atom._(r'kat', const _Katal());
 
   final String symbol;
   final _Valuer _v;
-  const AtomV1._(this.symbol, this._v);
-  const AtomV1.symbol(this.symbol) : _v = null;
+  const Atom._(this.symbol, this._v);
+  const Atom.symbol(this.symbol) : _v = null;
   String l10n(PgdeLocalization l10n, Form form) =>
       l10n == null ? symbol : _v?.of(l10n, form) ?? symbol;
 }

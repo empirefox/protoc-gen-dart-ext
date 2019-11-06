@@ -7,7 +7,7 @@ import (
 )
 
 func (vf *ValidateField) EnumType() (dart.Qualifier, error) {
-	return vf.Validator().FullPgsPbEnum(vf.Pgs.Type().Enum())
+	return vf.Validators().FullPbEnum(vf.Pgs.Type().Enum())
 }
 
 func (vf *ValidateField) EnumLiteralValue(v int32) (dart.Qualifier, error) {
@@ -16,31 +16,28 @@ func (vf *ValidateField) EnumLiteralValue(v int32) (dart.Qualifier, error) {
 		return "", err
 	}
 
-	targetFullEnumClass, err := vf.Validator().FullPbEnum(value.Enum)
+	targetFullEnumClass, err := vf.Validators().FullPbEnum(value.Enum())
 	if err != nil {
 		return "", err
 	}
 
-	return targetFullEnumClass.Append(value.DartName), nil
+	return targetFullEnumClass.Dot(vf.File.Dart.NameOf(value)), nil
 }
 
 func (vf *ValidateField) EnumFullL10nClass() (dart.Qualifier, error) {
-	nty := vf.Package.Group.PgsToEnum[vf.Pgs.Type().Enum()]
-	if nty.Package == vf.Package {
+	nty := vf.Pgs.Type().Enum()
+	if nty.File() == vf.Pgs.File() {
 		return "", nil
 	}
 
-	resolvedL10nImport, err := ResolveImport(vf.Validator().RootFilePath, nty.L10n().RootFilePath)
-	if err != nil {
-		return "", err
-	}
-	return vf.Validator().ImportManager.GetAs(resolvedL10nImport).Append(nty.L10n().ClassName), nil
+	return vf.Validators().ImportManager.L10nFileDot(nty, vf.File.Dart.EnumNames(nty).Name())
+
 }
 
 func (vf *ValidateField) EnumL10nValues(s []int32) (dart.Qualifier, error) {
-	nty := vf.Package.Group.PgsToEnum[vf.Pgs.Type().Enum()]
+	nty := vf.Pgs.Type().Enum()
 	l10nAccessor := vf.L10nAccessor()
-	if nty.Package != vf.Package {
+	if nty.File() != vf.Pgs.File() {
 		l10nAccessor = vf.EnumFieldL10nAccessor()
 	}
 
@@ -50,7 +47,7 @@ func (vf *ValidateField) EnumL10nValues(s []int32) (dart.Qualifier, error) {
 		if err != nil {
 			return "", err
 		}
-		values[i] = l10nAccessor.Append(ev.Arb.ResourceId()).String()
+		values[i] = l10nAccessor.Dot(vf.Translator().ResourceId(ev)).String()
 	}
-	return dart.Qualifier("[" + strings.Join(values, ", ") + "]"), nil
+	return dart.Qualifier("<String>[" + strings.Join(values, ", ") + "]"), nil
 }

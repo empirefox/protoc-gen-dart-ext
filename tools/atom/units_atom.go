@@ -28,13 +28,14 @@ var (
 )
 
 const protoTplStr = genshared.UnitsProtoHead + `
-import "protos/l10n/l10n.proto";
+import "pgde/zero/zero.proto";
 
 // Part of:
 // https://physics.nist.gov/cuu/Units/units.html
 // https://physics.nist.gov/cuu/Units/outside.html
-enum {{ EntityV }} {
-  option (l10n.enumArb).ignore = true;
+enum {{ Entity }} {
+  option (pgde.zero.defaultNotSet) = true;
+
   noAtom = 0;
 
 {{- range $idx, $e := .Atoms }}
@@ -64,17 +65,17 @@ class _No{{ Entity }} implements _Valuer {
   }
 {{ end }}
 
-class {{ EntityV }} {
-	static const no{{ Entity }} = const {{ EntityV }}._('', const _No{{ Entity }}());
+class {{ Entity }} {
+	static const no{{ Entity }} = const {{ Entity }}._('', const _No{{ Entity }}());
 	{{ range .Atoms }}
 		{{ $symbol := .PrintSymbol false | dartRawStr }}
-		static const {{ field . }} = const {{ EntityV }}._({{ $symbol }}, const _{{ Field . }}());
+		static const {{ field . }} = const {{ Entity }}._({{ $symbol }}, const _{{ Field . }}());
 	{{ end }}
 
   final String symbol;
   final _Valuer _v;
-  const {{ EntityV }}._(this.symbol, this._v);
-  const AtomV1.symbol(this.symbol) : _v = null;
+  const {{ Entity }}._(this.symbol, this._v);
+  const Atom.symbol(this.symbol) : _v = null;
   String l10n(PgdeLocalization l10n, Form form) => l10n == null ? symbol : _v?.of(l10n, form) ?? symbol;
 }
 `
@@ -144,7 +145,7 @@ func (d *Data) Arb(lang string) *arb.Arb {
 	a := &arb.Arb{
 		LastModified: iso8601.Time{time.Now()},
 		Locale:       culture,
-		Entity:       entity.UpperCamelV(),
+		Entity:       entity.UpperCamel(),
 		Resources:    make([]*arb.ArbResource, 0, len(d.Atoms)),
 	}
 
@@ -157,9 +158,10 @@ func (d *Data) Arb(lang string) *arb.Arb {
 					Name: "form",
 					LangInfos: arb.ArbLangInfos{
 						&arb.ArbLangInfo{
-							Lang:   "dart",
-							Info:   "Form",
-							Import: "package:pgde/plural.dart",
+							Lang:    "dart",
+							Type:    "&&.Form",
+							Replace: "&",
+							Import:  "package:pgde/plural.dart",
 						},
 					},
 				},

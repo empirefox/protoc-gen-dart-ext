@@ -1,48 +1,50 @@
 package dartpb
 
 import (
-	"github.com/empirefox/protoc-gen-dart-ext/pkg/l10n"
+	"github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/l10n"
 	"github.com/envoyproxy/protoc-gen-validate/templates/shared"
 	pgs "github.com/lyft/protoc-gen-star"
 )
 
-func (p *Package) addMessage(g *PackageGroup, pgsNty pgs.Message) error {
+func (f *File) addMessage(pgsNty pgs.Message) error {
 	validateDisabled, err := shared.Disabled(pgsNty)
 	if err != nil {
 		return err
 	}
 
-	var a MsgOrEnumArb
-	_, err = pgsNty.Extension(l10n.E_MsgArb, &a.Extension)
+	var l10nNty L10nMsgOrEnum
+	_, err = pgsNty.Extension(l10n.E_Message, &l10nNty.Extension)
 	if err != nil {
 		return err
 	}
 
+	names := f.Dart.MessageNames(pgsNty)
+
 	nty := &Message{
 		Entity: Entity{
-			DartName: g.NameOf(pgsNty),
-			Package:  p,
+			DartName: names.Name(),
+			File:     f,
 		},
-		Pgs:            pgsNty,
-		Arb:            &a,
-		PbRootFilePath: pgsNty.File().InputPath().SetExt(".pb.dart").String(),
-
+		Pgs:      pgsNty,
+		Names:    names,
+		L10n:     &l10nNty,
 		Validate: &ValidateMessage{Disabled: validateDisabled},
 	}
 
-	g.PgsToMsg[pgsNty] = nty
-	a.Message = nty
+	l10nNty.Message = nty
 	nty.Validate.Message = nty
-	p.Messages = append(p.Messages, nty)
+	f.Messages = append(f.Messages, nty)
 
+	pgsToOneOf := make(map[pgs.OneOf]*OneOf, len(pgsNty.OneOfs()))
 	for _, child := range pgsNty.OneOfs() {
-		err = nty.addOneof(g, child)
+		oo, err := nty.addOneof(child)
 		if err != nil {
 			return err
 		}
+		pgsToOneOf[child] = oo
 	}
 	for _, child := range pgsNty.Fields() {
-		err = nty.addField(g, child)
+		err = nty.addField(pgsToOneOf, child)
 		if err != nil {
 			return err
 		}
@@ -50,93 +52,117 @@ func (p *Package) addMessage(g *PackageGroup, pgsNty pgs.Message) error {
 	return nil
 }
 
-func (msg *Message) addField(g *PackageGroup, pgsNty pgs.Field) error {
+func (msg *Message) addField(pgsToOneOf map[pgs.OneOf]*OneOf, pgsNty pgs.Field) error {
 	pgvCtx, err := rulesContext(pgsNty)
 	if err != nil {
 		return err
 	}
 
-	var a FieldArb
-	_, err = pgsNty.Extension(l10n.E_FieldArb, &a.Extension)
+	var l10nNty L10nField
+	_, err = pgsNty.Extension(l10n.E_Field, &l10nNty.Extension)
 	if err != nil {
 		return err
 	}
+
+	if pgsNty.Type().IsRepeated() || pgsNty.Type().IsMap() {
+		elem := pgsNty.Type().Element()
+		if elem.IsEnum() {
+			l10nNty.IsRefEnum = true
+			l10nNty.RefEnum = elem.Enum()
+		} else if elem.IsEmbed() {
+			l10nNty.RefMessage = elem.Embed()
+		}
+	} else if pgsNty.Type().IsEnum() {
+		l10nNty.IsRefEnum = true
+		l10nNty.RefEnum = pgsNty.Type().Enum()
+	} else if pgsNty.Type().IsEmbed() {
+		l10nNty.RefMessage = pgsNty.Type().Embed()
+	}
+
+	names := msg.File.Dart.FieldNames(pgsNty)
 
 	nty := &Field{
 		Entity: Entity{
-			DartName: g.NameOf(pgsNty),
-			Package:  msg.Package,
+			DartName: names.Name(),
+			File:     msg.File,
 		},
-		Pgs:     pgsNty,
-		Arb:     &a,
-		Message: msg,
-
+		Pgs:      pgsNty,
+		Names:    names,
+		Message:  msg,
+		L10n:     &l10nNty,
 		Validate: &ValidateField{Pgv: &pgvCtx},
 	}
 
-	g.PgsToField[pgsNty] = nty
-	a.Entity = nty
+	l10nNty.Entity = nty
 	nty.Validate.Field = nty
 	msg.Fields = append(msg.Fields, nty)
+
+	if pgsNty.InOneOf() {
+		oo := pgsToOneOf[pgsNty.OneOf()]
+		oo.Fields = append(oo.Fields, nty)
+	} else {
+		msg.NonOneOfFields = append(msg.NonOneOfFields, nty)
+	}
+
 	return nil
 }
 
-func (msg *Message) addOneof(g *PackageGroup, pgsNty pgs.OneOf) error {
+func (msg *Message) addOneof(pgsNty pgs.OneOf) (*OneOf, error) {
 	validateRequired, err := shared.RequiredOneOf(pgsNty)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
-	var a OneOfArb
-	_, err = pgsNty.Extension(l10n.E_OneofArb, &a.Extension)
+	var l10nNty L10nOneOf
+	_, err = pgsNty.Extension(l10n.E_Oneof, &l10nNty.Extension)
 	if err != nil {
-		return err
+		return nil, err
 	}
+
+	names := msg.File.Dart.OneOfNames(pgsNty)
 
 	nty := &OneOf{
 		Entity: Entity{
-			DartName: g.NameOf(pgsNty),
-			Package:  msg.Package,
+			DartName: names.Name(),
+			File:     msg.File,
 		},
-		Pgs:     pgsNty,
-		Arb:     &a,
-		Message: msg,
-
+		Pgs:      pgsNty,
+		Names:    names,
+		Message:  msg,
+		L10n:     &l10nNty,
 		Validate: &ValidateOneOf{Required: validateRequired},
 	}
 
-	g.PgsToOneOf[pgsNty] = nty
-	a.Entity = nty
+	l10nNty.Entity = nty
 	nty.Validate.OneOf = nty
 	msg.OneOfs = append(msg.OneOfs, nty)
-	return nil
+	return nty, nil
 }
 
-func (p *Package) addEnum(g *PackageGroup, pgsNty pgs.Enum) error {
-	a := MsgOrEnumArb{
-		IsEnum: true,
-	}
-	_, err := pgsNty.Extension(l10n.E_EnumArb, &a.Extension)
+func (f *File) addEnum(pgsNty pgs.Enum) error {
+	l10nNty := L10nMsgOrEnum{IsEnum: true}
+	_, err := pgsNty.Extension(l10n.E_Enum, &l10nNty.Extension)
 	if err != nil {
 		return err
 	}
 
+	names := f.Dart.EnumNames(pgsNty)
+
 	nty := &Enum{
 		Entity: Entity{
-			DartName: g.NameOf(pgsNty),
-			Package:  p,
+			DartName: names.Name(),
+			File:     f,
 		},
-		Pgs:            pgsNty,
-		Arb:            &a,
-		PbRootFilePath: pgsNty.File().InputPath().SetExt(".pb.dart").String(),
+		Pgs:   pgsNty,
+		Names: names,
+		L10n:  &l10nNty,
 	}
 
-	g.PgsToEnum[pgsNty] = nty
-	a.Enum = nty
-	p.Enums = append(p.Enums, nty)
+	l10nNty.Enum = nty
+	f.Enums = append(f.Enums, nty)
 
 	for _, child := range pgsNty.Values() {
-		err = nty.addValue(g, child)
+		err = nty.addValue(child)
 		if err != nil {
 			return err
 		}
@@ -144,25 +170,27 @@ func (p *Package) addEnum(g *PackageGroup, pgsNty pgs.Enum) error {
 	return nil
 }
 
-func (enum *Enum) addValue(g *PackageGroup, pgsNty pgs.EnumValue) error {
-	var a EnumValueArb
-	_, err := pgsNty.Extension(l10n.E_ValueArb, &a.Extension)
+func (enum *Enum) addValue(pgsNty pgs.EnumValue) error {
+	var l10nNty L10nEnumValue
+	_, err := pgsNty.Extension(l10n.E_Value, &l10nNty.Extension)
 	if err != nil {
 		return err
 	}
 
+	names := enum.File.Dart.ValueNames(pgsNty)
+
 	nty := &EnumValue{
 		Entity: Entity{
-			DartName: g.NameOf(pgsNty),
-			Package:  enum.Package,
+			DartName: names.Name(),
+			File:     enum.File,
 		},
-		Pgs:  pgsNty,
-		Arb:  &a,
-		Enum: enum,
+		Pgs:   pgsNty,
+		Names: names,
+		Enum:  enum,
+		L10n:  &l10nNty,
 	}
 
-	g.PgsToValue[pgsNty] = nty
-	a.Entity = nty
+	l10nNty.Entity = nty
 	enum.Values = append(enum.Values, nty)
 	return nil
 }

@@ -2,35 +2,27 @@ package dartpb
 
 import (
 	"fmt"
-	"path/filepath"
 
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/dart"
 	pgs "github.com/lyft/protoc-gen-star"
 )
 
-func ResolveImport(source, target string) (string, error) {
-	if source == target {
-		return "", nil
-	}
-	return filepath.Rel(filepath.Dir(source), target)
-}
-
 type Entity struct {
 	DartName dart.Qualifier
-	Package  *Package
+	File     *File
 }
 
-func (nty *Entity) L10n() *L10n           { return nty.Package.L10n }
-func (nty *Entity) Validator() *Validator { return nty.Package.Validator }
+func (nty *Entity) Translator() *Translator { return nty.File.Translator }
+func (nty *Entity) Validators() *Validators { return nty.File.Validators }
 
 type Message struct {
 	Entity
 
 	Pgs pgs.Message
 
-	Arb *MsgOrEnumArb
+	Names dart.MessageNames
 
-	PbRootFilePath string
+	L10n *L10nMsgOrEnum
 
 	Fields []*Field
 
@@ -46,9 +38,11 @@ type Field struct {
 
 	Pgs pgs.Field
 
-	Arb *FieldArb
+	Names dart.FieldNames
 
 	Message *Message
+
+	L10n *L10nField
 
 	Validate *ValidateField
 }
@@ -58,9 +52,11 @@ type OneOf struct {
 
 	Pgs pgs.OneOf
 
-	Arb *OneOfArb
+	Names dart.OneOfNames
 
 	Message *Message
+
+	L10n *L10nOneOf
 
 	Fields []*Field
 
@@ -72,9 +68,9 @@ type Enum struct {
 
 	Pgs pgs.Enum
 
-	Arb *MsgOrEnumArb
+	Names dart.EnumNames
 
-	PbRootFilePath string
+	L10n *L10nMsgOrEnum
 
 	Values []*EnumValue
 }
@@ -84,17 +80,19 @@ type EnumValue struct {
 
 	Pgs pgs.EnumValue
 
-	Arb *EnumValueArb
+	Names dart.ValueNames
 
 	Enum *Enum
+
+	L10n *L10nEnumValue
 }
 
 func (f *Field) Number() int32 { return f.Pgs.Descriptor().GetNumber() }
 
-func (f *Field) parseEnumValue(v int32) (*EnumValue, error) {
+func (f *Field) parseEnumValue(v int32) (pgs.EnumValue, error) {
 	for _, ev := range f.Pgs.Type().Enum().Values() {
 		if ev.Value() == v {
-			return f.Package.Group.PgsToValue[ev], nil
+			return ev, nil
 		}
 	}
 	return nil, fmt.Errorf("%s value not found: %d", f.Pgs.Type().Enum().FullyQualifiedName(), v)

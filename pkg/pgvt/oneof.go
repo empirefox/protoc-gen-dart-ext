@@ -12,7 +12,7 @@ switch ({{ .InfoAccessor }}.proto.{{ .Names.WhichOneofMethodName }}()) {
 			break;
 	{{ end -}}
 	{{ if .Required }}
-		default: throw {{ .PgdeFile.As }}.OneofRequiredError({{ .InfoAccessor }}, {{ .L10nAccessor }}.{{ .L10n.ResourceId }});
+		default: throw {{ .PgdeFile.AsDot "OneofRequiredError" }}({{ .InfoAccessor }}, {{ .L10nAccessor }}.{{ .L10n.ResourceId }});
 	{{ end }}
 }
 `

@@ -33,7 +33,7 @@ func Register(tpl *template.Template, params pgs.Parameters) {
 		"unwrap":          fns.unwrap,
 	})
 
-	template.Must(tpl.Parse(packageTpl))
+	template.Must(tpl.Parse(fileTpl))
 	template.Must(tpl.New("msg").Parse(msgTpl))
 	template.Must(tpl.New("oneOf").Parse(oneOfTpl))
 	template.Must(tpl.New("oneOfConst").Parse(oneOfConstTpl))
@@ -170,8 +170,8 @@ func (fns dartFuncs) unwrap(f *dartpb.ValidateField) (*dartpb.ValidateField, err
 	if err != nil {
 		return nil, err
 	}
-	wrapperField0 := f.Package.Group.PgsToField[f.Pgs.Type().Embed().Fields()[0]]
-	f.Pgv.AccessorOverride = f.Accessor().Append(wrapperField0.DartName).String()
+	wrapperField0 := f.File.Dart.NameOf(f.Pgs.Type().Embed().Fields()[0])
+	f.Pgv.AccessorOverride = f.Accessor().Dot(wrapperField0).String()
 	return f, nil
 }
 

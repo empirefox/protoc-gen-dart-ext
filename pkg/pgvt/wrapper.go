@@ -12,6 +12,6 @@ const wrapperTpl = `
 {{- $maybeEmpty := .IfHasBegin -}}
 
 {{ if and $maybeEmpty .MessageRules.GetRequired }} else {
-	throw {{ .PgdeFile.As }}.RequiredError({{ .Err3Args }});
+	throw {{ .PgdeFile.AsDot "RequiredError" }}({{ .Err3Args }});
 } {{ end }}
 `

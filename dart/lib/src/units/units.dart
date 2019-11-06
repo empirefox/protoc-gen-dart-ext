@@ -64,8 +64,8 @@ class Show {
 
 class Cell {
   final String exponent;
-  final PrefixV1 prefix;
-  final AtomV1 atom;
+  final Prefix prefix;
+  final Atom atom;
 
   const Cell({this.exponent = '', this.prefix, this.atom})
       : assert(prefix != null),
@@ -77,46 +77,46 @@ class Cell {
 
 // _PrefixValuer
 abstract class _PrefixValuer {
-  String from(PrefixV1 p, [PgdeLocalization l]);
+  String from(Prefix p, [PgdeLocalization l]);
 }
 
 class _PrefixSymbolValuer implements _PrefixValuer {
   const _PrefixSymbolValuer();
   @override
-  String from(PrefixV1 p, [PgdeLocalization l]) => p.symbol;
+  String from(Prefix p, [PgdeLocalization l]) => p.symbol;
 }
 
 class _PrefixNameValuer implements _PrefixValuer {
   const _PrefixNameValuer();
   @override
-  String from(PrefixV1 p, [PgdeLocalization l]) => p.l10n(l);
+  String from(Prefix p, [PgdeLocalization l]) => p.l10n(l);
 }
 
 // _AtomValuer
 abstract class _AtomValuer {
-  String from(AtomV1 a, [PgdeLocalization l, Form p]);
+  String from(Atom a, [PgdeLocalization l, Form p]);
 }
 
 class _AtomSymbolValuer implements _AtomValuer {
   const _AtomSymbolValuer();
   @override
-  String from(AtomV1 a, [PgdeLocalization l, Form p]) => a.symbol;
+  String from(Atom a, [PgdeLocalization l, Form p]) => a.symbol;
 }
 
 class _AtomOneValuer implements _AtomValuer {
   const _AtomOneValuer();
   @override
-  String from(AtomV1 a, [PgdeLocalization l, Form p]) => a.l10n(l, Form.one);
+  String from(Atom a, [PgdeLocalization l, Form p]) => a.l10n(l, Form.one);
 }
 
 class _AtomOtherValuer implements _AtomValuer {
   const _AtomOtherValuer();
   @override
-  String from(AtomV1 a, [PgdeLocalization l, Form p]) => a.l10n(l, Form.other);
+  String from(Atom a, [PgdeLocalization l, Form p]) => a.l10n(l, Form.other);
 }
 
 class _AtomParseValuer implements _AtomValuer {
   const _AtomParseValuer();
   @override
-  String from(AtomV1 a, [PgdeLocalization l, Form p]) => a.l10n(l, p);
+  String from(Atom a, [PgdeLocalization l, Form p]) => a.l10n(l, p);
 }

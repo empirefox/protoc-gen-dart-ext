@@ -2,7 +2,7 @@ package dart
 
 import (
 	"fmt"
-	"path/filepath"
+	"strings"
 
 	pgs "github.com/lyft/protoc-gen-star"
 )
@@ -48,6 +48,47 @@ type names struct {
 
 func (ns *names) Name() Qualifier { return ns.name }
 
+type ScopedNames interface {
+	Names
+	getUsedNames() UsedNames
+}
+
+type FileNames interface {
+	ScopedNames
+	EntityName() Qualifier
+	L10nName() Qualifier
+}
+
+type fileNames struct {
+	fileName   Qualifier
+	entityName Qualifier
+	l10nName   Qualifier
+	usedNames  UsedNames
+}
+
+func (ns *fileNames) Name() Qualifier         { return ns.fileName }
+func (ns *fileNames) EntityName() Qualifier   { return ns.entityName }
+func (ns *fileNames) L10nName() Qualifier     { return ns.l10nName }
+func (ns *fileNames) getUsedNames() UsedNames { return ns.usedNames }
+
+type MessageNames interface {
+	ScopedNames
+	ValidatorName() Qualifier
+	FormInputsName() Qualifier
+}
+
+type messageNames struct {
+	messageName    Qualifier
+	validatorName  Qualifier
+	formInputsName Qualifier
+	usedNames      UsedNames
+}
+
+func (ns *messageNames) Name() Qualifier           { return ns.messageName }
+func (ns *messageNames) ValidatorName() Qualifier  { return ns.validatorName }
+func (ns *messageNames) FormInputsName() Qualifier { return ns.formInputsName }
+func (ns *messageNames) getUsedNames() UsedNames   { return ns.usedNames }
+
 type FieldNames interface {
 	Names
 	HasMethodName() Qualifier
@@ -86,112 +127,117 @@ func (ns *oneOfNames) WhichOneofMethodName() Qualifier { return ns.whichOneofMet
 func (ns *oneOfNames) ClearMethodName() Qualifier      { return ns.clearMethodName }
 func (ns *oneOfNames) OneofEnumName() Qualifier        { return ns.oneofEnumName }
 
+type EnumNames interface {
+	ScopedNames
+}
+
+type enumNames struct {
+	enumName  Qualifier
+	usedNames UsedNames
+}
+
+func (ns *enumNames) Name() Qualifier         { return ns.enumName }
+func (ns *enumNames) getUsedNames() UsedNames { return ns.usedNames }
+
+type ValueNames interface {
+	Names
+}
+
+type valueNames struct {
+	valueName Qualifier
+}
+
+func (ns *valueNames) Name() Qualifier { return ns.valueName }
+
 type Dart struct {
-	pkgs       map[pgs.Package]Qualifier
-	files      map[pgs.File]*names
-	messages   map[pgs.Message]*names
+	files      map[pgs.File]*fileNames
+	messages   map[pgs.Message]*messageNames
 	fields     map[pgs.Field]*fieldNames
 	oneofs     map[pgs.OneOf]*oneOfNames
-	enums      map[pgs.Enum]*names
-	enumValues map[pgs.EnumValue]*names
+	enums      map[pgs.Enum]*enumNames
+	enumValues map[pgs.EnumValue]*valueNames
 }
 
 func NewDart() *Dart {
 	return &Dart{
-		pkgs:       make(map[pgs.Package]Qualifier),
-		files:      make(map[pgs.File]*names),
-		messages:   make(map[pgs.Message]*names),
+		files:      make(map[pgs.File]*fileNames),
+		messages:   make(map[pgs.Message]*messageNames),
 		fields:     make(map[pgs.Field]*fieldNames),
 		oneofs:     make(map[pgs.OneOf]*oneOfNames),
-		enums:      make(map[pgs.Enum]*names),
-		enumValues: make(map[pgs.EnumValue]*names),
+		enums:      make(map[pgs.Enum]*enumNames),
+		enumValues: make(map[pgs.EnumValue]*valueNames),
 	}
 }
 
-func (d *Dart) EntityNameOf(p pgs.Package) Qualifier {
-	name, ok := d.pkgs[p]
-	if !ok {
-		name = entityNameOfPkg(p)
-		d.pkgs[p] = name
-	}
-	return name
-}
+// NameOf returns dart name of entity. Return computed class name of File.
+func (d *Dart) NameOf(e pgs.Entity) Qualifier           { return d.namesOf(e).Name() }
+func (d *Dart) NamesOf(e pgs.Entity) Names              { return d.namesOf(e) }
+func (d *Dart) FileNames(e pgs.File) FileNames          { return d.namesOfFile(e) }
+func (d *Dart) MessageNames(e pgs.Message) MessageNames { return d.namesOfMessage(e) }
+func (d *Dart) FieldNames(e pgs.Field) FieldNames       { return d.namesOfField(e) }
+func (d *Dart) OneOfNames(e pgs.OneOf) OneOfNames       { return d.namesOfOneof(e) }
+func (d *Dart) EnumNames(e pgs.Enum) EnumNames          { return d.namesOfEnum(e) }
+func (d *Dart) ValueNames(e pgs.EnumValue) ValueNames   { return d.namesOfEnumValue(e) }
 
-func entityNameOfPkg(pkg pgs.Package) Qualifier {
-	pkgName := pkg.ProtoName().String()
-	ext := filepath.Ext(pkgName)
-	if ext != "" {
-		pkgName = ext[1:]
-	}
-	return Qualifier(pkgName).ToCamel()
-}
-
-func (d *Dart) NameOf(e pgs.Entity) Qualifier {
-	return d.entityOf(e).Name()
-}
-
-func (d *Dart) FieldNames(e pgs.Field) FieldNames {
-	return d.entityOfField(e)
-}
-
-func (d *Dart) OneOfNames(e pgs.OneOf) OneOfNames {
-	return d.entityOfOneof(e)
-}
-
-func (d *Dart) entityOf(e pgs.Entity) Names {
+func (d *Dart) namesOf(e pgs.Entity) Names {
 	switch i := e.(type) {
 	case pgs.File:
-		return d.entityOfFile(i)
+		return d.namesOfFile(i)
 	case pgs.Message:
-		return d.entityOfMessage(i)
+		return d.namesOfMessage(i)
 	case pgs.Field:
-		return d.entityOfField(i)
+		return d.namesOfField(i)
 	case pgs.OneOf:
-		return d.entityOfOneof(i)
+		return d.namesOfOneof(i)
 	case pgs.Enum:
-		return d.entityOfEnum(i)
+		return d.namesOfEnum(i)
 	case pgs.EnumValue:
-		return d.entityOfEnumValue(i)
+		return d.namesOfEnumValue(i)
 	}
 	return nil
 }
 
-func (d *Dart) entityOfFile(i pgs.File) *names {
+func (d *Dart) namesOfFile(i pgs.File) *fileNames {
 	nty, ok := d.files[i]
 	if !ok {
-		nty = &names{
-			name:      "",
-			usedNames: usedTopLevelNames(),
+		fileName := i.InputPath().BaseName()
+		typeName := Qualifier(strings.ReplaceAll(fileName, ".", "_")).ToCamel()
+		nty = &fileNames{
+			entityName: typeName,
+			l10nName:   typeName + "Localizations",
+			usedNames:  usedTopLevelNames(),
 		}
 		d.files[i] = nty
 	}
 	return nty
 }
 
-func (d *Dart) entityOfMessage(i pgs.Message) *names {
+func (d *Dart) namesOfMessage(i pgs.Message) *messageNames {
 	nty, ok := d.messages[i]
 	if !ok {
-		parentEntry := d.entityOf(i.Parent()).(*names)
-		name := messageOrEnumClassName(Qualifier(i.Name()), parentEntry.usedNames, parentEntry.name)
-		parentEntry.usedNames.Add(name)
+		parent := d.namesOf(i.Parent()).(ScopedNames)
+		name := messageOrEnumClassName(Qualifier(i.Name()), parent.getUsedNames(), parent.Name())
+		parent.getUsedNames().Add(name)
 
 		var reserved map[Qualifier]bool // compute?
 		existingNames := reservedMemberNames()
 		existingNames.AddMap(reserved)
 
-		nty = &names{
-			name:      name, // check dart_options.dart_name?
-			usedNames: existingNames,
+		nty = &messageNames{
+			messageName:    name, // check dart_options.dart_name?
+			validatorName:  name + "Validator",
+			formInputsName: name + "FormInputs",
+			usedNames:      existingNames,
 		}
 		d.messages[i] = nty
 	}
 	return nty
 }
 
-func (d *Dart) entityOfOneof(i pgs.OneOf) *oneOfNames {
+func (d *Dart) namesOfOneof(i pgs.OneOf) *oneOfNames {
 	nty, ok := d.oneofs[i]
 	if !ok {
-		parentEntry := d.entityOfMessage(i.Message())
+		parent := d.namesOfMessage(i.Message())
 		oneofNameVariants := func(name Qualifier) []Qualifier {
 			return []Qualifier{
 				_defaultWhichMethodName(name),
@@ -200,20 +246,20 @@ func (d *Dart) entityOfOneof(i pgs.OneOf) *oneOfNames {
 		}
 		oneofName := disambiguateName(
 			Qualifier(i.Name()).ToCamel(),
-			parentEntry.usedNames, new(defaultSuffixes), oneofNameVariants)
-		parentEntry.usedNames.Add(oneofName)
+			parent.usedNames, new(defaultSuffixes), oneofNameVariants)
+		parent.usedNames.Add(oneofName)
 
-		f := d.entityOfFile(i.File())
+		f := d.namesOfFile(i.File())
 		oneofEnumName := oneofEnumClassName(Qualifier(i.Name()),
 			f.usedNames,
-			parentEntry.Name())
+			parent.Name())
 		f.usedNames.Add(oneofEnumName)
 
 		enumMapName := disambiguateName(
 			Qualifier(fmt.Sprintf("_$%sByTag", oneofEnumName)),
-			parentEntry.usedNames, new(defaultSuffixes),
+			parent.usedNames, new(defaultSuffixes),
 			nil)
-		parentEntry.usedNames.Add(enumMapName)
+		parent.usedNames.Add(enumMapName)
 
 		nty = &oneOfNames{
 			oneofName:            oneofName,
@@ -226,10 +272,10 @@ func (d *Dart) entityOfOneof(i pgs.OneOf) *oneOfNames {
 	return nty
 }
 
-func (d *Dart) entityOfField(i pgs.Field) *fieldNames {
+func (d *Dart) namesOfField(i pgs.Field) *fieldNames {
 	nty, ok := d.fields[i]
 	if !ok {
-		parentEntry := d.entityOfMessage(i.Message())
+		parent := d.namesOfMessage(i.Message())
 		suffix := newMemberNamesSuffix(i.Descriptor().GetNumber())
 		var generateNameVariants generateVariantsFunc
 		if !i.Required() {
@@ -241,8 +287,8 @@ func (d *Dart) entityOfField(i pgs.Field) *fieldNames {
 				}
 			}
 		}
-		name := disambiguateName(Qualifier(i.Name()), parentEntry.usedNames, suffix, generateNameVariants)
-		parentEntry.usedNames.Add(name)
+		name := disambiguateName(Qualifier(i.Name()), parent.usedNames, suffix, generateNameVariants)
+		parent.usedNames.Add(name)
 
 		var ensureMethodName Qualifier
 		if i.Type().IsEmbed() {
@@ -260,15 +306,15 @@ func (d *Dart) entityOfField(i pgs.Field) *fieldNames {
 	return nty
 }
 
-func (d *Dart) entityOfEnum(i pgs.Enum) *names {
+func (d *Dart) namesOfEnum(i pgs.Enum) *enumNames {
 	nty, ok := d.enums[i]
 	if !ok {
-		parentEntry := d.entityOf(i.Parent()).(*names)
-		name := messageOrEnumClassName(Qualifier(i.Name()), parentEntry.usedNames, parentEntry.name)
-		parentEntry.usedNames.Add(name)
+		parent := d.namesOf(i.Parent()).(ScopedNames)
+		name := messageOrEnumClassName(Qualifier(i.Name()), parent.getUsedNames(), parent.Name())
+		parent.getUsedNames().Add(name)
 
-		nty = &names{
-			name:      name,
+		nty = &enumNames{
+			enumName:  name,
 			usedNames: reservedEnumNames(),
 		}
 		d.enums[i] = nty
@@ -276,17 +322,16 @@ func (d *Dart) entityOfEnum(i pgs.Enum) *names {
 	return nty
 }
 
-func (d *Dart) entityOfEnumValue(i pgs.EnumValue) *names {
+func (d *Dart) namesOfEnumValue(i pgs.EnumValue) *valueNames {
 	nty, ok := d.enumValues[i]
 	if !ok {
-		parentEntry := d.entityOfEnum(i.Enum())
+		parent := d.namesOfEnum(i.Enum())
 		name := disambiguateName(avoidInitialUnderscore(Qualifier(i.Name())),
-			parentEntry.usedNames, new(enumSuffixes), nil)
-		parentEntry.usedNames.Add(name)
+			parent.usedNames, new(enumSuffixes), nil)
+		parent.usedNames.Add(name)
 
-		nty = &names{
-			name:      name,
-			usedNames: nil,
+		nty = &valueNames{
+			valueName: name,
 		}
 		d.enumValues[i] = nty
 	}

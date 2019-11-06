@@ -1,7 +1,6 @@
 {
-  "@@last_modified": "2019-05-16T08:10:42Z",
+  "@@last_modified": "2019-10-31T02:15:12Z",
   "@@locale": "en",
-  "@@x-entity": "Currency",
   "ALL": "Lek",
   "@ALL": {
     "type": "text",

@@ -1,6 +1,8 @@
 package dart
 
 import (
+	"strings"
+
 	"github.com/iancoleman/strcase"
 )
 
@@ -8,14 +10,14 @@ type Qualifier string
 
 func (q Qualifier) String() string { return string(q) }
 
-func (q Qualifier) AppendString(simpleName string) Qualifier {
+func (q Qualifier) DotString(simpleName string) Qualifier {
 	if q == "" {
 		return Qualifier(simpleName)
 	}
 	return q + "." + Qualifier(simpleName)
 }
 
-func (q Qualifier) Append(simpleName Qualifier) Qualifier {
+func (q Qualifier) Dot(simpleName Qualifier) Qualifier {
 	if q == "" {
 		return simpleName
 	}
@@ -68,10 +70,10 @@ func (q Qualifier) ToScreamingDelimited(del uint8) Qualifier {
 
 // AnyKindOfString
 func (q Qualifier) ToCamel() Qualifier {
-	return Qualifier(strcase.ToCamel(q.String()))
+	return Qualifier(strcase.ToCamel(strings.ReplaceAll(string(q), ".", "_")))
 }
 
 // anyKindOfString
 func (q Qualifier) ToLowerCamel() Qualifier {
-	return Qualifier(strcase.ToLowerCamel(q.String()))
+	return Qualifier(strcase.ToLowerCamel(strings.ReplaceAll(string(q), ".", "_")))
 }

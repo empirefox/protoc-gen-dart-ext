@@ -7,28 +7,28 @@ const repeatedConstTpl = `{{ $r := .Pgv.Rules }}
 
 const repeatedTpl = `{{ $f := .Field }}{{ $r := .Pgv.Rules }}
 {{ if or $r.GetMinItems $r.GetMaxItems }}
-	final _rl = {{ .PgdeFile.As }}.Lists.len({{ .Accessor }});
+	final _rl = {{ .PgdeFile.AsDot "Lists" }}.len({{ .Accessor }});
 {{ end }}
 {{ if $r.GetMinItems }}
 	{{ if eq $r.GetMinItems $r.GetMaxItems }}
 		if (_rl != {{ $r.GetMinItems }})
-			throw {{ .PgdeFile.As }}.ItemsLenConstError({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ $r.GetMinItems }});
+			throw {{ .PgdeFile.AsDot "ItemsLenConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ $r.GetMinItems }});
 	{{ else if $r.MaxItems }}
 		if (_rl < {{ $r.GetMinItems }} || _rl > {{ $r.GetMaxItems }})
-			throw {{ .PgdeFile.As }}.RangeError(ErrorRange.outEE ({{ .Err3Args }}, {{ $r.GetMinItems }}, {{ $r.GetMaxItems }}));
+			throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.outEE ({{ .Err3Args }}, {{ $r.GetMinItems }}, {{ $r.GetMaxItems }}));
 	{{ else }}
 		if (_rl < {{ $r.GetMinItems }})
-			throw {{ .PgdeFile.As }}.ConstError({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateGte, {{ $r.GetMinItems }});
+			throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateGte, {{ $r.GetMinItems }});
 	{{ end }}
 {{ else if $r.MaxItems }}
 	if (_rl > {{ $r.GetMaxItems }})
-		throw {{ .PgdeFile.As }}.ConstError({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateLte, {{ $r.GetMaxItems }});
+		throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateLte, {{ $r.GetMaxItems }});
 {{ end }}
 
 {{ if $r.GetUnique }}
 	final Set<
 		{{- if .RepeatedElemIsBytes -}}
-			{{ .PgdeFile.As }}.Bytes
+			{{ .PgdeFile.AsDot "Bytes" }}
 		{{- else -}}
 			{{ .RepeatedElemType }}
 		{{- end -}}
@@ -42,11 +42,11 @@ const repeatedTpl = `{{ $f := .Field }}{{ $r := .Pgv.Rules }}
 		{{ if $r.GetUnique }}
 			if (!_unique.add(
 				{{- if .RepeatedElemIsBytes -}}
-					{{ .PgdeFile.As }}.Bytes(_ritem)
+					{{ .PgdeFile.AsDot "Bytes" }}(_ritem)
 				{{- else -}}
 					_ritem
 				{{- end -}}
-			)) throw {{ .PgdeFile.As }}.BeSomethingError({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateUnique(_ridx+1));
+			)) throw {{ .PgdeFile.AsDot "BeSomethingError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateUnique(_ridx+1));
 		{{ end }}
 
 		{{ render (.Elem "_ritem" "_ridx") }}

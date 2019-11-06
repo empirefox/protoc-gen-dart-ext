@@ -65,7 +65,6 @@ func (attr *ArbAttributes) DartSelectCaseCond(varname, key string) (string, erro
 type DartParam struct {
 	Raw     *LangParam
 	IsEmpty bool
-	As      dart.Qualifier
 	Type    string
 	Replace string
 }
@@ -109,13 +108,16 @@ func NewDartParams(mgr *dart.ImportManager, holders ArbPlaceholders) (*DartParam
 
 		// replace &&&
 		if strings.Contains(replace, "&&&.") {
+			if lp.Import == "" {
+				return nil, fmt.Errorf("Import is required: %#v", *lp)
+			}
 			classes := searchClassNames(replace)
 			for _, class := range classes {
-				if lp.Import == "" {
-					return nil, fmt.Errorf("Import is required: %#v", *lp)
+				instance, err := mgr.ResolveClassInstance(lp.Import, dart.Qualifier(class))
+				if err != nil {
+					return nil, err
 				}
-				instance := mgr.ClassInstance(lp.Import, dart.Qualifier(class)).String()
-				replace = strings.ReplaceAll(replace, "&&&."+class, instance)
+				replace = strings.ReplaceAll(replace, "&&&."+class, instance.String())
 			}
 		}
 		if strings.Contains(replace, "&&&") {
@@ -135,7 +137,6 @@ func NewDartParams(mgr *dart.ImportManager, holders ArbPlaceholders) (*DartParam
 
 		all[i] = &DartParam{
 			Raw:     lp,
-			As:      mgr.GetAs(lp.Import),
 			Type:    typ,
 			Replace: replace,
 		}
@@ -156,10 +157,22 @@ func NewDartParams(mgr *dart.ImportManager, holders ArbPlaceholders) (*DartParam
 
 func (ps *DartParams) GetByName(name string) *DartParam { return ps.ByName[name] }
 
-var searchClassNamesReg = regexp.MustCompile(`&&&.([_$0-9A-Za-z]+).[_$0-9A-Za-z]+.`)
+var (
+	searchClassNamesReg  = regexp.MustCompile(`&&&\.([_$0-9A-Za-z]+)\.[_$0-9A-Za-z]+.`)
+	searchDirectNamesReg = regexp.MustCompile(`&&\.([&_$0-9A-Za-z]+)`)
+)
 
 func searchClassNames(s string) []string {
 	match := searchClassNamesReg.FindAllStringSubmatch(s, -1)
+	result := make([]string, len(match))
+	for i, found := range match {
+		result[i] = found[1]
+	}
+	return result
+}
+
+func searchDirectNames(s string) []string {
+	match := searchDirectNamesReg.FindAllStringSubmatch(s, -1)
 	result := make([]string, len(match))
 	for i, found := range match {
 		result[i] = found[1]
@@ -172,7 +185,22 @@ func replaceAs(m *dart.ImportManager, s string, lp *LangParam) (string, error) {
 		if lp.Import == "" {
 			return "", fmt.Errorf("Import is required: %#v", *lp)
 		}
-		s = strings.ReplaceAll(s, "&&", m.GetAs(lp.Import).String())
+
+		f, err := m.ImportRoot(lp.Import)
+		if err != nil {
+			return "", err
+		}
+
+		names := searchDirectNames(s)
+		for _, name := range names {
+			if name == "&" {
+				name = lp.Name
+			} else if strings.Contains(name, "&") {
+				return "", fmt.Errorf("Import only allow &&.&(.name)?: %#v", *lp)
+			}
+			f.AddShow(dart.Qualifier(name))
+		}
+		s = strings.ReplaceAll(s, "&&", f.As.String())
 	}
 
 	if strings.Contains(s, "&&") {

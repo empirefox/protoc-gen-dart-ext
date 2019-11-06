@@ -34,14 +34,15 @@ var (
 )
 
 const protoTplStr = genshared.FormatProtoHead + `
-import "protos/l10n/l10n.proto";
+import "pgde/zero/zero.proto";
 
 // ISO 4217, publish date: {{ .Pblshd }}
-enum {{ EntityV }} {
-  option (l10n.enumArb).ignore = true;
-	XXX = 0;
+enum {{ Entity }} {
+  option (pgde.zero.defaultNotSet) = true;
+
+  XXX = 0;
 {{- range .CcyNtry }}
-	{{ .Ccy }} = {{ .CcyNbr }}; // {{ .CcyNm }}
+  {{ .Ccy }} = {{ .CcyNbr }}; // {{ .CcyNm }}
 {{- end }}
 }
 `
@@ -66,21 +67,21 @@ class _XXX implements _Valuer {
   }
 {{- end }}
 
-class {{ EntityV }} {
+class {{ Entity }} {
 	final String ccy;
 	final int nbr;
 	final int mnrFactor;
 	final _Valuer _v;
-	const {{ EntityV }}._(this.ccy, this.nbr, this.mnrFactor, this._v);
+	const {{ Entity }}._(this.ccy, this.nbr, this.mnrFactor, this._v);
 	String Function(dynamic) get format => getCurrencyFormat(ccy).format;
 	String Function(dynamic) get formatSimple => getSimpleCurrencyFormat(ccy).format;
 	String Function(dynamic) get formatNumber => getCurrencyNumberFormat(ccy).format;
 	String formatName(v, PgdeLocalization l) => (l == null || _v.of(l) == null) ? format(v) : (formatNumber(v) + _v.of(l));
 	String l10n(PgdeLocalization l10n) => l10n == null ? ccy : _v.of(l10n) ?? ccy;
 
-	static const XXX = const {{ EntityV }}._('', 0, 0, const _XXX());
+	static const XXX = const {{ Entity }}._('', 0, 0, const _XXX());
 	{{- range .CcyNtry }}
-	static const {{ .Ccy }} = const {{ EntityV }}._('{{ .Ccy }}', {{ .CcyNbr }}, {{ .CcyMnrUnts }}, const _{{ .Ccy }}());
+	static const {{ .Ccy }} = const {{ Entity }}._('{{ .Ccy }}', {{ .CcyNbr }}, {{ .CcyMnrUnts }}, const _{{ .Ccy }}());
 	{{- end }}
 }
 `

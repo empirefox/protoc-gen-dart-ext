@@ -66,12 +66,8 @@ func easyjsonAf4d4e0fEncodeGithubComEmpirefoxProtocGenDartExtPkgArb(out *jwriter
 	_ = first
 	if true {
 		const prefix string = ",\"@@last_modified\":"
-		if first {
-			first = false
-			out.RawString(prefix[1:])
-		} else {
-			out.RawString(prefix)
-		}
+		first = false
+		out.RawString(prefix[1:])
 		out.Raw((in.LastModified).MarshalJSON())
 	}
 	if in.Context != "" {

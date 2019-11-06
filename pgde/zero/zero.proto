@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package pgde.zero;
+
+option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/zero";
+
+import "google/protobuf/descriptor.proto";
+import "google/protobuf/any.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+
+extend google.protobuf.EnumOptions {
+  bool defaultNotSet = 919113;
+}
+
+extend google.protobuf.FieldOptions {
+  pgde.zero.Zero setTo = 919113;
+}
+
+message Zero {
+  oneof type {
+    // Scalar Field Types
+    float float = 1;
+    double double = 2;
+    int32 int32 = 3;
+    int64 int64 = 4;
+    uint32 uint32 = 5;
+    uint64 uint64 = 6;
+    sint32 sint32 = 7;
+    sint64 sint64 = 8;
+    fixed32 fixed32 = 9;
+    fixed64 fixed64 = 10;
+    sfixed32 sfixed32 = 11;
+    sfixed64 sfixed64 = 12;
+    bool bool = 13;
+    string string = 14;
+    bytes bytes = 15;
+
+    // Complex Field Types
+    int32 enum = 16;
+    // include target Message zero
+    bool message = 17;
+    // JSON
+    bytes repeated = 18;
+    // JSON
+    bytes map = 19;
+
+    // Well-Known Field Types
+    google.protobuf.Any any = 20;
+    google.protobuf.Duration duration = 21;
+    google.protobuf.Timestamp timestamp = 22;
+  }
+}

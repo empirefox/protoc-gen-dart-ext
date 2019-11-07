@@ -20,7 +20,7 @@ const fileBodyTplStr = `
 `
 
 const delegateTplStr = `{{ $L10nClass := l10nClass .Entity }}
-class _{{ $L10nClass }}Delegate extends {{ materialLib.AsDot "LocalizationssDelegate" }}<{{ $L10nClass }}> {
+class _{{ $L10nClass }}Delegate extends {{ materialLib.AsDot "LocalizationsDelegate" }}<{{ $L10nClass }}> {
   const _{{ $L10nClass }}Delegate();
 
   @override
@@ -85,7 +85,7 @@ abstract class {{ $L10nClass }} {
 	{{ end }}
 
 	static {{ $L10nClass }} of({{ materialLib.AsDot "BuildContext" }} context) =>
-		{{ materialLib.AsDot "Localizationss" }}.of<{{ $L10nClass }}>(context, {{ $L10nClass }})
+		{{ materialLib.AsDot "Localizations" }}.of<{{ $L10nClass }}>(context, {{ $L10nClass }})
 		  {{ range .InstanceClasses }}
 		  	..{{ .Instance }} = {{ .FullName }}.of(context)
 		  {{ end }}
@@ -113,7 +113,7 @@ const resourceBaseTplStr = `
 
 const resourceTplStr = `{{ $kSameWith := .SameWith }}
 {{ if and .Attr .Attr.DartParams.JoinWithType }}
-	String {{ .Id }}({{ .Attr.DartParams.JoinWithType }});
+	String {{ .Id }}({{ .Attr.DartParams.JoinWithType }})
 	{{ if $kSameWith }}
 		=> {{ $kSameWith }}({{ .Attr.DartParams.JoinWithoutType }});
 	{{ else }}

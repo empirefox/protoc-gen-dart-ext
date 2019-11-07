@@ -4,317 +4,317 @@ import '../plural/plural.dart';
 import '../l10n/pgde.l10n.dart';
 
 abstract class _Valuer {
-  String of(PgdeLocalization l, Form p);
+  String of(PgdeLocalizations l, Form p);
 }
 
 class _NoAtom implements _Valuer {
   const _NoAtom();
-  String of(PgdeLocalization l, Form p) => '';
+  String of(PgdeLocalizations l, Form p) => '';
 }
 
 class _Meter implements _Valuer {
   const _Meter();
-  String of(PgdeLocalization l, Form p) => l.atomMeter(p);
+  String of(PgdeLocalizations l, Form p) => l.atomMeter(p);
 }
 
 class _Foot implements _Valuer {
   const _Foot();
-  String of(PgdeLocalization l, Form p) => l.atomFoot(p);
+  String of(PgdeLocalizations l, Form p) => l.atomFoot(p);
 }
 
 class _Inch implements _Valuer {
   const _Inch();
-  String of(PgdeLocalization l, Form p) => l.atomInch(p);
+  String of(PgdeLocalizations l, Form p) => l.atomInch(p);
 }
 
 class _Yard implements _Valuer {
   const _Yard();
-  String of(PgdeLocalization l, Form p) => l.atomYard(p);
+  String of(PgdeLocalizations l, Form p) => l.atomYard(p);
 }
 
 class _Mile implements _Valuer {
   const _Mile();
-  String of(PgdeLocalization l, Form p) => l.atomMile(p);
+  String of(PgdeLocalizations l, Form p) => l.atomMile(p);
 }
 
 class _NauticalMile implements _Valuer {
   const _NauticalMile();
-  String of(PgdeLocalization l, Form p) => l.atomNauticalMile(p);
+  String of(PgdeLocalizations l, Form p) => l.atomNauticalMile(p);
 }
 
 class _LightYear implements _Valuer {
   const _LightYear();
-  String of(PgdeLocalization l, Form p) => l.atomLightYear(p);
+  String of(PgdeLocalizations l, Form p) => l.atomLightYear(p);
 }
 
 class _Hectare implements _Valuer {
   const _Hectare();
-  String of(PgdeLocalization l, Form p) => l.atomHectare(p);
+  String of(PgdeLocalizations l, Form p) => l.atomHectare(p);
 }
 
 class _Are implements _Valuer {
   const _Are();
-  String of(PgdeLocalization l, Form p) => l.atomAre(p);
+  String of(PgdeLocalizations l, Form p) => l.atomAre(p);
 }
 
 class _Liter implements _Valuer {
   const _Liter();
-  String of(PgdeLocalization l, Form p) => l.atomLiter(p);
+  String of(PgdeLocalizations l, Form p) => l.atomLiter(p);
 }
 
 class _Gallon implements _Valuer {
   const _Gallon();
-  String of(PgdeLocalization l, Form p) => l.atomGallon(p);
+  String of(PgdeLocalizations l, Form p) => l.atomGallon(p);
 }
 
 class _Barrel implements _Valuer {
   const _Barrel();
-  String of(PgdeLocalization l, Form p) => l.atomBarrel(p);
+  String of(PgdeLocalizations l, Form p) => l.atomBarrel(p);
 }
 
 class _Gram implements _Valuer {
   const _Gram();
-  String of(PgdeLocalization l, Form p) => l.atomGram(p);
+  String of(PgdeLocalizations l, Form p) => l.atomGram(p);
 }
 
 class _Ton implements _Valuer {
   const _Ton();
-  String of(PgdeLocalization l, Form p) => l.atomTon(p);
+  String of(PgdeLocalizations l, Form p) => l.atomTon(p);
 }
 
 class _Pound implements _Valuer {
   const _Pound();
-  String of(PgdeLocalization l, Form p) => l.atomPound(p);
+  String of(PgdeLocalizations l, Form p) => l.atomPound(p);
 }
 
 class _Ounce implements _Valuer {
   const _Ounce();
-  String of(PgdeLocalization l, Form p) => l.atomOunce(p);
+  String of(PgdeLocalizations l, Form p) => l.atomOunce(p);
 }
 
 class _Second implements _Valuer {
   const _Second();
-  String of(PgdeLocalization l, Form p) => l.atomSecond(p);
+  String of(PgdeLocalizations l, Form p) => l.atomSecond(p);
 }
 
 class _Minute implements _Valuer {
   const _Minute();
-  String of(PgdeLocalization l, Form p) => l.atomMinute(p);
+  String of(PgdeLocalizations l, Form p) => l.atomMinute(p);
 }
 
 class _Hour implements _Valuer {
   const _Hour();
-  String of(PgdeLocalization l, Form p) => l.atomHour(p);
+  String of(PgdeLocalizations l, Form p) => l.atomHour(p);
 }
 
 class _Day implements _Valuer {
   const _Day();
-  String of(PgdeLocalization l, Form p) => l.atomDay(p);
+  String of(PgdeLocalizations l, Form p) => l.atomDay(p);
 }
 
 class _Week implements _Valuer {
   const _Week();
-  String of(PgdeLocalization l, Form p) => l.atomWeek(p);
+  String of(PgdeLocalizations l, Form p) => l.atomWeek(p);
 }
 
 class _Month implements _Valuer {
   const _Month();
-  String of(PgdeLocalization l, Form p) => l.atomMonth(p);
+  String of(PgdeLocalizations l, Form p) => l.atomMonth(p);
 }
 
 class _Year implements _Valuer {
   const _Year();
-  String of(PgdeLocalization l, Form p) => l.atomYear(p);
+  String of(PgdeLocalizations l, Form p) => l.atomYear(p);
 }
 
 class _Century implements _Valuer {
   const _Century();
-  String of(PgdeLocalization l, Form p) => l.atomCentury(p);
+  String of(PgdeLocalizations l, Form p) => l.atomCentury(p);
 }
 
 class _SecondAngle implements _Valuer {
   const _SecondAngle();
-  String of(PgdeLocalization l, Form p) => l.atomSecondAngle(p);
+  String of(PgdeLocalizations l, Form p) => l.atomSecondAngle(p);
 }
 
 class _MinuteAngle implements _Valuer {
   const _MinuteAngle();
-  String of(PgdeLocalization l, Form p) => l.atomMinuteAngle(p);
+  String of(PgdeLocalizations l, Form p) => l.atomMinuteAngle(p);
 }
 
 class _Degree implements _Valuer {
   const _Degree();
-  String of(PgdeLocalization l, Form p) => l.atomDegree(p);
+  String of(PgdeLocalizations l, Form p) => l.atomDegree(p);
 }
 
 class _Ampere implements _Valuer {
   const _Ampere();
-  String of(PgdeLocalization l, Form p) => l.atomAmpere(p);
+  String of(PgdeLocalizations l, Form p) => l.atomAmpere(p);
 }
 
 class _Electronvolt implements _Valuer {
   const _Electronvolt();
-  String of(PgdeLocalization l, Form p) => l.atomElectronvolt(p);
+  String of(PgdeLocalizations l, Form p) => l.atomElectronvolt(p);
 }
 
 class _Bel implements _Valuer {
   const _Bel();
-  String of(PgdeLocalization l, Form p) => l.atomBel(p);
+  String of(PgdeLocalizations l, Form p) => l.atomBel(p);
 }
 
 class _Kelvin implements _Valuer {
   const _Kelvin();
-  String of(PgdeLocalization l, Form p) => l.atomKelvin(p);
+  String of(PgdeLocalizations l, Form p) => l.atomKelvin(p);
 }
 
 class _Mole implements _Valuer {
   const _Mole();
-  String of(PgdeLocalization l, Form p) => l.atomMole(p);
+  String of(PgdeLocalizations l, Form p) => l.atomMole(p);
 }
 
 class _Candela implements _Valuer {
   const _Candela();
-  String of(PgdeLocalization l, Form p) => l.atomCandela(p);
+  String of(PgdeLocalizations l, Form p) => l.atomCandela(p);
 }
 
 class _Percent implements _Valuer {
   const _Percent();
-  String of(PgdeLocalization l, Form p) => l.atomPercent(p);
+  String of(PgdeLocalizations l, Form p) => l.atomPercent(p);
 }
 
 class _PerThousand implements _Valuer {
   const _PerThousand();
-  String of(PgdeLocalization l, Form p) => l.atomPerThousand(p);
+  String of(PgdeLocalizations l, Form p) => l.atomPerThousand(p);
 }
 
 class _Bit implements _Valuer {
   const _Bit();
-  String of(PgdeLocalization l, Form p) => l.atomBit(p);
+  String of(PgdeLocalizations l, Form p) => l.atomBit(p);
 }
 
 class _Byte implements _Valuer {
   const _Byte();
-  String of(PgdeLocalization l, Form p) => l.atomByte(p);
+  String of(PgdeLocalizations l, Form p) => l.atomByte(p);
 }
 
 class _Character implements _Valuer {
   const _Character();
-  String of(PgdeLocalization l, Form p) => l.atomCharacter(p);
+  String of(PgdeLocalizations l, Form p) => l.atomCharacter(p);
 }
 
 class _Word implements _Valuer {
   const _Word();
-  String of(PgdeLocalization l, Form p) => l.atomWord(p);
+  String of(PgdeLocalizations l, Form p) => l.atomWord(p);
 }
 
 class _Radian implements _Valuer {
   const _Radian();
-  String of(PgdeLocalization l, Form p) => l.atomRadian(p);
+  String of(PgdeLocalizations l, Form p) => l.atomRadian(p);
 }
 
 class _Steradian implements _Valuer {
   const _Steradian();
-  String of(PgdeLocalization l, Form p) => l.atomSteradian(p);
+  String of(PgdeLocalizations l, Form p) => l.atomSteradian(p);
 }
 
 class _Hertz implements _Valuer {
   const _Hertz();
-  String of(PgdeLocalization l, Form p) => l.atomHertz(p);
+  String of(PgdeLocalizations l, Form p) => l.atomHertz(p);
 }
 
 class _Newton implements _Valuer {
   const _Newton();
-  String of(PgdeLocalization l, Form p) => l.atomNewton(p);
+  String of(PgdeLocalizations l, Form p) => l.atomNewton(p);
 }
 
 class _Pascal implements _Valuer {
   const _Pascal();
-  String of(PgdeLocalization l, Form p) => l.atomPascal(p);
+  String of(PgdeLocalizations l, Form p) => l.atomPascal(p);
 }
 
 class _Joule implements _Valuer {
   const _Joule();
-  String of(PgdeLocalization l, Form p) => l.atomJoule(p);
+  String of(PgdeLocalizations l, Form p) => l.atomJoule(p);
 }
 
 class _Watt implements _Valuer {
   const _Watt();
-  String of(PgdeLocalization l, Form p) => l.atomWatt(p);
+  String of(PgdeLocalizations l, Form p) => l.atomWatt(p);
 }
 
 class _Coulomb implements _Valuer {
   const _Coulomb();
-  String of(PgdeLocalization l, Form p) => l.atomCoulomb(p);
+  String of(PgdeLocalizations l, Form p) => l.atomCoulomb(p);
 }
 
 class _Volt implements _Valuer {
   const _Volt();
-  String of(PgdeLocalization l, Form p) => l.atomVolt(p);
+  String of(PgdeLocalizations l, Form p) => l.atomVolt(p);
 }
 
 class _Farad implements _Valuer {
   const _Farad();
-  String of(PgdeLocalization l, Form p) => l.atomFarad(p);
+  String of(PgdeLocalizations l, Form p) => l.atomFarad(p);
 }
 
 class _Ohm implements _Valuer {
   const _Ohm();
-  String of(PgdeLocalization l, Form p) => l.atomOhm(p);
+  String of(PgdeLocalizations l, Form p) => l.atomOhm(p);
 }
 
 class _Siemens implements _Valuer {
   const _Siemens();
-  String of(PgdeLocalization l, Form p) => l.atomSiemens(p);
+  String of(PgdeLocalizations l, Form p) => l.atomSiemens(p);
 }
 
 class _Weber implements _Valuer {
   const _Weber();
-  String of(PgdeLocalization l, Form p) => l.atomWeber(p);
+  String of(PgdeLocalizations l, Form p) => l.atomWeber(p);
 }
 
 class _Tesla implements _Valuer {
   const _Tesla();
-  String of(PgdeLocalization l, Form p) => l.atomTesla(p);
+  String of(PgdeLocalizations l, Form p) => l.atomTesla(p);
 }
 
 class _Henry implements _Valuer {
   const _Henry();
-  String of(PgdeLocalization l, Form p) => l.atomHenry(p);
+  String of(PgdeLocalizations l, Form p) => l.atomHenry(p);
 }
 
 class _DegreeCelsius implements _Valuer {
   const _DegreeCelsius();
-  String of(PgdeLocalization l, Form p) => l.atomDegreeCelsius(p);
+  String of(PgdeLocalizations l, Form p) => l.atomDegreeCelsius(p);
 }
 
 class _Lumen implements _Valuer {
   const _Lumen();
-  String of(PgdeLocalization l, Form p) => l.atomLumen(p);
+  String of(PgdeLocalizations l, Form p) => l.atomLumen(p);
 }
 
 class _Lux implements _Valuer {
   const _Lux();
-  String of(PgdeLocalization l, Form p) => l.atomLux(p);
+  String of(PgdeLocalizations l, Form p) => l.atomLux(p);
 }
 
 class _Becquerel implements _Valuer {
   const _Becquerel();
-  String of(PgdeLocalization l, Form p) => l.atomBecquerel(p);
+  String of(PgdeLocalizations l, Form p) => l.atomBecquerel(p);
 }
 
 class _Gray implements _Valuer {
   const _Gray();
-  String of(PgdeLocalization l, Form p) => l.atomGray(p);
+  String of(PgdeLocalizations l, Form p) => l.atomGray(p);
 }
 
 class _Sievert implements _Valuer {
   const _Sievert();
-  String of(PgdeLocalization l, Form p) => l.atomSievert(p);
+  String of(PgdeLocalizations l, Form p) => l.atomSievert(p);
 }
 
 class _Katal implements _Valuer {
   const _Katal();
-  String of(PgdeLocalization l, Form p) => l.atomKatal(p);
+  String of(PgdeLocalizations l, Form p) => l.atomKatal(p);
 }
 
 class Atom {
@@ -446,6 +446,6 @@ class Atom {
   final _Valuer _v;
   const Atom._(this.symbol, this._v);
   const Atom.symbol(this.symbol) : _v = null;
-  String l10n(PgdeLocalization l10n, Form form) =>
+  String l10n(PgdeLocalizations l10n, Form form) =>
       l10n == null ? symbol : _v?.of(l10n, form) ?? symbol;
 }

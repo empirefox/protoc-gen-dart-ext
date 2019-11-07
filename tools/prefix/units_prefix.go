@@ -50,18 +50,18 @@ const dartTplStr = genshared.DartHead + `
 import '../l10n/pgde.l10n.dart';
 
 abstract class _Valuer {
-	String of(PgdeLocalization l);
+	String of(PgdeLocalizations l);
 }
 
 class _No{{ Entity }} implements _Valuer {
   const _No{{ Entity }}();
-  String of(PgdeLocalization l) => '';
+  String of(PgdeLocalizations l) => '';
 }
 
 {{- range .AllPrefix }}
   class _{{ .Name | powerCamel }} implements _Valuer {
     const _{{ .Name | powerCamel }}();
-    String of(PgdeLocalization l) => l.{{ entity }}{{ .Name | powerCamel }};
+    String of(PgdeLocalizations l) => l.{{ entity }}{{ .Name | powerCamel }};
   }
 {{- end }}
 
@@ -76,7 +76,7 @@ class {{ Entity }} {
   final int exponent;
   final _Valuer _v;
   const {{ Entity }}._(this.symbol, this.base, this.exponent, this._v);
-  String l10n(PgdeLocalization l10n) => _v.of(l10n) ?? symbol;
+  String l10n(PgdeLocalizations l10n) => _v.of(l10n) ?? symbol;
 }
 `
 

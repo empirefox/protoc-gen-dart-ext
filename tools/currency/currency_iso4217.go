@@ -52,18 +52,18 @@ import '../l10n/pgde.l10n.dart';
 import 'currency_formats.dart';
 
 abstract class _Valuer {
-	String of(PgdeLocalization l);
+	String of(PgdeLocalizations l);
 }
 
 class _XXX implements _Valuer {
   const _XXX();
-  String of(PgdeLocalization l) => '';
+  String of(PgdeLocalizations l) => '';
 }
 
 {{- range .CcyNtry }}
   class _{{ .Ccy }} implements _Valuer {
     const _{{ .Ccy }}();
-    String of(PgdeLocalization l) => l.{{ entity }}{{ .Ccy | powerCamel }};
+    String of(PgdeLocalizations l) => l.{{ entity }}{{ .Ccy | powerCamel }};
   }
 {{- end }}
 
@@ -76,8 +76,8 @@ class {{ Entity }} {
 	String Function(dynamic) get format => getCurrencyFormat(ccy).format;
 	String Function(dynamic) get formatSimple => getSimpleCurrencyFormat(ccy).format;
 	String Function(dynamic) get formatNumber => getCurrencyNumberFormat(ccy).format;
-	String formatName(v, PgdeLocalization l) => (l == null || _v.of(l) == null) ? format(v) : (formatNumber(v) + _v.of(l));
-	String l10n(PgdeLocalization l10n) => l10n == null ? ccy : _v.of(l10n) ?? ccy;
+	String formatName(v, PgdeLocalizations l) => (l == null || _v.of(l) == null) ? format(v) : (formatNumber(v) + _v.of(l));
+	String l10n(PgdeLocalizations l10n) => l10n == null ? ccy : _v.of(l10n) ?? ccy;
 
 	static const XXX = const {{ Entity }}._('', 0, 0, const _XXX());
 	{{- range .CcyNtry }}

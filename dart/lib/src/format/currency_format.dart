@@ -36,23 +36,23 @@ class CurrencyFormatter implements Formatter<num> {
 
 // _CurrencyFormatterter
 abstract class _CurrencyFormatterter {
-  String format(Currency c, v, [PgdeLocalization l]);
+  String format(Currency c, v, [PgdeLocalizations l]);
 }
 
 class _CurrencyCodeFormatter implements _CurrencyFormatterter {
   const _CurrencyCodeFormatter();
   @override
-  String format(Currency c, v, [PgdeLocalization l]) => c.format(v);
+  String format(Currency c, v, [PgdeLocalizations l]) => c.format(v);
 }
 
 class _CurrencySymbolFormatter implements _CurrencyFormatterter {
   const _CurrencySymbolFormatter();
   @override
-  String format(Currency c, v, [PgdeLocalization l]) => c.formatSimple(v);
+  String format(Currency c, v, [PgdeLocalizations l]) => c.formatSimple(v);
 }
 
 class _CurrencyNameFormatter implements _CurrencyFormatterter {
   const _CurrencyNameFormatter();
   @override
-  String format(Currency c, v, [PgdeLocalization l]) => c.formatName(v, l);
+  String format(Currency c, v, [PgdeLocalizations l]) => c.formatName(v, l);
 }

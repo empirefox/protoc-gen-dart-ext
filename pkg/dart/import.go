@@ -150,6 +150,9 @@ func ResolveImport(source, target string) (string, error) {
 	if source == target {
 		return "", nil
 	}
+	if strings.HasPrefix(target, "dart:") || strings.HasPrefix(target, "package:") {
+		return target, nil
+	}
 	return filepath.Rel(filepath.Dir(source), target)
 }
 
@@ -259,7 +262,7 @@ func (m *ImportManager) getFile(fileName string) *ImportFile {
 	ifile, ok := m.byName[fileName]
 	if !ok {
 		seq := len(m.byName) - 1
-		ifile := &ImportFile{
+		ifile = &ImportFile{
 			Manager:         m,
 			Name:            fileName,
 			As:              Qualifier(m.getAs(seq)),

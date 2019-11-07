@@ -63,6 +63,7 @@ func Register(im *dart.ImportManager, tpl *template.Template, params pgs.Paramet
 
 type DartArb struct {
 	*arb.Arb
+	*dart.ImportManager
 	Delegate []arb.SupportedLocale
 }
 
@@ -82,8 +83,9 @@ func ArbsToData(im *dart.ImportManager) func([]*arb.Arb) (*Data, error) {
 
 		return &Data{
 			BaseArb: DartArb{
-				Arb:      as[0],
-				Delegate: arb.SupportedLocales(as),
+				Arb:           as[0],
+				ImportManager: im,
+				Delegate:      arb.SupportedLocales(as),
 			},
 			Arbs: as,
 		}, nil

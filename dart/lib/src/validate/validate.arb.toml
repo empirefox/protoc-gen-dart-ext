@@ -10,4 +10,5 @@
 
 [[Default]]
 Lang = "dart"
-Info = "String"
+Type = "String"
+Replace = "&"

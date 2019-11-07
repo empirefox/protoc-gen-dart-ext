@@ -18,7 +18,7 @@ abstract class GeneratedValidator<T extends GeneratedMessage> {
 
 class ValidateInfo<T extends GeneratedMessage> {
   final MaterialLocalizations md;
-  final PgdeLocalization l10n;
+  final PgdeLocalizations l10n;
   final Formatter fmt;
   final T proto;
 
@@ -48,7 +48,7 @@ abstract class ValidateError extends Error {
 
   final Type pbType;
   final MaterialLocalizations md;
-  final PgdeLocalization l10n;
+  final PgdeLocalizations l10n;
   final Formatter fmt;
 
   BuilderInfo get bi => info.bi;

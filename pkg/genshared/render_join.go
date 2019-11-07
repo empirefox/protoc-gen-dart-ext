@@ -16,8 +16,8 @@ type renderJoinElement struct {
 	prior int
 }
 
-func renderJoinElementLess(a, b *renderJoinElement) bool {
-	return a.prior < b.prior
+func renderJoinElementGreater(a, b *renderJoinElement) bool {
+	return a.prior > b.prior
 }
 
 func newRenderJoinElement(s string) (e *renderJoinElement, err error) {
@@ -43,7 +43,7 @@ func RenderJoin(tpl *template.Template) func(interface{}, ...string) (string, er
 			}
 		}
 
-		for _, e := range group.SortStableUsing(renderJoinElementLess) {
+		for _, e := range group.SortStableUsing(renderJoinElementGreater) {
 			err = tpl.ExecuteTemplate(&e.buf, e.name, data)
 			if err != nil {
 				return

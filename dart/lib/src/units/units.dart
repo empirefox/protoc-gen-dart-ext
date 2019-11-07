@@ -18,7 +18,7 @@ class Unit {
 
   String get symbol => l10n(null, Form.one, showSymbol);
 
-  String l10n(PgdeLocalization l, Form p, [Show show]) {
+  String l10n(PgdeLocalizations l, Form p, [Show show]) {
     show = show ?? this.show;
     if (show.off) return '';
     final buf = StringBuffer();
@@ -28,7 +28,7 @@ class Unit {
   }
 
   void _join(StringBuffer buf, String prefix, List<Cell> cells,
-      PgdeLocalization l, Form p, Show show) {
+      PgdeLocalizations l, Form p, Show show) {
     if (cells != null) {
       if (prefix != null) buf.write(prefix);
       buf.writeAll(cells.map((c) => c.l10n(show.prefix, show.atom, l, p)), '.');
@@ -71,52 +71,52 @@ class Cell {
       : assert(prefix != null),
         assert(atom != null);
 
-  String l10n(_PrefixValuer pv, _AtomValuer av, PgdeLocalization l, Form p) =>
+  String l10n(_PrefixValuer pv, _AtomValuer av, PgdeLocalizations l, Form p) =>
       '${pv.from(prefix, l)}${av.from(atom, l, p)}$exponent';
 }
 
 // _PrefixValuer
 abstract class _PrefixValuer {
-  String from(Prefix p, [PgdeLocalization l]);
+  String from(Prefix p, [PgdeLocalizations l]);
 }
 
 class _PrefixSymbolValuer implements _PrefixValuer {
   const _PrefixSymbolValuer();
   @override
-  String from(Prefix p, [PgdeLocalization l]) => p.symbol;
+  String from(Prefix p, [PgdeLocalizations l]) => p.symbol;
 }
 
 class _PrefixNameValuer implements _PrefixValuer {
   const _PrefixNameValuer();
   @override
-  String from(Prefix p, [PgdeLocalization l]) => p.l10n(l);
+  String from(Prefix p, [PgdeLocalizations l]) => p.l10n(l);
 }
 
 // _AtomValuer
 abstract class _AtomValuer {
-  String from(Atom a, [PgdeLocalization l, Form p]);
+  String from(Atom a, [PgdeLocalizations l, Form p]);
 }
 
 class _AtomSymbolValuer implements _AtomValuer {
   const _AtomSymbolValuer();
   @override
-  String from(Atom a, [PgdeLocalization l, Form p]) => a.symbol;
+  String from(Atom a, [PgdeLocalizations l, Form p]) => a.symbol;
 }
 
 class _AtomOneValuer implements _AtomValuer {
   const _AtomOneValuer();
   @override
-  String from(Atom a, [PgdeLocalization l, Form p]) => a.l10n(l, Form.one);
+  String from(Atom a, [PgdeLocalizations l, Form p]) => a.l10n(l, Form.one);
 }
 
 class _AtomOtherValuer implements _AtomValuer {
   const _AtomOtherValuer();
   @override
-  String from(Atom a, [PgdeLocalization l, Form p]) => a.l10n(l, Form.other);
+  String from(Atom a, [PgdeLocalizations l, Form p]) => a.l10n(l, Form.other);
 }
 
 class _AtomParseValuer implements _AtomValuer {
   const _AtomParseValuer();
   @override
-  String from(Atom a, [PgdeLocalization l, Form p]) => a.l10n(l, p);
+  String from(Atom a, [PgdeLocalizations l, Form p]) => a.l10n(l, p);
 }

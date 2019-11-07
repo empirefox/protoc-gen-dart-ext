@@ -83,21 +83,20 @@ func NewDartParams(mgr *dart.ImportManager, holders ArbPlaceholders) (*DartParam
 			all[i] = &DartParam{
 				Raw:     lp,
 				IsEmpty: true,
-				Replace: "$" + lp.Name,
+				Replace: lp.Name,
 			}
 			continue
 		}
 
 		// Type
-		if strings.Contains(lp.Type, "&&&") {
-			return nil, fmt.Errorf("Invalid Type: %#v", *lp)
+		if lp.Type != "" {
+			if !checkValidTypeReg.MatchString(lp.Type) {
+				return nil, fmt.Errorf("Invalid Type: %#v", *lp)
+			}
 		}
 		typ, err := replaceAs(mgr, lp.Type, lp)
 		if err != nil {
 			return nil, err
-		}
-		if strings.Contains(lp.Type, "&") {
-			return nil, fmt.Errorf("Invalid Type: %#v", *lp)
 		}
 
 		// Replace
@@ -160,6 +159,7 @@ func (ps *DartParams) GetByName(name string) *DartParam { return ps.ByName[name]
 var (
 	searchClassNamesReg  = regexp.MustCompile(`&&&\.([_$0-9A-Za-z]+)\.[_$0-9A-Za-z]+.`)
 	searchDirectNamesReg = regexp.MustCompile(`&&\.([&_$0-9A-Za-z]+)`)
+	checkValidTypeReg    = regexp.MustCompile(`^&&(\.[_$0-9A-Za-z^&]+)?$`)
 )
 
 func searchClassNames(s string) []string {

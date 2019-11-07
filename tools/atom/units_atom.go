@@ -50,18 +50,18 @@ import '../plural/plural.dart';
 import '../l10n/pgde.l10n.dart';
 
 abstract class _Valuer {
-	String of(PgdeLocalization l, Form p);
+	String of(PgdeLocalizations l, Form p);
 }
 
 class _No{{ Entity }} implements _Valuer {
   const _No{{ Entity }}();
-  String of(PgdeLocalization l, Form p) => '';
+  String of(PgdeLocalizations l, Form p) => '';
 }
 
 {{ range .Atoms }}
   class _{{ Field . }} implements _Valuer {
     const _{{ Field . }}();
-    String of(PgdeLocalization l, Form p) => l.{{ entity }}{{ Field . }}(p);
+    String of(PgdeLocalizations l, Form p) => l.{{ entity }}{{ Field . }}(p);
   }
 {{ end }}
 
@@ -76,7 +76,7 @@ class {{ Entity }} {
   final _Valuer _v;
   const {{ Entity }}._(this.symbol, this._v);
   const Atom.symbol(this.symbol) : _v = null;
-  String l10n(PgdeLocalization l10n, Form form) => l10n == null ? symbol : _v?.of(l10n, form) ?? symbol;
+  String l10n(PgdeLocalizations l10n, Form form) => l10n == null ? symbol : _v?.of(l10n, form) ?? symbol;
 }
 `
 

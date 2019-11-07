@@ -15,7 +15,7 @@ dart_test := ${dart_path}/test
 .PHONY: gen_validate_arb
 gen_validate_arb:
 	@cd ${dart_path} && \
-		flutter pub pub run intl_translation:extract_to_arb \
+		flutter pub intl_translation:extract_to_arb \
 		--locale=en \
 		--output-dir=lib/src/validate \
 		--output-file=validate.arb \
@@ -77,14 +77,13 @@ gen_protoc:
 	@protoc -I${makefile_dir} --go_out=paths=source_relative:${makefile_dir}/pkg ${protos_path}/form/*.proto
 	@protoc -I${makefile_dir} --go_out=paths=source_relative:${makefile_dir} ${test_path}/*.proto
 
-# generate PgdeLocalization
+# generate PgdeLocalizations
 .PHONY: gen_pgde_gtt_to_dart
 gen_pgde_gtt_to_dart:
 	@SRC_DIR=${dart_src} \
 		go run ${cmd_path}/gtt_to_dart/*.go \
 		-gtt=${dart_src}/l10n/gtt.toml \
-		-dart_out=${dart_src}/l10n/pgde.l10n.dart \
-		-with_delegate
+		-dart_out=${dart_src}/l10n/pgde.l10n.dart
 	@dartfmt -w ${dart_src}/l10n/pgde.l10n.dart
 
 .PHONY: gen_proto

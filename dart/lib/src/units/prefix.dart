@@ -3,142 +3,142 @@
 import '../l10n/pgde.l10n.dart';
 
 abstract class _Valuer {
-  String of(PgdeLocalization l);
+  String of(PgdeLocalizations l);
 }
 
 class _NoPrefix implements _Valuer {
   const _NoPrefix();
-  String of(PgdeLocalization l) => '';
+  String of(PgdeLocalizations l) => '';
 }
 
 class _Yotta implements _Valuer {
   const _Yotta();
-  String of(PgdeLocalization l) => l.prefixYotta;
+  String of(PgdeLocalizations l) => l.prefixYotta;
 }
 
 class _Zetta implements _Valuer {
   const _Zetta();
-  String of(PgdeLocalization l) => l.prefixZetta;
+  String of(PgdeLocalizations l) => l.prefixZetta;
 }
 
 class _Exa implements _Valuer {
   const _Exa();
-  String of(PgdeLocalization l) => l.prefixExa;
+  String of(PgdeLocalizations l) => l.prefixExa;
 }
 
 class _Peta implements _Valuer {
   const _Peta();
-  String of(PgdeLocalization l) => l.prefixPeta;
+  String of(PgdeLocalizations l) => l.prefixPeta;
 }
 
 class _Tera implements _Valuer {
   const _Tera();
-  String of(PgdeLocalization l) => l.prefixTera;
+  String of(PgdeLocalizations l) => l.prefixTera;
 }
 
 class _Giga implements _Valuer {
   const _Giga();
-  String of(PgdeLocalization l) => l.prefixGiga;
+  String of(PgdeLocalizations l) => l.prefixGiga;
 }
 
 class _Mega implements _Valuer {
   const _Mega();
-  String of(PgdeLocalization l) => l.prefixMega;
+  String of(PgdeLocalizations l) => l.prefixMega;
 }
 
 class _Kilo implements _Valuer {
   const _Kilo();
-  String of(PgdeLocalization l) => l.prefixKilo;
+  String of(PgdeLocalizations l) => l.prefixKilo;
 }
 
 class _Hecto implements _Valuer {
   const _Hecto();
-  String of(PgdeLocalization l) => l.prefixHecto;
+  String of(PgdeLocalizations l) => l.prefixHecto;
 }
 
 class _Deka implements _Valuer {
   const _Deka();
-  String of(PgdeLocalization l) => l.prefixDeka;
+  String of(PgdeLocalizations l) => l.prefixDeka;
 }
 
 class _Deci implements _Valuer {
   const _Deci();
-  String of(PgdeLocalization l) => l.prefixDeci;
+  String of(PgdeLocalizations l) => l.prefixDeci;
 }
 
 class _Centi implements _Valuer {
   const _Centi();
-  String of(PgdeLocalization l) => l.prefixCenti;
+  String of(PgdeLocalizations l) => l.prefixCenti;
 }
 
 class _Milli implements _Valuer {
   const _Milli();
-  String of(PgdeLocalization l) => l.prefixMilli;
+  String of(PgdeLocalizations l) => l.prefixMilli;
 }
 
 class _Micro implements _Valuer {
   const _Micro();
-  String of(PgdeLocalization l) => l.prefixMicro;
+  String of(PgdeLocalizations l) => l.prefixMicro;
 }
 
 class _Nano implements _Valuer {
   const _Nano();
-  String of(PgdeLocalization l) => l.prefixNano;
+  String of(PgdeLocalizations l) => l.prefixNano;
 }
 
 class _Pico implements _Valuer {
   const _Pico();
-  String of(PgdeLocalization l) => l.prefixPico;
+  String of(PgdeLocalizations l) => l.prefixPico;
 }
 
 class _Femto implements _Valuer {
   const _Femto();
-  String of(PgdeLocalization l) => l.prefixFemto;
+  String of(PgdeLocalizations l) => l.prefixFemto;
 }
 
 class _Atto implements _Valuer {
   const _Atto();
-  String of(PgdeLocalization l) => l.prefixAtto;
+  String of(PgdeLocalizations l) => l.prefixAtto;
 }
 
 class _Zepto implements _Valuer {
   const _Zepto();
-  String of(PgdeLocalization l) => l.prefixZepto;
+  String of(PgdeLocalizations l) => l.prefixZepto;
 }
 
 class _Yocto implements _Valuer {
   const _Yocto();
-  String of(PgdeLocalization l) => l.prefixYocto;
+  String of(PgdeLocalizations l) => l.prefixYocto;
 }
 
 class _Kibi implements _Valuer {
   const _Kibi();
-  String of(PgdeLocalization l) => l.prefixKibi;
+  String of(PgdeLocalizations l) => l.prefixKibi;
 }
 
 class _Mebi implements _Valuer {
   const _Mebi();
-  String of(PgdeLocalization l) => l.prefixMebi;
+  String of(PgdeLocalizations l) => l.prefixMebi;
 }
 
 class _Gibi implements _Valuer {
   const _Gibi();
-  String of(PgdeLocalization l) => l.prefixGibi;
+  String of(PgdeLocalizations l) => l.prefixGibi;
 }
 
 class _Tebi implements _Valuer {
   const _Tebi();
-  String of(PgdeLocalization l) => l.prefixTebi;
+  String of(PgdeLocalizations l) => l.prefixTebi;
 }
 
 class _Pebi implements _Valuer {
   const _Pebi();
-  String of(PgdeLocalization l) => l.prefixPebi;
+  String of(PgdeLocalizations l) => l.prefixPebi;
 }
 
 class _Exbi implements _Valuer {
   const _Exbi();
-  String of(PgdeLocalization l) => l.prefixExbi;
+  String of(PgdeLocalizations l) => l.prefixExbi;
 }
 
 class Prefix {
@@ -175,5 +175,5 @@ class Prefix {
   final int exponent;
   final _Valuer _v;
   const Prefix._(this.symbol, this.base, this.exponent, this._v);
-  String l10n(PgdeLocalization l10n) => _v.of(l10n) ?? symbol;
+  String l10n(PgdeLocalizations l10n) => _v.of(l10n) ?? symbol;
 }

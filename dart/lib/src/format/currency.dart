@@ -4,902 +4,902 @@ import '../l10n/pgde.l10n.dart';
 import 'currency_formats.dart';
 
 abstract class _Valuer {
-  String of(PgdeLocalization l);
+  String of(PgdeLocalizations l);
 }
 
 class _XXX implements _Valuer {
   const _XXX();
-  String of(PgdeLocalization l) => '';
+  String of(PgdeLocalizations l) => '';
 }
 
 class _ALL implements _Valuer {
   const _ALL();
-  String of(PgdeLocalization l) => l.currencyAll;
+  String of(PgdeLocalizations l) => l.currencyALL;
 }
 
 class _DZD implements _Valuer {
   const _DZD();
-  String of(PgdeLocalization l) => l.currencyDzd;
+  String of(PgdeLocalizations l) => l.currencyDZD;
 }
 
 class _ARS implements _Valuer {
   const _ARS();
-  String of(PgdeLocalization l) => l.currencyArs;
+  String of(PgdeLocalizations l) => l.currencyARS;
 }
 
 class _AUD implements _Valuer {
   const _AUD();
-  String of(PgdeLocalization l) => l.currencyAud;
+  String of(PgdeLocalizations l) => l.currencyAUD;
 }
 
 class _BSD implements _Valuer {
   const _BSD();
-  String of(PgdeLocalization l) => l.currencyBsd;
+  String of(PgdeLocalizations l) => l.currencyBSD;
 }
 
 class _BHD implements _Valuer {
   const _BHD();
-  String of(PgdeLocalization l) => l.currencyBhd;
+  String of(PgdeLocalizations l) => l.currencyBHD;
 }
 
 class _BDT implements _Valuer {
   const _BDT();
-  String of(PgdeLocalization l) => l.currencyBdt;
+  String of(PgdeLocalizations l) => l.currencyBDT;
 }
 
 class _AMD implements _Valuer {
   const _AMD();
-  String of(PgdeLocalization l) => l.currencyAmd;
+  String of(PgdeLocalizations l) => l.currencyAMD;
 }
 
 class _BBD implements _Valuer {
   const _BBD();
-  String of(PgdeLocalization l) => l.currencyBbd;
+  String of(PgdeLocalizations l) => l.currencyBBD;
 }
 
 class _BMD implements _Valuer {
   const _BMD();
-  String of(PgdeLocalization l) => l.currencyBmd;
+  String of(PgdeLocalizations l) => l.currencyBMD;
 }
 
 class _BTN implements _Valuer {
   const _BTN();
-  String of(PgdeLocalization l) => l.currencyBtn;
+  String of(PgdeLocalizations l) => l.currencyBTN;
 }
 
 class _BOB implements _Valuer {
   const _BOB();
-  String of(PgdeLocalization l) => l.currencyBob;
+  String of(PgdeLocalizations l) => l.currencyBOB;
 }
 
 class _BWP implements _Valuer {
   const _BWP();
-  String of(PgdeLocalization l) => l.currencyBwp;
+  String of(PgdeLocalizations l) => l.currencyBWP;
 }
 
 class _BZD implements _Valuer {
   const _BZD();
-  String of(PgdeLocalization l) => l.currencyBzd;
+  String of(PgdeLocalizations l) => l.currencyBZD;
 }
 
 class _SBD implements _Valuer {
   const _SBD();
-  String of(PgdeLocalization l) => l.currencySbd;
+  String of(PgdeLocalizations l) => l.currencySBD;
 }
 
 class _BND implements _Valuer {
   const _BND();
-  String of(PgdeLocalization l) => l.currencyBnd;
+  String of(PgdeLocalizations l) => l.currencyBND;
 }
 
 class _MMK implements _Valuer {
   const _MMK();
-  String of(PgdeLocalization l) => l.currencyMmk;
+  String of(PgdeLocalizations l) => l.currencyMMK;
 }
 
 class _BIF implements _Valuer {
   const _BIF();
-  String of(PgdeLocalization l) => l.currencyBif;
+  String of(PgdeLocalizations l) => l.currencyBIF;
 }
 
 class _KHR implements _Valuer {
   const _KHR();
-  String of(PgdeLocalization l) => l.currencyKhr;
+  String of(PgdeLocalizations l) => l.currencyKHR;
 }
 
 class _CAD implements _Valuer {
   const _CAD();
-  String of(PgdeLocalization l) => l.currencyCad;
+  String of(PgdeLocalizations l) => l.currencyCAD;
 }
 
 class _CVE implements _Valuer {
   const _CVE();
-  String of(PgdeLocalization l) => l.currencyCve;
+  String of(PgdeLocalizations l) => l.currencyCVE;
 }
 
 class _KYD implements _Valuer {
   const _KYD();
-  String of(PgdeLocalization l) => l.currencyKyd;
+  String of(PgdeLocalizations l) => l.currencyKYD;
 }
 
 class _LKR implements _Valuer {
   const _LKR();
-  String of(PgdeLocalization l) => l.currencyLkr;
+  String of(PgdeLocalizations l) => l.currencyLKR;
 }
 
 class _CLP implements _Valuer {
   const _CLP();
-  String of(PgdeLocalization l) => l.currencyClp;
+  String of(PgdeLocalizations l) => l.currencyCLP;
 }
 
 class _CNY implements _Valuer {
   const _CNY();
-  String of(PgdeLocalization l) => l.currencyCny;
+  String of(PgdeLocalizations l) => l.currencyCNY;
 }
 
 class _COP implements _Valuer {
   const _COP();
-  String of(PgdeLocalization l) => l.currencyCop;
+  String of(PgdeLocalizations l) => l.currencyCOP;
 }
 
 class _KMF implements _Valuer {
   const _KMF();
-  String of(PgdeLocalization l) => l.currencyKmf;
+  String of(PgdeLocalizations l) => l.currencyKMF;
 }
 
 class _CRC implements _Valuer {
   const _CRC();
-  String of(PgdeLocalization l) => l.currencyCrc;
+  String of(PgdeLocalizations l) => l.currencyCRC;
 }
 
 class _HRK implements _Valuer {
   const _HRK();
-  String of(PgdeLocalization l) => l.currencyHrk;
+  String of(PgdeLocalizations l) => l.currencyHRK;
 }
 
 class _CUP implements _Valuer {
   const _CUP();
-  String of(PgdeLocalization l) => l.currencyCup;
+  String of(PgdeLocalizations l) => l.currencyCUP;
 }
 
 class _CZK implements _Valuer {
   const _CZK();
-  String of(PgdeLocalization l) => l.currencyCzk;
+  String of(PgdeLocalizations l) => l.currencyCZK;
 }
 
 class _DKK implements _Valuer {
   const _DKK();
-  String of(PgdeLocalization l) => l.currencyDkk;
+  String of(PgdeLocalizations l) => l.currencyDKK;
 }
 
 class _DOP implements _Valuer {
   const _DOP();
-  String of(PgdeLocalization l) => l.currencyDop;
+  String of(PgdeLocalizations l) => l.currencyDOP;
 }
 
 class _SVC implements _Valuer {
   const _SVC();
-  String of(PgdeLocalization l) => l.currencySvc;
+  String of(PgdeLocalizations l) => l.currencySVC;
 }
 
 class _ETB implements _Valuer {
   const _ETB();
-  String of(PgdeLocalization l) => l.currencyEtb;
+  String of(PgdeLocalizations l) => l.currencyETB;
 }
 
 class _ERN implements _Valuer {
   const _ERN();
-  String of(PgdeLocalization l) => l.currencyErn;
+  String of(PgdeLocalizations l) => l.currencyERN;
 }
 
 class _FKP implements _Valuer {
   const _FKP();
-  String of(PgdeLocalization l) => l.currencyFkp;
+  String of(PgdeLocalizations l) => l.currencyFKP;
 }
 
 class _FJD implements _Valuer {
   const _FJD();
-  String of(PgdeLocalization l) => l.currencyFjd;
+  String of(PgdeLocalizations l) => l.currencyFJD;
 }
 
 class _DJF implements _Valuer {
   const _DJF();
-  String of(PgdeLocalization l) => l.currencyDjf;
+  String of(PgdeLocalizations l) => l.currencyDJF;
 }
 
 class _GMD implements _Valuer {
   const _GMD();
-  String of(PgdeLocalization l) => l.currencyGmd;
+  String of(PgdeLocalizations l) => l.currencyGMD;
 }
 
 class _GIP implements _Valuer {
   const _GIP();
-  String of(PgdeLocalization l) => l.currencyGip;
+  String of(PgdeLocalizations l) => l.currencyGIP;
 }
 
 class _GTQ implements _Valuer {
   const _GTQ();
-  String of(PgdeLocalization l) => l.currencyGtq;
+  String of(PgdeLocalizations l) => l.currencyGTQ;
 }
 
 class _GNF implements _Valuer {
   const _GNF();
-  String of(PgdeLocalization l) => l.currencyGnf;
+  String of(PgdeLocalizations l) => l.currencyGNF;
 }
 
 class _GYD implements _Valuer {
   const _GYD();
-  String of(PgdeLocalization l) => l.currencyGyd;
+  String of(PgdeLocalizations l) => l.currencyGYD;
 }
 
 class _HTG implements _Valuer {
   const _HTG();
-  String of(PgdeLocalization l) => l.currencyHtg;
+  String of(PgdeLocalizations l) => l.currencyHTG;
 }
 
 class _HNL implements _Valuer {
   const _HNL();
-  String of(PgdeLocalization l) => l.currencyHnl;
+  String of(PgdeLocalizations l) => l.currencyHNL;
 }
 
 class _HKD implements _Valuer {
   const _HKD();
-  String of(PgdeLocalization l) => l.currencyHkd;
+  String of(PgdeLocalizations l) => l.currencyHKD;
 }
 
 class _HUF implements _Valuer {
   const _HUF();
-  String of(PgdeLocalization l) => l.currencyHuf;
+  String of(PgdeLocalizations l) => l.currencyHUF;
 }
 
 class _ISK implements _Valuer {
   const _ISK();
-  String of(PgdeLocalization l) => l.currencyIsk;
+  String of(PgdeLocalizations l) => l.currencyISK;
 }
 
 class _INR implements _Valuer {
   const _INR();
-  String of(PgdeLocalization l) => l.currencyInr;
+  String of(PgdeLocalizations l) => l.currencyINR;
 }
 
 class _IDR implements _Valuer {
   const _IDR();
-  String of(PgdeLocalization l) => l.currencyIdr;
+  String of(PgdeLocalizations l) => l.currencyIDR;
 }
 
 class _IRR implements _Valuer {
   const _IRR();
-  String of(PgdeLocalization l) => l.currencyIrr;
+  String of(PgdeLocalizations l) => l.currencyIRR;
 }
 
 class _IQD implements _Valuer {
   const _IQD();
-  String of(PgdeLocalization l) => l.currencyIqd;
+  String of(PgdeLocalizations l) => l.currencyIQD;
 }
 
 class _ILS implements _Valuer {
   const _ILS();
-  String of(PgdeLocalization l) => l.currencyIls;
+  String of(PgdeLocalizations l) => l.currencyILS;
 }
 
 class _JMD implements _Valuer {
   const _JMD();
-  String of(PgdeLocalization l) => l.currencyJmd;
+  String of(PgdeLocalizations l) => l.currencyJMD;
 }
 
 class _JPY implements _Valuer {
   const _JPY();
-  String of(PgdeLocalization l) => l.currencyJpy;
+  String of(PgdeLocalizations l) => l.currencyJPY;
 }
 
 class _KZT implements _Valuer {
   const _KZT();
-  String of(PgdeLocalization l) => l.currencyKzt;
+  String of(PgdeLocalizations l) => l.currencyKZT;
 }
 
 class _JOD implements _Valuer {
   const _JOD();
-  String of(PgdeLocalization l) => l.currencyJod;
+  String of(PgdeLocalizations l) => l.currencyJOD;
 }
 
 class _KES implements _Valuer {
   const _KES();
-  String of(PgdeLocalization l) => l.currencyKes;
+  String of(PgdeLocalizations l) => l.currencyKES;
 }
 
 class _KPW implements _Valuer {
   const _KPW();
-  String of(PgdeLocalization l) => l.currencyKpw;
+  String of(PgdeLocalizations l) => l.currencyKPW;
 }
 
 class _KRW implements _Valuer {
   const _KRW();
-  String of(PgdeLocalization l) => l.currencyKrw;
+  String of(PgdeLocalizations l) => l.currencyKRW;
 }
 
 class _KWD implements _Valuer {
   const _KWD();
-  String of(PgdeLocalization l) => l.currencyKwd;
+  String of(PgdeLocalizations l) => l.currencyKWD;
 }
 
 class _KGS implements _Valuer {
   const _KGS();
-  String of(PgdeLocalization l) => l.currencyKgs;
+  String of(PgdeLocalizations l) => l.currencyKGS;
 }
 
 class _LAK implements _Valuer {
   const _LAK();
-  String of(PgdeLocalization l) => l.currencyLak;
+  String of(PgdeLocalizations l) => l.currencyLAK;
 }
 
 class _LBP implements _Valuer {
   const _LBP();
-  String of(PgdeLocalization l) => l.currencyLbp;
+  String of(PgdeLocalizations l) => l.currencyLBP;
 }
 
 class _LSL implements _Valuer {
   const _LSL();
-  String of(PgdeLocalization l) => l.currencyLsl;
+  String of(PgdeLocalizations l) => l.currencyLSL;
 }
 
 class _LRD implements _Valuer {
   const _LRD();
-  String of(PgdeLocalization l) => l.currencyLrd;
+  String of(PgdeLocalizations l) => l.currencyLRD;
 }
 
 class _LYD implements _Valuer {
   const _LYD();
-  String of(PgdeLocalization l) => l.currencyLyd;
+  String of(PgdeLocalizations l) => l.currencyLYD;
 }
 
 class _MOP implements _Valuer {
   const _MOP();
-  String of(PgdeLocalization l) => l.currencyMop;
+  String of(PgdeLocalizations l) => l.currencyMOP;
 }
 
 class _MWK implements _Valuer {
   const _MWK();
-  String of(PgdeLocalization l) => l.currencyMwk;
+  String of(PgdeLocalizations l) => l.currencyMWK;
 }
 
 class _MYR implements _Valuer {
   const _MYR();
-  String of(PgdeLocalization l) => l.currencyMyr;
+  String of(PgdeLocalizations l) => l.currencyMYR;
 }
 
 class _MVR implements _Valuer {
   const _MVR();
-  String of(PgdeLocalization l) => l.currencyMvr;
+  String of(PgdeLocalizations l) => l.currencyMVR;
 }
 
 class _MUR implements _Valuer {
   const _MUR();
-  String of(PgdeLocalization l) => l.currencyMur;
+  String of(PgdeLocalizations l) => l.currencyMUR;
 }
 
 class _MXN implements _Valuer {
   const _MXN();
-  String of(PgdeLocalization l) => l.currencyMxn;
+  String of(PgdeLocalizations l) => l.currencyMXN;
 }
 
 class _MNT implements _Valuer {
   const _MNT();
-  String of(PgdeLocalization l) => l.currencyMnt;
+  String of(PgdeLocalizations l) => l.currencyMNT;
 }
 
 class _MDL implements _Valuer {
   const _MDL();
-  String of(PgdeLocalization l) => l.currencyMdl;
+  String of(PgdeLocalizations l) => l.currencyMDL;
 }
 
 class _MAD implements _Valuer {
   const _MAD();
-  String of(PgdeLocalization l) => l.currencyMad;
+  String of(PgdeLocalizations l) => l.currencyMAD;
 }
 
 class _OMR implements _Valuer {
   const _OMR();
-  String of(PgdeLocalization l) => l.currencyOmr;
+  String of(PgdeLocalizations l) => l.currencyOMR;
 }
 
 class _NAD implements _Valuer {
   const _NAD();
-  String of(PgdeLocalization l) => l.currencyNad;
+  String of(PgdeLocalizations l) => l.currencyNAD;
 }
 
 class _NPR implements _Valuer {
   const _NPR();
-  String of(PgdeLocalization l) => l.currencyNpr;
+  String of(PgdeLocalizations l) => l.currencyNPR;
 }
 
 class _ANG implements _Valuer {
   const _ANG();
-  String of(PgdeLocalization l) => l.currencyAng;
+  String of(PgdeLocalizations l) => l.currencyANG;
 }
 
 class _AWG implements _Valuer {
   const _AWG();
-  String of(PgdeLocalization l) => l.currencyAwg;
+  String of(PgdeLocalizations l) => l.currencyAWG;
 }
 
 class _VUV implements _Valuer {
   const _VUV();
-  String of(PgdeLocalization l) => l.currencyVuv;
+  String of(PgdeLocalizations l) => l.currencyVUV;
 }
 
 class _NZD implements _Valuer {
   const _NZD();
-  String of(PgdeLocalization l) => l.currencyNzd;
+  String of(PgdeLocalizations l) => l.currencyNZD;
 }
 
 class _NIO implements _Valuer {
   const _NIO();
-  String of(PgdeLocalization l) => l.currencyNio;
+  String of(PgdeLocalizations l) => l.currencyNIO;
 }
 
 class _NGN implements _Valuer {
   const _NGN();
-  String of(PgdeLocalization l) => l.currencyNgn;
+  String of(PgdeLocalizations l) => l.currencyNGN;
 }
 
 class _NOK implements _Valuer {
   const _NOK();
-  String of(PgdeLocalization l) => l.currencyNok;
+  String of(PgdeLocalizations l) => l.currencyNOK;
 }
 
 class _PKR implements _Valuer {
   const _PKR();
-  String of(PgdeLocalization l) => l.currencyPkr;
+  String of(PgdeLocalizations l) => l.currencyPKR;
 }
 
 class _PAB implements _Valuer {
   const _PAB();
-  String of(PgdeLocalization l) => l.currencyPab;
+  String of(PgdeLocalizations l) => l.currencyPAB;
 }
 
 class _PGK implements _Valuer {
   const _PGK();
-  String of(PgdeLocalization l) => l.currencyPgk;
+  String of(PgdeLocalizations l) => l.currencyPGK;
 }
 
 class _PYG implements _Valuer {
   const _PYG();
-  String of(PgdeLocalization l) => l.currencyPyg;
+  String of(PgdeLocalizations l) => l.currencyPYG;
 }
 
 class _PEN implements _Valuer {
   const _PEN();
-  String of(PgdeLocalization l) => l.currencyPen;
+  String of(PgdeLocalizations l) => l.currencyPEN;
 }
 
 class _PHP implements _Valuer {
   const _PHP();
-  String of(PgdeLocalization l) => l.currencyPhp;
+  String of(PgdeLocalizations l) => l.currencyPHP;
 }
 
 class _QAR implements _Valuer {
   const _QAR();
-  String of(PgdeLocalization l) => l.currencyQar;
+  String of(PgdeLocalizations l) => l.currencyQAR;
 }
 
 class _RUB implements _Valuer {
   const _RUB();
-  String of(PgdeLocalization l) => l.currencyRub;
+  String of(PgdeLocalizations l) => l.currencyRUB;
 }
 
 class _RWF implements _Valuer {
   const _RWF();
-  String of(PgdeLocalization l) => l.currencyRwf;
+  String of(PgdeLocalizations l) => l.currencyRWF;
 }
 
 class _SHP implements _Valuer {
   const _SHP();
-  String of(PgdeLocalization l) => l.currencyShp;
+  String of(PgdeLocalizations l) => l.currencySHP;
 }
 
 class _SAR implements _Valuer {
   const _SAR();
-  String of(PgdeLocalization l) => l.currencySar;
+  String of(PgdeLocalizations l) => l.currencySAR;
 }
 
 class _SCR implements _Valuer {
   const _SCR();
-  String of(PgdeLocalization l) => l.currencyScr;
+  String of(PgdeLocalizations l) => l.currencySCR;
 }
 
 class _SLL implements _Valuer {
   const _SLL();
-  String of(PgdeLocalization l) => l.currencySll;
+  String of(PgdeLocalizations l) => l.currencySLL;
 }
 
 class _SGD implements _Valuer {
   const _SGD();
-  String of(PgdeLocalization l) => l.currencySgd;
+  String of(PgdeLocalizations l) => l.currencySGD;
 }
 
 class _VND implements _Valuer {
   const _VND();
-  String of(PgdeLocalization l) => l.currencyVnd;
+  String of(PgdeLocalizations l) => l.currencyVND;
 }
 
 class _SOS implements _Valuer {
   const _SOS();
-  String of(PgdeLocalization l) => l.currencySos;
+  String of(PgdeLocalizations l) => l.currencySOS;
 }
 
 class _ZAR implements _Valuer {
   const _ZAR();
-  String of(PgdeLocalization l) => l.currencyZar;
+  String of(PgdeLocalizations l) => l.currencyZAR;
 }
 
 class _SSP implements _Valuer {
   const _SSP();
-  String of(PgdeLocalization l) => l.currencySsp;
+  String of(PgdeLocalizations l) => l.currencySSP;
 }
 
 class _SZL implements _Valuer {
   const _SZL();
-  String of(PgdeLocalization l) => l.currencySzl;
+  String of(PgdeLocalizations l) => l.currencySZL;
 }
 
 class _SEK implements _Valuer {
   const _SEK();
-  String of(PgdeLocalization l) => l.currencySek;
+  String of(PgdeLocalizations l) => l.currencySEK;
 }
 
 class _CHF implements _Valuer {
   const _CHF();
-  String of(PgdeLocalization l) => l.currencyChf;
+  String of(PgdeLocalizations l) => l.currencyCHF;
 }
 
 class _SYP implements _Valuer {
   const _SYP();
-  String of(PgdeLocalization l) => l.currencySyp;
+  String of(PgdeLocalizations l) => l.currencySYP;
 }
 
 class _THB implements _Valuer {
   const _THB();
-  String of(PgdeLocalization l) => l.currencyThb;
+  String of(PgdeLocalizations l) => l.currencyTHB;
 }
 
 class _TOP implements _Valuer {
   const _TOP();
-  String of(PgdeLocalization l) => l.currencyTop;
+  String of(PgdeLocalizations l) => l.currencyTOP;
 }
 
 class _TTD implements _Valuer {
   const _TTD();
-  String of(PgdeLocalization l) => l.currencyTtd;
+  String of(PgdeLocalizations l) => l.currencyTTD;
 }
 
 class _AED implements _Valuer {
   const _AED();
-  String of(PgdeLocalization l) => l.currencyAed;
+  String of(PgdeLocalizations l) => l.currencyAED;
 }
 
 class _TND implements _Valuer {
   const _TND();
-  String of(PgdeLocalization l) => l.currencyTnd;
+  String of(PgdeLocalizations l) => l.currencyTND;
 }
 
 class _UGX implements _Valuer {
   const _UGX();
-  String of(PgdeLocalization l) => l.currencyUgx;
+  String of(PgdeLocalizations l) => l.currencyUGX;
 }
 
 class _MKD implements _Valuer {
   const _MKD();
-  String of(PgdeLocalization l) => l.currencyMkd;
+  String of(PgdeLocalizations l) => l.currencyMKD;
 }
 
 class _EGP implements _Valuer {
   const _EGP();
-  String of(PgdeLocalization l) => l.currencyEgp;
+  String of(PgdeLocalizations l) => l.currencyEGP;
 }
 
 class _GBP implements _Valuer {
   const _GBP();
-  String of(PgdeLocalization l) => l.currencyGbp;
+  String of(PgdeLocalizations l) => l.currencyGBP;
 }
 
 class _TZS implements _Valuer {
   const _TZS();
-  String of(PgdeLocalization l) => l.currencyTzs;
+  String of(PgdeLocalizations l) => l.currencyTZS;
 }
 
 class _USD implements _Valuer {
   const _USD();
-  String of(PgdeLocalization l) => l.currencyUsd;
+  String of(PgdeLocalizations l) => l.currencyUSD;
 }
 
 class _UYU implements _Valuer {
   const _UYU();
-  String of(PgdeLocalization l) => l.currencyUyu;
+  String of(PgdeLocalizations l) => l.currencyUYU;
 }
 
 class _UZS implements _Valuer {
   const _UZS();
-  String of(PgdeLocalization l) => l.currencyUzs;
+  String of(PgdeLocalizations l) => l.currencyUZS;
 }
 
 class _WST implements _Valuer {
   const _WST();
-  String of(PgdeLocalization l) => l.currencyWst;
+  String of(PgdeLocalizations l) => l.currencyWST;
 }
 
 class _YER implements _Valuer {
   const _YER();
-  String of(PgdeLocalization l) => l.currencyYer;
+  String of(PgdeLocalizations l) => l.currencyYER;
 }
 
 class _TWD implements _Valuer {
   const _TWD();
-  String of(PgdeLocalization l) => l.currencyTwd;
+  String of(PgdeLocalizations l) => l.currencyTWD;
 }
 
 class _UYW implements _Valuer {
   const _UYW();
-  String of(PgdeLocalization l) => l.currencyUyw;
+  String of(PgdeLocalizations l) => l.currencyUYW;
 }
 
 class _VES implements _Valuer {
   const _VES();
-  String of(PgdeLocalization l) => l.currencyVes;
+  String of(PgdeLocalizations l) => l.currencyVES;
 }
 
 class _MRU implements _Valuer {
   const _MRU();
-  String of(PgdeLocalization l) => l.currencyMru;
+  String of(PgdeLocalizations l) => l.currencyMRU;
 }
 
 class _STN implements _Valuer {
   const _STN();
-  String of(PgdeLocalization l) => l.currencyStn;
+  String of(PgdeLocalizations l) => l.currencySTN;
 }
 
 class _CUC implements _Valuer {
   const _CUC();
-  String of(PgdeLocalization l) => l.currencyCuc;
+  String of(PgdeLocalizations l) => l.currencyCUC;
 }
 
 class _ZWL implements _Valuer {
   const _ZWL();
-  String of(PgdeLocalization l) => l.currencyZwl;
+  String of(PgdeLocalizations l) => l.currencyZWL;
 }
 
 class _BYN implements _Valuer {
   const _BYN();
-  String of(PgdeLocalization l) => l.currencyByn;
+  String of(PgdeLocalizations l) => l.currencyBYN;
 }
 
 class _TMT implements _Valuer {
   const _TMT();
-  String of(PgdeLocalization l) => l.currencyTmt;
+  String of(PgdeLocalizations l) => l.currencyTMT;
 }
 
 class _GHS implements _Valuer {
   const _GHS();
-  String of(PgdeLocalization l) => l.currencyGhs;
+  String of(PgdeLocalizations l) => l.currencyGHS;
 }
 
 class _SDG implements _Valuer {
   const _SDG();
-  String of(PgdeLocalization l) => l.currencySdg;
+  String of(PgdeLocalizations l) => l.currencySDG;
 }
 
 class _UYI implements _Valuer {
   const _UYI();
-  String of(PgdeLocalization l) => l.currencyUyi;
+  String of(PgdeLocalizations l) => l.currencyUYI;
 }
 
 class _RSD implements _Valuer {
   const _RSD();
-  String of(PgdeLocalization l) => l.currencyRsd;
+  String of(PgdeLocalizations l) => l.currencyRSD;
 }
 
 class _MZN implements _Valuer {
   const _MZN();
-  String of(PgdeLocalization l) => l.currencyMzn;
+  String of(PgdeLocalizations l) => l.currencyMZN;
 }
 
 class _AZN implements _Valuer {
   const _AZN();
-  String of(PgdeLocalization l) => l.currencyAzn;
+  String of(PgdeLocalizations l) => l.currencyAZN;
 }
 
 class _RON implements _Valuer {
   const _RON();
-  String of(PgdeLocalization l) => l.currencyRon;
+  String of(PgdeLocalizations l) => l.currencyRON;
 }
 
 class _CHE implements _Valuer {
   const _CHE();
-  String of(PgdeLocalization l) => l.currencyChe;
+  String of(PgdeLocalizations l) => l.currencyCHE;
 }
 
 class _CHW implements _Valuer {
   const _CHW();
-  String of(PgdeLocalization l) => l.currencyChw;
+  String of(PgdeLocalizations l) => l.currencyCHW;
 }
 
 class _TRY implements _Valuer {
   const _TRY();
-  String of(PgdeLocalization l) => l.currencyTry;
+  String of(PgdeLocalizations l) => l.currencyTRY;
 }
 
 class _XAF implements _Valuer {
   const _XAF();
-  String of(PgdeLocalization l) => l.currencyXaf;
+  String of(PgdeLocalizations l) => l.currencyXAF;
 }
 
 class _XCD implements _Valuer {
   const _XCD();
-  String of(PgdeLocalization l) => l.currencyXcd;
+  String of(PgdeLocalizations l) => l.currencyXCD;
 }
 
 class _XOF implements _Valuer {
   const _XOF();
-  String of(PgdeLocalization l) => l.currencyXof;
+  String of(PgdeLocalizations l) => l.currencyXOF;
 }
 
 class _XPF implements _Valuer {
   const _XPF();
-  String of(PgdeLocalization l) => l.currencyXpf;
+  String of(PgdeLocalizations l) => l.currencyXPF;
 }
 
 class _XBA implements _Valuer {
   const _XBA();
-  String of(PgdeLocalization l) => l.currencyXba;
+  String of(PgdeLocalizations l) => l.currencyXBA;
 }
 
 class _XBB implements _Valuer {
   const _XBB();
-  String of(PgdeLocalization l) => l.currencyXbb;
+  String of(PgdeLocalizations l) => l.currencyXBB;
 }
 
 class _XBC implements _Valuer {
   const _XBC();
-  String of(PgdeLocalization l) => l.currencyXbc;
+  String of(PgdeLocalizations l) => l.currencyXBC;
 }
 
 class _XBD implements _Valuer {
   const _XBD();
-  String of(PgdeLocalization l) => l.currencyXbd;
+  String of(PgdeLocalizations l) => l.currencyXBD;
 }
 
 class _XAU implements _Valuer {
   const _XAU();
-  String of(PgdeLocalization l) => l.currencyXau;
+  String of(PgdeLocalizations l) => l.currencyXAU;
 }
 
 class _XDR implements _Valuer {
   const _XDR();
-  String of(PgdeLocalization l) => l.currencyXdr;
+  String of(PgdeLocalizations l) => l.currencyXDR;
 }
 
 class _XAG implements _Valuer {
   const _XAG();
-  String of(PgdeLocalization l) => l.currencyXag;
+  String of(PgdeLocalizations l) => l.currencyXAG;
 }
 
 class _XPT implements _Valuer {
   const _XPT();
-  String of(PgdeLocalization l) => l.currencyXpt;
+  String of(PgdeLocalizations l) => l.currencyXPT;
 }
 
 class _XTS implements _Valuer {
   const _XTS();
-  String of(PgdeLocalization l) => l.currencyXts;
+  String of(PgdeLocalizations l) => l.currencyXTS;
 }
 
 class _XPD implements _Valuer {
   const _XPD();
-  String of(PgdeLocalization l) => l.currencyXpd;
+  String of(PgdeLocalizations l) => l.currencyXPD;
 }
 
 class _XUA implements _Valuer {
   const _XUA();
-  String of(PgdeLocalization l) => l.currencyXua;
+  String of(PgdeLocalizations l) => l.currencyXUA;
 }
 
 class _ZMW implements _Valuer {
   const _ZMW();
-  String of(PgdeLocalization l) => l.currencyZmw;
+  String of(PgdeLocalizations l) => l.currencyZMW;
 }
 
 class _SRD implements _Valuer {
   const _SRD();
-  String of(PgdeLocalization l) => l.currencySrd;
+  String of(PgdeLocalizations l) => l.currencySRD;
 }
 
 class _MGA implements _Valuer {
   const _MGA();
-  String of(PgdeLocalization l) => l.currencyMga;
+  String of(PgdeLocalizations l) => l.currencyMGA;
 }
 
 class _COU implements _Valuer {
   const _COU();
-  String of(PgdeLocalization l) => l.currencyCou;
+  String of(PgdeLocalizations l) => l.currencyCOU;
 }
 
 class _AFN implements _Valuer {
   const _AFN();
-  String of(PgdeLocalization l) => l.currencyAfn;
+  String of(PgdeLocalizations l) => l.currencyAFN;
 }
 
 class _TJS implements _Valuer {
   const _TJS();
-  String of(PgdeLocalization l) => l.currencyTjs;
+  String of(PgdeLocalizations l) => l.currencyTJS;
 }
 
 class _AOA implements _Valuer {
   const _AOA();
-  String of(PgdeLocalization l) => l.currencyAoa;
+  String of(PgdeLocalizations l) => l.currencyAOA;
 }
 
 class _BGN implements _Valuer {
   const _BGN();
-  String of(PgdeLocalization l) => l.currencyBgn;
+  String of(PgdeLocalizations l) => l.currencyBGN;
 }
 
 class _CDF implements _Valuer {
   const _CDF();
-  String of(PgdeLocalization l) => l.currencyCdf;
+  String of(PgdeLocalizations l) => l.currencyCDF;
 }
 
 class _BAM implements _Valuer {
   const _BAM();
-  String of(PgdeLocalization l) => l.currencyBam;
+  String of(PgdeLocalizations l) => l.currencyBAM;
 }
 
 class _EUR implements _Valuer {
   const _EUR();
-  String of(PgdeLocalization l) => l.currencyEur;
+  String of(PgdeLocalizations l) => l.currencyEUR;
 }
 
 class _MXV implements _Valuer {
   const _MXV();
-  String of(PgdeLocalization l) => l.currencyMxv;
+  String of(PgdeLocalizations l) => l.currencyMXV;
 }
 
 class _UAH implements _Valuer {
   const _UAH();
-  String of(PgdeLocalization l) => l.currencyUah;
+  String of(PgdeLocalizations l) => l.currencyUAH;
 }
 
 class _GEL implements _Valuer {
   const _GEL();
-  String of(PgdeLocalization l) => l.currencyGel;
+  String of(PgdeLocalizations l) => l.currencyGEL;
 }
 
 class _BOV implements _Valuer {
   const _BOV();
-  String of(PgdeLocalization l) => l.currencyBov;
+  String of(PgdeLocalizations l) => l.currencyBOV;
 }
 
 class _PLN implements _Valuer {
   const _PLN();
-  String of(PgdeLocalization l) => l.currencyPln;
+  String of(PgdeLocalizations l) => l.currencyPLN;
 }
 
 class _BRL implements _Valuer {
   const _BRL();
-  String of(PgdeLocalization l) => l.currencyBrl;
+  String of(PgdeLocalizations l) => l.currencyBRL;
 }
 
 class _CLF implements _Valuer {
   const _CLF();
-  String of(PgdeLocalization l) => l.currencyClf;
+  String of(PgdeLocalizations l) => l.currencyCLF;
 }
 
 class _XSU implements _Valuer {
   const _XSU();
-  String of(PgdeLocalization l) => l.currencyXsu;
+  String of(PgdeLocalizations l) => l.currencyXSU;
 }
 
 class _USN implements _Valuer {
   const _USN();
-  String of(PgdeLocalization l) => l.currencyUsn;
+  String of(PgdeLocalizations l) => l.currencyUSN;
 }
 
 class Currency {
@@ -913,10 +913,11 @@ class Currency {
       getSimpleCurrencyFormat(ccy).format;
   String Function(dynamic) get formatNumber =>
       getCurrencyNumberFormat(ccy).format;
-  String formatName(v, PgdeLocalization l) => (l == null || _v.of(l) == null)
+  String formatName(v, PgdeLocalizations l) => (l == null || _v.of(l) == null)
       ? format(v)
       : (formatNumber(v) + _v.of(l));
-  String l10n(PgdeLocalization l10n) => l10n == null ? ccy : _v.of(l10n) ?? ccy;
+  String l10n(PgdeLocalizations l10n) =>
+      l10n == null ? ccy : _v.of(l10n) ?? ccy;
 
   static const XXX = const Currency._('', 0, 0, const _XXX());
   static const ALL = const Currency._('ALL', 8, 100, const _ALL());

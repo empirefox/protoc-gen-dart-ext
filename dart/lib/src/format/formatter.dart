@@ -5,6 +5,6 @@ import '../plural/plural.dart';
 import '../units/units.dart';
 
 abstract class Formatter<F> {
-  String format(F v, MaterialLocalizations md, PgdeLocalization l,
+  String format(F v, MaterialLocalizations md, PgdeLocalizations l,
       {Form form, Show show});
 }

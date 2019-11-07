@@ -3,20 +3,23 @@ package main
 import (
 	"flag"
 	"log"
-	"path/filepath"
+	"text/template"
 
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/arb"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/dart"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/genshared"
-)
-
-var (
-	withDelegate = flag.Bool("with_delegate", true, "generate delegate")
+	"github.com/empirefox/protoc-gen-dart-ext/pkg/pglt"
 )
 
 type FilesData struct {
 	Gtt arb.GttArchive `file:"gtt,toml"`
 }
+
+const dart_out = "dart_out"
+
+var (
+	dartOutTpl = template.New(dart_out)
+)
 
 func main() {
 	var filesData FilesData
@@ -44,49 +47,15 @@ func main() {
 		log.Fatalf("arb file: %v", err)
 	}
 
-	var delegate []arb.SupportedLocale
-	if *withDelegate {
-		delegate = arb.SupportedLocales(as)
-	}
+	d := dart.NewDart()
+	im := dart.NewImportManager(d, flag.Lookup(dart_out).Value.String(), "$", "$")
 
-	arbs := make([]*DartArb, len(as))
-	for i, a := range as {
-		err = a.ParseDartParams(im)
-		if err != nil {
-			log.Fatalf("arb file: %v", err)
-		}
-		arbs[i] = &DartArb{ImportManager: im, Arb: a, Delegate: delegate}
-	}
+	pglt.Register(im, dartOutTpl, nil)
 
-	data := Data{
-		BaseArb: arbs[0],
-		Arbs:    arbs,
-		Gtt:     &filesData.Gtt,
-	}
-
-	err = rs.Render(&data)
+	err = rs.Render(as)
 	if err != nil {
 		log.Fatalf("executing template: %v", err)
 	}
 
 	log.Println("Done.")
-}
-
-type DartArb struct {
-	*dart.ImportManager
-	*arb.Arb
-	Delegate []arb.SupportedLocale
-}
-
-func (a *DartArb) Const() string {
-	if len(a.InstanceClasses()) == 0 {
-		return "const"
-	}
-	return ""
-}
-
-type Data struct {
-	BaseArb *DartArb
-	Arbs    []*DartArb
-	Gtt     *arb.GttArchive
 }

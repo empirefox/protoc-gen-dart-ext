@@ -15,7 +15,7 @@ dart_test := ${dart_path}/test
 .PHONY: gen_validate_arb
 gen_validate_arb:
 	@cd ${dart_path} && \
-		flutter pub intl_translation:extract_to_arb \
+		flutter pub pub run intl_translation:extract_to_arb \
 		--locale=en \
 		--output-dir=lib/src/validate \
 		--output-file=validate.arb \
@@ -92,7 +92,7 @@ gen_proto:
 
 .PHONY: test_plural
 test_plural:
-	@cd ${dart_path} && flutter pub pub run test ./test/plural_test.dart
+	@cd ${dart_path} && flutter pub test ./test/plural_test.dart
 
 .PHONY: protoc_clean
 protoc_clean:
@@ -105,7 +105,9 @@ protoc_clean:
 
 .PHONY: protoc_test
 protoc_test:
-	protoc -I. --dart-ext_out=dart_ext=pkg_l10n_base:${dart_lib} protos/units/*.proto
+	protoc -I. \
+		--dart-ext_out=arb,l10n=${dart_test}/gtt.toml,validate,form:${dart_lib} \
+		protos/units/*.proto
 	dartfmt -w ${dart_lib}/pgde/**/*.l10n.base.dart
 
 .PHONY: gen_gtt_to_dart

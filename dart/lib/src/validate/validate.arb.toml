@@ -12,3 +12,10 @@
 Lang = "dart"
 Type = "String"
 Replace = "&"
+
+[[Placeholders]]
+Name = "position"
+    [[Placeholders.LangInfos]]
+    Lang = "dart"
+    Type = "int"
+    Replace = "&.toString()"

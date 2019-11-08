@@ -89,7 +89,7 @@ func NewDartParams(mgr *dart.ImportManager, holders ArbPlaceholders) (*DartParam
 		}
 
 		// Type
-		if lp.Type != "" {
+		if strings.Contains(lp.Type, "&") {
 			if !checkValidTypeReg.MatchString(lp.Type) {
 				return nil, fmt.Errorf("Invalid Type: %#v", *lp)
 			}

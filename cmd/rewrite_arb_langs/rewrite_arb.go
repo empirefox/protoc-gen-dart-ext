@@ -135,7 +135,7 @@ func (a Action) do(targets, infos arb.ArbLangInfos) arb.ArbLangInfos {
 	targetsMap := make(map[string]bool, len(targets)+1)
 	targetsMap[""] = true
 	for _, li := range targets {
-		if li != nil && *li == (arb.ArbLangInfo{}) {
+		if li != nil && *li != (arb.ArbLangInfo{}) {
 			clones = append(clones, li)
 			targetsMap[li.Lang] = true
 		}

@@ -1079,7 +1079,7 @@ class PgdeLocalizationsEn extends PgdeLocalizations {
 
   String get currencyUSN => r'US Dollar (Next day)';
 
-  String validateFieldLength(field) {
+  String validateFieldLength(String field) {
     final output = StringBuffer();
 
     output.write(field);
@@ -1089,10 +1089,10 @@ class PgdeLocalizationsEn extends PgdeLocalizations {
     return output.toString();
   }
 
-  String validateFieldItems(field) {
+  String validateFieldItems(String field) {
     final output = StringBuffer();
 
-    output.write(r'The quantity of ');
+    output.write(r'The items of ');
 
     output.write(field);
     return output.toString();
@@ -1126,7 +1126,7 @@ class PgdeLocalizationsEn extends PgdeLocalizations {
 
   String get validateContains => r'contain';
 
-  String validateMustConst(field, rule, kConstWithUnit) {
+  String validateMustConst(String field, String rule, String kConstWithUnit) {
     final output = StringBuffer();
 
     output.write(field);
@@ -1141,9 +1141,29 @@ class PgdeLocalizationsEn extends PgdeLocalizations {
     return output.toString();
   }
 
-  String get validateUnique => r'unique';
+  String validateUnique(int position) {
+    final output = StringBuffer();
 
-  String get validateNoSparse => r'a non-sparse map, all pairs must be non-nil';
+    output.write(r'unique, but the No.');
+
+    output.write(position.toString());
+
+    output.write(r' item is repeated');
+
+    return output.toString();
+  }
+
+  String validateNoSparse(String key) {
+    final output = StringBuffer();
+
+    output.write(r'a non-sparse map, but the value of `');
+
+    output.write(key);
+
+    output.write(r'` is nil');
+
+    return output.toString();
+  }
 
   String get validateEmail => r'email';
 
@@ -1159,7 +1179,7 @@ class PgdeLocalizationsEn extends PgdeLocalizations {
 
   String get validateUriRef => r'uri ref';
 
-  String validateMustBe(field, something) {
+  String validateMustBe(String field, String something) {
     final output = StringBuffer();
 
     output.write(field);
@@ -1170,7 +1190,7 @@ class PgdeLocalizationsEn extends PgdeLocalizations {
     return output.toString();
   }
 
-  String validateMustWithinNow(field, duration) {
+  String validateMustWithinNow(String field, String duration) {
     final output = StringBuffer();
 
     output.write(field);
@@ -1184,7 +1204,7 @@ class PgdeLocalizationsEn extends PgdeLocalizations {
     return output.toString();
   }
 
-  String validateMustWithinGtNow(field, duration) {
+  String validateMustWithinGtNow(String field, String duration) {
     final output = StringBuffer();
 
     output.write(field);
@@ -1195,7 +1215,7 @@ class PgdeLocalizationsEn extends PgdeLocalizations {
     return output.toString();
   }
 
-  String validateMustWithinLtNow(field, duration) {
+  String validateMustWithinLtNow(String field, String duration) {
     final output = StringBuffer();
 
     output.write(field);
@@ -1206,7 +1226,7 @@ class PgdeLocalizationsEn extends PgdeLocalizations {
     return output.toString();
   }
 
-  String validateRequired(field) {
+  String validateRequired(String field) {
     final output = StringBuffer();
 
     output.write(field);
@@ -2974,7 +2994,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String get currencyUSN => r'US Dollar (Next day)';
 
-  String validateFieldLength(field) {
+  String validateFieldLength(String field) {
     final output = StringBuffer();
 
     output.write(field);
@@ -2984,10 +3004,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
     return output.toString();
   }
 
-  String validateFieldItems(field) {
+  String validateFieldItems(String field) {
     final output = StringBuffer();
 
-    output.write(r'The quantity of ');
+    output.write(r'The items of ');
 
     output.write(field);
     return output.toString();
@@ -3021,7 +3041,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String get validateContains => r'contain';
 
-  String validateMustConst(field, rule, kConstWithUnit) {
+  String validateMustConst(String field, String rule, String kConstWithUnit) {
     final output = StringBuffer();
 
     output.write(field);
@@ -3036,9 +3056,29 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
     return output.toString();
   }
 
-  String get validateUnique => r'unique';
+  String validateUnique(int position) {
+    final output = StringBuffer();
 
-  String get validateNoSparse => r'a non-sparse map, all pairs must be non-nil';
+    output.write(r'unique, but the No.');
+
+    output.write(position.toString());
+
+    output.write(r' item is repeated');
+
+    return output.toString();
+  }
+
+  String validateNoSparse(String key) {
+    final output = StringBuffer();
+
+    output.write(r'a non-sparse map, but the value of `');
+
+    output.write(key);
+
+    output.write(r'` is nil');
+
+    return output.toString();
+  }
 
   String get validateEmail => r'email';
 
@@ -3054,7 +3094,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String get validateUriRef => r'uri ref';
 
-  String validateMustBe(field, something) {
+  String validateMustBe(String field, String something) {
     final output = StringBuffer();
 
     output.write(field);
@@ -3065,7 +3105,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
     return output.toString();
   }
 
-  String validateMustWithinNow(field, duration) {
+  String validateMustWithinNow(String field, String duration) {
     final output = StringBuffer();
 
     output.write(field);
@@ -3079,7 +3119,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
     return output.toString();
   }
 
-  String validateMustWithinGtNow(field, duration) {
+  String validateMustWithinGtNow(String field, String duration) {
     final output = StringBuffer();
 
     output.write(field);
@@ -3090,7 +3130,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
     return output.toString();
   }
 
-  String validateMustWithinLtNow(field, duration) {
+  String validateMustWithinLtNow(String field, String duration) {
     final output = StringBuffer();
 
     output.write(field);
@@ -3101,7 +3141,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
     return output.toString();
   }
 
-  String validateRequired(field) {
+  String validateRequired(String field) {
     final output = StringBuffer();
 
     output.write(field);
@@ -4137,7 +4177,7 @@ class PgdeLocalizationsEnUS extends PgdeLocalizations {
 
   String get currencyUSN => r'US Dollar (Next day)';
 
-  String validateFieldLength(field) {
+  String validateFieldLength(String field) {
     final output = StringBuffer();
 
     output.write(field);
@@ -4147,10 +4187,10 @@ class PgdeLocalizationsEnUS extends PgdeLocalizations {
     return output.toString();
   }
 
-  String validateFieldItems(field) {
+  String validateFieldItems(String field) {
     final output = StringBuffer();
 
-    output.write(r'The quantity of ');
+    output.write(r'The items of ');
 
     output.write(field);
     return output.toString();
@@ -4184,7 +4224,7 @@ class PgdeLocalizationsEnUS extends PgdeLocalizations {
 
   String get validateContains => r'contain';
 
-  String validateMustConst(field, rule, kConstWithUnit) {
+  String validateMustConst(String field, String rule, String kConstWithUnit) {
     final output = StringBuffer();
 
     output.write(field);
@@ -4199,9 +4239,29 @@ class PgdeLocalizationsEnUS extends PgdeLocalizations {
     return output.toString();
   }
 
-  String get validateUnique => r'unique';
+  String validateUnique(int position) {
+    final output = StringBuffer();
 
-  String get validateNoSparse => r'a non-sparse map, all pairs must be non-nil';
+    output.write(r'unique, but the No.');
+
+    output.write(position.toString());
+
+    output.write(r' item is repeated');
+
+    return output.toString();
+  }
+
+  String validateNoSparse(String key) {
+    final output = StringBuffer();
+
+    output.write(r'a non-sparse map, but the value of `');
+
+    output.write(key);
+
+    output.write(r'` is nil');
+
+    return output.toString();
+  }
 
   String get validateEmail => r'email';
 
@@ -4217,7 +4277,7 @@ class PgdeLocalizationsEnUS extends PgdeLocalizations {
 
   String get validateUriRef => r'uri ref';
 
-  String validateMustBe(field, something) {
+  String validateMustBe(String field, String something) {
     final output = StringBuffer();
 
     output.write(field);
@@ -4228,7 +4288,7 @@ class PgdeLocalizationsEnUS extends PgdeLocalizations {
     return output.toString();
   }
 
-  String validateMustWithinNow(field, duration) {
+  String validateMustWithinNow(String field, String duration) {
     final output = StringBuffer();
 
     output.write(field);
@@ -4242,7 +4302,7 @@ class PgdeLocalizationsEnUS extends PgdeLocalizations {
     return output.toString();
   }
 
-  String validateMustWithinGtNow(field, duration) {
+  String validateMustWithinGtNow(String field, String duration) {
     final output = StringBuffer();
 
     output.write(field);
@@ -4253,7 +4313,7 @@ class PgdeLocalizationsEnUS extends PgdeLocalizations {
     return output.toString();
   }
 
-  String validateMustWithinLtNow(field, duration) {
+  String validateMustWithinLtNow(String field, String duration) {
     final output = StringBuffer();
 
     output.write(field);
@@ -4264,7 +4324,7 @@ class PgdeLocalizationsEnUS extends PgdeLocalizations {
     return output.toString();
   }
 
-  String validateRequired(field) {
+  String validateRequired(String field) {
     final output = StringBuffer();
 
     output.write(field);
@@ -4934,7 +4994,7 @@ class PgdeLocalizationsZh extends PgdeLocalizations {
 
   String get currencyUSN => r'US Dollar (Next day)';
 
-  String validateFieldLength(field) {
+  String validateFieldLength(String field) {
     final output = StringBuffer();
 
     output.write(field);
@@ -4944,10 +5004,10 @@ class PgdeLocalizationsZh extends PgdeLocalizations {
     return output.toString();
   }
 
-  String validateFieldItems(field) {
+  String validateFieldItems(String field) {
     final output = StringBuffer();
 
-    output.write(r'The quantity of ');
+    output.write(r'The items of ');
 
     output.write(field);
     return output.toString();
@@ -4981,7 +5041,7 @@ class PgdeLocalizationsZh extends PgdeLocalizations {
 
   String get validateContains => r'contain';
 
-  String validateMustConst(field, rule, kConstWithUnit) {
+  String validateMustConst(String field, String rule, String kConstWithUnit) {
     final output = StringBuffer();
 
     output.write(field);
@@ -4996,9 +5056,29 @@ class PgdeLocalizationsZh extends PgdeLocalizations {
     return output.toString();
   }
 
-  String get validateUnique => r'unique';
+  String validateUnique(int position) {
+    final output = StringBuffer();
 
-  String get validateNoSparse => r'a non-sparse map, all pairs must be non-nil';
+    output.write(r'unique, but the No.');
+
+    output.write(position.toString());
+
+    output.write(r' item is repeated');
+
+    return output.toString();
+  }
+
+  String validateNoSparse(String key) {
+    final output = StringBuffer();
+
+    output.write(r'a non-sparse map, but the value of `');
+
+    output.write(key);
+
+    output.write(r'` is nil');
+
+    return output.toString();
+  }
 
   String get validateEmail => r'email';
 
@@ -5014,7 +5094,7 @@ class PgdeLocalizationsZh extends PgdeLocalizations {
 
   String get validateUriRef => r'uri ref';
 
-  String validateMustBe(field, something) {
+  String validateMustBe(String field, String something) {
     final output = StringBuffer();
 
     output.write(field);
@@ -5025,7 +5105,7 @@ class PgdeLocalizationsZh extends PgdeLocalizations {
     return output.toString();
   }
 
-  String validateMustWithinNow(field, duration) {
+  String validateMustWithinNow(String field, String duration) {
     final output = StringBuffer();
 
     output.write(field);
@@ -5039,7 +5119,7 @@ class PgdeLocalizationsZh extends PgdeLocalizations {
     return output.toString();
   }
 
-  String validateMustWithinGtNow(field, duration) {
+  String validateMustWithinGtNow(String field, String duration) {
     final output = StringBuffer();
 
     output.write(field);
@@ -5050,7 +5130,7 @@ class PgdeLocalizationsZh extends PgdeLocalizations {
     return output.toString();
   }
 
-  String validateMustWithinLtNow(field, duration) {
+  String validateMustWithinLtNow(String field, String duration) {
     final output = StringBuffer();
 
     output.write(field);
@@ -5061,7 +5141,7 @@ class PgdeLocalizationsZh extends PgdeLocalizations {
     return output.toString();
   }
 
-  String validateRequired(field) {
+  String validateRequired(String field) {
     final output = StringBuffer();
 
     output.write(field);
@@ -5072,7 +5152,7 @@ class PgdeLocalizationsZh extends PgdeLocalizations {
   }
 }
 
-/// last_modified: 2019-10-31 02:15:12 +0000 UTC
+/// last_modified: 2019-11-08 10:45:12 +0000 UTC
 
 abstract class PgdeLocalizations {
   static const delegate = _PgdeLocalizationsDelegate();
@@ -5609,9 +5689,9 @@ abstract class PgdeLocalizations {
 
   String get currencyUSN;
 
-  String validateFieldLength(field);
+  String validateFieldLength(String field);
 
-  String validateFieldItems(field);
+  String validateFieldItems(String field);
 
   String get validateNow;
 
@@ -5641,11 +5721,11 @@ abstract class PgdeLocalizations {
 
   String get validateContains;
 
-  String validateMustConst(field, rule, kConstWithUnit);
+  String validateMustConst(String field, String rule, String kConstWithUnit);
 
-  String get validateUnique;
+  String validateUnique(int position);
 
-  String get validateNoSparse;
+  String validateNoSparse(String key);
 
   String get validateEmail;
 
@@ -5661,15 +5741,15 @@ abstract class PgdeLocalizations {
 
   String get validateUriRef;
 
-  String validateMustBe(field, something);
+  String validateMustBe(String field, String something);
 
-  String validateMustWithinNow(field, duration);
+  String validateMustWithinNow(String field, String duration);
 
-  String validateMustWithinGtNow(field, duration);
+  String validateMustWithinGtNow(String field, String duration);
 
-  String validateMustWithinLtNow(field, duration);
+  String validateMustWithinLtNow(String field, String duration);
 
-  String validateRequired(field);
+  String validateRequired(String field);
 
   static PgdeLocalizations of($2.BuildContext context) =>
       $2.Localizations.of<PgdeLocalizations>(context, PgdeLocalizations);

@@ -1,5 +1,5 @@
 {
-	"@@last_modified": "2019-05-15T19:23:47Z",
+	"@@last_modified": "2019-11-08T10:45:12Z",
 	"@@locale": "en",
 	"fieldLength": "{field} length",
 	"@fieldLength": {
@@ -9,13 +9,14 @@
 				"x-lang-info": [
 					{
 						"lang": "dart",
-						"info": "String"
+						"type": "String",
+						"replace": "\u0026"
 					}
 				]
 			}
 		}
 	},
-	"fieldItems": "The quantity of {field}",
+	"fieldItems": "The items of {field}",
 	"@fieldItems": {
 		"type": "text",
 		"placeholders": {
@@ -23,7 +24,8 @@
 				"x-lang-info": [
 					{
 						"lang": "dart",
-						"info": "String"
+						"type": "String",
+						"replace": "\u0026"
 					}
 				]
 			}
@@ -93,7 +95,8 @@
 				"x-lang-info": [
 					{
 						"lang": "dart",
-						"info": "String"
+						"type": "String",
+						"replace": "\u0026"
 					}
 				]
 			},
@@ -101,7 +104,8 @@
 				"x-lang-info": [
 					{
 						"lang": "dart",
-						"info": "String"
+						"type": "String",
+						"replace": "\u0026"
 					}
 				]
 			},
@@ -109,19 +113,42 @@
 				"x-lang-info": [
 					{
 						"lang": "dart",
-						"info": "String"
+						"type": "String",
+						"replace": "\u0026"
 					}
 				]
 			}
 		}
 	},
-	"unique": "unique",
+	"unique": "unique, but the No.{position} item is repeated",
 	"@unique": {
-		"type": "text"
+		"type": "text",
+		"placeholders": {
+			"position": {
+				"x-lang-info": [
+					{
+						"lang": "dart",
+						"type": "int",
+						"replace": "\u0026.toString()"
+					}
+				]
+			}
+		}
 	},
-	"noSparse": "a non-sparse map, all pairs must be non-nil",
+	"noSparse": "a non-sparse map, but the value of `{key}` is nil",
 	"@noSparse": {
-		"type": "text"
+		"type": "text",
+		"placeholders": {
+			"key": {
+				"x-lang-info": [
+					{
+						"lang": "dart",
+						"type": "String",
+						"replace": "\u0026"
+					}
+				]
+			}
+		}
 	},
 	"email": "email",
 	"@email": {
@@ -159,7 +186,8 @@
 				"x-lang-info": [
 					{
 						"lang": "dart",
-						"info": "String"
+						"type": "String",
+						"replace": "\u0026"
 					}
 				]
 			},
@@ -167,7 +195,8 @@
 				"x-lang-info": [
 					{
 						"lang": "dart",
-						"info": "String"
+						"type": "String",
+						"replace": "\u0026"
 					}
 				]
 			}
@@ -181,7 +210,8 @@
 				"x-lang-info": [
 					{
 						"lang": "dart",
-						"info": "String"
+						"type": "String",
+						"replace": "\u0026"
 					}
 				]
 			},
@@ -189,7 +219,8 @@
 				"x-lang-info": [
 					{
 						"lang": "dart",
-						"info": "String"
+						"type": "String",
+						"replace": "\u0026"
 					}
 				]
 			}
@@ -203,7 +234,8 @@
 				"x-lang-info": [
 					{
 						"lang": "dart",
-						"info": "String"
+						"type": "String",
+						"replace": "\u0026"
 					}
 				]
 			},
@@ -211,7 +243,8 @@
 				"x-lang-info": [
 					{
 						"lang": "dart",
-						"info": "String"
+						"type": "String",
+						"replace": "\u0026"
 					}
 				]
 			}
@@ -225,7 +258,8 @@
 				"x-lang-info": [
 					{
 						"lang": "dart",
-						"info": "String"
+						"type": "String",
+						"replace": "\u0026"
 					}
 				]
 			},
@@ -233,7 +267,8 @@
 				"x-lang-info": [
 					{
 						"lang": "dart",
-						"info": "String"
+						"type": "String",
+						"replace": "\u0026"
 					}
 				]
 			}
@@ -247,7 +282,8 @@
 				"x-lang-info": [
 					{
 						"lang": "dart",
-						"info": "String"
+						"type": "String",
+						"replace": "\u0026"
 					}
 				]
 			}

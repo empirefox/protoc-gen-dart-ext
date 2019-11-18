@@ -8,6 +8,20 @@ import (
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/dart"
 )
 
+var DartMatchedPluralLangInfo = ArbLangInfo{
+	Lang:    "dart",
+	Type:    "&&.Form",
+	Replace: "&",
+	Import:  "package:pgde/plural.dart",
+}
+
+func (lp *LangParam) IsMatchedPlural() bool {
+	return lp != nil &&
+		lp.Import == DartMatchedPluralLangInfo.Import &&
+		lp.Replace == DartMatchedPluralLangInfo.Replace &&
+		lp.Type == DartMatchedPluralLangInfo.Type
+}
+
 func (a *Arb) ParseDartParams(mgr *dart.ImportManager) error {
 	for _, r := range a.Resources {
 		attr := r.Attr()
@@ -18,6 +32,11 @@ func (a *Arb) ParseDartParams(mgr *dart.ImportManager) error {
 		attr.DartParams = ps
 	}
 	return nil
+}
+
+func (attr *ArbAttributes) IsMatched(varname string) bool {
+	dp := attr.DartParams.GetByName(varname)
+	return dp != nil && dp.Raw.IsMatchedPlural()
 }
 
 func (attr *ArbAttributes) getDartParamByName(varname string) (*DartParam, error) {

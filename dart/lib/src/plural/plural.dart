@@ -104,7 +104,7 @@ Form
   return Form.other;
 }
 
-Form matchAstIoJiPtPtYi(num value, bool ordinal) {
+Form matchAstIoJiPtPTYi(num value, bool ordinal) {
   return finvtw(value, (f, i, n, v, t, w) {
     if (ordinal) {
       return Form.other;
@@ -660,7 +660,7 @@ Form matchMk(num value, bool ordinal) {
   });
 }
 
-Form matchMoRoRoMd(num value, bool ordinal) {
+Form matchMoRoRoMD(num value, bool ordinal) {
   return finvtw(value, (f, i, n, v, t, w) {
     final p = w == 0;
     final n100 = n % 100;
@@ -1070,11 +1070,11 @@ final Map<String, PluralFunc> rules = {
       matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
   "xog":
       matchAsaBemBezBrxCggChrCkbDvEeEoFoFurHaHawJgoJmcKajKcgKkjKlKsKsbKuLbLgMasMgoNahNdNnNnhNoNrNyNynOmOsPapRmRofRwkSaqSdhSehSnSoSsSsyStSyrTeoTigTnTsUgVeVoVunWaeXhXog,
-  "ast": matchAstIoJiPtPtYi,
-  "io": matchAstIoJiPtPtYi,
-  "ji": matchAstIoJiPtPtYi,
-  "pt-PT": matchAstIoJiPtPtYi,
-  "yi": matchAstIoJiPtPtYi,
+  "ast": matchAstIoJiPtPTYi,
+  "io": matchAstIoJiPtPTYi,
+  "ji": matchAstIoJiPtPTYi,
+  "pt-PT": matchAstIoJiPtPTYi,
+  "yi": matchAstIoJiPtPTYi,
   "az": matchAz,
   "be": matchBe,
   "br": matchBr,
@@ -1139,9 +1139,9 @@ final Map<String, PluralFunc> rules = {
   "lv": matchLvPrg,
   "prg": matchLvPrg,
   "mk": matchMk,
-  "mo": matchMoRoRoMd,
-  "ro": matchMoRoRoMd,
-  "ro-MD": matchMoRoRoMd,
+  "mo": matchMoRoRoMD,
+  "ro": matchMoRoRoMD,
+  "ro-MD": matchMoRoRoMD,
   "mr": matchMr,
   "mt": matchMt,
   "ne": matchNe,

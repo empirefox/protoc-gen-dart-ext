@@ -25,10 +25,10 @@ const inTplDef = `{{ $r := .Pgv.Rules }}
 const inTpl = inTplDef + `
 {{- if $r.In }}
 	if (!{{ $kIn }}.containsKey({{ .Accessor }}))
-		throw {{ .PgdeFile.AsDot "InError" }}({{ .Err3Args }}, {{ $kIn }}.keys);
+		throw {{ .PgdeFile.AsDot "InError" }}({{ .Err3Args }}, {{ $kIn }}.keys.toList());
 {{- end -}}
 {{- if $r.NotIn }}
 	if ({{ $kNotIn }}.containsKey({{ .Accessor }}))
-		throw {{ .PgdeFile.AsDot "InError" }}.not({{ .Err3Args }}, {{ $kNotIn }}.keys);
+		throw {{ .PgdeFile.AsDot "InError" }}.not({{ .Err3Args }}, {{ $kNotIn }}.keys.toList());
 {{- end -}}
 `

@@ -9,6 +9,11 @@ type ValidateOneOf struct {
 	Required bool
 }
 
+func (nty *ValidateOneOf) InfoAccessor() dart.Qualifier { return nty.Validators().InfoAccessor }
+func (nty *ValidateOneOf) L10nAccessor() dart.Qualifier { return nty.Validators().L10nAccessor }
+func (nty *ValidateOneOf) PbFile() *dart.ImportFile     { return nty.Validators().PbFile }
+func (nty *ValidateOneOf) PgdeFile() *dart.ImportFile   { return nty.Validators().PgdeFile }
+
 func (nty *ValidateOneOf) Names() dart.OneOfNames {
 	return nty.File.Dart.OneOfNames(nty.Pgs)
 }

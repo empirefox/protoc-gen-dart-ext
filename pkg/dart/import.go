@@ -133,9 +133,11 @@ func NewImportManager(d *Dart,
 	rootFilePath, prefix, depPrefix string,
 	predefine ...string) *ImportManager {
 	im := &ImportManager{
-		prefix:    prefix,
-		depPrefix: depPrefix,
-		byName:    make(map[string]*ImportFile, 16),
+		d:            d,
+		rootFilePath: rootFilePath,
+		prefix:       prefix,
+		depPrefix:    depPrefix,
+		byName:       make(map[string]*ImportFile, 16),
 	}
 	im.getFile("").As = ""
 	for _, f := range predefine {

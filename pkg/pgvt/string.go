@@ -42,7 +42,7 @@ const stringTpl = stringTplDef + `
 {{ end }}
 
 {{ if or $r.Len $r.MaxBytes $r.MinBytes }}
-	final _vrl = {{ .PgdeFile.AsDot "Lists" }}.len({{ .Accessor }});
+	final _vbl = {{ .PgdeFile.AsDot "Lists" }}.len({{ .ConvertLib.AsDot "utf8" }}.encode({{ .Accessor }}));
 {{ end }}
 
 {{ if or $r.LenBytes (and $r.MinBytes $r.MaxBytes (eq $r.GetMinBytes $r.GetMaxBytes)) }}

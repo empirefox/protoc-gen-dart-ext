@@ -1,7 +1,6 @@
 {
-  "@@last_modified": "2019-10-31T02:15:04Z",
-  "@@locale": "en-US",
-  "meter": "{form, select, one{meter}other{meters}}",
+  "@@last_modified": "2019-11-11T03:38:59Z",
+  "meter": "{form, plural, zero{meters}one{meter}two{meters}few{meters}many{meters}other{meters}other{meters}}",
   "@meter": {
     "type": "text",
     "description": "SI unit",
@@ -18,7 +17,7 @@
       }
     }
   },
-  "foot": "{form, select, one{foot}other{feet}}",
+  "foot": "{form, plural, zero{feet}one{foot}two{feet}few{feet}many{feet}other{feet}other{feet}}",
   "@foot": {
     "type": "text",
     "description": "SI unit",
@@ -35,7 +34,7 @@
       }
     }
   },
-  "inch": "{form, select, one{inch}other{inches}}",
+  "inch": "{form, plural, zero{inches}one{inch}two{inches}few{inches}many{inches}other{inches}other{inches}}",
   "@inch": {
     "type": "text",
     "description": "SI unit",
@@ -52,7 +51,7 @@
       }
     }
   },
-  "yard": "{form, select, one{yard}other{yards}}",
+  "yard": "{form, plural, zero{yards}one{yard}two{yards}few{yards}many{yards}other{yards}other{yards}}",
   "@yard": {
     "type": "text",
     "description": "SI unit",
@@ -69,7 +68,7 @@
       }
     }
   },
-  "mile": "{form, select, one{mile}other{miles}}",
+  "mile": "{form, plural, zero{miles}one{mile}two{miles}few{miles}many{miles}other{miles}other{miles}}",
   "@mile": {
     "type": "text",
     "description": "SI unit",
@@ -86,7 +85,7 @@
       }
     }
   },
-  "nauticalMile": "{form, select, one{nautical mile}other{nautical miles}}",
+  "nauticalMile": "{form, plural, zero{nautical miles}one{nautical mile}two{nautical miles}few{nautical miles}many{nautical miles}other{nautical miles}other{nautical miles}}",
   "@nauticalMile": {
     "type": "text",
     "description": "SI unit",
@@ -103,7 +102,7 @@
       }
     }
   },
-  "lightYear": "{form, select, one{light year}other{light years}}",
+  "lightYear": "{form, plural, zero{light years}one{light year}two{light years}few{light years}many{light years}other{light years}other{light years}}",
   "@lightYear": {
     "type": "text",
     "description": "SI unit",
@@ -120,7 +119,7 @@
       }
     }
   },
-  "hectare": "{form, select, one{hectare}other{hectares}}",
+  "hectare": "{form, plural, zero{hectares}one{hectare}two{hectares}few{hectares}many{hectares}other{hectares}other{hectares}}",
   "@hectare": {
     "type": "text",
     "description": "SI unit",
@@ -137,7 +136,7 @@
       }
     }
   },
-  "are": "{form, select, one{are}other{ares}}",
+  "are": "{form, plural, zero{ares}one{are}two{ares}few{ares}many{ares}other{ares}other{ares}}",
   "@are": {
     "type": "text",
     "description": "SI unit",
@@ -154,7 +153,7 @@
       }
     }
   },
-  "liter": "{form, select, one{liter}other{liters}}",
+  "liter": "{form, plural, zero{liters}one{liter}two{liters}few{liters}many{liters}other{liters}other{liters}}",
   "@liter": {
     "type": "text",
     "description": "SI unit",
@@ -171,7 +170,7 @@
       }
     }
   },
-  "gallon": "{form, select, one{gallon}other{gallons}}",
+  "gallon": "{form, plural, zero{gallons}one{gallon}two{gallons}few{gallons}many{gallons}other{gallons}other{gallons}}",
   "@gallon": {
     "type": "text",
     "description": "SI unit",
@@ -188,7 +187,7 @@
       }
     }
   },
-  "barrel": "{form, select, one{barrel}other{barrels}}",
+  "barrel": "{form, plural, zero{barrels}one{barrel}two{barrels}few{barrels}many{barrels}other{barrels}other{barrels}}",
   "@barrel": {
     "type": "text",
     "description": "SI unit",
@@ -205,7 +204,7 @@
       }
     }
   },
-  "gram": "{form, select, one{gram}other{grams}}",
+  "gram": "{form, plural, zero{grams}one{gram}two{grams}few{grams}many{grams}other{grams}other{grams}}",
   "@gram": {
     "type": "text",
     "description": "SI unit",
@@ -222,7 +221,7 @@
       }
     }
   },
-  "ton": "{form, select, one{ton}other{tons}}",
+  "ton": "{form, plural, zero{tons}one{ton}two{tons}few{tons}many{tons}other{tons}other{tons}}",
   "@ton": {
     "type": "text",
     "description": "SI unit",
@@ -239,7 +238,7 @@
       }
     }
   },
-  "pound": "{form, select, one{pound}other{pounds}}",
+  "pound": "{form, plural, zero{pounds}one{pound}two{pounds}few{pounds}many{pounds}other{pounds}other{pounds}}",
   "@pound": {
     "type": "text",
     "description": "SI unit",
@@ -256,7 +255,7 @@
       }
     }
   },
-  "ounce": "{form, select, one{ounce}other{ounces}}",
+  "ounce": "{form, plural, zero{ounces}one{ounce}two{ounces}few{ounces}many{ounces}other{ounces}other{ounces}}",
   "@ounce": {
     "type": "text",
     "description": "SI unit",
@@ -273,7 +272,7 @@
       }
     }
   },
-  "second": "{form, select, one{second}other{seconds}}",
+  "second": "{form, plural, zero{seconds}one{second}two{seconds}few{seconds}many{seconds}other{seconds}other{seconds}}",
   "@second": {
     "type": "text",
     "description": "SI unit",
@@ -290,7 +289,7 @@
       }
     }
   },
-  "minute": "{form, select, one{minute}other{minutes}}",
+  "minute": "{form, plural, zero{minutes}one{minute}two{minutes}few{minutes}many{minutes}other{minutes}other{minutes}}",
   "@minute": {
     "type": "text",
     "description": "SI unit",
@@ -307,7 +306,7 @@
       }
     }
   },
-  "hour": "{form, select, one{hour}other{hours}}",
+  "hour": "{form, plural, zero{hours}one{hour}two{hours}few{hours}many{hours}other{hours}other{hours}}",
   "@hour": {
     "type": "text",
     "description": "SI unit",
@@ -324,7 +323,7 @@
       }
     }
   },
-  "day": "{form, select, one{day}other{days}}",
+  "day": "{form, plural, zero{days}one{day}two{days}few{days}many{days}other{days}other{days}}",
   "@day": {
     "type": "text",
     "description": "SI unit",
@@ -341,7 +340,7 @@
       }
     }
   },
-  "week": "{form, select, one{week}other{weeks}}",
+  "week": "{form, plural, zero{weeks}one{week}two{weeks}few{weeks}many{weeks}other{weeks}other{weeks}}",
   "@week": {
     "type": "text",
     "description": "SI unit",
@@ -358,7 +357,7 @@
       }
     }
   },
-  "month": "{form, select, one{month}other{months}}",
+  "month": "{form, plural, zero{months}one{month}two{months}few{months}many{months}other{months}other{months}}",
   "@month": {
     "type": "text",
     "description": "SI unit",
@@ -375,7 +374,7 @@
       }
     }
   },
-  "year": "{form, select, one{year}other{years}}",
+  "year": "{form, plural, zero{years}one{year}two{years}few{years}many{years}other{years}other{years}}",
   "@year": {
     "type": "text",
     "description": "SI unit",
@@ -392,7 +391,7 @@
       }
     }
   },
-  "century": "{form, select, one{century}other{centuries}}",
+  "century": "{form, plural, zero{centuries}one{century}two{centuries}few{centuries}many{centuries}other{centuries}other{centuries}}",
   "@century": {
     "type": "text",
     "description": "SI unit",
@@ -409,7 +408,7 @@
       }
     }
   },
-  "secondAngle": "{form, select, one{second}other{seconds}}",
+  "secondAngle": "{form, plural, zero{seconds}one{second}two{seconds}few{seconds}many{seconds}other{seconds}other{seconds}}",
   "@secondAngle": {
     "type": "text",
     "description": "SI unit",
@@ -426,7 +425,7 @@
       }
     }
   },
-  "minuteAngle": "{form, select, one{minute}other{minutes}}",
+  "minuteAngle": "{form, plural, zero{minutes}one{minute}two{minutes}few{minutes}many{minutes}other{minutes}other{minutes}}",
   "@minuteAngle": {
     "type": "text",
     "description": "SI unit",
@@ -443,7 +442,7 @@
       }
     }
   },
-  "degree": "{form, select, one{degree}other{degrees}}",
+  "degree": "{form, plural, zero{degrees}one{degree}two{degrees}few{degrees}many{degrees}other{degrees}other{degrees}}",
   "@degree": {
     "type": "text",
     "description": "SI unit",
@@ -460,7 +459,7 @@
       }
     }
   },
-  "ampere": "{form, select, one{ampere}other{amperes}}",
+  "ampere": "{form, plural, zero{amperes}one{ampere}two{amperes}few{amperes}many{amperes}other{amperes}other{amperes}}",
   "@ampere": {
     "type": "text",
     "description": "SI unit",
@@ -477,7 +476,7 @@
       }
     }
   },
-  "electronvolt": "{form, select, one{electronvolt}other{electronvolts}}",
+  "electronvolt": "{form, plural, zero{electronvolts}one{electronvolt}two{electronvolts}few{electronvolts}many{electronvolts}other{electronvolts}other{electronvolts}}",
   "@electronvolt": {
     "type": "text",
     "description": "SI unit",
@@ -494,7 +493,7 @@
       }
     }
   },
-  "bel": "{form, select, one{bel}other{bels}}",
+  "bel": "{form, plural, zero{bels}one{bel}two{bels}few{bels}many{bels}other{bels}other{bels}}",
   "@bel": {
     "type": "text",
     "description": "SI unit",
@@ -511,7 +510,7 @@
       }
     }
   },
-  "kelvin": "{form, select, one{kelvin}other{kelvins}}",
+  "kelvin": "{form, plural, zero{kelvins}one{kelvin}two{kelvins}few{kelvins}many{kelvins}other{kelvins}other{kelvins}}",
   "@kelvin": {
     "type": "text",
     "description": "SI unit",
@@ -528,7 +527,7 @@
       }
     }
   },
-  "mole": "{form, select, one{mole}other{moles}}",
+  "mole": "{form, plural, zero{moles}one{mole}two{moles}few{moles}many{moles}other{moles}other{moles}}",
   "@mole": {
     "type": "text",
     "description": "SI unit",
@@ -545,7 +544,7 @@
       }
     }
   },
-  "candela": "{form, select, one{candela}other{candelas}}",
+  "candela": "{form, plural, zero{candelas}one{candela}two{candelas}few{candelas}many{candelas}other{candelas}other{candelas}}",
   "@candela": {
     "type": "text",
     "description": "SI unit",
@@ -562,7 +561,7 @@
       }
     }
   },
-  "percent": "{form, select, one{percent}other{percent}}",
+  "percent": "{form, plural, zero{percent}one{percent}two{percent}few{percent}many{percent}other{percent}other{percent}}",
   "@percent": {
     "type": "text",
     "description": "SI unit",
@@ -579,7 +578,7 @@
       }
     }
   },
-  "perThousand": "{form, select, one{per thousand}other{per thousand}}",
+  "perThousand": "{form, plural, zero{per thousand}one{per thousand}two{per thousand}few{per thousand}many{per thousand}other{per thousand}other{per thousand}}",
   "@perThousand": {
     "type": "text",
     "description": "SI unit",
@@ -596,7 +595,7 @@
       }
     }
   },
-  "bit": "{form, select, one{bit}other{bits}}",
+  "bit": "{form, plural, zero{bits}one{bit}two{bits}few{bits}many{bits}other{bits}other{bits}}",
   "@bit": {
     "type": "text",
     "description": "SI unit",
@@ -613,7 +612,7 @@
       }
     }
   },
-  "byte": "{form, select, one{byte}other{bytes}}",
+  "byte": "{form, plural, zero{bytes}one{byte}two{bytes}few{bytes}many{bytes}other{bytes}other{bytes}}",
   "@byte": {
     "type": "text",
     "description": "SI unit",
@@ -630,7 +629,7 @@
       }
     }
   },
-  "character": "{form, select, one{character}other{characters}}",
+  "character": "{form, plural, zero{characters}one{character}two{characters}few{characters}many{characters}other{characters}other{characters}}",
   "@character": {
     "type": "text",
     "description": "SI unit",
@@ -647,7 +646,7 @@
       }
     }
   },
-  "word": "{form, select, one{word}other{words}}",
+  "word": "{form, plural, zero{words}one{word}two{words}few{words}many{words}other{words}other{words}}",
   "@word": {
     "type": "text",
     "description": "SI unit",
@@ -664,7 +663,7 @@
       }
     }
   },
-  "radian": "{form, select, one{radian}other{radians}}",
+  "radian": "{form, plural, zero{radians}one{radian}two{radians}few{radians}many{radians}other{radians}other{radians}}",
   "@radian": {
     "type": "text",
     "description": "SI unit",
@@ -681,7 +680,7 @@
       }
     }
   },
-  "steradian": "{form, select, one{steradian}other{steradians}}",
+  "steradian": "{form, plural, zero{steradians}one{steradian}two{steradians}few{steradians}many{steradians}other{steradians}other{steradians}}",
   "@steradian": {
     "type": "text",
     "description": "SI unit",
@@ -698,7 +697,7 @@
       }
     }
   },
-  "hertz": "{form, select, one{hertz}other{hertz}}",
+  "hertz": "{form, plural, zero{hertz}one{hertz}two{hertz}few{hertz}many{hertz}other{hertz}other{hertz}}",
   "@hertz": {
     "type": "text",
     "description": "SI unit",
@@ -715,7 +714,7 @@
       }
     }
   },
-  "newton": "{form, select, one{newton}other{newtons}}",
+  "newton": "{form, plural, zero{newtons}one{newton}two{newtons}few{newtons}many{newtons}other{newtons}other{newtons}}",
   "@newton": {
     "type": "text",
     "description": "SI unit",
@@ -732,7 +731,7 @@
       }
     }
   },
-  "pascal": "{form, select, one{pascal}other{pascals}}",
+  "pascal": "{form, plural, zero{pascals}one{pascal}two{pascals}few{pascals}many{pascals}other{pascals}other{pascals}}",
   "@pascal": {
     "type": "text",
     "description": "SI unit",
@@ -749,7 +748,7 @@
       }
     }
   },
-  "joule": "{form, select, one{joule}other{joules}}",
+  "joule": "{form, plural, zero{joules}one{joule}two{joules}few{joules}many{joules}other{joules}other{joules}}",
   "@joule": {
     "type": "text",
     "description": "SI unit",
@@ -766,7 +765,7 @@
       }
     }
   },
-  "watt": "{form, select, one{watt}other{watts}}",
+  "watt": "{form, plural, zero{watts}one{watt}two{watts}few{watts}many{watts}other{watts}other{watts}}",
   "@watt": {
     "type": "text",
     "description": "SI unit",
@@ -783,7 +782,7 @@
       }
     }
   },
-  "coulomb": "{form, select, one{coulomb}other{coulombs}}",
+  "coulomb": "{form, plural, zero{coulombs}one{coulomb}two{coulombs}few{coulombs}many{coulombs}other{coulombs}other{coulombs}}",
   "@coulomb": {
     "type": "text",
     "description": "SI unit",
@@ -800,7 +799,7 @@
       }
     }
   },
-  "volt": "{form, select, one{volt}other{volts}}",
+  "volt": "{form, plural, zero{volts}one{volt}two{volts}few{volts}many{volts}other{volts}other{volts}}",
   "@volt": {
     "type": "text",
     "description": "SI unit",
@@ -817,7 +816,7 @@
       }
     }
   },
-  "farad": "{form, select, one{farad}other{farads}}",
+  "farad": "{form, plural, zero{farads}one{farad}two{farads}few{farads}many{farads}other{farads}other{farads}}",
   "@farad": {
     "type": "text",
     "description": "SI unit",
@@ -834,7 +833,7 @@
       }
     }
   },
-  "ohm": "{form, select, one{ohm}other{ohms}}",
+  "ohm": "{form, plural, zero{ohms}one{ohm}two{ohms}few{ohms}many{ohms}other{ohms}other{ohms}}",
   "@ohm": {
     "type": "text",
     "description": "SI unit",
@@ -851,7 +850,7 @@
       }
     }
   },
-  "siemens": "{form, select, one{siemens}other{siemens}}",
+  "siemens": "{form, plural, zero{siemens}one{siemens}two{siemens}few{siemens}many{siemens}other{siemens}other{siemens}}",
   "@siemens": {
     "type": "text",
     "description": "SI unit",
@@ -868,7 +867,7 @@
       }
     }
   },
-  "weber": "{form, select, one{weber}other{webers}}",
+  "weber": "{form, plural, zero{webers}one{weber}two{webers}few{webers}many{webers}other{webers}other{webers}}",
   "@weber": {
     "type": "text",
     "description": "SI unit",
@@ -885,7 +884,7 @@
       }
     }
   },
-  "tesla": "{form, select, one{tesla}other{teslas}}",
+  "tesla": "{form, plural, zero{teslas}one{tesla}two{teslas}few{teslas}many{teslas}other{teslas}other{teslas}}",
   "@tesla": {
     "type": "text",
     "description": "SI unit",
@@ -902,7 +901,7 @@
       }
     }
   },
-  "henry": "{form, select, one{henry}other{henries}}",
+  "henry": "{form, plural, zero{henries}one{henry}two{henries}few{henries}many{henries}other{henries}other{henries}}",
   "@henry": {
     "type": "text",
     "description": "SI unit",
@@ -919,7 +918,7 @@
       }
     }
   },
-  "degreeCelsius": "{form, select, one{degree Celsius}other{degrees Celsius}}",
+  "degreeCelsius": "{form, plural, zero{degrees Celsius}one{degree Celsius}two{degrees Celsius}few{degrees Celsius}many{degrees Celsius}other{degrees Celsius}other{degrees Celsius}}",
   "@degreeCelsius": {
     "type": "text",
     "description": "SI unit",
@@ -936,7 +935,7 @@
       }
     }
   },
-  "lumen": "{form, select, one{lumen}other{lumens}}",
+  "lumen": "{form, plural, zero{lumens}one{lumen}two{lumens}few{lumens}many{lumens}other{lumens}other{lumens}}",
   "@lumen": {
     "type": "text",
     "description": "SI unit",
@@ -953,7 +952,7 @@
       }
     }
   },
-  "lux": "{form, select, one{lux}other{luxes}}",
+  "lux": "{form, plural, zero{luxes}one{lux}two{luxes}few{luxes}many{luxes}other{luxes}other{luxes}}",
   "@lux": {
     "type": "text",
     "description": "SI unit",
@@ -970,7 +969,7 @@
       }
     }
   },
-  "becquerel": "{form, select, one{becquerel}other{becquerels}}",
+  "becquerel": "{form, plural, zero{becquerels}one{becquerel}two{becquerels}few{becquerels}many{becquerels}other{becquerels}other{becquerels}}",
   "@becquerel": {
     "type": "text",
     "description": "SI unit",
@@ -987,7 +986,7 @@
       }
     }
   },
-  "gray": "{form, select, one{gray}other{grays}}",
+  "gray": "{form, plural, zero{grays}one{gray}two{grays}few{grays}many{grays}other{grays}other{grays}}",
   "@gray": {
     "type": "text",
     "description": "SI unit",
@@ -1004,7 +1003,7 @@
       }
     }
   },
-  "sievert": "{form, select, one{sievert}other{sieverts}}",
+  "sievert": "{form, plural, zero{sieverts}one{sievert}two{sieverts}few{sieverts}many{sieverts}other{sieverts}other{sieverts}}",
   "@sievert": {
     "type": "text",
     "description": "SI unit",
@@ -1021,7 +1020,7 @@
       }
     }
   },
-  "katal": "{form, select, one{katal}other{katals}}",
+  "katal": "{form, plural, zero{katals}one{katal}two{katals}few{katals}many{katals}other{katals}other{katals}}",
   "@katal": {
     "type": "text",
     "description": "SI unit",

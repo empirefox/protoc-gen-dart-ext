@@ -106,10 +106,10 @@ const durationTpl = durationTplDef + `
 
 	{{ if $r.In }}
 		if (!{{ $kIn }}.containsKey(_dur))
-			throw {{ .PgdeFile.AsDot "InError" }}({{ .Err3Args }}, {{ $kIn }}.keys);
+			throw {{ .PgdeFile.AsDot "InError" }}({{ .Err3Args }}, {{ $kIn }}.keys.toList());
 	{{ else if $r.NotIn }}
 		if ({{ $kNotIn }}.containsKey(_dur))
-			throw {{ .PgdeFile.AsDot "InError" }}.not ({{ .Err3Args }}, {{ $kNotIn }}.keys);
+			throw {{ .PgdeFile.AsDot "InError" }}.not ({{ .Err3Args }}, {{ $kNotIn }}.keys.toList());
 	{{ end }}
 {{ .IfHasValueEnd }}
 {{ end }}

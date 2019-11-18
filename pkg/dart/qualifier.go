@@ -65,7 +65,7 @@ func (q Qualifier) ToDelimited(del uint8) Qualifier {
 
 // ANY.KIND.OF.STRING
 func (q Qualifier) ToScreamingDelimited(del uint8) Qualifier {
-	return Qualifier(strcase.ToScreamingDelimited(q.String(), del, true))
+	return Qualifier(strcase.ToScreamingDelimited(q.String(), del, 0, true))
 }
 
 // AnyKindOfString

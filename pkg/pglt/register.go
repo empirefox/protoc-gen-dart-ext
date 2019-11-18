@@ -9,35 +9,26 @@ import (
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/arb"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/dart"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/genshared"
-	pgs "github.com/lyft/protoc-gen-star"
+	"github.com/empirefox/protoc-gen-dart-ext/pkg/util"
+	"golang.org/x/text/language"
 )
 
-func Register(im *dart.ImportManager, tpl *template.Template, params pgs.Parameters) {
-	collectionLib := im.Import("dart:collection")
-	foundationLib := im.Import("package:flutter/foundation.dart")
-	materialLib := im.Import("package:flutter/material.dart")
-
+func Register(tpl *template.Template) {
 	funcs := genshared.JoinFuncs(
 		sprig.HermeticTxtFuncMap(),
 		dart.Funcs,
 		genshared.Funcs,
 		messageformat.Funcs,
 		template.FuncMap{
-			"renderNode":    genshared.Render(tpl),
-			"renderJoin":    genshared.RenderJoin(tpl),
-			"arbsToData":    ArbsToData(im),
-			"import":        im.ImportRoot,
-			"collectionLib": func() *dart.ImportFile { return collectionLib },
-			"foundationLib": func() *dart.ImportFile { return foundationLib },
-			"materialLib":   func() *dart.ImportFile { return materialLib },
-			"const": func() string {
-				if len(im.InstanceClasses()) == 0 {
-					return "const"
-				}
-				return ""
-			},
+			"renderNode": genshared.Render(tpl),
+			"renderJoin": genshared.RenderJoin(tpl),
+			"gttToData":  GttToData,
+			"resource":   NewArbResource,
 			"l10nClass": func(ntyName string) string {
 				return dart.Qualifier(ntyName).ToCamel().String() + "Localizations"
+			},
+			"matchFn": func(pluralLib *dart.ImportFile, tag language.Tag) dart.Qualifier {
+				return pluralLib.AsDot(dart.Qualifier("match" + util.PowerCamel(tag.String())))
 			},
 		})
 
@@ -61,33 +52,81 @@ func Register(im *dart.ImportManager, tpl *template.Template, params pgs.Paramet
 	template.Must(tpl.New("formedPlural").Parse(formedPluralTplStr))
 }
 
+type ArbResource struct {
+	*arb.ArbResource
+	im *dart.ImportManager
+}
+
+func NewArbResource(im *dart.ImportManager, r *arb.ArbResource) ArbResource {
+	return ArbResource{
+		ArbResource: r,
+		im:          im,
+	}
+}
+
+func (ar ArbResource) PluralLib(varname string) (*dart.ImportFile, error) {
+	imp, err := ar.Attr().DartParamImport(varname)
+	if err != nil {
+		return nil, err
+	}
+	return ar.im.ImportRoot(imp)
+}
+
 type DartArb struct {
 	*arb.Arb
 	*dart.ImportManager
-	Delegate []arb.SupportedLocale
+	Delegate      []arb.SupportedLocale
+	CollectionLib *dart.ImportFile
+	FoundationLib *dart.ImportFile
+	MaterialLib   *dart.ImportFile
 }
 
-type Data struct {
+type Entity struct {
 	BaseArb DartArb
-	Arbs    []*arb.Arb
+	Arbs    []DartArb
 }
 
-func ArbsToData(im *dart.ImportManager) func([]*arb.Arb) (*Data, error) {
-	return func(as []*arb.Arb) (*Data, error) {
-		for _, a := range as {
-			err := a.ParseDartParams(im)
+type RenderData struct {
+	*dart.ImportManager
+	Entities []Entity
+}
+
+type GttData struct {
+	ImportManager *dart.ImportManager
+	Gtt           []*arb.GttArbs
+}
+
+func GttToData(data GttData) (*RenderData, error) {
+	collectionLib := data.ImportManager.Import("dart:collection")
+	foundationLib := data.ImportManager.Import("package:flutter/foundation.dart")
+	materialLib := data.ImportManager.Import("package:flutter/material.dart")
+
+	entities := make([]Entity, len(data.Gtt))
+	for i, as := range data.Gtt {
+		list := make([]DartArb, len(as.List))
+		delegate := arb.SupportedLocales(as.List)
+		for i, a := range as.List {
+			err := a.ParseDartParams(data.ImportManager)
 			if err != nil {
 				return nil, fmt.Errorf("arb file: %v", err)
 			}
-		}
 
-		return &Data{
-			BaseArb: DartArb{
-				Arb:           as[0],
-				ImportManager: im,
-				Delegate:      arb.SupportedLocales(as),
-			},
-			Arbs: as,
-		}, nil
+			list[i] = DartArb{
+				Arb:           a,
+				ImportManager: data.ImportManager,
+				Delegate:      delegate,
+				CollectionLib: collectionLib,
+				FoundationLib: foundationLib,
+				MaterialLib:   materialLib,
+			}
+		}
+		entities[i] = Entity{
+			BaseArb: list[0],
+			Arbs:    list,
+		}
 	}
+	return &RenderData{
+		ImportManager: data.ImportManager,
+		Entities:      entities,
+	}, nil
 }

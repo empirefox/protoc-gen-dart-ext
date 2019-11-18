@@ -16,9 +16,6 @@ type File struct {
 
 	Names dart.FileNames
 
-	// SplitHeader split the following header
-	SplitHeader string
-
 	Translator *Translator
 
 	Validators *Validators
@@ -27,15 +24,13 @@ type File struct {
 	Enums    []*Enum
 }
 
-func NewFile(d *dart.Dart, locale language.Tag, pgsFile pgs.File, splitHeader string) (*File, error) {
+func NewFile(d *dart.Dart, locale language.Tag, pgsFile pgs.File) (*File, error) {
 	names := d.FileNames(pgsFile)
 
 	f := &File{
 		Dart:  d,
 		Pgs:   pgsFile,
 		Names: names,
-
-		SplitHeader: splitHeader,
 
 		Translator: &Translator{
 			Dart: d,
@@ -69,7 +64,9 @@ func NewFile(d *dart.Dart, locale language.Tag, pgsFile pgs.File, splitHeader st
 		return nil, err
 	}
 
-	f.Validators.DartConvertLib = f.Validators.ImportManager.
+	f.Validators.CollectionLib = f.Validators.ImportManager.
+		Import("dart:collection")
+	f.Validators.ConvertLib = f.Validators.ImportManager.
 		Import("dart:convert")
 	f.Validators.FoundationFile = f.Validators.ImportManager.
 		Import("package:flutter/foundation.dart")
@@ -82,7 +79,7 @@ func NewFile(d *dart.Dart, locale language.Tag, pgsFile pgs.File, splitHeader st
 	f.Validators.PgdeFile = f.Validators.ImportManager.
 		Import("package:pgde/pgde.dart")
 	f.Validators.PbFile = f.Validators.ImportManager.Import(validateImportPb)
-	f.Validators.TranslatorFile = f.Validators.ImportManager.Import(validateImportL10n)
+	f.Validators.L10nFile = f.Validators.ImportManager.Import(validateImportL10n)
 
 	for _, pgsNty := range pgsFile.AllEnums() {
 		err := f.addEnum(pgsNty)

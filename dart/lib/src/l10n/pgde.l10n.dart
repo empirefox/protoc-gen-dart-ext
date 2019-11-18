@@ -36,12 +36,7 @@ class _PgdeLocalizationsDelegate
 
       case 'en':
         {
-          switch (locale.countryCode) {
-            case 'US':
-              return PgdeLocalizationsEnUS();
-          }
-
-          return PgdeLocalizationsEn();
+          return PgdeLocalizationsEnUS();
         }
 
       case 'zh':
@@ -54,1198 +49,12 @@ class _PgdeLocalizationsDelegate
   }
 }
 
-class PgdeLocalizationsEn extends PgdeLocalizations {
-  const PgdeLocalizationsEn();
-
-  String atomMeter($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'meter';
-
-      default:
-        return r'meters';
-    }
-  }
-
-  String atomFoot($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'foot';
-
-      default:
-        return r'feet';
-    }
-  }
-
-  String atomInch($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'inch';
-
-      default:
-        return r'inches';
-    }
-  }
-
-  String atomYard($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'yard';
-
-      default:
-        return r'yards';
-    }
-  }
-
-  String atomMile($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'mile';
-
-      default:
-        return r'miles';
-    }
-  }
-
-  String atomNauticalMile($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'nautical mile';
-
-      default:
-        return r'nautical miles';
-    }
-  }
-
-  String atomLightYear($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'light year';
-
-      default:
-        return r'light years';
-    }
-  }
-
-  String atomHectare($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'hectare';
-
-      default:
-        return r'hectares';
-    }
-  }
-
-  String atomAre($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'are';
-
-      default:
-        return r'ares';
-    }
-  }
-
-  String atomLiter($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'liter';
-
-      default:
-        return r'liters';
-    }
-  }
-
-  String atomGallon($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'gallon';
-
-      default:
-        return r'gallons';
-    }
-  }
-
-  String atomBarrel($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'barrel';
-
-      default:
-        return r'barrels';
-    }
-  }
-
-  String atomGram($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'gram';
-
-      default:
-        return r'grams';
-    }
-  }
-
-  String atomTon($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'ton';
-
-      default:
-        return r'tons';
-    }
-  }
-
-  String atomPound($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'pound';
-
-      default:
-        return r'pounds';
-    }
-  }
-
-  String atomOunce($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'ounce';
-
-      default:
-        return r'ounces';
-    }
-  }
-
-  String atomSecond($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'second';
-
-      default:
-        return r'seconds';
-    }
-  }
-
-  String atomMinute($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'minute';
-
-      default:
-        return r'minutes';
-    }
-  }
-
-  String atomHour($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'hour';
-
-      default:
-        return r'hours';
-    }
-  }
-
-  String atomDay($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'day';
-
-      default:
-        return r'days';
-    }
-  }
-
-  String atomWeek($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'week';
-
-      default:
-        return r'weeks';
-    }
-  }
-
-  String atomMonth($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'month';
-
-      default:
-        return r'months';
-    }
-  }
-
-  String atomYear($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'year';
-
-      default:
-        return r'years';
-    }
-  }
-
-  String atomCentury($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'century';
-
-      default:
-        return r'centuries';
-    }
-  }
-
-  String atomSecondAngle($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'second';
-
-      default:
-        return r'seconds';
-    }
-  }
-
-  String atomMinuteAngle($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'minute';
-
-      default:
-        return r'minutes';
-    }
-  }
-
-  String atomDegree($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'degree';
-
-      default:
-        return r'degrees';
-    }
-  }
-
-  String atomAmpere($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'ampere';
-
-      default:
-        return r'amperes';
-    }
-  }
-
-  String atomElectronvolt($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'electronvolt';
-
-      default:
-        return r'electronvolts';
-    }
-  }
-
-  String atomBel($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'bel';
-
-      default:
-        return r'bels';
-    }
-  }
-
-  String atomKelvin($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'kelvin';
-
-      default:
-        return r'kelvins';
-    }
-  }
-
-  String atomMole($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'mole';
-
-      default:
-        return r'moles';
-    }
-  }
-
-  String atomCandela($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'candela';
-
-      default:
-        return r'candelas';
-    }
-  }
-
-  String atomPercent($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'percent';
-
-      default:
-        return r'percent';
-    }
-  }
-
-  String atomPerThousand($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'per thousand';
-
-      default:
-        return r'per thousand';
-    }
-  }
-
-  String atomBit($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'bit';
-
-      default:
-        return r'bits';
-    }
-  }
-
-  String atomByte($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'byte';
-
-      default:
-        return r'bytes';
-    }
-  }
-
-  String atomCharacter($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'character';
-
-      default:
-        return r'characters';
-    }
-  }
-
-  String atomWord($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'word';
-
-      default:
-        return r'words';
-    }
-  }
-
-  String atomRadian($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'radian';
-
-      default:
-        return r'radians';
-    }
-  }
-
-  String atomSteradian($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'steradian';
-
-      default:
-        return r'steradians';
-    }
-  }
-
-  String atomHertz($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'hertz';
-
-      default:
-        return r'hertz';
-    }
-  }
-
-  String atomNewton($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'newton';
-
-      default:
-        return r'newtons';
-    }
-  }
-
-  String atomPascal($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'pascal';
-
-      default:
-        return r'pascals';
-    }
-  }
-
-  String atomJoule($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'joule';
-
-      default:
-        return r'joules';
-    }
-  }
-
-  String atomWatt($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'watt';
-
-      default:
-        return r'watts';
-    }
-  }
-
-  String atomCoulomb($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'coulomb';
-
-      default:
-        return r'coulombs';
-    }
-  }
-
-  String atomVolt($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'volt';
-
-      default:
-        return r'volts';
-    }
-  }
-
-  String atomFarad($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'farad';
-
-      default:
-        return r'farads';
-    }
-  }
-
-  String atomOhm($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'ohm';
-
-      default:
-        return r'ohms';
-    }
-  }
-
-  String atomSiemens($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'siemens';
-
-      default:
-        return r'siemens';
-    }
-  }
-
-  String atomWeber($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'weber';
-
-      default:
-        return r'webers';
-    }
-  }
-
-  String atomTesla($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'tesla';
-
-      default:
-        return r'teslas';
-    }
-  }
-
-  String atomHenry($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'henry';
-
-      default:
-        return r'henries';
-    }
-  }
-
-  String atomDegreeCelsius($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'degree Celsius';
-
-      default:
-        return r'degrees Celsius';
-    }
-  }
-
-  String atomLumen($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'lumen';
-
-      default:
-        return r'lumens';
-    }
-  }
-
-  String atomLux($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'lux';
-
-      default:
-        return r'luxes';
-    }
-  }
-
-  String atomBecquerel($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'becquerel';
-
-      default:
-        return r'becquerels';
-    }
-  }
-
-  String atomGray($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'gray';
-
-      default:
-        return r'grays';
-    }
-  }
-
-  String atomSievert($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'sievert';
-
-      default:
-        return r'sieverts';
-    }
-  }
-
-  String atomKatal($3.Form form) {
-    switch (form) {
-      case $3.Form.one:
-        return r'katal';
-
-      default:
-        return r'katals';
-    }
-  }
-
-  String get prefixYotta => r'yotta';
-
-  String get prefixZetta => r'zetta';
-
-  String get prefixExa => r'exa';
-
-  String get prefixPeta => r'peta';
-
-  String get prefixTera => r'tera';
-
-  String get prefixGiga => r'giga';
-
-  String get prefixMega => r'mega';
-
-  String get prefixKilo => r'kilo';
-
-  String get prefixHecto => r'hecto';
-
-  String get prefixDeka => r'deka';
-
-  String get prefixDeci => r'deci';
-
-  String get prefixCenti => r'centi';
-
-  String get prefixMilli => r'milli';
-
-  String get prefixMicro => r'micro';
-
-  String get prefixNano => r'nano';
-
-  String get prefixPico => r'pico';
-
-  String get prefixFemto => r'femto';
-
-  String get prefixAtto => r'atto';
-
-  String get prefixZepto => r'zepto';
-
-  String get prefixYocto => r'yocto';
-
-  String get prefixKibi => r'kibi';
-
-  String get prefixMebi => r'mebi';
-
-  String get prefixGibi => r'gibi';
-
-  String get prefixTebi => r'tebi';
-
-  String get prefixPebi => r'pebi';
-
-  String get prefixExbi => r'exbi';
-
-  String get currencyALL => r'Lek';
-
-  String get currencyDZD => r'Algerian Dinar';
-
-  String get currencyARS => r'Argentine Peso';
-
-  String get currencyAUD => r'Australian Dollar';
-
-  String get currencyBSD => r'Bahamian Dollar';
-
-  String get currencyBHD => r'Bahraini Dinar';
-
-  String get currencyBDT => r'Taka';
-
-  String get currencyAMD => r'Armenian Dram';
-
-  String get currencyBBD => r'Barbados Dollar';
-
-  String get currencyBMD => r'Bermudian Dollar';
-
-  String get currencyBTN => r'Ngultrum';
-
-  String get currencyBOB => r'Boliviano';
-
-  String get currencyBWP => r'Pula';
-
-  String get currencyBZD => r'Belize Dollar';
-
-  String get currencySBD => r'Solomon Islands Dollar';
-
-  String get currencyBND => r'Brunei Dollar';
-
-  String get currencyMMK => r'Kyat';
-
-  String get currencyBIF => r'Burundi Franc';
-
-  String get currencyKHR => r'Riel';
-
-  String get currencyCAD => r'Canadian Dollar';
-
-  String get currencyCVE => r'Cabo Verde Escudo';
-
-  String get currencyKYD => r'Cayman Islands Dollar';
-
-  String get currencyLKR => r'Sri Lanka Rupee';
-
-  String get currencyCLP => r'Chilean Peso';
-
-  String get currencyCNY => r'Yuan Renminbi';
-
-  String get currencyCOP => r'Colombian Peso';
-
-  String get currencyKMF => r'Comorian Franc ';
-
-  String get currencyCRC => r'Costa Rican Colon';
-
-  String get currencyHRK => r'Kuna';
-
-  String get currencyCUP => r'Cuban Peso';
-
-  String get currencyCZK => r'Czech Koruna';
-
-  String get currencyDKK => r'Danish Krone';
-
-  String get currencyDOP => r'Dominican Peso';
-
-  String get currencySVC => r'El Salvador Colon';
-
-  String get currencyETB => r'Ethiopian Birr';
-
-  String get currencyERN => r'Nakfa';
-
-  String get currencyFKP => r'Falkland Islands Pound';
-
-  String get currencyFJD => r'Fiji Dollar';
-
-  String get currencyDJF => r'Djibouti Franc';
-
-  String get currencyGMD => r'Dalasi';
-
-  String get currencyGIP => r'Gibraltar Pound';
-
-  String get currencyGTQ => r'Quetzal';
-
-  String get currencyGNF => r'Guinean Franc';
-
-  String get currencyGYD => r'Guyana Dollar';
-
-  String get currencyHTG => r'Gourde';
-
-  String get currencyHNL => r'Lempira';
-
-  String get currencyHKD => r'Hong Kong Dollar';
-
-  String get currencyHUF => r'Forint';
-
-  String get currencyISK => r'Iceland Krona';
-
-  String get currencyINR => r'Indian Rupee';
-
-  String get currencyIDR => r'Rupiah';
-
-  String get currencyIRR => r'Iranian Rial';
-
-  String get currencyIQD => r'Iraqi Dinar';
-
-  String get currencyILS => r'New Israeli Sheqel';
-
-  String get currencyJMD => r'Jamaican Dollar';
-
-  String get currencyJPY => r'Yen';
-
-  String get currencyKZT => r'Tenge';
-
-  String get currencyJOD => r'Jordanian Dinar';
-
-  String get currencyKES => r'Kenyan Shilling';
-
-  String get currencyKPW => r'North Korean Won';
-
-  String get currencyKRW => r'Won';
-
-  String get currencyKWD => r'Kuwaiti Dinar';
-
-  String get currencyKGS => r'Som';
-
-  String get currencyLAK => r'Lao Kip';
-
-  String get currencyLBP => r'Lebanese Pound';
-
-  String get currencyLSL => r'Loti';
-
-  String get currencyLRD => r'Liberian Dollar';
-
-  String get currencyLYD => r'Libyan Dinar';
-
-  String get currencyMOP => r'Pataca';
-
-  String get currencyMWK => r'Malawi Kwacha';
-
-  String get currencyMYR => r'Malaysian Ringgit';
-
-  String get currencyMVR => r'Rufiyaa';
-
-  String get currencyMUR => r'Mauritius Rupee';
-
-  String get currencyMXN => r'Mexican Peso';
-
-  String get currencyMNT => r'Tugrik';
-
-  String get currencyMDL => r'Moldovan Leu';
-
-  String get currencyMAD => r'Moroccan Dirham';
-
-  String get currencyOMR => r'Rial Omani';
-
-  String get currencyNAD => r'Namibia Dollar';
-
-  String get currencyNPR => r'Nepalese Rupee';
-
-  String get currencyANG => r'Netherlands Antillean Guilder';
-
-  String get currencyAWG => r'Aruban Florin';
-
-  String get currencyVUV => r'Vatu';
-
-  String get currencyNZD => r'New Zealand Dollar';
-
-  String get currencyNIO => r'Cordoba Oro';
-
-  String get currencyNGN => r'Naira';
-
-  String get currencyNOK => r'Norwegian Krone';
-
-  String get currencyPKR => r'Pakistan Rupee';
-
-  String get currencyPAB => r'Balboa';
-
-  String get currencyPGK => r'Kina';
-
-  String get currencyPYG => r'Guarani';
-
-  String get currencyPEN => r'Sol';
-
-  String get currencyPHP => r'Philippine Peso';
-
-  String get currencyQAR => r'Qatari Rial';
-
-  String get currencyRUB => r'Russian Ruble';
-
-  String get currencyRWF => r'Rwanda Franc';
-
-  String get currencySHP => r'Saint Helena Pound';
-
-  String get currencySAR => r'Saudi Riyal';
-
-  String get currencySCR => r'Seychelles Rupee';
-
-  String get currencySLL => r'Leone';
-
-  String get currencySGD => r'Singapore Dollar';
-
-  String get currencyVND => r'Dong';
-
-  String get currencySOS => r'Somali Shilling';
-
-  String get currencyZAR => r'Rand';
-
-  String get currencySSP => r'South Sudanese Pound';
-
-  String get currencySZL => r'Lilangeni';
-
-  String get currencySEK => r'Swedish Krona';
-
-  String get currencyCHF => r'Swiss Franc';
-
-  String get currencySYP => r'Syrian Pound';
-
-  String get currencyTHB => r'Baht';
-
-  String get currencyTOP => r'Pa’anga';
-
-  String get currencyTTD => r'Trinidad and Tobago Dollar';
-
-  String get currencyAED => r'UAE Dirham';
-
-  String get currencyTND => r'Tunisian Dinar';
-
-  String get currencyUGX => r'Uganda Shilling';
-
-  String get currencyMKD => r'Denar';
-
-  String get currencyEGP => r'Egyptian Pound';
-
-  String get currencyGBP => r'Pound Sterling';
-
-  String get currencyTZS => r'Tanzanian Shilling';
-
-  String get currencyUSD => r'US Dollar';
-
-  String get currencyUYU => r'Peso Uruguayo';
-
-  String get currencyUZS => r'Uzbekistan Sum';
-
-  String get currencyWST => r'Tala';
-
-  String get currencyYER => r'Yemeni Rial';
-
-  String get currencyTWD => r'New Taiwan Dollar';
-
-  String get currencyUYW => r'Unidad Previsional';
-
-  String get currencyVES => r'Bolívar Soberano';
-
-  String get currencyMRU => r'Ouguiya';
-
-  String get currencySTN => r'Dobra';
-
-  String get currencyCUC => r'Peso Convertible';
-
-  String get currencyZWL => r'Zimbabwe Dollar';
-
-  String get currencyBYN => r'Belarusian Ruble';
-
-  String get currencyTMT => r'Turkmenistan New Manat';
-
-  String get currencyGHS => r'Ghana Cedi';
-
-  String get currencySDG => r'Sudanese Pound';
-
-  String get currencyUYI => r'Uruguay Peso en Unidades Indexadas (UI)';
-
-  String get currencyRSD => r'Serbian Dinar';
-
-  String get currencyMZN => r'Mozambique Metical';
-
-  String get currencyAZN => r'Azerbaijan Manat';
-
-  String get currencyRON => r'Romanian Leu';
-
-  String get currencyCHE => r'WIR Euro';
-
-  String get currencyCHW => r'WIR Franc';
-
-  String get currencyTRY => r'Turkish Lira';
-
-  String get currencyXAF => r'CFA Franc BEAC';
-
-  String get currencyXCD => r'East Caribbean Dollar';
-
-  String get currencyXOF => r'CFA Franc BCEAO';
-
-  String get currencyXPF => r'CFP Franc';
-
-  String get currencyXBA =>
-      r'Bond Markets Unit European Composite Unit (EURCO)';
-
-  String get currencyXBB =>
-      r'Bond Markets Unit European Monetary Unit (E.M.U.-6)';
-
-  String get currencyXBC =>
-      r'Bond Markets Unit European Unit of Account 9 (E.U.A.-9)';
-
-  String get currencyXBD =>
-      r'Bond Markets Unit European Unit of Account 17 (E.U.A.-17)';
-
-  String get currencyXAU => r'Gold';
-
-  String get currencyXDR => r'SDR (Special Drawing Right)';
-
-  String get currencyXAG => r'Silver';
-
-  String get currencyXPT => r'Platinum';
-
-  String get currencyXTS => r'Codes specifically reserved for testing purposes';
-
-  String get currencyXPD => r'Palladium';
-
-  String get currencyXUA => r'ADB Unit of Account';
-
-  String get currencyZMW => r'Zambian Kwacha';
-
-  String get currencySRD => r'Surinam Dollar';
-
-  String get currencyMGA => r'Malagasy Ariary';
-
-  String get currencyCOU => r'Unidad de Valor Real';
-
-  String get currencyAFN => r'Afghani';
-
-  String get currencyTJS => r'Somoni';
-
-  String get currencyAOA => r'Kwanza';
-
-  String get currencyBGN => r'Bulgarian Lev';
-
-  String get currencyCDF => r'Congolese Franc';
-
-  String get currencyBAM => r'Convertible Mark';
-
-  String get currencyEUR => r'Euro';
-
-  String get currencyMXV => r'Mexican Unidad de Inversion (UDI)';
-
-  String get currencyUAH => r'Hryvnia';
-
-  String get currencyGEL => r'Lari';
-
-  String get currencyBOV => r'Mvdol';
-
-  String get currencyPLN => r'Zloty';
-
-  String get currencyBRL => r'Brazilian Real';
-
-  String get currencyCLF => r'Unidad de Fomento';
-
-  String get currencyXSU => r'Sucre';
-
-  String get currencyUSN => r'US Dollar (Next day)';
-
-  String validateFieldLength(String field) {
-    final output = StringBuffer();
-
-    output.write(field);
-
-    output.write(r' length');
-
-    return output.toString();
-  }
-
-  String validateFieldItems(String field) {
-    final output = StringBuffer();
-
-    output.write(r'The items of ');
-
-    output.write(field);
-    return output.toString();
-  }
-
-  String get validateNow => r'now';
-
-  String get validateEq => r'equal';
-
-  String get validateGt => r'be greater than';
-
-  String get validateGte => r'be greater than or equal to';
-
-  String get validateLt => r'less than';
-
-  String get validateLte => r'less than or equal to';
-
-  String get validateOneof => r'be one of';
-
-  String get validateOneofx => r'not be one of';
-
-  String get validateRange => r'be inside range';
-
-  String get validateRangex => r'be outside range';
-
-  String get validatePattern => r'match the pattern';
-
-  String get validatePrefix => r'have prefix';
-
-  String get validateSuffix => r'have suffix';
-
-  String get validateContains => r'contain';
-
-  String validateMustConst(String field, String rule, String kConstWithUnit) {
-    final output = StringBuffer();
-
-    output.write(field);
-
-    output.write(r' must ');
-
-    output.write(rule);
-
-    output.write(r' ');
-
-    output.write(kConstWithUnit);
-    return output.toString();
-  }
-
-  String validateUnique(int position) {
-    final output = StringBuffer();
-
-    output.write(r'unique, but the No.');
-
-    output.write(position.toString());
-
-    output.write(r' item is repeated');
-
-    return output.toString();
-  }
-
-  String validateNoSparse(String key) {
-    final output = StringBuffer();
-
-    output.write(r'a non-sparse map, but the value of `');
-
-    output.write(key);
-
-    output.write(r'` is nil');
-
-    return output.toString();
-  }
-
-  String get validateEmail => r'email';
-
-  String get validateHostname => r'hostname';
-
-  String get validateIp => r'ip';
-
-  String get validateIpv4 => r'ipv4';
-
-  String get validateIpv6 => r'ipv6';
-
-  String get validateUri => r'uri';
-
-  String get validateUriRef => r'uri ref';
-
-  String validateMustBe(String field, String something) {
-    final output = StringBuffer();
-
-    output.write(field);
-
-    output.write(r' must be ');
-
-    output.write(something);
-    return output.toString();
-  }
-
-  String validateMustWithinNow(String field, String duration) {
-    final output = StringBuffer();
-
-    output.write(field);
-
-    output.write(r' must be within ');
-
-    output.write(duration);
-
-    output.write(r' of now');
-
-    return output.toString();
-  }
-
-  String validateMustWithinGtNow(String field, String duration) {
-    final output = StringBuffer();
-
-    output.write(field);
-
-    output.write(r' must be greater than now within ');
-
-    output.write(duration);
-    return output.toString();
-  }
-
-  String validateMustWithinLtNow(String field, String duration) {
-    final output = StringBuffer();
-
-    output.write(field);
-
-    output.write(r' must be less than now within ');
-
-    output.write(duration);
-    return output.toString();
-  }
-
-  String validateRequired(String field) {
-    final output = StringBuffer();
-
-    output.write(field);
-
-    output.write(r' is required');
-
-    return output.toString();
-  }
-}
-
 class PgdeLocalizationsAr extends PgdeLocalizations {
-  const PgdeLocalizationsAr();
+  PgdeLocalizationsAr();
 
   String atomMeter($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'meters';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'meters';
 
       case $3.Form.one:
@@ -1254,7 +63,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'meters';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'meters';
+
+      case $3.Form.many:
         return r'meters';
 
       default:
@@ -1264,10 +76,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomFoot($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'feet';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'feet';
 
       case $3.Form.one:
@@ -1276,7 +85,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'feet';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'feet';
+
+      case $3.Form.many:
         return r'feet';
 
       default:
@@ -1286,10 +98,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomInch($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'inches';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'inches';
 
       case $3.Form.one:
@@ -1298,7 +107,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'inches';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'inches';
+
+      case $3.Form.many:
         return r'inches';
 
       default:
@@ -1308,10 +120,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomYard($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'yards';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'yards';
 
       case $3.Form.one:
@@ -1320,7 +129,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'yards';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'yards';
+
+      case $3.Form.many:
         return r'yards';
 
       default:
@@ -1330,10 +142,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomMile($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'miles';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'miles';
 
       case $3.Form.one:
@@ -1342,7 +151,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'miles';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'miles';
+
+      case $3.Form.many:
         return r'miles';
 
       default:
@@ -1352,10 +164,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomNauticalMile($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'nautical miles';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'nautical miles';
 
       case $3.Form.one:
@@ -1364,7 +173,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'nautical miles';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'nautical miles';
+
+      case $3.Form.many:
         return r'nautical miles';
 
       default:
@@ -1374,10 +186,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomLightYear($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'light years';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'light years';
 
       case $3.Form.one:
@@ -1386,7 +195,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'light years';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'light years';
+
+      case $3.Form.many:
         return r'light years';
 
       default:
@@ -1396,10 +208,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomHectare($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'hectares';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'hectares';
 
       case $3.Form.one:
@@ -1408,7 +217,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'hectares';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'hectares';
+
+      case $3.Form.many:
         return r'hectares';
 
       default:
@@ -1418,10 +230,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomAre($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'ares';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'ares';
 
       case $3.Form.one:
@@ -1430,7 +239,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'ares';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'ares';
+
+      case $3.Form.many:
         return r'ares';
 
       default:
@@ -1440,10 +252,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomLiter($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'liters';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'liters';
 
       case $3.Form.one:
@@ -1452,7 +261,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'liters';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'liters';
+
+      case $3.Form.many:
         return r'liters';
 
       default:
@@ -1462,10 +274,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomGallon($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'gallons';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'gallons';
 
       case $3.Form.one:
@@ -1474,7 +283,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'gallons';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'gallons';
+
+      case $3.Form.many:
         return r'gallons';
 
       default:
@@ -1484,10 +296,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomBarrel($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'barrels';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'barrels';
 
       case $3.Form.one:
@@ -1496,7 +305,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'barrels';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'barrels';
+
+      case $3.Form.many:
         return r'barrels';
 
       default:
@@ -1506,10 +318,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomGram($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'grams';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'grams';
 
       case $3.Form.one:
@@ -1518,7 +327,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'grams';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'grams';
+
+      case $3.Form.many:
         return r'grams';
 
       default:
@@ -1528,10 +340,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomTon($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'tons';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'tons';
 
       case $3.Form.one:
@@ -1540,7 +349,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'tons';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'tons';
+
+      case $3.Form.many:
         return r'tons';
 
       default:
@@ -1550,10 +362,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomPound($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'pounds';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'pounds';
 
       case $3.Form.one:
@@ -1562,7 +371,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'pounds';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'pounds';
+
+      case $3.Form.many:
         return r'pounds';
 
       default:
@@ -1572,10 +384,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomOunce($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'ounces';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'ounces';
 
       case $3.Form.one:
@@ -1584,7 +393,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'ounces';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'ounces';
+
+      case $3.Form.many:
         return r'ounces';
 
       default:
@@ -1594,10 +406,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomSecond($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'seconds';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'seconds';
 
       case $3.Form.one:
@@ -1606,7 +415,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'seconds';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'seconds';
+
+      case $3.Form.many:
         return r'seconds';
 
       default:
@@ -1616,10 +428,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomMinute($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'minutes';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'minutes';
 
       case $3.Form.one:
@@ -1628,7 +437,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'minutes';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'minutes';
+
+      case $3.Form.many:
         return r'minutes';
 
       default:
@@ -1638,10 +450,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomHour($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'hours';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'hours';
 
       case $3.Form.one:
@@ -1650,7 +459,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'hours';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'hours';
+
+      case $3.Form.many:
         return r'hours';
 
       default:
@@ -1660,10 +472,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomDay($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'days';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'days';
 
       case $3.Form.one:
@@ -1672,7 +481,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'days';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'days';
+
+      case $3.Form.many:
         return r'days';
 
       default:
@@ -1682,10 +494,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomWeek($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'weeks';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'weeks';
 
       case $3.Form.one:
@@ -1694,7 +503,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'weeks';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'weeks';
+
+      case $3.Form.many:
         return r'weeks';
 
       default:
@@ -1704,10 +516,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomMonth($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'months';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'months';
 
       case $3.Form.one:
@@ -1716,7 +525,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'months';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'months';
+
+      case $3.Form.many:
         return r'months';
 
       default:
@@ -1726,10 +538,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomYear($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'years';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'years';
 
       case $3.Form.one:
@@ -1738,7 +547,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'years';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'years';
+
+      case $3.Form.many:
         return r'years';
 
       default:
@@ -1748,10 +560,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomCentury($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'centuries';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'centuries';
 
       case $3.Form.one:
@@ -1760,7 +569,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'centuries';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'centuries';
+
+      case $3.Form.many:
         return r'centuries';
 
       default:
@@ -1770,10 +582,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomSecondAngle($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'seconds';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'seconds';
 
       case $3.Form.one:
@@ -1782,7 +591,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'seconds';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'seconds';
+
+      case $3.Form.many:
         return r'seconds';
 
       default:
@@ -1792,10 +604,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomMinuteAngle($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'minutes';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'minutes';
 
       case $3.Form.one:
@@ -1804,7 +613,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'minutes';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'minutes';
+
+      case $3.Form.many:
         return r'minutes';
 
       default:
@@ -1814,10 +626,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomDegree($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'degrees';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'degrees';
 
       case $3.Form.one:
@@ -1826,7 +635,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'degrees';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'degrees';
+
+      case $3.Form.many:
         return r'degrees';
 
       default:
@@ -1836,10 +648,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomAmpere($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'amperes';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'amperes';
 
       case $3.Form.one:
@@ -1848,7 +657,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'amperes';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'amperes';
+
+      case $3.Form.many:
         return r'amperes';
 
       default:
@@ -1858,10 +670,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomElectronvolt($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'electronvolts';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'electronvolts';
 
       case $3.Form.one:
@@ -1870,7 +679,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'electronvolts';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'electronvolts';
+
+      case $3.Form.many:
         return r'electronvolts';
 
       default:
@@ -1880,10 +692,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomBel($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'bels';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'bels';
 
       case $3.Form.one:
@@ -1892,7 +701,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'bels';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'bels';
+
+      case $3.Form.many:
         return r'bels';
 
       default:
@@ -1902,10 +714,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomKelvin($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'kelvins';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'kelvins';
 
       case $3.Form.one:
@@ -1914,7 +723,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'kelvins';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'kelvins';
+
+      case $3.Form.many:
         return r'kelvins';
 
       default:
@@ -1924,10 +736,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomMole($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'moles';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'moles';
 
       case $3.Form.one:
@@ -1936,7 +745,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'moles';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'moles';
+
+      case $3.Form.many:
         return r'moles';
 
       default:
@@ -1946,10 +758,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomCandela($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'candelas';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'candelas';
 
       case $3.Form.one:
@@ -1958,7 +767,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'candelas';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'candelas';
+
+      case $3.Form.many:
         return r'candelas';
 
       default:
@@ -1968,10 +780,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomPercent($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'percent';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'percent';
 
       case $3.Form.one:
@@ -1980,7 +789,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'percent';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'percent';
+
+      case $3.Form.many:
         return r'percent';
 
       default:
@@ -1990,10 +802,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomPerThousand($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'per thousand';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'per thousand';
 
       case $3.Form.one:
@@ -2002,7 +811,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'per thousand';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'per thousand';
+
+      case $3.Form.many:
         return r'per thousand';
 
       default:
@@ -2012,10 +824,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomBit($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'bits';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'bits';
 
       case $3.Form.one:
@@ -2024,7 +833,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'bits';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'bits';
+
+      case $3.Form.many:
         return r'bits';
 
       default:
@@ -2034,10 +846,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomByte($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'bytes';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'bytes';
 
       case $3.Form.one:
@@ -2046,7 +855,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'bytes';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'bytes';
+
+      case $3.Form.many:
         return r'bytes';
 
       default:
@@ -2056,10 +868,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomCharacter($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'characters';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'characters';
 
       case $3.Form.one:
@@ -2068,7 +877,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'characters';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'characters';
+
+      case $3.Form.many:
         return r'characters';
 
       default:
@@ -2078,10 +890,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomWord($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'words';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'words';
 
       case $3.Form.one:
@@ -2090,7 +899,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'words';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'words';
+
+      case $3.Form.many:
         return r'words';
 
       default:
@@ -2100,10 +912,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomRadian($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'radians';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'radians';
 
       case $3.Form.one:
@@ -2112,7 +921,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'radians';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'radians';
+
+      case $3.Form.many:
         return r'radians';
 
       default:
@@ -2122,10 +934,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomSteradian($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'steradians';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'steradians';
 
       case $3.Form.one:
@@ -2134,7 +943,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'steradians';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'steradians';
+
+      case $3.Form.many:
         return r'steradians';
 
       default:
@@ -2144,10 +956,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomHertz($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'hertz';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'hertz';
 
       case $3.Form.one:
@@ -2156,7 +965,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'hertz';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'hertz';
+
+      case $3.Form.many:
         return r'hertz';
 
       default:
@@ -2166,10 +978,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomNewton($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'newtons';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'newtons';
 
       case $3.Form.one:
@@ -2178,7 +987,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'newtons';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'newtons';
+
+      case $3.Form.many:
         return r'newtons';
 
       default:
@@ -2188,10 +1000,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomPascal($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'pascals';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'pascals';
 
       case $3.Form.one:
@@ -2200,7 +1009,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'pascals';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'pascals';
+
+      case $3.Form.many:
         return r'pascals';
 
       default:
@@ -2210,10 +1022,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomJoule($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'joules';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'joules';
 
       case $3.Form.one:
@@ -2222,7 +1031,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'joules';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'joules';
+
+      case $3.Form.many:
         return r'joules';
 
       default:
@@ -2232,10 +1044,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomWatt($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'watts';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'watts';
 
       case $3.Form.one:
@@ -2244,7 +1053,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'watts';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'watts';
+
+      case $3.Form.many:
         return r'watts';
 
       default:
@@ -2254,10 +1066,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomCoulomb($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'coulombs';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'coulombs';
 
       case $3.Form.one:
@@ -2266,7 +1075,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'coulombs';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'coulombs';
+
+      case $3.Form.many:
         return r'coulombs';
 
       default:
@@ -2276,10 +1088,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomVolt($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'volts';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'volts';
 
       case $3.Form.one:
@@ -2288,7 +1097,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'volts';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'volts';
+
+      case $3.Form.many:
         return r'volts';
 
       default:
@@ -2298,10 +1110,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomFarad($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'farads';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'farads';
 
       case $3.Form.one:
@@ -2310,7 +1119,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'farads';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'farads';
+
+      case $3.Form.many:
         return r'farads';
 
       default:
@@ -2320,10 +1132,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomOhm($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'ohms';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'ohms';
 
       case $3.Form.one:
@@ -2332,7 +1141,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'ohms';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'ohms';
+
+      case $3.Form.many:
         return r'ohms';
 
       default:
@@ -2342,10 +1154,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomSiemens($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'siemens';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'siemens';
 
       case $3.Form.one:
@@ -2354,7 +1163,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'siemens';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'siemens';
+
+      case $3.Form.many:
         return r'siemens';
 
       default:
@@ -2364,10 +1176,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomWeber($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'webers';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'webers';
 
       case $3.Form.one:
@@ -2376,7 +1185,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'webers';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'webers';
+
+      case $3.Form.many:
         return r'webers';
 
       default:
@@ -2386,10 +1198,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomTesla($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'teslas';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'teslas';
 
       case $3.Form.one:
@@ -2398,7 +1207,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'teslas';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'teslas';
+
+      case $3.Form.many:
         return r'teslas';
 
       default:
@@ -2408,10 +1220,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomHenry($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'henries';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'henries';
 
       case $3.Form.one:
@@ -2420,7 +1229,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'henries';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'henries';
+
+      case $3.Form.many:
         return r'henries';
 
       default:
@@ -2430,10 +1242,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomDegreeCelsius($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'degrees Celsius';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'degrees Celsius';
 
       case $3.Form.one:
@@ -2442,7 +1251,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'degrees Celsius';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'degrees Celsius';
+
+      case $3.Form.many:
         return r'degrees Celsius';
 
       default:
@@ -2452,10 +1264,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomLumen($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'lumens';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'lumens';
 
       case $3.Form.one:
@@ -2464,7 +1273,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'lumens';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'lumens';
+
+      case $3.Form.many:
         return r'lumens';
 
       default:
@@ -2474,10 +1286,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomLux($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'luxes';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'luxes';
 
       case $3.Form.one:
@@ -2486,7 +1295,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'luxes';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'luxes';
+
+      case $3.Form.many:
         return r'luxes';
 
       default:
@@ -2496,10 +1308,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomBecquerel($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'becquerels';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'becquerels';
 
       case $3.Form.one:
@@ -2508,7 +1317,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'becquerels';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'becquerels';
+
+      case $3.Form.many:
         return r'becquerels';
 
       default:
@@ -2518,10 +1330,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomGray($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'grays';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'grays';
 
       case $3.Form.one:
@@ -2530,7 +1339,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'grays';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'grays';
+
+      case $3.Form.many:
         return r'grays';
 
       default:
@@ -2540,10 +1352,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomSievert($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'sieverts';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'sieverts';
 
       case $3.Form.one:
@@ -2552,7 +1361,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'sieverts';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'sieverts';
+
+      case $3.Form.many:
         return r'sieverts';
 
       default:
@@ -2562,10 +1374,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
   String atomKatal($3.Form form) {
     switch (form) {
-      case $3.Form.few:
-        return r'katals';
-
-      case $3.Form.many:
+      case $3.Form.zero:
         return r'katals';
 
       case $3.Form.one:
@@ -2574,7 +1383,10 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
       case $3.Form.two:
         return r'katals';
 
-      case $3.Form.zero:
+      case $3.Form.few:
+        return r'katals';
+
+      case $3.Form.many:
         return r'katals';
 
       default:
@@ -3061,7 +1873,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 
     output.write(r'unique, but the No.');
 
-    output.write(position.toString());
+    output.write(position);
 
     output.write(r' item is repeated');
 
@@ -3153,7 +1965,7 @@ class PgdeLocalizationsAr extends PgdeLocalizations {
 }
 
 class PgdeLocalizationsEnUS extends PgdeLocalizations {
-  const PgdeLocalizationsEnUS();
+  PgdeLocalizationsEnUS();
 
   String atomMeter($3.Form form) {
     switch (form) {
@@ -4244,7 +3056,7 @@ class PgdeLocalizationsEnUS extends PgdeLocalizations {
 
     output.write(r'unique, but the No.');
 
-    output.write(position.toString());
+    output.write(position);
 
     output.write(r' item is repeated');
 
@@ -4336,138 +3148,138 @@ class PgdeLocalizationsEnUS extends PgdeLocalizations {
 }
 
 class PgdeLocalizationsZh extends PgdeLocalizations {
-  const PgdeLocalizationsZh();
+  PgdeLocalizationsZh();
 
   String atomMeter($3.Form form) {
-    return r'meter';
+    return r'meters';
   }
 
   String atomFoot($3.Form form) {
-    return r'foot';
+    return r'feet';
   }
 
   String atomInch($3.Form form) {
-    return r'inch';
+    return r'inches';
   }
 
   String atomYard($3.Form form) {
-    return r'yard';
+    return r'yards';
   }
 
   String atomMile($3.Form form) {
-    return r'mile';
+    return r'miles';
   }
 
   String atomNauticalMile($3.Form form) {
-    return r'nautical mile';
+    return r'nautical miles';
   }
 
   String atomLightYear($3.Form form) {
-    return r'light year';
+    return r'light years';
   }
 
   String atomHectare($3.Form form) {
-    return r'hectare';
+    return r'hectares';
   }
 
   String atomAre($3.Form form) {
-    return r'are';
+    return r'ares';
   }
 
   String atomLiter($3.Form form) {
-    return r'liter';
+    return r'liters';
   }
 
   String atomGallon($3.Form form) {
-    return r'gallon';
+    return r'gallons';
   }
 
   String atomBarrel($3.Form form) {
-    return r'barrel';
+    return r'barrels';
   }
 
   String atomGram($3.Form form) {
-    return r'gram';
+    return r'grams';
   }
 
   String atomTon($3.Form form) {
-    return r'ton';
+    return r'tons';
   }
 
   String atomPound($3.Form form) {
-    return r'pound';
+    return r'pounds';
   }
 
   String atomOunce($3.Form form) {
-    return r'ounce';
+    return r'ounces';
   }
 
   String atomSecond($3.Form form) {
-    return r'second';
+    return r'seconds';
   }
 
   String atomMinute($3.Form form) {
-    return r'minute';
+    return r'minutes';
   }
 
   String atomHour($3.Form form) {
-    return r'hour';
+    return r'hours';
   }
 
   String atomDay($3.Form form) {
-    return r'day';
+    return r'days';
   }
 
   String atomWeek($3.Form form) {
-    return r'week';
+    return r'weeks';
   }
 
   String atomMonth($3.Form form) {
-    return r'month';
+    return r'months';
   }
 
   String atomYear($3.Form form) {
-    return r'year';
+    return r'years';
   }
 
   String atomCentury($3.Form form) {
-    return r'century';
+    return r'centuries';
   }
 
   String atomSecondAngle($3.Form form) {
-    return r'second';
+    return r'seconds';
   }
 
   String atomMinuteAngle($3.Form form) {
-    return r'minute';
+    return r'minutes';
   }
 
   String atomDegree($3.Form form) {
-    return r'degree';
+    return r'degrees';
   }
 
   String atomAmpere($3.Form form) {
-    return r'ampere';
+    return r'amperes';
   }
 
   String atomElectronvolt($3.Form form) {
-    return r'electronvolt';
+    return r'electronvolts';
   }
 
   String atomBel($3.Form form) {
-    return r'bel';
+    return r'bels';
   }
 
   String atomKelvin($3.Form form) {
-    return r'kelvin';
+    return r'kelvins';
   }
 
   String atomMole($3.Form form) {
-    return r'mole';
+    return r'moles';
   }
 
   String atomCandela($3.Form form) {
-    return r'candela';
+    return r'candelas';
   }
 
   String atomPercent($3.Form form) {
@@ -4479,27 +3291,27 @@ class PgdeLocalizationsZh extends PgdeLocalizations {
   }
 
   String atomBit($3.Form form) {
-    return r'bit';
+    return r'bits';
   }
 
   String atomByte($3.Form form) {
-    return r'byte';
+    return r'bytes';
   }
 
   String atomCharacter($3.Form form) {
-    return r'character';
+    return r'characters';
   }
 
   String atomWord($3.Form form) {
-    return r'word';
+    return r'words';
   }
 
   String atomRadian($3.Form form) {
-    return r'radian';
+    return r'radians';
   }
 
   String atomSteradian($3.Form form) {
-    return r'steradian';
+    return r'steradians';
   }
 
   String atomHertz($3.Form form) {
@@ -4507,35 +3319,35 @@ class PgdeLocalizationsZh extends PgdeLocalizations {
   }
 
   String atomNewton($3.Form form) {
-    return r'newton';
+    return r'newtons';
   }
 
   String atomPascal($3.Form form) {
-    return r'pascal';
+    return r'pascals';
   }
 
   String atomJoule($3.Form form) {
-    return r'joule';
+    return r'joules';
   }
 
   String atomWatt($3.Form form) {
-    return r'watt';
+    return r'watts';
   }
 
   String atomCoulomb($3.Form form) {
-    return r'coulomb';
+    return r'coulombs';
   }
 
   String atomVolt($3.Form form) {
-    return r'volt';
+    return r'volts';
   }
 
   String atomFarad($3.Form form) {
-    return r'farad';
+    return r'farads';
   }
 
   String atomOhm($3.Form form) {
-    return r'ohm';
+    return r'ohms';
   }
 
   String atomSiemens($3.Form form) {
@@ -4543,43 +3355,43 @@ class PgdeLocalizationsZh extends PgdeLocalizations {
   }
 
   String atomWeber($3.Form form) {
-    return r'weber';
+    return r'webers';
   }
 
   String atomTesla($3.Form form) {
-    return r'tesla';
+    return r'teslas';
   }
 
   String atomHenry($3.Form form) {
-    return r'henry';
+    return r'henries';
   }
 
   String atomDegreeCelsius($3.Form form) {
-    return r'degree Celsius';
+    return r'degrees Celsius';
   }
 
   String atomLumen($3.Form form) {
-    return r'lumen';
+    return r'lumens';
   }
 
   String atomLux($3.Form form) {
-    return r'lux';
+    return r'luxes';
   }
 
   String atomBecquerel($3.Form form) {
-    return r'becquerel';
+    return r'becquerels';
   }
 
   String atomGray($3.Form form) {
-    return r'gray';
+    return r'grays';
   }
 
   String atomSievert($3.Form form) {
-    return r'sievert';
+    return r'sieverts';
   }
 
   String atomKatal($3.Form form) {
-    return r'katal';
+    return r'katals';
   }
 
   String get prefixYotta => r'yotta';
@@ -5061,7 +3873,7 @@ class PgdeLocalizationsZh extends PgdeLocalizations {
 
     output.write(r'unique, but the No.');
 
-    output.write(position.toString());
+    output.write(position);
 
     output.write(r' item is repeated');
 
@@ -5152,12 +3964,12 @@ class PgdeLocalizationsZh extends PgdeLocalizations {
   }
 }
 
-/// last_modified: 2019-11-08 10:45:12 +0000 UTC
+/// last_modified: 2019-11-11 03:38:59 +0000 UTC
 
 abstract class PgdeLocalizations {
   static const delegate = _PgdeLocalizationsDelegate();
 
-  const PgdeLocalizations();
+  PgdeLocalizations();
 
   String atomMeter($3.Form form);
 

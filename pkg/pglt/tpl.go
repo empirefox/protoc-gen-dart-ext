@@ -4,47 +4,43 @@ import (
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/genshared"
 )
 
-const fileTplStr = `{{ renderJoin (arbsToData .) "fileHeader" "fileBody+1" }}`
+const fileTplStr = `{{ renderJoin (gttToData .) "fileHeader" "fileBody+1" }}`
 
-const fileHeaderTplStr = genshared.DartHead + `{{ .BaseArb.RenderImports }}`
+const fileHeaderTplStr = genshared.DartHead + `{{ .RenderImports }}`
 
 const fileBodyTplStr = `
-{{ template "delegate" .BaseArb }}
+{{ range .Entities }}
+	{{ template "delegate" .BaseArb }}
 
-{{ range .Arbs }}
-	{{ template "arb" . }}
+	{{ range .Arbs }}
+		{{ template "arb" . }}
+	{{ end }}
+
+	/// last_modified: {{ .BaseArb.LastModified.Time }}
+	{{ template "arbBase" .BaseArb }}
 {{ end }}
-
-/// last_modified: {{ .BaseArb.LastModified.Time }}
-{{ template "arbBase" .BaseArb }}
 `
 
 const delegateTplStr = `{{ $L10nClass := l10nClass .Entity }}
-class _{{ $L10nClass }}Delegate extends {{ materialLib.AsDot "LocalizationsDelegate" }}<{{ $L10nClass }}> {
+class _{{ $L10nClass }}Delegate extends {{ .MaterialLib.AsDot "LocalizationsDelegate" }}<{{ $L10nClass }}> {
   const _{{ $L10nClass }}Delegate();
 
   @override
-  bool isSupported({{ materialLib.AsDot "Locale" }} locale) => kSupportedLanguages.contains(locale.languageCode);
+  bool isSupported({{ .MaterialLib.AsDot "Locale" }} locale) => kSupportedLanguages.contains(locale.languageCode);
 
   @override
-  Future<{{ $L10nClass }}> load({{ materialLib.AsDot "Locale" }} locale) => {{ foundationLib.AsDot "SynchronousFuture" }}<{{ $L10nClass }}>(_getTranslation(locale));
+  Future<{{ $L10nClass }}> load({{ .MaterialLib.AsDot "Locale" }} locale) => {{ .FoundationLib.AsDot "SynchronousFuture" }}<{{ $L10nClass }}>(_getTranslation(locale));
 
   @override
   bool shouldReload(_{{ $L10nClass }}Delegate old) => false;
 
-  static final Set<String> kSupportedLanguages = {{ collectionLib.AsDot "HashSet" }}<String>.from(const <String>[
-	{{ range .Delegate }}{{ $lang := .Lang }}
-		{{ if .Fallback }}
-			'{{ $lang }}',
-		{{ else }}
-			{{ range .Regions }}
-				'{{ $lang }}-{{ . }}',
-			{{ end }}
-		{{ end }}
+  static final Set<String> kSupportedLanguages = {{ .CollectionLib.AsDot "HashSet" }}<String>.from(const <String>[
+	{{ range .Delegate }}
+		'{{ .Lang }}',
 	{{ end }}
   ]);
 
-  static {{ $L10nClass }} _getTranslation({{ materialLib.AsDot "Locale" }} locale) {
+  static {{ $L10nClass }} _getTranslation({{ .MaterialLib.AsDot "Locale" }} locale) {
     switch (locale.languageCode) {
 		{{ range .Delegate }}{{ $lang := .Lang }}
 		case '{{ $lang }}': {
@@ -56,9 +52,7 @@ class _{{ $L10nClass }}Delegate extends {{ materialLib.AsDot "LocalizationsDeleg
 					{{ end }}
 				}
 			{{ end }}
-			{{ if .Fallback }}
-				return {{ $L10nClass }}{{ $lang.String | powerCamel }}();
-			{{ end }}
+			return {{ $L10nClass }}{{ $lang.String | powerCamel }}{{ .Fallback | powerCamel }}();
 		}
 		{{ end }}
     }
@@ -74,7 +68,7 @@ abstract class {{ $L10nClass }} {
 		static const delegate = _{{ $L10nClass }}Delegate();
 	{{ end }}
 
-	{{ const }} {{ $L10nClass }}();
+	{{ $L10nClass }}();
 
 	{{ range .Resources }}
 		{{ template "resourceBase" . }}
@@ -84,8 +78,8 @@ abstract class {{ $L10nClass }} {
 		{{ .FullName }} {{ .Instance }};
 	{{ end }}
 
-	static {{ $L10nClass }} of({{ materialLib.AsDot "BuildContext" }} context) =>
-		{{ materialLib.AsDot "Localizations" }}.of<{{ $L10nClass }}>(context, {{ $L10nClass }})
+	static {{ $L10nClass }} of({{ .MaterialLib.AsDot "BuildContext" }} context) =>
+		{{ .MaterialLib.AsDot "Localizations" }}.of<{{ $L10nClass }}>(context, {{ $L10nClass }})
 		  {{ range .InstanceClasses }}
 		  	..{{ .Instance }} = {{ .FullName }}.of(context)
 		  {{ end }}
@@ -95,10 +89,10 @@ abstract class {{ $L10nClass }} {
 
 const arbTplStr = `{{ $L10nClass := l10nClass .Entity }}
 class {{ $L10nClass }}{{ powerCamel .Locale.String }} extends {{ $L10nClass }} {
-	{{ const }} {{ $L10nClass }}{{ powerCamel .Locale.String }}();
+	{{ $L10nClass }}{{ powerCamel .Locale.String }}();
 
 	{{ range .Resources }}
-		{{ template "resource" . }}
+		{{ template "resource" (resource $.ImportManager .) }}
 	{{ end }}
 }
 `
@@ -189,9 +183,16 @@ switch ({{ .Data.Attr.DartPlaceholderReplace .Varname }}) {
 
 const selectOrdinalTplStr = `
 {{ if .Choices }}
-{{ $kPluralLib := .Data.Attr.DartParamImport .Varname | import }}
-switch ({{ $kPluralLib.AsDot "match" }}{{ powerCamel .Culture }}(
-	{{ .Data.Attr.DartPlaceholderReplace .Varname }}, true)) {
+{{ $kPluralLib := .Data.PluralLib .Varname }}
+switch (
+	{{- if (.Data.Attr.IsMatched .Varname) -}}
+		{{ .Data.Attr.DartPlaceholderReplace .Varname }}
+	{{- else -}}
+		{{- matchFn $kPluralLib .Culture }}(
+			{{ .Data.Attr.DartPlaceholderReplace .Varname }},
+			true)
+	{{- end -}}
+	) {
 	{{ range .Choices }}
 	case {{ $kPluralLib.AsDot "Form" }}.{{ .Key }}:
 		{{ template "node" .Node -}}
@@ -229,11 +230,17 @@ switch ({{ .Data.Attr.DartPlaceholderReplace .Varname }}) {
 
 const formedPluralTplStr = `
 {{ if .Choices }}
-{{ $kPluralLib := .Data.Attr.DartParamImport .Varname | import }}
-switch ({{ $kPluralLib.AsDot "match" }}{{ powerCamel .Culture }}(
-	{{ .Data.Attr.DartPlaceholderReplace .Varname }}
-	{{- if .Offset }}{{ .Offset | sub 0 | printf "%+d" }}{{ end }},
-	false)) {
+{{ $kPluralLib := .Data.PluralLib .Varname }}
+switch (
+	{{- if (.Data.Attr.IsMatched .Varname) -}}
+		{{ .Data.Attr.DartPlaceholderReplace .Varname }}
+	{{- else -}}
+		{{- matchFn $kPluralLib .Culture }}(
+			{{ .Data.Attr.DartPlaceholderReplace .Varname }}
+			{{- if .Offset }}{{ .Offset | sub 0 | printf "%+d" }}{{ end }},
+			false)
+	{{- end -}}
+	) {
 
 	{{- range .Choices }}
 	case {{ $kPluralLib.AsDot "Form" }}.{{ .Key }}:

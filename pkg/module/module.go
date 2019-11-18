@@ -1,184 +1,169 @@
 package module
 
 import (
+	"bytes"
+	"encoding/json"
+	"io/ioutil"
+	"os"
+	"path/filepath"
+	"regexp"
 	"strings"
 	"text/template"
 
+	"github.com/BurntSushi/toml"
+	"github.com/Masterminds/sprig"
+	"github.com/empirefox/protoc-gen-dart-ext/pkg/arb"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/dart"
-	"github.com/empirefox/protoc-gen-dart-ext/pkg/l10n"
-	pgsgo "github.com/lyft/protoc-gen-star/lang/go"
-	funk "github.com/thoas/go-funk"
-
+	"github.com/empirefox/protoc-gen-dart-ext/pkg/dartpb"
+	"github.com/empirefox/protoc-gen-dart-ext/pkg/pglt"
+	"github.com/empirefox/protoc-gen-dart-ext/pkg/pgvt"
 	pgs "github.com/lyft/protoc-gen-star"
+	"golang.org/x/text/language"
 )
 
-const (
-	dartExtKey = "dart_ext"
-	tplPrefix  = "// DO NOT EDIT. This is code generated via protoc-gen-dart-ext.\n"
-)
+var (
+	tomlHeader = []byte(`# Path placeholder usage:
+#  %N: base name
+#  %O: output of protoc
+#  %P: output relative path
+#  %E: extension of input file
 
-type line struct {
-	ext    string
-	tplStr string
-	tpl    *template.Template
-}
+`)
+)
 
 type DartExtModule struct {
 	*pgs.ModuleBase
-	ctx       pgsgo.Context
-	dart      *dart.Dart
-	fileLines []*line
-	pkgLine   *line
+	dart   *dart.Dart
+	params pgs.Parameters
+
+	arbTpl      *template.Template
+	l10nTpl     *template.Template
+	validateTpl *template.Template
 }
 
 func New() *DartExtModule {
 	return &DartExtModule{
 		ModuleBase: &pgs.ModuleBase{},
 		dart:       dart.NewDart(),
-		fileLines:  make([]*line, 0, len(fileLines)),
+		arbTpl: template.Must(template.New("arb").
+			Funcs(sprig.HermeticTxtFuncMap()).
+			Parse(`{{ . | toPrettyJson }}`)),
+		l10nTpl:     template.New("l10n"),
+		validateTpl: template.New("validate"),
 	}
 }
 
-func (p *DartExtModule) InitContext(c pgs.BuildContext) {
-	p.ModuleBase.InitContext(c)
-	p.ctx = pgsgo.InitContext(c.Parameters())
-
-	params := p.ctx.Params().Str(dartExtKey)
-	if l, ok := pkgLines[params]; ok {
-		l.tpl = p.mustTpl(params, &l)
-		p.pkgLine = &l
-		return
-	}
-
-	tasks := strings.Split(params, "+")
-	if len(tasks) == 0 {
-		panic(dartExtKey + " must be set.\n" + supportedComment())
-	}
-
-	for _, task := range tasks {
-		l, ok := fileLines[task]
-		if !ok {
-			panic(dartExtKey + " does not support: " + task + "\n" + supportedComment())
-		}
-		l.tpl = p.mustTpl(task, &l)
-		p.fileLines = append(p.fileLines, &l)
-	}
-}
-
-func (p *DartExtModule) mustTpl(task string, l *line) *template.Template {
-	tplStr := tplPrefix + supportedComment() + l.tplStr
-	return template.Must(template.New(task).Funcs(p.funcMap()).Parse(tplStr))
-}
-
-func (p *DartExtModule) funcMap() template.FuncMap {
-	hasOneOf := func(f pgs.File) bool {
-		for _, msg := range f.AllMessages() {
-			if len(msg.OneOfs()) > 0 {
-				return true
-			}
-		}
-		return false
-	}
-	hasEnum := func(f pgs.File) (bool, error) {
-		for _, e := range f.AllEnums() {
-			l, err := l10n.FromEnum(e)
-			if err != nil {
-				return false, err
-			}
-			if !l.GetIgnore() {
-				return true, nil
-			}
-		}
-		return false, nil
-	}
-	return map[string]interface{}{
-		"nameOf":       p.dart.NameOf,
-		"pkgDartName":  p.dart.PackageDartName,
-		"fileDartName": p.dart.FileDartName,
-		"enumL10n":     l10n.FromEnum,
-		"hasOneof":     hasOneOf,
-		"hasOneofPkg": func(pkg pgs.Package) bool {
-			for _, f := range pkg.Files() {
-				if hasOneOf(f) {
-					return true
-				}
-			}
-			return false
-		},
-		"hasEnum": hasEnum,
-		"hasEnumPkg": func(pkg pgs.Package) (bool, error) {
-			for _, f := range pkg.Files() {
-				if yes, err := hasEnum(f); yes || err != nil {
-					return yes, err
-				}
-			}
-			return false, nil
-		},
-	}
+func (m *DartExtModule) InitContext(c pgs.BuildContext) {
+	m.ModuleBase.InitContext(c)
+	m.params = c.Parameters()
+	pglt.Register(m.l10nTpl)
+	pgvt.Register(m.validateTpl, m.params)
 }
 
 // Name satisfies the generator.Plugin interface.
-func (p *DartExtModule) Name() string { return dartExtKey }
+func (m *DartExtModule) Name() string { return "dart-ext" }
 
-func (p *DartExtModule) Execute(targets map[string]pgs.File, pkgs map[string]pgs.Package) []pgs.Artifact {
-	if p.pkgLine != nil {
-		for _, pkg := range targetPackages(targets) {
-			p.genPkg(pkg)
-		}
-	} else {
-		for _, t := range targets {
-			p.genFile(t)
-		}
-	}
+var pathReg = regexp.MustCompile(`%[NOPE]`)
 
-	return p.Artifacts()
+func expandPath(input string, mapping map[string]string) string {
+	return pathReg.ReplaceAllStringFunc(input, func(in string) string { return mapping[in] })
 }
 
-func (p *DartExtModule) genFile(f pgs.File) {
-	// For dart, use input path as output path.
-	for _, l := range p.fileLines {
-		name := f.InputPath().SetExt(l.ext)
-		p.AddGeneratorTemplateFile(name.String(), l.tpl, f)
-	}
-}
-
-func (p *DartExtModule) genPkg(pkg pgs.Package) {
-	data := PkgData{Package: pkg, Ext: p.pkgLine.ext}
-	p.AddGeneratorTemplateFile(data.OutputPath(), p.pkgLine.tpl, &data)
-}
-
-var fileLines = map[string]line{
-	"defaults": {
-		ext:    ".default.dart",
-		tplStr: defaultsTplStr,
-	},
-}
-
-var pkgLines = map[string]line{
-	"pkg_l10n_base": {
-		ext: ".l10n.base.dart",
-		// TODO icons!!!
-		tplStr: l10n_base,
-	},
-}
-
-func supportedComment() string {
-	comment := "// Supported `" + dartExtKey + "=` parameters:\n"
-	comment += "//   1. file(any compose of): " + namesAdd(fileLines) + "\n"
-	comment += "//   2. package(only one of): " + namesSingle(pkgLines) + "\n"
-	return comment
-}
-func namesAdd(lines map[string]line) string {
-	return "`" + strings.Join(funk.Keys(lines).([]string), "+") + "`"
-}
-func namesSingle(lines map[string]line) string {
-	return "`" + strings.Join(funk.Keys(lines).([]string), "`, `") + "`"
-}
-
-func targetPackages(targets map[string]pgs.File) map[string]pgs.Package {
-	pkgs := make(map[string]pgs.Package)
+func (m *DartExtModule) Execute(targets map[string]pgs.File, pkgs map[string]pgs.Package) []pgs.Artifact {
 	for _, t := range targets {
-		pkgs[t.Package().ProtoName().String()] = t.Package()
+		f, err := dartpb.NewFile(m.dart, language.Und, t)
+		if err != nil {
+			m.Failf("dartpb.NewFile err: ", err)
+		}
+
+		inputPath := t.InputPath().String()
+		base := filepath.Base(inputPath)
+		ext := filepath.Ext(base)
+		mapping := map[string]string{
+			"%N": strings.TrimSuffix(base, ext),
+			"%O": m.BuildContext.OutputPath(),
+			"%P": strings.TrimSuffix(inputPath, ext),
+			"%E": ext,
+		}
+
+		if m.HasParam("arb") {
+			gae := arb.GttArchiveEntity{
+				ZipFile: "$GTT_DIR/archive.zip",
+				GttArbInfo: arb.GttArbInfo{
+					Name:   t.InputPath().BaseName() + ".arb",
+					Entity: f.Translator.Arb.Entity,
+				},
+			}
+			var buf bytes.Buffer
+			buf.Write(tomlHeader)
+			err = toml.NewEncoder(&buf).Encode(&gae)
+			if err != nil {
+				m.Failf("encode GttArchiveEntity err: %v", err)
+			}
+
+			name := t.InputPath().SetExt(".gtt.toml").String()
+			m.AddGeneratorFile(name, buf.String())
+
+			name = t.InputPath().SetExt(".arb").String()
+			m.AddGeneratorTemplateFile(name, m.arbTpl, f.Translator.Arb)
+		}
+
+		if m.HasParam("l10n") {
+			gttTomlPath := m.params.Str("l10n")
+			if gttTomlPath != "" {
+				gttTomlPath = expandPath(gttTomlPath, mapping)
+				gttTomlPath = os.ExpandEnv(gttTomlPath)
+			} else {
+				gttTomlPath = t.InputPath().SetExt("gtt.toml").String()
+				gttTomlPath = filepath.Join(m.BuildContext.OutputPath(), gttTomlPath)
+			}
+
+			gabuf, err := ioutil.ReadFile(gttTomlPath)
+			if err != nil {
+				m.Failf("read file err: ", err)
+			}
+
+			var gae arb.GttArchiveEntity
+			err = json.Unmarshal(gabuf, &gae)
+			if err != nil {
+				m.Failf("unmarshal GttArchiveEntity err: ", err)
+			}
+
+			gae.ZipFile = expandPath(gae.ZipFile, mapping)
+			gtt, err := arb.FromArchiveEntity(&gae)
+			if err != nil {
+				m.Failf("FromArchiveEntity err: ", err)
+			}
+
+			// FromArchiveEntity only has one entity
+			as := gtt[0]
+			for _, a := range as.List {
+				f.SetL10nTo(a)
+				ow, ok := as.Overwrites[a]
+				if ok {
+					m.Logf("gtt arb overwrite: [%s] => [%s], in zip: %s\n",
+						ow.From, as.Info.Entity, ow.Path)
+				}
+			}
+
+			name := t.InputPath().SetExt(".l10n.dart").String()
+			im := dart.NewImportManager(m.dart, name, "$", "$")
+			m.AddGeneratorTemplateFile(name, m.l10nTpl, pglt.GttData{
+				ImportManager: im,
+				Gtt:           gtt,
+			})
+		}
+
+		if m.HasParam("validate") {
+			name := f.Validators.ImportManager.RootFilePath()
+			m.AddGeneratorTemplateFile(name, m.validateTpl, f)
+		}
 	}
-	return pkgs
+
+	return m.Artifacts()
+}
+
+func (m *DartExtModule) HasParam(p string) (ok bool) {
+	_, ok = m.params[p]
+	return
 }

@@ -17,15 +17,28 @@ type Validators struct {
 	EnumFieldL10nAccessor dart.Qualifier
 
 	ImportManager      *dart.ImportManager
-	DartConvertLib     *dart.ImportFile
+	CollectionLib      *dart.ImportFile
+	ConvertLib         *dart.ImportFile
 	FoundationFile     *dart.ImportFile
 	MaterialFile       *dart.ImportFile
 	FixnumFile         *dart.ImportFile
 	EmailValidatorFile *dart.ImportFile
 	PgdeFile           *dart.ImportFile
 	PbFile             *dart.ImportFile
-	TranslatorFile     *dart.ImportFile
+	L10nFile           *dart.ImportFile
 }
+
+func (vf *ValidateField) CollectionLib() *dart.ImportFile  { return vf.Validators().CollectionLib }
+func (vf *ValidateField) ConvertLib() *dart.ImportFile     { return vf.Validators().ConvertLib }
+func (vf *ValidateField) FoundationFile() *dart.ImportFile { return vf.Validators().FoundationFile }
+func (vf *ValidateField) MaterialFile() *dart.ImportFile   { return vf.Validators().MaterialFile }
+func (vf *ValidateField) FixnumFile() *dart.ImportFile     { return vf.Validators().FixnumFile }
+func (vf *ValidateField) EmailValidatorFile() *dart.ImportFile {
+	return vf.Validators().EmailValidatorFile
+}
+func (vf *ValidateField) PgdeFile() *dart.ImportFile { return vf.Validators().PgdeFile }
+func (vf *ValidateField) PbFile() *dart.ImportFile   { return vf.Validators().PbFile }
+func (vf *ValidateField) L10nFile() *dart.ImportFile { return vf.Validators().L10nFile }
 
 func (v *Validators) fullPbClass(pgsNty pgs.Entity) (dart.Qualifier, error) {
 	return v.ImportManager.PbFileDot(pgsNty, v.File.Dart.NameOf(pgsNty))
@@ -76,6 +89,22 @@ func (vf *ValidateField) Unwrap(name string) (out *ValidateField, err error) {
 		Field: vf.Field,
 		Pgv:   &outPgv,
 	}, nil
+}
+
+func (vf *ValidateField) IfHasBegin() string {
+	if vf.Pgv.AccessorOverride != "" {
+		return ""
+	}
+	return fmt.Sprintf("if (%s.proto.%s()) {",
+		vf.Validators().InfoAccessor,
+		vf.Names.HasMethodName())
+}
+
+func (vf *ValidateField) IfHasEnd() string {
+	if vf.Pgv.AccessorOverride != "" {
+		return ""
+	}
+	return "}"
 }
 
 func (vf *ValidateField) BuildContextAccessor() dart.Qualifier {

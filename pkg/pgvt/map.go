@@ -1,13 +1,13 @@
 package pgvt
 
-const mapConstTpl = `{{ $r := .Pgv.Rules }}
-{{ if or (ne (.Elem "" "").Typ "none") (ne (.Key "" "").Typ "none") }}
+const mapConstTpl = `{{- $r := .Pgv.Rules }}
+{{ if or (ne (.Elem "" "").Pgv.Typ "none") (ne (.Key "" "").Pgv.Typ "none") }}
 		{{ renderConstants (.Key "_mk" "_mk") }}
 		{{ renderConstants (.Elem "_mv" "_mk") }}
 {{- end -}}
 `
 
-const mapTpl = `{{ $r := .Pgv.Rules }}
+const mapTpl = `{{- $r := .Pgv.Rules }}
 {{ if or $r.GetMinPairs $r.GetMaxPairs }}
 	final _ml = {{ .Accessor }}.length;
 {{ end }}
@@ -27,7 +27,7 @@ const mapTpl = `{{ $r := .Pgv.Rules }}
 		throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateLte, {{ $r.GetMaxPairs }});
 {{ end }}
 
-{{ if or (ne (.Elem "" "").Typ "none") (ne (.Key "" "").Typ "none") }}
+{{ if or (ne (.Elem "" "").Pgv.Typ "none") (ne (.Key "" "").Pgv.Typ "none") }}
 	{{ .Accessor }}.forEach((_mk, _mv) {
 		{{ if $r.GetNoSparse }}
 			// TODO(alway no sparse here)

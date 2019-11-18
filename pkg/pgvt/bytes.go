@@ -127,7 +127,7 @@ const bytesTpl = bytesTplDef + `
 
 {{ if $r.Pattern }}
 	try {
-		if (!{{ $kPattern }}.hasMatch({{ .DartConvertLib.AsDot "utf8" }}.decode({{ .Accessor }})))
+		if (!{{ $kPattern }}.hasMatch({{ .ConvertLib.AsDot "utf8" }}.decode({{ .Accessor }})))
 			throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validatePattern, {{ $kPattern }}.pattern);
 	} on FormatException {
 		throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validatePattern, {{ $kPattern }}.pattern);

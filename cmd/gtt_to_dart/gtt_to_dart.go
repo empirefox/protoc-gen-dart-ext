@@ -42,17 +42,30 @@ func main() {
 	rs.Open()
 	defer rs.Close()
 
-	as, err := arb.FromArchive(&filesData.Gtt)
+	gtt, err := arb.FromArchive(&filesData.Gtt)
 	if err != nil {
 		log.Fatalf("arb file: %v", err)
+	}
+
+	for _, as := range gtt {
+		for _, a := range as.List {
+			ow, ok := as.Overwrites[a]
+			if ok {
+				log.Printf("gtt arb overwrite: [%s] => [%s], in zip: %s\n",
+					ow.From, as.Info.Entity, ow.Path)
+			}
+		}
 	}
 
 	d := dart.NewDart()
 	im := dart.NewImportManager(d, flag.Lookup(dart_out).Value.String(), "$", "$")
 
-	pglt.Register(im, dartOutTpl, nil)
+	pglt.Register(dartOutTpl)
 
-	err = rs.Render(as)
+	err = rs.Render(pglt.GttData{
+		ImportManager: im,
+		Gtt:           gtt,
+	})
 	if err != nil {
 		log.Fatalf("executing template: %v", err)
 	}

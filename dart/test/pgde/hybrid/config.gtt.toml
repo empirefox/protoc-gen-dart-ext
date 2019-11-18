@@ -1,0 +1,9 @@
+# Path placeholder usage:
+#  %N: base name
+#  %O: output of protoc
+#  %P: output relative path
+#  %E: extension of input file
+
+Name = "config.arb"
+Entity = "Config"
+ZipFile = "$GTT_DIR/archive.zip"

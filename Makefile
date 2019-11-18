@@ -3,14 +3,23 @@ makefile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 makefile_dir := $(shell dirname ${makefile_path})
 dart_path := $(abspath $(makefile_dir)/dart)
 test_path := $(abspath $(makefile_dir)/test)
+hybrid_path := $(abspath $(makefile_dir)/hybrid)
+google_path := $(abspath $(makefile_dir)/google)
 cmd_path := $(abspath $(makefile_dir)/cmd)
 pkg_path := $(abspath $(makefile_dir)/pkg)
 protos_path := $(abspath $(makefile_dir)/pgde)
 tools_path := $(abspath $(makefile_dir)/tools)
+pgv_path := $(shell go list -u -m -json github.com/envoyproxy/protoc-gen-validate | jq .Dir)
 
 dart_lib := ${dart_path}/lib
 dart_src := ${dart_lib}/src
 dart_test := ${dart_path}/test
+
+.PHONY: prepare_protoc_dep
+prepare_protoc_dep:
+	@rm -rf ${makefile_dir}/validate
+	@mkdir -p ${makefile_dir}/validate
+	@cp -n ${pgv_path}/validate/validate.proto ${makefile_dir}/validate
 
 .PHONY: gen_validate_arb
 gen_validate_arb:
@@ -20,10 +29,7 @@ gen_validate_arb:
 		--output-dir=lib/src/validate \
 		--output-file=validate.arb \
 		lib/src/validate/validate.l10n.dart
-
-.PHONY: rewrite_validate_arb
-rewrite_validate_arb:
-	@go run ${cmd_path}/rewrite_arb_langs/*.go \
+	@go run ${cmd_path}/arb_rewrite_langs/*.go \
 		-arb=${dart_src}/validate/validate.arb \
 		-langs=${dart_src}/validate/validate.arb.toml
 
@@ -33,7 +39,7 @@ gen_golang:
 	@easyjson -no_std_marshalers ${pkg_path}/arb/arb.go
 	@go generate ${pkg_path}/dart
 	@go generate ${pkg_path}/genshared
-	@cd ${cmd_path}/rewrite_arb_langs && go generate
+	@cd ${cmd_path}/arb_rewrite_langs && go generate
 
 .PHONY: gen_plural
 gen_plural:
@@ -45,12 +51,15 @@ gen_plural:
 
 .PHONY: gen_atom
 gen_atom:
-	@go run ${tools_path}/atom/units_atom.go \
+	@go run ${tools_path}/atom/*.go \
 		-proto=${protos_path}/units/atom.proto \
 		-dart=${dart_src}/units/atom.dart \
-		-arb=${dart_src}/units/atom \
-		-lang="en,en-US,zh,ar"
+		-arb=${dart_src}/units/atom.arb
 	@dartfmt -w ${dart_src}/units/atom.dart
+	@go run ${cmd_path}/arb_variant/*.go \
+		-input=${dart_src}/units/atom.arb \
+		-lang=ar,en-US,zh \
+		-output=${dart_src}/l10n/archive/%V/%N%E
 
 .PHONY: gen_currency
 gen_currency:
@@ -75,7 +84,6 @@ gen_protoc:
 	@protoc -I${makefile_dir} --go_out=paths=source_relative:${makefile_dir}/pkg ${protos_path}/units/*.proto
 	@protoc -I${makefile_dir} --go_out=paths=source_relative:${makefile_dir}/pkg ${protos_path}/zero/*.proto
 	@protoc -I${makefile_dir} --go_out=paths=source_relative:${makefile_dir}/pkg ${protos_path}/form/*.proto
-	@protoc -I${makefile_dir} --go_out=paths=source_relative:${makefile_dir} ${test_path}/*.proto
 
 # generate PgdeLocalizations
 .PHONY: gen_pgde_gtt_to_dart
@@ -103,10 +111,27 @@ protoc_clean:
 	rm -rf ${dart_path}/lib/form
 	rm -rf ${dart_path}/lib/test
 
-.PHONY: protoc_test
-protoc_test:
+.PHONY: protoc_hybrid_base
+protoc_hybrid_base:
+	@protoc -I${makefile_dir} -I${pgv_path} --dart_out=:${dart_test}/pgde ${google_path}/protobuf/wrappers.proto
+	@protoc -I${makefile_dir} -I${pgv_path} --dart_out=:${dart_test}/pgde ${hybrid_path}/*.proto
+
+.PHONY: protoc_hybrid_arb
+protoc_hybrid_arb:
+	@protoc -I${makefile_dir} -I${pgv_path} \
+		--dart-ext_out=arb:${dart_test}/pgde ${hybrid_path}/config.proto
+	# @dartfmt -w ${dart_test}/pgde/**/*.dart
+
+.PHONY: protoc_hybrid_validate
+protoc_hybrid_validate:
+	@protoc -I${makefile_dir} -I${pgv_path} \
+		--dart-ext_out=validate:${dart_test}/pgde ${hybrid_path}/config.proto
+	@dartfmt -w ${dart_test}/pgde/hybrid/*.validate.dart
+
+.PHONY: protoc_test_x
+protoc_test_x:
 	protoc -I. \
-		--dart-ext_out=arb,l10n=${dart_test}/gtt.toml,validate,form:${dart_lib} \
+		--dart-ext_out=arb,l10n=%O/%P.gtt.toml,validate,form:${dart_lib} \
 		protos/units/*.proto
 	dartfmt -w ${dart_lib}/pgde/**/*.l10n.base.dart
 

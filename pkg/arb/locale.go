@@ -11,7 +11,7 @@ type SupportedLocale struct {
 
 	// Regions contain regions or scripts
 	Regions  []string
-	Fallback bool
+	Fallback string
 }
 
 func SupportedLocales(as []*Arb) []SupportedLocale {
@@ -24,22 +24,30 @@ func SupportedLocales(as []*Arb) []SupportedLocale {
 
 var noRegion language.Region
 
-type localeMap map[language.Base]regionMap
+type localeMap map[language.Base]baseRegions
 
 func (m localeMap) add(tag language.Tag) {
 	if tag.IsRoot() {
 		return
 	}
+
 	lang, script, region := tag.Raw()
-	rm, ok := m[lang]
+	_, ok := m[lang]
 	if !ok {
-		rm = make(regionMap, 24)
-		m[lang] = rm
+		m[lang] = make(baseRegions, 0, 24)
 	}
+
+	baseTag, _ := language.Compose(lang)
 	if region == noRegion {
-		rm[script.String()] = struct{}{}
+		m[lang] = append(m[lang], &baseRegion{
+			region: script.String(),
+			c:      language.Comprehends(tag, baseTag),
+		})
 	} else {
-		rm[region.String()] = struct{}{}
+		m[lang] = append(m[lang], &baseRegion{
+			region: region.String(),
+			c:      language.Comprehends(tag, baseTag),
+		})
 	}
 }
 
@@ -59,17 +67,33 @@ func (m localeMap) list() []SupportedLocale {
 	return locales
 }
 
-type regionMap map[string]struct{}
+type baseRegion struct {
+	region string
+	c      language.Confidence
+}
 
-func (m regionMap) list() (regions []string, fallback bool) {
+type baseRegions []*baseRegion
+
+func (m baseRegions) list() (regions []string, fallback string) {
+	var best *baseRegion
+
 	regions = make([]string, 0, len(m))
-	for region := range m {
-		if region == "Zzzz" {
-			fallback = true
-		} else {
-			regions = append(regions, region)
+	for _, br := range m {
+		if best == nil {
+			best = br
+			continue
 		}
+
+		if br.c > best.c {
+			best, br = br, best
+		}
+		regions = append(regions, br.region)
 	}
 	sort.Strings(regions)
+
+	fallback = best.region
+	if fallback == "Zzzz" {
+		fallback = ""
+	}
 	return
 }

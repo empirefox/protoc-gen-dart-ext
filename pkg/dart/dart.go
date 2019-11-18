@@ -244,8 +244,7 @@ func (d *Dart) namesOfOneof(i pgs.OneOf) *oneOfNames {
 				_defaultClearMethodName(name),
 			}
 		}
-		oneofName := disambiguateName(
-			Qualifier(i.Name()).ToCamel(),
+		oneofName := disambiguateName(Qualifier(i.Name()).ToCamel(),
 			parent.usedNames, new(defaultSuffixes), oneofNameVariants)
 		parent.usedNames.Add(oneofName)
 
@@ -287,7 +286,8 @@ func (d *Dart) namesOfField(i pgs.Field) *fieldNames {
 				}
 			}
 		}
-		name := disambiguateName(Qualifier(i.Name()), parent.usedNames, suffix, generateNameVariants)
+		name := disambiguateName(_fieldMethodSuffix(i),
+			parent.usedNames, suffix, generateNameVariants)
 		parent.usedNames.Add(name)
 
 		var ensureMethodName Qualifier
@@ -296,7 +296,7 @@ func (d *Dart) namesOfField(i pgs.Field) *fieldNames {
 		}
 
 		nty = &fieldNames{
-			fieldName:        name.ToLowerCamel(),
+			fieldName:        _defaultFieldName(name),
 			hasMethodName:    _defaultHasMethodName(name),
 			clearMethodName:  _defaultClearMethodName(name),
 			ensureMethodName: ensureMethodName,
@@ -417,6 +417,10 @@ func disambiguateName(name Qualifier, usedNames UsedNames, getter suffixGetter, 
 	return name + usedSuffix
 }
 
+func _defaultFieldName(fieldMethodSuffix Qualifier) Qualifier {
+	return Qualifier(strings.ToLower(string(fieldMethodSuffix[:1]))) + fieldMethodSuffix[1:]
+}
+
 func _defaultHasMethodName(fieldMethodSuffix Qualifier) Qualifier {
 	return "has" + fieldMethodSuffix
 }
@@ -428,6 +432,11 @@ func _defaultWhichMethodName(oneofMethodSuffix Qualifier) Qualifier {
 }
 func _defaultEnsureMethodName(fieldMethodSuffix Qualifier) Qualifier {
 	return "ensure" + fieldMethodSuffix
+}
+
+func _fieldMethodSuffix(field pgs.Field) Qualifier {
+	name := Qualifier(field.Name()).ToCamel()
+	return name
 }
 
 func oneofEnumClassName(descriptorName Qualifier, usedNames UsedNames, parent Qualifier) Qualifier {

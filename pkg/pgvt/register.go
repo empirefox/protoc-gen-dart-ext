@@ -22,18 +22,24 @@ func Register(tpl *template.Template, params pgs.Parameters) {
 	fns := dartFuncs{pgsgo.InitContext(params)}
 
 	tpl.Funcs(map[string]interface{}{
+		"renderJoin":      genshared.RenderJoin(tpl),
 		"bytesStr":        fns.bytesStr,
 		"constRef":        fns.constRef,
+		"coreDur":         fns.coreDur,
 		"durGt":           fns.durGt,
 		"isOfMessageType": fns.isOfMessageType,
 		"lit":             fns.lit,
 		"render":          Render(tpl),
 		"renderConstants": fns.renderConstants(tpl),
+		"coreTs":          fns.coreTs,
 		"tsGt":            fns.tsGt,
 		"unwrap":          fns.unwrap,
 	})
 
 	template.Must(tpl.Parse(fileTpl))
+	template.Must(tpl.New("fileHeader").Parse(fileHeaderTpl))
+	template.Must(tpl.New("fileBody").Parse(fileBodyTpl))
+
 	template.Must(tpl.New("msg").Parse(msgTpl))
 	template.Must(tpl.New("oneOf").Parse(oneOfTpl))
 	template.Must(tpl.New("oneOfConst").Parse(oneOfConstTpl))

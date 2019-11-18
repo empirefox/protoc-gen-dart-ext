@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package hybrid;
+option go_package = "github.com/empirefox/hybrid/pkg/authstore;authstore";
+
+message AuthKey {
+  uint64 id = 1;
+  bytes key = 2;
+
+  repeated string tags = 3;
+
+  string desc = 4;
+
+  int64 createdAt = 5;
+  int64 expiresAt = 6;
+}

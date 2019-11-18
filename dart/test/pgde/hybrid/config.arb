@@ -1,0 +1,2497 @@
+{
+  "@@last_modified": "2019-11-17T03:47:10Z",
+  "Basic": "basic",
+  "@Basic": {
+    "type": "text"
+  },
+  "BasicLabel": "",
+  "@BasicLabel": {
+    "type": "text",
+    "description": "Label of Basic"
+  },
+  "BasicHelper": "",
+  "@BasicHelper": {
+    "type": "text",
+    "description": "Helper of Basic"
+  },
+  "BasicHint": "",
+  "@BasicHint": {
+    "type": "text",
+    "description": "Hint of Basic"
+  },
+  "BasicPrefix": "",
+  "@BasicPrefix": {
+    "type": "text",
+    "description": "Prefix of Basic"
+  },
+  "BasicSuffix": "",
+  "@BasicSuffix": {
+    "type": "text",
+    "description": "Suffix of Basic"
+  },
+  "BasicDev": "",
+  "@BasicDev": {
+    "type": "text"
+  },
+  "BasicDevLabel": "",
+  "@BasicDevLabel": {
+    "type": "text",
+    "description": "Label of BasicDev"
+  },
+  "BasicDevHelper": "",
+  "@BasicDevHelper": {
+    "type": "text",
+    "description": "Helper of BasicDev"
+  },
+  "BasicDevHint": "",
+  "@BasicDevHint": {
+    "type": "text",
+    "description": "Hint of BasicDev"
+  },
+  "BasicDevPrefix": "",
+  "@BasicDevPrefix": {
+    "type": "text",
+    "description": "Prefix of BasicDev"
+  },
+  "BasicDevSuffix": "",
+  "@BasicDevSuffix": {
+    "type": "text",
+    "description": "Suffix of BasicDev"
+  },
+  "BasicDevBoolTrue": "",
+  "@BasicDevBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of BasicDev"
+  },
+  "BasicDevBoolFalse": "",
+  "@BasicDevBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of BasicDev"
+  },
+  "BasicEnableBind": "",
+  "@BasicEnableBind": {
+    "type": "text"
+  },
+  "BasicEnableBindLabel": "",
+  "@BasicEnableBindLabel": {
+    "type": "text",
+    "description": "Label of BasicEnableBind"
+  },
+  "BasicEnableBindHelper": "",
+  "@BasicEnableBindHelper": {
+    "type": "text",
+    "description": "Helper of BasicEnableBind"
+  },
+  "BasicEnableBindHint": "",
+  "@BasicEnableBindHint": {
+    "type": "text",
+    "description": "Hint of BasicEnableBind"
+  },
+  "BasicEnableBindPrefix": "",
+  "@BasicEnableBindPrefix": {
+    "type": "text",
+    "description": "Prefix of BasicEnableBind"
+  },
+  "BasicEnableBindSuffix": "",
+  "@BasicEnableBindSuffix": {
+    "type": "text",
+    "description": "Suffix of BasicEnableBind"
+  },
+  "BasicEnableBindBoolTrue": "",
+  "@BasicEnableBindBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of BasicEnableBind"
+  },
+  "BasicEnableBindBoolFalse": "",
+  "@BasicEnableBindBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of BasicEnableBind"
+  },
+  "BasicBindIp": "",
+  "@BasicBindIp": {
+    "type": "text"
+  },
+  "BasicBindIpLabel": "",
+  "@BasicBindIpLabel": {
+    "type": "text",
+    "description": "Label of BasicBindIp"
+  },
+  "BasicBindIpHelper": "",
+  "@BasicBindIpHelper": {
+    "type": "text",
+    "description": "Helper of BasicBindIp"
+  },
+  "BasicBindIpHint": "",
+  "@BasicBindIpHint": {
+    "type": "text",
+    "description": "Hint of BasicBindIp"
+  },
+  "BasicBindIpPrefix": "",
+  "@BasicBindIpPrefix": {
+    "type": "text",
+    "description": "Prefix of BasicBindIp"
+  },
+  "BasicBindIpSuffix": "",
+  "@BasicBindIpSuffix": {
+    "type": "text",
+    "description": "Suffix of BasicBindIp"
+  },
+  "BasicBindIpBoolTrue": "",
+  "@BasicBindIpBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of BasicBindIp"
+  },
+  "BasicBindIpBoolFalse": "",
+  "@BasicBindIpBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of BasicBindIp"
+  },
+  "BasicBindPort": "",
+  "@BasicBindPort": {
+    "type": "text"
+  },
+  "BasicBindPortLabel": "",
+  "@BasicBindPortLabel": {
+    "type": "text",
+    "description": "Label of BasicBindPort"
+  },
+  "BasicBindPortHelper": "",
+  "@BasicBindPortHelper": {
+    "type": "text",
+    "description": "Helper of BasicBindPort"
+  },
+  "BasicBindPortHint": "",
+  "@BasicBindPortHint": {
+    "type": "text",
+    "description": "Hint of BasicBindPort"
+  },
+  "BasicBindPortPrefix": "",
+  "@BasicBindPortPrefix": {
+    "type": "text",
+    "description": "Prefix of BasicBindPort"
+  },
+  "BasicBindPortSuffix": "",
+  "@BasicBindPortSuffix": {
+    "type": "text",
+    "description": "Suffix of BasicBindPort"
+  },
+  "BasicBindPortBoolTrue": "",
+  "@BasicBindPortBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of BasicBindPort"
+  },
+  "BasicBindPortBoolFalse": "",
+  "@BasicBindPortBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of BasicBindPort"
+  },
+  "BasicFlushIntervalMs": "",
+  "@BasicFlushIntervalMs": {
+    "type": "text"
+  },
+  "BasicFlushIntervalMsLabel": "",
+  "@BasicFlushIntervalMsLabel": {
+    "type": "text",
+    "description": "Label of BasicFlushIntervalMs"
+  },
+  "BasicFlushIntervalMsHelper": "",
+  "@BasicFlushIntervalMsHelper": {
+    "type": "text",
+    "description": "Helper of BasicFlushIntervalMs"
+  },
+  "BasicFlushIntervalMsHint": "",
+  "@BasicFlushIntervalMsHint": {
+    "type": "text",
+    "description": "Hint of BasicFlushIntervalMs"
+  },
+  "BasicFlushIntervalMsPrefix": "",
+  "@BasicFlushIntervalMsPrefix": {
+    "type": "text",
+    "description": "Prefix of BasicFlushIntervalMs"
+  },
+  "BasicFlushIntervalMsSuffix": "",
+  "@BasicFlushIntervalMsSuffix": {
+    "type": "text",
+    "description": "Suffix of BasicFlushIntervalMs"
+  },
+  "BasicFlushIntervalMsBoolTrue": "",
+  "@BasicFlushIntervalMsBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of BasicFlushIntervalMs"
+  },
+  "BasicFlushIntervalMsBoolFalse": "",
+  "@BasicFlushIntervalMsBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of BasicFlushIntervalMs"
+  },
+  "BasicToken": "",
+  "@BasicToken": {
+    "type": "text"
+  },
+  "BasicTokenLabel": "",
+  "@BasicTokenLabel": {
+    "type": "text",
+    "description": "Label of BasicToken"
+  },
+  "BasicTokenHelper": "",
+  "@BasicTokenHelper": {
+    "type": "text",
+    "description": "Helper of BasicToken"
+  },
+  "BasicTokenHint": "",
+  "@BasicTokenHint": {
+    "type": "text",
+    "description": "Hint of BasicToken"
+  },
+  "BasicTokenPrefix": "",
+  "@BasicTokenPrefix": {
+    "type": "text",
+    "description": "Prefix of BasicToken"
+  },
+  "BasicTokenSuffix": "",
+  "@BasicTokenSuffix": {
+    "type": "text",
+    "description": "Suffix of BasicToken"
+  },
+  "BasicTokenBoolTrue": "",
+  "@BasicTokenBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of BasicToken"
+  },
+  "BasicTokenBoolFalse": "",
+  "@BasicTokenBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of BasicToken"
+  },
+  "Log": "log",
+  "@Log": {
+    "type": "text"
+  },
+  "LogLabel": "",
+  "@LogLabel": {
+    "type": "text",
+    "description": "Label of Log"
+  },
+  "LogHelper": "",
+  "@LogHelper": {
+    "type": "text",
+    "description": "Helper of Log"
+  },
+  "LogHint": "",
+  "@LogHint": {
+    "type": "text",
+    "description": "Hint of Log"
+  },
+  "LogPrefix": "",
+  "@LogPrefix": {
+    "type": "text",
+    "description": "Prefix of Log"
+  },
+  "LogSuffix": "",
+  "@LogSuffix": {
+    "type": "text",
+    "description": "Suffix of Log"
+  },
+  "LogDev": "",
+  "@LogDev": {
+    "type": "text"
+  },
+  "LogDevLabel": "",
+  "@LogDevLabel": {
+    "type": "text",
+    "description": "Label of LogDev"
+  },
+  "LogDevHelper": "",
+  "@LogDevHelper": {
+    "type": "text",
+    "description": "Helper of LogDev"
+  },
+  "LogDevHint": "",
+  "@LogDevHint": {
+    "type": "text",
+    "description": "Hint of LogDev"
+  },
+  "LogDevPrefix": "",
+  "@LogDevPrefix": {
+    "type": "text",
+    "description": "Prefix of LogDev"
+  },
+  "LogDevSuffix": "",
+  "@LogDevSuffix": {
+    "type": "text",
+    "description": "Suffix of LogDev"
+  },
+  "LogDevBoolTrue": "",
+  "@LogDevBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of LogDev"
+  },
+  "LogDevBoolFalse": "",
+  "@LogDevBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of LogDev"
+  },
+  "LogLevel": "",
+  "@LogLevel": {
+    "type": "text"
+  },
+  "LogLevelLabel": "",
+  "@LogLevelLabel": {
+    "type": "text",
+    "description": "Label of LogLevel"
+  },
+  "LogLevelHelper": "",
+  "@LogLevelHelper": {
+    "type": "text",
+    "description": "Helper of LogLevel"
+  },
+  "LogLevelHint": "",
+  "@LogLevelHint": {
+    "type": "text",
+    "description": "Hint of LogLevel"
+  },
+  "LogLevelPrefix": "",
+  "@LogLevelPrefix": {
+    "type": "text",
+    "description": "Prefix of LogLevel"
+  },
+  "LogLevelSuffix": "",
+  "@LogLevelSuffix": {
+    "type": "text",
+    "description": "Suffix of LogLevel"
+  },
+  "LogLevelBoolTrue": "",
+  "@LogLevelBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of LogLevel"
+  },
+  "LogLevelBoolFalse": "",
+  "@LogLevelBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of LogLevel"
+  },
+  "LogTarget": "",
+  "@LogTarget": {
+    "type": "text"
+  },
+  "LogTargetLabel": "",
+  "@LogTargetLabel": {
+    "type": "text",
+    "description": "Label of LogTarget"
+  },
+  "LogTargetHelper": "",
+  "@LogTargetHelper": {
+    "type": "text",
+    "description": "Helper of LogTarget"
+  },
+  "LogTargetHint": "",
+  "@LogTargetHint": {
+    "type": "text",
+    "description": "Hint of LogTarget"
+  },
+  "LogTargetPrefix": "",
+  "@LogTargetPrefix": {
+    "type": "text",
+    "description": "Prefix of LogTarget"
+  },
+  "LogTargetSuffix": "",
+  "@LogTargetSuffix": {
+    "type": "text",
+    "description": "Suffix of LogTarget"
+  },
+  "LogTargetBoolTrue": "",
+  "@LogTargetBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of LogTarget"
+  },
+  "LogTargetBoolFalse": "",
+  "@LogTargetBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of LogTarget"
+  },
+  "Ipfs": "ipfs",
+  "@Ipfs": {
+    "type": "text"
+  },
+  "IpfsLabel": "",
+  "@IpfsLabel": {
+    "type": "text",
+    "description": "Label of Ipfs"
+  },
+  "IpfsHelper": "",
+  "@IpfsHelper": {
+    "type": "text",
+    "description": "Helper of Ipfs"
+  },
+  "IpfsHint": "",
+  "@IpfsHint": {
+    "type": "text",
+    "description": "Hint of Ipfs"
+  },
+  "IpfsPrefix": "",
+  "@IpfsPrefix": {
+    "type": "text",
+    "description": "Prefix of Ipfs"
+  },
+  "IpfsSuffix": "",
+  "@IpfsSuffix": {
+    "type": "text",
+    "description": "Suffix of Ipfs"
+  },
+  "IpfsFakeApiListenIp": "",
+  "@IpfsFakeApiListenIp": {
+    "type": "text"
+  },
+  "IpfsFakeApiListenIpLabel": "",
+  "@IpfsFakeApiListenIpLabel": {
+    "type": "text",
+    "description": "Label of IpfsFakeApiListenIp"
+  },
+  "IpfsFakeApiListenIpHelper": "",
+  "@IpfsFakeApiListenIpHelper": {
+    "type": "text",
+    "description": "Helper of IpfsFakeApiListenIp"
+  },
+  "IpfsFakeApiListenIpHint": "",
+  "@IpfsFakeApiListenIpHint": {
+    "type": "text",
+    "description": "Hint of IpfsFakeApiListenIp"
+  },
+  "IpfsFakeApiListenIpPrefix": "",
+  "@IpfsFakeApiListenIpPrefix": {
+    "type": "text",
+    "description": "Prefix of IpfsFakeApiListenIp"
+  },
+  "IpfsFakeApiListenIpSuffix": "",
+  "@IpfsFakeApiListenIpSuffix": {
+    "type": "text",
+    "description": "Suffix of IpfsFakeApiListenIp"
+  },
+  "IpfsFakeApiListenIpBoolTrue": "",
+  "@IpfsFakeApiListenIpBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of IpfsFakeApiListenIp"
+  },
+  "IpfsFakeApiListenIpBoolFalse": "",
+  "@IpfsFakeApiListenIpBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of IpfsFakeApiListenIp"
+  },
+  "IpfsFakeApiListenPort": "",
+  "@IpfsFakeApiListenPort": {
+    "type": "text"
+  },
+  "IpfsFakeApiListenPortLabel": "",
+  "@IpfsFakeApiListenPortLabel": {
+    "type": "text",
+    "description": "Label of IpfsFakeApiListenPort"
+  },
+  "IpfsFakeApiListenPortHelper": "",
+  "@IpfsFakeApiListenPortHelper": {
+    "type": "text",
+    "description": "Helper of IpfsFakeApiListenPort"
+  },
+  "IpfsFakeApiListenPortHint": "",
+  "@IpfsFakeApiListenPortHint": {
+    "type": "text",
+    "description": "Hint of IpfsFakeApiListenPort"
+  },
+  "IpfsFakeApiListenPortPrefix": "",
+  "@IpfsFakeApiListenPortPrefix": {
+    "type": "text",
+    "description": "Prefix of IpfsFakeApiListenPort"
+  },
+  "IpfsFakeApiListenPortSuffix": "",
+  "@IpfsFakeApiListenPortSuffix": {
+    "type": "text",
+    "description": "Suffix of IpfsFakeApiListenPort"
+  },
+  "IpfsFakeApiListenPortBoolTrue": "",
+  "@IpfsFakeApiListenPortBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of IpfsFakeApiListenPort"
+  },
+  "IpfsFakeApiListenPortBoolFalse": "",
+  "@IpfsFakeApiListenPortBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of IpfsFakeApiListenPort"
+  },
+  "IpfsEnableGateway": "",
+  "@IpfsEnableGateway": {
+    "type": "text"
+  },
+  "IpfsEnableGatewayLabel": "",
+  "@IpfsEnableGatewayLabel": {
+    "type": "text",
+    "description": "Label of IpfsEnableGateway"
+  },
+  "IpfsEnableGatewayHelper": "",
+  "@IpfsEnableGatewayHelper": {
+    "type": "text",
+    "description": "Helper of IpfsEnableGateway"
+  },
+  "IpfsEnableGatewayHint": "",
+  "@IpfsEnableGatewayHint": {
+    "type": "text",
+    "description": "Hint of IpfsEnableGateway"
+  },
+  "IpfsEnableGatewayPrefix": "",
+  "@IpfsEnableGatewayPrefix": {
+    "type": "text",
+    "description": "Prefix of IpfsEnableGateway"
+  },
+  "IpfsEnableGatewaySuffix": "",
+  "@IpfsEnableGatewaySuffix": {
+    "type": "text",
+    "description": "Suffix of IpfsEnableGateway"
+  },
+  "IpfsEnableGatewayBoolTrue": "",
+  "@IpfsEnableGatewayBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of IpfsEnableGateway"
+  },
+  "IpfsEnableGatewayBoolFalse": "",
+  "@IpfsEnableGatewayBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of IpfsEnableGateway"
+  },
+  "IpfsGatewayServerName": "",
+  "@IpfsGatewayServerName": {
+    "type": "text"
+  },
+  "IpfsGatewayServerNameLabel": "",
+  "@IpfsGatewayServerNameLabel": {
+    "type": "text",
+    "description": "Label of IpfsGatewayServerName"
+  },
+  "IpfsGatewayServerNameHelper": "",
+  "@IpfsGatewayServerNameHelper": {
+    "type": "text",
+    "description": "Helper of IpfsGatewayServerName"
+  },
+  "IpfsGatewayServerNameHint": "",
+  "@IpfsGatewayServerNameHint": {
+    "type": "text",
+    "description": "Hint of IpfsGatewayServerName"
+  },
+  "IpfsGatewayServerNamePrefix": "",
+  "@IpfsGatewayServerNamePrefix": {
+    "type": "text",
+    "description": "Prefix of IpfsGatewayServerName"
+  },
+  "IpfsGatewayServerNameSuffix": "",
+  "@IpfsGatewayServerNameSuffix": {
+    "type": "text",
+    "description": "Suffix of IpfsGatewayServerName"
+  },
+  "IpfsGatewayServerNameBoolTrue": "",
+  "@IpfsGatewayServerNameBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of IpfsGatewayServerName"
+  },
+  "IpfsGatewayServerNameBoolFalse": "",
+  "@IpfsGatewayServerNameBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of IpfsGatewayServerName"
+  },
+  "IpfsEnableApi": "",
+  "@IpfsEnableApi": {
+    "type": "text"
+  },
+  "IpfsEnableApiLabel": "",
+  "@IpfsEnableApiLabel": {
+    "type": "text",
+    "description": "Label of IpfsEnableApi"
+  },
+  "IpfsEnableApiHelper": "",
+  "@IpfsEnableApiHelper": {
+    "type": "text",
+    "description": "Helper of IpfsEnableApi"
+  },
+  "IpfsEnableApiHint": "",
+  "@IpfsEnableApiHint": {
+    "type": "text",
+    "description": "Hint of IpfsEnableApi"
+  },
+  "IpfsEnableApiPrefix": "",
+  "@IpfsEnableApiPrefix": {
+    "type": "text",
+    "description": "Prefix of IpfsEnableApi"
+  },
+  "IpfsEnableApiSuffix": "",
+  "@IpfsEnableApiSuffix": {
+    "type": "text",
+    "description": "Suffix of IpfsEnableApi"
+  },
+  "IpfsEnableApiBoolTrue": "",
+  "@IpfsEnableApiBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of IpfsEnableApi"
+  },
+  "IpfsEnableApiBoolFalse": "",
+  "@IpfsEnableApiBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of IpfsEnableApi"
+  },
+  "IpfsApiServerName": "",
+  "@IpfsApiServerName": {
+    "type": "text"
+  },
+  "IpfsApiServerNameLabel": "",
+  "@IpfsApiServerNameLabel": {
+    "type": "text",
+    "description": "Label of IpfsApiServerName"
+  },
+  "IpfsApiServerNameHelper": "",
+  "@IpfsApiServerNameHelper": {
+    "type": "text",
+    "description": "Helper of IpfsApiServerName"
+  },
+  "IpfsApiServerNameHint": "",
+  "@IpfsApiServerNameHint": {
+    "type": "text",
+    "description": "Hint of IpfsApiServerName"
+  },
+  "IpfsApiServerNamePrefix": "",
+  "@IpfsApiServerNamePrefix": {
+    "type": "text",
+    "description": "Prefix of IpfsApiServerName"
+  },
+  "IpfsApiServerNameSuffix": "",
+  "@IpfsApiServerNameSuffix": {
+    "type": "text",
+    "description": "Suffix of IpfsApiServerName"
+  },
+  "IpfsApiServerNameBoolTrue": "",
+  "@IpfsApiServerNameBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of IpfsApiServerName"
+  },
+  "IpfsApiServerNameBoolFalse": "",
+  "@IpfsApiServerNameBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of IpfsApiServerName"
+  },
+  "IpfsProfile": "",
+  "@IpfsProfile": {
+    "type": "text"
+  },
+  "IpfsProfileLabel": "",
+  "@IpfsProfileLabel": {
+    "type": "text",
+    "description": "Label of IpfsProfile"
+  },
+  "IpfsProfileHelper": "",
+  "@IpfsProfileHelper": {
+    "type": "text",
+    "description": "Helper of IpfsProfile"
+  },
+  "IpfsProfileHint": "",
+  "@IpfsProfileHint": {
+    "type": "text",
+    "description": "Hint of IpfsProfile"
+  },
+  "IpfsProfilePrefix": "",
+  "@IpfsProfilePrefix": {
+    "type": "text",
+    "description": "Prefix of IpfsProfile"
+  },
+  "IpfsProfileSuffix": "",
+  "@IpfsProfileSuffix": {
+    "type": "text",
+    "description": "Suffix of IpfsProfile"
+  },
+  "IpfsProfileBoolTrue": "",
+  "@IpfsProfileBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of IpfsProfile"
+  },
+  "IpfsProfileBoolFalse": "",
+  "@IpfsProfileBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of IpfsProfile"
+  },
+  "IpfsAutoMigrate": "",
+  "@IpfsAutoMigrate": {
+    "type": "text"
+  },
+  "IpfsAutoMigrateLabel": "",
+  "@IpfsAutoMigrateLabel": {
+    "type": "text",
+    "description": "Label of IpfsAutoMigrate"
+  },
+  "IpfsAutoMigrateHelper": "",
+  "@IpfsAutoMigrateHelper": {
+    "type": "text",
+    "description": "Helper of IpfsAutoMigrate"
+  },
+  "IpfsAutoMigrateHint": "",
+  "@IpfsAutoMigrateHint": {
+    "type": "text",
+    "description": "Hint of IpfsAutoMigrate"
+  },
+  "IpfsAutoMigratePrefix": "",
+  "@IpfsAutoMigratePrefix": {
+    "type": "text",
+    "description": "Prefix of IpfsAutoMigrate"
+  },
+  "IpfsAutoMigrateSuffix": "",
+  "@IpfsAutoMigrateSuffix": {
+    "type": "text",
+    "description": "Suffix of IpfsAutoMigrate"
+  },
+  "IpfsAutoMigrateBoolTrue": "",
+  "@IpfsAutoMigrateBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of IpfsAutoMigrate"
+  },
+  "IpfsAutoMigrateBoolFalse": "",
+  "@IpfsAutoMigrateBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of IpfsAutoMigrate"
+  },
+  "IpfsEnableIpnsPubSub": "",
+  "@IpfsEnableIpnsPubSub": {
+    "type": "text"
+  },
+  "IpfsEnableIpnsPubSubLabel": "",
+  "@IpfsEnableIpnsPubSubLabel": {
+    "type": "text",
+    "description": "Label of IpfsEnableIpnsPubSub"
+  },
+  "IpfsEnableIpnsPubSubHelper": "",
+  "@IpfsEnableIpnsPubSubHelper": {
+    "type": "text",
+    "description": "Helper of IpfsEnableIpnsPubSub"
+  },
+  "IpfsEnableIpnsPubSubHint": "",
+  "@IpfsEnableIpnsPubSubHint": {
+    "type": "text",
+    "description": "Hint of IpfsEnableIpnsPubSub"
+  },
+  "IpfsEnableIpnsPubSubPrefix": "",
+  "@IpfsEnableIpnsPubSubPrefix": {
+    "type": "text",
+    "description": "Prefix of IpfsEnableIpnsPubSub"
+  },
+  "IpfsEnableIpnsPubSubSuffix": "",
+  "@IpfsEnableIpnsPubSubSuffix": {
+    "type": "text",
+    "description": "Suffix of IpfsEnableIpnsPubSub"
+  },
+  "IpfsEnableIpnsPubSubBoolTrue": "",
+  "@IpfsEnableIpnsPubSubBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of IpfsEnableIpnsPubSub"
+  },
+  "IpfsEnableIpnsPubSubBoolFalse": "",
+  "@IpfsEnableIpnsPubSubBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of IpfsEnableIpnsPubSub"
+  },
+  "IpfsEnablePubSub": "",
+  "@IpfsEnablePubSub": {
+    "type": "text"
+  },
+  "IpfsEnablePubSubLabel": "",
+  "@IpfsEnablePubSubLabel": {
+    "type": "text",
+    "description": "Label of IpfsEnablePubSub"
+  },
+  "IpfsEnablePubSubHelper": "",
+  "@IpfsEnablePubSubHelper": {
+    "type": "text",
+    "description": "Helper of IpfsEnablePubSub"
+  },
+  "IpfsEnablePubSubHint": "",
+  "@IpfsEnablePubSubHint": {
+    "type": "text",
+    "description": "Hint of IpfsEnablePubSub"
+  },
+  "IpfsEnablePubSubPrefix": "",
+  "@IpfsEnablePubSubPrefix": {
+    "type": "text",
+    "description": "Prefix of IpfsEnablePubSub"
+  },
+  "IpfsEnablePubSubSuffix": "",
+  "@IpfsEnablePubSubSuffix": {
+    "type": "text",
+    "description": "Suffix of IpfsEnablePubSub"
+  },
+  "IpfsEnablePubSubBoolTrue": "",
+  "@IpfsEnablePubSubBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of IpfsEnablePubSub"
+  },
+  "IpfsEnablePubSubBoolFalse": "",
+  "@IpfsEnablePubSubBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of IpfsEnablePubSub"
+  },
+  "IpfsEnableMultiplex": "",
+  "@IpfsEnableMultiplex": {
+    "type": "text"
+  },
+  "IpfsEnableMultiplexLabel": "",
+  "@IpfsEnableMultiplexLabel": {
+    "type": "text",
+    "description": "Label of IpfsEnableMultiplex"
+  },
+  "IpfsEnableMultiplexHelper": "",
+  "@IpfsEnableMultiplexHelper": {
+    "type": "text",
+    "description": "Helper of IpfsEnableMultiplex"
+  },
+  "IpfsEnableMultiplexHint": "",
+  "@IpfsEnableMultiplexHint": {
+    "type": "text",
+    "description": "Hint of IpfsEnableMultiplex"
+  },
+  "IpfsEnableMultiplexPrefix": "",
+  "@IpfsEnableMultiplexPrefix": {
+    "type": "text",
+    "description": "Prefix of IpfsEnableMultiplex"
+  },
+  "IpfsEnableMultiplexSuffix": "",
+  "@IpfsEnableMultiplexSuffix": {
+    "type": "text",
+    "description": "Suffix of IpfsEnableMultiplex"
+  },
+  "IpfsEnableMultiplexBoolTrue": "",
+  "@IpfsEnableMultiplexBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of IpfsEnableMultiplex"
+  },
+  "IpfsEnableMultiplexBoolFalse": "",
+  "@IpfsEnableMultiplexBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of IpfsEnableMultiplex"
+  },
+  "IpfsToken": "",
+  "@IpfsToken": {
+    "type": "text"
+  },
+  "IpfsTokenLabel": "",
+  "@IpfsTokenLabel": {
+    "type": "text",
+    "description": "Label of IpfsToken"
+  },
+  "IpfsTokenHelper": "",
+  "@IpfsTokenHelper": {
+    "type": "text",
+    "description": "Helper of IpfsToken"
+  },
+  "IpfsTokenHint": "",
+  "@IpfsTokenHint": {
+    "type": "text",
+    "description": "Hint of IpfsToken"
+  },
+  "IpfsTokenPrefix": "",
+  "@IpfsTokenPrefix": {
+    "type": "text",
+    "description": "Prefix of IpfsToken"
+  },
+  "IpfsTokenSuffix": "",
+  "@IpfsTokenSuffix": {
+    "type": "text",
+    "description": "Suffix of IpfsToken"
+  },
+  "IpfsTokenBoolTrue": "",
+  "@IpfsTokenBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of IpfsToken"
+  },
+  "IpfsTokenBoolFalse": "",
+  "@IpfsTokenBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of IpfsToken"
+  },
+  "IpfsServer": "ipfs server",
+  "@IpfsServer": {
+    "type": "text"
+  },
+  "IpfsServerLabel": "",
+  "@IpfsServerLabel": {
+    "type": "text",
+    "description": "Label of IpfsServer"
+  },
+  "IpfsServerHelper": "",
+  "@IpfsServerHelper": {
+    "type": "text",
+    "description": "Helper of IpfsServer"
+  },
+  "IpfsServerHint": "",
+  "@IpfsServerHint": {
+    "type": "text",
+    "description": "Hint of IpfsServer"
+  },
+  "IpfsServerPrefix": "",
+  "@IpfsServerPrefix": {
+    "type": "text",
+    "description": "Prefix of IpfsServer"
+  },
+  "IpfsServerSuffix": "",
+  "@IpfsServerSuffix": {
+    "type": "text",
+    "description": "Suffix of IpfsServer"
+  },
+  "IpfsServerDisabled": "",
+  "@IpfsServerDisabled": {
+    "type": "text"
+  },
+  "IpfsServerDisabledLabel": "",
+  "@IpfsServerDisabledLabel": {
+    "type": "text",
+    "description": "Label of IpfsServerDisabled"
+  },
+  "IpfsServerDisabledHelper": "",
+  "@IpfsServerDisabledHelper": {
+    "type": "text",
+    "description": "Helper of IpfsServerDisabled"
+  },
+  "IpfsServerDisabledHint": "",
+  "@IpfsServerDisabledHint": {
+    "type": "text",
+    "description": "Hint of IpfsServerDisabled"
+  },
+  "IpfsServerDisabledPrefix": "",
+  "@IpfsServerDisabledPrefix": {
+    "type": "text",
+    "description": "Prefix of IpfsServerDisabled"
+  },
+  "IpfsServerDisabledSuffix": "",
+  "@IpfsServerDisabledSuffix": {
+    "type": "text",
+    "description": "Suffix of IpfsServerDisabled"
+  },
+  "IpfsServerDisabledBoolTrue": "",
+  "@IpfsServerDisabledBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of IpfsServerDisabled"
+  },
+  "IpfsServerDisabledBoolFalse": "",
+  "@IpfsServerDisabledBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of IpfsServerDisabled"
+  },
+  "IpfsServerName": "",
+  "@IpfsServerName": {
+    "type": "text"
+  },
+  "IpfsServerNameLabel": "",
+  "@IpfsServerNameLabel": {
+    "type": "text",
+    "description": "Label of IpfsServerName"
+  },
+  "IpfsServerNameHelper": "",
+  "@IpfsServerNameHelper": {
+    "type": "text",
+    "description": "Helper of IpfsServerName"
+  },
+  "IpfsServerNameHint": "",
+  "@IpfsServerNameHint": {
+    "type": "text",
+    "description": "Hint of IpfsServerName"
+  },
+  "IpfsServerNamePrefix": "",
+  "@IpfsServerNamePrefix": {
+    "type": "text",
+    "description": "Prefix of IpfsServerName"
+  },
+  "IpfsServerNameSuffix": "",
+  "@IpfsServerNameSuffix": {
+    "type": "text",
+    "description": "Suffix of IpfsServerName"
+  },
+  "IpfsServerNameBoolTrue": "",
+  "@IpfsServerNameBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of IpfsServerName"
+  },
+  "IpfsServerNameBoolFalse": "",
+  "@IpfsServerNameBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of IpfsServerName"
+  },
+  "IpfsServerPeer": "",
+  "@IpfsServerPeer": {
+    "type": "text"
+  },
+  "IpfsServerPeerLabel": "",
+  "@IpfsServerPeerLabel": {
+    "type": "text",
+    "description": "Label of IpfsServerPeer"
+  },
+  "IpfsServerPeerHelper": "",
+  "@IpfsServerPeerHelper": {
+    "type": "text",
+    "description": "Helper of IpfsServerPeer"
+  },
+  "IpfsServerPeerHint": "",
+  "@IpfsServerPeerHint": {
+    "type": "text",
+    "description": "Hint of IpfsServerPeer"
+  },
+  "IpfsServerPeerPrefix": "",
+  "@IpfsServerPeerPrefix": {
+    "type": "text",
+    "description": "Prefix of IpfsServerPeer"
+  },
+  "IpfsServerPeerSuffix": "",
+  "@IpfsServerPeerSuffix": {
+    "type": "text",
+    "description": "Suffix of IpfsServerPeer"
+  },
+  "IpfsServerPeerBoolTrue": "",
+  "@IpfsServerPeerBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of IpfsServerPeer"
+  },
+  "IpfsServerPeerBoolFalse": "",
+  "@IpfsServerPeerBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of IpfsServerPeer"
+  },
+  "IpfsServerToken": "",
+  "@IpfsServerToken": {
+    "type": "text"
+  },
+  "IpfsServerTokenLabel": "",
+  "@IpfsServerTokenLabel": {
+    "type": "text",
+    "description": "Label of IpfsServerToken"
+  },
+  "IpfsServerTokenHelper": "",
+  "@IpfsServerTokenHelper": {
+    "type": "text",
+    "description": "Helper of IpfsServerToken"
+  },
+  "IpfsServerTokenHint": "",
+  "@IpfsServerTokenHint": {
+    "type": "text",
+    "description": "Hint of IpfsServerToken"
+  },
+  "IpfsServerTokenPrefix": "",
+  "@IpfsServerTokenPrefix": {
+    "type": "text",
+    "description": "Prefix of IpfsServerToken"
+  },
+  "IpfsServerTokenSuffix": "",
+  "@IpfsServerTokenSuffix": {
+    "type": "text",
+    "description": "Suffix of IpfsServerToken"
+  },
+  "IpfsServerTokenBoolTrue": "",
+  "@IpfsServerTokenBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of IpfsServerToken"
+  },
+  "IpfsServerTokenBoolFalse": "",
+  "@IpfsServerTokenBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of IpfsServerToken"
+  },
+  "FileServer": "file server",
+  "@FileServer": {
+    "type": "text"
+  },
+  "FileServerLabel": "",
+  "@FileServerLabel": {
+    "type": "text",
+    "description": "Label of FileServer"
+  },
+  "FileServerHelper": "",
+  "@FileServerHelper": {
+    "type": "text",
+    "description": "Helper of FileServer"
+  },
+  "FileServerHint": "",
+  "@FileServerHint": {
+    "type": "text",
+    "description": "Hint of FileServer"
+  },
+  "FileServerPrefix": "",
+  "@FileServerPrefix": {
+    "type": "text",
+    "description": "Prefix of FileServer"
+  },
+  "FileServerSuffix": "",
+  "@FileServerSuffix": {
+    "type": "text",
+    "description": "Suffix of FileServer"
+  },
+  "FileServerDisabled": "",
+  "@FileServerDisabled": {
+    "type": "text"
+  },
+  "FileServerDisabledLabel": "",
+  "@FileServerDisabledLabel": {
+    "type": "text",
+    "description": "Label of FileServerDisabled"
+  },
+  "FileServerDisabledHelper": "",
+  "@FileServerDisabledHelper": {
+    "type": "text",
+    "description": "Helper of FileServerDisabled"
+  },
+  "FileServerDisabledHint": "",
+  "@FileServerDisabledHint": {
+    "type": "text",
+    "description": "Hint of FileServerDisabled"
+  },
+  "FileServerDisabledPrefix": "",
+  "@FileServerDisabledPrefix": {
+    "type": "text",
+    "description": "Prefix of FileServerDisabled"
+  },
+  "FileServerDisabledSuffix": "",
+  "@FileServerDisabledSuffix": {
+    "type": "text",
+    "description": "Suffix of FileServerDisabled"
+  },
+  "FileServerDisabledBoolTrue": "",
+  "@FileServerDisabledBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of FileServerDisabled"
+  },
+  "FileServerDisabledBoolFalse": "",
+  "@FileServerDisabledBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of FileServerDisabled"
+  },
+  "FileServerName": "",
+  "@FileServerName": {
+    "type": "text"
+  },
+  "FileServerNameLabel": "",
+  "@FileServerNameLabel": {
+    "type": "text",
+    "description": "Label of FileServerName"
+  },
+  "FileServerNameHelper": "",
+  "@FileServerNameHelper": {
+    "type": "text",
+    "description": "Helper of FileServerName"
+  },
+  "FileServerNameHint": "",
+  "@FileServerNameHint": {
+    "type": "text",
+    "description": "Hint of FileServerName"
+  },
+  "FileServerNamePrefix": "",
+  "@FileServerNamePrefix": {
+    "type": "text",
+    "description": "Prefix of FileServerName"
+  },
+  "FileServerNameSuffix": "",
+  "@FileServerNameSuffix": {
+    "type": "text",
+    "description": "Suffix of FileServerName"
+  },
+  "FileServerNameBoolTrue": "",
+  "@FileServerNameBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of FileServerName"
+  },
+  "FileServerNameBoolFalse": "",
+  "@FileServerNameBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of FileServerName"
+  },
+  "FileServerZip": "",
+  "@FileServerZip": {
+    "type": "text"
+  },
+  "FileServerZipLabel": "",
+  "@FileServerZipLabel": {
+    "type": "text",
+    "description": "Label of FileServerZip"
+  },
+  "FileServerZipHelper": "",
+  "@FileServerZipHelper": {
+    "type": "text",
+    "description": "Helper of FileServerZip"
+  },
+  "FileServerZipHint": "",
+  "@FileServerZipHint": {
+    "type": "text",
+    "description": "Hint of FileServerZip"
+  },
+  "FileServerZipPrefix": "",
+  "@FileServerZipPrefix": {
+    "type": "text",
+    "description": "Prefix of FileServerZip"
+  },
+  "FileServerZipSuffix": "",
+  "@FileServerZipSuffix": {
+    "type": "text",
+    "description": "Suffix of FileServerZip"
+  },
+  "FileServerZipBoolTrue": "",
+  "@FileServerZipBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of FileServerZip"
+  },
+  "FileServerZipBoolFalse": "",
+  "@FileServerZipBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of FileServerZip"
+  },
+  "FileServerRedirect": "",
+  "@FileServerRedirect": {
+    "type": "text"
+  },
+  "FileServerRedirectLabel": "",
+  "@FileServerRedirectLabel": {
+    "type": "text",
+    "description": "Label of FileServerRedirect"
+  },
+  "FileServerRedirectHelper": "",
+  "@FileServerRedirectHelper": {
+    "type": "text",
+    "description": "Helper of FileServerRedirect"
+  },
+  "FileServerRedirectHint": "",
+  "@FileServerRedirectHint": {
+    "type": "text",
+    "description": "Hint of FileServerRedirect"
+  },
+  "FileServerRedirectPrefix": "",
+  "@FileServerRedirectPrefix": {
+    "type": "text",
+    "description": "Prefix of FileServerRedirect"
+  },
+  "FileServerRedirectSuffix": "",
+  "@FileServerRedirectSuffix": {
+    "type": "text",
+    "description": "Suffix of FileServerRedirect"
+  },
+  "FileServerRedirectBoolTrue": "",
+  "@FileServerRedirectBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of FileServerRedirect"
+  },
+  "FileServerRedirectBoolFalse": "",
+  "@FileServerRedirectBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of FileServerRedirect"
+  },
+  "FileServerDev": "",
+  "@FileServerDev": {
+    "type": "text"
+  },
+  "FileServerDevLabel": "",
+  "@FileServerDevLabel": {
+    "type": "text",
+    "description": "Label of FileServerDev"
+  },
+  "FileServerDevHelper": "",
+  "@FileServerDevHelper": {
+    "type": "text",
+    "description": "Helper of FileServerDev"
+  },
+  "FileServerDevHint": "",
+  "@FileServerDevHint": {
+    "type": "text",
+    "description": "Hint of FileServerDev"
+  },
+  "FileServerDevPrefix": "",
+  "@FileServerDevPrefix": {
+    "type": "text",
+    "description": "Prefix of FileServerDev"
+  },
+  "FileServerDevSuffix": "",
+  "@FileServerDevSuffix": {
+    "type": "text",
+    "description": "Suffix of FileServerDev"
+  },
+  "FileServerDevBoolTrue": "",
+  "@FileServerDevBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of FileServerDev"
+  },
+  "FileServerDevBoolFalse": "",
+  "@FileServerDevBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of FileServerDev"
+  },
+  "HttpProxyServer": "http proxy server",
+  "@HttpProxyServer": {
+    "type": "text"
+  },
+  "HttpProxyServerLabel": "",
+  "@HttpProxyServerLabel": {
+    "type": "text",
+    "description": "Label of HttpProxyServer"
+  },
+  "HttpProxyServerHelper": "",
+  "@HttpProxyServerHelper": {
+    "type": "text",
+    "description": "Helper of HttpProxyServer"
+  },
+  "HttpProxyServerHint": "",
+  "@HttpProxyServerHint": {
+    "type": "text",
+    "description": "Hint of HttpProxyServer"
+  },
+  "HttpProxyServerPrefix": "",
+  "@HttpProxyServerPrefix": {
+    "type": "text",
+    "description": "Prefix of HttpProxyServer"
+  },
+  "HttpProxyServerSuffix": "",
+  "@HttpProxyServerSuffix": {
+    "type": "text",
+    "description": "Suffix of HttpProxyServer"
+  },
+  "HttpProxyServerDisabled": "",
+  "@HttpProxyServerDisabled": {
+    "type": "text"
+  },
+  "HttpProxyServerDisabledLabel": "",
+  "@HttpProxyServerDisabledLabel": {
+    "type": "text",
+    "description": "Label of HttpProxyServerDisabled"
+  },
+  "HttpProxyServerDisabledHelper": "",
+  "@HttpProxyServerDisabledHelper": {
+    "type": "text",
+    "description": "Helper of HttpProxyServerDisabled"
+  },
+  "HttpProxyServerDisabledHint": "",
+  "@HttpProxyServerDisabledHint": {
+    "type": "text",
+    "description": "Hint of HttpProxyServerDisabled"
+  },
+  "HttpProxyServerDisabledPrefix": "",
+  "@HttpProxyServerDisabledPrefix": {
+    "type": "text",
+    "description": "Prefix of HttpProxyServerDisabled"
+  },
+  "HttpProxyServerDisabledSuffix": "",
+  "@HttpProxyServerDisabledSuffix": {
+    "type": "text",
+    "description": "Suffix of HttpProxyServerDisabled"
+  },
+  "HttpProxyServerDisabledBoolTrue": "",
+  "@HttpProxyServerDisabledBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of HttpProxyServerDisabled"
+  },
+  "HttpProxyServerDisabledBoolFalse": "",
+  "@HttpProxyServerDisabledBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of HttpProxyServerDisabled"
+  },
+  "HttpProxyServerName": "",
+  "@HttpProxyServerName": {
+    "type": "text"
+  },
+  "HttpProxyServerNameLabel": "",
+  "@HttpProxyServerNameLabel": {
+    "type": "text",
+    "description": "Label of HttpProxyServerName"
+  },
+  "HttpProxyServerNameHelper": "",
+  "@HttpProxyServerNameHelper": {
+    "type": "text",
+    "description": "Helper of HttpProxyServerName"
+  },
+  "HttpProxyServerNameHint": "",
+  "@HttpProxyServerNameHint": {
+    "type": "text",
+    "description": "Hint of HttpProxyServerName"
+  },
+  "HttpProxyServerNamePrefix": "",
+  "@HttpProxyServerNamePrefix": {
+    "type": "text",
+    "description": "Prefix of HttpProxyServerName"
+  },
+  "HttpProxyServerNameSuffix": "",
+  "@HttpProxyServerNameSuffix": {
+    "type": "text",
+    "description": "Suffix of HttpProxyServerName"
+  },
+  "HttpProxyServerNameBoolTrue": "",
+  "@HttpProxyServerNameBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of HttpProxyServerName"
+  },
+  "HttpProxyServerNameBoolFalse": "",
+  "@HttpProxyServerNameBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of HttpProxyServerName"
+  },
+  "HttpProxyServerHost": "",
+  "@HttpProxyServerHost": {
+    "type": "text"
+  },
+  "HttpProxyServerHostLabel": "",
+  "@HttpProxyServerHostLabel": {
+    "type": "text",
+    "description": "Label of HttpProxyServerHost"
+  },
+  "HttpProxyServerHostHelper": "",
+  "@HttpProxyServerHostHelper": {
+    "type": "text",
+    "description": "Helper of HttpProxyServerHost"
+  },
+  "HttpProxyServerHostHint": "",
+  "@HttpProxyServerHostHint": {
+    "type": "text",
+    "description": "Hint of HttpProxyServerHost"
+  },
+  "HttpProxyServerHostPrefix": "",
+  "@HttpProxyServerHostPrefix": {
+    "type": "text",
+    "description": "Prefix of HttpProxyServerHost"
+  },
+  "HttpProxyServerHostSuffix": "",
+  "@HttpProxyServerHostSuffix": {
+    "type": "text",
+    "description": "Suffix of HttpProxyServerHost"
+  },
+  "HttpProxyServerHostBoolTrue": "",
+  "@HttpProxyServerHostBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of HttpProxyServerHost"
+  },
+  "HttpProxyServerHostBoolFalse": "",
+  "@HttpProxyServerHostBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of HttpProxyServerHost"
+  },
+  "HttpProxyServerPort": "",
+  "@HttpProxyServerPort": {
+    "type": "text"
+  },
+  "HttpProxyServerPortLabel": "",
+  "@HttpProxyServerPortLabel": {
+    "type": "text",
+    "description": "Label of HttpProxyServerPort"
+  },
+  "HttpProxyServerPortHelper": "",
+  "@HttpProxyServerPortHelper": {
+    "type": "text",
+    "description": "Helper of HttpProxyServerPort"
+  },
+  "HttpProxyServerPortHint": "",
+  "@HttpProxyServerPortHint": {
+    "type": "text",
+    "description": "Hint of HttpProxyServerPort"
+  },
+  "HttpProxyServerPortPrefix": "",
+  "@HttpProxyServerPortPrefix": {
+    "type": "text",
+    "description": "Prefix of HttpProxyServerPort"
+  },
+  "HttpProxyServerPortSuffix": "",
+  "@HttpProxyServerPortSuffix": {
+    "type": "text",
+    "description": "Suffix of HttpProxyServerPort"
+  },
+  "HttpProxyServerPortBoolTrue": "",
+  "@HttpProxyServerPortBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of HttpProxyServerPort"
+  },
+  "HttpProxyServerPortBoolFalse": "",
+  "@HttpProxyServerPortBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of HttpProxyServerPort"
+  },
+  "HttpProxyServerKeepAlive": "",
+  "@HttpProxyServerKeepAlive": {
+    "type": "text"
+  },
+  "HttpProxyServerKeepAliveLabel": "",
+  "@HttpProxyServerKeepAliveLabel": {
+    "type": "text",
+    "description": "Label of HttpProxyServerKeepAlive"
+  },
+  "HttpProxyServerKeepAliveHelper": "",
+  "@HttpProxyServerKeepAliveHelper": {
+    "type": "text",
+    "description": "Helper of HttpProxyServerKeepAlive"
+  },
+  "HttpProxyServerKeepAliveHint": "",
+  "@HttpProxyServerKeepAliveHint": {
+    "type": "text",
+    "description": "Hint of HttpProxyServerKeepAlive"
+  },
+  "HttpProxyServerKeepAlivePrefix": "",
+  "@HttpProxyServerKeepAlivePrefix": {
+    "type": "text",
+    "description": "Prefix of HttpProxyServerKeepAlive"
+  },
+  "HttpProxyServerKeepAliveSuffix": "",
+  "@HttpProxyServerKeepAliveSuffix": {
+    "type": "text",
+    "description": "Suffix of HttpProxyServerKeepAlive"
+  },
+  "HttpProxyServerKeepAliveBoolTrue": "",
+  "@HttpProxyServerKeepAliveBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of HttpProxyServerKeepAlive"
+  },
+  "HttpProxyServerKeepAliveBoolFalse": "",
+  "@HttpProxyServerKeepAliveBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of HttpProxyServerKeepAlive"
+  },
+  "AdpRouter": "adp router",
+  "@AdpRouter": {
+    "type": "text"
+  },
+  "AdpRouterLabel": "",
+  "@AdpRouterLabel": {
+    "type": "text",
+    "description": "Label of AdpRouter"
+  },
+  "AdpRouterHelper": "",
+  "@AdpRouterHelper": {
+    "type": "text",
+    "description": "Helper of AdpRouter"
+  },
+  "AdpRouterHint": "",
+  "@AdpRouterHint": {
+    "type": "text",
+    "description": "Hint of AdpRouter"
+  },
+  "AdpRouterPrefix": "",
+  "@AdpRouterPrefix": {
+    "type": "text",
+    "description": "Prefix of AdpRouter"
+  },
+  "AdpRouterSuffix": "",
+  "@AdpRouterSuffix": {
+    "type": "text",
+    "description": "Suffix of AdpRouter"
+  },
+  "AdpRouterRulesDirName": "",
+  "@AdpRouterRulesDirName": {
+    "type": "text"
+  },
+  "AdpRouterRulesDirNameLabel": "",
+  "@AdpRouterRulesDirNameLabel": {
+    "type": "text",
+    "description": "Label of AdpRouterRulesDirName"
+  },
+  "AdpRouterRulesDirNameHelper": "",
+  "@AdpRouterRulesDirNameHelper": {
+    "type": "text",
+    "description": "Helper of AdpRouterRulesDirName"
+  },
+  "AdpRouterRulesDirNameHint": "",
+  "@AdpRouterRulesDirNameHint": {
+    "type": "text",
+    "description": "Hint of AdpRouterRulesDirName"
+  },
+  "AdpRouterRulesDirNamePrefix": "",
+  "@AdpRouterRulesDirNamePrefix": {
+    "type": "text",
+    "description": "Prefix of AdpRouterRulesDirName"
+  },
+  "AdpRouterRulesDirNameSuffix": "",
+  "@AdpRouterRulesDirNameSuffix": {
+    "type": "text",
+    "description": "Suffix of AdpRouterRulesDirName"
+  },
+  "AdpRouterRulesDirNameBoolTrue": "",
+  "@AdpRouterRulesDirNameBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of AdpRouterRulesDirName"
+  },
+  "AdpRouterRulesDirNameBoolFalse": "",
+  "@AdpRouterRulesDirNameBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of AdpRouterRulesDirName"
+  },
+  "AdpRouterBlocked": "",
+  "@AdpRouterBlocked": {
+    "type": "text"
+  },
+  "AdpRouterBlockedLabel": "",
+  "@AdpRouterBlockedLabel": {
+    "type": "text",
+    "description": "Label of AdpRouterBlocked"
+  },
+  "AdpRouterBlockedHelper": "",
+  "@AdpRouterBlockedHelper": {
+    "type": "text",
+    "description": "Helper of AdpRouterBlocked"
+  },
+  "AdpRouterBlockedHint": "",
+  "@AdpRouterBlockedHint": {
+    "type": "text",
+    "description": "Hint of AdpRouterBlocked"
+  },
+  "AdpRouterBlockedPrefix": "",
+  "@AdpRouterBlockedPrefix": {
+    "type": "text",
+    "description": "Prefix of AdpRouterBlocked"
+  },
+  "AdpRouterBlockedSuffix": "",
+  "@AdpRouterBlockedSuffix": {
+    "type": "text",
+    "description": "Suffix of AdpRouterBlocked"
+  },
+  "AdpRouterBlockedBoolTrue": "",
+  "@AdpRouterBlockedBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of AdpRouterBlocked"
+  },
+  "AdpRouterBlockedBoolFalse": "",
+  "@AdpRouterBlockedBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of AdpRouterBlocked"
+  },
+  "AdpRouterUnblocked": "",
+  "@AdpRouterUnblocked": {
+    "type": "text"
+  },
+  "AdpRouterUnblockedLabel": "",
+  "@AdpRouterUnblockedLabel": {
+    "type": "text",
+    "description": "Label of AdpRouterUnblocked"
+  },
+  "AdpRouterUnblockedHelper": "",
+  "@AdpRouterUnblockedHelper": {
+    "type": "text",
+    "description": "Helper of AdpRouterUnblocked"
+  },
+  "AdpRouterUnblockedHint": "",
+  "@AdpRouterUnblockedHint": {
+    "type": "text",
+    "description": "Hint of AdpRouterUnblocked"
+  },
+  "AdpRouterUnblockedPrefix": "",
+  "@AdpRouterUnblockedPrefix": {
+    "type": "text",
+    "description": "Prefix of AdpRouterUnblocked"
+  },
+  "AdpRouterUnblockedSuffix": "",
+  "@AdpRouterUnblockedSuffix": {
+    "type": "text",
+    "description": "Suffix of AdpRouterUnblocked"
+  },
+  "AdpRouterUnblockedBoolTrue": "",
+  "@AdpRouterUnblockedBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of AdpRouterUnblocked"
+  },
+  "AdpRouterUnblockedBoolFalse": "",
+  "@AdpRouterUnblockedBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of AdpRouterUnblocked"
+  },
+  "AdpRouterEtcHostsIpAsBlocked": "",
+  "@AdpRouterEtcHostsIpAsBlocked": {
+    "type": "text"
+  },
+  "AdpRouterEtcHostsIpAsBlockedLabel": "",
+  "@AdpRouterEtcHostsIpAsBlockedLabel": {
+    "type": "text",
+    "description": "Label of AdpRouterEtcHostsIpAsBlocked"
+  },
+  "AdpRouterEtcHostsIpAsBlockedHelper": "",
+  "@AdpRouterEtcHostsIpAsBlockedHelper": {
+    "type": "text",
+    "description": "Helper of AdpRouterEtcHostsIpAsBlocked"
+  },
+  "AdpRouterEtcHostsIpAsBlockedHint": "",
+  "@AdpRouterEtcHostsIpAsBlockedHint": {
+    "type": "text",
+    "description": "Hint of AdpRouterEtcHostsIpAsBlocked"
+  },
+  "AdpRouterEtcHostsIpAsBlockedPrefix": "",
+  "@AdpRouterEtcHostsIpAsBlockedPrefix": {
+    "type": "text",
+    "description": "Prefix of AdpRouterEtcHostsIpAsBlocked"
+  },
+  "AdpRouterEtcHostsIpAsBlockedSuffix": "",
+  "@AdpRouterEtcHostsIpAsBlockedSuffix": {
+    "type": "text",
+    "description": "Suffix of AdpRouterEtcHostsIpAsBlocked"
+  },
+  "AdpRouterEtcHostsIpAsBlockedBoolTrue": "",
+  "@AdpRouterEtcHostsIpAsBlockedBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of AdpRouterEtcHostsIpAsBlocked"
+  },
+  "AdpRouterEtcHostsIpAsBlockedBoolFalse": "",
+  "@AdpRouterEtcHostsIpAsBlockedBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of AdpRouterEtcHostsIpAsBlocked"
+  },
+  "AdpRouterDev": "",
+  "@AdpRouterDev": {
+    "type": "text"
+  },
+  "AdpRouterDevLabel": "",
+  "@AdpRouterDevLabel": {
+    "type": "text",
+    "description": "Label of AdpRouterDev"
+  },
+  "AdpRouterDevHelper": "",
+  "@AdpRouterDevHelper": {
+    "type": "text",
+    "description": "Helper of AdpRouterDev"
+  },
+  "AdpRouterDevHint": "",
+  "@AdpRouterDevHint": {
+    "type": "text",
+    "description": "Hint of AdpRouterDev"
+  },
+  "AdpRouterDevPrefix": "",
+  "@AdpRouterDevPrefix": {
+    "type": "text",
+    "description": "Prefix of AdpRouterDev"
+  },
+  "AdpRouterDevSuffix": "",
+  "@AdpRouterDevSuffix": {
+    "type": "text",
+    "description": "Suffix of AdpRouterDev"
+  },
+  "AdpRouterDevBoolTrue": "",
+  "@AdpRouterDevBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of AdpRouterDev"
+  },
+  "AdpRouterDevBoolFalse": "",
+  "@AdpRouterDevBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of AdpRouterDev"
+  },
+  "IPNetRouter": "ip net router",
+  "@IPNetRouter": {
+    "type": "text"
+  },
+  "IPNetRouterLabel": "",
+  "@IPNetRouterLabel": {
+    "type": "text",
+    "description": "Label of IPNetRouter"
+  },
+  "IPNetRouterHelper": "",
+  "@IPNetRouterHelper": {
+    "type": "text",
+    "description": "Helper of IPNetRouter"
+  },
+  "IPNetRouterHint": "",
+  "@IPNetRouterHint": {
+    "type": "text",
+    "description": "Hint of IPNetRouter"
+  },
+  "IPNetRouterPrefix": "",
+  "@IPNetRouterPrefix": {
+    "type": "text",
+    "description": "Prefix of IPNetRouter"
+  },
+  "IPNetRouterSuffix": "",
+  "@IPNetRouterSuffix": {
+    "type": "text",
+    "description": "Suffix of IPNetRouter"
+  },
+  "IPNetRouterIp": "",
+  "@IPNetRouterIp": {
+    "type": "text"
+  },
+  "IPNetRouterIpLabel": "",
+  "@IPNetRouterIpLabel": {
+    "type": "text",
+    "description": "Label of IPNetRouterIp"
+  },
+  "IPNetRouterIpHelper": "",
+  "@IPNetRouterIpHelper": {
+    "type": "text",
+    "description": "Helper of IPNetRouterIp"
+  },
+  "IPNetRouterIpHint": "",
+  "@IPNetRouterIpHint": {
+    "type": "text",
+    "description": "Hint of IPNetRouterIp"
+  },
+  "IPNetRouterIpPrefix": "",
+  "@IPNetRouterIpPrefix": {
+    "type": "text",
+    "description": "Prefix of IPNetRouterIp"
+  },
+  "IPNetRouterIpSuffix": "",
+  "@IPNetRouterIpSuffix": {
+    "type": "text",
+    "description": "Suffix of IPNetRouterIp"
+  },
+  "IPNetRouterIpBoolTrue": "",
+  "@IPNetRouterIpBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of IPNetRouterIp"
+  },
+  "IPNetRouterIpBoolFalse": "",
+  "@IPNetRouterIpBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of IPNetRouterIp"
+  },
+  "IPNetRouterNet": "",
+  "@IPNetRouterNet": {
+    "type": "text"
+  },
+  "IPNetRouterNetLabel": "",
+  "@IPNetRouterNetLabel": {
+    "type": "text",
+    "description": "Label of IPNetRouterNet"
+  },
+  "IPNetRouterNetHelper": "",
+  "@IPNetRouterNetHelper": {
+    "type": "text",
+    "description": "Helper of IPNetRouterNet"
+  },
+  "IPNetRouterNetHint": "",
+  "@IPNetRouterNetHint": {
+    "type": "text",
+    "description": "Hint of IPNetRouterNet"
+  },
+  "IPNetRouterNetPrefix": "",
+  "@IPNetRouterNetPrefix": {
+    "type": "text",
+    "description": "Prefix of IPNetRouterNet"
+  },
+  "IPNetRouterNetSuffix": "",
+  "@IPNetRouterNetSuffix": {
+    "type": "text",
+    "description": "Suffix of IPNetRouterNet"
+  },
+  "IPNetRouterNetBoolTrue": "",
+  "@IPNetRouterNetBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of IPNetRouterNet"
+  },
+  "IPNetRouterNetBoolFalse": "",
+  "@IPNetRouterNetBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of IPNetRouterNet"
+  },
+  "IPNetRouterMatched": "",
+  "@IPNetRouterMatched": {
+    "type": "text"
+  },
+  "IPNetRouterMatchedLabel": "",
+  "@IPNetRouterMatchedLabel": {
+    "type": "text",
+    "description": "Label of IPNetRouterMatched"
+  },
+  "IPNetRouterMatchedHelper": "",
+  "@IPNetRouterMatchedHelper": {
+    "type": "text",
+    "description": "Helper of IPNetRouterMatched"
+  },
+  "IPNetRouterMatchedHint": "",
+  "@IPNetRouterMatchedHint": {
+    "type": "text",
+    "description": "Hint of IPNetRouterMatched"
+  },
+  "IPNetRouterMatchedPrefix": "",
+  "@IPNetRouterMatchedPrefix": {
+    "type": "text",
+    "description": "Prefix of IPNetRouterMatched"
+  },
+  "IPNetRouterMatchedSuffix": "",
+  "@IPNetRouterMatchedSuffix": {
+    "type": "text",
+    "description": "Suffix of IPNetRouterMatched"
+  },
+  "IPNetRouterMatchedBoolTrue": "",
+  "@IPNetRouterMatchedBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of IPNetRouterMatched"
+  },
+  "IPNetRouterMatchedBoolFalse": "",
+  "@IPNetRouterMatchedBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of IPNetRouterMatched"
+  },
+  "IPNetRouterUnmatched": "",
+  "@IPNetRouterUnmatched": {
+    "type": "text"
+  },
+  "IPNetRouterUnmatchedLabel": "",
+  "@IPNetRouterUnmatchedLabel": {
+    "type": "text",
+    "description": "Label of IPNetRouterUnmatched"
+  },
+  "IPNetRouterUnmatchedHelper": "",
+  "@IPNetRouterUnmatchedHelper": {
+    "type": "text",
+    "description": "Helper of IPNetRouterUnmatched"
+  },
+  "IPNetRouterUnmatchedHint": "",
+  "@IPNetRouterUnmatchedHint": {
+    "type": "text",
+    "description": "Hint of IPNetRouterUnmatched"
+  },
+  "IPNetRouterUnmatchedPrefix": "",
+  "@IPNetRouterUnmatchedPrefix": {
+    "type": "text",
+    "description": "Prefix of IPNetRouterUnmatched"
+  },
+  "IPNetRouterUnmatchedSuffix": "",
+  "@IPNetRouterUnmatchedSuffix": {
+    "type": "text",
+    "description": "Suffix of IPNetRouterUnmatched"
+  },
+  "IPNetRouterUnmatchedBoolTrue": "",
+  "@IPNetRouterUnmatchedBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of IPNetRouterUnmatched"
+  },
+  "IPNetRouterUnmatchedBoolFalse": "",
+  "@IPNetRouterUnmatchedBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of IPNetRouterUnmatched"
+  },
+  "IPNetRouterFileTest": "",
+  "@IPNetRouterFileTest": {
+    "type": "text"
+  },
+  "IPNetRouterFileTestLabel": "",
+  "@IPNetRouterFileTestLabel": {
+    "type": "text",
+    "description": "Label of IPNetRouterFileTest"
+  },
+  "IPNetRouterFileTestHelper": "",
+  "@IPNetRouterFileTestHelper": {
+    "type": "text",
+    "description": "Helper of IPNetRouterFileTest"
+  },
+  "IPNetRouterFileTestHint": "",
+  "@IPNetRouterFileTestHint": {
+    "type": "text",
+    "description": "Hint of IPNetRouterFileTest"
+  },
+  "IPNetRouterFileTestPrefix": "",
+  "@IPNetRouterFileTestPrefix": {
+    "type": "text",
+    "description": "Prefix of IPNetRouterFileTest"
+  },
+  "IPNetRouterFileTestSuffix": "",
+  "@IPNetRouterFileTestSuffix": {
+    "type": "text",
+    "description": "Suffix of IPNetRouterFileTest"
+  },
+  "IPNetRouterFileTestBoolTrue": "",
+  "@IPNetRouterFileTestBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of IPNetRouterFileTest"
+  },
+  "IPNetRouterFileTestBoolFalse": "",
+  "@IPNetRouterFileTestBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of IPNetRouterFileTest"
+  },
+  "RouterItem": "router item",
+  "@RouterItem": {
+    "type": "text"
+  },
+  "RouterItemLabel": "",
+  "@RouterItemLabel": {
+    "type": "text",
+    "description": "Label of RouterItem"
+  },
+  "RouterItemHelper": "",
+  "@RouterItemHelper": {
+    "type": "text",
+    "description": "Helper of RouterItem"
+  },
+  "RouterItemHint": "",
+  "@RouterItemHint": {
+    "type": "text",
+    "description": "Hint of RouterItem"
+  },
+  "RouterItemPrefix": "",
+  "@RouterItemPrefix": {
+    "type": "text",
+    "description": "Prefix of RouterItem"
+  },
+  "RouterItemSuffix": "",
+  "@RouterItemSuffix": {
+    "type": "text",
+    "description": "Suffix of RouterItem"
+  },
+  "RouterItemDisabled": "",
+  "@RouterItemDisabled": {
+    "type": "text"
+  },
+  "RouterItemDisabledLabel": "",
+  "@RouterItemDisabledLabel": {
+    "type": "text",
+    "description": "Label of RouterItemDisabled"
+  },
+  "RouterItemDisabledHelper": "",
+  "@RouterItemDisabledHelper": {
+    "type": "text",
+    "description": "Helper of RouterItemDisabled"
+  },
+  "RouterItemDisabledHint": "",
+  "@RouterItemDisabledHint": {
+    "type": "text",
+    "description": "Hint of RouterItemDisabled"
+  },
+  "RouterItemDisabledPrefix": "",
+  "@RouterItemDisabledPrefix": {
+    "type": "text",
+    "description": "Prefix of RouterItemDisabled"
+  },
+  "RouterItemDisabledSuffix": "",
+  "@RouterItemDisabledSuffix": {
+    "type": "text",
+    "description": "Suffix of RouterItemDisabled"
+  },
+  "RouterItemDisabledBoolTrue": "",
+  "@RouterItemDisabledBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of RouterItemDisabled"
+  },
+  "RouterItemDisabledBoolFalse": "",
+  "@RouterItemDisabledBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of RouterItemDisabled"
+  },
+  "RouterItemName": "",
+  "@RouterItemName": {
+    "type": "text"
+  },
+  "RouterItemNameLabel": "",
+  "@RouterItemNameLabel": {
+    "type": "text",
+    "description": "Label of RouterItemName"
+  },
+  "RouterItemNameHelper": "",
+  "@RouterItemNameHelper": {
+    "type": "text",
+    "description": "Helper of RouterItemName"
+  },
+  "RouterItemNameHint": "",
+  "@RouterItemNameHint": {
+    "type": "text",
+    "description": "Hint of RouterItemName"
+  },
+  "RouterItemNamePrefix": "",
+  "@RouterItemNamePrefix": {
+    "type": "text",
+    "description": "Prefix of RouterItemName"
+  },
+  "RouterItemNameSuffix": "",
+  "@RouterItemNameSuffix": {
+    "type": "text",
+    "description": "Suffix of RouterItemName"
+  },
+  "RouterItemNameBoolTrue": "",
+  "@RouterItemNameBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of RouterItemName"
+  },
+  "RouterItemNameBoolFalse": "",
+  "@RouterItemNameBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of RouterItemName"
+  },
+  "RouterItemAdp": "",
+  "@RouterItemAdp": {
+    "type": "text"
+  },
+  "RouterItemAdpLabel": "",
+  "@RouterItemAdpLabel": {
+    "type": "text",
+    "description": "Label of RouterItemAdp. Set empty to redirect to Label of ConfigLocalizations.AdpRouter"
+  },
+  "RouterItemAdpHelper": "",
+  "@RouterItemAdpHelper": {
+    "type": "text",
+    "description": "Helper of RouterItemAdp. Set empty to redirect to Helper of ConfigLocalizations.AdpRouter"
+  },
+  "RouterItemAdpHint": "",
+  "@RouterItemAdpHint": {
+    "type": "text",
+    "description": "Hint of RouterItemAdp. Set empty to redirect to Hint of ConfigLocalizations.AdpRouter"
+  },
+  "RouterItemAdpPrefix": "",
+  "@RouterItemAdpPrefix": {
+    "type": "text",
+    "description": "Prefix of RouterItemAdp. Set empty to redirect to Prefix of ConfigLocalizations.AdpRouter"
+  },
+  "RouterItemAdpSuffix": "",
+  "@RouterItemAdpSuffix": {
+    "type": "text",
+    "description": "Suffix of RouterItemAdp. Set empty to redirect to Suffix of ConfigLocalizations.AdpRouter"
+  },
+  "RouterItemAdpBoolTrue": "",
+  "@RouterItemAdpBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of RouterItemAdp. Set empty to redirect to BoolTrue of ConfigLocalizations.AdpRouter"
+  },
+  "RouterItemAdpBoolFalse": "",
+  "@RouterItemAdpBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of RouterItemAdp. Set empty to redirect to BoolFalse of ConfigLocalizations.AdpRouter"
+  },
+  "RouterItemIpnet": "",
+  "@RouterItemIpnet": {
+    "type": "text"
+  },
+  "RouterItemIpnetLabel": "",
+  "@RouterItemIpnetLabel": {
+    "type": "text",
+    "description": "Label of RouterItemIpnet. Set empty to redirect to Label of ConfigLocalizations.IPNetRouter"
+  },
+  "RouterItemIpnetHelper": "",
+  "@RouterItemIpnetHelper": {
+    "type": "text",
+    "description": "Helper of RouterItemIpnet. Set empty to redirect to Helper of ConfigLocalizations.IPNetRouter"
+  },
+  "RouterItemIpnetHint": "",
+  "@RouterItemIpnetHint": {
+    "type": "text",
+    "description": "Hint of RouterItemIpnet. Set empty to redirect to Hint of ConfigLocalizations.IPNetRouter"
+  },
+  "RouterItemIpnetPrefix": "",
+  "@RouterItemIpnetPrefix": {
+    "type": "text",
+    "description": "Prefix of RouterItemIpnet. Set empty to redirect to Prefix of ConfigLocalizations.IPNetRouter"
+  },
+  "RouterItemIpnetSuffix": "",
+  "@RouterItemIpnetSuffix": {
+    "type": "text",
+    "description": "Suffix of RouterItemIpnet. Set empty to redirect to Suffix of ConfigLocalizations.IPNetRouter"
+  },
+  "RouterItemIpnetBoolTrue": "",
+  "@RouterItemIpnetBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of RouterItemIpnet. Set empty to redirect to BoolTrue of ConfigLocalizations.IPNetRouter"
+  },
+  "RouterItemIpnetBoolFalse": "",
+  "@RouterItemIpnetBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of RouterItemIpnet. Set empty to redirect to BoolFalse of ConfigLocalizations.IPNetRouter"
+  },
+  "RouterItemRouter": "router",
+  "@RouterItemRouter": {
+    "type": "text",
+    "description": "[oneof] "
+  },
+  "RouterItemRouterLabel": "",
+  "@RouterItemRouterLabel": {
+    "type": "text",
+    "description": "[oneof] Label of RouterItemRouter"
+  },
+  "RouterItemRouterPrefix": "",
+  "@RouterItemRouterPrefix": {
+    "type": "text",
+    "description": "[oneof] Prefix of RouterItemRouter"
+  },
+  "RouterItemRouterSuffix": "",
+  "@RouterItemRouterSuffix": {
+    "type": "text",
+    "description": "[oneof] Suffix of RouterItemRouter"
+  },
+  "Config": "config",
+  "@Config": {
+    "type": "text"
+  },
+  "ConfigLabel": "",
+  "@ConfigLabel": {
+    "type": "text",
+    "description": "Label of Config"
+  },
+  "ConfigHelper": "",
+  "@ConfigHelper": {
+    "type": "text",
+    "description": "Helper of Config"
+  },
+  "ConfigHint": "",
+  "@ConfigHint": {
+    "type": "text",
+    "description": "Hint of Config"
+  },
+  "ConfigPrefix": "",
+  "@ConfigPrefix": {
+    "type": "text",
+    "description": "Prefix of Config"
+  },
+  "ConfigSuffix": "",
+  "@ConfigSuffix": {
+    "type": "text",
+    "description": "Suffix of Config"
+  },
+  "ConfigBasic": "",
+  "@ConfigBasic": {
+    "type": "text"
+  },
+  "ConfigBasicLabel": "",
+  "@ConfigBasicLabel": {
+    "type": "text",
+    "description": "Label of ConfigBasic. Set empty to redirect to Label of ConfigLocalizations.Basic"
+  },
+  "ConfigBasicHelper": "",
+  "@ConfigBasicHelper": {
+    "type": "text",
+    "description": "Helper of ConfigBasic. Set empty to redirect to Helper of ConfigLocalizations.Basic"
+  },
+  "ConfigBasicHint": "",
+  "@ConfigBasicHint": {
+    "type": "text",
+    "description": "Hint of ConfigBasic. Set empty to redirect to Hint of ConfigLocalizations.Basic"
+  },
+  "ConfigBasicPrefix": "",
+  "@ConfigBasicPrefix": {
+    "type": "text",
+    "description": "Prefix of ConfigBasic. Set empty to redirect to Prefix of ConfigLocalizations.Basic"
+  },
+  "ConfigBasicSuffix": "",
+  "@ConfigBasicSuffix": {
+    "type": "text",
+    "description": "Suffix of ConfigBasic. Set empty to redirect to Suffix of ConfigLocalizations.Basic"
+  },
+  "ConfigBasicBoolTrue": "",
+  "@ConfigBasicBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of ConfigBasic. Set empty to redirect to BoolTrue of ConfigLocalizations.Basic"
+  },
+  "ConfigBasicBoolFalse": "",
+  "@ConfigBasicBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of ConfigBasic. Set empty to redirect to BoolFalse of ConfigLocalizations.Basic"
+  },
+  "ConfigLog": "",
+  "@ConfigLog": {
+    "type": "text"
+  },
+  "ConfigLogLabel": "",
+  "@ConfigLogLabel": {
+    "type": "text",
+    "description": "Label of ConfigLog. Set empty to redirect to Label of ConfigLocalizations.Log"
+  },
+  "ConfigLogHelper": "",
+  "@ConfigLogHelper": {
+    "type": "text",
+    "description": "Helper of ConfigLog. Set empty to redirect to Helper of ConfigLocalizations.Log"
+  },
+  "ConfigLogHint": "",
+  "@ConfigLogHint": {
+    "type": "text",
+    "description": "Hint of ConfigLog. Set empty to redirect to Hint of ConfigLocalizations.Log"
+  },
+  "ConfigLogPrefix": "",
+  "@ConfigLogPrefix": {
+    "type": "text",
+    "description": "Prefix of ConfigLog. Set empty to redirect to Prefix of ConfigLocalizations.Log"
+  },
+  "ConfigLogSuffix": "",
+  "@ConfigLogSuffix": {
+    "type": "text",
+    "description": "Suffix of ConfigLog. Set empty to redirect to Suffix of ConfigLocalizations.Log"
+  },
+  "ConfigLogBoolTrue": "",
+  "@ConfigLogBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of ConfigLog. Set empty to redirect to BoolTrue of ConfigLocalizations.Log"
+  },
+  "ConfigLogBoolFalse": "",
+  "@ConfigLogBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of ConfigLog. Set empty to redirect to BoolFalse of ConfigLocalizations.Log"
+  },
+  "ConfigIpfs": "",
+  "@ConfigIpfs": {
+    "type": "text"
+  },
+  "ConfigIpfsLabel": "",
+  "@ConfigIpfsLabel": {
+    "type": "text",
+    "description": "Label of ConfigIpfs. Set empty to redirect to Label of ConfigLocalizations.Ipfs"
+  },
+  "ConfigIpfsHelper": "",
+  "@ConfigIpfsHelper": {
+    "type": "text",
+    "description": "Helper of ConfigIpfs. Set empty to redirect to Helper of ConfigLocalizations.Ipfs"
+  },
+  "ConfigIpfsHint": "",
+  "@ConfigIpfsHint": {
+    "type": "text",
+    "description": "Hint of ConfigIpfs. Set empty to redirect to Hint of ConfigLocalizations.Ipfs"
+  },
+  "ConfigIpfsPrefix": "",
+  "@ConfigIpfsPrefix": {
+    "type": "text",
+    "description": "Prefix of ConfigIpfs. Set empty to redirect to Prefix of ConfigLocalizations.Ipfs"
+  },
+  "ConfigIpfsSuffix": "",
+  "@ConfigIpfsSuffix": {
+    "type": "text",
+    "description": "Suffix of ConfigIpfs. Set empty to redirect to Suffix of ConfigLocalizations.Ipfs"
+  },
+  "ConfigIpfsBoolTrue": "",
+  "@ConfigIpfsBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of ConfigIpfs. Set empty to redirect to BoolTrue of ConfigLocalizations.Ipfs"
+  },
+  "ConfigIpfsBoolFalse": "",
+  "@ConfigIpfsBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of ConfigIpfs. Set empty to redirect to BoolFalse of ConfigLocalizations.Ipfs"
+  },
+  "ConfigIpfsServers": "",
+  "@ConfigIpfsServers": {
+    "type": "text"
+  },
+  "ConfigIpfsServersLabel": "",
+  "@ConfigIpfsServersLabel": {
+    "type": "text",
+    "description": "Label of ConfigIpfsServers. Set empty to redirect to Label of ConfigLocalizations.IpfsServer"
+  },
+  "ConfigIpfsServersHelper": "",
+  "@ConfigIpfsServersHelper": {
+    "type": "text",
+    "description": "Helper of ConfigIpfsServers. Set empty to redirect to Helper of ConfigLocalizations.IpfsServer"
+  },
+  "ConfigIpfsServersHint": "",
+  "@ConfigIpfsServersHint": {
+    "type": "text",
+    "description": "Hint of ConfigIpfsServers. Set empty to redirect to Hint of ConfigLocalizations.IpfsServer"
+  },
+  "ConfigIpfsServersPrefix": "",
+  "@ConfigIpfsServersPrefix": {
+    "type": "text",
+    "description": "Prefix of ConfigIpfsServers. Set empty to redirect to Prefix of ConfigLocalizations.IpfsServer"
+  },
+  "ConfigIpfsServersSuffix": "",
+  "@ConfigIpfsServersSuffix": {
+    "type": "text",
+    "description": "Suffix of ConfigIpfsServers. Set empty to redirect to Suffix of ConfigLocalizations.IpfsServer"
+  },
+  "ConfigIpfsServersBoolTrue": "",
+  "@ConfigIpfsServersBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of ConfigIpfsServers. Set empty to redirect to BoolTrue of ConfigLocalizations.IpfsServer"
+  },
+  "ConfigIpfsServersBoolFalse": "",
+  "@ConfigIpfsServersBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of ConfigIpfsServers. Set empty to redirect to BoolFalse of ConfigLocalizations.IpfsServer"
+  },
+  "ConfigFileServers": "",
+  "@ConfigFileServers": {
+    "type": "text"
+  },
+  "ConfigFileServersLabel": "",
+  "@ConfigFileServersLabel": {
+    "type": "text",
+    "description": "Label of ConfigFileServers. Set empty to redirect to Label of ConfigLocalizations.FileServer"
+  },
+  "ConfigFileServersHelper": "",
+  "@ConfigFileServersHelper": {
+    "type": "text",
+    "description": "Helper of ConfigFileServers. Set empty to redirect to Helper of ConfigLocalizations.FileServer"
+  },
+  "ConfigFileServersHint": "",
+  "@ConfigFileServersHint": {
+    "type": "text",
+    "description": "Hint of ConfigFileServers. Set empty to redirect to Hint of ConfigLocalizations.FileServer"
+  },
+  "ConfigFileServersPrefix": "",
+  "@ConfigFileServersPrefix": {
+    "type": "text",
+    "description": "Prefix of ConfigFileServers. Set empty to redirect to Prefix of ConfigLocalizations.FileServer"
+  },
+  "ConfigFileServersSuffix": "",
+  "@ConfigFileServersSuffix": {
+    "type": "text",
+    "description": "Suffix of ConfigFileServers. Set empty to redirect to Suffix of ConfigLocalizations.FileServer"
+  },
+  "ConfigFileServersBoolTrue": "",
+  "@ConfigFileServersBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of ConfigFileServers. Set empty to redirect to BoolTrue of ConfigLocalizations.FileServer"
+  },
+  "ConfigFileServersBoolFalse": "",
+  "@ConfigFileServersBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of ConfigFileServers. Set empty to redirect to BoolFalse of ConfigLocalizations.FileServer"
+  },
+  "ConfigHttpProxyServers": "",
+  "@ConfigHttpProxyServers": {
+    "type": "text"
+  },
+  "ConfigHttpProxyServersLabel": "",
+  "@ConfigHttpProxyServersLabel": {
+    "type": "text",
+    "description": "Label of ConfigHttpProxyServers. Set empty to redirect to Label of ConfigLocalizations.HttpProxyServer"
+  },
+  "ConfigHttpProxyServersHelper": "",
+  "@ConfigHttpProxyServersHelper": {
+    "type": "text",
+    "description": "Helper of ConfigHttpProxyServers. Set empty to redirect to Helper of ConfigLocalizations.HttpProxyServer"
+  },
+  "ConfigHttpProxyServersHint": "",
+  "@ConfigHttpProxyServersHint": {
+    "type": "text",
+    "description": "Hint of ConfigHttpProxyServers. Set empty to redirect to Hint of ConfigLocalizations.HttpProxyServer"
+  },
+  "ConfigHttpProxyServersPrefix": "",
+  "@ConfigHttpProxyServersPrefix": {
+    "type": "text",
+    "description": "Prefix of ConfigHttpProxyServers. Set empty to redirect to Prefix of ConfigLocalizations.HttpProxyServer"
+  },
+  "ConfigHttpProxyServersSuffix": "",
+  "@ConfigHttpProxyServersSuffix": {
+    "type": "text",
+    "description": "Suffix of ConfigHttpProxyServers. Set empty to redirect to Suffix of ConfigLocalizations.HttpProxyServer"
+  },
+  "ConfigHttpProxyServersBoolTrue": "",
+  "@ConfigHttpProxyServersBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of ConfigHttpProxyServers. Set empty to redirect to BoolTrue of ConfigLocalizations.HttpProxyServer"
+  },
+  "ConfigHttpProxyServersBoolFalse": "",
+  "@ConfigHttpProxyServersBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of ConfigHttpProxyServers. Set empty to redirect to BoolFalse of ConfigLocalizations.HttpProxyServer"
+  },
+  "ConfigRouters": "",
+  "@ConfigRouters": {
+    "type": "text"
+  },
+  "ConfigRoutersLabel": "",
+  "@ConfigRoutersLabel": {
+    "type": "text",
+    "description": "Label of ConfigRouters. Set empty to redirect to Label of ConfigLocalizations.RouterItem"
+  },
+  "ConfigRoutersHelper": "",
+  "@ConfigRoutersHelper": {
+    "type": "text",
+    "description": "Helper of ConfigRouters. Set empty to redirect to Helper of ConfigLocalizations.RouterItem"
+  },
+  "ConfigRoutersHint": "",
+  "@ConfigRoutersHint": {
+    "type": "text",
+    "description": "Hint of ConfigRouters. Set empty to redirect to Hint of ConfigLocalizations.RouterItem"
+  },
+  "ConfigRoutersPrefix": "",
+  "@ConfigRoutersPrefix": {
+    "type": "text",
+    "description": "Prefix of ConfigRouters. Set empty to redirect to Prefix of ConfigLocalizations.RouterItem"
+  },
+  "ConfigRoutersSuffix": "",
+  "@ConfigRoutersSuffix": {
+    "type": "text",
+    "description": "Suffix of ConfigRouters. Set empty to redirect to Suffix of ConfigLocalizations.RouterItem"
+  },
+  "ConfigRoutersBoolTrue": "",
+  "@ConfigRoutersBoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of ConfigRouters. Set empty to redirect to BoolTrue of ConfigLocalizations.RouterItem"
+  },
+  "ConfigRoutersBoolFalse": "",
+  "@ConfigRoutersBoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of ConfigRouters. Set empty to redirect to BoolFalse of ConfigLocalizations.RouterItem"
+  }
+}

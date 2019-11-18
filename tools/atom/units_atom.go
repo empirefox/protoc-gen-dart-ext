@@ -2,22 +2,18 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"log"
-	"sort"
 	"strings"
 	"text/template"
 	"time"
 
 	"github.com/Masterminds/sprig"
-	"github.com/empirefox/makeplural/plural"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/arb"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/dart"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/genshared"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/units/atom"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/util"
 	"github.com/relvacode/iso8601"
-	"golang.org/x/text/language"
 )
 
 var (
@@ -80,7 +76,7 @@ class {{ Entity }} {
 }
 `
 
-const arbTplStr = `{{ . | toPrettyJson }}`
+const arbTplStr = `{{ .Arb | toPrettyJson }}`
 
 var (
 	toField = func(a *atom.Atom) (s string) {
@@ -116,19 +112,15 @@ var (
 	arbTpl   = template.Must(template.New("arb").Funcs(sharedFuncs).Parse(arbTplStr))
 )
 
-var langs = flag.String("lang", "", "language subset")
-
 func main() {
-	vr := genshared.NewGoTplVariantRenderer(arbTpl, getLangs, makeArbData, makeArbPath)
-	gr := genshared.NewGoTplGroupRenderer(protoTpl, dartTpl)
-	rs := genshared.MultiRenderer{vr, gr}
+	gr := genshared.NewGoTplGroupRenderer(protoTpl, dartTpl, arbTpl)
 
 	flag.Parse()
 
-	rs.Open()
-	defer rs.Close()
+	gr.Open()
+	defer gr.Close()
 
-	err := rs.Render(&Data{Atoms: atom.Atoms})
+	err := gr.Render(&Data{Atoms: atom.Atoms})
 	if err != nil {
 		log.Fatalf("executing template: %v", err)
 	}
@@ -140,30 +132,21 @@ type Data struct {
 	Atoms []*atom.Atom
 }
 
-func (d *Data) Arb(lang string) *arb.Arb {
-	culture := language.MustParse(lang)
+func (d *Data) Arb() *arb.Arb {
 	a := &arb.Arb{
 		LastModified: iso8601.Time{time.Now()},
-		Locale:       culture,
 		Entity:       entity.UpperCamel(),
 		Resources:    make([]*arb.ArbResource, 0, len(d.Atoms)),
 	}
 
 	for _, ua := range d.Atoms {
-		ar := arb.NewResource(a, toLowerField(ua), toICU(culture, ua), &arb.ArbAttributes{
+		ar := arb.NewResource(a, toLowerField(ua), toICU(ua), &arb.ArbAttributes{
 			Type:        "text",
 			Description: "SI unit",
 			Placeholders: arb.ArbPlaceholders{
 				&arb.ArbPlaceholder{
-					Name: "form",
-					LangInfos: arb.ArbLangInfos{
-						&arb.ArbLangInfo{
-							Lang:    "dart",
-							Type:    "&&.Form",
-							Replace: "&",
-							Import:  "package:pgde/plural.dart",
-						},
-					},
+					Name:      "form",
+					LangInfos: arb.ArbLangInfos{&arb.DartMatchedPluralLangInfo},
 				},
 			},
 		})
@@ -172,17 +155,12 @@ func (d *Data) Arb(lang string) *arb.Arb {
 	return a
 }
 
-func toICU(culture language.Tag, ua *atom.Atom) string {
-	lang, _, _ := plural.Info.Find(culture)
-	if lang == nil {
-		return ua.Name
-	}
+var forms = []string{"zero", "one", "two", "few", "many", "other"}
 
+func toICU(ua *atom.Atom) string {
 	var builder strings.Builder
-	builder.WriteString("{form, select, ")
-	cardinal := lang.Cardinal
-	for i := range cardinal {
-		c := cardinal[i].Form
+	builder.WriteString("{form, plural, ")
+	for _, c := range forms {
 		builder.WriteString(c)
 		builder.WriteByte('{')
 		if c == "one" {
@@ -199,27 +177,4 @@ func toICU(culture language.Tag, ua *atom.Atom) string {
 
 	builder.WriteByte('}')
 	return builder.String()
-}
-
-func makeArbData(data interface{}, variant string) interface{} {
-	return data.(*Data).Arb(variant)
-}
-
-func makeArbPath(pathPrefix, variant string) string {
-	return fmt.Sprintf("%s_%s.arb", pathPrefix, variant)
-}
-
-func getLangs() []string {
-	if *langs == "" {
-		plural.Info.Langs()
-	}
-
-	raw := strings.Split(*langs, ",")
-	sort.Strings(raw)
-	parseFailed, findFailed, ok := plural.Info.Validate(raw)
-	if !ok {
-		log.Fatalf("language parse failed: %v\n\tfind failed: %v",
-			parseFailed, findFailed)
-	}
-	return raw
 }

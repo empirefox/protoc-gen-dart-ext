@@ -1,8 +1,9 @@
 package pgvt
 
-const repeatedConstTpl = `{{ $r := .Pgv.Rules }}
-{{ if or $r.GetUnique (ne (.Elem "" "").Typ "none") }}
-	{{ renderConstants (.Elem "" "") }}
+const repeatedConstTpl = `{{- $r := .Pgv.Rules }}
+{{- $elemField := .Elem "" "" }}
+{{ if or $r.GetUnique (ne $elemField.Pgv.Typ "none") }}
+	{{ renderConstants $elemField }}
 {{ end }}`
 
 const repeatedTpl = `{{ $f := .Field }}{{ $r := .Pgv.Rules }}
@@ -33,11 +34,11 @@ const repeatedTpl = `{{ $f := .Field }}{{ $r := .Pgv.Rules }}
 			{{ .RepeatedElemType }}
 		{{- end -}}
 	> 
-		_unique = HashSet();
+		_unique = {{ .CollectionLib.AsDot "HashSet" }}();
 {{ end }}
 
-{{ if or $r.GetUnique (ne (.Elem "" "").Typ "none") }}
-	for var _ridx = 0; _ridx < {{ .Accessor }}.length; _ridx++ {
+{{ if or $r.GetUnique (ne (.Elem "" "").Pgv.Typ "none") }}
+	for (var _ridx = 0; _ridx < {{ .Accessor }}.length; _ridx++) {
 		final _ritem = {{ .Accessor }}[_ridx];
 		{{ if $r.GetUnique }}
 			if (!_unique.add(

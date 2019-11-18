@@ -13,7 +13,7 @@ import '../units/units.dart';
 abstract class GeneratedValidator<T extends GeneratedMessage> {
   void assertProto();
   void assertField(int tag);
-  void assertOneof(int oneof);
+  void assertOneof(Type oneof);
 }
 
 class ValidateInfo<T extends GeneratedMessage> {

@@ -1,26 +1,21 @@
 ZipFile = "$SRC_DIR/l10n/archive.zip"
 
-OriginLocale = "en"
-PackageEntity = "Pgde"
-
-# TODO add from.arb
+[MergeTo]
+Name = "pgde.arb"
+Entity = "Pgde"
 
 [[ArbInfos]]
-OriginFile = "$SRC_DIR/units/atom_en.arb"
-InZipFileName = "atom.arb"
+Name = "atom.arb"
 Entity = "Atom"
 
 [[ArbInfos]]
-OriginFile = "$SRC_DIR/units/prefix.arb"
-InZipFileName = "prefix.arb"
+Name = "prefix.arb"
 Entity = "Prefix"
 
 [[ArbInfos]]
-OriginFile = "$SRC_DIR/format/currency.arb"
-InZipFileName = "currency.arb"
+Name = "currency.arb"
 Entity = "Currency"
 
 [[ArbInfos]]
-OriginFile = "$SRC_DIR/validate/validate.arb"
-InZipFileName = "validate.arb"
+Name = "validate.arb"
 Entity = "Validate"

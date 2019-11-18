@@ -1,0 +1,216 @@
+syntax = "proto3";
+
+package hybrid;
+option go_package = "github.com/empirefox/hybrid/config;config";
+
+import "google/protobuf/wrappers.proto";
+import "pgde/form/form.proto";
+import "pgde/l10n/l10n.proto";
+import "validate/validate.proto";
+
+message ConfigTree {
+  option (pgde.l10n.message).ignore = true;
+  option (pgde.form.node).ignore = true;
+  option (validate.disabled) = true;
+  string version = 1;
+  string rootName = 2;
+  string rootPath = 3;
+  string configName = 4;
+  string configPath = 5;
+  string ipfsName = 6;
+  string ipfsPath = 7;
+  string storeName = 8;
+  string storePath = 9;
+  string filesRootName = 10;
+  string filesRootPath = 11;
+  string rulesRootName = 12;
+  string rulesRootPath = 13;
+}
+
+message Basic {
+  // @inject_tag: toml:",omitempty"
+  string version = 1
+      [ (pgde.l10n.field).ignore = true, (pgde.form.field).hide = true ];
+
+  // @inject_tag: toml:",omitempty" env:"HYBRID_DEV"
+  bool dev = 2;
+
+  // @inject_tag: env:"HYBRID_ENABLE_BIND"
+  bool enableBind = 3;
+  // @inject_tag: toml:",omitempty" env:"HYBRID_BIND_IP" default:"127.0.0.1"
+  string bindIp = 4 [ (validate.rules).string.ip = true ];
+  // @inject_tag: toml:",omitempty" env:"HYBRID_BIND_PORT" default:"7777"
+  uint32 bindPort = 5 [ (validate.rules).uint32.lt = 65535 ];
+
+  // @inject_tag: toml:",omitempty" default:"200"
+  uint32 flushIntervalMs = 6;
+
+  // @inject_tag: toml:",omitempty"
+  // Token is fallback token that will be veried by servers, both Ipfs
+  string token = 7 [ (validate.rules).string.max_bytes = 732 ];
+}
+
+message Log {
+  // @inject_tag: toml:",omitempty"
+  bool dev = 1;
+  // @inject_tag: toml:",omitempty"
+  string level = 2 [ (validate.rules).string = {
+    in :
+        [ "", "debug", "info", "warn", "error", "dpanic", "panic", "fatal" ]
+  } ];
+  // @inject_tag: toml:",omitempty"
+  // Target accepts "tcp://host:port?timeout=5s", file, sentryDSN, empty or
+  // "nop". Register NewTCPSink to support tcp sink. Default is stderr.
+  string target = 3;
+}
+
+message Ipfs {
+  // @inject_tag: toml:",omitempty" default:"127.0.127.1"
+  string fakeApiListenIp = 1 [ (validate.rules).string.ip = true ];
+  // @inject_tag: toml:",omitempty" default:"1270"
+  uint32 fakeApiListenPort = 2 [ (validate.rules).uint32.lt = 65535 ];
+
+  bool enableGateway = 3;
+  // @inject_tag: toml:",omitempty" default:"ipfs"
+  string gatewayServerName = 4 [ (validate.rules).string.hostname = true ];
+
+  bool enableApi = 5;
+  // @inject_tag: toml:",omitempty" default:"api.ipfs"
+  string apiServerName = 6 [ (validate.rules).string.hostname = true ];
+
+  // @inject_tag: toml:",omitempty"
+  repeated string profile = 7 [ (validate.rules).repeated .unique = true ];
+  // @inject_tag: toml:",omitempty"
+  bool autoMigrate = 8;
+  // @inject_tag: toml:",omitempty"
+  bool enableIpnsPubSub = 9;
+  // @inject_tag: toml:",omitempty"
+  bool enablePubSub = 10;
+  // @inject_tag: toml:",omitempty"
+  bool enableMultiplex = 11;
+
+  // @inject_tag: toml:",omitempty"
+  string token = 12 [ (validate.rules).string.max_bytes = 732 ];
+}
+
+// server types
+
+message IpfsServer {
+  // @inject_tag: toml:",omitempty"
+  bool disabled = 1;
+  // @inject_tag: toml:",omitempty"
+  google.protobuf.StringValue name = 2
+      [ (validate.rules).string.hostname = true ];
+  // @inject_tag: toml:",omitempty"
+  string peer = 3 [ (validate.rules).string.hostname = true ];
+  // @inject_tag: toml:",omitempty"
+  string token = 4 [ (validate.rules).string.max_bytes = 732 ];
+}
+
+message FileServer {
+  // @inject_tag: toml:",omitempty"
+  bool disabled = 1;
+  // @inject_tag: toml:",omitempty"
+  google.protobuf.StringValue name = 2
+      [ (validate.rules).string.hostname = true ];
+  // @inject_tag: toml:",omitempty"
+  string zip = 3 [ (validate.rules).string.hostname = true ];
+  // @inject_tag: toml:",omitempty"
+  map<string, string> redirect = 4 [ (validate.rules).map = {
+    keys : {string : {uri_ref : true}},
+    values : {string : {uri_ref : true}},
+  } ];
+  // @inject_tag: toml:",omitempty"
+  bool dev = 5;
+}
+
+message HttpProxyServer {
+  // @inject_tag: toml:",omitempty"
+  bool disabled = 1;
+  // @inject_tag: toml:",omitempty"
+  google.protobuf.StringValue name = 2
+      [ (validate.rules).string.hostname = true ];
+  // @inject_tag: toml:",omitempty" default:"127.0.0.1"
+  string host = 3 [ (validate.rules).string.ip = true ];
+  // @inject_tag: toml:",omitempty" default:"8899"
+  uint32 port = 4 [ (validate.rules).uint32.lt = 65535 ];
+  // @inject_tag: toml:",omitempty"
+  bool keepAlive = 5;
+}
+
+// server types end
+
+// routers
+
+message AdpRouter {
+  // @inject_tag: toml:",omitempty" validate:"hostname"
+  // *.b64 is base64 encoded.
+  // *.ipfs is fetched from ipfs network.
+  // ipfs file is of toml format:
+  //   [[Ipfs]]
+  //   Path = "Qmxxx..xA"
+  //   Base64 = true
+  //
+  //   [[Ipfs]]
+  //   Path = "Qmxxx..xB"
+  string rulesDirName = 1;
+  // @inject_tag: toml:",omitempty"
+  google.protobuf.StringValue blocked = 2
+      [ (validate.rules).string.hostname = true ];
+  // @inject_tag: toml:",omitempty"
+  google.protobuf.StringValue unblocked = 3
+      [ (validate.rules).string.hostname = true ];
+  // @inject_tag: toml:",omitempty"
+  bool etcHostsIpAsBlocked = 4;
+  // @inject_tag: toml:",omitempty"
+  bool dev = 5;
+}
+
+message IPNetRouter {
+  // @inject_tag: toml:",omitempty" validate:"dive,ip"
+  repeated string ip = 1;
+  // @inject_tag: toml:",omitempty" validate:"dive,cidr"
+  repeated string net = 2;
+  // @inject_tag: toml:",omitempty" validate:"omitempty,hostname"
+  string matched = 3;
+  // @inject_tag: toml:",omitempty"
+  // validate:"omitempty,hostname,nefield=Matched"
+  string unmatched = 4;
+  // @inject_tag: toml:",omitempty" validate:"omitempty,hostname"
+  string fileTest = 5;
+}
+
+// routers end
+
+message RouterItem {
+  // @inject_tag: toml:",omitempty"
+  bool disabled = 1;
+  string name = 2 [ (validate.rules).string.hostname = true ];
+  oneof router {
+    option (validate.required) = true;
+    AdpRouter adp = 3;
+    IPNetRouter ipnet = 4;
+  }
+}
+
+// reserved names: DIRECT over with hybrid
+// env:
+// HYBRID_ROOT_PATH=$HOME/.hybrid
+// HYBRID_DEV=false
+// HYBRID_BIND=:7777
+// HYBRID_FILE_SERVERS_DISABLED=a,b,c
+// HYBRID_ROUTER_DISABLED=a,b,c
+message Config {
+  // @inject_tag: default:"{}"
+  Basic basic = 1 [ (validate.rules).message.required = true ];
+  // @inject_tag: default:"{}"
+  Log log = 2;
+  // @inject_tag: default:"{}"
+  Ipfs ipfs = 3;
+
+  repeated IpfsServer ipfsServers = 4;
+  repeated FileServer fileServers = 5;
+  repeated HttpProxyServer httpProxyServers = 6;
+
+  repeated RouterItem routers = 7;
+}

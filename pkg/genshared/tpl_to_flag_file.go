@@ -4,6 +4,7 @@ import (
 	"flag"
 	"log"
 	"os"
+	"path/filepath"
 	"text/template"
 
 	multierror "github.com/hashicorp/go-multierror"
@@ -153,6 +154,10 @@ func (of *OutputFile) Open() *os.File {
 	if of.Path == "" {
 		log.Fatalf("%s argument must be set\n", of.Flag)
 	}
+	err := os.MkdirAll(filepath.Dir(of.Path), 0775)
+	if err != nil {
+		log.Fatalf("MkdirAll: %v\n", err)
+	}
 	f, err := os.OpenFile(of.Path, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0644)
 	if err != nil {
 		log.Fatalf("OpenFile: %v\n", err)
@@ -160,7 +165,7 @@ func (of *OutputFile) Open() *os.File {
 	return f
 }
 
-type VariantPathFunc func(pathPrefix, variant string) string
+type VariantPathFunc func(outputPath, variant string) string
 type VariantDataFunc func(data interface{}, variant string) interface{}
 
 type VariantRenderer struct {
@@ -172,7 +177,7 @@ type VariantRenderer struct {
 	variants []string
 
 	pathFunc   VariantPathFunc
-	pathPrefix string
+	outputPath string
 
 	fs     []*os.File
 	opened bool
@@ -209,7 +214,7 @@ func NewVariantRenderer(
 		pathFunc:     makePath,
 		dataFunc:     dataFunc,
 	}
-	flag.StringVar(&vr.pathPrefix, flagName, "", "the required "+flagName+" output files pathFunc prefix")
+	flag.StringVar(&vr.outputPath, flagName, "", "the required "+flagName+" output template")
 	return &vr
 }
 
@@ -251,7 +256,13 @@ func (vr *VariantRenderer) Open() {
 	vr.opened = true
 
 	for i, v := range vr.getVariants() {
-		f, err := os.OpenFile(vr.pathFunc(vr.pathPrefix, v), os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0644)
+		output := vr.pathFunc(vr.outputPath, v)
+		err := os.MkdirAll(filepath.Dir(output), 0775)
+		if err != nil {
+			log.Fatalf("MkdirAll: %v\n", err)
+		}
+
+		f, err := os.OpenFile(output, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0644)
 		if err != nil {
 			log.Fatalf("OpenFile: %v\n", err)
 		}

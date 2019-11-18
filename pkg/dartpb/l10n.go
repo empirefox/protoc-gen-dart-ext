@@ -1,6 +1,7 @@
 package dartpb
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/arb"
@@ -36,12 +37,14 @@ func (tr *Translator) ResourceId(pgsNty pgs.Entity) dart.Qualifier {
 	switch nty := pgsNty.(type) {
 	case pgs.Message, pgs.Enum:
 		return tr.Dart.NameOf(nty)
+	case pgs.OneOf:
+		return tr.Dart.NameOf(nty.Message()) + tr.Dart.NameOf(nty).ToCamel()
 	case pgs.Field:
-		return tr.Dart.NameOf(nty.Message()).Dot(tr.Dart.NameOf(nty))
+		return tr.Dart.NameOf(nty.Message()) + tr.Dart.NameOf(nty).ToCamel()
 	case pgs.EnumValue:
-		return tr.Dart.NameOf(nty.Enum()).Dot(tr.Dart.NameOf(nty))
+		return tr.Dart.NameOf(nty.Enum()) + tr.Dart.NameOf(nty).ToCamel()
 	default:
-		panic("cannot get l10n ResourceId from l file entity: " + tr.Dart.NameOf(nty))
+		panic(fmt.Errorf("resource id from `%s` type error: %T", tr.Dart.NameOf(nty), pgsNty))
 	}
 }
 
@@ -83,6 +86,9 @@ type L10nField struct {
 	IsRefEnum  bool
 	RefEnum    pgs.Enum
 	RefMessage pgs.Message
+
+	// IsRefWKT if set to true, HasRef and IsRefOtherFile both return false
+	IsRefWKT bool
 }
 
 func (l *L10nField) RefEntity() pgs.Entity {
@@ -93,11 +99,12 @@ func (l *L10nField) RefEntity() pgs.Entity {
 }
 
 func (l *L10nField) HasRef() bool {
-	return l.RefEntity() != nil
+	return l.RefEntity() != nil && !l.IsRefWKT
 }
 
 func (l *L10nField) IsRefOtherFile() bool {
-	return l.RefEnum != nil && l.RefEnum.File() != l.Entity.Pgs.File() ||
+	return l.HasRef() &&
+		l.RefEnum != nil && l.RefEnum.File() != l.Entity.Pgs.File() ||
 		l.RefMessage != nil && l.RefMessage.File() != l.Entity.Pgs.File()
 }
 
@@ -119,7 +126,7 @@ func getDescOrLabel(desc, label string) string {
 	return desc
 }
 
-func (l *L10nMsgOrEnum) File() *File { return l.File() }
+func (l *L10nMsgOrEnum) File() *File { return l.Entity().File }
 func (l *L10nEnumValue) File() *File { return l.Entity.File }
 func (l *L10nOneOf) File() *File     { return l.Entity.File }
 func (l *L10nField) File() *File     { return l.Entity.File }
@@ -305,7 +312,7 @@ func (l *L10nField) addAssetResource(assetName string) {
 }
 
 func (l *L10nMsgOrEnum) addAssetsResources() (err error) {
-	if l.Extension.Ignore {
+	if l.Ignore() {
 		return nil
 	}
 
@@ -318,13 +325,13 @@ func (l *L10nMsgOrEnum) addAssetsResources() (err error) {
 
 	if l.IsEnum {
 		for _, c := range l.Enum.Values {
-			if !c.L10n.Extension.Ignore {
+			if !c.L10n.Ignore() {
 				c.L10n.addValueResource()
 			}
 		}
 	} else {
 		for _, c := range l.Message.Fields {
-			if !c.L10n.Extension.Ignore {
+			if !c.L10n.Ignore() {
 				err = c.L10n.addAssetsResources()
 				if err != nil {
 					return
@@ -332,7 +339,7 @@ func (l *L10nMsgOrEnum) addAssetsResources() (err error) {
 			}
 		}
 		for _, c := range l.Message.OneOfs {
-			if !c.L10n.Extension.Ignore {
+			if !c.L10n.Ignore() {
 				c.L10n.addAssetsResources()
 			}
 		}
@@ -389,13 +396,13 @@ func (l *L10nField) Desc() (string, error) {
 }
 
 func (l *L10nMsgOrEnum) setDartTo(lang *arb.Arb) {
-	if l.Extension.Ignore || l.IsEnum {
+	if l.Ignore() || l.IsEnum {
 		// enum will not redirect
 		return
 	}
 
 	for _, f := range l.Message.Fields {
-		if !f.L10n.Extension.Ignore {
+		if !f.L10n.Ignore() {
 			f.L10n.setDartTo(lang)
 		}
 	}

@@ -79,6 +79,10 @@ func (msg *Message) addField(pgsToOneOf map[pgs.OneOf]*OneOf, pgsNty pgs.Field) 
 		l10nNty.RefMessage = pgsNty.Type().Embed()
 	}
 
+	if l10nNty.RefMessage != nil {
+		l10nNty.IsRefWKT = l10nNty.RefMessage.IsWellKnown()
+	}
+
 	names := msg.File.Dart.FieldNames(pgsNty)
 
 	nty := &Field{

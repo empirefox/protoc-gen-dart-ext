@@ -54,15 +54,15 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get Basic => r'basic';
 
-  String get BasicLabel => r'';
+  String get BasicLabel => null;
 
-  String get BasicHelper => r'';
+  String get BasicHelper => null;
 
-  String get BasicHint => r'';
+  String get BasicHint => null;
 
-  String get BasicPrefix => r'';
+  String get BasicPrefix => null;
 
-  String get BasicSuffix => r'';
+  String get BasicSuffix => null;
 
   String get BasicDev => r'{redirect}';
 
@@ -76,9 +76,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get BasicDevSuffix => r'{redirect}';
 
-  String get BasicDevBoolTrue => r'';
+  String get BasicDevBoolTrue => null;
 
-  String get BasicDevBoolFalse => r'';
+  String get BasicDevBoolFalse => null;
 
   String get BasicEnableBind => r'{redirect}';
 
@@ -92,9 +92,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get BasicEnableBindSuffix => r'{redirect}';
 
-  String get BasicEnableBindBoolTrue => r'';
+  String get BasicEnableBindBoolTrue => null;
 
-  String get BasicEnableBindBoolFalse => r'';
+  String get BasicEnableBindBoolFalse => null;
 
   String get BasicBindIp => r'{redirect}';
 
@@ -108,9 +108,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get BasicBindIpSuffix => r'{redirect}';
 
-  String get BasicBindIpBoolTrue => r'';
+  String get BasicBindIpBoolTrue => null;
 
-  String get BasicBindIpBoolFalse => r'';
+  String get BasicBindIpBoolFalse => null;
 
   String get BasicBindPort => r'{redirect}';
 
@@ -124,9 +124,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get BasicBindPortSuffix => r'{redirect}';
 
-  String get BasicBindPortBoolTrue => r'';
+  String get BasicBindPortBoolTrue => null;
 
-  String get BasicBindPortBoolFalse => r'';
+  String get BasicBindPortBoolFalse => null;
 
   String get BasicFlushIntervalMs => r'{redirect}';
 
@@ -140,9 +140,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get BasicFlushIntervalMsSuffix => r'{redirect}';
 
-  String get BasicFlushIntervalMsBoolTrue => r'';
+  String get BasicFlushIntervalMsBoolTrue => null;
 
-  String get BasicFlushIntervalMsBoolFalse => r'';
+  String get BasicFlushIntervalMsBoolFalse => null;
 
   String get BasicToken => r'{redirect}';
 
@@ -156,21 +156,21 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get BasicTokenSuffix => r'{redirect}';
 
-  String get BasicTokenBoolTrue => r'';
+  String get BasicTokenBoolTrue => null;
 
-  String get BasicTokenBoolFalse => r'';
+  String get BasicTokenBoolFalse => null;
 
   String get Log => r'log';
 
-  String get LogLabel => r'';
+  String get LogLabel => null;
 
-  String get LogHelper => r'';
+  String get LogHelper => null;
 
-  String get LogHint => r'';
+  String get LogHint => null;
 
-  String get LogPrefix => r'';
+  String get LogPrefix => null;
 
-  String get LogSuffix => r'';
+  String get LogSuffix => null;
 
   String get LogDev => r'{redirect}';
 
@@ -184,9 +184,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get LogDevSuffix => r'{redirect}';
 
-  String get LogDevBoolTrue => r'';
+  String get LogDevBoolTrue => null;
 
-  String get LogDevBoolFalse => r'';
+  String get LogDevBoolFalse => null;
 
   String get LogLevel => r'{redirect}';
 
@@ -200,9 +200,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get LogLevelSuffix => r'{redirect}';
 
-  String get LogLevelBoolTrue => r'';
+  String get LogLevelBoolTrue => null;
 
-  String get LogLevelBoolFalse => r'';
+  String get LogLevelBoolFalse => null;
 
   String get LogTarget => r'{redirect}';
 
@@ -216,21 +216,21 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get LogTargetSuffix => r'{redirect}';
 
-  String get LogTargetBoolTrue => r'';
+  String get LogTargetBoolTrue => null;
 
-  String get LogTargetBoolFalse => r'';
+  String get LogTargetBoolFalse => null;
 
   String get Ipfs => r'ipfs';
 
-  String get IpfsLabel => r'';
+  String get IpfsLabel => null;
 
-  String get IpfsHelper => r'';
+  String get IpfsHelper => null;
 
-  String get IpfsHint => r'';
+  String get IpfsHint => null;
 
-  String get IpfsPrefix => r'';
+  String get IpfsPrefix => null;
 
-  String get IpfsSuffix => r'';
+  String get IpfsSuffix => null;
 
   String get IpfsFakeApiListenIp => r'{redirect}';
 
@@ -244,9 +244,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get IpfsFakeApiListenIpSuffix => r'{redirect}';
 
-  String get IpfsFakeApiListenIpBoolTrue => r'';
+  String get IpfsFakeApiListenIpBoolTrue => null;
 
-  String get IpfsFakeApiListenIpBoolFalse => r'';
+  String get IpfsFakeApiListenIpBoolFalse => null;
 
   String get IpfsFakeApiListenPort => r'{redirect}';
 
@@ -260,9 +260,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get IpfsFakeApiListenPortSuffix => r'{redirect}';
 
-  String get IpfsFakeApiListenPortBoolTrue => r'';
+  String get IpfsFakeApiListenPortBoolTrue => null;
 
-  String get IpfsFakeApiListenPortBoolFalse => r'';
+  String get IpfsFakeApiListenPortBoolFalse => null;
 
   String get IpfsEnableGateway => r'{redirect}';
 
@@ -276,9 +276,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get IpfsEnableGatewaySuffix => r'{redirect}';
 
-  String get IpfsEnableGatewayBoolTrue => r'';
+  String get IpfsEnableGatewayBoolTrue => null;
 
-  String get IpfsEnableGatewayBoolFalse => r'';
+  String get IpfsEnableGatewayBoolFalse => null;
 
   String get IpfsGatewayServerName => r'{redirect}';
 
@@ -292,9 +292,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get IpfsGatewayServerNameSuffix => r'{redirect}';
 
-  String get IpfsGatewayServerNameBoolTrue => r'';
+  String get IpfsGatewayServerNameBoolTrue => null;
 
-  String get IpfsGatewayServerNameBoolFalse => r'';
+  String get IpfsGatewayServerNameBoolFalse => null;
 
   String get IpfsEnableApi => r'{redirect}';
 
@@ -308,9 +308,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get IpfsEnableApiSuffix => r'{redirect}';
 
-  String get IpfsEnableApiBoolTrue => r'';
+  String get IpfsEnableApiBoolTrue => null;
 
-  String get IpfsEnableApiBoolFalse => r'';
+  String get IpfsEnableApiBoolFalse => null;
 
   String get IpfsApiServerName => r'{redirect}';
 
@@ -324,9 +324,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get IpfsApiServerNameSuffix => r'{redirect}';
 
-  String get IpfsApiServerNameBoolTrue => r'';
+  String get IpfsApiServerNameBoolTrue => null;
 
-  String get IpfsApiServerNameBoolFalse => r'';
+  String get IpfsApiServerNameBoolFalse => null;
 
   String get IpfsProfile => r'{redirect}';
 
@@ -340,9 +340,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get IpfsProfileSuffix => r'{redirect}';
 
-  String get IpfsProfileBoolTrue => r'';
+  String get IpfsProfileBoolTrue => null;
 
-  String get IpfsProfileBoolFalse => r'';
+  String get IpfsProfileBoolFalse => null;
 
   String get IpfsAutoMigrate => r'{redirect}';
 
@@ -356,9 +356,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get IpfsAutoMigrateSuffix => r'{redirect}';
 
-  String get IpfsAutoMigrateBoolTrue => r'';
+  String get IpfsAutoMigrateBoolTrue => null;
 
-  String get IpfsAutoMigrateBoolFalse => r'';
+  String get IpfsAutoMigrateBoolFalse => null;
 
   String get IpfsEnableIpnsPubSub => r'{redirect}';
 
@@ -372,9 +372,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get IpfsEnableIpnsPubSubSuffix => r'{redirect}';
 
-  String get IpfsEnableIpnsPubSubBoolTrue => r'';
+  String get IpfsEnableIpnsPubSubBoolTrue => null;
 
-  String get IpfsEnableIpnsPubSubBoolFalse => r'';
+  String get IpfsEnableIpnsPubSubBoolFalse => null;
 
   String get IpfsEnablePubSub => r'{redirect}';
 
@@ -388,9 +388,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get IpfsEnablePubSubSuffix => r'{redirect}';
 
-  String get IpfsEnablePubSubBoolTrue => r'';
+  String get IpfsEnablePubSubBoolTrue => null;
 
-  String get IpfsEnablePubSubBoolFalse => r'';
+  String get IpfsEnablePubSubBoolFalse => null;
 
   String get IpfsEnableMultiplex => r'{redirect}';
 
@@ -404,9 +404,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get IpfsEnableMultiplexSuffix => r'{redirect}';
 
-  String get IpfsEnableMultiplexBoolTrue => r'';
+  String get IpfsEnableMultiplexBoolTrue => null;
 
-  String get IpfsEnableMultiplexBoolFalse => r'';
+  String get IpfsEnableMultiplexBoolFalse => null;
 
   String get IpfsToken => r'{redirect}';
 
@@ -420,21 +420,21 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get IpfsTokenSuffix => r'{redirect}';
 
-  String get IpfsTokenBoolTrue => r'';
+  String get IpfsTokenBoolTrue => null;
 
-  String get IpfsTokenBoolFalse => r'';
+  String get IpfsTokenBoolFalse => null;
 
   String get IpfsServer => r'ipfs server';
 
-  String get IpfsServerLabel => r'';
+  String get IpfsServerLabel => null;
 
-  String get IpfsServerHelper => r'';
+  String get IpfsServerHelper => null;
 
-  String get IpfsServerHint => r'';
+  String get IpfsServerHint => null;
 
-  String get IpfsServerPrefix => r'';
+  String get IpfsServerPrefix => null;
 
-  String get IpfsServerSuffix => r'';
+  String get IpfsServerSuffix => null;
 
   String get IpfsServerDisabled => r'{redirect}';
 
@@ -448,9 +448,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get IpfsServerDisabledSuffix => r'{redirect}';
 
-  String get IpfsServerDisabledBoolTrue => r'';
+  String get IpfsServerDisabledBoolTrue => null;
 
-  String get IpfsServerDisabledBoolFalse => r'';
+  String get IpfsServerDisabledBoolFalse => null;
 
   String get IpfsServerName => r'{redirect}';
 
@@ -464,9 +464,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get IpfsServerNameSuffix => r'{redirect}';
 
-  String get IpfsServerNameBoolTrue => r'';
+  String get IpfsServerNameBoolTrue => null;
 
-  String get IpfsServerNameBoolFalse => r'';
+  String get IpfsServerNameBoolFalse => null;
 
   String get IpfsServerPeer => r'{redirect}';
 
@@ -480,9 +480,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get IpfsServerPeerSuffix => r'{redirect}';
 
-  String get IpfsServerPeerBoolTrue => r'';
+  String get IpfsServerPeerBoolTrue => null;
 
-  String get IpfsServerPeerBoolFalse => r'';
+  String get IpfsServerPeerBoolFalse => null;
 
   String get IpfsServerToken => r'{redirect}';
 
@@ -496,21 +496,21 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get IpfsServerTokenSuffix => r'{redirect}';
 
-  String get IpfsServerTokenBoolTrue => r'';
+  String get IpfsServerTokenBoolTrue => null;
 
-  String get IpfsServerTokenBoolFalse => r'';
+  String get IpfsServerTokenBoolFalse => null;
 
   String get FileServer => r'file server';
 
-  String get FileServerLabel => r'';
+  String get FileServerLabel => null;
 
-  String get FileServerHelper => r'';
+  String get FileServerHelper => null;
 
-  String get FileServerHint => r'';
+  String get FileServerHint => null;
 
-  String get FileServerPrefix => r'';
+  String get FileServerPrefix => null;
 
-  String get FileServerSuffix => r'';
+  String get FileServerSuffix => null;
 
   String get FileServerDisabled => r'{redirect}';
 
@@ -524,9 +524,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get FileServerDisabledSuffix => r'{redirect}';
 
-  String get FileServerDisabledBoolTrue => r'';
+  String get FileServerDisabledBoolTrue => null;
 
-  String get FileServerDisabledBoolFalse => r'';
+  String get FileServerDisabledBoolFalse => null;
 
   String get FileServerName => r'{redirect}';
 
@@ -540,9 +540,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get FileServerNameSuffix => r'{redirect}';
 
-  String get FileServerNameBoolTrue => r'';
+  String get FileServerNameBoolTrue => null;
 
-  String get FileServerNameBoolFalse => r'';
+  String get FileServerNameBoolFalse => null;
 
   String get FileServerZip => r'{redirect}';
 
@@ -556,9 +556,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get FileServerZipSuffix => r'{redirect}';
 
-  String get FileServerZipBoolTrue => r'';
+  String get FileServerZipBoolTrue => null;
 
-  String get FileServerZipBoolFalse => r'';
+  String get FileServerZipBoolFalse => null;
 
   String get FileServerRedirect => r'{redirect}';
 
@@ -572,9 +572,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get FileServerRedirectSuffix => r'{redirect}';
 
-  String get FileServerRedirectBoolTrue => r'';
+  String get FileServerRedirectBoolTrue => null;
 
-  String get FileServerRedirectBoolFalse => r'';
+  String get FileServerRedirectBoolFalse => null;
 
   String get FileServerDev => r'{redirect}';
 
@@ -588,21 +588,21 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get FileServerDevSuffix => r'{redirect}';
 
-  String get FileServerDevBoolTrue => r'';
+  String get FileServerDevBoolTrue => null;
 
-  String get FileServerDevBoolFalse => r'';
+  String get FileServerDevBoolFalse => null;
 
   String get HttpProxyServer => r'http proxy server';
 
-  String get HttpProxyServerLabel => r'';
+  String get HttpProxyServerLabel => null;
 
-  String get HttpProxyServerHelper => r'';
+  String get HttpProxyServerHelper => null;
 
-  String get HttpProxyServerHint => r'';
+  String get HttpProxyServerHint => null;
 
-  String get HttpProxyServerPrefix => r'';
+  String get HttpProxyServerPrefix => null;
 
-  String get HttpProxyServerSuffix => r'';
+  String get HttpProxyServerSuffix => null;
 
   String get HttpProxyServerDisabled => r'{redirect}';
 
@@ -616,9 +616,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get HttpProxyServerDisabledSuffix => r'{redirect}';
 
-  String get HttpProxyServerDisabledBoolTrue => r'';
+  String get HttpProxyServerDisabledBoolTrue => null;
 
-  String get HttpProxyServerDisabledBoolFalse => r'';
+  String get HttpProxyServerDisabledBoolFalse => null;
 
   String get HttpProxyServerName => r'{redirect}';
 
@@ -632,9 +632,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get HttpProxyServerNameSuffix => r'{redirect}';
 
-  String get HttpProxyServerNameBoolTrue => r'';
+  String get HttpProxyServerNameBoolTrue => null;
 
-  String get HttpProxyServerNameBoolFalse => r'';
+  String get HttpProxyServerNameBoolFalse => null;
 
   String get HttpProxyServerHost => r'{redirect}';
 
@@ -648,9 +648,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get HttpProxyServerHostSuffix => r'{redirect}';
 
-  String get HttpProxyServerHostBoolTrue => r'';
+  String get HttpProxyServerHostBoolTrue => null;
 
-  String get HttpProxyServerHostBoolFalse => r'';
+  String get HttpProxyServerHostBoolFalse => null;
 
   String get HttpProxyServerPort => r'{redirect}';
 
@@ -664,9 +664,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get HttpProxyServerPortSuffix => r'{redirect}';
 
-  String get HttpProxyServerPortBoolTrue => r'';
+  String get HttpProxyServerPortBoolTrue => null;
 
-  String get HttpProxyServerPortBoolFalse => r'';
+  String get HttpProxyServerPortBoolFalse => null;
 
   String get HttpProxyServerKeepAlive => r'{redirect}';
 
@@ -680,21 +680,21 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get HttpProxyServerKeepAliveSuffix => r'{redirect}';
 
-  String get HttpProxyServerKeepAliveBoolTrue => r'';
+  String get HttpProxyServerKeepAliveBoolTrue => null;
 
-  String get HttpProxyServerKeepAliveBoolFalse => r'';
+  String get HttpProxyServerKeepAliveBoolFalse => null;
 
   String get AdpRouter => r'adp router';
 
-  String get AdpRouterLabel => r'';
+  String get AdpRouterLabel => null;
 
-  String get AdpRouterHelper => r'';
+  String get AdpRouterHelper => null;
 
-  String get AdpRouterHint => r'';
+  String get AdpRouterHint => null;
 
-  String get AdpRouterPrefix => r'';
+  String get AdpRouterPrefix => null;
 
-  String get AdpRouterSuffix => r'';
+  String get AdpRouterSuffix => null;
 
   String get AdpRouterRulesDirName => r'{redirect}';
 
@@ -708,9 +708,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get AdpRouterRulesDirNameSuffix => r'{redirect}';
 
-  String get AdpRouterRulesDirNameBoolTrue => r'';
+  String get AdpRouterRulesDirNameBoolTrue => null;
 
-  String get AdpRouterRulesDirNameBoolFalse => r'';
+  String get AdpRouterRulesDirNameBoolFalse => null;
 
   String get AdpRouterBlocked => r'{redirect}';
 
@@ -724,9 +724,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get AdpRouterBlockedSuffix => r'{redirect}';
 
-  String get AdpRouterBlockedBoolTrue => r'';
+  String get AdpRouterBlockedBoolTrue => null;
 
-  String get AdpRouterBlockedBoolFalse => r'';
+  String get AdpRouterBlockedBoolFalse => null;
 
   String get AdpRouterUnblocked => r'{redirect}';
 
@@ -740,9 +740,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get AdpRouterUnblockedSuffix => r'{redirect}';
 
-  String get AdpRouterUnblockedBoolTrue => r'';
+  String get AdpRouterUnblockedBoolTrue => null;
 
-  String get AdpRouterUnblockedBoolFalse => r'';
+  String get AdpRouterUnblockedBoolFalse => null;
 
   String get AdpRouterEtcHostsIpAsBlocked => r'{redirect}';
 
@@ -756,9 +756,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get AdpRouterEtcHostsIpAsBlockedSuffix => r'{redirect}';
 
-  String get AdpRouterEtcHostsIpAsBlockedBoolTrue => r'';
+  String get AdpRouterEtcHostsIpAsBlockedBoolTrue => null;
 
-  String get AdpRouterEtcHostsIpAsBlockedBoolFalse => r'';
+  String get AdpRouterEtcHostsIpAsBlockedBoolFalse => null;
 
   String get AdpRouterDev => r'{redirect}';
 
@@ -772,21 +772,21 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get AdpRouterDevSuffix => r'{redirect}';
 
-  String get AdpRouterDevBoolTrue => r'';
+  String get AdpRouterDevBoolTrue => null;
 
-  String get AdpRouterDevBoolFalse => r'';
+  String get AdpRouterDevBoolFalse => null;
 
   String get IPNetRouter => r'ip net router';
 
-  String get IPNetRouterLabel => r'';
+  String get IPNetRouterLabel => null;
 
-  String get IPNetRouterHelper => r'';
+  String get IPNetRouterHelper => null;
 
-  String get IPNetRouterHint => r'';
+  String get IPNetRouterHint => null;
 
-  String get IPNetRouterPrefix => r'';
+  String get IPNetRouterPrefix => null;
 
-  String get IPNetRouterSuffix => r'';
+  String get IPNetRouterSuffix => null;
 
   String get IPNetRouterIp => r'{redirect}';
 
@@ -800,9 +800,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get IPNetRouterIpSuffix => r'{redirect}';
 
-  String get IPNetRouterIpBoolTrue => r'';
+  String get IPNetRouterIpBoolTrue => null;
 
-  String get IPNetRouterIpBoolFalse => r'';
+  String get IPNetRouterIpBoolFalse => null;
 
   String get IPNetRouterNet => r'{redirect}';
 
@@ -816,9 +816,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get IPNetRouterNetSuffix => r'{redirect}';
 
-  String get IPNetRouterNetBoolTrue => r'';
+  String get IPNetRouterNetBoolTrue => null;
 
-  String get IPNetRouterNetBoolFalse => r'';
+  String get IPNetRouterNetBoolFalse => null;
 
   String get IPNetRouterMatched => r'{redirect}';
 
@@ -832,9 +832,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get IPNetRouterMatchedSuffix => r'{redirect}';
 
-  String get IPNetRouterMatchedBoolTrue => r'';
+  String get IPNetRouterMatchedBoolTrue => null;
 
-  String get IPNetRouterMatchedBoolFalse => r'';
+  String get IPNetRouterMatchedBoolFalse => null;
 
   String get IPNetRouterUnmatched => r'{redirect}';
 
@@ -848,9 +848,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get IPNetRouterUnmatchedSuffix => r'{redirect}';
 
-  String get IPNetRouterUnmatchedBoolTrue => r'';
+  String get IPNetRouterUnmatchedBoolTrue => null;
 
-  String get IPNetRouterUnmatchedBoolFalse => r'';
+  String get IPNetRouterUnmatchedBoolFalse => null;
 
   String get IPNetRouterFileTest => r'{redirect}';
 
@@ -864,21 +864,21 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get IPNetRouterFileTestSuffix => r'{redirect}';
 
-  String get IPNetRouterFileTestBoolTrue => r'';
+  String get IPNetRouterFileTestBoolTrue => null;
 
-  String get IPNetRouterFileTestBoolFalse => r'';
+  String get IPNetRouterFileTestBoolFalse => null;
 
   String get RouterItem => r'router item';
 
-  String get RouterItemLabel => r'';
+  String get RouterItemLabel => null;
 
-  String get RouterItemHelper => r'';
+  String get RouterItemHelper => null;
 
-  String get RouterItemHint => r'';
+  String get RouterItemHint => null;
 
-  String get RouterItemPrefix => r'';
+  String get RouterItemPrefix => null;
 
-  String get RouterItemSuffix => r'';
+  String get RouterItemSuffix => null;
 
   String get RouterItemDisabled => r'{redirect}';
 
@@ -892,9 +892,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get RouterItemDisabledSuffix => r'{redirect}';
 
-  String get RouterItemDisabledBoolTrue => r'';
+  String get RouterItemDisabledBoolTrue => null;
 
-  String get RouterItemDisabledBoolFalse => r'';
+  String get RouterItemDisabledBoolFalse => null;
 
   String get RouterItemName => r'{redirect}';
 
@@ -908,9 +908,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get RouterItemNameSuffix => r'{redirect}';
 
-  String get RouterItemNameBoolTrue => r'';
+  String get RouterItemNameBoolTrue => null;
 
-  String get RouterItemNameBoolFalse => r'';
+  String get RouterItemNameBoolFalse => null;
 
   String get RouterItemAdp => r'{redirect}';
 
@@ -924,9 +924,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get RouterItemAdpSuffix => r'{redirect}';
 
-  String get RouterItemAdpBoolTrue => r'';
+  String get RouterItemAdpBoolTrue => null;
 
-  String get RouterItemAdpBoolFalse => r'';
+  String get RouterItemAdpBoolFalse => null;
 
   String get RouterItemIpnet => r'{redirect}';
 
@@ -940,29 +940,29 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get RouterItemIpnetSuffix => r'{redirect}';
 
-  String get RouterItemIpnetBoolTrue => r'';
+  String get RouterItemIpnetBoolTrue => null;
 
-  String get RouterItemIpnetBoolFalse => r'';
+  String get RouterItemIpnetBoolFalse => null;
 
   String get RouterItemRouter => r'router';
 
-  String get RouterItemRouterLabel => r'';
+  String get RouterItemRouterLabel => null;
 
-  String get RouterItemRouterPrefix => r'';
+  String get RouterItemRouterPrefix => null;
 
-  String get RouterItemRouterSuffix => r'';
+  String get RouterItemRouterSuffix => null;
 
   String get Config => r'config';
 
-  String get ConfigLabel => r'';
+  String get ConfigLabel => null;
 
-  String get ConfigHelper => r'';
+  String get ConfigHelper => null;
 
-  String get ConfigHint => r'';
+  String get ConfigHint => null;
 
-  String get ConfigPrefix => r'';
+  String get ConfigPrefix => null;
 
-  String get ConfigSuffix => r'';
+  String get ConfigSuffix => null;
 
   String get ConfigBasic => r'{redirect}';
 
@@ -976,9 +976,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get ConfigBasicSuffix => r'{redirect}';
 
-  String get ConfigBasicBoolTrue => r'';
+  String get ConfigBasicBoolTrue => null;
 
-  String get ConfigBasicBoolFalse => r'';
+  String get ConfigBasicBoolFalse => null;
 
   String get ConfigLog => r'{redirect}';
 
@@ -992,9 +992,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get ConfigLogSuffix => r'{redirect}';
 
-  String get ConfigLogBoolTrue => r'';
+  String get ConfigLogBoolTrue => null;
 
-  String get ConfigLogBoolFalse => r'';
+  String get ConfigLogBoolFalse => null;
 
   String get ConfigIpfs => r'{redirect}';
 
@@ -1008,9 +1008,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get ConfigIpfsSuffix => r'{redirect}';
 
-  String get ConfigIpfsBoolTrue => r'';
+  String get ConfigIpfsBoolTrue => null;
 
-  String get ConfigIpfsBoolFalse => r'';
+  String get ConfigIpfsBoolFalse => null;
 
   String get ConfigIpfsServers => r'{redirect}';
 
@@ -1024,9 +1024,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get ConfigIpfsServersSuffix => r'{redirect}';
 
-  String get ConfigIpfsServersBoolTrue => r'';
+  String get ConfigIpfsServersBoolTrue => null;
 
-  String get ConfigIpfsServersBoolFalse => r'';
+  String get ConfigIpfsServersBoolFalse => null;
 
   String get ConfigFileServers => r'{redirect}';
 
@@ -1040,9 +1040,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get ConfigFileServersSuffix => r'{redirect}';
 
-  String get ConfigFileServersBoolTrue => r'';
+  String get ConfigFileServersBoolTrue => null;
 
-  String get ConfigFileServersBoolFalse => r'';
+  String get ConfigFileServersBoolFalse => null;
 
   String get ConfigHttpProxyServers => r'{redirect}';
 
@@ -1056,9 +1056,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get ConfigHttpProxyServersSuffix => r'{redirect}';
 
-  String get ConfigHttpProxyServersBoolTrue => r'';
+  String get ConfigHttpProxyServersBoolTrue => null;
 
-  String get ConfigHttpProxyServersBoolFalse => r'';
+  String get ConfigHttpProxyServersBoolFalse => null;
 
   String get ConfigRouters => r'{redirect}';
 
@@ -1072,9 +1072,9 @@ class ConfigLocalizationsAr extends ConfigLocalizations {
 
   String get ConfigRoutersSuffix => r'{redirect}';
 
-  String get ConfigRoutersBoolTrue => r'';
+  String get ConfigRoutersBoolTrue => null;
 
-  String get ConfigRoutersBoolFalse => r'';
+  String get ConfigRoutersBoolFalse => null;
 }
 
 class ConfigLocalizationsEn extends ConfigLocalizations {
@@ -1082,15 +1082,15 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get Basic => r'basic';
 
-  String get BasicLabel => r'';
+  String get BasicLabel => null;
 
-  String get BasicHelper => r'';
+  String get BasicHelper => null;
 
-  String get BasicHint => r'';
+  String get BasicHint => null;
 
-  String get BasicPrefix => r'';
+  String get BasicPrefix => null;
 
-  String get BasicSuffix => r'';
+  String get BasicSuffix => null;
 
   String get BasicDev => r'{redirect}';
 
@@ -1104,9 +1104,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get BasicDevSuffix => r'{redirect}';
 
-  String get BasicDevBoolTrue => r'';
+  String get BasicDevBoolTrue => null;
 
-  String get BasicDevBoolFalse => r'';
+  String get BasicDevBoolFalse => null;
 
   String get BasicEnableBind => r'{redirect}';
 
@@ -1120,9 +1120,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get BasicEnableBindSuffix => r'{redirect}';
 
-  String get BasicEnableBindBoolTrue => r'';
+  String get BasicEnableBindBoolTrue => null;
 
-  String get BasicEnableBindBoolFalse => r'';
+  String get BasicEnableBindBoolFalse => null;
 
   String get BasicBindIp => r'{redirect}';
 
@@ -1136,9 +1136,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get BasicBindIpSuffix => r'{redirect}';
 
-  String get BasicBindIpBoolTrue => r'';
+  String get BasicBindIpBoolTrue => null;
 
-  String get BasicBindIpBoolFalse => r'';
+  String get BasicBindIpBoolFalse => null;
 
   String get BasicBindPort => r'{redirect}';
 
@@ -1152,9 +1152,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get BasicBindPortSuffix => r'{redirect}';
 
-  String get BasicBindPortBoolTrue => r'';
+  String get BasicBindPortBoolTrue => null;
 
-  String get BasicBindPortBoolFalse => r'';
+  String get BasicBindPortBoolFalse => null;
 
   String get BasicFlushIntervalMs => r'{redirect}';
 
@@ -1168,9 +1168,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get BasicFlushIntervalMsSuffix => r'{redirect}';
 
-  String get BasicFlushIntervalMsBoolTrue => r'';
+  String get BasicFlushIntervalMsBoolTrue => null;
 
-  String get BasicFlushIntervalMsBoolFalse => r'';
+  String get BasicFlushIntervalMsBoolFalse => null;
 
   String get BasicToken => r'{redirect}';
 
@@ -1184,21 +1184,21 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get BasicTokenSuffix => r'{redirect}';
 
-  String get BasicTokenBoolTrue => r'';
+  String get BasicTokenBoolTrue => null;
 
-  String get BasicTokenBoolFalse => r'';
+  String get BasicTokenBoolFalse => null;
 
   String get Log => r'log';
 
-  String get LogLabel => r'';
+  String get LogLabel => null;
 
-  String get LogHelper => r'';
+  String get LogHelper => null;
 
-  String get LogHint => r'';
+  String get LogHint => null;
 
-  String get LogPrefix => r'';
+  String get LogPrefix => null;
 
-  String get LogSuffix => r'';
+  String get LogSuffix => null;
 
   String get LogDev => r'{redirect}';
 
@@ -1212,9 +1212,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get LogDevSuffix => r'{redirect}';
 
-  String get LogDevBoolTrue => r'';
+  String get LogDevBoolTrue => null;
 
-  String get LogDevBoolFalse => r'';
+  String get LogDevBoolFalse => null;
 
   String get LogLevel => r'{redirect}';
 
@@ -1228,9 +1228,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get LogLevelSuffix => r'{redirect}';
 
-  String get LogLevelBoolTrue => r'';
+  String get LogLevelBoolTrue => null;
 
-  String get LogLevelBoolFalse => r'';
+  String get LogLevelBoolFalse => null;
 
   String get LogTarget => r'{redirect}';
 
@@ -1244,21 +1244,21 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get LogTargetSuffix => r'{redirect}';
 
-  String get LogTargetBoolTrue => r'';
+  String get LogTargetBoolTrue => null;
 
-  String get LogTargetBoolFalse => r'';
+  String get LogTargetBoolFalse => null;
 
   String get Ipfs => r'ipfs';
 
-  String get IpfsLabel => r'';
+  String get IpfsLabel => null;
 
-  String get IpfsHelper => r'';
+  String get IpfsHelper => null;
 
-  String get IpfsHint => r'';
+  String get IpfsHint => null;
 
-  String get IpfsPrefix => r'';
+  String get IpfsPrefix => null;
 
-  String get IpfsSuffix => r'';
+  String get IpfsSuffix => null;
 
   String get IpfsFakeApiListenIp => r'{redirect}';
 
@@ -1272,9 +1272,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get IpfsFakeApiListenIpSuffix => r'{redirect}';
 
-  String get IpfsFakeApiListenIpBoolTrue => r'';
+  String get IpfsFakeApiListenIpBoolTrue => null;
 
-  String get IpfsFakeApiListenIpBoolFalse => r'';
+  String get IpfsFakeApiListenIpBoolFalse => null;
 
   String get IpfsFakeApiListenPort => r'{redirect}';
 
@@ -1288,9 +1288,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get IpfsFakeApiListenPortSuffix => r'{redirect}';
 
-  String get IpfsFakeApiListenPortBoolTrue => r'';
+  String get IpfsFakeApiListenPortBoolTrue => null;
 
-  String get IpfsFakeApiListenPortBoolFalse => r'';
+  String get IpfsFakeApiListenPortBoolFalse => null;
 
   String get IpfsEnableGateway => r'{redirect}';
 
@@ -1304,9 +1304,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get IpfsEnableGatewaySuffix => r'{redirect}';
 
-  String get IpfsEnableGatewayBoolTrue => r'';
+  String get IpfsEnableGatewayBoolTrue => null;
 
-  String get IpfsEnableGatewayBoolFalse => r'';
+  String get IpfsEnableGatewayBoolFalse => null;
 
   String get IpfsGatewayServerName => r'{redirect}';
 
@@ -1320,9 +1320,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get IpfsGatewayServerNameSuffix => r'{redirect}';
 
-  String get IpfsGatewayServerNameBoolTrue => r'';
+  String get IpfsGatewayServerNameBoolTrue => null;
 
-  String get IpfsGatewayServerNameBoolFalse => r'';
+  String get IpfsGatewayServerNameBoolFalse => null;
 
   String get IpfsEnableApi => r'{redirect}';
 
@@ -1336,9 +1336,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get IpfsEnableApiSuffix => r'{redirect}';
 
-  String get IpfsEnableApiBoolTrue => r'';
+  String get IpfsEnableApiBoolTrue => null;
 
-  String get IpfsEnableApiBoolFalse => r'';
+  String get IpfsEnableApiBoolFalse => null;
 
   String get IpfsApiServerName => r'{redirect}';
 
@@ -1352,9 +1352,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get IpfsApiServerNameSuffix => r'{redirect}';
 
-  String get IpfsApiServerNameBoolTrue => r'';
+  String get IpfsApiServerNameBoolTrue => null;
 
-  String get IpfsApiServerNameBoolFalse => r'';
+  String get IpfsApiServerNameBoolFalse => null;
 
   String get IpfsProfile => r'{redirect}';
 
@@ -1368,9 +1368,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get IpfsProfileSuffix => r'{redirect}';
 
-  String get IpfsProfileBoolTrue => r'';
+  String get IpfsProfileBoolTrue => null;
 
-  String get IpfsProfileBoolFalse => r'';
+  String get IpfsProfileBoolFalse => null;
 
   String get IpfsAutoMigrate => r'{redirect}';
 
@@ -1384,9 +1384,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get IpfsAutoMigrateSuffix => r'{redirect}';
 
-  String get IpfsAutoMigrateBoolTrue => r'';
+  String get IpfsAutoMigrateBoolTrue => null;
 
-  String get IpfsAutoMigrateBoolFalse => r'';
+  String get IpfsAutoMigrateBoolFalse => null;
 
   String get IpfsEnableIpnsPubSub => r'{redirect}';
 
@@ -1400,9 +1400,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get IpfsEnableIpnsPubSubSuffix => r'{redirect}';
 
-  String get IpfsEnableIpnsPubSubBoolTrue => r'';
+  String get IpfsEnableIpnsPubSubBoolTrue => null;
 
-  String get IpfsEnableIpnsPubSubBoolFalse => r'';
+  String get IpfsEnableIpnsPubSubBoolFalse => null;
 
   String get IpfsEnablePubSub => r'{redirect}';
 
@@ -1416,9 +1416,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get IpfsEnablePubSubSuffix => r'{redirect}';
 
-  String get IpfsEnablePubSubBoolTrue => r'';
+  String get IpfsEnablePubSubBoolTrue => null;
 
-  String get IpfsEnablePubSubBoolFalse => r'';
+  String get IpfsEnablePubSubBoolFalse => null;
 
   String get IpfsEnableMultiplex => r'{redirect}';
 
@@ -1432,9 +1432,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get IpfsEnableMultiplexSuffix => r'{redirect}';
 
-  String get IpfsEnableMultiplexBoolTrue => r'';
+  String get IpfsEnableMultiplexBoolTrue => null;
 
-  String get IpfsEnableMultiplexBoolFalse => r'';
+  String get IpfsEnableMultiplexBoolFalse => null;
 
   String get IpfsToken => r'{redirect}';
 
@@ -1448,21 +1448,21 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get IpfsTokenSuffix => r'{redirect}';
 
-  String get IpfsTokenBoolTrue => r'';
+  String get IpfsTokenBoolTrue => null;
 
-  String get IpfsTokenBoolFalse => r'';
+  String get IpfsTokenBoolFalse => null;
 
   String get IpfsServer => r'ipfs server';
 
-  String get IpfsServerLabel => r'';
+  String get IpfsServerLabel => null;
 
-  String get IpfsServerHelper => r'';
+  String get IpfsServerHelper => null;
 
-  String get IpfsServerHint => r'';
+  String get IpfsServerHint => null;
 
-  String get IpfsServerPrefix => r'';
+  String get IpfsServerPrefix => null;
 
-  String get IpfsServerSuffix => r'';
+  String get IpfsServerSuffix => null;
 
   String get IpfsServerDisabled => r'{redirect}';
 
@@ -1476,9 +1476,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get IpfsServerDisabledSuffix => r'{redirect}';
 
-  String get IpfsServerDisabledBoolTrue => r'';
+  String get IpfsServerDisabledBoolTrue => null;
 
-  String get IpfsServerDisabledBoolFalse => r'';
+  String get IpfsServerDisabledBoolFalse => null;
 
   String get IpfsServerName => r'{redirect}';
 
@@ -1492,9 +1492,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get IpfsServerNameSuffix => r'{redirect}';
 
-  String get IpfsServerNameBoolTrue => r'';
+  String get IpfsServerNameBoolTrue => null;
 
-  String get IpfsServerNameBoolFalse => r'';
+  String get IpfsServerNameBoolFalse => null;
 
   String get IpfsServerPeer => r'{redirect}';
 
@@ -1508,9 +1508,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get IpfsServerPeerSuffix => r'{redirect}';
 
-  String get IpfsServerPeerBoolTrue => r'';
+  String get IpfsServerPeerBoolTrue => null;
 
-  String get IpfsServerPeerBoolFalse => r'';
+  String get IpfsServerPeerBoolFalse => null;
 
   String get IpfsServerToken => r'{redirect}';
 
@@ -1524,21 +1524,21 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get IpfsServerTokenSuffix => r'{redirect}';
 
-  String get IpfsServerTokenBoolTrue => r'';
+  String get IpfsServerTokenBoolTrue => null;
 
-  String get IpfsServerTokenBoolFalse => r'';
+  String get IpfsServerTokenBoolFalse => null;
 
   String get FileServer => r'file server';
 
-  String get FileServerLabel => r'';
+  String get FileServerLabel => null;
 
-  String get FileServerHelper => r'';
+  String get FileServerHelper => null;
 
-  String get FileServerHint => r'';
+  String get FileServerHint => null;
 
-  String get FileServerPrefix => r'';
+  String get FileServerPrefix => null;
 
-  String get FileServerSuffix => r'';
+  String get FileServerSuffix => null;
 
   String get FileServerDisabled => r'{redirect}';
 
@@ -1552,9 +1552,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get FileServerDisabledSuffix => r'{redirect}';
 
-  String get FileServerDisabledBoolTrue => r'';
+  String get FileServerDisabledBoolTrue => null;
 
-  String get FileServerDisabledBoolFalse => r'';
+  String get FileServerDisabledBoolFalse => null;
 
   String get FileServerName => r'{redirect}';
 
@@ -1568,9 +1568,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get FileServerNameSuffix => r'{redirect}';
 
-  String get FileServerNameBoolTrue => r'';
+  String get FileServerNameBoolTrue => null;
 
-  String get FileServerNameBoolFalse => r'';
+  String get FileServerNameBoolFalse => null;
 
   String get FileServerZip => r'{redirect}';
 
@@ -1584,9 +1584,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get FileServerZipSuffix => r'{redirect}';
 
-  String get FileServerZipBoolTrue => r'';
+  String get FileServerZipBoolTrue => null;
 
-  String get FileServerZipBoolFalse => r'';
+  String get FileServerZipBoolFalse => null;
 
   String get FileServerRedirect => r'{redirect}';
 
@@ -1600,9 +1600,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get FileServerRedirectSuffix => r'{redirect}';
 
-  String get FileServerRedirectBoolTrue => r'';
+  String get FileServerRedirectBoolTrue => null;
 
-  String get FileServerRedirectBoolFalse => r'';
+  String get FileServerRedirectBoolFalse => null;
 
   String get FileServerDev => r'{redirect}';
 
@@ -1616,21 +1616,21 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get FileServerDevSuffix => r'{redirect}';
 
-  String get FileServerDevBoolTrue => r'';
+  String get FileServerDevBoolTrue => null;
 
-  String get FileServerDevBoolFalse => r'';
+  String get FileServerDevBoolFalse => null;
 
   String get HttpProxyServer => r'http proxy server';
 
-  String get HttpProxyServerLabel => r'';
+  String get HttpProxyServerLabel => null;
 
-  String get HttpProxyServerHelper => r'';
+  String get HttpProxyServerHelper => null;
 
-  String get HttpProxyServerHint => r'';
+  String get HttpProxyServerHint => null;
 
-  String get HttpProxyServerPrefix => r'';
+  String get HttpProxyServerPrefix => null;
 
-  String get HttpProxyServerSuffix => r'';
+  String get HttpProxyServerSuffix => null;
 
   String get HttpProxyServerDisabled => r'{redirect}';
 
@@ -1644,9 +1644,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get HttpProxyServerDisabledSuffix => r'{redirect}';
 
-  String get HttpProxyServerDisabledBoolTrue => r'';
+  String get HttpProxyServerDisabledBoolTrue => null;
 
-  String get HttpProxyServerDisabledBoolFalse => r'';
+  String get HttpProxyServerDisabledBoolFalse => null;
 
   String get HttpProxyServerName => r'{redirect}';
 
@@ -1660,9 +1660,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get HttpProxyServerNameSuffix => r'{redirect}';
 
-  String get HttpProxyServerNameBoolTrue => r'';
+  String get HttpProxyServerNameBoolTrue => null;
 
-  String get HttpProxyServerNameBoolFalse => r'';
+  String get HttpProxyServerNameBoolFalse => null;
 
   String get HttpProxyServerHost => r'{redirect}';
 
@@ -1676,9 +1676,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get HttpProxyServerHostSuffix => r'{redirect}';
 
-  String get HttpProxyServerHostBoolTrue => r'';
+  String get HttpProxyServerHostBoolTrue => null;
 
-  String get HttpProxyServerHostBoolFalse => r'';
+  String get HttpProxyServerHostBoolFalse => null;
 
   String get HttpProxyServerPort => r'{redirect}';
 
@@ -1692,9 +1692,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get HttpProxyServerPortSuffix => r'{redirect}';
 
-  String get HttpProxyServerPortBoolTrue => r'';
+  String get HttpProxyServerPortBoolTrue => null;
 
-  String get HttpProxyServerPortBoolFalse => r'';
+  String get HttpProxyServerPortBoolFalse => null;
 
   String get HttpProxyServerKeepAlive => r'{redirect}';
 
@@ -1708,21 +1708,21 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get HttpProxyServerKeepAliveSuffix => r'{redirect}';
 
-  String get HttpProxyServerKeepAliveBoolTrue => r'';
+  String get HttpProxyServerKeepAliveBoolTrue => null;
 
-  String get HttpProxyServerKeepAliveBoolFalse => r'';
+  String get HttpProxyServerKeepAliveBoolFalse => null;
 
   String get AdpRouter => r'adp router';
 
-  String get AdpRouterLabel => r'';
+  String get AdpRouterLabel => null;
 
-  String get AdpRouterHelper => r'';
+  String get AdpRouterHelper => null;
 
-  String get AdpRouterHint => r'';
+  String get AdpRouterHint => null;
 
-  String get AdpRouterPrefix => r'';
+  String get AdpRouterPrefix => null;
 
-  String get AdpRouterSuffix => r'';
+  String get AdpRouterSuffix => null;
 
   String get AdpRouterRulesDirName => r'{redirect}';
 
@@ -1736,9 +1736,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get AdpRouterRulesDirNameSuffix => r'{redirect}';
 
-  String get AdpRouterRulesDirNameBoolTrue => r'';
+  String get AdpRouterRulesDirNameBoolTrue => null;
 
-  String get AdpRouterRulesDirNameBoolFalse => r'';
+  String get AdpRouterRulesDirNameBoolFalse => null;
 
   String get AdpRouterBlocked => r'{redirect}';
 
@@ -1752,9 +1752,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get AdpRouterBlockedSuffix => r'{redirect}';
 
-  String get AdpRouterBlockedBoolTrue => r'';
+  String get AdpRouterBlockedBoolTrue => null;
 
-  String get AdpRouterBlockedBoolFalse => r'';
+  String get AdpRouterBlockedBoolFalse => null;
 
   String get AdpRouterUnblocked => r'{redirect}';
 
@@ -1768,9 +1768,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get AdpRouterUnblockedSuffix => r'{redirect}';
 
-  String get AdpRouterUnblockedBoolTrue => r'';
+  String get AdpRouterUnblockedBoolTrue => null;
 
-  String get AdpRouterUnblockedBoolFalse => r'';
+  String get AdpRouterUnblockedBoolFalse => null;
 
   String get AdpRouterEtcHostsIpAsBlocked => r'{redirect}';
 
@@ -1784,9 +1784,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get AdpRouterEtcHostsIpAsBlockedSuffix => r'{redirect}';
 
-  String get AdpRouterEtcHostsIpAsBlockedBoolTrue => r'';
+  String get AdpRouterEtcHostsIpAsBlockedBoolTrue => null;
 
-  String get AdpRouterEtcHostsIpAsBlockedBoolFalse => r'';
+  String get AdpRouterEtcHostsIpAsBlockedBoolFalse => null;
 
   String get AdpRouterDev => r'{redirect}';
 
@@ -1800,21 +1800,21 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get AdpRouterDevSuffix => r'{redirect}';
 
-  String get AdpRouterDevBoolTrue => r'';
+  String get AdpRouterDevBoolTrue => null;
 
-  String get AdpRouterDevBoolFalse => r'';
+  String get AdpRouterDevBoolFalse => null;
 
   String get IPNetRouter => r'ip net router';
 
-  String get IPNetRouterLabel => r'';
+  String get IPNetRouterLabel => null;
 
-  String get IPNetRouterHelper => r'';
+  String get IPNetRouterHelper => null;
 
-  String get IPNetRouterHint => r'';
+  String get IPNetRouterHint => null;
 
-  String get IPNetRouterPrefix => r'';
+  String get IPNetRouterPrefix => null;
 
-  String get IPNetRouterSuffix => r'';
+  String get IPNetRouterSuffix => null;
 
   String get IPNetRouterIp => r'{redirect}';
 
@@ -1828,9 +1828,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get IPNetRouterIpSuffix => r'{redirect}';
 
-  String get IPNetRouterIpBoolTrue => r'';
+  String get IPNetRouterIpBoolTrue => null;
 
-  String get IPNetRouterIpBoolFalse => r'';
+  String get IPNetRouterIpBoolFalse => null;
 
   String get IPNetRouterNet => r'{redirect}';
 
@@ -1844,9 +1844,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get IPNetRouterNetSuffix => r'{redirect}';
 
-  String get IPNetRouterNetBoolTrue => r'';
+  String get IPNetRouterNetBoolTrue => null;
 
-  String get IPNetRouterNetBoolFalse => r'';
+  String get IPNetRouterNetBoolFalse => null;
 
   String get IPNetRouterMatched => r'{redirect}';
 
@@ -1860,9 +1860,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get IPNetRouterMatchedSuffix => r'{redirect}';
 
-  String get IPNetRouterMatchedBoolTrue => r'';
+  String get IPNetRouterMatchedBoolTrue => null;
 
-  String get IPNetRouterMatchedBoolFalse => r'';
+  String get IPNetRouterMatchedBoolFalse => null;
 
   String get IPNetRouterUnmatched => r'{redirect}';
 
@@ -1876,9 +1876,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get IPNetRouterUnmatchedSuffix => r'{redirect}';
 
-  String get IPNetRouterUnmatchedBoolTrue => r'';
+  String get IPNetRouterUnmatchedBoolTrue => null;
 
-  String get IPNetRouterUnmatchedBoolFalse => r'';
+  String get IPNetRouterUnmatchedBoolFalse => null;
 
   String get IPNetRouterFileTest => r'{redirect}';
 
@@ -1892,21 +1892,21 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get IPNetRouterFileTestSuffix => r'{redirect}';
 
-  String get IPNetRouterFileTestBoolTrue => r'';
+  String get IPNetRouterFileTestBoolTrue => null;
 
-  String get IPNetRouterFileTestBoolFalse => r'';
+  String get IPNetRouterFileTestBoolFalse => null;
 
   String get RouterItem => r'router item';
 
-  String get RouterItemLabel => r'';
+  String get RouterItemLabel => null;
 
-  String get RouterItemHelper => r'';
+  String get RouterItemHelper => null;
 
-  String get RouterItemHint => r'';
+  String get RouterItemHint => null;
 
-  String get RouterItemPrefix => r'';
+  String get RouterItemPrefix => null;
 
-  String get RouterItemSuffix => r'';
+  String get RouterItemSuffix => null;
 
   String get RouterItemDisabled => r'{redirect}';
 
@@ -1920,9 +1920,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get RouterItemDisabledSuffix => r'{redirect}';
 
-  String get RouterItemDisabledBoolTrue => r'';
+  String get RouterItemDisabledBoolTrue => null;
 
-  String get RouterItemDisabledBoolFalse => r'';
+  String get RouterItemDisabledBoolFalse => null;
 
   String get RouterItemName => r'{redirect}';
 
@@ -1936,9 +1936,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get RouterItemNameSuffix => r'{redirect}';
 
-  String get RouterItemNameBoolTrue => r'';
+  String get RouterItemNameBoolTrue => null;
 
-  String get RouterItemNameBoolFalse => r'';
+  String get RouterItemNameBoolFalse => null;
 
   String get RouterItemAdp => r'{redirect}';
 
@@ -1952,9 +1952,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get RouterItemAdpSuffix => r'{redirect}';
 
-  String get RouterItemAdpBoolTrue => r'';
+  String get RouterItemAdpBoolTrue => null;
 
-  String get RouterItemAdpBoolFalse => r'';
+  String get RouterItemAdpBoolFalse => null;
 
   String get RouterItemIpnet => r'{redirect}';
 
@@ -1968,29 +1968,29 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get RouterItemIpnetSuffix => r'{redirect}';
 
-  String get RouterItemIpnetBoolTrue => r'';
+  String get RouterItemIpnetBoolTrue => null;
 
-  String get RouterItemIpnetBoolFalse => r'';
+  String get RouterItemIpnetBoolFalse => null;
 
   String get RouterItemRouter => r'router';
 
-  String get RouterItemRouterLabel => r'';
+  String get RouterItemRouterLabel => null;
 
-  String get RouterItemRouterPrefix => r'';
+  String get RouterItemRouterPrefix => null;
 
-  String get RouterItemRouterSuffix => r'';
+  String get RouterItemRouterSuffix => null;
 
   String get Config => r'config';
 
-  String get ConfigLabel => r'';
+  String get ConfigLabel => null;
 
-  String get ConfigHelper => r'';
+  String get ConfigHelper => null;
 
-  String get ConfigHint => r'';
+  String get ConfigHint => null;
 
-  String get ConfigPrefix => r'';
+  String get ConfigPrefix => null;
 
-  String get ConfigSuffix => r'';
+  String get ConfigSuffix => null;
 
   String get ConfigBasic => r'{redirect}';
 
@@ -2004,9 +2004,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get ConfigBasicSuffix => r'{redirect}';
 
-  String get ConfigBasicBoolTrue => r'';
+  String get ConfigBasicBoolTrue => null;
 
-  String get ConfigBasicBoolFalse => r'';
+  String get ConfigBasicBoolFalse => null;
 
   String get ConfigLog => r'{redirect}';
 
@@ -2020,9 +2020,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get ConfigLogSuffix => r'{redirect}';
 
-  String get ConfigLogBoolTrue => r'';
+  String get ConfigLogBoolTrue => null;
 
-  String get ConfigLogBoolFalse => r'';
+  String get ConfigLogBoolFalse => null;
 
   String get ConfigIpfs => r'{redirect}';
 
@@ -2036,9 +2036,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get ConfigIpfsSuffix => r'{redirect}';
 
-  String get ConfigIpfsBoolTrue => r'';
+  String get ConfigIpfsBoolTrue => null;
 
-  String get ConfigIpfsBoolFalse => r'';
+  String get ConfigIpfsBoolFalse => null;
 
   String get ConfigIpfsServers => r'{redirect}';
 
@@ -2052,9 +2052,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get ConfigIpfsServersSuffix => r'{redirect}';
 
-  String get ConfigIpfsServersBoolTrue => r'';
+  String get ConfigIpfsServersBoolTrue => null;
 
-  String get ConfigIpfsServersBoolFalse => r'';
+  String get ConfigIpfsServersBoolFalse => null;
 
   String get ConfigFileServers => r'{redirect}';
 
@@ -2068,9 +2068,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get ConfigFileServersSuffix => r'{redirect}';
 
-  String get ConfigFileServersBoolTrue => r'';
+  String get ConfigFileServersBoolTrue => null;
 
-  String get ConfigFileServersBoolFalse => r'';
+  String get ConfigFileServersBoolFalse => null;
 
   String get ConfigHttpProxyServers => r'{redirect}';
 
@@ -2084,9 +2084,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get ConfigHttpProxyServersSuffix => r'{redirect}';
 
-  String get ConfigHttpProxyServersBoolTrue => r'';
+  String get ConfigHttpProxyServersBoolTrue => null;
 
-  String get ConfigHttpProxyServersBoolFalse => r'';
+  String get ConfigHttpProxyServersBoolFalse => null;
 
   String get ConfigRouters => r'{redirect}';
 
@@ -2100,9 +2100,9 @@ class ConfigLocalizationsEn extends ConfigLocalizations {
 
   String get ConfigRoutersSuffix => r'{redirect}';
 
-  String get ConfigRoutersBoolTrue => r'';
+  String get ConfigRoutersBoolTrue => null;
 
-  String get ConfigRoutersBoolFalse => r'';
+  String get ConfigRoutersBoolFalse => null;
 }
 
 class ConfigLocalizationsZh extends ConfigLocalizations {
@@ -2110,15 +2110,15 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get Basic => r'basic';
 
-  String get BasicLabel => r'';
+  String get BasicLabel => null;
 
-  String get BasicHelper => r'';
+  String get BasicHelper => null;
 
-  String get BasicHint => r'';
+  String get BasicHint => null;
 
-  String get BasicPrefix => r'';
+  String get BasicPrefix => null;
 
-  String get BasicSuffix => r'';
+  String get BasicSuffix => null;
 
   String get BasicDev => r'{redirect}';
 
@@ -2132,9 +2132,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get BasicDevSuffix => r'{redirect}';
 
-  String get BasicDevBoolTrue => r'';
+  String get BasicDevBoolTrue => null;
 
-  String get BasicDevBoolFalse => r'';
+  String get BasicDevBoolFalse => null;
 
   String get BasicEnableBind => r'{redirect}';
 
@@ -2148,9 +2148,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get BasicEnableBindSuffix => r'{redirect}';
 
-  String get BasicEnableBindBoolTrue => r'';
+  String get BasicEnableBindBoolTrue => null;
 
-  String get BasicEnableBindBoolFalse => r'';
+  String get BasicEnableBindBoolFalse => null;
 
   String get BasicBindIp => r'{redirect}';
 
@@ -2164,9 +2164,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get BasicBindIpSuffix => r'{redirect}';
 
-  String get BasicBindIpBoolTrue => r'';
+  String get BasicBindIpBoolTrue => null;
 
-  String get BasicBindIpBoolFalse => r'';
+  String get BasicBindIpBoolFalse => null;
 
   String get BasicBindPort => r'{redirect}';
 
@@ -2180,9 +2180,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get BasicBindPortSuffix => r'{redirect}';
 
-  String get BasicBindPortBoolTrue => r'';
+  String get BasicBindPortBoolTrue => null;
 
-  String get BasicBindPortBoolFalse => r'';
+  String get BasicBindPortBoolFalse => null;
 
   String get BasicFlushIntervalMs => r'{redirect}';
 
@@ -2196,9 +2196,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get BasicFlushIntervalMsSuffix => r'{redirect}';
 
-  String get BasicFlushIntervalMsBoolTrue => r'';
+  String get BasicFlushIntervalMsBoolTrue => null;
 
-  String get BasicFlushIntervalMsBoolFalse => r'';
+  String get BasicFlushIntervalMsBoolFalse => null;
 
   String get BasicToken => r'{redirect}';
 
@@ -2212,21 +2212,21 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get BasicTokenSuffix => r'{redirect}';
 
-  String get BasicTokenBoolTrue => r'';
+  String get BasicTokenBoolTrue => null;
 
-  String get BasicTokenBoolFalse => r'';
+  String get BasicTokenBoolFalse => null;
 
   String get Log => r'log';
 
-  String get LogLabel => r'';
+  String get LogLabel => null;
 
-  String get LogHelper => r'';
+  String get LogHelper => null;
 
-  String get LogHint => r'';
+  String get LogHint => null;
 
-  String get LogPrefix => r'';
+  String get LogPrefix => null;
 
-  String get LogSuffix => r'';
+  String get LogSuffix => null;
 
   String get LogDev => r'{redirect}';
 
@@ -2240,9 +2240,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get LogDevSuffix => r'{redirect}';
 
-  String get LogDevBoolTrue => r'';
+  String get LogDevBoolTrue => null;
 
-  String get LogDevBoolFalse => r'';
+  String get LogDevBoolFalse => null;
 
   String get LogLevel => r'{redirect}';
 
@@ -2256,9 +2256,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get LogLevelSuffix => r'{redirect}';
 
-  String get LogLevelBoolTrue => r'';
+  String get LogLevelBoolTrue => null;
 
-  String get LogLevelBoolFalse => r'';
+  String get LogLevelBoolFalse => null;
 
   String get LogTarget => r'{redirect}';
 
@@ -2272,21 +2272,21 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get LogTargetSuffix => r'{redirect}';
 
-  String get LogTargetBoolTrue => r'';
+  String get LogTargetBoolTrue => null;
 
-  String get LogTargetBoolFalse => r'';
+  String get LogTargetBoolFalse => null;
 
   String get Ipfs => r'ipfs';
 
-  String get IpfsLabel => r'';
+  String get IpfsLabel => null;
 
-  String get IpfsHelper => r'';
+  String get IpfsHelper => null;
 
-  String get IpfsHint => r'';
+  String get IpfsHint => null;
 
-  String get IpfsPrefix => r'';
+  String get IpfsPrefix => null;
 
-  String get IpfsSuffix => r'';
+  String get IpfsSuffix => null;
 
   String get IpfsFakeApiListenIp => r'{redirect}';
 
@@ -2300,9 +2300,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get IpfsFakeApiListenIpSuffix => r'{redirect}';
 
-  String get IpfsFakeApiListenIpBoolTrue => r'';
+  String get IpfsFakeApiListenIpBoolTrue => null;
 
-  String get IpfsFakeApiListenIpBoolFalse => r'';
+  String get IpfsFakeApiListenIpBoolFalse => null;
 
   String get IpfsFakeApiListenPort => r'{redirect}';
 
@@ -2316,9 +2316,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get IpfsFakeApiListenPortSuffix => r'{redirect}';
 
-  String get IpfsFakeApiListenPortBoolTrue => r'';
+  String get IpfsFakeApiListenPortBoolTrue => null;
 
-  String get IpfsFakeApiListenPortBoolFalse => r'';
+  String get IpfsFakeApiListenPortBoolFalse => null;
 
   String get IpfsEnableGateway => r'{redirect}';
 
@@ -2332,9 +2332,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get IpfsEnableGatewaySuffix => r'{redirect}';
 
-  String get IpfsEnableGatewayBoolTrue => r'';
+  String get IpfsEnableGatewayBoolTrue => null;
 
-  String get IpfsEnableGatewayBoolFalse => r'';
+  String get IpfsEnableGatewayBoolFalse => null;
 
   String get IpfsGatewayServerName => r'{redirect}';
 
@@ -2348,9 +2348,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get IpfsGatewayServerNameSuffix => r'{redirect}';
 
-  String get IpfsGatewayServerNameBoolTrue => r'';
+  String get IpfsGatewayServerNameBoolTrue => null;
 
-  String get IpfsGatewayServerNameBoolFalse => r'';
+  String get IpfsGatewayServerNameBoolFalse => null;
 
   String get IpfsEnableApi => r'{redirect}';
 
@@ -2364,9 +2364,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get IpfsEnableApiSuffix => r'{redirect}';
 
-  String get IpfsEnableApiBoolTrue => r'';
+  String get IpfsEnableApiBoolTrue => null;
 
-  String get IpfsEnableApiBoolFalse => r'';
+  String get IpfsEnableApiBoolFalse => null;
 
   String get IpfsApiServerName => r'{redirect}';
 
@@ -2380,9 +2380,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get IpfsApiServerNameSuffix => r'{redirect}';
 
-  String get IpfsApiServerNameBoolTrue => r'';
+  String get IpfsApiServerNameBoolTrue => null;
 
-  String get IpfsApiServerNameBoolFalse => r'';
+  String get IpfsApiServerNameBoolFalse => null;
 
   String get IpfsProfile => r'{redirect}';
 
@@ -2396,9 +2396,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get IpfsProfileSuffix => r'{redirect}';
 
-  String get IpfsProfileBoolTrue => r'';
+  String get IpfsProfileBoolTrue => null;
 
-  String get IpfsProfileBoolFalse => r'';
+  String get IpfsProfileBoolFalse => null;
 
   String get IpfsAutoMigrate => r'{redirect}';
 
@@ -2412,9 +2412,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get IpfsAutoMigrateSuffix => r'{redirect}';
 
-  String get IpfsAutoMigrateBoolTrue => r'';
+  String get IpfsAutoMigrateBoolTrue => null;
 
-  String get IpfsAutoMigrateBoolFalse => r'';
+  String get IpfsAutoMigrateBoolFalse => null;
 
   String get IpfsEnableIpnsPubSub => r'{redirect}';
 
@@ -2428,9 +2428,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get IpfsEnableIpnsPubSubSuffix => r'{redirect}';
 
-  String get IpfsEnableIpnsPubSubBoolTrue => r'';
+  String get IpfsEnableIpnsPubSubBoolTrue => null;
 
-  String get IpfsEnableIpnsPubSubBoolFalse => r'';
+  String get IpfsEnableIpnsPubSubBoolFalse => null;
 
   String get IpfsEnablePubSub => r'{redirect}';
 
@@ -2444,9 +2444,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get IpfsEnablePubSubSuffix => r'{redirect}';
 
-  String get IpfsEnablePubSubBoolTrue => r'';
+  String get IpfsEnablePubSubBoolTrue => null;
 
-  String get IpfsEnablePubSubBoolFalse => r'';
+  String get IpfsEnablePubSubBoolFalse => null;
 
   String get IpfsEnableMultiplex => r'{redirect}';
 
@@ -2460,9 +2460,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get IpfsEnableMultiplexSuffix => r'{redirect}';
 
-  String get IpfsEnableMultiplexBoolTrue => r'';
+  String get IpfsEnableMultiplexBoolTrue => null;
 
-  String get IpfsEnableMultiplexBoolFalse => r'';
+  String get IpfsEnableMultiplexBoolFalse => null;
 
   String get IpfsToken => r'{redirect}';
 
@@ -2476,21 +2476,21 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get IpfsTokenSuffix => r'{redirect}';
 
-  String get IpfsTokenBoolTrue => r'';
+  String get IpfsTokenBoolTrue => null;
 
-  String get IpfsTokenBoolFalse => r'';
+  String get IpfsTokenBoolFalse => null;
 
   String get IpfsServer => r'ipfs server';
 
-  String get IpfsServerLabel => r'';
+  String get IpfsServerLabel => null;
 
-  String get IpfsServerHelper => r'';
+  String get IpfsServerHelper => null;
 
-  String get IpfsServerHint => r'';
+  String get IpfsServerHint => null;
 
-  String get IpfsServerPrefix => r'';
+  String get IpfsServerPrefix => null;
 
-  String get IpfsServerSuffix => r'';
+  String get IpfsServerSuffix => null;
 
   String get IpfsServerDisabled => r'{redirect}';
 
@@ -2504,9 +2504,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get IpfsServerDisabledSuffix => r'{redirect}';
 
-  String get IpfsServerDisabledBoolTrue => r'';
+  String get IpfsServerDisabledBoolTrue => null;
 
-  String get IpfsServerDisabledBoolFalse => r'';
+  String get IpfsServerDisabledBoolFalse => null;
 
   String get IpfsServerName => r'{redirect}';
 
@@ -2520,9 +2520,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get IpfsServerNameSuffix => r'{redirect}';
 
-  String get IpfsServerNameBoolTrue => r'';
+  String get IpfsServerNameBoolTrue => null;
 
-  String get IpfsServerNameBoolFalse => r'';
+  String get IpfsServerNameBoolFalse => null;
 
   String get IpfsServerPeer => r'{redirect}';
 
@@ -2536,9 +2536,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get IpfsServerPeerSuffix => r'{redirect}';
 
-  String get IpfsServerPeerBoolTrue => r'';
+  String get IpfsServerPeerBoolTrue => null;
 
-  String get IpfsServerPeerBoolFalse => r'';
+  String get IpfsServerPeerBoolFalse => null;
 
   String get IpfsServerToken => r'{redirect}';
 
@@ -2552,21 +2552,21 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get IpfsServerTokenSuffix => r'{redirect}';
 
-  String get IpfsServerTokenBoolTrue => r'';
+  String get IpfsServerTokenBoolTrue => null;
 
-  String get IpfsServerTokenBoolFalse => r'';
+  String get IpfsServerTokenBoolFalse => null;
 
   String get FileServer => r'file server';
 
-  String get FileServerLabel => r'';
+  String get FileServerLabel => null;
 
-  String get FileServerHelper => r'';
+  String get FileServerHelper => null;
 
-  String get FileServerHint => r'';
+  String get FileServerHint => null;
 
-  String get FileServerPrefix => r'';
+  String get FileServerPrefix => null;
 
-  String get FileServerSuffix => r'';
+  String get FileServerSuffix => null;
 
   String get FileServerDisabled => r'{redirect}';
 
@@ -2580,9 +2580,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get FileServerDisabledSuffix => r'{redirect}';
 
-  String get FileServerDisabledBoolTrue => r'';
+  String get FileServerDisabledBoolTrue => null;
 
-  String get FileServerDisabledBoolFalse => r'';
+  String get FileServerDisabledBoolFalse => null;
 
   String get FileServerName => r'{redirect}';
 
@@ -2596,9 +2596,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get FileServerNameSuffix => r'{redirect}';
 
-  String get FileServerNameBoolTrue => r'';
+  String get FileServerNameBoolTrue => null;
 
-  String get FileServerNameBoolFalse => r'';
+  String get FileServerNameBoolFalse => null;
 
   String get FileServerZip => r'{redirect}';
 
@@ -2612,9 +2612,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get FileServerZipSuffix => r'{redirect}';
 
-  String get FileServerZipBoolTrue => r'';
+  String get FileServerZipBoolTrue => null;
 
-  String get FileServerZipBoolFalse => r'';
+  String get FileServerZipBoolFalse => null;
 
   String get FileServerRedirect => r'{redirect}';
 
@@ -2628,9 +2628,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get FileServerRedirectSuffix => r'{redirect}';
 
-  String get FileServerRedirectBoolTrue => r'';
+  String get FileServerRedirectBoolTrue => null;
 
-  String get FileServerRedirectBoolFalse => r'';
+  String get FileServerRedirectBoolFalse => null;
 
   String get FileServerDev => r'{redirect}';
 
@@ -2644,21 +2644,21 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get FileServerDevSuffix => r'{redirect}';
 
-  String get FileServerDevBoolTrue => r'';
+  String get FileServerDevBoolTrue => null;
 
-  String get FileServerDevBoolFalse => r'';
+  String get FileServerDevBoolFalse => null;
 
   String get HttpProxyServer => r'http proxy server';
 
-  String get HttpProxyServerLabel => r'';
+  String get HttpProxyServerLabel => null;
 
-  String get HttpProxyServerHelper => r'';
+  String get HttpProxyServerHelper => null;
 
-  String get HttpProxyServerHint => r'';
+  String get HttpProxyServerHint => null;
 
-  String get HttpProxyServerPrefix => r'';
+  String get HttpProxyServerPrefix => null;
 
-  String get HttpProxyServerSuffix => r'';
+  String get HttpProxyServerSuffix => null;
 
   String get HttpProxyServerDisabled => r'{redirect}';
 
@@ -2672,9 +2672,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get HttpProxyServerDisabledSuffix => r'{redirect}';
 
-  String get HttpProxyServerDisabledBoolTrue => r'';
+  String get HttpProxyServerDisabledBoolTrue => null;
 
-  String get HttpProxyServerDisabledBoolFalse => r'';
+  String get HttpProxyServerDisabledBoolFalse => null;
 
   String get HttpProxyServerName => r'{redirect}';
 
@@ -2688,9 +2688,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get HttpProxyServerNameSuffix => r'{redirect}';
 
-  String get HttpProxyServerNameBoolTrue => r'';
+  String get HttpProxyServerNameBoolTrue => null;
 
-  String get HttpProxyServerNameBoolFalse => r'';
+  String get HttpProxyServerNameBoolFalse => null;
 
   String get HttpProxyServerHost => r'{redirect}';
 
@@ -2704,9 +2704,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get HttpProxyServerHostSuffix => r'{redirect}';
 
-  String get HttpProxyServerHostBoolTrue => r'';
+  String get HttpProxyServerHostBoolTrue => null;
 
-  String get HttpProxyServerHostBoolFalse => r'';
+  String get HttpProxyServerHostBoolFalse => null;
 
   String get HttpProxyServerPort => r'{redirect}';
 
@@ -2720,9 +2720,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get HttpProxyServerPortSuffix => r'{redirect}';
 
-  String get HttpProxyServerPortBoolTrue => r'';
+  String get HttpProxyServerPortBoolTrue => null;
 
-  String get HttpProxyServerPortBoolFalse => r'';
+  String get HttpProxyServerPortBoolFalse => null;
 
   String get HttpProxyServerKeepAlive => r'{redirect}';
 
@@ -2736,21 +2736,21 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get HttpProxyServerKeepAliveSuffix => r'{redirect}';
 
-  String get HttpProxyServerKeepAliveBoolTrue => r'';
+  String get HttpProxyServerKeepAliveBoolTrue => null;
 
-  String get HttpProxyServerKeepAliveBoolFalse => r'';
+  String get HttpProxyServerKeepAliveBoolFalse => null;
 
   String get AdpRouter => r'adp router';
 
-  String get AdpRouterLabel => r'';
+  String get AdpRouterLabel => null;
 
-  String get AdpRouterHelper => r'';
+  String get AdpRouterHelper => null;
 
-  String get AdpRouterHint => r'';
+  String get AdpRouterHint => null;
 
-  String get AdpRouterPrefix => r'';
+  String get AdpRouterPrefix => null;
 
-  String get AdpRouterSuffix => r'';
+  String get AdpRouterSuffix => null;
 
   String get AdpRouterRulesDirName => r'{redirect}';
 
@@ -2764,9 +2764,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get AdpRouterRulesDirNameSuffix => r'{redirect}';
 
-  String get AdpRouterRulesDirNameBoolTrue => r'';
+  String get AdpRouterRulesDirNameBoolTrue => null;
 
-  String get AdpRouterRulesDirNameBoolFalse => r'';
+  String get AdpRouterRulesDirNameBoolFalse => null;
 
   String get AdpRouterBlocked => r'{redirect}';
 
@@ -2780,9 +2780,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get AdpRouterBlockedSuffix => r'{redirect}';
 
-  String get AdpRouterBlockedBoolTrue => r'';
+  String get AdpRouterBlockedBoolTrue => null;
 
-  String get AdpRouterBlockedBoolFalse => r'';
+  String get AdpRouterBlockedBoolFalse => null;
 
   String get AdpRouterUnblocked => r'{redirect}';
 
@@ -2796,9 +2796,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get AdpRouterUnblockedSuffix => r'{redirect}';
 
-  String get AdpRouterUnblockedBoolTrue => r'';
+  String get AdpRouterUnblockedBoolTrue => null;
 
-  String get AdpRouterUnblockedBoolFalse => r'';
+  String get AdpRouterUnblockedBoolFalse => null;
 
   String get AdpRouterEtcHostsIpAsBlocked => r'{redirect}';
 
@@ -2812,9 +2812,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get AdpRouterEtcHostsIpAsBlockedSuffix => r'{redirect}';
 
-  String get AdpRouterEtcHostsIpAsBlockedBoolTrue => r'';
+  String get AdpRouterEtcHostsIpAsBlockedBoolTrue => null;
 
-  String get AdpRouterEtcHostsIpAsBlockedBoolFalse => r'';
+  String get AdpRouterEtcHostsIpAsBlockedBoolFalse => null;
 
   String get AdpRouterDev => r'{redirect}';
 
@@ -2828,21 +2828,21 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get AdpRouterDevSuffix => r'{redirect}';
 
-  String get AdpRouterDevBoolTrue => r'';
+  String get AdpRouterDevBoolTrue => null;
 
-  String get AdpRouterDevBoolFalse => r'';
+  String get AdpRouterDevBoolFalse => null;
 
   String get IPNetRouter => r'ip net router';
 
-  String get IPNetRouterLabel => r'';
+  String get IPNetRouterLabel => null;
 
-  String get IPNetRouterHelper => r'';
+  String get IPNetRouterHelper => null;
 
-  String get IPNetRouterHint => r'';
+  String get IPNetRouterHint => null;
 
-  String get IPNetRouterPrefix => r'';
+  String get IPNetRouterPrefix => null;
 
-  String get IPNetRouterSuffix => r'';
+  String get IPNetRouterSuffix => null;
 
   String get IPNetRouterIp => r'{redirect}';
 
@@ -2856,9 +2856,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get IPNetRouterIpSuffix => r'{redirect}';
 
-  String get IPNetRouterIpBoolTrue => r'';
+  String get IPNetRouterIpBoolTrue => null;
 
-  String get IPNetRouterIpBoolFalse => r'';
+  String get IPNetRouterIpBoolFalse => null;
 
   String get IPNetRouterNet => r'{redirect}';
 
@@ -2872,9 +2872,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get IPNetRouterNetSuffix => r'{redirect}';
 
-  String get IPNetRouterNetBoolTrue => r'';
+  String get IPNetRouterNetBoolTrue => null;
 
-  String get IPNetRouterNetBoolFalse => r'';
+  String get IPNetRouterNetBoolFalse => null;
 
   String get IPNetRouterMatched => r'{redirect}';
 
@@ -2888,9 +2888,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get IPNetRouterMatchedSuffix => r'{redirect}';
 
-  String get IPNetRouterMatchedBoolTrue => r'';
+  String get IPNetRouterMatchedBoolTrue => null;
 
-  String get IPNetRouterMatchedBoolFalse => r'';
+  String get IPNetRouterMatchedBoolFalse => null;
 
   String get IPNetRouterUnmatched => r'{redirect}';
 
@@ -2904,9 +2904,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get IPNetRouterUnmatchedSuffix => r'{redirect}';
 
-  String get IPNetRouterUnmatchedBoolTrue => r'';
+  String get IPNetRouterUnmatchedBoolTrue => null;
 
-  String get IPNetRouterUnmatchedBoolFalse => r'';
+  String get IPNetRouterUnmatchedBoolFalse => null;
 
   String get IPNetRouterFileTest => r'{redirect}';
 
@@ -2920,21 +2920,21 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get IPNetRouterFileTestSuffix => r'{redirect}';
 
-  String get IPNetRouterFileTestBoolTrue => r'';
+  String get IPNetRouterFileTestBoolTrue => null;
 
-  String get IPNetRouterFileTestBoolFalse => r'';
+  String get IPNetRouterFileTestBoolFalse => null;
 
   String get RouterItem => r'router item';
 
-  String get RouterItemLabel => r'';
+  String get RouterItemLabel => null;
 
-  String get RouterItemHelper => r'';
+  String get RouterItemHelper => null;
 
-  String get RouterItemHint => r'';
+  String get RouterItemHint => null;
 
-  String get RouterItemPrefix => r'';
+  String get RouterItemPrefix => null;
 
-  String get RouterItemSuffix => r'';
+  String get RouterItemSuffix => null;
 
   String get RouterItemDisabled => r'{redirect}';
 
@@ -2948,9 +2948,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get RouterItemDisabledSuffix => r'{redirect}';
 
-  String get RouterItemDisabledBoolTrue => r'';
+  String get RouterItemDisabledBoolTrue => null;
 
-  String get RouterItemDisabledBoolFalse => r'';
+  String get RouterItemDisabledBoolFalse => null;
 
   String get RouterItemName => r'{redirect}';
 
@@ -2964,9 +2964,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get RouterItemNameSuffix => r'{redirect}';
 
-  String get RouterItemNameBoolTrue => r'';
+  String get RouterItemNameBoolTrue => null;
 
-  String get RouterItemNameBoolFalse => r'';
+  String get RouterItemNameBoolFalse => null;
 
   String get RouterItemAdp => r'{redirect}';
 
@@ -2980,9 +2980,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get RouterItemAdpSuffix => r'{redirect}';
 
-  String get RouterItemAdpBoolTrue => r'';
+  String get RouterItemAdpBoolTrue => null;
 
-  String get RouterItemAdpBoolFalse => r'';
+  String get RouterItemAdpBoolFalse => null;
 
   String get RouterItemIpnet => r'{redirect}';
 
@@ -2996,29 +2996,29 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get RouterItemIpnetSuffix => r'{redirect}';
 
-  String get RouterItemIpnetBoolTrue => r'';
+  String get RouterItemIpnetBoolTrue => null;
 
-  String get RouterItemIpnetBoolFalse => r'';
+  String get RouterItemIpnetBoolFalse => null;
 
   String get RouterItemRouter => r'router';
 
-  String get RouterItemRouterLabel => r'';
+  String get RouterItemRouterLabel => null;
 
-  String get RouterItemRouterPrefix => r'';
+  String get RouterItemRouterPrefix => null;
 
-  String get RouterItemRouterSuffix => r'';
+  String get RouterItemRouterSuffix => null;
 
   String get Config => r'config';
 
-  String get ConfigLabel => r'';
+  String get ConfigLabel => null;
 
-  String get ConfigHelper => r'';
+  String get ConfigHelper => null;
 
-  String get ConfigHint => r'';
+  String get ConfigHint => null;
 
-  String get ConfigPrefix => r'';
+  String get ConfigPrefix => null;
 
-  String get ConfigSuffix => r'';
+  String get ConfigSuffix => null;
 
   String get ConfigBasic => r'{redirect}';
 
@@ -3032,9 +3032,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get ConfigBasicSuffix => r'{redirect}';
 
-  String get ConfigBasicBoolTrue => r'';
+  String get ConfigBasicBoolTrue => null;
 
-  String get ConfigBasicBoolFalse => r'';
+  String get ConfigBasicBoolFalse => null;
 
   String get ConfigLog => r'{redirect}';
 
@@ -3048,9 +3048,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get ConfigLogSuffix => r'{redirect}';
 
-  String get ConfigLogBoolTrue => r'';
+  String get ConfigLogBoolTrue => null;
 
-  String get ConfigLogBoolFalse => r'';
+  String get ConfigLogBoolFalse => null;
 
   String get ConfigIpfs => r'{redirect}';
 
@@ -3064,9 +3064,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get ConfigIpfsSuffix => r'{redirect}';
 
-  String get ConfigIpfsBoolTrue => r'';
+  String get ConfigIpfsBoolTrue => null;
 
-  String get ConfigIpfsBoolFalse => r'';
+  String get ConfigIpfsBoolFalse => null;
 
   String get ConfigIpfsServers => r'{redirect}';
 
@@ -3080,9 +3080,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get ConfigIpfsServersSuffix => r'{redirect}';
 
-  String get ConfigIpfsServersBoolTrue => r'';
+  String get ConfigIpfsServersBoolTrue => null;
 
-  String get ConfigIpfsServersBoolFalse => r'';
+  String get ConfigIpfsServersBoolFalse => null;
 
   String get ConfigFileServers => r'{redirect}';
 
@@ -3096,9 +3096,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get ConfigFileServersSuffix => r'{redirect}';
 
-  String get ConfigFileServersBoolTrue => r'';
+  String get ConfigFileServersBoolTrue => null;
 
-  String get ConfigFileServersBoolFalse => r'';
+  String get ConfigFileServersBoolFalse => null;
 
   String get ConfigHttpProxyServers => r'{redirect}';
 
@@ -3112,9 +3112,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get ConfigHttpProxyServersSuffix => r'{redirect}';
 
-  String get ConfigHttpProxyServersBoolTrue => r'';
+  String get ConfigHttpProxyServersBoolTrue => null;
 
-  String get ConfigHttpProxyServersBoolFalse => r'';
+  String get ConfigHttpProxyServersBoolFalse => null;
 
   String get ConfigRouters => r'{redirect}';
 
@@ -3128,9 +3128,9 @@ class ConfigLocalizationsZh extends ConfigLocalizations {
 
   String get ConfigRoutersSuffix => r'{redirect}';
 
-  String get ConfigRoutersBoolTrue => r'';
+  String get ConfigRoutersBoolTrue => null;
 
-  String get ConfigRoutersBoolFalse => r'';
+  String get ConfigRoutersBoolFalse => null;
 }
 
 /// last_modified: 2019-11-17 03:47:10 +0000 UTC

@@ -12,6 +12,7 @@ var Funcs = template.FuncMap{
 	"dartPgsPkgName":            PackageName,
 	"dartPgsFileNameFromEntity": FileName,
 	"dartRawStr":                RawString,
+	"dartRawStrOrNull":          RawStringOrNull,
 }
 
 func (d *Dart) Funcs() template.FuncMap {
@@ -26,6 +27,14 @@ func PackageName(e pgs.Package) pgs.Name {
 
 func FileName(e pgs.Entity) pgs.Name {
 	return pgs.Name(e.File().InputPath().BaseName()).UpperCamelCase()
+}
+
+func RawStringOrNull(s string) string {
+	r := RawString(s)
+	if r == `r''` {
+		return "null"
+	}
+	return r
 }
 
 func RawString(s string) string {

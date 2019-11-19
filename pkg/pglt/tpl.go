@@ -117,7 +117,7 @@ const resourceTplStr = `{{ $kSameWith := .SameWith }}
 		}
 	{{ end }}
 {{ else }}
-	String get {{ .Id }} => {{ if $kSameWith }} {{ $kSameWith }} {{ else }} {{ dartRawStr .Value }} {{ end }};
+	String get {{ .Id }} => {{ if $kSameWith }} {{ $kSameWith }} {{ else }} {{ dartRawStrOrNull .Value }} {{ end }};
 {{ end }}
 `
 
@@ -154,7 +154,7 @@ const literalTplStr = `
 {{ else }}
 	{{ range .Content }}
 		{{ if . -}}
-			return {{ dartRawStr . }};
+			return {{ dartRawStrOrNull . }};
 		{{ else if $.Varname -}}
 			return {{ $.Data.Attr.DartPlaceholderReplace $.Varname }};
 		{{ else -}}

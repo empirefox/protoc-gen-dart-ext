@@ -6,7 +6,8 @@ import (
 
 const fileTplStr = `{{ renderJoin (gttToData .) "fileHeader" "fileBody+1" }}`
 
-const fileHeaderTplStr = genshared.DartHead + `{{ .RenderImports }}`
+const fileHeaderTplStr = genshared.DartHead + `// ignore_for_file: non_constant_identifier_names
+{{ .RenderImports }}`
 
 const fileBodyTplStr = `
 {{ range .Entities }}

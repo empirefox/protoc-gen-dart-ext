@@ -29,7 +29,7 @@ class {{ .Names.ValidatorName }} extends {{ .PgdeFile.AsDot "GeneratedValidator"
 			case {{ .Pgs.Descriptor.Number }}: return assertField_{{ .DartName }}();
 		{{ end }}
 		default:
-			throw ArgumentError.value('tag number($tag) for ${ {{ .Validators.InfoAccessor }}.bi.messageName} not found');
+			assert(false, 'tag number($tag) for ${ {{ .Validators.InfoAccessor }}.bi.messageName} not found');
 		}
 	}
 
@@ -48,7 +48,7 @@ class {{ .Names.ValidatorName }} extends {{ .PgdeFile.AsDot "GeneratedValidator"
 			case {{ .Validate.FullPbWhichEnum }}: return assertOneof_{{ .DartName }}();
 		{{ end }}
 		default:
-			throw ArgumentError.value('oneof type($oneof) for ${ {{ .Validators.InfoAccessor }}.bi.messageName} not found');
+			assert(false, 'oneof type($oneof) for ${ {{ .Validators.InfoAccessor }}.bi.messageName} not found');
 		}
 	}
 

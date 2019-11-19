@@ -122,6 +122,24 @@ protoc_hybrid_arb:
 		--dart-ext_out=arb:${dart_test}/pgde ${hybrid_path}/config.proto
 	# @dartfmt -w ${dart_test}/pgde/**/*.dart
 
+.PHONY: protoc_hybrid_l10n_gtt
+protoc_hybrid_l10n_gtt:
+	@rm -rf ${dart_test}/pgde/hybrid/archive
+	@rm -f ${dart_test}/pgde/hybrid/archive.zip
+	@go run ${cmd_path}/arb_variant/*.go \
+		-input=${dart_test}/pgde/hybrid/config.arb \
+		-lang=ar,en,zh \
+		-force \
+		-output=${dart_test}/pgde/hybrid/archive/%V/%N%E
+	@cd ${dart_test}/pgde/hybrid && zip -r archive.zip archive
+
+.PHONY: protoc_hybrid_l10n
+protoc_hybrid_l10n:
+	@GTT_DIR=${dart_test}/pgde/hybrid protoc -I${makefile_dir} -I${pgv_path} \
+		--dart-ext_out=l10n=${dart_test}/pgde/%P.gtt.toml:${dart_test}/pgde \
+		${hybrid_path}/config.proto
+	@dartfmt -w ${dart_test}/pgde/hybrid/*.l10n.dart
+
 .PHONY: protoc_hybrid_validate
 protoc_hybrid_validate:
 	@protoc -I${makefile_dir} -I${pgv_path} \
@@ -131,7 +149,7 @@ protoc_hybrid_validate:
 .PHONY: protoc_test_x
 protoc_test_x:
 	protoc -I. \
-		--dart-ext_out=arb,l10n=%O/%P.gtt.toml,validate,form:${dart_lib} \
+		--dart-ext_out=arb,l10n=%P.gtt.toml,validate,form:${dart_lib} \
 		protos/units/*.proto
 	dartfmt -w ${dart_lib}/pgde/**/*.l10n.base.dart
 

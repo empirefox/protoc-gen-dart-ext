@@ -2,7 +2,6 @@ package module
 
 import (
 	"bytes"
-	"encoding/json"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -24,9 +23,8 @@ import (
 var (
 	tomlHeader = []byte(`# Path placeholder usage:
 #  %N: base name
-#  %O: output of protoc
-#  %P: output relative path
 #  %E: extension of input file
+#  %P: output relative path
 
 `)
 )
@@ -63,7 +61,7 @@ func (m *DartExtModule) InitContext(c pgs.BuildContext) {
 // Name satisfies the generator.Plugin interface.
 func (m *DartExtModule) Name() string { return "dart-ext" }
 
-var pathReg = regexp.MustCompile(`%[NOPE]`)
+var pathReg = regexp.MustCompile(`%[NEP]`)
 
 func expandPath(input string, mapping map[string]string) string {
 	return pathReg.ReplaceAllStringFunc(input, func(in string) string { return mapping[in] })
@@ -81,9 +79,8 @@ func (m *DartExtModule) Execute(targets map[string]pgs.File, pkgs map[string]pgs
 		ext := filepath.Ext(base)
 		mapping := map[string]string{
 			"%N": strings.TrimSuffix(base, ext),
-			"%O": m.BuildContext.OutputPath(),
-			"%P": strings.TrimSuffix(inputPath, ext),
 			"%E": ext,
+			"%P": strings.TrimSuffix(inputPath, ext),
 		}
 
 		if m.HasParam("arb") {
@@ -114,8 +111,8 @@ func (m *DartExtModule) Execute(targets map[string]pgs.File, pkgs map[string]pgs
 				gttTomlPath = expandPath(gttTomlPath, mapping)
 				gttTomlPath = os.ExpandEnv(gttTomlPath)
 			} else {
-				gttTomlPath = t.InputPath().SetExt("gtt.toml").String()
-				gttTomlPath = filepath.Join(m.BuildContext.OutputPath(), gttTomlPath)
+				gttTomlPath = t.InputPath().SetExt(".gtt.toml").String()
+				gttTomlPath = filepath.Join(m.OutputPath(), gttTomlPath)
 			}
 
 			gabuf, err := ioutil.ReadFile(gttTomlPath)
@@ -124,7 +121,7 @@ func (m *DartExtModule) Execute(targets map[string]pgs.File, pkgs map[string]pgs
 			}
 
 			var gae arb.GttArchiveEntity
-			err = json.Unmarshal(gabuf, &gae)
+			err = toml.Unmarshal(gabuf, &gae)
 			if err != nil {
 				m.Failf("unmarshal GttArchiveEntity err: ", err)
 			}

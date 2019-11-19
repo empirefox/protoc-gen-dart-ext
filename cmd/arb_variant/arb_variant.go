@@ -4,11 +4,14 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"os"
 	"path/filepath"
 	"regexp"
 	"sort"
 	"strings"
 	"text/template"
+
+	"github.com/empirefox/protoc-gen-dart-ext/pkg/util"
 
 	"github.com/Masterminds/sprig"
 	"github.com/empirefox/makeplural/plural"
@@ -24,6 +27,7 @@ const (
 
 var (
 	langs = flag.String("lang", "", "language subset")
+	force = flag.Bool("force", false, "force copy even when no plural found")
 
 	outputTpl = template.Must(template.New("output").
 			Funcs(sprig.HermeticTxtFuncMap()).
@@ -72,6 +76,20 @@ func main() {
 	}
 
 	if !hasSelect {
+		if *force {
+			outputPath := flag.Lookup("output").Value.String()
+			varaints := getLangs()
+			dsts := make([]string, len(varaints))
+			for i, lang := range varaints {
+				dsts[i] = os.ExpandEnv(makeArbPath(outputPath, lang))
+			}
+			err = util.CopyFile(flag.Lookup("input").Value.String(), dsts...)
+			if err != nil {
+				log.Fatalf("copy file: %v", err)
+			}
+			return
+		}
+
 		log.Println("No plural found, so skip generate variants!")
 		return
 	}

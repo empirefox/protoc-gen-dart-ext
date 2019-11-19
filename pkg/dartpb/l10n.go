@@ -180,6 +180,8 @@ func (l *L10nOneOf) DefaultAssetValue(assetName string) string {
 func (l *L10nField) DefaultAssetValue(assetName string) string {
 	var v string
 	switch assetName {
+	case "":
+		v = l.Extension.Value
 	case "Label":
 		v = l.Extension.Label
 	case "Helper":

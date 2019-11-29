@@ -1,20 +1,32 @@
 package dartpb
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/arb"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/dart"
+	"github.com/jhump/protoreflect/desc"
+	"github.com/jhump/protoreflect/dynamic"
 	pgs "github.com/lyft/protoc-gen-star"
 	"github.com/relvacode/iso8601"
 	"golang.org/x/text/language"
 )
 
+type FileConfig struct {
+	Dart      *dart.Dart
+	Reflected map[string]*desc.FileDescriptor
+	Locale    language.Tag
+	Pgs       pgs.File
+	ZeroPlan  string
+}
+
 type File struct {
-	Dart *dart.Dart
-	Pgs  pgs.File
+	FileConfig
 
 	Names dart.FileNames
+
+	Zeros *Zeros
 
 	Translator *Translator
 
@@ -24,70 +36,58 @@ type File struct {
 	Enums    []*Enum
 }
 
-func NewFile(d *dart.Dart, locale language.Tag, pgsFile pgs.File) (*File, error) {
-	names := d.FileNames(pgsFile)
+func NewFile(c FileConfig) (*File, error) {
+	names := c.Dart.FileNames(c.Pgs)
 
 	f := &File{
-		Dart:  d,
-		Pgs:   pgsFile,
-		Names: names,
+		FileConfig: c,
+		Names:      names,
 
 		Translator: &Translator{
-			Dart: d,
+			Dart: c.Dart,
 			Arb: &arb.Arb{
 				LastModified: iso8601.Time{time.Now()},
-				Locale:       locale,
+				Locale:       c.Locale,
 				Entity:       names.EntityName().String(),
 			},
 		},
-		Validators: &Validators{
-			BuildContextAccessor:  "_ctx",
-			InfoAccessor:          "_info",
-			L10nAccessor:          "_l10n",
-			FieldAccessor:         "_v",
-			EnumFieldL10nAccessor: "_enumL10n",
-			ImportManager: dart.NewDefaultImportManager(d,
-				dart.ValidateFile.RootFilePath(pgsFile)),
-		},
 	}
-	f.Validators.File = f
 
-	validateImportPb, err := f.Validators.ImportManager.
-		Resolve(dart.PbFile.RootFilePath(pgsFile))
+	imz, err := dart.NewDefaultImportManager(c.Dart, dart.ZeroFile.RootFilePath(c.Pgs))
 	if err != nil {
 		return nil, err
 	}
+	z := Zeros{
+		File:             f,
+		Plan:             c.ZeroPlan,
+		ImportManager:    imz,
+		MemberPrefix:     "_$",
+		MemberElemSuffix: "_e",
+	}
+	f.Zeros = &z
 
-	validateImportL10n, err := f.Validators.ImportManager.
-		Resolve(dart.L10nFile.RootFilePath(pgsFile))
+	imv, err := dart.NewDefaultImportManager(c.Dart, dart.ValidateFile.RootFilePath(c.Pgs))
 	if err != nil {
 		return nil, err
 	}
+	v := Validators{
+		File:                  f,
+		BuildContextAccessor:  "_ctx",
+		InfoAccessor:          "_info",
+		L10nAccessor:          "_l10n",
+		FieldAccessor:         "_v",
+		EnumFieldL10nAccessor: "_enumL10n",
+		ImportManager:         imv,
+	}
+	f.Validators = &v
 
-	f.Validators.CollectionLib = f.Validators.ImportManager.
-		Import("dart:collection")
-	f.Validators.ConvertLib = f.Validators.ImportManager.
-		Import("dart:convert")
-	f.Validators.FoundationFile = f.Validators.ImportManager.
-		Import("package:flutter/foundation.dart")
-	f.Validators.MaterialFile = f.Validators.ImportManager.
-		Import("package:flutter/material.dart")
-	f.Validators.FixnumFile = f.Validators.ImportManager.
-		Import("package:fixnum/fixnum.dart")
-	f.Validators.EmailValidatorFile = f.Validators.ImportManager.
-		Import("package:email_validator/email_validator.dart")
-	f.Validators.PgdeFile = f.Validators.ImportManager.
-		Import("package:pgde/pgde.dart")
-	f.Validators.PbFile = f.Validators.ImportManager.Import(validateImportPb)
-	f.Validators.L10nFile = f.Validators.ImportManager.Import(validateImportL10n)
-
-	for _, pgsNty := range pgsFile.AllEnums() {
+	for _, pgsNty := range c.Pgs.AllEnums() {
 		err := f.addEnum(pgsNty)
 		if err != nil {
 			return nil, err
 		}
 	}
-	for _, pgsNty := range pgsFile.AllMessages() {
+	for _, pgsNty := range c.Pgs.AllMessages() {
 		err := f.addMessage(pgsNty)
 		if err != nil {
 			return nil, err
@@ -103,6 +103,21 @@ func NewFile(d *dart.Dart, locale language.Tag, pgsFile pgs.File) (*File, error)
 	}
 
 	return f, nil
+}
+
+func (f *File) ReflectMessage(pgsNty pgs.Message) (*dynamic.Message, error) {
+	if pgsNty == nil {
+		return nil, fmt.Errorf("reflect nil pgs message")
+	}
+	fd, ok := f.Reflected[pgsNty.File().Name().String()]
+	if !ok {
+		return nil, fmt.Errorf("reflect proto file not found: %s", pgsNty.File().Name())
+	}
+	md := fd.FindMessage(pgsNty.FullyQualifiedName())
+	if md == nil {
+		return nil, fmt.Errorf("reflect proto message not found: %s", pgsNty.FullyQualifiedName())
+	}
+	return dynamic.NewMessage(md), nil
 }
 
 func (f *File) SetL10nTo(lang *arb.Arb) {

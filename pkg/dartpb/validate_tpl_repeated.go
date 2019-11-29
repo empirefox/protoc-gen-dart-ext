@@ -10,6 +10,5 @@ func (vf *ValidateField) RepeatedElemIsBytes() bool {
 }
 
 func (vf *ValidateField) RepeatedElemType() (dart.Qualifier, error) {
-	t := vf.Pgs.Type()
-	return vf.dartTypeForFieldType(t.Element())
+	return vf.ImportManager().TypeForNonRangeFieldType(vf.Pgs.Type().Element())
 }

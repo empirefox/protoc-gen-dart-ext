@@ -76,10 +76,6 @@ abstract class BeTime<F, T> {
       const _MsPerTime(Duration.millisecondsPerMinute);
   static const BeTime<int, DateTime> hourTime =
       const _MsPerTime(Duration.millisecondsPerHour);
-  static const BeTime<int, DateTime> dayTime =
-      const _MsPerTime(Duration.millisecondsPerDay);
-  static const BeTime<int, DateTime> weekTime =
-      const _MsPerTime(millisecondsPerWeek);
 
   static const BeTime<DateTime, DateTime> ofDay = const _TimeOfDay();
   static const BeTime<int, DateTime> nanosecondOfDay =
@@ -104,10 +100,6 @@ abstract class BeTime<F, T> {
   static const BeTime<int, Duration> secondDur = const _SecondDur();
   static const BeTime<int, Duration> minuteDur = const _MinuteDur();
   static const BeTime<int, Duration> hourDur = const _HourDur();
-  static const BeTime<int, Duration> dayDur = const _DayDur();
-  static const BeTime<int, Duration> weekDur = const _WeekDur();
-
-  static const int millisecondsPerWeek = Duration.millisecondsPerDay * 7;
 
   const BeTime();
   T toTime(F v);
@@ -254,18 +246,3 @@ class _HourDur implements BeTime<int, Duration> {
   int ofTime(Duration v) => v.inHours;
 }
 
-class _DayDur implements BeTime<int, Duration> {
-  const _DayDur();
-  @override
-  Duration toTime(int v) => Duration(days: v);
-  @override
-  int ofTime(Duration v) => v.inDays;
-}
-
-class _WeekDur implements BeTime<int, Duration> {
-  const _WeekDur();
-  @override
-  Duration toTime(int v) => Duration(days: v * 7);
-  @override
-  int ofTime(Duration v) => v.inDays ~/ 7;
-}

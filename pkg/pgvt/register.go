@@ -10,6 +10,7 @@ import (
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/dart"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/dartpb"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/genshared"
+	"github.com/empirefox/protoc-gen-dart-ext/pkg/util"
 	"github.com/golang/protobuf/ptypes"
 	"github.com/golang/protobuf/ptypes/duration"
 	"github.com/golang/protobuf/ptypes/timestamp"
@@ -27,10 +28,9 @@ func Register(tpl *template.Template, params pgs.Parameters) {
 		"constRef":        fns.constRef,
 		"coreDur":         fns.coreDur,
 		"durGt":           fns.durGt,
-		"isOfMessageType": fns.isOfMessageType,
 		"lit":             fns.lit,
-		"render":          Render(tpl),
-		"renderConstants": fns.renderConstants(tpl),
+		"render":          genshared.RenderTemplater(tpl),
+		"renderConstants": genshared.RenderConstants(tpl),
 		"coreTs":          fns.coreTs,
 		"tsGt":            fns.tsGt,
 		"unwrap":          fns.unwrap,
@@ -113,7 +113,7 @@ func (fns dartFuncs) lit(f *dartpb.ValidateField, x interface{}) (string, error)
 	case int64, uint64:
 		return fmt.Sprintf("%s(%d)", f.Int64Type(), x), nil
 	case []byte:
-		return `const <int>[` + genshared.ToBytes(v) + `]`, nil
+		return `const <int>[` + util.BytesLiteral(v) + `]`, nil
 	case *duration.Duration:
 		return fns.coreDur(v)
 	case *timestamp.Timestamp:
@@ -172,45 +172,14 @@ func (fns dartFuncs) tsGt(a, b *timestamp.Timestamp) bool {
 }
 
 func (fns dartFuncs) unwrap(f *dartpb.ValidateField) (*dartpb.ValidateField, error) {
-	f, err := f.Unwrap("")
+	accessor := f.Accessor()
+	f, err := f.Unwrap("wrapper")
 	if err != nil {
 		return nil, err
 	}
-	wrapperField0 := f.File.Dart.NameOf(f.Pgs.Type().Embed().Fields()[0])
-	f.Pgv.AccessorOverride = f.Accessor().Dot(wrapperField0).String()
+	wrapperField0 := f.File.Dart.NameOf(f.ElementOrEmbed().Fields()[0])
+	f.Pgv.AccessorOverride = accessor.Dot(wrapperField0).String()
 	return f, nil
-}
-
-func (fns dartFuncs) isOfMessageType(f *dartpb.ValidateField) bool {
-	return f.Pgs.Type().ProtoType() == pgs.MessageT
-}
-
-func Render(tpl *template.Template) func(v *dartpb.ValidateField) (string, error) {
-	return func(v *dartpb.ValidateField) (string, error) {
-		var b bytes.Buffer
-		err := tpl.ExecuteTemplate(&b, v.Pgv.Typ, v)
-		return b.String(), err
-	}
-}
-
-func (fns dartFuncs) renderConstants(tpl *template.Template) func(v *dartpb.ValidateField) (string, error) {
-	return func(v *dartpb.ValidateField) (string, error) {
-		var b bytes.Buffer
-		var err error
-
-		hasConstTemplate := false
-		for _, t := range tpl.Templates() {
-			if t.Name() == v.Pgv.Typ+"Const" {
-				hasConstTemplate = true
-			}
-		}
-
-		if hasConstTemplate {
-			err = tpl.ExecuteTemplate(&b, v.Pgv.Typ+"Const", v)
-		}
-
-		return b.String(), err
-	}
 }
 
 func (fns dartFuncs) constRef(f *dartpb.ValidateField, rule string) string {

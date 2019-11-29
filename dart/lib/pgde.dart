@@ -6,6 +6,7 @@ export 'src/format/currency_formats.dart';
 export 'src/format/formatter.dart';
 export 'src/format/number_format.dart';
 export 'src/format/time_format.dart';
+export 'src/zero//zero.dart';
 
 export 'src/l10n/pgde.l10n.dart';
 

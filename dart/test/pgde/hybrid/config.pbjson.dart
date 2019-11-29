@@ -1,8 +1,9 @@
 ///
 //  Generated code. Do not modify.
 //  source: hybrid/config.proto
-///
-// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name
+//
+// @dart = 2.3
+// ignore_for_file: camel_case_types,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type
 
 const ConfigTree$json = const {
   '1': 'ConfigTree',
@@ -30,9 +31,9 @@ const Basic$json = const {
     const {'1': 'version', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'version'},
     const {'1': 'dev', '3': 2, '4': 1, '5': 8, '10': 'dev'},
     const {'1': 'enableBind', '3': 3, '4': 1, '5': 8, '10': 'enableBind'},
-    const {'1': 'bindIp', '3': 4, '4': 1, '5': 9, '8': const {}, '10': 'bindIp'},
+    const {'1': 'bindIp', '3': 4, '4': 1, '5': 12, '8': const {}, '10': 'bindIp'},
     const {'1': 'bindPort', '3': 5, '4': 1, '5': 13, '8': const {}, '10': 'bindPort'},
-    const {'1': 'flushIntervalMs', '3': 6, '4': 1, '5': 13, '10': 'flushIntervalMs'},
+    const {'1': 'flushIntervalMs', '3': 6, '4': 1, '5': 13, '8': const {}, '10': 'flushIntervalMs'},
     const {'1': 'token', '3': 7, '4': 1, '5': 9, '8': const {}, '10': 'token'},
   ],
 };
@@ -49,7 +50,7 @@ const Log$json = const {
 const Ipfs$json = const {
   '1': 'Ipfs',
   '2': const [
-    const {'1': 'fakeApiListenIp', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'fakeApiListenIp'},
+    const {'1': 'fakeApiListenIp', '3': 1, '4': 1, '5': 12, '8': const {}, '10': 'fakeApiListenIp'},
     const {'1': 'fakeApiListenPort', '3': 2, '4': 1, '5': 13, '8': const {}, '10': 'fakeApiListenPort'},
     const {'1': 'enableGateway', '3': 3, '4': 1, '5': 8, '10': 'enableGateway'},
     const {'1': 'gatewayServerName', '3': 4, '4': 1, '5': 9, '8': const {}, '10': 'gatewayServerName'},
@@ -109,7 +110,7 @@ const HttpProxyServer$json = const {
 const AdpRouter$json = const {
   '1': 'AdpRouter',
   '2': const [
-    const {'1': 'rulesDirName', '3': 1, '4': 1, '5': 9, '10': 'rulesDirName'},
+    const {'1': 'rulesDirName', '3': 1, '4': 1, '5': 9, '8': const {}, '10': 'rulesDirName'},
     const {'1': 'blocked', '3': 2, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '8': const {}, '10': 'blocked'},
     const {'1': 'unblocked', '3': 3, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '8': const {}, '10': 'unblocked'},
     const {'1': 'etcHostsIpAsBlocked', '3': 4, '4': 1, '5': 8, '10': 'etcHostsIpAsBlocked'},
@@ -120,11 +121,12 @@ const AdpRouter$json = const {
 const IPNetRouter$json = const {
   '1': 'IPNetRouter',
   '2': const [
-    const {'1': 'ip', '3': 1, '4': 3, '5': 9, '10': 'ip'},
-    const {'1': 'net', '3': 2, '4': 3, '5': 9, '10': 'net'},
-    const {'1': 'matched', '3': 3, '4': 1, '5': 9, '10': 'matched'},
-    const {'1': 'unmatched', '3': 4, '4': 1, '5': 9, '10': 'unmatched'},
-    const {'1': 'fileTest', '3': 5, '4': 1, '5': 9, '10': 'fileTest'},
+    const {'1': 'ip', '3': 1, '4': 3, '5': 11, '6': '.google.protobuf.BytesValue', '8': const {}, '10': 'ip'},
+    const {'1': 'netv4', '3': 2, '4': 3, '5': 11, '6': '.google.protobuf.BytesValue', '8': const {}, '10': 'netv4'},
+    const {'1': 'netv6', '3': 3, '4': 3, '5': 11, '6': '.google.protobuf.BytesValue', '8': const {}, '10': 'netv6'},
+    const {'1': 'matched', '3': 4, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '8': const {}, '10': 'matched'},
+    const {'1': 'unmatched', '3': 5, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '8': const {}, '10': 'unmatched'},
+    const {'1': 'fileTest', '3': 6, '4': 1, '5': 11, '6': '.google.protobuf.StringValue', '8': const {}, '10': 'fileTest'},
   ],
 };
 

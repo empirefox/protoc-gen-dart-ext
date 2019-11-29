@@ -17,78 +17,71 @@ type Validators struct {
 	EnumFieldL10nAccessor dart.Qualifier
 
 	ImportManager      *dart.ImportManager
-	CollectionLib      *dart.ImportFile
-	ConvertLib         *dart.ImportFile
-	FoundationFile     *dart.ImportFile
-	MaterialFile       *dart.ImportFile
-	FixnumFile         *dart.ImportFile
-	EmailValidatorFile *dart.ImportFile
-	PgdeFile           *dart.ImportFile
-	PbFile             *dart.ImportFile
-	L10nFile           *dart.ImportFile
+	emailValidatorType dart.Qualifier
+	pbFile             *dart.ImportFile
+	l10nType           dart.Qualifier
 }
 
-func (vf *ValidateField) CollectionLib() *dart.ImportFile  { return vf.Validators().CollectionLib }
-func (vf *ValidateField) ConvertLib() *dart.ImportFile     { return vf.Validators().ConvertLib }
-func (vf *ValidateField) FoundationFile() *dart.ImportFile { return vf.Validators().FoundationFile }
-func (vf *ValidateField) MaterialFile() *dart.ImportFile   { return vf.Validators().MaterialFile }
-func (vf *ValidateField) FixnumFile() *dart.ImportFile     { return vf.Validators().FixnumFile }
-func (vf *ValidateField) EmailValidatorFile() *dart.ImportFile {
-	return vf.Validators().EmailValidatorFile
+func (s *Validators) EmailValidatorType() dart.Qualifier {
+	if s.emailValidatorType == "" {
+		s.emailValidatorType = s.ImportManager.
+			Import("package:email_validator/email_validator.dart").
+			AsDot("EmailValidator")
+	}
+	return s.emailValidatorType
 }
-func (vf *ValidateField) PgdeFile() *dart.ImportFile { return vf.Validators().PgdeFile }
-func (vf *ValidateField) PbFile() *dart.ImportFile   { return vf.Validators().PbFile }
-func (vf *ValidateField) L10nFile() *dart.ImportFile { return vf.Validators().L10nFile }
-
-func (v *Validators) fullPbClass(pgsNty pgs.Entity) (dart.Qualifier, error) {
-	return v.ImportManager.PbFileDot(pgsNty, v.File.Dart.NameOf(pgsNty))
+func (s *Validators) PbFile() *dart.ImportFile {
+	if s.pbFile == nil {
+		s.pbFile = s.ImportManager.ImportPbFile(s.File.Pgs)
+	}
+	return s.pbFile
+}
+func (s *Validators) L10nType() dart.Qualifier {
+	if s.l10nType == "" {
+		s.l10nType = s.ImportManager.ImportL10nFile(s.File.Pgs).
+			AsDot(s.File.Names.L10nName())
+	}
+	return s.l10nType
 }
 
-func (v *Validators) FullPbClass(pgsNty pgs.Message) (dart.Qualifier, error) {
-	return v.fullPbClass(pgsNty)
+func (s *Validators) FullPbClass(pgsNty pgs.Message) (dart.Qualifier, error) {
+	return s.ImportManager.FullPbClassOrEnum(pgsNty)
 }
 
-func (v *Validators) FullPbEnum(pgsNty pgs.Enum) (dart.Qualifier, error) {
-	return v.fullPbClass(pgsNty)
+func (s *Validators) FullPbEnum(pgsNty pgs.Enum) (dart.Qualifier, error) {
+	return s.ImportManager.FullPbClassOrEnum(pgsNty)
 }
 
 type ValidateField struct {
 	*Field
+	dart.ImportManagerCommonFiles
 	Pgv *shared.RuleContext
 }
 
+func (im *ValidateField) EmailValidatorType() dart.Qualifier {
+	return im.Validators().EmailValidatorType()
+}
+func (im *ValidateField) PbFile() *dart.ImportFile { return im.Validators().PbFile() }
+
+func (vf *ValidateField) TemplateName() string      { return vf.Pgv.Typ }
+func (vf *ValidateField) ConstTemplateName() string { return vf.Pgv.Typ + "Const" }
+
 func (vf *ValidateField) Key(name, idx string) (*ValidateField, error) {
-	outPgv, err := vf.Pgv.Key(name, idx)
-	if err != nil {
-		return nil, err
-	}
-	return &ValidateField{
-		Field: vf.Field,
-		Pgv:   &outPgv,
-	}, nil
+	return vf.withPgv(vf.Pgv.Key(name, idx))
 }
-
 func (vf *ValidateField) Elem(name, idx string) (*ValidateField, error) {
-	outPgv, err := vf.Pgv.Elem(name, idx)
-	if err != nil {
-		return nil, err
-	}
-	return &ValidateField{
-		Field: vf.Field,
-		Pgv:   &outPgv,
-	}, nil
+	return vf.withPgv(vf.Pgv.Elem(name, idx))
 }
-
 func (vf *ValidateField) Unwrap(name string) (out *ValidateField, err error) {
-	outPgv, err := vf.Pgv.Unwrap(name)
+	return vf.withPgv(vf.Pgv.Unwrap(name))
+}
+func (vf *ValidateField) withPgv(outPgv shared.RuleContext, err error) (*ValidateField, error) {
 	if err != nil {
 		return nil, err
 	}
-
-	return &ValidateField{
-		Field: vf.Field,
-		Pgv:   &outPgv,
-	}, nil
+	out := *vf
+	out.Pgv = &outPgv
+	return &out, nil
 }
 
 func (vf *ValidateField) IfHasBegin() string {
@@ -117,9 +110,6 @@ func (vf *ValidateField) L10nAccessor() dart.Qualifier {
 func (vf *ValidateField) FieldAccessor() dart.Qualifier { return vf.Validators().FieldAccessor }
 func (vf *ValidateField) EnumFieldL10nAccessor() dart.Qualifier {
 	return vf.Validators().EnumFieldL10nAccessor
-}
-func (vf *ValidateField) Int64Type() dart.Qualifier {
-	return vf.Validators().FixnumFile.AsDot("Int64")
 }
 
 func (vf *ValidateField) Accessor() dart.Qualifier {
@@ -164,61 +154,21 @@ func (vf *ValidateField) Err3Args() string {
 }
 
 func (vf *ValidateField) DartType() (dart.Qualifier, error) {
-	t := vf.Pgs.Type()
-
-	if t.IsMap() {
-		key, err := vf.dartTypeForFieldType(t.Key())
-		if err != nil {
-			return "", err
-		}
-		value, err := vf.dartTypeForFieldType(t.Element())
-		if err != nil {
-			return "", err
-		}
-		return dart.Qualifier(fmt.Sprintf("Map<%s, %s>", key, value)), nil
-	}
-
-	if t.IsRepeated() {
-		value, err := vf.dartTypeForFieldType(t.Element())
-		if err != nil {
-			return "", err
-		}
-		return dart.Qualifier(fmt.Sprintf("List<%s>", value)), nil
-	}
-
-	return vf.dartTypeForFieldType(t)
-}
-
-type embedOrEnumOrCoreFieldType interface {
-	IsEmbed() bool
-	Embed() pgs.Message
-	IsEnum() bool
-	Enum() pgs.Enum
-	ProtoType() pgs.ProtoType
-}
-
-func (vf *ValidateField) dartTypeForFieldType(ft embedOrEnumOrCoreFieldType) (dart.Qualifier, error) {
-	if ft.IsEmbed() {
-		return vf.Validators().FullPbClass(ft.Embed())
-	}
-	if ft.IsEnum() {
-		return vf.Validators().FullPbEnum(ft.Enum())
-	}
-	// make sure it will never return dynamic
-	return vf.dartTypeForCoreProtoType(ft.ProtoType()), nil
+	return vf.ImportManager().TypeForFieldType(vf.Pgs.Type())
 }
 
 // only can be used in constRef
 func (vf *ValidateField) DartConstRefDefineType() (dart.Qualifier, error) {
 	t := vf.Pgs.Type()
+	m := vf.ImportManager()
 
 	// Map key and value types
 	if t.IsMap() {
 		switch vf.Pgv.AccessorOverride {
 		case "key":
-			return vf.dartTypeForCoreProtoType(t.Key().ProtoType()), nil
+			return m.TypeForCoreFieldType(t.Key().ProtoType()), nil
 		case "value":
-			return vf.dartTypeForCoreProtoType(t.Element().ProtoType()), nil
+			return m.TypeForCoreFieldType(t.Element().ProtoType()), nil
 		}
 	}
 
@@ -254,23 +204,5 @@ func (vf *ValidateField) DartConstRefDefineType() (dart.Qualifier, error) {
 		return vf.Validators().FullPbEnum(t.Enum())
 	}
 
-	return vf.dartTypeForCoreProtoType(t.ProtoType()), nil
-}
-
-func (vf *ValidateField) dartTypeForCoreProtoType(t pgs.ProtoType) dart.Qualifier {
-	switch t {
-	case pgs.Int32T, pgs.UInt32T, pgs.SInt32, pgs.Fixed32T, pgs.SFixed32:
-		return "int"
-	case pgs.Int64T, pgs.UInt64T, pgs.SInt64, pgs.Fixed64T, pgs.SFixed64:
-		return vf.Int64Type()
-	case pgs.DoubleT, pgs.FloatT:
-		return "double"
-	case pgs.BoolT:
-		return "bool"
-	case pgs.StringT:
-		return "String"
-	case pgs.BytesT:
-		return "List<int>"
-	}
-	return "dynamic"
+	return m.TypeForCoreFieldType(t.ProtoType()), nil
 }

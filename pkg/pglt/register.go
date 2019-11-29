@@ -20,7 +20,7 @@ func Register(tpl *template.Template) {
 		genshared.Funcs,
 		messageformat.Funcs,
 		template.FuncMap{
-			"renderNode": genshared.Render(tpl),
+			"render":     genshared.RenderTemplater(tpl),
 			"renderJoin": genshared.RenderJoin(tpl),
 			"gttToData":  GttToData,
 			"resource":   NewArbResource,
@@ -30,6 +30,7 @@ func Register(tpl *template.Template) {
 			"matchFn": func(pluralLib *dart.ImportFile, tag language.Tag) dart.Qualifier {
 				return pluralLib.AsDot(dart.Qualifier("match" + util.PowerCamel(tag.String())))
 			},
+			"node": func(nd messageformat.Node) Node { return Node{nd} },
 		})
 
 	template.Must(tpl.Funcs(funcs).Parse(fileTplStr))
@@ -75,10 +76,7 @@ func (ar ArbResource) PluralLib(varname string) (*dart.ImportFile, error) {
 type DartArb struct {
 	*arb.Arb
 	*dart.ImportManager
-	Delegate      []arb.SupportedLocale
-	CollectionLib *dart.ImportFile
-	FoundationLib *dart.ImportFile
-	MaterialLib   *dart.ImportFile
+	Delegate []arb.SupportedLocale
 }
 
 type Entity struct {
@@ -97,10 +95,6 @@ type GttData struct {
 }
 
 func GttToData(data GttData) (*RenderData, error) {
-	collectionLib := data.ImportManager.Import("dart:collection")
-	foundationLib := data.ImportManager.Import("package:flutter/foundation.dart")
-	materialLib := data.ImportManager.Import("package:flutter/material.dart")
-
 	entities := make([]Entity, len(data.Gtt))
 	for i, as := range data.Gtt {
 		list := make([]DartArb, len(as.List))
@@ -115,9 +109,6 @@ func GttToData(data GttData) (*RenderData, error) {
 				Arb:           a,
 				ImportManager: data.ImportManager,
 				Delegate:      delegate,
-				CollectionLib: collectionLib,
-				FoundationLib: foundationLib,
-				MaterialLib:   materialLib,
 			}
 		}
 		entities[i] = Entity{
@@ -129,4 +120,12 @@ func GttToData(data GttData) (*RenderData, error) {
 		ImportManager: data.ImportManager,
 		Entities:      entities,
 	}, nil
+}
+
+type Node struct {
+	messageformat.Node
+}
+
+func (nd Node) TemplateName() string {
+	return nd.Node.Type()
 }

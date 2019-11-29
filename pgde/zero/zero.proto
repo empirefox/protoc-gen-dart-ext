@@ -9,13 +9,10 @@ import "google/protobuf/any.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 
-extend google.protobuf.EnumOptions {
-  bool defaultNotSet = 919113;
-}
-
-extend google.protobuf.FieldOptions {
-  pgde.zero.Zero setTo = 919113;
-}
+extend google.protobuf.MessageOptions { bool disabled = 919113; }
+extend google.protobuf.OneofOptions { int32 default = 919113; }
+extend google.protobuf.EnumOptions { bool defaultNotSet = 919113; }
+extend google.protobuf.FieldOptions { pgde.zero.Zero to = 919113; }
 
 message Zero {
   oneof type {
@@ -38,16 +35,70 @@ message Zero {
 
     // Complex Field Types
     int32 enum = 16;
-    // include target Message zero
-    bool message = 17;
-    // JSON
-    bytes repeated = 18;
-    // JSON
-    bytes map = 19;
+    Message message = 17;
+    Repeated repeated = 18;
+    Map map = 19;
 
-    // Well-Known Field Types
     google.protobuf.Any any = 20;
-    google.protobuf.Duration duration = 21;
-    google.protobuf.Timestamp timestamp = 22;
+    Duration duration = 21;
+    Time time = 22;
+  }
+
+  Affect onCreate = 30;
+  Affect onLoad = 31;
+  OnSave onSave = 32;
+}
+
+message Affect {
+  oneof on {
+    bool all = 1;
+    bool none = 2;
+    // build time plan past by protoc params, like: frontend, backend
+    string plan = 3;
+  }
+}
+
+message OnSave {
+  enum Action {
+    setTo = 0;
+    clearIfEqual = 1;
+    noChange = 2;
+  }
+  Action action = 1;
+  Affect affect = 2;
+}
+
+message Message {
+  bytes json = 1;
+  bool skip = 2;
+}
+
+message Repeated {
+  bytes json = 1;
+  Zero items = 2;
+}
+
+message Map {
+  bytes json = 1;
+  Zero values = 2;
+}
+
+// can be set to any int field, and can set format to time, default is second
+message Duration {
+  oneof is {
+    google.protobuf.Duration wkt = 1;
+    string parse = 2;
+  }
+}
+
+// can be set to any int field, and can set format to time, default is second
+message Time {
+  oneof is {
+    google.protobuf.Timestamp wkt = 1;
+    // UTC time
+    string parse = 2;
+    bool now = 3;
+    google.protobuf.Duration nowAdd = 4;
+    string nowAddParse = 5;
   }
 }

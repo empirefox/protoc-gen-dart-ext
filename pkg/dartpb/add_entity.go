@@ -1,12 +1,20 @@
 package dartpb
 
 import (
+	"fmt"
+
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/l10n"
+	"github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/zero"
 	"github.com/envoyproxy/protoc-gen-validate/templates/shared"
 	pgs "github.com/lyft/protoc-gen-star"
 )
 
 func (f *File) addMessage(pgsNty pgs.Message) error {
+	zeroDisabled, err := ZeroDisabled(pgsNty)
+	if err != nil {
+		return err
+	}
+
 	validateDisabled, err := shared.Disabled(pgsNty)
 	if err != nil {
 		return err
@@ -25,12 +33,20 @@ func (f *File) addMessage(pgsNty pgs.Message) error {
 			DartName: names.Name(),
 			File:     f,
 		},
-		Pgs:      pgsNty,
-		Names:    names,
-		L10n:     &l10nNty,
-		Validate: &ValidateMessage{Disabled: validateDisabled},
+		Pgs:   pgsNty,
+		Names: names,
+		Zero: &ZeroMessage{
+			ImportManagerCommonFiles: f.Zeros.ImportManager,
+			Disabled:                 zeroDisabled,
+		},
+		L10n: &l10nNty,
+		Validate: &ValidateMessage{
+			ImportManagerCommonFiles: f.Validators.ImportManager,
+			Disabled:                 validateDisabled,
+		},
 	}
 
+	nty.Zero.Message = nty
 	l10nNty.Message = nty
 	nty.Validate.Message = nty
 	f.Messages = append(f.Messages, nty)
@@ -53,6 +69,12 @@ func (f *File) addMessage(pgsNty pgs.Message) error {
 }
 
 func (msg *Message) addField(pgsToOneOf map[pgs.OneOf]*OneOf, pgsNty pgs.Field) error {
+	zeroNty := ZeroField{ImportManagerCommonFiles: msg.File.Zeros.ImportManager}
+	_, err := pgsNty.Extension(zero.E_To, &zeroNty.Extension)
+	if err != nil {
+		return err
+	}
+
 	pgvCtx, err := rulesContext(pgsNty)
 	if err != nil {
 		return err
@@ -90,13 +112,18 @@ func (msg *Message) addField(pgsToOneOf map[pgs.OneOf]*OneOf, pgsNty pgs.Field) 
 			DartName: names.Name(),
 			File:     msg.File,
 		},
-		Pgs:      pgsNty,
-		Names:    names,
-		Message:  msg,
-		L10n:     &l10nNty,
-		Validate: &ValidateField{Pgv: &pgvCtx},
+		Pgs:     pgsNty,
+		Names:   names,
+		Message: msg,
+		Zero:    &zeroNty,
+		L10n:    &l10nNty,
+		Validate: &ValidateField{
+			ImportManagerCommonFiles: msg.File.Validators.ImportManager,
+			Pgv:                      &pgvCtx,
+		},
 	}
 
+	zeroNty.Field = nty
 	l10nNty.Entity = nty
 	nty.Validate.Field = nty
 	msg.Fields = append(msg.Fields, nty)
@@ -104,6 +131,9 @@ func (msg *Message) addField(pgsToOneOf map[pgs.OneOf]*OneOf, pgsNty pgs.Field) 
 	if pgsNty.InOneOf() {
 		oo := pgsToOneOf[pgsNty.OneOf()]
 		oo.Fields = append(oo.Fields, nty)
+		if pgsNty.Descriptor().GetNumber() == oo.Zero.defaultNumber {
+			oo.Zero.Default = nty.Zero
+		}
 	} else {
 		msg.NonOneOfFields = append(msg.NonOneOfFields, nty)
 	}
@@ -112,6 +142,25 @@ func (msg *Message) addField(pgsToOneOf map[pgs.OneOf]*OneOf, pgsNty pgs.Field) 
 }
 
 func (msg *Message) addOneof(pgsNty pgs.OneOf) (*OneOf, error) {
+	var zeroNty ZeroOneOf
+	_, err := pgsNty.Extension(zero.E_Default, &zeroNty.defaultNumber)
+	if err != nil {
+		return nil, err
+	}
+
+	if zeroNty.defaultNumber != 0 {
+		var found bool
+		for _, fnty := range pgsNty.Fields() {
+			if fnty.Descriptor().GetNumber() == zeroNty.defaultNumber {
+				found = true
+			}
+		}
+		if !found {
+			return nil, fmt.Errorf("default not found for oneof: %s",
+				pgsNty.FullyQualifiedName())
+		}
+	}
+
 	validateRequired, err := shared.RequiredOneOf(pgsNty)
 	if err != nil {
 		return nil, err
@@ -130,13 +179,18 @@ func (msg *Message) addOneof(pgsNty pgs.OneOf) (*OneOf, error) {
 			DartName: names.Name(),
 			File:     msg.File,
 		},
-		Pgs:      pgsNty,
-		Names:    names,
-		Message:  msg,
-		L10n:     &l10nNty,
-		Validate: &ValidateOneOf{Required: validateRequired},
+		Pgs:     pgsNty,
+		Names:   names,
+		Message: msg,
+		Zero:    &zeroNty,
+		L10n:    &l10nNty,
+		Validate: &ValidateOneOf{
+			ImportManagerCommonFiles: msg.File.Validators.ImportManager,
+			Required:                 validateRequired,
+		},
 	}
 
+	zeroNty.OneOf = nty
 	l10nNty.Entity = nty
 	nty.Validate.OneOf = nty
 	msg.OneOfs = append(msg.OneOfs, nty)

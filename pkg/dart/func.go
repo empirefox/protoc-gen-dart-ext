@@ -17,7 +17,8 @@ var Funcs = template.FuncMap{
 
 func (d *Dart) Funcs() template.FuncMap {
 	return template.FuncMap{
-		"dartNameOf": d.NameOf,
+		"dartName":  d.NameOf,
+		"dartNames": d.NamesOf,
 	}
 }
 

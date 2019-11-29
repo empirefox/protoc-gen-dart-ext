@@ -4,21 +4,7 @@
 /// source: hybrid/config.proto
 // ignore_for_file: non_constant_identifier_names,unnecessary_brace_in_string_interps,unused_local_variable
 
-import 'dart:collection' as $0 show HashSet;
-import 'dart:convert' as $1 show utf8;
-import 'package:flutter/material.dart' as $3 show BuildContext, Localizations;
-import 'package:pgde/pgde.dart' as $6
-    show
-        BeSomethingError,
-        ConstError,
-        GeneratedValidator,
-        InError,
-        LenConstError,
-        Lists,
-        OneofRequiredError,
-        RequiredError,
-        ValidateInfo;
-import 'config.pb.dart' as $7
+import 'config.pb.dart' as $0
     show
         AdpRouter,
         Basic,
@@ -31,10 +17,25 @@ import 'config.pb.dart' as $7
         Log,
         RouterItem,
         RouterItem_Router;
-import 'config.l10n.dart' as $8 show ConfigLocalizations;
+import 'package:pgde/pgde.dart' as $1
+    show
+        BeSomethingError,
+        Bytes,
+        ConstError,
+        GeneratedValidator,
+        InError,
+        LenConstError,
+        Lists,
+        OneofRequiredError,
+        RequiredError,
+        ValidateInfo;
+import 'package:flutter/material.dart' as $2 show BuildContext, Localizations;
+import 'config.l10n.dart' as $3 show ConfigLocalizations;
+import 'dart:collection' as $4 show HashSet;
 
-/// Validates [$7.Basic] protobuf objects.
-class BasicValidator extends $6.GeneratedValidator<$7.Basic> {
+/// Validates [$0.Basic] protobuf objects.
+class BasicValidator implements $1.GeneratedValidator<$0.Basic> {
+  @override
   void assertProto() {
     assertField_version();
     assertField_dev();
@@ -45,6 +46,7 @@ class BasicValidator extends $6.GeneratedValidator<$7.Basic> {
     assertField_token();
   }
 
+  @override
   void assertField(int tag) {
     switch (tag) {
       case 1:
@@ -63,8 +65,7 @@ class BasicValidator extends $6.GeneratedValidator<$7.Basic> {
         return assertField_token();
 
       default:
-        throw ArgumentError.value(
-            'tag number($tag) for ${_info.bi.messageName} not found');
+        assert(false, 'tag number($tag) for ${_info.bi.messageName} not found');
     }
   }
 
@@ -80,23 +81,16 @@ class BasicValidator extends $6.GeneratedValidator<$7.Basic> {
   void assertField_bindIp() {
     final _v = _info.proto.bindIp;
 
-    try {
-      Uri.parseIPv4Address(_v);
-    } on FormatException {
-      try {
-        Uri.parseIPv6Address(_v);
-      } on FormatException {
-        throw $6.BeSomethingError(
-            _info, 4, _l10n.BasicBindIp, _info.l10n.validateIp);
-      }
-    }
+    if (!$1.Bytes.isIP(_v))
+      throw $1.BeSomethingError(
+          _info, 4, _l10n.BasicBindIp, _info.l10n.validateIp);
   }
 
   void assertField_bindPort() {
     final _v = _info.proto.bindPort;
 
     if (_v >= 65535)
-      throw $6.ConstError(
+      throw $1.ConstError(
           _info, 5, _l10n.BasicBindPort, _info.l10n.validateLt, 65535);
   }
 
@@ -106,36 +100,37 @@ class BasicValidator extends $6.GeneratedValidator<$7.Basic> {
   void assertField_token() {
     final _v = _info.proto.token;
 
-    final _vbl = $6.Lists.len($1.utf8.encode(_v));
+    final _vrl = _v.runes.length;
 
-    if (_vbl > 732)
-      throw $6.LenConstError.byte(
+    if (_vrl > 732)
+      throw $1.LenConstError.character(
           _info, 7, _l10n.BasicToken, _info.l10n.validateLte, 732);
   }
 
+  @override
   void assertOneof(Type oneof) {
     switch (oneof) {
       default:
-        throw ArgumentError.value(
-            'oneof type($oneof) for ${_info.bi.messageName} not found');
+        assert(
+            false, 'oneof type($oneof) for ${_info.bi.messageName} not found');
     }
   }
 
-  $3.BuildContext _ctx;
+  $2.BuildContext _ctx;
 
-  $6.ValidateInfo<$7.Basic> _info;
+  $1.ValidateInfo<$0.Basic> _info;
 
-  $8.ConfigLocalizations _l10n;
+  $3.ConfigLocalizations _l10n;
 
-  BasicValidator($3.BuildContext context, $6.ValidateInfo<$7.Basic> info)
+  BasicValidator($2.BuildContext context, $1.ValidateInfo<$0.Basic> info)
       : _ctx = context,
         _info = info,
-        _l10n = $3.Localizations.of<$8.ConfigLocalizations>(
-            context, $8.ConfigLocalizations);
+        _l10n = $2.Localizations.of<$3.ConfigLocalizations>(
+            context, $3.ConfigLocalizations);
 }
 
-/// Validates [$7.Log] protobuf objects.
-class LogValidator extends $6.GeneratedValidator<$7.Log> {
+/// Validates [$0.Log] protobuf objects.
+class LogValidator implements $1.GeneratedValidator<$0.Log> {
   static const Map<String, Null> _levelIn = {
     r'': null,
     r'debug': null,
@@ -147,12 +142,14 @@ class LogValidator extends $6.GeneratedValidator<$7.Log> {
     r'fatal': null,
   };
 
+  @override
   void assertProto() {
     assertField_dev();
     assertField_level();
     assertField_target();
   }
 
+  @override
   void assertField(int tag) {
     switch (tag) {
       case 1:
@@ -163,8 +160,7 @@ class LogValidator extends $6.GeneratedValidator<$7.Log> {
         return assertField_target();
 
       default:
-        throw ArgumentError.value(
-            'tag number($tag) for ${_info.bi.messageName} not found');
+        assert(false, 'tag number($tag) for ${_info.bi.messageName} not found');
     }
   }
 
@@ -175,35 +171,37 @@ class LogValidator extends $6.GeneratedValidator<$7.Log> {
     final _v = _info.proto.level;
 
     if (!_levelIn.containsKey(_v))
-      throw $6.InError(_info, 2, _l10n.LogLevel, _levelIn.keys.toList());
+      throw $1.InError(_info, 2, _l10n.LogLevel, _levelIn.keys.toList());
   }
 
   void assertField_target() {
     // no validation rules for target
   }
+  @override
   void assertOneof(Type oneof) {
     switch (oneof) {
       default:
-        throw ArgumentError.value(
-            'oneof type($oneof) for ${_info.bi.messageName} not found');
+        assert(
+            false, 'oneof type($oneof) for ${_info.bi.messageName} not found');
     }
   }
 
-  $3.BuildContext _ctx;
+  $2.BuildContext _ctx;
 
-  $6.ValidateInfo<$7.Log> _info;
+  $1.ValidateInfo<$0.Log> _info;
 
-  $8.ConfigLocalizations _l10n;
+  $3.ConfigLocalizations _l10n;
 
-  LogValidator($3.BuildContext context, $6.ValidateInfo<$7.Log> info)
+  LogValidator($2.BuildContext context, $1.ValidateInfo<$0.Log> info)
       : _ctx = context,
         _info = info,
-        _l10n = $3.Localizations.of<$8.ConfigLocalizations>(
-            context, $8.ConfigLocalizations);
+        _l10n = $2.Localizations.of<$3.ConfigLocalizations>(
+            context, $3.ConfigLocalizations);
 }
 
-/// Validates [$7.Ipfs] protobuf objects.
-class IpfsValidator extends $6.GeneratedValidator<$7.Ipfs> {
+/// Validates [$0.Ipfs] protobuf objects.
+class IpfsValidator implements $1.GeneratedValidator<$0.Ipfs> {
+  @override
   void assertProto() {
     assertField_fakeApiListenIp();
     assertField_fakeApiListenPort();
@@ -219,6 +217,7 @@ class IpfsValidator extends $6.GeneratedValidator<$7.Ipfs> {
     assertField_token();
   }
 
+  @override
   void assertField(int tag) {
     switch (tag) {
       case 1:
@@ -247,31 +246,23 @@ class IpfsValidator extends $6.GeneratedValidator<$7.Ipfs> {
         return assertField_token();
 
       default:
-        throw ArgumentError.value(
-            'tag number($tag) for ${_info.bi.messageName} not found');
+        assert(false, 'tag number($tag) for ${_info.bi.messageName} not found');
     }
   }
 
   void assertField_fakeApiListenIp() {
     final _v = _info.proto.fakeApiListenIp;
 
-    try {
-      Uri.parseIPv4Address(_v);
-    } on FormatException {
-      try {
-        Uri.parseIPv6Address(_v);
-      } on FormatException {
-        throw $6.BeSomethingError(
-            _info, 1, _l10n.IpfsFakeApiListenIp, _info.l10n.validateIp);
-      }
-    }
+    if (!$1.Bytes.isIP(_v))
+      throw $1.BeSomethingError(
+          _info, 1, _l10n.IpfsFakeApiListenIp, _info.l10n.validateIp);
   }
 
   void assertField_fakeApiListenPort() {
     final _v = _info.proto.fakeApiListenPort;
 
     if (_v >= 65535)
-      throw $6.ConstError(
+      throw $1.ConstError(
           _info, 2, _l10n.IpfsFakeApiListenPort, _info.l10n.validateLt, 65535);
   }
 
@@ -284,7 +275,7 @@ class IpfsValidator extends $6.GeneratedValidator<$7.Ipfs> {
     try {
       Uri(host: _v);
     } on FormatException {
-      throw $6.BeSomethingError(
+      throw $1.BeSomethingError(
           _info, 4, _l10n.IpfsGatewayServerName, _info.l10n.validateHostname);
     }
   }
@@ -298,7 +289,7 @@ class IpfsValidator extends $6.GeneratedValidator<$7.Ipfs> {
     try {
       Uri(host: _v);
     } on FormatException {
-      throw $6.BeSomethingError(
+      throw $1.BeSomethingError(
           _info, 6, _l10n.IpfsApiServerName, _info.l10n.validateHostname);
     }
   }
@@ -306,13 +297,13 @@ class IpfsValidator extends $6.GeneratedValidator<$7.Ipfs> {
   void assertField_profile() {
     final _v = _info.proto.profile;
 
-    final Set<String> _unique = $0.HashSet();
+    final Set<String> _unique = $4.HashSet();
 
     for (var _ridx = 0; _ridx < _v.length; _ridx++) {
       final _ritem = _v[_ridx];
 
       if (!_unique.add(_ritem))
-        throw $6.BeSomethingError(
+        throw $1.BeSomethingError(
             _info, 7, _l10n.IpfsProfile, _info.l10n.validateUnique(_ridx + 1));
 
       // no validation rules for profile
@@ -335,36 +326,38 @@ class IpfsValidator extends $6.GeneratedValidator<$7.Ipfs> {
   void assertField_token() {
     final _v = _info.proto.token;
 
-    final _vbl = $6.Lists.len($1.utf8.encode(_v));
+    final _vrl = _v.runes.length;
 
-    if (_vbl > 732)
-      throw $6.LenConstError.byte(
+    if (_vrl > 732)
+      throw $1.LenConstError.character(
           _info, 12, _l10n.IpfsToken, _info.l10n.validateLte, 732);
   }
 
+  @override
   void assertOneof(Type oneof) {
     switch (oneof) {
       default:
-        throw ArgumentError.value(
-            'oneof type($oneof) for ${_info.bi.messageName} not found');
+        assert(
+            false, 'oneof type($oneof) for ${_info.bi.messageName} not found');
     }
   }
 
-  $3.BuildContext _ctx;
+  $2.BuildContext _ctx;
 
-  $6.ValidateInfo<$7.Ipfs> _info;
+  $1.ValidateInfo<$0.Ipfs> _info;
 
-  $8.ConfigLocalizations _l10n;
+  $3.ConfigLocalizations _l10n;
 
-  IpfsValidator($3.BuildContext context, $6.ValidateInfo<$7.Ipfs> info)
+  IpfsValidator($2.BuildContext context, $1.ValidateInfo<$0.Ipfs> info)
       : _ctx = context,
         _info = info,
-        _l10n = $3.Localizations.of<$8.ConfigLocalizations>(
-            context, $8.ConfigLocalizations);
+        _l10n = $2.Localizations.of<$3.ConfigLocalizations>(
+            context, $3.ConfigLocalizations);
 }
 
-/// Validates [$7.IpfsServer] protobuf objects.
-class IpfsServerValidator extends $6.GeneratedValidator<$7.IpfsServer> {
+/// Validates [$0.IpfsServer] protobuf objects.
+class IpfsServerValidator implements $1.GeneratedValidator<$0.IpfsServer> {
+  @override
   void assertProto() {
     assertField_disabled();
     assertField_name();
@@ -372,6 +365,7 @@ class IpfsServerValidator extends $6.GeneratedValidator<$7.IpfsServer> {
     assertField_token();
   }
 
+  @override
   void assertField(int tag) {
     switch (tag) {
       case 1:
@@ -384,8 +378,7 @@ class IpfsServerValidator extends $6.GeneratedValidator<$7.IpfsServer> {
         return assertField_token();
 
       default:
-        throw ArgumentError.value(
-            'tag number($tag) for ${_info.bi.messageName} not found');
+        assert(false, 'tag number($tag) for ${_info.bi.messageName} not found');
     }
   }
 
@@ -399,7 +392,7 @@ class IpfsServerValidator extends $6.GeneratedValidator<$7.IpfsServer> {
       try {
         Uri(host: _v.value);
       } on FormatException {
-        throw $6.BeSomethingError(
+        throw $1.BeSomethingError(
             _info, 2, _l10n.IpfsServerName, _info.l10n.validateHostname);
       }
     }
@@ -411,7 +404,7 @@ class IpfsServerValidator extends $6.GeneratedValidator<$7.IpfsServer> {
     try {
       Uri(host: _v);
     } on FormatException {
-      throw $6.BeSomethingError(
+      throw $1.BeSomethingError(
           _info, 3, _l10n.IpfsServerPeer, _info.l10n.validateHostname);
     }
   }
@@ -419,37 +412,39 @@ class IpfsServerValidator extends $6.GeneratedValidator<$7.IpfsServer> {
   void assertField_token() {
     final _v = _info.proto.token;
 
-    final _vbl = $6.Lists.len($1.utf8.encode(_v));
+    final _vrl = _v.runes.length;
 
-    if (_vbl > 732)
-      throw $6.LenConstError.byte(
+    if (_vrl > 732)
+      throw $1.LenConstError.character(
           _info, 4, _l10n.IpfsServerToken, _info.l10n.validateLte, 732);
   }
 
+  @override
   void assertOneof(Type oneof) {
     switch (oneof) {
       default:
-        throw ArgumentError.value(
-            'oneof type($oneof) for ${_info.bi.messageName} not found');
+        assert(
+            false, 'oneof type($oneof) for ${_info.bi.messageName} not found');
     }
   }
 
-  $3.BuildContext _ctx;
+  $2.BuildContext _ctx;
 
-  $6.ValidateInfo<$7.IpfsServer> _info;
+  $1.ValidateInfo<$0.IpfsServer> _info;
 
-  $8.ConfigLocalizations _l10n;
+  $3.ConfigLocalizations _l10n;
 
   IpfsServerValidator(
-      $3.BuildContext context, $6.ValidateInfo<$7.IpfsServer> info)
+      $2.BuildContext context, $1.ValidateInfo<$0.IpfsServer> info)
       : _ctx = context,
         _info = info,
-        _l10n = $3.Localizations.of<$8.ConfigLocalizations>(
-            context, $8.ConfigLocalizations);
+        _l10n = $2.Localizations.of<$3.ConfigLocalizations>(
+            context, $3.ConfigLocalizations);
 }
 
-/// Validates [$7.FileServer] protobuf objects.
-class FileServerValidator extends $6.GeneratedValidator<$7.FileServer> {
+/// Validates [$0.FileServer] protobuf objects.
+class FileServerValidator implements $1.GeneratedValidator<$0.FileServer> {
+  @override
   void assertProto() {
     assertField_disabled();
     assertField_name();
@@ -458,6 +453,7 @@ class FileServerValidator extends $6.GeneratedValidator<$7.FileServer> {
     assertField_dev();
   }
 
+  @override
   void assertField(int tag) {
     switch (tag) {
       case 1:
@@ -472,8 +468,7 @@ class FileServerValidator extends $6.GeneratedValidator<$7.FileServer> {
         return assertField_dev();
 
       default:
-        throw ArgumentError.value(
-            'tag number($tag) for ${_info.bi.messageName} not found');
+        assert(false, 'tag number($tag) for ${_info.bi.messageName} not found');
     }
   }
 
@@ -487,7 +482,7 @@ class FileServerValidator extends $6.GeneratedValidator<$7.FileServer> {
       try {
         Uri(host: _v.value);
       } on FormatException {
-        throw $6.BeSomethingError(
+        throw $1.BeSomethingError(
             _info, 2, _l10n.FileServerName, _info.l10n.validateHostname);
       }
     }
@@ -499,7 +494,7 @@ class FileServerValidator extends $6.GeneratedValidator<$7.FileServer> {
     try {
       Uri(host: _v);
     } on FormatException {
-      throw $6.BeSomethingError(
+      throw $1.BeSomethingError(
           _info, 3, _l10n.FileServerZip, _info.l10n.validateHostname);
     }
   }
@@ -511,14 +506,14 @@ class FileServerValidator extends $6.GeneratedValidator<$7.FileServer> {
       try {
         Uri.parse(_mk);
       } on FormatException {
-        throw $6.BeSomethingError(_info, 4,
+        throw $1.BeSomethingError(_info, 4,
             '`${_l10n.FileServerRedirect}[${_mk}]`', _info.l10n.validateUri);
       }
 
       try {
         Uri.parse(_mv);
       } on FormatException {
-        throw $6.BeSomethingError(_info, 4,
+        throw $1.BeSomethingError(_info, 4,
             '`${_l10n.FileServerRedirect}[${_mk}]`', _info.l10n.validateUri);
       }
     });
@@ -527,31 +522,33 @@ class FileServerValidator extends $6.GeneratedValidator<$7.FileServer> {
   void assertField_dev() {
     // no validation rules for dev
   }
+  @override
   void assertOneof(Type oneof) {
     switch (oneof) {
       default:
-        throw ArgumentError.value(
-            'oneof type($oneof) for ${_info.bi.messageName} not found');
+        assert(
+            false, 'oneof type($oneof) for ${_info.bi.messageName} not found');
     }
   }
 
-  $3.BuildContext _ctx;
+  $2.BuildContext _ctx;
 
-  $6.ValidateInfo<$7.FileServer> _info;
+  $1.ValidateInfo<$0.FileServer> _info;
 
-  $8.ConfigLocalizations _l10n;
+  $3.ConfigLocalizations _l10n;
 
   FileServerValidator(
-      $3.BuildContext context, $6.ValidateInfo<$7.FileServer> info)
+      $2.BuildContext context, $1.ValidateInfo<$0.FileServer> info)
       : _ctx = context,
         _info = info,
-        _l10n = $3.Localizations.of<$8.ConfigLocalizations>(
-            context, $8.ConfigLocalizations);
+        _l10n = $2.Localizations.of<$3.ConfigLocalizations>(
+            context, $3.ConfigLocalizations);
 }
 
-/// Validates [$7.HttpProxyServer] protobuf objects.
+/// Validates [$0.HttpProxyServer] protobuf objects.
 class HttpProxyServerValidator
-    extends $6.GeneratedValidator<$7.HttpProxyServer> {
+    implements $1.GeneratedValidator<$0.HttpProxyServer> {
+  @override
   void assertProto() {
     assertField_disabled();
     assertField_name();
@@ -560,6 +557,7 @@ class HttpProxyServerValidator
     assertField_keepAlive();
   }
 
+  @override
   void assertField(int tag) {
     switch (tag) {
       case 1:
@@ -574,8 +572,7 @@ class HttpProxyServerValidator
         return assertField_keepAlive();
 
       default:
-        throw ArgumentError.value(
-            'tag number($tag) for ${_info.bi.messageName} not found');
+        assert(false, 'tag number($tag) for ${_info.bi.messageName} not found');
     }
   }
 
@@ -589,7 +586,7 @@ class HttpProxyServerValidator
       try {
         Uri(host: _v.value);
       } on FormatException {
-        throw $6.BeSomethingError(
+        throw $1.BeSomethingError(
             _info, 2, _l10n.HttpProxyServerName, _info.l10n.validateHostname);
       }
     }
@@ -604,7 +601,7 @@ class HttpProxyServerValidator
       try {
         Uri.parseIPv6Address(_v);
       } on FormatException {
-        throw $6.BeSomethingError(
+        throw $1.BeSomethingError(
             _info, 3, _l10n.HttpProxyServerHost, _info.l10n.validateIp);
       }
     }
@@ -614,37 +611,39 @@ class HttpProxyServerValidator
     final _v = _info.proto.port;
 
     if (_v >= 65535)
-      throw $6.ConstError(
+      throw $1.ConstError(
           _info, 4, _l10n.HttpProxyServerPort, _info.l10n.validateLt, 65535);
   }
 
   void assertField_keepAlive() {
     // no validation rules for keepAlive
   }
+  @override
   void assertOneof(Type oneof) {
     switch (oneof) {
       default:
-        throw ArgumentError.value(
-            'oneof type($oneof) for ${_info.bi.messageName} not found');
+        assert(
+            false, 'oneof type($oneof) for ${_info.bi.messageName} not found');
     }
   }
 
-  $3.BuildContext _ctx;
+  $2.BuildContext _ctx;
 
-  $6.ValidateInfo<$7.HttpProxyServer> _info;
+  $1.ValidateInfo<$0.HttpProxyServer> _info;
 
-  $8.ConfigLocalizations _l10n;
+  $3.ConfigLocalizations _l10n;
 
   HttpProxyServerValidator(
-      $3.BuildContext context, $6.ValidateInfo<$7.HttpProxyServer> info)
+      $2.BuildContext context, $1.ValidateInfo<$0.HttpProxyServer> info)
       : _ctx = context,
         _info = info,
-        _l10n = $3.Localizations.of<$8.ConfigLocalizations>(
-            context, $8.ConfigLocalizations);
+        _l10n = $2.Localizations.of<$3.ConfigLocalizations>(
+            context, $3.ConfigLocalizations);
 }
 
-/// Validates [$7.AdpRouter] protobuf objects.
-class AdpRouterValidator extends $6.GeneratedValidator<$7.AdpRouter> {
+/// Validates [$0.AdpRouter] protobuf objects.
+class AdpRouterValidator implements $1.GeneratedValidator<$0.AdpRouter> {
+  @override
   void assertProto() {
     assertField_rulesDirName();
     assertField_blocked();
@@ -653,6 +652,7 @@ class AdpRouterValidator extends $6.GeneratedValidator<$7.AdpRouter> {
     assertField_dev();
   }
 
+  @override
   void assertField(int tag) {
     switch (tag) {
       case 1:
@@ -667,14 +667,21 @@ class AdpRouterValidator extends $6.GeneratedValidator<$7.AdpRouter> {
         return assertField_dev();
 
       default:
-        throw ArgumentError.value(
-            'tag number($tag) for ${_info.bi.messageName} not found');
+        assert(false, 'tag number($tag) for ${_info.bi.messageName} not found');
     }
   }
 
   void assertField_rulesDirName() {
-    // no validation rules for rulesDirName
+    final _v = _info.proto.rulesDirName;
+
+    try {
+      Uri(host: _v);
+    } on FormatException {
+      throw $1.BeSomethingError(
+          _info, 1, _l10n.AdpRouterRulesDirName, _info.l10n.validateHostname);
+    }
   }
+
   void assertField_blocked() {
     final _v = _info.proto.blocked;
 
@@ -682,7 +689,7 @@ class AdpRouterValidator extends $6.GeneratedValidator<$7.AdpRouter> {
       try {
         Uri(host: _v.value);
       } on FormatException {
-        throw $6.BeSomethingError(
+        throw $1.BeSomethingError(
             _info, 2, _l10n.AdpRouterBlocked, _info.l10n.validateHostname);
       }
     }
@@ -695,7 +702,7 @@ class AdpRouterValidator extends $6.GeneratedValidator<$7.AdpRouter> {
       try {
         Uri(host: _v.value);
       } on FormatException {
-        throw $6.BeSomethingError(
+        throw $1.BeSomethingError(
             _info, 3, _l10n.AdpRouterUnblocked, _info.l10n.validateHostname);
       }
     }
@@ -707,98 +714,159 @@ class AdpRouterValidator extends $6.GeneratedValidator<$7.AdpRouter> {
   void assertField_dev() {
     // no validation rules for dev
   }
+  @override
   void assertOneof(Type oneof) {
     switch (oneof) {
       default:
-        throw ArgumentError.value(
-            'oneof type($oneof) for ${_info.bi.messageName} not found');
+        assert(
+            false, 'oneof type($oneof) for ${_info.bi.messageName} not found');
     }
   }
 
-  $3.BuildContext _ctx;
+  $2.BuildContext _ctx;
 
-  $6.ValidateInfo<$7.AdpRouter> _info;
+  $1.ValidateInfo<$0.AdpRouter> _info;
 
-  $8.ConfigLocalizations _l10n;
+  $3.ConfigLocalizations _l10n;
 
   AdpRouterValidator(
-      $3.BuildContext context, $6.ValidateInfo<$7.AdpRouter> info)
+      $2.BuildContext context, $1.ValidateInfo<$0.AdpRouter> info)
       : _ctx = context,
         _info = info,
-        _l10n = $3.Localizations.of<$8.ConfigLocalizations>(
-            context, $8.ConfigLocalizations);
+        _l10n = $2.Localizations.of<$3.ConfigLocalizations>(
+            context, $3.ConfigLocalizations);
 }
 
-/// Validates [$7.IPNetRouter] protobuf objects.
-class IPNetRouterValidator extends $6.GeneratedValidator<$7.IPNetRouter> {
+/// Validates [$0.IPNetRouter] protobuf objects.
+class IPNetRouterValidator implements $1.GeneratedValidator<$0.IPNetRouter> {
+  @override
   void assertProto() {
     assertField_ip();
-    assertField_net();
+    assertField_netv4();
+    assertField_netv6();
     assertField_matched();
     assertField_unmatched();
     assertField_fileTest();
   }
 
+  @override
   void assertField(int tag) {
     switch (tag) {
       case 1:
         return assertField_ip();
       case 2:
-        return assertField_net();
+        return assertField_netv4();
       case 3:
-        return assertField_matched();
+        return assertField_netv6();
       case 4:
-        return assertField_unmatched();
+        return assertField_matched();
       case 5:
+        return assertField_unmatched();
+      case 6:
         return assertField_fileTest();
 
       default:
-        throw ArgumentError.value(
-            'tag number($tag) for ${_info.bi.messageName} not found');
+        assert(false, 'tag number($tag) for ${_info.bi.messageName} not found');
     }
   }
 
   void assertField_ip() {
     final _v = _info.proto.ip;
-  }
 
-  void assertField_net() {
-    final _v = _info.proto.net;
-  }
+    for (var _ridx = 0; _ridx < _v.length; _ridx++) {
+      final _ritem = _v[_ridx];
 
-  void assertField_matched() {
-    // no validation rules for matched
-  }
-  void assertField_unmatched() {
-    // no validation rules for unmatched
-  }
-  void assertField_fileTest() {
-    // no validation rules for fileTest
-  }
-  void assertOneof(Type oneof) {
-    switch (oneof) {
-      default:
-        throw ArgumentError.value(
-            'oneof type($oneof) for ${_info.bi.messageName} not found');
+      if (!$1.Bytes.isIP(_ritem.value))
+        throw $1.BeSomethingError(
+            _info, 1, _l10n.IPNetRouterIp, _info.l10n.validateIp);
     }
   }
 
-  $3.BuildContext _ctx;
+  void assertField_netv4() {
+    final _v = _info.proto.netv4;
 
-  $6.ValidateInfo<$7.IPNetRouter> _info;
+    final _bl = $1.Lists.len(_v);
 
-  $8.ConfigLocalizations _l10n;
+    if (_bl != 5)
+      throw $1.LenConstError.byte(
+          _info, 2, _l10n.IPNetRouterNetv4, _info.l10n.validateEq, 5);
+  }
+
+  void assertField_netv6() {
+    final _v = _info.proto.netv6;
+
+    final _bl = $1.Lists.len(_v);
+
+    if (_bl != 17)
+      throw $1.LenConstError.byte(
+          _info, 3, _l10n.IPNetRouterNetv6, _info.l10n.validateEq, 17);
+  }
+
+  void assertField_matched() {
+    final _v = _info.proto.matched;
+
+    if (_info.proto.hasMatched()) {
+      try {
+        Uri(host: _v.value);
+      } on FormatException {
+        throw $1.BeSomethingError(
+            _info, 4, _l10n.IPNetRouterMatched, _info.l10n.validateHostname);
+      }
+    }
+  }
+
+  void assertField_unmatched() {
+    final _v = _info.proto.unmatched;
+
+    if (_info.proto.hasUnmatched()) {
+      try {
+        Uri(host: _v.value);
+      } on FormatException {
+        throw $1.BeSomethingError(
+            _info, 5, _l10n.IPNetRouterUnmatched, _info.l10n.validateHostname);
+      }
+    }
+  }
+
+  void assertField_fileTest() {
+    final _v = _info.proto.fileTest;
+
+    if (_info.proto.hasFileTest()) {
+      try {
+        Uri(host: _v.value);
+      } on FormatException {
+        throw $1.BeSomethingError(
+            _info, 6, _l10n.IPNetRouterFileTest, _info.l10n.validateHostname);
+      }
+    }
+  }
+
+  @override
+  void assertOneof(Type oneof) {
+    switch (oneof) {
+      default:
+        assert(
+            false, 'oneof type($oneof) for ${_info.bi.messageName} not found');
+    }
+  }
+
+  $2.BuildContext _ctx;
+
+  $1.ValidateInfo<$0.IPNetRouter> _info;
+
+  $3.ConfigLocalizations _l10n;
 
   IPNetRouterValidator(
-      $3.BuildContext context, $6.ValidateInfo<$7.IPNetRouter> info)
+      $2.BuildContext context, $1.ValidateInfo<$0.IPNetRouter> info)
       : _ctx = context,
         _info = info,
-        _l10n = $3.Localizations.of<$8.ConfigLocalizations>(
-            context, $8.ConfigLocalizations);
+        _l10n = $2.Localizations.of<$3.ConfigLocalizations>(
+            context, $3.ConfigLocalizations);
 }
 
-/// Validates [$7.RouterItem] protobuf objects.
-class RouterItemValidator extends $6.GeneratedValidator<$7.RouterItem> {
+/// Validates [$0.RouterItem] protobuf objects.
+class RouterItemValidator implements $1.GeneratedValidator<$0.RouterItem> {
+  @override
   void assertProto() {
     assertField_disabled();
     assertField_name();
@@ -806,6 +874,7 @@ class RouterItemValidator extends $6.GeneratedValidator<$7.RouterItem> {
     assertOneof_Router();
   }
 
+  @override
   void assertField(int tag) {
     switch (tag) {
       case 1:
@@ -818,8 +887,7 @@ class RouterItemValidator extends $6.GeneratedValidator<$7.RouterItem> {
         return assertField_ipnet();
 
       default:
-        throw ArgumentError.value(
-            'tag number($tag) for ${_info.bi.messageName} not found');
+        assert(false, 'tag number($tag) for ${_info.bi.messageName} not found');
     }
   }
 
@@ -832,7 +900,7 @@ class RouterItemValidator extends $6.GeneratedValidator<$7.RouterItem> {
     try {
       Uri(host: _v);
     } on FormatException {
-      throw $6.BeSomethingError(
+      throw $1.BeSomethingError(
           _info, 2, _l10n.RouterItemName, _info.l10n.validateHostname);
     }
   }
@@ -849,47 +917,49 @@ class RouterItemValidator extends $6.GeneratedValidator<$7.RouterItem> {
     IPNetRouterValidator(_ctx, _info.clone(_v)).assertProto();
   }
 
+  @override
   void assertOneof(Type oneof) {
     switch (oneof) {
-      case $7.RouterItem_Router:
+      case $0.RouterItem_Router:
         return assertOneof_Router();
 
       default:
-        throw ArgumentError.value(
-            'oneof type($oneof) for ${_info.bi.messageName} not found');
+        assert(
+            false, 'oneof type($oneof) for ${_info.bi.messageName} not found');
     }
   }
 
   void assertOneof_Router() {
     switch (_info.proto.whichRouter()) {
-      case $7.RouterItem_Router.adp:
+      case $0.RouterItem_Router.adp:
         assertField_adp();
         break;
-      case $7.RouterItem_Router.ipnet:
+      case $0.RouterItem_Router.ipnet:
         assertField_ipnet();
         break;
 
       default:
-        throw $6.OneofRequiredError(_info, _l10n.RouterItemRouter);
+        throw $1.OneofRequiredError(_info, _l10n.RouterItemRouter);
     }
   }
 
-  $3.BuildContext _ctx;
+  $2.BuildContext _ctx;
 
-  $6.ValidateInfo<$7.RouterItem> _info;
+  $1.ValidateInfo<$0.RouterItem> _info;
 
-  $8.ConfigLocalizations _l10n;
+  $3.ConfigLocalizations _l10n;
 
   RouterItemValidator(
-      $3.BuildContext context, $6.ValidateInfo<$7.RouterItem> info)
+      $2.BuildContext context, $1.ValidateInfo<$0.RouterItem> info)
       : _ctx = context,
         _info = info,
-        _l10n = $3.Localizations.of<$8.ConfigLocalizations>(
-            context, $8.ConfigLocalizations);
+        _l10n = $2.Localizations.of<$3.ConfigLocalizations>(
+            context, $3.ConfigLocalizations);
 }
 
-/// Validates [$7.Config] protobuf objects.
-class ConfigValidator extends $6.GeneratedValidator<$7.Config> {
+/// Validates [$0.Config] protobuf objects.
+class ConfigValidator implements $1.GeneratedValidator<$0.Config> {
+  @override
   void assertProto() {
     assertField_basic();
     assertField_log();
@@ -900,6 +970,7 @@ class ConfigValidator extends $6.GeneratedValidator<$7.Config> {
     assertField_routers();
   }
 
+  @override
   void assertField(int tag) {
     switch (tag) {
       case 1:
@@ -918,15 +989,14 @@ class ConfigValidator extends $6.GeneratedValidator<$7.Config> {
         return assertField_routers();
 
       default:
-        throw ArgumentError.value(
-            'tag number($tag) for ${_info.bi.messageName} not found');
+        assert(false, 'tag number($tag) for ${_info.bi.messageName} not found');
     }
   }
 
   void assertField_basic() {
     final _v = _info.proto.basic;
 
-    if (_v == null) throw $6.RequiredError(_info, 1, _l10n.ConfigBasic);
+    if (_v == null) throw $1.RequiredError(_info, 1, _l10n.ConfigBasic);
 
     BasicValidator(_ctx, _info.clone(_v)).assertProto();
   }
@@ -983,23 +1053,24 @@ class ConfigValidator extends $6.GeneratedValidator<$7.Config> {
     }
   }
 
+  @override
   void assertOneof(Type oneof) {
     switch (oneof) {
       default:
-        throw ArgumentError.value(
-            'oneof type($oneof) for ${_info.bi.messageName} not found');
+        assert(
+            false, 'oneof type($oneof) for ${_info.bi.messageName} not found');
     }
   }
 
-  $3.BuildContext _ctx;
+  $2.BuildContext _ctx;
 
-  $6.ValidateInfo<$7.Config> _info;
+  $1.ValidateInfo<$0.Config> _info;
 
-  $8.ConfigLocalizations _l10n;
+  $3.ConfigLocalizations _l10n;
 
-  ConfigValidator($3.BuildContext context, $6.ValidateInfo<$7.Config> info)
+  ConfigValidator($2.BuildContext context, $1.ValidateInfo<$0.Config> info)
       : _ctx = context,
         _info = info,
-        _l10n = $3.Localizations.of<$8.ConfigLocalizations>(
-            context, $8.ConfigLocalizations);
+        _l10n = $2.Localizations.of<$3.ConfigLocalizations>(
+            context, $3.ConfigLocalizations);
 }

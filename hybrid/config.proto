@@ -4,6 +4,8 @@ package hybrid;
 option go_package = "github.com/empirefox/hybrid/config;config";
 
 import "google/protobuf/wrappers.proto";
+import "pgde/zero/zero.proto";
+import "pgde/format/format.proto";
 import "pgde/form/form.proto";
 import "pgde/l10n/l10n.proto";
 import "validate/validate.proto";
@@ -11,6 +13,7 @@ import "validate/validate.proto";
 message ConfigTree {
   option (pgde.l10n.message).ignore = true;
   option (pgde.form.node).ignore = true;
+  option (pgde.zero.disabled) = true;
   option (validate.disabled) = true;
   string version = 1;
   string rootName = 2;
@@ -35,19 +38,33 @@ message Basic {
   // @inject_tag: toml:",omitempty" env:"HYBRID_DEV"
   bool dev = 2;
 
-  // @inject_tag: env:"HYBRID_ENABLE_BIND"
+  // @inject_tag: toml:",omitempty" env:"HYBRID_ENABLE_BIND"
   bool enableBind = 3;
-  // @inject_tag: toml:",omitempty" env:"HYBRID_BIND_IP" default:"127.0.0.1"
-  string bindIp = 4 [ (validate.rules).string.ip = true ];
-  // @inject_tag: toml:",omitempty" env:"HYBRID_BIND_PORT" default:"7777"
-  uint32 bindPort = 5 [ (validate.rules).uint32.lt = 65535 ];
+  // @inject_tag: toml:",omitempty" env:"HYBRID_BIND_IP"
+  bytes bindIp = 4 [
+    (validate.rules).bytes.ip = true,
+    (pgde.format.to).bytes.builtin = ip,
+    (pgde.zero.to) = {bytes : "\xff\x00\x00\x01"}
+  ];
+  // @inject_tag: toml:",omitempty" env:"HYBRID_BIND_PORT"
+  uint32 bindPort = 5
+      [ (validate.rules).uint32.lt = 65535, (pgde.zero.to) = {uint32 : 7777} ];
 
-  // @inject_tag: toml:",omitempty" default:"200"
-  uint32 flushIntervalMs = 6;
+  // @inject_tag: toml:",omitempty"
+  uint32 flushIntervalMs = 6 [
+    (pgde.format.to).time = {
+      builtin : duration,
+      intUnit : millisecond,
+    },
+    (pgde.zero.to) = {
+      uint32 : 200,
+      onSave : {action : clearIfEqual},
+    }
+  ];
 
   // @inject_tag: toml:",omitempty"
   // Token is fallback token that will be veried by servers, both Ipfs
-  string token = 7 [ (validate.rules).string.max_bytes = 732 ];
+  string token = 7 [ (validate.rules).string.max_len = 732 ];
 }
 
 message Log {
@@ -65,18 +82,43 @@ message Log {
 }
 
 message Ipfs {
-  // @inject_tag: toml:",omitempty" default:"127.0.127.1"
-  string fakeApiListenIp = 1 [ (validate.rules).string.ip = true ];
-  // @inject_tag: toml:",omitempty" default:"1270"
-  uint32 fakeApiListenPort = 2 [ (validate.rules).uint32.lt = 65535 ];
+  // @inject_tag: toml:",omitempty"
+  bytes fakeApiListenIp = 1 [
+    (validate.rules).bytes.ip = true,
+    (pgde.format.to).bytes.builtin = ip,
+    (pgde.zero.to) = {
+      bytes : "\xff\x00\xff\x01",
+      onSave : {action : clearIfEqual},
+    }
+  ];
+  // @inject_tag: toml:",omitempty"
+  uint32 fakeApiListenPort = 2 [
+    (validate.rules).uint32.lt = 65535,
+    (pgde.zero.to) = {
+      uint32 : 1270,
+      onSave : {action : clearIfEqual},
+    }
+  ];
 
   bool enableGateway = 3;
-  // @inject_tag: toml:",omitempty" default:"ipfs"
-  string gatewayServerName = 4 [ (validate.rules).string.hostname = true ];
+  // @inject_tag: toml:",omitempty"
+  string gatewayServerName = 4 [
+    (validate.rules).string.hostname = true,
+    (pgde.zero.to) = {
+      string : "ipfs",
+      onSave : {action : clearIfEqual},
+    }
+  ];
 
   bool enableApi = 5;
-  // @inject_tag: toml:",omitempty" default:"api.ipfs"
-  string apiServerName = 6 [ (validate.rules).string.hostname = true ];
+  // @inject_tag: toml:",omitempty"
+  string apiServerName = 6 [
+    (validate.rules).string.hostname = true,
+    (pgde.zero.to) = {
+      string : "api.ipfs",
+      onSave : {action : clearIfEqual},
+    }
+  ];
 
   // @inject_tag: toml:",omitempty"
   repeated string profile = 7 [ (validate.rules).repeated .unique = true ];
@@ -90,7 +132,7 @@ message Ipfs {
   bool enableMultiplex = 11;
 
   // @inject_tag: toml:",omitempty"
-  string token = 12 [ (validate.rules).string.max_bytes = 732 ];
+  string token = 12 [ (validate.rules).string.max_len = 732 ];
 }
 
 // server types
@@ -104,7 +146,7 @@ message IpfsServer {
   // @inject_tag: toml:",omitempty"
   string peer = 3 [ (validate.rules).string.hostname = true ];
   // @inject_tag: toml:",omitempty"
-  string token = 4 [ (validate.rules).string.max_bytes = 732 ];
+  string token = 4 [ (validate.rules).string.max_len = 732 ];
 }
 
 message FileServer {
@@ -130,10 +172,14 @@ message HttpProxyServer {
   // @inject_tag: toml:",omitempty"
   google.protobuf.StringValue name = 2
       [ (validate.rules).string.hostname = true ];
-  // @inject_tag: toml:",omitempty" default:"127.0.0.1"
-  string host = 3 [ (validate.rules).string.ip = true ];
-  // @inject_tag: toml:",omitempty" default:"8899"
-  uint32 port = 4 [ (validate.rules).uint32.lt = 65535 ];
+  // @inject_tag: toml:",omitempty"
+  string host = 3 [
+    (validate.rules).string.ip = true,
+    (pgde.zero.to) = {string : "127.0.0.1"}
+  ];
+  // @inject_tag: toml:",omitempty"
+  uint32 port = 4
+      [ (validate.rules).uint32.lt = 65535, (pgde.zero.to) = {uint32 : 8899} ];
   // @inject_tag: toml:",omitempty"
   bool keepAlive = 5;
 }
@@ -143,7 +189,7 @@ message HttpProxyServer {
 // routers
 
 message AdpRouter {
-  // @inject_tag: toml:",omitempty" validate:"hostname"
+  // @inject_tag: toml:",omitempty"
   // *.b64 is base64 encoded.
   // *.ipfs is fetched from ipfs network.
   // ipfs file is of toml format:
@@ -153,7 +199,7 @@ message AdpRouter {
   //
   //   [[Ipfs]]
   //   Path = "Qmxxx..xB"
-  string rulesDirName = 1;
+  string rulesDirName = 1 [ (validate.rules).string.hostname = true ];
   // @inject_tag: toml:",omitempty"
   google.protobuf.StringValue blocked = 2
       [ (validate.rules).string.hostname = true ];
@@ -167,17 +213,30 @@ message AdpRouter {
 }
 
 message IPNetRouter {
-  // @inject_tag: toml:",omitempty" validate:"dive,ip"
-  repeated string ip = 1;
-  // @inject_tag: toml:",omitempty" validate:"dive,cidr"
-  repeated string net = 2;
-  // @inject_tag: toml:",omitempty" validate:"omitempty,hostname"
-  string matched = 3;
   // @inject_tag: toml:",omitempty"
-  // validate:"omitempty,hostname,nefield=Matched"
-  string unmatched = 4;
-  // @inject_tag: toml:",omitempty" validate:"omitempty,hostname"
-  string fileTest = 5;
+  repeated google.protobuf.BytesValue ip = 1 [
+    (validate.rules).repeated .items.bytes.ip = true,
+    (pgde.format.to).bytes.builtin = ip
+  ];
+  // @inject_tag: toml:",omitempty"
+  repeated google.protobuf.BytesValue netv4 = 2 [
+    (validate.rules).bytes.len = 5,
+    (pgde.format.to).bytes.builtin = cidrv4
+  ];
+  // @inject_tag: toml:",omitempty"
+  repeated google.protobuf.BytesValue netv6 = 3 [
+    (validate.rules).bytes.len = 17,
+    (pgde.format.to).bytes.builtin = cidrv6
+  ];
+  // @inject_tag: toml:",omitempty"
+  google.protobuf.StringValue matched = 4
+      [ (validate.rules).string.hostname = true ];
+  // @inject_tag: toml:",omitempty"
+  google.protobuf.StringValue unmatched = 5
+      [ (validate.rules).string.hostname = true ];
+  // @inject_tag: toml:",omitempty"
+  google.protobuf.StringValue fileTest = 6
+      [ (validate.rules).string.hostname = true ];
 }
 
 // routers end
@@ -201,11 +260,8 @@ message RouterItem {
 // HYBRID_FILE_SERVERS_DISABLED=a,b,c
 // HYBRID_ROUTER_DISABLED=a,b,c
 message Config {
-  // @inject_tag: default:"{}"
   Basic basic = 1 [ (validate.rules).message.required = true ];
-  // @inject_tag: default:"{}"
   Log log = 2;
-  // @inject_tag: default:"{}"
   Ipfs ipfs = 3;
 
   repeated IpfsServer ipfsServers = 4;

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:collection/collection.dart' show ListEquality;
 
 const maxUint8 = 1 << 8 - 1;

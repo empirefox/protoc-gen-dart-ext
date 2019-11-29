@@ -35,7 +35,7 @@ message MyProfile {
   }];
 
   uint32 volume = 2 [(pgde.units.unit) = {
-    dots: {prefix: mebi, atom: byte},
+    dots: [{prefix: mebi, atom: byte}],
     per: {exponent: 2, prefix: kilo, atom: meter},
   }];
 

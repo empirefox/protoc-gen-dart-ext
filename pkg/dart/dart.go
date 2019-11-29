@@ -73,11 +73,13 @@ func (ns *fileNames) getUsedNames() UsedNames { return ns.usedNames }
 
 type MessageNames interface {
 	ScopedNames
+	ZeroName() Qualifier
 	ValidatorName() Qualifier
 	FormInputsName() Qualifier
 }
 
 type messageNames struct {
+	zeroName       Qualifier
 	messageName    Qualifier
 	validatorName  Qualifier
 	formInputsName Qualifier
@@ -85,6 +87,7 @@ type messageNames struct {
 }
 
 func (ns *messageNames) Name() Qualifier           { return ns.messageName }
+func (ns *messageNames) ZeroName() Qualifier       { return ns.zeroName }
 func (ns *messageNames) ValidatorName() Qualifier  { return ns.validatorName }
 func (ns *messageNames) FormInputsName() Qualifier { return ns.formInputsName }
 func (ns *messageNames) getUsedNames() UsedNames   { return ns.usedNames }
@@ -225,6 +228,7 @@ func (d *Dart) namesOfMessage(i pgs.Message) *messageNames {
 
 		nty = &messageNames{
 			messageName:    name, // check dart_options.dart_name?
+			zeroName:       "zero" + name,
 			validatorName:  name + "Validator",
 			formInputsName: name + "FormInputs",
 			usedNames:      existingNames,

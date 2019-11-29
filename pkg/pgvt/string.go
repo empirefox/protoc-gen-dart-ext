@@ -104,7 +104,7 @@ const stringTpl = stringTplDef + `
 		throw {{ .PgdeFile.AsDot "BeSomethingError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateIpv6);
 	}
 {{ else if $r.GetEmail }}
-	if (!{{ .EmailValidatorFile.AsDot "EmailValidator" }}.validate({{ .Accessor }}))
+	if (!{{ .EmailValidatorType }}.validate({{ .Accessor }}))
 		throw {{ .PgdeFile.AsDot "BeSomethingError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateEmail);
 {{ else if $r.GetHostname }}
 	try {

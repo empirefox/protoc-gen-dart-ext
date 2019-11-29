@@ -2,7 +2,6 @@ package genshared
 
 import (
 	"bytes"
-	"fmt"
 	"text/template"
 
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/util"
@@ -19,15 +18,40 @@ var Funcs = template.FuncMap{
 	"powerLowerCamel": util.PowerLowerCamel,
 	"powerSnake":      strcase.SnakeCase,
 	"proto":           proto.Marshal,
-	"bytes":           ToBytes,
+	"bytes":           util.BytesLiteral,
 	"superscript":     supsub.ToSup,
 	"subscript":       supsub.ToSub,
 }
 
-func Render(tpl *template.Template) func(string, interface{}) (string, error) {
-	return func(tplName string, data interface{}) (string, error) {
+type ConstantsTemplater interface {
+	ConstTemplateName() string
+}
+
+func RenderConstants(tpl *template.Template) func(ConstantsTemplater) (string, error) {
+	return func(t ConstantsTemplater) (string, error) {
 		var b bytes.Buffer
-		err := tpl.ExecuteTemplate(&b, tplName, data)
+		var err error
+
+		name := t.ConstTemplateName()
+		for _, item := range tpl.Templates() {
+			if item.Name() == name {
+				err = tpl.ExecuteTemplate(&b, name, t)
+				break
+			}
+		}
+
+		return b.String(), err
+	}
+}
+
+type Templater interface {
+	TemplateName() string
+}
+
+func RenderTemplater(tpl *template.Template) func(Templater) (string, error) {
+	return func(t Templater) (string, error) {
+		var b bytes.Buffer
+		err := tpl.ExecuteTemplate(&b, t.TemplateName(), t)
 		return b.String(), err
 	}
 }
@@ -57,9 +81,4 @@ func JoinFuncs(ms ...template.FuncMap) template.FuncMap {
 
 func FileBaseName(name string) string {
 	return pgs.FilePath(name).BaseName()
-}
-
-func ToBytes(b []byte) string {
-	s := fmt.Sprintf("%#v", b)[7:]
-	return s[:len(s)-1]
 }

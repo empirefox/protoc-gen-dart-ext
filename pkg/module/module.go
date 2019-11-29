@@ -9,6 +9,8 @@ import (
 	"strings"
 	"text/template"
 
+	"github.com/empirefox/protoc-gen-dart-ext/pkg/pgzt"
+
 	"github.com/BurntSushi/toml"
 	"github.com/Masterminds/sprig"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/arb"
@@ -16,6 +18,7 @@ import (
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/dartpb"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/pglt"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/pgvt"
+	"github.com/empirefox/protoc-gen-dart-ext/pkg/util"
 	pgs "github.com/lyft/protoc-gen-star"
 	"golang.org/x/text/language"
 )
@@ -34,6 +37,7 @@ type DartExtModule struct {
 	dart   *dart.Dart
 	params pgs.Parameters
 
+	zeroTpl     *template.Template
 	arbTpl      *template.Template
 	l10nTpl     *template.Template
 	validateTpl *template.Template
@@ -43,6 +47,7 @@ func New() *DartExtModule {
 	return &DartExtModule{
 		ModuleBase: &pgs.ModuleBase{},
 		dart:       dart.NewDart(),
+		zeroTpl:    template.New("zero"),
 		arbTpl: template.Must(template.New("arb").
 			Funcs(sprig.HermeticTxtFuncMap()).
 			Parse(`{{ . | toPrettyJson }}`)),
@@ -54,6 +59,7 @@ func New() *DartExtModule {
 func (m *DartExtModule) InitContext(c pgs.BuildContext) {
 	m.ModuleBase.InitContext(c)
 	m.params = c.Parameters()
+	pgzt.Register(m.zeroTpl.Funcs(m.dart.Funcs()))
 	pglt.Register(m.l10nTpl)
 	pgvt.Register(m.validateTpl, m.params)
 }
@@ -68,8 +74,20 @@ func expandPath(input string, mapping map[string]string) string {
 }
 
 func (m *DartExtModule) Execute(targets map[string]pgs.File, pkgs map[string]pgs.Package) []pgs.Artifact {
+	reflected, err := util.ProtoFilesReflect(pkgs)
+	if err != nil {
+		m.Failf("reflect pgs files err: %v", err)
+	}
+
+	zeroPlan := m.params.Str("zero")
 	for _, t := range targets {
-		f, err := dartpb.NewFile(m.dart, language.Und, t)
+		f, err := dartpb.NewFile(dartpb.FileConfig{
+			Dart:      m.dart,
+			Reflected: reflected,
+			Locale:    language.Und,
+			Pgs:       t,
+			ZeroPlan:  zeroPlan,
+		})
 		if err != nil {
 			m.Failf("dartpb.NewFile err: ", err)
 		}
@@ -144,7 +162,11 @@ func (m *DartExtModule) Execute(targets map[string]pgs.File, pkgs map[string]pgs
 			}
 
 			name := t.InputPath().SetExt(".l10n.dart").String()
-			im := dart.NewImportManager(m.dart, name, "$", "$")
+			im, err := dart.NewImportManager(m.dart, name, "$", "$")
+			if err != nil {
+				m.Failf("NewImportManager err: ", err)
+			}
+
 			m.AddGeneratorTemplateFile(name, m.l10nTpl, pglt.GttData{
 				ImportManager: im,
 				Gtt:           gtt,
@@ -152,8 +174,13 @@ func (m *DartExtModule) Execute(targets map[string]pgs.File, pkgs map[string]pgs
 		}
 
 		if m.HasParam("validate") {
-			name := f.Validators.ImportManager.RootFilePath()
+			name := f.Validators.ImportManager.RootFilePath
 			m.AddGeneratorTemplateFile(name, m.validateTpl, f)
+		}
+
+		if m.HasParam("zero") {
+			name := f.Zeros.ImportManager.RootFilePath
+			m.AddGeneratorTemplateFile(name, m.zeroTpl, f)
 		}
 	}
 

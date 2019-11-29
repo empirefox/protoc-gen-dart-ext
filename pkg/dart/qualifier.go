@@ -10,6 +10,18 @@ type Qualifier string
 
 func (q Qualifier) String() string { return string(q) }
 
+func (q Qualifier) Init() Qualifier {
+	return q + "()"
+}
+
+func (q Qualifier) InitWith(simpleName Qualifier) Qualifier {
+	return q + "(" + simpleName + ")"
+}
+
+func (q Qualifier) InitWithString(simpleName string) Qualifier {
+	return q.InitWith(Qualifier(simpleName))
+}
+
 func (q Qualifier) DotString(simpleName string) Qualifier {
 	if q == "" {
 		return Qualifier(simpleName)

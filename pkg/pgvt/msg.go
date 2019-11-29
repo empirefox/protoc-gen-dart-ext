@@ -2,7 +2,7 @@ package pgvt
 
 const msgTpl = `
 /// Validates [{{ .FullPbClass }}] protobuf objects.
-class {{ .Names.ValidatorName }} extends {{ .PgdeFile.AsDot "GeneratedValidator" }}<{{ .FullPbClass }}> {
+class {{ .Names.ValidatorName }} implements {{ .PgdeFile.AsDot "GeneratedValidator" }}<{{ .FullPbClass }}> {
 	{{- range .NonOneOfFields }}
 		{{ renderConstants .Validate }}
 	{{ end }}
@@ -10,6 +10,7 @@ class {{ .Names.ValidatorName }} extends {{ .PgdeFile.AsDot "GeneratedValidator"
 		{{ template "oneOfConst" .Validate }}
 	{{ end }}
 
+	@override
 	void assertProto() {
 		{{ if .Disabled }}
 			// Validate is disabled for {{ .FullPbClass }}
@@ -23,6 +24,7 @@ class {{ .Names.ValidatorName }} extends {{ .PgdeFile.AsDot "GeneratedValidator"
 		{{- end }}
 	}
 
+	@override
 	void assertField(int tag){
 		switch (tag) {
 		{{ range .Fields -}}
@@ -42,6 +44,7 @@ class {{ .Names.ValidatorName }} extends {{ .PgdeFile.AsDot "GeneratedValidator"
 		}
 	{{ end -}}
 
+	@override
 	void assertOneof(Type oneof){
 		switch (oneof) {
 		{{ range .OneOfs }}
@@ -62,7 +65,7 @@ class {{ .Names.ValidatorName }} extends {{ .PgdeFile.AsDot "GeneratedValidator"
 
 	{{ .PgdeFile.AsDot "ValidateInfo" }}<{{ .FullPbClass }}> {{ .Validators.InfoAccessor }};
 
-	{{ .L10nFile.AsDot .File.Names.L10nName }} {{ .Validators.L10nAccessor }};
+	{{ .L10nType }} {{ .Validators.L10nAccessor }};
 
 	{{ range .Validators.ImportManager.InstanceClasses }}
 		{{ .FullName }} {{ .Instance }};

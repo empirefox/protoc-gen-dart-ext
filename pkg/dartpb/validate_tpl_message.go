@@ -2,17 +2,25 @@ package dartpb
 
 import (
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/dart"
+	"github.com/envoyproxy/protoc-gen-validate/templates/shared"
 	pgs "github.com/lyft/protoc-gen-star"
 )
 
-func (vf *ValidateField) MessageFullValidatorClass() (dart.Qualifier, error) {
-	pgsType := vf.Pgs.Type()
-	var target pgs.Message
-	if pgsType.IsRepeated() || pgsType.IsMap() {
-		target = pgsType.Element().Embed()
-	} else {
-		target = pgsType.Embed()
+func (f *ValidateField) MessageFullValidatorClass() (dart.Qualifier, error) {
+	target := f.ElementOrEmbed()
+	yes, err := shared.Disabled(target)
+	if err != nil {
+		return "", err
 	}
-	targetClass := vf.File.Dart.MessageNames(target).ValidatorName()
-	return vf.Validators().ImportManager.ValidateFileDot(target, targetClass)
+
+	if yes {
+		return "", nil
+	}
+
+	name := f.File.Dart.MessageNames(target).ValidatorName()
+	return f.Validators().ImportManager.ValidateFileDot(target, name)
+}
+
+func (f *ValidateField) IsOfMessageType() bool {
+	return f.Pgv.Field.Type().ProtoType() == pgs.MessageT
 }

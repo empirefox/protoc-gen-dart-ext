@@ -132,7 +132,7 @@ const rootTplStr = `
 `
 
 // Type: literal, var, select, selectordinal, plural
-const nodeTplStr = `{{ renderNode .Type . }}`
+const nodeTplStr = `{{ render (node .) }}`
 
 const containerTplStr = `
 {{- range .Children }}

@@ -8,15 +8,14 @@ import "google/protobuf/descriptor.proto";
 import "pgde/format/currency.proto";
 import "pgde/units/units.proto";
 
-extend google.protobuf.FieldOptions {
-  pgde.format.Format to = 919111;
-}
+extend google.protobuf.FieldOptions { pgde.format.Format to = 919111; }
 
 message Format {
   oneof type {
     TimeFormat time = 1;
     CurrencyFormat currency = 2;
     NumberFormat number = 3;
+    BytesFormat bytes = 4;
   }
 }
 
@@ -66,11 +65,6 @@ message TimeFormat {
     second = 4;
     minute = 5;
     hour = 6;
-
-    // not on ofDay
-    day = 7;
-    // not on ofDay
-    week = 8;
   }
 
   oneof type {
@@ -124,4 +118,29 @@ message NumberFormat {
   string locale = 4;
   bool ordinal = 5;
   pgde.units.Unit unit = 6;
+}
+
+message BytesFormat {
+  enum Builtin {
+    ip = 0;
+    ipv4 = 1;
+    ipv6 = 2;
+
+    ipPort = 3;
+    ipv4Port = 4;
+    ipv6Port = 5;
+
+    cidr = 6;
+    cidrv4 = 7;
+    cidrv6 = 8;
+  }
+
+  oneof type {
+    Builtin builtin = 1;
+    // user provided format name which is imported
+    string imported = 2;
+    // user provided format name which is registered
+    // do not support literal pattern here
+    string custom = 3;
+  }
 }

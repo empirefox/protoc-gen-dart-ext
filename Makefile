@@ -140,6 +140,13 @@ protoc_hybrid_l10n:
 		${hybrid_path}/config.proto
 	@dartfmt -w ${dart_test}/pgde/hybrid/*.l10n.dart
 
+
+.PHONY: protoc_hybrid_zero
+protoc_hybrid_zero:
+	@protoc -I${makefile_dir} -I${pgv_path} \
+		--dart-ext_out=zero=all:${dart_test}/pgde ${hybrid_path}/config.proto
+	@dartfmt -w ${dart_test}/pgde/hybrid/*.zero.dart
+
 .PHONY: protoc_hybrid_validate
 protoc_hybrid_validate:
 	@protoc -I${makefile_dir} -I${pgv_path} \

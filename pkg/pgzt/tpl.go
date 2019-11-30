@@ -58,17 +58,24 @@ const oneOfConstTpl = `
 	{{ renderConstants (.Default.ForAction .Action) }}
 {{ end }}`
 const oneOfTpl = `
-{{ if .Default.AddBuild }}
-	if (proto.{{ .Names.WhichOneofMethodName }}() == {{ .FullPbWhichEnum }}.notSet) {
-		{{ template "field" (.Default.ForAction .Action) }}
-	}
-{{ end }}`
+switch (proto.{{ .Names.WhichOneofMethodName }}()) {
+	{{- range .Fields }}
+		case {{ $.FullPbWhichEnum }}.{{ .DartName }}:
+			{{ template "field" (.Zero.ForAction $.Action) -}}
+			break;
+	{{- end }}
+	default:
+		{{- if .Default.AddBuild }}
+			{{- template "field" (.Default.ForAction .Action) }}
+		{{- end }}
+}
+`
 
 const fieldConstTpl = `{{ if and .AddBuild }}{{ renderConstants . }}{{ end }}`
 const fieldTpl = `
-{{ if and .AddBuild }}
-	{{ render . }}
-{{ else }}
+{{- if and .AddBuild -}}
+	{{ render . -}}
+{{- else }}
 	// name={{ .DartName }}, AddBuild={{ .AddBuild }}
 {{ end }}`
 

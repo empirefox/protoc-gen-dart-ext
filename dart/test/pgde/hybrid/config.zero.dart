@@ -13,7 +13,8 @@ import 'config.pb.dart' as $0
         Ipfs,
         IpfsServer,
         Log,
-        RouterItem;
+        RouterItem,
+        RouterItem_Router;
 import 'package:pgde/pgde.dart' as $1 show ZeroAction;
 
 /// Zero for [$0.Basic] protobuf objects.
@@ -453,6 +454,16 @@ class _RouterItem implements $1.ZeroAction<$0.RouterItem> {
     // no zero rules for proto.disabled
 
     // no zero rules for proto.name
+
+    switch (proto.whichRouter()) {
+      case $0.RouterItem_Router.adp:
+        zeroAdpRouter.onZeroCreate(proto.ensureAdp());
+        break;
+      case $0.RouterItem_Router.ipnet:
+        zeroIPNetRouter.onZeroCreate(proto.ensureIpnet());
+        break;
+      default:
+    }
   }
 
   @override
@@ -460,6 +471,16 @@ class _RouterItem implements $1.ZeroAction<$0.RouterItem> {
     // no zero rules for proto.disabled
 
     // no zero rules for proto.name
+
+    switch (proto.whichRouter()) {
+      case $0.RouterItem_Router.adp:
+        zeroAdpRouter.onZeroLoad(proto.ensureAdp());
+        break;
+      case $0.RouterItem_Router.ipnet:
+        zeroIPNetRouter.onZeroLoad(proto.ensureIpnet());
+        break;
+      default:
+    }
   }
 
   @override
@@ -467,6 +488,16 @@ class _RouterItem implements $1.ZeroAction<$0.RouterItem> {
     // no zero rules for proto.disabled
 
     // no zero rules for proto.name
+
+    switch (proto.whichRouter()) {
+      case $0.RouterItem_Router.adp:
+        zeroAdpRouter.onZeroSave(proto.ensureAdp());
+        break;
+      case $0.RouterItem_Router.ipnet:
+        zeroIPNetRouter.onZeroSave(proto.ensureIpnet());
+        break;
+      default:
+    }
   }
 }
 

@@ -22,6 +22,14 @@ func (q Qualifier) InitWithString(simpleName string) Qualifier {
 	return q.InitWith(Qualifier(simpleName))
 }
 
+func (q Qualifier) DotFromString(owner string) Qualifier {
+	return Qualifier(owner).Dot(q)
+}
+
+func (q Qualifier) DotFrom(owner Qualifier) Qualifier {
+	return owner.Dot(q)
+}
+
 func (q Qualifier) DotString(simpleName string) Qualifier {
 	if q == "" {
 		return Qualifier(simpleName)

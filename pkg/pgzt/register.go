@@ -53,4 +53,13 @@ func Register(tpl *template.Template) {
 	template.Must(tpl.New("num").Parse(numTpl))
 
 	template.Must(tpl.New("none").Parse(noneTpl))
+
+	template.Must(tpl.New("repeatedNc").Parse(repeatedNcTpl))
+	template.Must(tpl.New("mapNc").Parse(mapNcTpl))
+	template.Must(tpl.New("messageNc").Parse(messageNcTpl))
+	template.Must(tpl.New("wktNc").Parse(wktNcTpl))
+	template.Must(tpl.New("eq0Nc").Parse(eq0NcTpl))
+	template.Must(tpl.New("isEmptyNc").Parse(isEmptyNcTpl))
+	template.Must(tpl.New("falseNc").Parse(falseNcTpl))
+	template.Must(tpl.New("isZeroNc").Parse(isZeroNcTpl))
 }

@@ -50,15 +50,20 @@ func (v *Zeros) Disabled(msg pgs.Message) (disabled bool, err error) {
 	return ZeroDisabled(msg)
 }
 
+type zeroAction struct {
+	Action string
+}
+
+func (z zeroAction) IsOnSave() bool { return z.Action == "onZeroSave" }
+func (z zeroAction) Actions() []string {
+	return []string{"onZeroCreate", "onZeroLoad", "onZeroSave"}
+}
+
 type ZeroMessage struct {
+	zeroAction
 	*Message
 	dart.ImportManagerCommonFiles
 	Disabled bool
-	Action   string
-}
-
-func (zm *ZeroMessage) Actions() []string {
-	return []string{"onZeroCreate", "onZeroLoad", "onZeroSave"}
 }
 
 func (zm *ZeroMessage) ForAction(action string) *ZeroMessage {
@@ -72,9 +77,9 @@ func (nty *ZeroMessage) FullPbClass() (dart.Qualifier, error) {
 }
 
 type ZeroOneOf struct {
+	zeroAction
 	*OneOf
 	Default *ZeroField
-	Action  string
 
 	defaultNumber int32
 }
@@ -90,6 +95,7 @@ func (nty *ZeroOneOf) FullPbWhichEnum() (dart.Qualifier, error) {
 }
 
 type ZeroField struct {
+	zeroAction
 	*Field
 	dart.ImportManagerCommonFiles
 
@@ -98,9 +104,6 @@ type ZeroField struct {
 	// Context fields:
 
 	Tpl string
-
-	// Action only set by onZeroCreate, onZeroLoad, onZeroSave
-	Action string
 
 	owner  dart.Qualifier
 	getter dart.Qualifier
@@ -132,13 +135,13 @@ func (f *ZeroField) AddBuild() (bool, error) {
 	case "all":
 		return f.Rules.GetOnCreate().BuildOn("") ||
 			f.Rules.GetOnLoad().BuildOn("") ||
-			f.Rules.GetOnSave().GetAffect().BuildOn(""), nil
+			f.Rules.GetOnSave().BuildOn(""), nil
 	case "onZeroCreate":
 		return f.Rules.GetOnCreate().BuildOn(plan), nil
 	case "onZeroLoad":
 		return f.Rules.GetOnLoad().BuildOn(plan), nil
 	case "onZeroSave":
-		return f.Rules.GetOnSave().GetAffect().BuildOn(plan), nil
+		return f.Rules.GetOnSave().BuildOn(plan), nil
 	}
 	return false, fmt.Errorf("add build check for empty or unknown action: %s", f.Action)
 }
@@ -178,6 +181,7 @@ type ZeroEvalNow struct {
 }
 
 func (n *ZeroField) withRules(rules *zero.Zero) error {
+	n.Tpl = "none"
 	switch r := rules.GetType().(type) {
 	case *zero.Zero_Float:
 		n.SetTo, n.Tpl = r.Float, "num"
@@ -329,8 +333,42 @@ func (n *ZeroField) withRules(rules *zero.Zero) error {
 				}
 			}
 		}
+	case *zero.Zero_NoChange:
+		if n.IsOnSave() {
+			topType := n.Pgs.Type()
+			elem := topType.Element()
+			if topType.IsRepeated() {
+				if !n.isInElem() && elem.IsEmbed() && !elem.Embed().IsWellKnown() {
+					n.Tpl = "repeatedNc"
+				}
+			} else if topType.IsMap() {
+				if !n.isInElem() && elem.IsEmbed() && !elem.Embed().IsWellKnown() {
+					n.Tpl = "mapNc"
+				}
+			} else if topType.IsEmbed() {
+				if !topType.Embed().IsWellKnown() {
+					n.Tpl = "messageNc"
+				} else {
+					n.Tpl = "wktNc"
+				}
+			} else {
+				switch topType.ProtoType() {
+				case pgs.DoubleT, pgs.FloatT,
+					pgs.Int32T, pgs.UInt32T, pgs.SFixed32, pgs.SInt32, pgs.Fixed32T:
+					n.Tpl = "eq0Nc"
+				case pgs.Int64T, pgs.UInt64T, pgs.SFixed64, pgs.SInt64, pgs.Fixed64T:
+					n.Tpl = "isZeroNc"
+				case pgs.BoolT:
+					n.Tpl = "falseNc"
+				case pgs.StringT, pgs.BytesT:
+					n.Tpl = "isEmptyNc"
+				default:
+					panic(fmt.Errorf("wkt field type is not supported: %v",
+						topType.ProtoType()))
+				}
+			}
+		}
 	case nil:
-		n.Tpl = "none"
 		// if not do this, repeated, map and message will not go deeply
 		topType := n.Pgs.Type()
 		elem := topType.Element()
@@ -458,7 +496,8 @@ func (zf *ZeroField) Literal(value interface{}) (string, error) {
 		if err != nil {
 			return "", err
 		}
-		return fmt.Sprintf("%s.fromBuffer(const <int>[%s])", embed, util.BytesLiteral(b)), nil
+		return fmt.Sprintf("%s.fromBuffer(const <int>[%s])",
+			embed, util.BytesLiteral(b)), nil
 	default:
 		return "", fmt.Errorf("bug: unsupported literal type: %#T", value)
 	}
@@ -560,7 +599,7 @@ func (f *ZeroField) MessageHasMethodOr() dart.Qualifier {
 	return ""
 }
 func (f *ZeroField) WktFieldsIsZero() string {
-	getter := string(f.Getter())
+	getter := []byte(f.Getter())
 	var b bytes.Buffer
 	for i, nty := range f.ElementOrEmbed().Fields() {
 		if i != 0 {
@@ -569,26 +608,41 @@ func (f *ZeroField) WktFieldsIsZero() string {
 		switch nty.Type().ProtoType() {
 		case pgs.DoubleT, pgs.FloatT,
 			pgs.Int32T, pgs.UInt32T, pgs.SFixed32, pgs.SInt32, pgs.Fixed32T:
-			b.WriteString(getter)
+			b.Write(getter)
 			b.WriteByte('.')
 			b.WriteString(string(f.File.Dart.NameOf(nty)))
 			b.WriteString("==0")
 		case pgs.Int64T, pgs.UInt64T, pgs.SFixed64, pgs.SInt64, pgs.Fixed64T:
-			b.WriteString(getter)
+			b.Write(getter)
 			b.WriteByte('.')
 			b.WriteString(string(f.File.Dart.NameOf(nty)))
 			b.WriteString(".isZero")
 		case pgs.BoolT:
 			b.WriteByte('!')
-			b.WriteString(getter)
+			b.Write(getter)
 		case pgs.StringT, pgs.BytesT:
-			b.WriteString(getter)
+			b.Write(getter)
 			b.WriteByte('.')
 			b.WriteString(string(f.File.Dart.NameOf(nty)))
 			b.WriteString(".isEmpty")
 		default:
-			panic(fmt.Errorf("wkt field type is not supported: %v", nty.Type().ProtoType()))
+			panic(fmt.Errorf("wkt field type is not supported: %v",
+				nty.Type().ProtoType()))
 		}
+	}
+	return b.String()
+}
+func (f *ZeroField) WktClone(to, from string) string {
+	var b bytes.Buffer
+	b.WriteString(to)
+	for _, nty := range f.ElementOrEmbed().Fields() {
+		name := []byte(f.File.Dart.NameOf(nty))
+		b.WriteString("..")
+		b.Write(name)
+		b.WriteByte('=')
+		b.WriteString(from)
+		b.WriteByte('.')
+		b.Write(name)
 	}
 	return b.String()
 }

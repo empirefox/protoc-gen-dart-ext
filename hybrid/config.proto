@@ -58,7 +58,6 @@ message Basic {
     },
     (pgde.zero.to) = {
       uint32 : 200,
-      onSave : {action : clearIfEqual},
     }
   ];
 
@@ -88,7 +87,6 @@ message Ipfs {
     (pgde.format.to).bytes.builtin = ip,
     (pgde.zero.to) = {
       bytes : "\xff\x00\xff\x01",
-      onSave : {action : clearIfEqual},
     }
   ];
   // @inject_tag: toml:",omitempty"
@@ -96,7 +94,6 @@ message Ipfs {
     (validate.rules).uint32.lt = 65535,
     (pgde.zero.to) = {
       uint32 : 1270,
-      onSave : {action : clearIfEqual},
     }
   ];
 
@@ -106,7 +103,6 @@ message Ipfs {
     (validate.rules).string.hostname = true,
     (pgde.zero.to) = {
       string : "ipfs",
-      onSave : {action : clearIfEqual},
     }
   ];
 
@@ -116,7 +112,6 @@ message Ipfs {
     (validate.rules).string.hostname = true,
     (pgde.zero.to) = {
       string : "api.ipfs",
-      onSave : {action : clearIfEqual},
     }
   ];
 

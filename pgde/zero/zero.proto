@@ -42,11 +42,14 @@ message Zero {
     google.protobuf.Any any = 20;
     Duration duration = 21;
     Time time = 22;
+
+    // only act on current field not for any range element or field type message.
+    bool noChange = 23;
   }
 
   Affect onCreate = 30;
   Affect onLoad = 31;
-  OnSave onSave = 32;
+  Affect onSave = 32;
 }
 
 message Affect {
@@ -56,16 +59,6 @@ message Affect {
     // build time plan past by protoc params, like: frontend, backend
     string plan = 3;
   }
-}
-
-message OnSave {
-  enum Action {
-    setTo = 0;
-    clearIfEqual = 1;
-    noChange = 2;
-  }
-  Action action = 1;
-  Affect affect = 2;
 }
 
 message Message {

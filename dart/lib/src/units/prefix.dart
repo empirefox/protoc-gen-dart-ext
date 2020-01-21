@@ -170,6 +170,36 @@ class Prefix {
   static const pebi = const Prefix._(r'Pi', 2, 50, const _Pebi());
   static const exbi = const Prefix._(r'Ei', 2, 60, const _Exbi());
 
+  static const $byNumber = <Prefix>[
+    noPrefix,
+    yotta,
+    zetta,
+    exa,
+    peta,
+    tera,
+    giga,
+    mega,
+    kilo,
+    hecto,
+    deka,
+    deci,
+    centi,
+    milli,
+    micro,
+    nano,
+    pico,
+    femto,
+    atto,
+    zepto,
+    yocto,
+    kibi,
+    mebi,
+    gibi,
+    tebi,
+    pebi,
+    exbi,
+  ];
+
   final String symbol;
   final int base;
   final int exponent;

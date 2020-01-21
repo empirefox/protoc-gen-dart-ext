@@ -34,6 +34,8 @@ type File struct {
 
 	Messages []*Message
 	Enums    []*Enum
+
+	isL10nErrorCoder bool
 }
 
 func NewFile(c FileConfig) (*File, error) {
@@ -118,6 +120,13 @@ func (f *File) ReflectMessage(pgsNty pgs.Message) (*dynamic.Message, error) {
 		return nil, fmt.Errorf("reflect proto message not found: %s", pgsNty.FullyQualifiedName())
 	}
 	return dynamic.NewMessage(md), nil
+}
+
+func (f *File) IsL10nErrorCoder() bool {
+	if f == nil {
+		return false
+	}
+	return f.isL10nErrorCoder
 }
 
 func (f *File) SetL10nTo(lang *arb.Arb) {

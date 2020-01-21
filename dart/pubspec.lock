@@ -78,6 +78,20 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.2.9"
+  date_range_picker:
+    dependency: transitive
+    description:
+      name: date_range_picker
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.6"
+  datetime_picker_formfield:
+    dependency: transitive
+    description:
+      name: datetime_picker_formfield
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.0-pre.5"
   email_validator:
     dependency: "direct main"
     description:
@@ -97,6 +111,27 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_chips_input:
+    dependency: transitive
+    description:
+      name: flutter_chips_input
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.6.0"
+  flutter_form_builder:
+    dependency: "direct main"
+    description:
+      name: flutter_form_builder
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.6.1"
+  flutter_keyboard_visibility:
+    dependency: transitive
+    description:
+      name: flutter_keyboard_visibility
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.7.0"
   flutter_localizations:
     dependency: "direct main"
     description: flutter
@@ -107,6 +142,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_typeahead:
+    dependency: transitive
+    description:
+      name: flutter_typeahead
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.7.0"
   front_end:
     dependency: transitive
     description:
@@ -121,6 +163,20 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.2.0"
+  googleapis_auth:
+    dependency: transitive
+    description:
+      name: googleapis_auth
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.2.11"
+  grpc:
+    dependency: "direct main"
+    description:
+      name: grpc
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.1.3"
   html:
     dependency: transitive
     description:
@@ -135,6 +191,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.12.0+2"
+  http2:
+    dependency: transitive
+    description:
+      name: http2
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.0"
   http_multi_server:
     dependency: transitive
     description:
@@ -385,6 +448,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.5"
+  sy_flutter_widgets:
+    dependency: transitive
+    description:
+      name: sy_flutter_widgets
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.1.4"
   term_glyph:
     dependency: transitive
     description:
@@ -420,6 +490,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.1.6"
+  validators:
+    dependency: transitive
+    description:
+      name: validators
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.0+1"
   vector_math:
     dependency: transitive
     description:
@@ -464,3 +541,4 @@ packages:
     version: "2.2.0"
 sdks:
   dart: ">=2.4.0 <3.0.0"
+  flutter: ">=1.0.0 <2.0.0"

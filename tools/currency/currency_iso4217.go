@@ -52,7 +52,7 @@ import '../l10n/pgde.l10n.dart';
 import 'currency_formats.dart';
 
 abstract class _Valuer {
-	String of(PgdeLocalizations l);
+  String of(PgdeLocalizations l);
 }
 
 class _XXX implements _Valuer {
@@ -62,27 +62,33 @@ class _XXX implements _Valuer {
 
 {{- range .CcyNtry }}
   class _{{ .Ccy }} implements _Valuer {
-    const _{{ .Ccy }}();
-    String of(PgdeLocalizations l) => l.{{ entity }}{{ .Ccy | powerCamel }};
+	const _{{ .Ccy }}();
+	String of(PgdeLocalizations l) => l.{{ entity }}{{ .Ccy | powerCamel }};
   }
 {{- end }}
 
 class {{ Entity }} {
-	final String ccy;
-	final int nbr;
-	final int mnrFactor;
-	final _Valuer _v;
-	const {{ Entity }}._(this.ccy, this.nbr, this.mnrFactor, this._v);
-	String Function(dynamic) get format => getCurrencyFormat(ccy).format;
-	String Function(dynamic) get formatSimple => getSimpleCurrencyFormat(ccy).format;
-	String Function(dynamic) get formatNumber => getCurrencyNumberFormat(ccy).format;
-	String formatName(v, PgdeLocalizations l) => (l == null || _v.of(l) == null) ? format(v) : (formatNumber(v) + _v.of(l));
-	String l10n(PgdeLocalizations l10n) => l10n == null ? ccy : _v.of(l10n) ?? ccy;
+  final String ccy;
+  final int nbr;
+  final int mnrFactor;
+  final _Valuer _v;
+  const {{ Entity }}._(this.ccy, this.nbr, this.mnrFactor, this._v);
+  String Function(dynamic) get format => getCurrencyFormat(ccy).format;
+  String Function(dynamic) get formatSimple => getSimpleCurrencyFormat(ccy).format;
+  String Function(dynamic) get formatNumber => getCurrencyNumberFormat(ccy).format;
+  String formatName(v, PgdeLocalizations l) => (l == null || _v.of(l) == null) ? format(v) : (formatNumber(v) + _v.of(l));
+  String l10n(PgdeLocalizations l10n) => l10n == null ? ccy : _v.of(l10n) ?? ccy;
 
-	static const XXX = const {{ Entity }}._('', 0, 0, const _XXX());
-	{{- range .CcyNtry }}
+  static const XXX = const {{ Entity }}._('', 0, 0, const _XXX());
+  {{- range .CcyNtry }}
 	static const {{ .Ccy }} = const {{ Entity }}._('{{ .Ccy }}', {{ .CcyNbr }}, {{ .CcyMnrUnts }}, const _{{ .Ccy }}());
+  {{- end }}
+
+  static const $byNumber = <int, {{ Entity }}>{
+	{{- range .CcyNtry }}
+		{{ .CcyNbr }}: {{ .Ccy }},
 	{{- end }}
+  };
 }
 `
 

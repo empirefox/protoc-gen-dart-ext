@@ -168,6 +168,7 @@ func (m *DartExtModule) Execute(targets map[string]pgs.File, pkgs map[string]pgs
 			}
 
 			m.AddGeneratorTemplateFile(name, m.l10nTpl, pglt.GttData{
+				File:          f,
 				ImportManager: im,
 				Gtt:           gtt,
 			})

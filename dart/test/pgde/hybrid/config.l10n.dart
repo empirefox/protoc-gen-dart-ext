@@ -4166,4 +4166,15 @@ abstract class ConfigLocalizations {
 
   static ConfigLocalizations of($2.BuildContext context) =>
       $2.Localizations.of<ConfigLocalizations>(context, ConfigLocalizations);
+
+  Map<int, FieldOfFunc> fieldsOfBasic = {
+    1: (ConfigLocalizations l) => l.BasicEnableBind,
+  };
+
+  String fieldOfBasic(int number) {
+    final fn = fieldsOfBasic[number];
+    return fn == null ? 'Unknown Field' : fn(this);
+  }
 }
+
+typedef FieldOfFunc = String Function(ConfigLocalizations l);

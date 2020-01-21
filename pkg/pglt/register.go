@@ -8,6 +8,7 @@ import (
 	"github.com/empirefox/messageformat"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/arb"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/dart"
+	"github.com/empirefox/protoc-gen-dart-ext/pkg/dartpb"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/genshared"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/util"
 	"golang.org/x/text/language"
@@ -77,6 +78,7 @@ type DartArb struct {
 	*arb.Arb
 	*dart.ImportManager
 	Delegate []arb.SupportedLocale
+	File     *dartpb.File
 }
 
 type Entity struct {
@@ -90,6 +92,7 @@ type RenderData struct {
 }
 
 type GttData struct {
+	File          *dartpb.File
 	ImportManager *dart.ImportManager
 	Gtt           []*arb.GttArbs
 }
@@ -109,6 +112,7 @@ func GttToData(data GttData) (*RenderData, error) {
 				Arb:           a,
 				ImportManager: data.ImportManager,
 				Delegate:      delegate,
+				File:          data.File,
 			}
 		}
 		entities[i] = Entity{

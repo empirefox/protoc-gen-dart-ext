@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package pgde.error;
+
+option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/error;error";
+
+message BackendError {
+  int32 fieldNumber = 1;
+  int32 code = 2;
+  string message = 3;
+}

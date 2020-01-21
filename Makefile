@@ -80,10 +80,11 @@ gen_prefix:
 .PHONY: gen_protoc
 gen_protoc:
 	@protoc -I${makefile_dir} --go_out=paths=source_relative:${makefile_dir}/pkg ${protos_path}/l10n/*.proto
-	@protoc -I${makefile_dir} --go_out=paths=source_relative:${makefile_dir}/pkg ${protos_path}/format/*.proto
-	@protoc -I${makefile_dir} --go_out=paths=source_relative:${makefile_dir}/pkg ${protos_path}/units/*.proto
 	@protoc -I${makefile_dir} --go_out=paths=source_relative:${makefile_dir}/pkg ${protos_path}/zero/*.proto
 	@protoc -I${makefile_dir} --go_out=paths=source_relative:${makefile_dir}/pkg ${protos_path}/form/*.proto
+	@protoc -I${makefile_dir} --go_out=paths=source_relative:${makefile_dir}/pkg ${protos_path}/units/*.proto
+	@protoc -I${makefile_dir} --go_out=paths=source_relative:${makefile_dir}/pkg ${protos_path}/format/*.proto
+	@protoc -I${makefile_dir} --go_out=paths=source_relative:${makefile_dir}/pkg --dart_out=:${dart_src} ${protos_path}/error/*.proto
 
 # generate PgdeLocalizations
 .PHONY: gen_pgde_gtt_to_dart
@@ -113,8 +114,10 @@ protoc_clean:
 
 .PHONY: protoc_hybrid_base
 protoc_hybrid_base:
+	@protoc -I${makefile_dir} -I${pgv_path} --dart_out=:${dart_test}/pgde ${google_path}/protobuf/empty.proto
 	@protoc -I${makefile_dir} -I${pgv_path} --dart_out=:${dart_test}/pgde ${google_path}/protobuf/wrappers.proto
-	@protoc -I${makefile_dir} -I${pgv_path} --dart_out=:${dart_test}/pgde ${hybrid_path}/*.proto
+	@protoc -I${makefile_dir} -I${pgv_path} --dart_out=:${dart_test}/pgde ${protos_path}/error/error.proto
+	@protoc -I${makefile_dir} -I${pgv_path} --dart_out=grpc:${dart_test}/pgde ${hybrid_path}/*.proto
 
 .PHONY: protoc_hybrid_arb
 protoc_hybrid_arb:

@@ -50,9 +50,17 @@ func (tr *Translator) ResourceId(pgsNty pgs.Entity) dart.Qualifier {
 
 type L10nMsgOrEnum struct {
 	Extension l10n.MsgOrEnum
+	IsError   bool
 	IsEnum    bool
 	Message   *Message
 	Enum      *Enum
+}
+
+func (l *L10nMsgOrEnum) Children() interface{} {
+	if l.IsEnum {
+		return l.Enum.Values
+	}
+	return l.Message.Fields
 }
 
 func (l *L10nMsgOrEnum) Entity() *Entity {
@@ -315,6 +323,9 @@ func (l *L10nField) addAssetResource(assetName string) {
 
 func (l *L10nMsgOrEnum) addAssetsResources() (err error) {
 	if l.Ignore() {
+		if l.IsError {
+			l.addValueResource()
+		}
 		return nil
 	}
 

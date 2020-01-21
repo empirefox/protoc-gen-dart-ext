@@ -16,7 +16,7 @@ abstract class GeneratedValidator<T extends GeneratedMessage> {
   void assertOneof(Type oneof);
 }
 
-// TODO move fmt to ValidateError 
+// TODO move fmt to ValidateError
 class ValidateInfo<T extends GeneratedMessage> {
   final MaterialLocalizations md;
   final PgdeLocalizations l10n;

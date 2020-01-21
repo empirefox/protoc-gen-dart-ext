@@ -64,12 +64,43 @@ class _{{ $L10nClass }}Delegate extends {{ .MaterialLib.AsDot "LocalizationsDele
 `
 
 const arbBaseTplStr = `{{ $L10nClass := l10nClass .Entity }}
-abstract class {{ $L10nClass }} {
+{{ if .File }}
+	typedef $OfFunc = String Function({{ $L10nClass }} l);
+{{ end }}
+
+abstract class {{ $L10nClass }}
+{{- if .File.IsL10nErrorCoder }} implements {{ .PgdeFile.AsDot "ErrorCoder" }} {{ end -}}
+{
 	{{ if .Delegate }}
-		static const delegate = _{{ $L10nClass }}Delegate();
+		static const $delegate = _{{ $L10nClass }}Delegate();
 	{{ end }}
 
 	{{ $L10nClass }}();
+
+	{{ if .File }}
+		{{ range .File.Messages }}
+			{{ if .Ignore }}
+				String $of{{ .DartName }}(int number) {
+					final fn = $byNumber{{ .DartName }}[number];
+					return fn == null ?
+						{{ if .IsEnum }}
+							'Invalid Value $number'
+						{{ else }}
+							'Unknown Field $number'
+						{{ end }}
+					: fn(this);
+				}
+
+				Map<int, $OfFunc> $byNumber{{ .DartName }} = {
+					{{- range .Children }}
+						{{- if .Ignore }}
+							{{ .Descriptor.Number }}: ({{ $L10nClass }} l) => l.{{ .L10n.ResourceId }},
+						{{- end }}
+					{{- end }}
+				};
+			{{ end }}
+		{{ end }}
+	{{ end }}
 
 	{{ range .Resources }}
 		{{ template "resourceBase" . }}
@@ -82,7 +113,7 @@ abstract class {{ $L10nClass }} {
 	static {{ $L10nClass }} of({{ .MaterialLib.AsDot "BuildContext" }} context) =>
 		{{ .MaterialLib.AsDot "Localizations" }}.of<{{ $L10nClass }}>(context, {{ $L10nClass }})
 		  {{ range .InstanceClasses }}
-		  	..{{ .Instance }} = {{ .FullName }}.of(context)
+		  	..{{ .Instance }} ??= {{ .FullName }}.of(context)
 		  {{ end }}
 		;
 }

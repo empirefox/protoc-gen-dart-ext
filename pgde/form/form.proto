@@ -18,6 +18,7 @@ extend google.protobuf.EnumOptions {
 extend google.protobuf.EnumValueOptions {
   pgde.form.InputOption inputOption = 919114;
 }
+extend google.protobuf.OneofOptions { bool embed = 919114; }
 extend google.protobuf.MessageOptions { pgde.form.Node node = 919114; }
 
 message InputOption { MaterialIcon icon = 1; }
@@ -30,20 +31,17 @@ message Node {
 
 extend google.protobuf.FieldOptions { pgde.form.Field field = 919114; }
 message Field {
-  enum Role {
-    justField = 0;
-    key = 1;
-    label = 2;
+  InputDecoration decoration = 1;
+  Protector protector = 2;
+
+  oneof build {
+    bool hide = 3;
+    bool disabled = 4;
+    bool ensureAgain = 5;
+
+    // for non-oneof non-built-in field
+    bool embed = 6;
   }
-  // key and label must be set once under Message
-  Role role = 1;
-
-  InputDecoration decoration = 2;
-  bool hide = 3;
-  bool disabled = 4;
-  bool ensureAgain = 5;
-
-  Protector protector = 6;
 
   oneof type {
     TextInput text = 11;
@@ -57,6 +55,7 @@ message Field {
     SwitchInput boolSwitch = 19;
     ListInput list = 20;
     DatetimePickerInput datetime = 21;
+    MapInput map = 22;
   }
 }
 
@@ -167,6 +166,26 @@ message DatetimePickerInput {
   }
   DatePickerMode datePickerMode = 1;
   bool editable = 2;
+}
+
+message MapInput {
+  MapKeyValueInput key = 1;
+  MapKeyValueInput value = 2;
+}
+
+message MapKeyValueInput {
+  oneof type {
+    TextInput text = 11;
+    TypeAheadInput typeAhead = 12;
+    SignatureInput signature = 13;
+    NumberInput number = 14;
+    StepperInput stepper = 15;
+    SliderInput slider = 16;
+    RateInput rate = 17;
+    RadioInput radio = 18;
+    SwitchInput boolSwitch = 19;
+    DatetimePickerInput datetime = 21;
+  }
 }
 
 message InputDecoration {

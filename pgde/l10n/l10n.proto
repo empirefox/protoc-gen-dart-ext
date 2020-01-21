@@ -2,24 +2,26 @@ syntax = "proto3";
 
 package pgde.l10n;
 
-option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/l10n";
+option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/l10n;l10n";
 
 import "google/protobuf/descriptor.proto";
 
 extend google.protobuf.EnumOptions {
-  l10n.MsgOrEnum enum = 919110;
+  /// The enum name must be 'ErrorCode'
+  bool error = 919109;
+  pgde.l10n.MsgOrEnum enum = 919110;
 }
 extend google.protobuf.EnumValueOptions {
-  l10n.Value value = 919110;
+  pgde.l10n.Value value = 919110;
 }
 extend google.protobuf.MessageOptions {
-  l10n.MsgOrEnum message = 919110;
+  pgde.l10n.MsgOrEnum message = 919110;
 }
 extend google.protobuf.OneofOptions {
-  l10n.Oneof oneof = 919110;
+  pgde.l10n.Oneof oneof = 919110;
 }
 extend google.protobuf.FieldOptions {
-  l10n.Field field = 919110;
+  pgde.l10n.Field field = 919110;
 }
 
 message Value {

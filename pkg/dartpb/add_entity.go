@@ -204,7 +204,20 @@ func (f *File) addEnum(pgsNty pgs.Enum) error {
 		return err
 	}
 
+	_, err = pgsNty.Extension(l10n.E_Error, &l10nNty.IsError)
+	if err != nil {
+		return err
+	}
+
 	names := f.Dart.EnumNames(pgsNty)
+
+	if l10nNty.IsError {
+		if names.Name() != "ErrorCode" {
+			return fmt.Errorf("Enum name must be `ErrorCode`, when pgde.l10n.error=true: %s",
+				pgsNty.FullyQualifiedName())
+		}
+		f.isL10nErrorCoder = true
+	}
 
 	nty := &Enum{
 		Entity: Entity{

@@ -42,10 +42,22 @@ class Show {
   static const symbolPrefix = _PrefixSymbolValuer();
   static const namePrefix = _PrefixNameValuer();
 
+  static const $byNumberPrefix = <_PrefixValuer>[
+    symbolPrefix,
+    namePrefix,
+  ];
+
   static const symbol = _AtomSymbolValuer();
   static const one = _AtomOneValuer();
   static const other = _AtomOtherValuer();
   static const parse = _AtomParseValuer();
+
+  static const $byNumber = <_AtomValuer>[
+    symbol,
+    one,
+    other,
+    parse,
+  ];
 
   final bool off;
   final _PrefixValuer prefix;
@@ -66,6 +78,9 @@ class Cell {
   final String exponent;
   final Prefix prefix;
   final Atom atom;
+
+  const Cell.int({int exponent, this.prefix, this.atom})
+      : this.exponent = exponent == 1 ? '' : '$exponent';
 
   const Cell({this.exponent = '', this.prefix, this.atom})
       : assert(prefix != null),

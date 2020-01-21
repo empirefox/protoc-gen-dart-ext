@@ -30,7 +30,7 @@ import "pgde/zero/zero.proto";
 enum {{ Entity }} {
   option (pgde.zero.defaultNotSet) = true;
 
-  noPrefix = 0;
+  no{{ Entity }} = 0;
 
   // SI
 {{- range $idx, $prefix := .SIPrefixes }}
@@ -50,7 +50,7 @@ const dartTplStr = genshared.DartHead + `
 import '../l10n/pgde.l10n.dart';
 
 abstract class _Valuer {
-	String of(PgdeLocalizations l);
+  String of(PgdeLocalizations l);
 }
 
 class _No{{ Entity }} implements _Valuer {
@@ -66,10 +66,17 @@ class _No{{ Entity }} implements _Valuer {
 {{- end }}
 
 class {{ Entity }} {
-	static const no{{ Entity }} = const {{ Entity }}._('', 1, 1, const _No{{ Entity }}());
+  static const no{{ Entity }} = const {{ Entity }}._('', 1, 1, const _No{{ Entity }}());
+  {{- range .AllPrefix }}
+	static const {{ .Name }} = const {{ Entity }}._({{ dartRawStr .Symbol }}, {{ .Base }}, {{ .Exponent }}, const _{{ .Name | powerCamel }}());
+  {{- end }}
+
+  static const $byNumber = <{{ Entity }}>[
+	no{{ Entity }},
 	{{- range .AllPrefix }}
-		static const {{ .Name }} = const {{ Entity }}._({{ dartRawStr .Symbol }}, {{ .Base }}, {{ .Exponent }}, const _{{ .Name | powerCamel }}());
+		{{ .Name }},
 	{{- end }}
+  ];
 
   final String symbol;
   final int base;

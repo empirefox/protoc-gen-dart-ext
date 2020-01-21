@@ -9,7 +9,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../google/protobuf/wrappers.pb.dart' as $0;
+import '../google/protobuf/wrappers.pb.dart' as $4;
 
 class ConfigTree extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('ConfigTree', package: const $pb.PackageName('hybrid'), createEmptyInstance: create)
@@ -442,7 +442,7 @@ class Ipfs extends $pb.GeneratedMessage {
 class IpfsServer extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('IpfsServer', package: const $pb.PackageName('hybrid'), createEmptyInstance: create)
     ..aOB(1, 'disabled')
-    ..aOM<$0.StringValue>(2, 'name', subBuilder: $0.StringValue.create)
+    ..aOM<$4.StringValue>(2, 'name', subBuilder: $4.StringValue.create)
     ..aOS(3, 'peer')
     ..aOS(4, 'token')
     ..hasRequiredFields = false
@@ -473,15 +473,15 @@ class IpfsServer extends $pb.GeneratedMessage {
   void clearDisabled() => clearField(1);
 
   @$pb.TagNumber(2)
-  $0.StringValue get name => $_getN(1);
+  $4.StringValue get name => $_getN(1);
   @$pb.TagNumber(2)
-  set name($0.StringValue v) { setField(2, v); }
+  set name($4.StringValue v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasName() => $_has(1);
   @$pb.TagNumber(2)
   void clearName() => clearField(2);
   @$pb.TagNumber(2)
-  $0.StringValue ensureName() => $_ensure(1);
+  $4.StringValue ensureName() => $_ensure(1);
 
   @$pb.TagNumber(3)
   $core.String get peer => $_getSZ(2);
@@ -505,7 +505,7 @@ class IpfsServer extends $pb.GeneratedMessage {
 class FileServer extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('FileServer', package: const $pb.PackageName('hybrid'), createEmptyInstance: create)
     ..aOB(1, 'disabled')
-    ..aOM<$0.StringValue>(2, 'name', subBuilder: $0.StringValue.create)
+    ..aOM<$4.StringValue>(2, 'name', subBuilder: $4.StringValue.create)
     ..aOS(3, 'zip')
     ..m<$core.String, $core.String>(4, 'redirect', entryClassName: 'FileServer.RedirectEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('hybrid'))
     ..aOB(5, 'dev')
@@ -537,15 +537,15 @@ class FileServer extends $pb.GeneratedMessage {
   void clearDisabled() => clearField(1);
 
   @$pb.TagNumber(2)
-  $0.StringValue get name => $_getN(1);
+  $4.StringValue get name => $_getN(1);
   @$pb.TagNumber(2)
-  set name($0.StringValue v) { setField(2, v); }
+  set name($4.StringValue v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasName() => $_has(1);
   @$pb.TagNumber(2)
   void clearName() => clearField(2);
   @$pb.TagNumber(2)
-  $0.StringValue ensureName() => $_ensure(1);
+  $4.StringValue ensureName() => $_ensure(1);
 
   @$pb.TagNumber(3)
   $core.String get zip => $_getSZ(2);
@@ -572,7 +572,7 @@ class FileServer extends $pb.GeneratedMessage {
 class HttpProxyServer extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('HttpProxyServer', package: const $pb.PackageName('hybrid'), createEmptyInstance: create)
     ..aOB(1, 'disabled')
-    ..aOM<$0.StringValue>(2, 'name', subBuilder: $0.StringValue.create)
+    ..aOM<$4.StringValue>(2, 'name', subBuilder: $4.StringValue.create)
     ..aOS(3, 'host')
     ..a<$core.int>(4, 'port', $pb.PbFieldType.OU3)
     ..aOB(5, 'keepAlive', protoName: 'keepAlive')
@@ -604,15 +604,15 @@ class HttpProxyServer extends $pb.GeneratedMessage {
   void clearDisabled() => clearField(1);
 
   @$pb.TagNumber(2)
-  $0.StringValue get name => $_getN(1);
+  $4.StringValue get name => $_getN(1);
   @$pb.TagNumber(2)
-  set name($0.StringValue v) { setField(2, v); }
+  set name($4.StringValue v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasName() => $_has(1);
   @$pb.TagNumber(2)
   void clearName() => clearField(2);
   @$pb.TagNumber(2)
-  $0.StringValue ensureName() => $_ensure(1);
+  $4.StringValue ensureName() => $_ensure(1);
 
   @$pb.TagNumber(3)
   $core.String get host => $_getSZ(2);
@@ -645,8 +645,8 @@ class HttpProxyServer extends $pb.GeneratedMessage {
 class AdpRouter extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('AdpRouter', package: const $pb.PackageName('hybrid'), createEmptyInstance: create)
     ..aOS(1, 'rulesDirName', protoName: 'rulesDirName')
-    ..aOM<$0.StringValue>(2, 'blocked', subBuilder: $0.StringValue.create)
-    ..aOM<$0.StringValue>(3, 'unblocked', subBuilder: $0.StringValue.create)
+    ..aOM<$4.StringValue>(2, 'blocked', subBuilder: $4.StringValue.create)
+    ..aOM<$4.StringValue>(3, 'unblocked', subBuilder: $4.StringValue.create)
     ..aOB(4, 'etcHostsIpAsBlocked', protoName: 'etcHostsIpAsBlocked')
     ..aOB(5, 'dev')
     ..hasRequiredFields = false
@@ -677,26 +677,26 @@ class AdpRouter extends $pb.GeneratedMessage {
   void clearRulesDirName() => clearField(1);
 
   @$pb.TagNumber(2)
-  $0.StringValue get blocked => $_getN(1);
+  $4.StringValue get blocked => $_getN(1);
   @$pb.TagNumber(2)
-  set blocked($0.StringValue v) { setField(2, v); }
+  set blocked($4.StringValue v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasBlocked() => $_has(1);
   @$pb.TagNumber(2)
   void clearBlocked() => clearField(2);
   @$pb.TagNumber(2)
-  $0.StringValue ensureBlocked() => $_ensure(1);
+  $4.StringValue ensureBlocked() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $0.StringValue get unblocked => $_getN(2);
+  $4.StringValue get unblocked => $_getN(2);
   @$pb.TagNumber(3)
-  set unblocked($0.StringValue v) { setField(3, v); }
+  set unblocked($4.StringValue v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasUnblocked() => $_has(2);
   @$pb.TagNumber(3)
   void clearUnblocked() => clearField(3);
   @$pb.TagNumber(3)
-  $0.StringValue ensureUnblocked() => $_ensure(2);
+  $4.StringValue ensureUnblocked() => $_ensure(2);
 
   @$pb.TagNumber(4)
   $core.bool get etcHostsIpAsBlocked => $_getBF(3);
@@ -719,12 +719,12 @@ class AdpRouter extends $pb.GeneratedMessage {
 
 class IPNetRouter extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo('IPNetRouter', package: const $pb.PackageName('hybrid'), createEmptyInstance: create)
-    ..pc<$0.BytesValue>(1, 'ip', $pb.PbFieldType.PM, subBuilder: $0.BytesValue.create)
-    ..pc<$0.BytesValue>(2, 'netv4', $pb.PbFieldType.PM, subBuilder: $0.BytesValue.create)
-    ..pc<$0.BytesValue>(3, 'netv6', $pb.PbFieldType.PM, subBuilder: $0.BytesValue.create)
-    ..aOM<$0.StringValue>(4, 'matched', subBuilder: $0.StringValue.create)
-    ..aOM<$0.StringValue>(5, 'unmatched', subBuilder: $0.StringValue.create)
-    ..aOM<$0.StringValue>(6, 'fileTest', protoName: 'fileTest', subBuilder: $0.StringValue.create)
+    ..pc<$4.BytesValue>(1, 'ip', $pb.PbFieldType.PM, subBuilder: $4.BytesValue.create)
+    ..pc<$4.BytesValue>(2, 'netv4', $pb.PbFieldType.PM, subBuilder: $4.BytesValue.create)
+    ..pc<$4.BytesValue>(3, 'netv6', $pb.PbFieldType.PM, subBuilder: $4.BytesValue.create)
+    ..aOM<$4.StringValue>(4, 'matched', subBuilder: $4.StringValue.create)
+    ..aOM<$4.StringValue>(5, 'unmatched', subBuilder: $4.StringValue.create)
+    ..aOM<$4.StringValue>(6, 'fileTest', protoName: 'fileTest', subBuilder: $4.StringValue.create)
     ..hasRequiredFields = false
   ;
 
@@ -744,46 +744,46 @@ class IPNetRouter extends $pb.GeneratedMessage {
   static IPNetRouter _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$0.BytesValue> get ip => $_getList(0);
+  $core.List<$4.BytesValue> get ip => $_getList(0);
 
   @$pb.TagNumber(2)
-  $core.List<$0.BytesValue> get netv4 => $_getList(1);
+  $core.List<$4.BytesValue> get netv4 => $_getList(1);
 
   @$pb.TagNumber(3)
-  $core.List<$0.BytesValue> get netv6 => $_getList(2);
+  $core.List<$4.BytesValue> get netv6 => $_getList(2);
 
   @$pb.TagNumber(4)
-  $0.StringValue get matched => $_getN(3);
+  $4.StringValue get matched => $_getN(3);
   @$pb.TagNumber(4)
-  set matched($0.StringValue v) { setField(4, v); }
+  set matched($4.StringValue v) { setField(4, v); }
   @$pb.TagNumber(4)
   $core.bool hasMatched() => $_has(3);
   @$pb.TagNumber(4)
   void clearMatched() => clearField(4);
   @$pb.TagNumber(4)
-  $0.StringValue ensureMatched() => $_ensure(3);
+  $4.StringValue ensureMatched() => $_ensure(3);
 
   @$pb.TagNumber(5)
-  $0.StringValue get unmatched => $_getN(4);
+  $4.StringValue get unmatched => $_getN(4);
   @$pb.TagNumber(5)
-  set unmatched($0.StringValue v) { setField(5, v); }
+  set unmatched($4.StringValue v) { setField(5, v); }
   @$pb.TagNumber(5)
   $core.bool hasUnmatched() => $_has(4);
   @$pb.TagNumber(5)
   void clearUnmatched() => clearField(5);
   @$pb.TagNumber(5)
-  $0.StringValue ensureUnmatched() => $_ensure(4);
+  $4.StringValue ensureUnmatched() => $_ensure(4);
 
   @$pb.TagNumber(6)
-  $0.StringValue get fileTest => $_getN(5);
+  $4.StringValue get fileTest => $_getN(5);
   @$pb.TagNumber(6)
-  set fileTest($0.StringValue v) { setField(6, v); }
+  set fileTest($4.StringValue v) { setField(6, v); }
   @$pb.TagNumber(6)
   $core.bool hasFileTest() => $_has(5);
   @$pb.TagNumber(6)
   void clearFileTest() => clearField(6);
   @$pb.TagNumber(6)
-  $0.StringValue ensureFileTest() => $_ensure(5);
+  $4.StringValue ensureFileTest() => $_ensure(5);
 }
 
 enum RouterItem_Router {

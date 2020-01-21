@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package hybrid;
+option go_package = "github.com/empirefox/hybrid/config;config";
+
+import "google/protobuf/empty.proto";
+import "pgde/error/error.proto";
+import "hybrid/config.proto";
+
+// scoped-unique mode: no id transport
+service RouterItemService {
+    rpc GetRouterItem(google.protobuf.Empty) returns (GetRouterItemResponse);
+    rpc SetRouterItem(RouterItem) returns (pgde.error.BackendError);
+    rpc ModifyRouterItem(ModifyRouterItemRequest) returns (pgde.error.BackendError);
+    rpc DelRouterItem(google.protobuf.Empty) returns (pgde.error.BackendError);
+  }
+  
+  message GetRouterItemResponse {
+    oneof is {
+      RouterItem data = 1;
+      pgde.error.BackendError error = 2;
+    }
+  }
+  
+  message ModifyRouterItemRequest {
+    RouterItem data = 1;
+    repeated int32 fields = 2;
+  }

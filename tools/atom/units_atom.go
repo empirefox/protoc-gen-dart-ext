@@ -46,7 +46,7 @@ import '../plural/plural.dart';
 import '../l10n/pgde.l10n.dart';
 
 abstract class _Valuer {
-	String of(PgdeLocalizations l, Form p);
+  String of(PgdeLocalizations l, Form p);
 }
 
 class _No{{ Entity }} implements _Valuer {
@@ -64,9 +64,16 @@ class _No{{ Entity }} implements _Valuer {
 class {{ Entity }} {
 	static const no{{ Entity }} = const {{ Entity }}._('', const _No{{ Entity }}());
 	{{ range .Atoms }}
-		{{ $symbol := .PrintSymbol false | dartRawStr }}
-		static const {{ field . }} = const {{ Entity }}._({{ $symbol }}, const _{{ Field . }}());
+	  {{ $symbol := .PrintSymbol false | dartRawStr }}
+	  static const {{ field . }} = const {{ Entity }}._({{ $symbol }}, const _{{ Field . }}());
 	{{ end }}
+
+	static const $byNumber = <{{ Entity }}>[
+	  no{{ Entity }},
+	  {{- range .Atoms }}
+		{{ field . }},
+	  {{ end }}
+	];
 
   final String symbol;
   final _Valuer _v;

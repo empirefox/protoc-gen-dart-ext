@@ -33,7 +33,6 @@ final HashMap<String, NumberFormat> _percent = HashMap();
 final HashMap<String, NumberFormat> _scientific = HashMap();
 final HashMap<String, NumberFormat> _currency = HashMap();
 final HashMap<String, NumberFormat> _currencySimple = HashMap();
-final HashMap<String, NumberFormat> _custom = HashMap();
 
 abstract class NumberFormatGetter {
   static const NumberFormatGetter decimal = const _DecimalFormatGetter();
@@ -42,11 +41,6 @@ abstract class NumberFormatGetter {
   static const NumberFormatGetter currency = const _CurrencyFormatGetter();
   static const NumberFormatGetter currencySimple =
       const _CurrencySimpleFormatGetter();
-
-  // must register before use
-  static const NumberFormatGetter custom = const _CustomFormatGetter();
-
-  static void registerCustom(String k, NumberFormat f) => _custom[k] = f;
 
   NumberFormat from(String key);
 }
@@ -108,10 +102,4 @@ class _CurrencySimpleFormatGetter extends _LocaleFormatGetter {
   @override
   NumberFormat create(String locale) =>
       NumberFormat.compactSimpleCurrency(locale: locale);
-}
-
-class _CustomFormatGetter implements NumberFormatGetter {
-  const _CustomFormatGetter();
-  @override
-  NumberFormat from(String key) => _custom[key];
 }

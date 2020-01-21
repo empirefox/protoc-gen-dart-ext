@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package pgde.format;
 
-option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/format";
+option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/format;format";
 
 import "google/protobuf/descriptor.proto";
 import "pgde/format/currency.proto";
@@ -69,16 +69,11 @@ message TimeFormat {
 
   oneof type {
     Builtin builtin = 1;
-    // user provided format name which is imported
-    string imported = 2;
-    // user provided format name which is registered
-    // do not support literal pattern here
-    // separet DateTime and Duration
-    string custom = 3;
+    string custom = 2;
   }
 
   // only valid on int types, and must set if type is int
-  IntUnit intUnit = 4;
+  IntUnit intUnit = 3;
 }
 
 message CurrencyFormat {
@@ -108,16 +103,12 @@ message NumberFormat {
 
   oneof type {
     Builtin builtin = 1;
-    // user provided format name which is imported
     string imported = 2;
-    // user provided format name which is registered
-    // do not support literal pattern here
-    string custom = 3;
   }
 
-  string locale = 4;
-  bool ordinal = 5;
-  pgde.units.Unit unit = 6;
+  string locale = 3;
+  bool ordinal = 4;
+  pgde.units.Unit unit = 5;
 }
 
 message BytesFormat {
@@ -137,10 +128,6 @@ message BytesFormat {
 
   oneof type {
     Builtin builtin = 1;
-    // user provided format name which is imported
-    string imported = 2;
-    // user provided format name which is registered
-    // do not support literal pattern here
     string custom = 3;
   }
 }

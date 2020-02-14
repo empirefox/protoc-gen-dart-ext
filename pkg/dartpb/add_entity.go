@@ -3,6 +3,7 @@ package dartpb
 import (
 	"fmt"
 
+	"github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/format"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/l10n"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/zero"
 	"github.com/envoyproxy/protoc-gen-validate/templates/shared"
@@ -86,6 +87,12 @@ func (msg *Message) addField(pgsToOneOf map[pgs.OneOf]*OneOf, pgsNty pgs.Field) 
 		return err
 	}
 
+	var fmtNty FormatField
+	_, err = pgsNty.Extension(format.E_To, &fmtNty.Extension)
+	if err != nil {
+		return err
+	}
+
 	if pgsNty.Type().IsRepeated() || pgsNty.Type().IsMap() {
 		elem := pgsNty.Type().Element()
 		if elem.IsEnum() {
@@ -117,6 +124,7 @@ func (msg *Message) addField(pgsToOneOf map[pgs.OneOf]*OneOf, pgsNty pgs.Field) 
 		Message: msg,
 		Zero:    &zeroNty,
 		L10n:    &l10nNty,
+		Format:  &fmtNty,
 		Validate: &ValidateField{
 			ImportManagerCommonFiles: msg.File.Validators.ImportManager,
 			Pgv:                      &pgvCtx,
@@ -125,6 +133,7 @@ func (msg *Message) addField(pgsToOneOf map[pgs.OneOf]*OneOf, pgsNty pgs.Field) 
 
 	zeroNty.Field = nty
 	l10nNty.Entity = nty
+	fmtNty.Field = nty
 	nty.Validate.Field = nty
 	msg.Fields = append(msg.Fields, nty)
 

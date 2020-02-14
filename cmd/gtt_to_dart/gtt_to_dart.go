@@ -58,7 +58,10 @@ func main() {
 	}
 
 	d := dart.NewDart()
-	im := dart.NewImportManager(d, flag.Lookup(dart_out).Value.String(), "$", "$")
+	im, err := dart.NewImportManager(d, flag.Lookup(dart_out).Value.String(), "$", "$")
+	if err != nil {
+		log.Fatalf("arb file: %v", err)
+	}
 
 	pglt.Register(dartOutTpl)
 

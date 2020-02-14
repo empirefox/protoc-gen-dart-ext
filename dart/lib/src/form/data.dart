@@ -1,6 +1,7 @@
+import 'package:path/path.dart' show posix;
 import 'package:protobuf/protobuf.dart';
 
-abstract class FormData<E> {
+abstract class FormData {
   final FormData parent;
 
   // tag number from Message
@@ -14,26 +15,31 @@ abstract class FormData<E> {
   // key from map
   final dynamic key;
 
-  final E extra;
+  final String route;
+
+  final dynamic extra;
 
   FormData(
-      FormData parent, this.tag, this.index, this.insert, this.key, this.extra)
+      {this.route,
+      FormData parent,
+      this.tag,
+      this.index,
+      this.insert,
+      this.key,
+      this.extra})
       : this.parent = parent,
         _root = parent?._root;
-
-  FormData.root(
-      FormData root, this.tag, this.index, this.insert, this.key, this.extra)
-      : this.parent = null,
-        _root = root;
 
   final FormData _root;
 
   FormData get root => _root ?? this;
 
   bool get isRoot => _root == null;
+
+  String childRoute(int i) => posix.join(route, i.toString());
 }
 
-class FormMessageData<E> extends FormData<E> {
+class FormMessageData extends FormData {
   final GeneratedMessage saved;
 
   GeneratedMessage _editing;
@@ -42,19 +48,70 @@ class FormMessageData<E> extends FormData<E> {
     return _editing;
   }
 
-  FormMessageData(FormData parent, int tag, int index, bool insert, dynamic key,
-      E extra, this.saved, GeneratedMessage editing)
+  FormMessageData(
+      {String route,
+      FormData parent,
+      int tag,
+      int index,
+      bool insert,
+      dynamic key,
+      dynamic extra,
+      this.saved,
+      GeneratedMessage editing})
       : this._editing = editing,
-        super(parent, tag, index, insert, key, extra);
+        super(
+            route: route,
+            parent: parent,
+            tag: tag,
+            index: index,
+            insert: insert,
+            key: key,
+            extra: extra);
 
-  FormData childMessage(int tag) => FormMessageData(this, tag, null, false,
-      null, extra, saved.getField(tag), editing.getField(tag));
+  FormMessageData.root(
+      String route, this.saved, GeneratedMessage editing, dynamic extra)
+      : this._editing = editing,
+        super(
+            route: route,
+            parent: null,
+            tag: null,
+            index: null,
+            insert: false,
+            key: null,
+            extra: extra);
 
-  FormData childMessageList(int tag) => FormMessageListData(this, tag, null,
-      false, null, extra, saved.getField(tag), editing.getField(tag));
+  FormData childMessage(int tag) => FormMessageData(
+      route: childRoute(tag),
+      parent: this,
+      tag: tag,
+      index: null,
+      insert: false,
+      key: null,
+      extra: extra,
+      saved: saved.getField(tag),
+      editing: editing.getField(tag));
 
-  FormData childMessageMap(int tag) => FormMessageMapData(this, tag, null,
-      false, null, extra, saved.getField(tag), editing.getField(tag));
+  FormData childMessageList(int tag) => FormMessageListData(
+      route: childRoute(tag),
+      parent: this,
+      tag: tag,
+      index: null,
+      insert: false,
+      key: null,
+      extra: extra,
+      saved: saved.getField(tag),
+      editing: editing.getField(tag));
+
+  FormData childMessageMap(int tag) => FormMessageMapData(
+      route: childRoute(tag),
+      parent: this,
+      tag: tag,
+      index: null,
+      insert: false,
+      key: null,
+      extra: extra,
+      saved: saved.getField(tag),
+      editing: editing.getField(tag));
 
   void save(GeneratedMessage draft) {
     if (isRoot) return;
@@ -73,26 +130,72 @@ class FormMessageData<E> extends FormData<E> {
   }
 }
 
-class FormMessageListData<E> extends FormData<E> {
+class FormMessageListData extends FormData {
   final List saved;
   final List editing;
 
-  FormMessageListData(FormData parent, int tag, int index, bool insert,
-      dynamic key, E extra, this.saved, this.editing)
-      : super(parent, tag, index, false, key, extra);
+  FormMessageListData(
+      {String route,
+      FormData parent,
+      int tag,
+      int index,
+      bool insert,
+      dynamic key,
+      dynamic extra,
+      this.saved,
+      this.editing})
+      : super(
+            route: route,
+            parent: parent,
+            tag: tag,
+            index: index,
+            insert: false,
+            key: key,
+            extra: extra);
 
   FormData childMessage(int idx, bool insert) => FormMessageData(
-      this, null, idx, insert, null, extra, saved[idx], editing[idx]);
+      route: childRoute(idx),
+      parent: this,
+      tag: null,
+      index: idx,
+      insert: insert,
+      key: null,
+      extra: extra,
+      saved: saved[idx],
+      editing: editing[idx]);
 }
 
-class FormMessageMapData<E> extends FormData<E> {
+class FormMessageMapData extends FormData {
   final Map saved;
   final Map editing;
 
-  FormMessageMapData(FormData parent, int tag, int index, bool insert,
-      dynamic key, E extra, this.saved, this.editing)
-      : super(parent, tag, index, false, key, extra);
+  FormMessageMapData(
+      {String route,
+      FormData parent,
+      int tag,
+      int index,
+      bool insert,
+      dynamic key,
+      dynamic extra,
+      this.saved,
+      this.editing})
+      : super(
+            route: route,
+            parent: parent,
+            tag: tag,
+            index: index,
+            insert: false,
+            key: key,
+            extra: extra);
 
   FormData childMessage(dynamic key) => FormMessageData(
-      this, null, null, false, key, extra, saved[key], editing[key]);
+      route: key is String ? posix.join(route, 's', key) : childRoute(key),
+      parent: this,
+      tag: null,
+      index: null,
+      insert: false,
+      key: key,
+      extra: extra,
+      saved: saved[key],
+      editing: editing[key]);
 }

@@ -13,7 +13,7 @@ class NumberFormatter implements Formatter<num> {
   final Unit unit;
 
   const NumberFormatter(this.getter,
-      {this.locale, this.ordinal = false, this.unit});
+      [this.locale, this.ordinal = false, this.unit]);
 
   String format(v, md, l, {form, show}) {
     var s = getter?.from(locale)?.format(v) ?? '$v';

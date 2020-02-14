@@ -25,7 +25,7 @@ const inTplDef = `{{ $r := .Pgv.Rules }}
 const inTpl = inTplDef + `
 {{- if $r.In }}
 	if (!{{ $kIn }}.containsKey({{ .Accessor }}))
-		throw {{ .PgdeFile.AsDot "InError" }}({{ .Err3Args }}, {{ $kIn }}.keys.toList());
+		throw {{ .PgdeFile.AsDot "InError" }}({{ .Err4Args }}, {{ $kIn }}.keys.toList());
 {{- end -}}
 {{- if $r.NotIn }}
 	if ({{ $kNotIn }}.containsKey({{ .Accessor }}))

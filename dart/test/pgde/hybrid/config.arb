@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2019-11-17T03:47:10Z",
+  "@@last_modified": "2020-02-14T03:46:06Z",
   "Basic": "basic",
   "@Basic": {
     "type": "text"
@@ -1831,44 +1831,83 @@
     "type": "text",
     "description": "BoolFalse of IPNetRouterIp"
   },
-  "IPNetRouterNet": "",
-  "@IPNetRouterNet": {
+  "IPNetRouterNetv4": "",
+  "@IPNetRouterNetv4": {
     "type": "text"
   },
-  "IPNetRouterNetLabel": "",
-  "@IPNetRouterNetLabel": {
+  "IPNetRouterNetv4Label": "",
+  "@IPNetRouterNetv4Label": {
     "type": "text",
-    "description": "Label of IPNetRouterNet"
+    "description": "Label of IPNetRouterNetv4"
   },
-  "IPNetRouterNetHelper": "",
-  "@IPNetRouterNetHelper": {
+  "IPNetRouterNetv4Helper": "",
+  "@IPNetRouterNetv4Helper": {
     "type": "text",
-    "description": "Helper of IPNetRouterNet"
+    "description": "Helper of IPNetRouterNetv4"
   },
-  "IPNetRouterNetHint": "",
-  "@IPNetRouterNetHint": {
+  "IPNetRouterNetv4Hint": "",
+  "@IPNetRouterNetv4Hint": {
     "type": "text",
-    "description": "Hint of IPNetRouterNet"
+    "description": "Hint of IPNetRouterNetv4"
   },
-  "IPNetRouterNetPrefix": "",
-  "@IPNetRouterNetPrefix": {
+  "IPNetRouterNetv4Prefix": "",
+  "@IPNetRouterNetv4Prefix": {
     "type": "text",
-    "description": "Prefix of IPNetRouterNet"
+    "description": "Prefix of IPNetRouterNetv4"
   },
-  "IPNetRouterNetSuffix": "",
-  "@IPNetRouterNetSuffix": {
+  "IPNetRouterNetv4Suffix": "",
+  "@IPNetRouterNetv4Suffix": {
     "type": "text",
-    "description": "Suffix of IPNetRouterNet"
+    "description": "Suffix of IPNetRouterNetv4"
   },
-  "IPNetRouterNetBoolTrue": "",
-  "@IPNetRouterNetBoolTrue": {
+  "IPNetRouterNetv4BoolTrue": "",
+  "@IPNetRouterNetv4BoolTrue": {
     "type": "text",
-    "description": "BoolTrue of IPNetRouterNet"
+    "description": "BoolTrue of IPNetRouterNetv4"
   },
-  "IPNetRouterNetBoolFalse": "",
-  "@IPNetRouterNetBoolFalse": {
+  "IPNetRouterNetv4BoolFalse": "",
+  "@IPNetRouterNetv4BoolFalse": {
     "type": "text",
-    "description": "BoolFalse of IPNetRouterNet"
+    "description": "BoolFalse of IPNetRouterNetv4"
+  },
+  "IPNetRouterNetv6": "",
+  "@IPNetRouterNetv6": {
+    "type": "text"
+  },
+  "IPNetRouterNetv6Label": "",
+  "@IPNetRouterNetv6Label": {
+    "type": "text",
+    "description": "Label of IPNetRouterNetv6"
+  },
+  "IPNetRouterNetv6Helper": "",
+  "@IPNetRouterNetv6Helper": {
+    "type": "text",
+    "description": "Helper of IPNetRouterNetv6"
+  },
+  "IPNetRouterNetv6Hint": "",
+  "@IPNetRouterNetv6Hint": {
+    "type": "text",
+    "description": "Hint of IPNetRouterNetv6"
+  },
+  "IPNetRouterNetv6Prefix": "",
+  "@IPNetRouterNetv6Prefix": {
+    "type": "text",
+    "description": "Prefix of IPNetRouterNetv6"
+  },
+  "IPNetRouterNetv6Suffix": "",
+  "@IPNetRouterNetv6Suffix": {
+    "type": "text",
+    "description": "Suffix of IPNetRouterNetv6"
+  },
+  "IPNetRouterNetv6BoolTrue": "",
+  "@IPNetRouterNetv6BoolTrue": {
+    "type": "text",
+    "description": "BoolTrue of IPNetRouterNetv6"
+  },
+  "IPNetRouterNetv6BoolFalse": "",
+  "@IPNetRouterNetv6BoolFalse": {
+    "type": "text",
+    "description": "BoolFalse of IPNetRouterNetv6"
   },
   "IPNetRouterMatched": "",
   "@IPNetRouterMatched": {

@@ -37,7 +37,7 @@ message TimeFormat {
     // Examples:
     // - US English: Wednesday, September 27, 2017
     // - Russian: Среда, Сентябрь 27, 2017
-    fullData = 1;
+    fullDate = 1;
 
     // 3:00pm or 15:00pm
     // default parse the int value as minute
@@ -67,13 +67,10 @@ message TimeFormat {
     hour = 6;
   }
 
-  oneof type {
-    Builtin builtin = 1;
-    string custom = 2;
-  }
+  Builtin type = 1;
 
   // only valid on int types, and must set if type is int
-  IntUnit intUnit = 3;
+  IntUnit intUnit = 2;
 }
 
 message CurrencyFormat {
@@ -101,14 +98,11 @@ message NumberFormat {
     currencySimple = 4;
   }
 
-  oneof type {
-    Builtin builtin = 1;
-    string imported = 2;
-  }
+  Builtin type = 1;
 
-  string locale = 3;
-  bool ordinal = 4;
-  pgde.units.Unit unit = 5;
+  string locale = 2;
+  bool ordinal = 3;
+  pgde.units.Unit unit = 4;
 }
 
 message BytesFormat {
@@ -126,8 +120,5 @@ message BytesFormat {
     cidrv6 = 8;
   }
 
-  oneof type {
-    Builtin builtin = 1;
-    string custom = 3;
-  }
+  Builtin type = 1;
 }

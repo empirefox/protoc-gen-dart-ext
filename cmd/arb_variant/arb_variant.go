@@ -27,7 +27,7 @@ const (
 
 var (
 	langs = flag.String("lang", "", "language subset")
-	force = flag.Bool("force", false, "force copy even when no plural found")
+	force = flag.Bool("force", true, "force copy even when no plural found")
 
 	outputTpl = template.Must(template.New("output").
 			Funcs(sprig.HermeticTxtFuncMap()).

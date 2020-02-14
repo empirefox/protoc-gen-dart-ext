@@ -43,7 +43,7 @@ message Basic {
   // @inject_tag: toml:",omitempty" env:"HYBRID_BIND_IP"
   bytes bindIp = 4 [
     (validate.rules).bytes.ip = true,
-    (pgde.format.to).bytes.builtin = ip,
+    (pgde.format.to).bytes.type = ip,
     (pgde.zero.to) = {bytes : "\xff\x00\x00\x01"}
   ];
   // @inject_tag: toml:",omitempty" env:"HYBRID_BIND_PORT"
@@ -53,7 +53,7 @@ message Basic {
   // @inject_tag: toml:",omitempty"
   uint32 flushIntervalMs = 6 [
     (pgde.format.to).time = {
-      builtin : duration,
+      type : duration,
       intUnit : millisecond,
     },
     (pgde.zero.to) = {
@@ -84,7 +84,7 @@ message Ipfs {
   // @inject_tag: toml:",omitempty"
   bytes fakeApiListenIp = 1 [
     (validate.rules).bytes.ip = true,
-    (pgde.format.to).bytes.builtin = ip,
+    (pgde.format.to).bytes.type = ip,
     (pgde.zero.to) = {
       bytes : "\xff\x00\xff\x01",
     }
@@ -211,17 +211,17 @@ message IPNetRouter {
   // @inject_tag: toml:",omitempty"
   repeated google.protobuf.BytesValue ip = 1 [
     (validate.rules).repeated .items.bytes.ip = true,
-    (pgde.format.to).bytes.builtin = ip
+    (pgde.format.to).bytes.type = ip
   ];
   // @inject_tag: toml:",omitempty"
   repeated google.protobuf.BytesValue netv4 = 2 [
     (validate.rules).bytes.len = 5,
-    (pgde.format.to).bytes.builtin = cidrv4
+    (pgde.format.to).bytes.type = cidrv4
   ];
   // @inject_tag: toml:",omitempty"
   repeated google.protobuf.BytesValue netv6 = 3 [
     (validate.rules).bytes.len = 17,
-    (pgde.format.to).bytes.builtin = cidrv6
+    (pgde.format.to).bytes.type = cidrv6
   ];
   // @inject_tag: toml:",omitempty"
   google.protobuf.StringValue matched = 4

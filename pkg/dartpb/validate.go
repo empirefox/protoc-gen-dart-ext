@@ -153,6 +153,14 @@ func (vf *ValidateField) Err3Args() string {
 		vf.ErrCauseTranslatorField())
 }
 
+func (vf *ValidateField) Err4Args() (string, error) {
+	kfmt, err := vf.Format.Render(vf.ImportManager())
+	if err != nil {
+		return "", err
+	}
+	return fmt.Sprintf("%s, %s", vf.Err3Args(), kfmt), nil
+}
+
 func (vf *ValidateField) DartType() (dart.Qualifier, error) {
 	return vf.ImportManager().TypeForFieldType(vf.Pgs.Type())
 }

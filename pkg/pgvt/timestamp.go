@@ -43,76 +43,76 @@ const timestampTpl = timestampTplDef + `
 
 	{{ if $r.Const }}
 		if (_ts != {{ $kConst }}.microsecondsSinceEpoch)
-			throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ $kConst }});
+			throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ $kConst }});
 	{{ end }}
 
 	{{ if $r.Lt }}
 		{{ if $r.Gt }}
 			{{  if tsGt $r.GetLt $r.GetGt }}
 				if (_ts <= {{ $kGt }}.microsecondsSinceEpoch || _ts >= {{ $kLt }}.microsecondsSinceEpoch)
-					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.inNN ({{ .Err3Args }}, {{ $kGt }}, {{ $kLt }}));
+					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.inNN ({{ .Err4Args }}, {{ $kGt }}, {{ $kLt }}));
 			{{ else }}
 				if (_ts >= {{ $kLt }}.microsecondsSinceEpoch && _ts <= {{ $kGt }}.microsecondsSinceEpoch)
-					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.outNN ({{ .Err3Args }}, {{ $kLt }}, {{ $kGt }}));
+					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.outNN ({{ .Err4Args }}, {{ $kLt }}, {{ $kGt }}));
 			{{ end }}
 		{{ else if $r.Gte }}
 			{{  if tsGt $r.GetLt $r.GetGte }}
 				if (_ts < {{ $kGte }}.microsecondsSinceEpoch || _ts >= {{ $kLt }}.microsecondsSinceEpoch)
-					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.inEN ({{ .Err3Args }}, {{ $kGte }}, {{ $kLt }}));
+					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.inEN ({{ .Err4Args }}, {{ $kGte }}, {{ $kLt }}));
 			{{ else }}
 				if (_ts >= {{ $kLt }}.microsecondsSinceEpoch && _ts < {{ $kGte }}.microsecondsSinceEpoch)
-					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.outNE ({{ .Err3Args }}, {{ $kLt }}, {{ $kGte }}));
+					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.outNE ({{ .Err4Args }}, {{ $kLt }}, {{ $kGte }}));
 			{{ end }}
 		{{ else }}
 			if (_ts >= {{ $kLt }}.microsecondsSinceEpoch)
-				throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateLt, {{ $kLt }});
+				throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateLt, {{ $kLt }});
 		{{ end }}
 	{{ else if $r.Lte }}
 		{{ if $r.Gt }}
 			{{  if tsGt $r.GetLte $r.GetGt }}
 				if (_ts <= {{ $kGt }}.microsecondsSinceEpoch || _ts > {{ $kLte }}.microsecondsSinceEpoch)
-					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.inNE ({{ .Err3Args }}, {{ $kGt }}, {{ $kLte }}));
+					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.inNE ({{ .Err4Args }}, {{ $kGt }}, {{ $kLte }}));
 			{{ else }}
 				if (_ts > {{ $kLte }}.microsecondsSinceEpoch && _ts <= {{ $kGt }}.microsecondsSinceEpoch)
-					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.outEN ({{ .Err3Args }}, {{ $kLte }}, {{ $kGt }}));
+					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.outEN ({{ .Err4Args }}, {{ $kLte }}, {{ $kGt }}));
 			{{ end }}
 		{{ else if $r.Gte }}
 			{{ if tsGt $r.GetLte $r.GetGte }}
 				if (_ts < {{ $kGte }}.microsecondsSinceEpoch || _ts > {{ $kLte }}.microsecondsSinceEpoch)
-					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.inEE ({{ .Err3Args }}, {{ $kGte }}, {{ $kLte }}));
+					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.inEE ({{ .Err4Args }}, {{ $kGte }}, {{ $kLte }}));
 			{{ else }}
 				if (_ts > {{ $kLte }}.microsecondsSinceEpoch && _ts < {{ $kGte }}.microsecondsSinceEpoch)
-					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.outEE ({{ .Err3Args }}, {{ $kLte }}, {{ $kGte }}));
+					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.outEE ({{ .Err4Args }}, {{ $kLte }}, {{ $kGte }}));
 			{{ end }}
 		{{ else }}
 			if (_ts > {{ $kLte }}.microsecondsSinceEpoch)
-				throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateLte, {{ $kLte }});
+				throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateLte, {{ $kLte }});
 		{{ end }}
 	{{ else if $r.Gt }}
 		if (_ts <= {{ $kGt }}.microsecondsSinceEpoch)
-			throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateGt, {{ $kGt }});
+			throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateGt, {{ $kGt }});
 	{{ else if $r.Gte }}
 		if (_ts < {{ $kGte }}.microsecondsSinceEpoch)
-			throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateGte, {{ $kGte }});
+			throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateGte, {{ $kGte }});
 	{{ else if $r.LtNow }}
 		{{ if $r.Within }}
 			if (_ts >= _now || _now - _ts > {{ $kWithin }}.inMicroseconds)
-				throw {{ .PgdeFile.AsDot "WithinError" }}.ltNow ({{ .Err3Args }}, {{ $kWithin }});
+				throw {{ .PgdeFile.AsDot "WithinError" }}.ltNow ({{ .Err4Args }}, {{ $kWithin }});
 		{{ else }}
 			if (_ts >= _now)
-				throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateLt, l10n.now);
+				throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateLt, l10n.now);
 		{{ end }}
 	{{ else if $r.GtNow }}
 		{{ if $r.Within }}
 			if (_ts >= _now || ts - _now < {{ $kWithin }}.inMicroseconds)
-				throw {{ .PgdeFile.AsDot "WithinError" }}.gtNow ({{ .Err3Args }}, {{ $kWithin }});
+				throw {{ .PgdeFile.AsDot "WithinError" }}.gtNow ({{ .Err4Args }}, {{ $kWithin }});
 		{{ else }}
 			if (_ts <= _now)
-				throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateGt, l10n.now);
+				throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateGt, l10n.now);
 		{{ end }}
 	{{ else if $r.Within }}
 		if ((_ts - _now).abs() <= {{ $kWithin }}.inMicroseconds)
-			throw {{ .PgdeFile.AsDot "WithinError" }}.now ({{ .Err3Args }}, {{ $kWithin }});
+			throw {{ .PgdeFile.AsDot "WithinError" }}.now ({{ .Err4Args }}, {{ $kWithin }});
 	{{ end }}
 {{ .IfHasValueEnd }}
 {{ end }}

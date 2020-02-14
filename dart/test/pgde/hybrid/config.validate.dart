@@ -21,6 +21,7 @@ import 'package:pgde/pgde.dart' as $1
     show
         BeSomethingError,
         Bytes,
+        BytesFormatter,
         ConstError,
         GeneratedValidator,
         InError,
@@ -91,7 +92,7 @@ class BasicValidator implements $1.GeneratedValidator<$0.Basic> {
 
     if (_v >= 65535)
       throw $1.ConstError(
-          _info, 5, _l10n.BasicBindPort, _info.l10n.validateLt, 65535);
+          _info, 5, _l10n.BasicBindPort, null, _info.l10n.validateLt, 65535);
   }
 
   void assertField_flushIntervalMs() {
@@ -104,7 +105,7 @@ class BasicValidator implements $1.GeneratedValidator<$0.Basic> {
 
     if (_vrl > 732)
       throw $1.LenConstError.character(
-          _info, 7, _l10n.BasicToken, _info.l10n.validateLte, 732);
+          _info, 7, _l10n.BasicToken, null, _info.l10n.validateLte, 732);
   }
 
   @override
@@ -171,7 +172,7 @@ class LogValidator implements $1.GeneratedValidator<$0.Log> {
     final _v = _info.proto.level;
 
     if (!_levelIn.containsKey(_v))
-      throw $1.InError(_info, 2, _l10n.LogLevel, _levelIn.keys.toList());
+      throw $1.InError(_info, 2, _l10n.LogLevel, null, _levelIn.keys.toList());
   }
 
   void assertField_target() {
@@ -262,8 +263,8 @@ class IpfsValidator implements $1.GeneratedValidator<$0.Ipfs> {
     final _v = _info.proto.fakeApiListenPort;
 
     if (_v >= 65535)
-      throw $1.ConstError(
-          _info, 2, _l10n.IpfsFakeApiListenPort, _info.l10n.validateLt, 65535);
+      throw $1.ConstError(_info, 2, _l10n.IpfsFakeApiListenPort, null,
+          _info.l10n.validateLt, 65535);
   }
 
   void assertField_enableGateway() {
@@ -330,7 +331,7 @@ class IpfsValidator implements $1.GeneratedValidator<$0.Ipfs> {
 
     if (_vrl > 732)
       throw $1.LenConstError.character(
-          _info, 12, _l10n.IpfsToken, _info.l10n.validateLte, 732);
+          _info, 12, _l10n.IpfsToken, null, _info.l10n.validateLte, 732);
   }
 
   @override
@@ -416,7 +417,7 @@ class IpfsServerValidator implements $1.GeneratedValidator<$0.IpfsServer> {
 
     if (_vrl > 732)
       throw $1.LenConstError.character(
-          _info, 4, _l10n.IpfsServerToken, _info.l10n.validateLte, 732);
+          _info, 4, _l10n.IpfsServerToken, null, _info.l10n.validateLte, 732);
   }
 
   @override
@@ -611,8 +612,8 @@ class HttpProxyServerValidator
     final _v = _info.proto.port;
 
     if (_v >= 65535)
-      throw $1.ConstError(
-          _info, 4, _l10n.HttpProxyServerPort, _info.l10n.validateLt, 65535);
+      throw $1.ConstError(_info, 4, _l10n.HttpProxyServerPort, null,
+          _info.l10n.validateLt, 65535);
   }
 
   void assertField_keepAlive() {
@@ -788,8 +789,8 @@ class IPNetRouterValidator implements $1.GeneratedValidator<$0.IPNetRouter> {
     final _bl = $1.Lists.len(_v);
 
     if (_bl != 5)
-      throw $1.LenConstError.byte(
-          _info, 2, _l10n.IPNetRouterNetv4, _info.l10n.validateEq, 5);
+      throw $1.LenConstError.byte(_info, 2, _l10n.IPNetRouterNetv4,
+          $1.BytesFormatter.cidrv4, _info.l10n.validateEq, 5);
   }
 
   void assertField_netv6() {
@@ -798,8 +799,8 @@ class IPNetRouterValidator implements $1.GeneratedValidator<$0.IPNetRouter> {
     final _bl = $1.Lists.len(_v);
 
     if (_bl != 17)
-      throw $1.LenConstError.byte(
-          _info, 3, _l10n.IPNetRouterNetv6, _info.l10n.validateEq, 17);
+      throw $1.LenConstError.byte(_info, 3, _l10n.IPNetRouterNetv6,
+          $1.BytesFormatter.cidrv6, _info.l10n.validateEq, 17);
   }
 
   void assertField_matched() {

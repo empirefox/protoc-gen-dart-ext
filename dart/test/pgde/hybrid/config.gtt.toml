@@ -1,8 +1,7 @@
 # Path placeholder usage:
 #  %N: base name
-#  %O: output of protoc
-#  %P: output relative path
 #  %E: extension of input file
+#  %P: output relative path
 
 Name = "config.arb"
 Entity = "Config"

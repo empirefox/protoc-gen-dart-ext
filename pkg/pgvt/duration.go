@@ -51,65 +51,65 @@ const durationTpl = durationTplDef + `
 
 	{{ if $r.Const }}
 		if (_dur != {{ $kConst }})
-			throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ $kConst }});
+			throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ $kConst }});
 	{{ end }}
 
 	{{ if $r.Lt }}
 		{{ if $r.Gt }}
 			{{  if durGt $r.GetLt $r.GetGt }}
 				if (_dur <= {{ $kGt }} || _dur >= {{ $kLt }})
-					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.inNN ({{ .Err3Args }}, {{ $kGt }}, {{ $kLt }}));
+					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.inNN ({{ .Err4Args }}, {{ $kGt }}, {{ $kLt }}));
 			{{ else }}
 				if (_dur >= {{ $kLt }} && _dur <= {{ $kGt }})
-					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.outNN ({{ .Err3Args }}, {{ $kLt }}, {{ $kGt }}));
+					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.outNN ({{ .Err4Args }}, {{ $kLt }}, {{ $kGt }}));
 			{{ end }}
 		{{ else if $r.Gte }}
 			{{  if durGt $r.GetLt $r.GetGte }}
 				if (_dur < {{ $kGte }} || _dur >= {{ $kLt }})
-					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.inEN ({{ .Err3Args }}, {{ $kGte }}, {{ $kLt }}));
+					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.inEN ({{ .Err4Args }}, {{ $kGte }}, {{ $kLt }}));
 			{{ else }}
 				if (_dur >= {{ $kLt }} && _dur < {{ $kGte }})
-					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.outNE ({{ .Err3Args }}, {{ $kLt }}, {{ $kGte }}));
+					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.outNE ({{ .Err4Args }}, {{ $kLt }}, {{ $kGte }}));
 			{{ end }}
 		{{ else }}
 			if (_dur >= {{ $kLt }})
-				throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateLt, {{ $kLt }});
+				throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateLt, {{ $kLt }});
 		{{ end }}
 	{{ else if $r.Lte }}
 		{{ if $r.Gt }}
 			{{  if durGt $r.GetLte $r.GetGt }}
 				if (_dur <= {{ $kGt }} || _dur > {{ $kLte }})
-					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.inNE ({{ .Err3Args }}, {{ $kGt }}, {{ $kLte }}));
+					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.inNE ({{ .Err4Args }}, {{ $kGt }}, {{ $kLte }}));
 			{{ else }}
 				if (_dur > {{ $kLte }} && _dur <= {{ $kGt }})
-					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.outEN ({{ .Err3Args }}, {{ $kLte }}, {{ $kGt }}));
+					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.outEN ({{ .Err4Args }}, {{ $kLte }}, {{ $kGt }}));
 			{{ end }}
 		{{ else if $r.Gte }}
 			{{ if durGt $r.GetLte $r.GetGte }}
 				if (_dur < {{ $kGte }} || _dur > {{ $kLte }})
-					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.inEE ({{ .Err3Args }}, {{ $kGte }}, {{ $kLte }}));
+					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.inEE ({{ .Err4Args }}, {{ $kGte }}, {{ $kLte }}));
 			{{ else }}
 				if (_dur > {{ $kLte }} && _dur < {{ $kGte }})
-					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.outEE ({{ .Err3Args }}, {{ $kLte }}, {{ $kGte }}));
+					throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.outEE ({{ .Err4Args }}, {{ $kLte }}, {{ $kGte }}));
 			{{ end }}
 		{{ else }}
 			if (_dur > {{ $kLte }})
-				throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateLte, {{ $kLte }});
+				throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateLte, {{ $kLte }});
 		{{ end }}
 	{{ else if $r.Gt }}
 		if (_dur <= {{ $kGt }})
-			throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateGt, {{ $kGt }});
+			throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateGt, {{ $kGt }});
 	{{ else if $r.Gte }}
 		if (_dur < {{ $kGte }})
-			throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateGte, {{ $kGte }});
+			throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateGte, {{ $kGte }});
 	{{ end }}
 
 	{{ if $r.In }}
 		if (!{{ $kIn }}.containsKey(_dur))
-			throw {{ .PgdeFile.AsDot "InError" }}({{ .Err3Args }}, {{ $kIn }}.keys.toList());
+			throw {{ .PgdeFile.AsDot "InError" }}({{ .Err4Args }}, {{ $kIn }}.keys.toList());
 	{{ else if $r.NotIn }}
 		if ({{ $kNotIn }}.containsKey(_dur))
-			throw {{ .PgdeFile.AsDot "InError" }}.not ({{ .Err3Args }}, {{ $kNotIn }}.keys.toList());
+			throw {{ .PgdeFile.AsDot "InError" }}.not ({{ .Err4Args }}, {{ $kNotIn }}.keys.toList());
 	{{ end }}
 {{ .IfHasValueEnd }}
 {{ end }}

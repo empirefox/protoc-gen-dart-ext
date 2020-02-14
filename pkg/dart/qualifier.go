@@ -1,6 +1,7 @@
 package dart
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/iancoleman/strcase"
@@ -14,12 +15,24 @@ func (q Qualifier) Init() Qualifier {
 	return q + "()"
 }
 
-func (q Qualifier) InitWith(simpleName Qualifier) Qualifier {
-	return q + "(" + simpleName + ")"
+func (q Qualifier) InitWith(simpleName ...Qualifier) Qualifier {
+	s := make([]string, len(simpleName))
+	for i, n := range simpleName {
+		s[i] = string(n)
+	}
+	return q.InitWithString(s...)
 }
 
-func (q Qualifier) InitWithString(simpleName string) Qualifier {
-	return q.InitWith(Qualifier(simpleName))
+func (q Qualifier) InitWithStringer(simpleName ...fmt.Stringer) Qualifier {
+	s := make([]string, len(simpleName))
+	for i, n := range simpleName {
+		s[i] = n.String()
+	}
+	return q.InitWithString(s...)
+}
+
+func (q Qualifier) InitWithString(simpleName ...string) Qualifier {
+	return q + "(" + Qualifier(strings.Join(simpleName, ", ")) + ")"
 }
 
 func (q Qualifier) DotFromString(owner string) Qualifier {
@@ -28,6 +41,10 @@ func (q Qualifier) DotFromString(owner string) Qualifier {
 
 func (q Qualifier) DotFrom(owner Qualifier) Qualifier {
 	return owner.Dot(q)
+}
+
+func (q Qualifier) DotStringer(simpleName fmt.Stringer) Qualifier {
+	return q.DotString(simpleName.String())
 }
 
 func (q Qualifier) DotString(simpleName string) Qualifier {
@@ -42,6 +59,10 @@ func (q Qualifier) Dot(simpleName Qualifier) Qualifier {
 		return simpleName
 	}
 	return q + "." + simpleName
+}
+
+func (q Qualifier) IndexStringer(simpleName fmt.Stringer) Qualifier {
+	return q.IndexString(simpleName.String())
 }
 
 func (q Qualifier) IndexString(simpleName string) Qualifier {

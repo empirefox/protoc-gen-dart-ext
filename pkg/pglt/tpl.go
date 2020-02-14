@@ -23,14 +23,14 @@ const fileBodyTplStr = `
 `
 
 const delegateTplStr = `{{ $L10nClass := l10nClass .Entity }}
-class _{{ $L10nClass }}Delegate extends {{ .MaterialLib.AsDot "LocalizationsDelegate" }}<{{ $L10nClass }}> {
+class _{{ $L10nClass }}Delegate extends {{ .Material.LocalizationsDelegate }}<{{ $L10nClass }}> {
   const _{{ $L10nClass }}Delegate();
 
   @override
-  bool isSupported({{ .MaterialLib.AsDot "Locale" }} locale) => kSupportedLanguages.contains(locale.languageCode);
+  bool isSupported({{ .Material.Locale }} locale) => kSupportedLanguages.contains(locale.languageCode);
 
   @override
-  Future<{{ $L10nClass }}> load({{ .MaterialLib.AsDot "Locale" }} locale) => {{ .FoundationLib.AsDot "SynchronousFuture" }}<{{ $L10nClass }}>(_getTranslation(locale));
+  Future<{{ $L10nClass }}> load({{ .Material.Locale }} locale) => {{ .Foundation.SynchronousFuture }}<{{ $L10nClass }}>(_getTranslation(locale));
 
   @override
   bool shouldReload(_{{ $L10nClass }}Delegate old) => false;
@@ -41,7 +41,7 @@ class _{{ $L10nClass }}Delegate extends {{ .MaterialLib.AsDot "LocalizationsDele
 	{{ end }}
   ]);
 
-  static {{ $L10nClass }} _getTranslation({{ .MaterialLib.AsDot "Locale" }} locale) {
+  static {{ $L10nClass }} _getTranslation({{ .Material.Locale }} locale) {
     switch (locale.languageCode) {
 		{{ range .Delegate }}{{ $lang := .Lang }}
 		case '{{ $lang }}': {
@@ -79,26 +79,10 @@ abstract class {{ $L10nClass }}
 
 	{{ if .File }}
 		{{ range .File.Messages }}
-			{{ if .Ignore }}
-				String $of{{ .DartName }}(int number) {
-					final fn = $byNumber{{ .DartName }}[number];
-					return fn == null ?
-						{{ if .IsEnum }}
-							'Invalid Value $number'
-						{{ else }}
-							'Unknown Field $number'
-						{{ end }}
-					: fn(this);
-				}
-
-				Map<int, $OfFunc> $byNumber{{ .DartName }} = {
-					{{- range .Children }}
-						{{- if .Ignore }}
-							{{ .Descriptor.Number }}: ({{ $L10nClass }} l) => l.{{ .L10n.ResourceId }},
-						{{- end }}
-					{{- end }}
-				};
-			{{ end }}
+			{{ template "msgOrEnum" .L10n }}
+		{{ end }}
+		{{ range .File.Enums }}
+			{{ template "msgOrEnum" .L10n }}
 		{{ end }}
 	{{ end }}
 
@@ -110,14 +94,36 @@ abstract class {{ $L10nClass }}
 		{{ .FullName }} {{ .Instance }};
 	{{ end }}
 
-	static {{ $L10nClass }} of({{ .MaterialLib.AsDot "BuildContext" }} context) =>
-		{{ .MaterialLib.AsDot "Localizations" }}.of<{{ $L10nClass }}>(context, {{ $L10nClass }})
+	static {{ $L10nClass }} of({{ .Material.BuildContext }} context) =>
+		{{ .Material.Localizations }}.of<{{ $L10nClass }}>(context, {{ $L10nClass }})
 		  {{ range .InstanceClasses }}
 		  	..{{ .Instance }} ??= {{ .FullName }}.of(context)
 		  {{ end }}
 		;
 }
 `
+
+const msgOrEnumTplStr = `{{ $L10nClass := l10nClass .Translator.Arb.Entity }}
+{{ if not .Ignore }}
+	String $of{{ .DartName }}(int number) {
+		final fn = $byNumber{{ .DartName }}[number];
+		return fn == null ?
+			{{ if .IsEnum }}
+				'Invalid Value $number'
+			{{ else }}
+				'Unknown Field $number'
+			{{ end }}
+		: fn(this);
+	}
+
+	Map<int, $OfFunc> $byNumber{{ .DartName }} = {
+		{{- range .Children }}
+			{{- if not .L10n.Ignore }}
+				{{ .Pgs.Descriptor.Number }}: ({{ $L10nClass }} l) => l.{{ .L10n.ResourceId }},
+			{{- end }}
+		{{- end }}
+	};
+{{ end }}`
 
 const arbTplStr = `{{ $L10nClass := l10nClass .Entity }}
 class {{ $L10nClass }}{{ powerCamel .Locale.String }} extends {{ $L10nClass }} {

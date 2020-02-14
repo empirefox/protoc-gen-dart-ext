@@ -21,18 +21,6 @@ prepare_protoc_dep:
 	@mkdir -p ${makefile_dir}/validate
 	@cp -n ${pgv_path}/validate/validate.proto ${makefile_dir}/validate
 
-.PHONY: gen_validate_arb
-gen_validate_arb:
-	@cd ${dart_path} && \
-		flutter pub pub run intl_translation:extract_to_arb \
-		--locale=en \
-		--output-dir=lib/src/validate \
-		--output-file=validate.arb \
-		lib/src/validate/validate.l10n.dart
-	@go run ${cmd_path}/arb_rewrite_langs/*.go \
-		-arb=${dart_src}/validate/validate.arb \
-		-langs=${dart_src}/validate/validate.arb.toml
-
 .PHONY: gen_golang
 gen_golang:
 	@easyjson ${pkg_path}/arb/arb_attr.go
@@ -56,10 +44,6 @@ gen_atom:
 		-dart=${dart_src}/units/atom.dart \
 		-arb=${dart_src}/units/atom.arb
 	@dartfmt -w ${dart_src}/units/atom.dart
-	@go run ${cmd_path}/arb_variant/*.go \
-		-input=${dart_src}/units/atom.arb \
-		-lang=ar,en-US,zh \
-		-output=${dart_src}/l10n/archive/%V/%N%E
 
 .PHONY: gen_currency
 gen_currency:
@@ -77,6 +61,13 @@ gen_prefix:
 		-arb=${dart_src}/units/prefix.arb
 	@dartfmt -w ${dart_src}/units/prefix.dart
 
+.PHONY: gen_dart_lib
+gen_dart_lib:
+	@rm -rf ${pkg_path}/dart/dart_lib.go
+	@MAKEFILE_DIR=${makefile_dir} go run ${tools_path}/dart_lib/*.go \
+		-go ${pkg_path}/dart/dart_lib.go
+	@gofmt -w ${pkg_path}/dart/dart_lib.go
+
 .PHONY: gen_protoc
 gen_protoc:
 	@protoc -I${makefile_dir} --go_out=paths=source_relative:${makefile_dir}/pkg ${protos_path}/l10n/*.proto
@@ -86,13 +77,69 @@ gen_protoc:
 	@protoc -I${makefile_dir} --go_out=paths=source_relative:${makefile_dir}/pkg ${protos_path}/format/*.proto
 	@protoc -I${makefile_dir} --go_out=paths=source_relative:${makefile_dir}/pkg --dart_out=:${dart_src} ${protos_path}/error/*.proto
 
+.PHONY: gen_pgde_arbs
+gen_pgde_arbs:
+	@cd ${dart_path} && \
+		flutter pub run intl_translation:extract_to_arb \
+		--locale=en \
+		--output-dir=lib/src/validate \
+		--output-file=validate.arb \
+		lib/src/validate/validate.l10n.dart
+	@go run ${cmd_path}/arb_rewrite_langs/*.go \
+		-arb=${dart_src}/validate/validate.arb \
+		-langs=${dart_src}/validate/validate.arb.toml
+	# validate done.
+	@cd ${dart_path} && \
+		flutter pub run intl_translation:extract_to_arb \
+		--locale=en \
+		--output-dir=lib/src/form \
+		--output-file=form.arb \
+		lib/src/form/form.l10n.dart
+	# form done.
+
+.PHONY: gen_pgde_l10n_zip
+gen_pgde_l10n_zip:
+	@rm -rf ${dart_src}/l10n/archive
+	@rm -f ${dart_src}/l10n/archive.zip
+
+	# atom
+	@go run ${cmd_path}/arb_variant/*.go \
+		-input=${dart_src}/units/atom.arb \
+		-lang=ar,en-US,zh \
+		-output=${dart_src}/l10n/archive/%V/%N%E \
+		-force=0
+	# prefix
+	@go run ${cmd_path}/arb_variant/*.go \
+		-input=${dart_src}/units/prefix.arb \
+		-lang=ar,en-US,zh \
+		-output=${dart_src}/l10n/archive/%V/%N%E
+	# currency
+	@go run ${cmd_path}/arb_variant/*.go \
+		-input=${dart_src}/format/currency.arb \
+		-lang=ar,en-US,zh \
+		-output=${dart_src}/l10n/archive/%V/%N%E
+	# validate
+	@go run ${cmd_path}/arb_variant/*.go \
+		-input=${dart_src}/validate/validate.arb \
+		-lang=ar,en-US,zh \
+		-output=${dart_src}/l10n/archive/%V/%N%E
+	# form
+	@go run ${cmd_path}/arb_variant/*.go \
+		-input=${dart_src}/form/form.arb \
+		-lang=ar,en-US,zh \
+		-output=${dart_src}/l10n/archive/%V/%N%E
+
+	# archive
+	@cd ${dart_src}/l10n && zip -r archive.zip archive
+
 # generate PgdeLocalizations
 .PHONY: gen_pgde_gtt_to_dart
 gen_pgde_gtt_to_dart:
-	@SRC_DIR=${dart_src} \
+	@cd ${dart_src} && \
+		SRC_DIR=${dart_src} \
 		go run ${cmd_path}/gtt_to_dart/*.go \
-		-gtt=${dart_src}/l10n/gtt.toml \
-		-dart_out=${dart_src}/l10n/pgde.l10n.dart
+		-gtt=l10n/gtt.toml \
+		-dart_out=l10n/pgde.l10n.dart
 	@dartfmt -w ${dart_src}/l10n/pgde.l10n.dart
 
 .PHONY: gen_proto
@@ -114,25 +161,34 @@ protoc_clean:
 
 .PHONY: protoc_hybrid_base
 protoc_hybrid_base:
+	@protoc -I${makefile_dir} -I${pgv_path} --dart_out=:${dart_test}/pgde ${google_path}/protobuf/duration.proto
+	@protoc -I${makefile_dir} -I${pgv_path} --dart_out=:${dart_test}/pgde ${google_path}/protobuf/timestamp.proto
 	@protoc -I${makefile_dir} -I${pgv_path} --dart_out=:${dart_test}/pgde ${google_path}/protobuf/empty.proto
 	@protoc -I${makefile_dir} -I${pgv_path} --dart_out=:${dart_test}/pgde ${google_path}/protobuf/wrappers.proto
 	@protoc -I${makefile_dir} -I${pgv_path} --dart_out=:${dart_test}/pgde ${protos_path}/error/error.proto
 	@protoc -I${makefile_dir} -I${pgv_path} --dart_out=grpc:${dart_test}/pgde ${hybrid_path}/*.proto
 
-.PHONY: protoc_hybrid_arb
-protoc_hybrid_arb:
-	@protoc -I${makefile_dir} -I${pgv_path} \
-		--dart-ext_out=arb:${dart_test}/pgde ${hybrid_path}/config.proto
-	# @dartfmt -w ${dart_test}/pgde/**/*.dart
+.PHONY: protoc_hybrid_static
+protoc_hybrid_static:
+	@protoc -I${makefile_dir} \
+		--static_out=google/protobuf/timestamp.fmt.dart:${dart_test}/pgde \
+		${google_path}/protobuf/timestamp.proto
+	@protoc -I${makefile_dir} \
+		--static_out=google/protobuf/duration.fmt.dart:${dart_test}/pgde \
+		${google_path}/protobuf/duration.proto
 
-.PHONY: protoc_hybrid_l10n_gtt
-protoc_hybrid_l10n_gtt:
+.PHONY: protoc_hybrid_l10n_zip
+protoc_hybrid_l10n_zip:
 	@rm -rf ${dart_test}/pgde/hybrid/archive
 	@rm -f ${dart_test}/pgde/hybrid/archive.zip
+
+	@protoc -I${makefile_dir} -I${pgv_path} \
+		--dart-ext_out=arb:${dart_test}/pgde \
+		${hybrid_path}/config.proto
+
 	@go run ${cmd_path}/arb_variant/*.go \
 		-input=${dart_test}/pgde/hybrid/config.arb \
 		-lang=ar,en,zh \
-		-force \
 		-output=${dart_test}/pgde/hybrid/archive/%V/%N%E
 	@cd ${dart_test}/pgde/hybrid && zip -r archive.zip archive
 

@@ -44,14 +44,22 @@ func RenderConstants(tpl *template.Template) func(ConstantsTemplater) (string, e
 	}
 }
 
-type Templater interface {
+type TemplateNamer interface {
 	TemplateName() string
 }
 
-func RenderTemplater(tpl *template.Template) func(Templater) (string, error) {
-	return func(t Templater) (string, error) {
+type TemplateDatar interface {
+	TemplateData() interface{}
+}
+
+func RenderTemplater(tpl *template.Template) func(TemplateNamer) (string, error) {
+	return func(t TemplateNamer) (string, error) {
+		var data interface{} = t
+		if td, ok := t.(TemplateDatar); ok {
+			data = td.TemplateData()
+		}
 		var b bytes.Buffer
-		err := tpl.ExecuteTemplate(&b, t.TemplateName(), t)
+		err := tpl.ExecuteTemplate(&b, t.TemplateName(), data)
 		return b.String(), err
 	}
 }

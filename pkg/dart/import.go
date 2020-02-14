@@ -117,10 +117,12 @@ func (ifile *ImportFile) getClass(simpleClass Qualifier) *ImportFileClass {
 type ImportManagerCommonFiles interface {
 	ImportManager() *ImportManager
 
+	Animation() *Animation
+	Foundation() *Foundation
+	Material() *Material
+
 	CollectionLib() *ImportFile
 	ConvertLib() *ImportFile
-	FoundationFile() *ImportFile
-	MaterialFile() *ImportFile
 	WrappersFile() *ImportFile
 	PgdeFile() *ImportFile
 	Int64Type() Qualifier
@@ -129,23 +131,28 @@ type ImportManagerCommonFiles interface {
 	TimestampType() Qualifier
 }
 
-var _ = new(ImportManager)
+var _ ImportManagerCommonFiles = new(ImportManager)
 
 type ImportManager struct {
 	d *Dart
 
-	collectionLib  *ImportFile
-	convertLib     *ImportFile
-	foundationFile *ImportFile
-	materialFile   *ImportFile
-	wrappersFile   *ImportFile
-	pgdeFile       *ImportFile
+	animation  *Animation
+	foundation *Foundation
+	material   *Material
 
-	int64Type     Qualifier
-	anyType       Qualifier
-	durationType  Qualifier
-	timestampType Qualifier
+	collectionLib *ImportFile
+	convertLib    *ImportFile
+	wrappersFile  *ImportFile
+	pgdeFile      *ImportFile
 
+	int64Type       Qualifier
+	anyType         Qualifier
+	durationType    Qualifier
+	timestampType   Qualifier
+	durationBeTime  Qualifier
+	timestampBeTime Qualifier
+
+	// The owner file' path from protoc out path. Cannot be any absolute path.
 	RootFilePath string
 
 	// $i
@@ -171,7 +178,7 @@ func NewImportManager(d *Dart,
 
 	im := &ImportManager{
 		d:            d,
-		RootFilePath: rootFilePath,
+		RootFilePath: filepath.Clean(rootFilePath),
 		prefix:       prefix,
 		depPrefix:    depPrefix,
 		byName:       make(map[string]*ImportFile, 16),
@@ -180,10 +187,17 @@ func NewImportManager(d *Dart,
 	for _, f := range predefine {
 		im.getFile(f)
 	}
+	im.animation = NewAnimation(im)
+	im.foundation = NewFoundation(im)
+	im.material = NewMaterial(im)
 	return im, nil
 }
 
 func (im *ImportManager) ImportManager() *ImportManager { return im }
+
+func (im *ImportManager) Animation() *Animation   { return im.animation }
+func (im *ImportManager) Foundation() *Foundation { return im.foundation }
+func (im *ImportManager) Material() *Material     { return im.material }
 
 func (im *ImportManager) CollectionLib() *ImportFile {
 	if im.collectionLib == nil {
@@ -196,18 +210,6 @@ func (im *ImportManager) ConvertLib() *ImportFile {
 		im.convertLib = im.Import("dart:convert")
 	}
 	return im.convertLib
-}
-func (im *ImportManager) FoundationFile() *ImportFile {
-	if im.foundationFile == nil {
-		im.foundationFile = im.Import("package:flutter/foundation.dart")
-	}
-	return im.foundationFile
-}
-func (im *ImportManager) MaterialFile() *ImportFile {
-	if im.materialFile == nil {
-		im.materialFile = im.Import("package:flutter/material.dart")
-	}
-	return im.materialFile
 }
 func (im *ImportManager) WrappersFile() *ImportFile {
 	if im.wrappersFile == nil {
@@ -248,6 +250,20 @@ func (im *ImportManager) TimestampType() Qualifier {
 		im.timestampType = f.AsDot("Timestamp")
 	}
 	return im.timestampType
+}
+func (im *ImportManager) DurationBeTime() Qualifier {
+	if im.durationBeTime == "" {
+		f, _ := im.ImportRoot("google/protobuf/duration.fmt.dart")
+		im.durationBeTime = f.AsDot("beTime")
+	}
+	return im.durationBeTime
+}
+func (im *ImportManager) TimestampBeTime() Qualifier {
+	if im.timestampBeTime == "" {
+		f, _ := im.ImportRoot("google/protobuf/timestamp.fmt.dart")
+		im.timestampBeTime = f.AsDot("beTime")
+	}
+	return im.timestampBeTime
 }
 
 func ResolveImport(source, target string) (string, error) {

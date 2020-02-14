@@ -23,10 +23,10 @@ const stringTpl = stringTplDef + `
 {{ if or $r.Len (and $r.MinLen $r.MaxLen (eq $r.GetMinLen $r.GetMaxLen)) }}
 	{{ if $r.Len }}
 		if (_vrl != {{ $r.GetLen }})
-			throw {{ .PgdeFile.AsDot "LenConstError" }}.character ({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ $r.GetLen }});
+			throw {{ .PgdeFile.AsDot "LenConstError" }}.character ({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ $r.GetLen }});
 	{{ else }}
 		if (_vrl != {{ $r.GetMinLen }})
-			throw {{ .PgdeFile.AsDot "LenConstError" }}.character ({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ $r.GetMinLen }});
+			throw {{ .PgdeFile.AsDot "LenConstError" }}.character ({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ $r.GetMinLen }});
 	{{ end }}
 {{ else if $r.MinLen }}
 	{{ if $r.MaxLen }}
@@ -34,11 +34,11 @@ const stringTpl = stringTplDef + `
 			throw {{ .PgdeFile.AsDot "RangeLenError" }}.character(const ErrorRange.inEE ({{ .Err3Args }}, {{ $r.GetMinLen }}, {{ $r.GetMaxLen }}));
 	{{ else }}
 		if (_vrl < {{ $r.GetMinLen }})
-			throw {{ .PgdeFile.AsDot "LenConstError" }}.character ({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateGte, {{ $r.GetMinLen }});
+			throw {{ .PgdeFile.AsDot "LenConstError" }}.character ({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateGte, {{ $r.GetMinLen }});
 	{{ end }}
 {{ else if $r.MaxLen }}
 	if (_vrl > {{ $r.GetMaxLen }})
-		throw {{ .PgdeFile.AsDot "LenConstError" }}.character ({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateLte, {{ $r.GetMaxLen }});
+		throw {{ .PgdeFile.AsDot "LenConstError" }}.character ({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateLte, {{ $r.GetMaxLen }});
 {{ end }}
 
 {{ if or $r.Len $r.MaxBytes $r.MinBytes }}
@@ -48,10 +48,10 @@ const stringTpl = stringTplDef + `
 {{ if or $r.LenBytes (and $r.MinBytes $r.MaxBytes (eq $r.GetMinBytes $r.GetMaxBytes)) }}
 	{{ if $r.LenBytes }}
 		if (_vbl != {{ $r.GetLenBytes }})
-			throw {{ .PgdeFile.AsDot "LenConstError" }}.byte ({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ $r.GetLenBytes }});
+			throw {{ .PgdeFile.AsDot "LenConstError" }}.byte ({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ $r.GetLenBytes }});
 	{{ else }}
 		if (_vbl != {{ $r.GetMinBytes }})
-			throw {{ .PgdeFile.AsDot "LenConstError" }}.byte ({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ $r.GetMinBytes }});
+			throw {{ .PgdeFile.AsDot "LenConstError" }}.byte ({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ $r.GetMinBytes }});
 	{{ end }}
 {{ else if $r.MinBytes }}
 	{{ if $r.MaxBytes }}
@@ -59,26 +59,26 @@ const stringTpl = stringTplDef + `
 			throw {{ .PgdeFile.AsDot "RangeLenError" }}.byte(const ErrorRange.inEE ({{ .Err3Args }}, {{ $r.GetMinBytes }}, {{ $r.GetMaxBytes }}));
 	{{ else }}
 		if (_vbl < {{ $r.GetMinBytes }})
-			throw {{ .PgdeFile.AsDot "LenConstError" }}.byte ({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateGte, {{ $r.GetMinBytes }});
+			throw {{ .PgdeFile.AsDot "LenConstError" }}.byte ({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateGte, {{ $r.GetMinBytes }});
 	{{ end }}
 {{ else if $r.MaxBytes }}
 	if (_vbl > {{ $r.GetMaxBytes }})
-		throw {{ .PgdeFile.AsDot "LenConstError" }}.byte ({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateLte, {{ $r.GetMaxBytes }});
+		throw {{ .PgdeFile.AsDot "LenConstError" }}.byte ({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateLte, {{ $r.GetMaxBytes }});
 {{ end }}
 
 {{ if $r.Prefix }}
 	if !{{ .Accessor }}.startsWith({{ lit . $r.GetPrefix }})
-		throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validatePrefix, {{ lit . $r.GetPrefix }});
+		throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validatePrefix, {{ lit . $r.GetPrefix }});
 {{ end }}
 
 {{ if $r.Suffix }}
 	if !{{ .Accessor }}.endsWith({{ lit . $r.GetSuffix }})
-		throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateSuffix, {{ lit . $r.GetSuffix }});
+		throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateSuffix, {{ lit . $r.GetSuffix }});
 {{ end }}
 
 {{ if $r.Contains }}
 	if !{{ .Accessor }}.contains({{ lit . $r.GetContains }})
-		throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateContains, {{ lit . $r.GetContains }});
+		throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateContains, {{ lit . $r.GetContains }});
 {{ end }}
 
 {{ if $r.GetIp }}
@@ -128,6 +128,6 @@ const stringTpl = stringTplDef + `
 
 {{ if $r.Pattern }}
 	if (!{{ $kPattern }}.hasMatch({{ .Accessor }}))
-		throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validatePattern, {{ $kPattern }}.pattern);
+		throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validatePattern, {{ $kPattern }}.pattern);
 {{ end }}
 `

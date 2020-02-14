@@ -1,0 +1,46 @@
+{
+  "@@locale": "en",
+  "@@last_modified": "2020-02-13T21:10:02.054616",
+  "retry": "Retry",
+  "@retry": {
+    "description": "retry when errors occur",
+    "type": "text",
+    "placeholders": {}
+  },
+  "backAlertTitle": "Alert",
+  "@backAlertTitle": {
+    "description": "title of alert which warns changes exist",
+    "type": "text",
+    "placeholders": {}
+  },
+  "backAlertContent": "Changes exist!",
+  "@backAlertContent": {
+    "description": "content of alert which warns changes exist",
+    "type": "text",
+    "placeholders": {}
+  },
+  "backAlertStay": "Stay",
+  "@backAlertStay": {
+    "description": "choose to stay when there are changes",
+    "type": "text",
+    "placeholders": {}
+  },
+  "backAlertGoBack": "Go back",
+  "@backAlertGoBack": {
+    "description": "choose to go back when there are changes",
+    "type": "text",
+    "placeholders": {}
+  },
+  "reset": "Reset",
+  "@reset": {
+    "description": "reset to default",
+    "type": "text",
+    "placeholders": {}
+  },
+  "edit": "Edit",
+  "@edit": {
+    "description": "edit oneof message",
+    "type": "text",
+    "placeholders": {}
+  }
+}

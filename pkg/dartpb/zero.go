@@ -482,10 +482,10 @@ func (zf *ZeroField) Literal(value interface{}) (string, error) {
 		return fmt.Sprintf("%s.BoolValue()..value=%v",
 			zf.WrappersFile(), v.Value), nil
 	case *wrappers.StringValue:
-		return fmt.Sprintf("%s.StringValue().value=%s",
+		return fmt.Sprintf("%s.StringValue()..value=%s",
 			zf.WrappersFile(), dart.RawString(v.Value)), nil
 	case *wrappers.BytesValue:
-		return fmt.Sprintf("%s.BytesValue().value=const <int>[%s]",
+		return fmt.Sprintf("%s.BytesValue()..value=const <int>[%s]",
 			zf.WrappersFile(), util.BytesLiteral(v.Value)), nil
 	case proto.Message:
 		b, err := proto.Marshal(v)

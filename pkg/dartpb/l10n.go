@@ -56,6 +56,13 @@ type L10nMsgOrEnum struct {
 	Enum      *Enum
 }
 
+func (l *L10nMsgOrEnum) DartName() dart.Qualifier {
+	if l.IsEnum {
+		return l.Enum.DartName
+	}
+	return l.Message.DartName
+}
+
 func (l *L10nMsgOrEnum) Children() interface{} {
 	if l.IsEnum {
 		return l.Enum.Values

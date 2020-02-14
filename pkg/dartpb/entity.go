@@ -49,6 +49,8 @@ type Field struct {
 
 	L10n *L10nField
 
+	Format *FormatField
+
 	Validate *ValidateField
 }
 

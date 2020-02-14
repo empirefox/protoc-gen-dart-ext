@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart' show MaterialLocalizations;
-import 'package:pgde/src/format/number_format.dart';
 import 'package:protobuf/protobuf.dart';
 
-import '../format/formatter.dart';
+import '../format.dart';
 import '../l10n/pgde.l10n.dart';
 import '../plural/plural.dart';
 import '../units/units.dart';
@@ -16,30 +15,20 @@ abstract class GeneratedValidator<T extends GeneratedMessage> {
   void assertOneof(Type oneof);
 }
 
-// TODO move fmt to ValidateError
 class ValidateInfo<T extends GeneratedMessage> {
   final MaterialLocalizations md;
   final PgdeLocalizations l10n;
-  final Formatter fmt;
   final T proto;
 
-  const ValidateInfo(this.md, this.l10n, this.fmt, this.proto);
+  const ValidateInfo(this.md, this.l10n, this.proto);
 
   Type get pbType => proto.runtimeType;
 
   BuilderInfo get bi => proto.info_;
   String get messageName => bi.messageName;
 
-  String atomForm(Atom a, Form p) => a.l10n(l10n, p);
-  String unitForm(Form p) => numFmt.unit.l10n(l10n, p);
-
-  bool get isNum => fmt is NumberFormatter;
-  NumberFormatter get numFmt => fmt as NumberFormatter;
-
-  Form plural(v, [bool ordinal]) => numFmt.plural(v, ordinal);
-
   ValidateInfo<C> clone<C extends GeneratedMessage>(C proto) =>
-      ValidateInfo(md, l10n, fmt, proto);
+      ValidateInfo(md, l10n, proto);
 }
 
 abstract class ValidateError extends Error {
@@ -57,11 +46,18 @@ abstract class ValidateError extends Error {
   FieldInfo get fi => info.bi.fieldInfo[tagNumber];
   String get fieldAccessor => '${info.messageName}.${bi.fieldName(tagNumber)}';
 
-  ValidateError(this.info, this.tagNumber, this.fieldName)
+  ValidateError(this.info, this.tagNumber, this.fieldName, this.fmt)
       : pbType = info.pbType,
         md = info.md,
-        l10n = info.l10n,
-        fmt = info.fmt;
+        l10n = info.l10n;
+
+  bool get isNum => fmt is NumberFormatter;
+  NumberFormatter get numFmt => fmt as NumberFormatter;
+
+  String atomForm(Atom a, Form p) => a.l10n(l10n, p);
+  String unitForm(Form p) => numFmt.unit.l10n(l10n, p);
+
+  Form plural(v, [bool ordinal]) => numFmt.plural(v, ordinal);
 
   String format(v, [bool unitOff = false]) {
     if (fmt != null)
@@ -79,7 +75,7 @@ abstract class ValidateError extends Error {
 
 class RequiredError extends ValidateError {
   RequiredError(ValidateInfo info, int tagNumber, String fieldName)
-      : super(info, tagNumber, fieldName);
+      : super(info, tagNumber, fieldName, null);
   @override
   String toString() => l10n.validateRequired(fieldName);
 }
@@ -102,7 +98,7 @@ class BeSomethingError extends ValidateError {
   final String something;
   BeSomethingError(
       ValidateInfo info, int tagNumber, String fieldName, this.something)
-      : super(info, tagNumber, fieldName);
+      : super(info, tagNumber, fieldName, null);
   @override
   String toString() => l10n.validateMustBe(fieldName, something);
 }
@@ -119,9 +115,9 @@ class ConstError extends ValidateError {
   // for bytes: 'unicode printable string' or '\x${byte_hex}\x${byte_hex}'
   final kConst;
 
-  ConstError(ValidateInfo info, int tagNumber, String fieldName, this.rule,
-      this.kConst)
-      : super(info, tagNumber, fieldName);
+  ConstError(ValidateInfo info, int tagNumber, String fieldName, Formatter fmt,
+      this.rule, this.kConst)
+      : super(info, tagNumber, fieldName, fmt);
 
   @override
   String toString() => l10n.validateMustConst(fieldName, rule, format(kConst));
@@ -134,16 +130,16 @@ class LenConstError extends ValidateError {
   final Atom lenAtom;
 
   LenConstError.byte(ValidateInfo info, int tagNumber, String fieldName,
-      this.rule, this.kConst)
+      Formatter fmt, this.rule, this.kConst)
       : lenAtom = Atom.byte,
-        super(info, tagNumber, fieldName);
+        super(info, tagNumber, fieldName, fmt);
 
   LenConstError.character(ValidateInfo info, int tagNumber, String fieldName,
-      this.rule, this.kConst)
+      Formatter fmt, this.rule, this.kConst)
       : lenAtom = Atom.character,
-        super(info, tagNumber, fieldName);
+        super(info, tagNumber, fieldName, fmt);
 
-  String get lenUnit => info.atomForm(lenAtom, info.plural(kConst, false));
+  String get lenUnit => atomForm(lenAtom, plural(kConst, false));
 
   @override
   String toString() {
@@ -157,7 +153,7 @@ class ItemsLenConstError extends ValidateError {
   final int kConst;
   ItemsLenConstError(ValidateInfo info, int tagNumber, String fieldName,
       this.rule, this.kConst)
-      : super(info, tagNumber, fieldName);
+      : super(info, tagNumber, fieldName, null);
   @override
   String toString() => l10n.validateMustConst(
       l10n.validateFieldItems(fieldName), rule, '$kConst');
@@ -166,7 +162,7 @@ class ItemsLenConstError extends ValidateError {
 class BoolError extends ValidateError {
   final String kConst;
   BoolError(ValidateInfo info, int tagNumber, String fieldName, this.kConst)
-      : super(info, tagNumber, fieldName);
+      : super(info, tagNumber, fieldName, null);
   @override
   String toString() => kConst;
 }
@@ -179,15 +175,17 @@ class InError extends ValidateError {
   final String rule;
   final List kConst;
 
-  InError(ValidateInfo info, int tagNumber, String fieldName, this.kConst)
+  InError(ValidateInfo info, int tagNumber, String fieldName, Formatter fmt,
+      this.kConst)
       : rule = info.l10n.validateOneof,
-        super(info, tagNumber, fieldName);
+        super(info, tagNumber, fieldName, fmt);
 
-  InError.not(ValidateInfo info, int tagNumber, String fieldName, this.kConst)
+  InError.not(ValidateInfo info, int tagNumber, String fieldName, Formatter fmt,
+      this.kConst)
       : rule = info.l10n.validateOneofx,
-        super(info, tagNumber, fieldName);
+        super(info, tagNumber, fieldName, fmt);
 
-  String get unit => info.isNum ? info.unitForm(Form.other) : '';
+  String get unit => isNum ? unitForm(Form.other) : '';
 
   @override
   String toString() {
@@ -254,11 +252,12 @@ class ErrorRange {
 class RangeError extends ValidateError {
   final ErrorRange r;
 
-  RangeError(ValidateInfo info, int tagNumber, String fieldName, this.r)
-      : super(info, tagNumber, fieldName);
+  RangeError(
+      ValidateInfo info, int tagNumber, String fieldName, Formatter fmt, this.r)
+      : super(info, tagNumber, fieldName, fmt);
 
   String get trField => fieldName;
-  String get unit => info.isNum ? info.unitForm(Form.other) : '';
+  String get unit => isNum ? unitForm(Form.other) : '';
 
   String get rule => r.isOut ? l10n.validateRangex : l10n.validateRange;
 
@@ -276,21 +275,21 @@ class RangeLenError extends RangeError {
   RangeLenError.byte(
       ValidateInfo info, int tagNumber, String fieldName, ErrorRange r)
       : lenAtom = Atom.byte,
-        super(info, tagNumber, fieldName, r);
+        super(info, tagNumber, fieldName, null, r);
 
   RangeLenError.character(
       ValidateInfo info, int tagNumber, String fieldName, ErrorRange r)
       : lenAtom = Atom.character,
-        super(info, tagNumber, fieldName, r);
+        super(info, tagNumber, fieldName, null, r);
 
   String get trField => l10n.validateFieldLength(fieldName);
-  String get unit => info.atomForm(lenAtom, Form.other);
+  String get unit => atomForm(lenAtom, Form.other);
 }
 
 class RangeItemsLenError extends RangeError {
   RangeItemsLenError(
       ValidateInfo info, int tagNumber, String fieldName, ErrorRange r)
-      : super(info, tagNumber, fieldName, r);
+      : super(info, tagNumber, fieldName, null, r);
   String get trField => l10n.validateFieldItems(fieldName);
   String get unit => '';
 }
@@ -303,20 +302,20 @@ class WithinError extends ValidateError {
   final String Function(String field, String duration) rule;
   final Duration kConst;
 
-  WithinError.now(
-      ValidateInfo info, int tagNumber, String fieldName, this.kConst)
+  WithinError.now(ValidateInfo info, int tagNumber, String fieldName,
+      Formatter fmt, this.kConst)
       : rule = info.l10n.validateMustWithinNow,
-        super(info, tagNumber, fieldName);
+        super(info, tagNumber, fieldName, fmt);
 
-  WithinError.gtNow(
-      ValidateInfo info, int tagNumber, String fieldName, this.kConst)
+  WithinError.gtNow(ValidateInfo info, int tagNumber, String fieldName,
+      Formatter fmt, this.kConst)
       : rule = info.l10n.validateMustWithinGtNow,
-        super(info, tagNumber, fieldName);
+        super(info, tagNumber, fieldName, fmt);
 
-  WithinError.ltNow(
-      ValidateInfo info, int tagNumber, String fieldName, this.kConst)
+  WithinError.ltNow(ValidateInfo info, int tagNumber, String fieldName,
+      Formatter fmt, this.kConst)
       : rule = info.l10n.validateMustWithinLtNow,
-        super(info, tagNumber, fieldName);
+        super(info, tagNumber, fieldName, fmt);
 
   @override
   String toString() => rule(fieldName, format(kConst));

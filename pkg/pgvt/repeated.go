@@ -16,14 +16,14 @@ const repeatedTpl = `{{ $f := .Field }}{{ $r := .Pgv.Rules }}
 			throw {{ .PgdeFile.AsDot "ItemsLenConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ $r.GetMinItems }});
 	{{ else if $r.MaxItems }}
 		if (_rl < {{ $r.GetMinItems }} || _rl > {{ $r.GetMaxItems }})
-			throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.outEE ({{ .Err3Args }}, {{ $r.GetMinItems }}, {{ $r.GetMaxItems }}));
+			throw {{ .PgdeFile.AsDot "RangeError" }}(ErrorRange.outEE ({{ .Err4Args }}, {{ $r.GetMinItems }}, {{ $r.GetMaxItems }}));
 	{{ else }}
 		if (_rl < {{ $r.GetMinItems }})
-			throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateGte, {{ $r.GetMinItems }});
+			throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateGte, {{ $r.GetMinItems }});
 	{{ end }}
 {{ else if $r.MaxItems }}
 	if (_rl > {{ $r.GetMaxItems }})
-		throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateLte, {{ $r.GetMaxItems }});
+		throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateLte, {{ $r.GetMaxItems }});
 {{ end }}
 
 {{ if $r.GetUnique }}

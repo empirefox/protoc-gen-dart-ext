@@ -14,7 +14,7 @@ class Unit {
   final List<Cell> dots;
   final List<Cell> per;
 
-  const Unit({this.show = showSymbol, this.dots, this.per});
+  const Unit([this.show = showSymbol, this.dots, this.per]);
 
   String get symbol => l10n(null, Form.one, showSymbol);
 
@@ -64,7 +64,7 @@ class Show {
   final _AtomValuer atom;
 
   const Show(
-      {this.off = false, this.prefix = symbolPrefix, this.atom = symbol});
+      [this.off = false, this.prefix = symbolPrefix, this.atom = symbol]);
 
   const Show._disabled()
       : off = true,
@@ -75,14 +75,14 @@ class Show {
 }
 
 class Cell {
-  final String exponent;
   final Prefix prefix;
   final Atom atom;
+  final String exponent;
 
-  const Cell.int({int exponent, this.prefix, this.atom})
+  const Cell.int(this.prefix, this.atom, [int exponent = 1])
       : this.exponent = exponent == 1 ? '' : '$exponent';
 
-  const Cell({this.exponent = '', this.prefix, this.atom})
+  const Cell(this.prefix, this.atom, [this.exponent = ''])
       : assert(prefix != null),
         assert(atom != null);
 

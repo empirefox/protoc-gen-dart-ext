@@ -25,7 +25,7 @@ const enumTplDef = `{{ $r := .Pgv.Rules }}
 const enumTpl = enumTplDef + `
 {{ if $r.Const }}
 	if ({{ .Accessor }} != {{ .EnumLiteralValue $r.GetConst }})
-		throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err3Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ .L10nEnumValue $r.GetConst }});
+		throw {{ .PgdeFile.AsDot "ConstError" }}({{ .Err4Args }}, {{ .InfoAccessor }}.l10n.validateEq, {{ .L10nEnumValue $r.GetConst }});
 {{ end }}
 
 {{ if $r.GetDefinedOnly }}
@@ -40,7 +40,7 @@ const enumTpl = enumTplDef + `
 		{{ if $enumL10nClass }}
 			final {{ .EnumFieldL10nAccessor }} = {{ $enumL10nClass }}.of({{ .BuildContextAccessor }});
 		{{ end }}
-		throw {{ .PgdeFile.AsDot "InError" }}({{ .Err3Args }}, {{ .EnumL10nValues $r.GetIn }});
+		throw {{ .PgdeFile.AsDot "InError" }}({{ .Err4Args }}, {{ .EnumL10nValues $r.GetIn }});
 	}
 {{ else if $r.NotIn }}
 	if ({{ $kNotIn }}.containsKey({{ .Accessor }})) {

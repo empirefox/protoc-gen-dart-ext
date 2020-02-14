@@ -19,3 +19,7 @@ Entity = "Currency"
 [[ArbInfos]]
 Name = "validate.arb"
 Entity = "Validate"
+
+[[ArbInfos]]
+Name = "form.arb"
+Entity = "Form"

@@ -39,6 +39,7 @@ func Register(tpl *template.Template) {
 	template.Must(tpl.New("fileBody").Parse(fileBodyTplStr))
 	template.Must(tpl.New("delegate").Parse(delegateTplStr))
 	template.Must(tpl.New("arbBase").Parse(arbBaseTplStr))
+	template.Must(tpl.New("msgOrEnum").Parse(msgOrEnumTplStr))
 	template.Must(tpl.New("arb").Parse(arbTplStr))
 	template.Must(tpl.New("resource").Parse(resourceTplStr))
 	template.Must(tpl.New("resourceBase").Parse(resourceBaseTplStr))
@@ -132,4 +133,8 @@ type Node struct {
 
 func (nd Node) TemplateName() string {
 	return nd.Node.Type()
+}
+
+func (nd Node) TemplateData() interface{} {
+	return nd.Node
 }

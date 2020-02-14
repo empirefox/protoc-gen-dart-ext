@@ -31,4 +31,14 @@ class Translator {
         desc: 'choose to go back when there are changes',
         name: 'backAlertGoBack',
       );
+  String get reset => Intl.message(
+        'Reset',
+        desc: 'reset to default',
+        name: 'reset',
+      );
+  String get edit => Intl.message(
+        'Edit',
+        desc: 'edit oneof message',
+        name: 'edit',
+      );
 }

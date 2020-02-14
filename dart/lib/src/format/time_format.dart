@@ -1,58 +1,78 @@
+import 'package:fixnum/fixnum.dart' show Int64;
 import 'package:flutter/material.dart' show MaterialLocalizations, TimeOfDay;
 
 import 'formatter.dart';
 
 abstract class TimeFormatter<F, T> implements Formatter<F> {
   final BeTime<F, T> bt;
-  final bool alwaysUse24HourFormat;
 
-  const TimeFormatter(this.bt, {this.alwaysUse24HourFormat})
-      : assert(bt != null);
+  const TimeFormatter(this.bt) : assert(bt != null);
 
-  String format(v, md, l, {form, show}) =>
-      formatTime(md, bt.toTime(v), alwaysUse24HourFormat);
-
-  String formatTime(MaterialLocalizations md, T v, bool alwaysUse24HourFormat);
+  String format(v, md, l, {form, show}) => formatTime(md, bt.toTime(v));
+  String formatTime(MaterialLocalizations md, T v);
 }
 
 class OfDayFormatter<F> extends TimeFormatter<F, DateTime> {
-  const OfDayFormatter(BeTime<F, DateTime> bt, {bool alwaysUse24HourFormat})
-      : super(bt, alwaysUse24HourFormat: alwaysUse24HourFormat);
+  const OfDayFormatter(BeTime<F, DateTime> bt) : super(bt);
 
   @override
-  String formatTime(md, v, alwaysUse24HourFormat) =>
-      md.formatTimeOfDay(TimeOfDay.fromDateTime(v),
-          alwaysUse24HourFormat: alwaysUse24HourFormat);
+  String formatTime(md, v) => md.formatTimeOfDay(TimeOfDay.fromDateTime(v));
+}
+
+class OfDay24HFormatter<F> extends TimeFormatter<F, DateTime> {
+  const OfDay24HFormatter(BeTime<F, DateTime> bt) : super(bt);
+
+  @override
+  String formatTime(md, v) => md.formatTimeOfDay(TimeOfDay.fromDateTime(v),
+      alwaysUse24HourFormat: true);
 }
 
 class MediumDateFormatter<F> extends TimeFormatter<F, DateTime> {
   const MediumDateFormatter(BeTime<F, DateTime> bt) : super(bt);
   @override
-  String formatTime(md, v, alwaysUse24HourFormat) => md.formatMediumDate(v);
+  String formatTime(md, v) => md.formatMediumDate(v);
 }
 
 class FullDateFormatter<F> extends TimeFormatter<F, DateTime> {
   const FullDateFormatter(BeTime<F, DateTime> bt) : super(bt);
   @override
-  String formatTime(md, v, alwaysUse24HourFormat) => md.formatFullDate(v);
+  String formatTime(md, v) => md.formatFullDate(v);
 }
 
 class MediumDatetimeFormatter<F> extends TimeFormatter<F, DateTime> {
-  const MediumDatetimeFormatter(BeTime<F, DateTime> bt,
-      {bool alwaysUse24HourFormat})
-      : super(bt, alwaysUse24HourFormat: alwaysUse24HourFormat);
+  const MediumDatetimeFormatter(
+    BeTime<F, DateTime> bt,
+  ) : super(bt);
   @override
-  String formatTime(md, v, alwaysUse24HourFormat) =>
-      '${md.formatMediumDate(v)} ${md.formatTimeOfDay(TimeOfDay.fromDateTime(v), alwaysUse24HourFormat: alwaysUse24HourFormat)}';
+  String formatTime(md, v) =>
+      '${md.formatMediumDate(v)} ${md.formatTimeOfDay(TimeOfDay.fromDateTime(v))}';
+}
+
+class MediumDatetime24HFormatter<F> extends TimeFormatter<F, DateTime> {
+  const MediumDatetime24HFormatter(
+    BeTime<F, DateTime> bt,
+  ) : super(bt);
+  @override
+  String formatTime(md, v) =>
+      '${md.formatMediumDate(v)} ${md.formatTimeOfDay(TimeOfDay.fromDateTime(v), alwaysUse24HourFormat: true)}';
 }
 
 class FullDatetimeFormatter<F> extends TimeFormatter<F, DateTime> {
-  const FullDatetimeFormatter(BeTime<F, DateTime> bt,
-      {bool alwaysUse24HourFormat})
-      : super(bt, alwaysUse24HourFormat: alwaysUse24HourFormat);
+  const FullDatetimeFormatter(
+    BeTime<F, DateTime> bt,
+  ) : super(bt);
   @override
-  String formatTime(md, v, alwaysUse24HourFormat) =>
-      '${md.formatFullDate(v)} ${md.formatTimeOfDay(TimeOfDay.fromDateTime(v), alwaysUse24HourFormat: alwaysUse24HourFormat)}';
+  String formatTime(md, v) =>
+      '${md.formatFullDate(v)} ${md.formatTimeOfDay(TimeOfDay.fromDateTime(v))}';
+}
+
+class FullDatetime24HFormatter<F> extends TimeFormatter<F, DateTime> {
+  const FullDatetime24HFormatter(
+    BeTime<F, DateTime> bt,
+  ) : super(bt);
+  @override
+  String formatTime(md, v) =>
+      '${md.formatFullDate(v)} ${md.formatTimeOfDay(TimeOfDay.fromDateTime(v), alwaysUse24HourFormat: true)}';
 }
 
 class DurationFormatter<F> extends TimeFormatter<F, Duration> {
@@ -60,10 +80,11 @@ class DurationFormatter<F> extends TimeFormatter<F, Duration> {
 
   // TODO, fix this: the duration format not implemented
   @override
-  String formatTime(md, v, alwaysUse24HourFormat) => v.toString();
+  String formatTime(md, v) => v.toString();
 }
 
 abstract class BeTime<F, T> {
+  // Time
   static const BeTime<DateTime, DateTime> time =
       const NoActionBeTime<DateTime>();
 
@@ -77,7 +98,21 @@ abstract class BeTime<F, T> {
   static const BeTime<int, DateTime> hourTime =
       const _MsPerTime(Duration.millisecondsPerHour);
 
+  static const BeTime<Int64, DateTime> nanosecondTime64 =
+      const _Int64Time(nanosecondTime);
+  static const BeTime<Int64, DateTime> microsecondTime64 =
+      const _Int64Time(microsecondTime);
+  static const BeTime<Int64, DateTime> millisecondTime64 =
+      const _Int64Time(millisecondTime);
+  static const BeTime<Int64, DateTime> secondTime64 =
+      const _Int64Time(secondTime);
+  static const BeTime<Int64, DateTime> minuteTime64 =
+      const _Int64Time(minuteTime);
+  static const BeTime<Int64, DateTime> hourTime64 = const _Int64Time(hourTime);
+
+  // OfDay
   static const BeTime<DateTime, DateTime> ofDay = const _TimeOfDay();
+
   static const BeTime<int, DateTime> nanosecondOfDay =
       const _NanosecondTimeOfDay();
   static const BeTime<int, DateTime> microsecondOfDay =
@@ -91,6 +126,20 @@ abstract class BeTime<F, T> {
   static const BeTime<int, DateTime> hourOfDay =
       const _MsPerTimeOfDay(Duration.millisecondsPerHour);
 
+  static const BeTime<Int64, DateTime> nanosecondOfDay64 =
+      const _Int64Time(nanosecondOfDay);
+  static const BeTime<Int64, DateTime> microsecondOfDay64 =
+      const _Int64Time(microsecondOfDay);
+  static const BeTime<Int64, DateTime> millisecondOfDay64 =
+      const _Int64Time(millisecondOfDay);
+  static const BeTime<Int64, DateTime> secondOfDay64 =
+      const _Int64Time(secondOfDay);
+  static const BeTime<Int64, DateTime> minuteOfDay64 =
+      const _Int64Time(minuteOfDay);
+  static const BeTime<Int64, DateTime> hourOfDay64 =
+      const _Int64Time(hourOfDay);
+
+  // Dur
   static const BeTime<Duration, Duration> duration =
       const NoActionBeTime<Duration>();
 
@@ -100,6 +149,18 @@ abstract class BeTime<F, T> {
   static const BeTime<int, Duration> secondDur = const _SecondDur();
   static const BeTime<int, Duration> minuteDur = const _MinuteDur();
   static const BeTime<int, Duration> hourDur = const _HourDur();
+
+  static const BeTime<Int64, Duration> nanosecondDur64 =
+      const _Int64Time(nanosecondDur);
+  static const BeTime<Int64, Duration> microsecondDur64 =
+      const _Int64Time(microsecondDur);
+  static const BeTime<Int64, Duration> millisecondDur64 =
+      const _Int64Time(millisecondDur);
+  static const BeTime<Int64, Duration> secondDur64 =
+      const _Int64Time(secondDur);
+  static const BeTime<Int64, Duration> minuteDur64 =
+      const _Int64Time(minuteDur);
+  static const BeTime<Int64, Duration> hourDur64 = const _Int64Time(hourDur);
 
   const BeTime();
   T toTime(F v);
@@ -113,6 +174,25 @@ mixin _NoActionMixin<T> {
 
 class NoActionBeTime<T> with _NoActionMixin<T> implements BeTime<T, T> {
   const NoActionBeTime();
+}
+
+class _Int64Time<T> implements BeTime<Int64, T> {
+  final BeTime<int, T> bt;
+  const _Int64Time(this.bt);
+  @override
+  T toTime(Int64 v) => bt.toTime(v.toInt());
+  @override
+  Int64 ofTime(T v) => Int64(bt.ofTime(v));
+}
+
+class AnyIntTime<T> implements BeTime<T, DateTime> {
+  final BeTime<T, int> beInt;
+  final BeTime<int, DateTime> beTime;
+  const AnyIntTime(this.beInt, this.beTime);
+  @override
+  DateTime toTime(T v) => beTime.toTime(beInt.toTime(v));
+  @override
+  T ofTime(DateTime v) => beInt.ofTime(beTime.ofTime(v));
 }
 
 // DateTime
@@ -245,4 +325,3 @@ class _HourDur implements BeTime<int, Duration> {
   @override
   int ofTime(Duration v) => v.inHours;
 }
-

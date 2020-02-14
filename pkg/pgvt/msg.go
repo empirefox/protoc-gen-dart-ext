@@ -61,7 +61,7 @@ class {{ .Names.ValidatorName }} implements {{ .PgdeFile.AsDot "GeneratedValidat
 		}
 	{{- end -}}
 
-	{{ .MaterialFile.AsDot "BuildContext" }} {{ .Validators.BuildContextAccessor }};
+	{{ .Material.BuildContext }} {{ .Validators.BuildContextAccessor }};
 
 	{{ .PgdeFile.AsDot "ValidateInfo" }}<{{ .FullPbClass }}> {{ .Validators.InfoAccessor }};
 
@@ -71,10 +71,10 @@ class {{ .Names.ValidatorName }} implements {{ .PgdeFile.AsDot "GeneratedValidat
 		{{ .FullName }} {{ .Instance }};
 	{{ end }}
 
-	{{ .Names.ValidatorName }}({{ .MaterialFile.AsDot "BuildContext" }} context, {{ .PgdeFile.AsDot "ValidateInfo" }}<{{ .FullPbClass }}> info)
+	{{ .Names.ValidatorName }}({{ .Material.BuildContext }} context, {{ .PgdeFile.AsDot "ValidateInfo" }}<{{ .FullPbClass }}> info)
 		: {{ .Validators.BuildContextAccessor }} = context,
 		  {{ .Validators.InfoAccessor }} = info,
-		  {{ .Validators.L10nAccessor }} = {{ .MaterialFile.AsDot "Localizations" }}.of<{{ .FullL10nClass }}>(context, {{ .FullL10nClass }})
+		  {{ .Validators.L10nAccessor }} = {{ .Material.Localizations }}.of<{{ .FullL10nClass }}>(context, {{ .FullL10nClass }})
 		  {{- range .Validators.ImportManager.InstanceClasses }}
 		  	,{{ .Instance }} = {{ .FullName }}.of(context)
 	  	  {{ end -}}

@@ -1,3 +1,3 @@
 library plural;
 
-export 'src/plural/plural.dart';
+export 'src/plural.dart';

@@ -1,5 +1,5 @@
-import 'dart:collection';
-import 'package:intl/intl.dart';
+import 'dart:collection' show HashMap;
+import 'package:intl/intl.dart' show NumberFormat;
 
 final HashMap<String, NumberFormat> _formats = HashMap();
 

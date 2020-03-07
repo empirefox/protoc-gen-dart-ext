@@ -1,8 +1,8 @@
-import 'dart:collection';
-import 'package:intl/intl.dart';
+import 'dart:collection' show HashMap;
+import 'package:intl/intl.dart' show Intl, NumberFormat;
 
-import '../plural/plural.dart';
-import '../units/units.dart';
+import '../plural.dart';
+import '../units.dart';
 
 import 'formatter.dart';
 

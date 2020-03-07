@@ -3,6 +3,7 @@ package pgvt
 const msgTpl = `
 /// Validates [{{ .FullPbClass }}] protobuf objects.
 class {{ .Names.ValidatorName }} implements {{ .PgdeFile.AsDot "GeneratedValidator" }}<{{ .FullPbClass }}> {
+	
 	{{- range .NonOneOfFields }}
 		{{ renderConstants .Validate }}
 	{{ end }}
@@ -70,6 +71,9 @@ class {{ .Names.ValidatorName }} implements {{ .PgdeFile.AsDot "GeneratedValidat
 	{{ range .Validators.ImportManager.InstanceClasses }}
 		{{ .FullName }} {{ .Instance }};
 	{{ end }}
+
+	static {{ .Names.ValidatorName }} create({{ .Material.BuildContext }} context, {{ .PgdeFile.AsDot "ValidateInfo" }}<{{ .FullPbClass }}> info)
+		=> {{ .Names.ValidatorName }}(context, info);
 
 	{{ .Names.ValidatorName }}({{ .Material.BuildContext }} context, {{ .PgdeFile.AsDot "ValidateInfo" }}<{{ .FullPbClass }}> info)
 		: {{ .Validators.BuildContextAccessor }} = context,

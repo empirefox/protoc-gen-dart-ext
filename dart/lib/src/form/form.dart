@@ -1,10 +1,13 @@
+import 'dart:js';
+
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:grpc/grpc.dart' show CallOptions, ResponseFuture;
-import 'package:protobuf/protobuf.dart';
+import 'package:protobuf/protobuf.dart' show GeneratedMessage;
 
-import '../l10n/pgde.l10n.dart';
+import '../l10n.dart';
 import '../pgde/error/error.pb.dart';
-import '../validate/validate.dart';
+import '../validate.dart';
 
 import 'data.dart';
 
@@ -108,21 +111,19 @@ typedef SaveFunc<T extends GeneratedMessage> = ResponseFuture<BackendError>
 class FormPage<E> extends StatefulWidget {
   final bool dev;
   final String title;
-  final bool embed;
   final SaveFunc save;
   final ByFieldNumberFunc byNumber;
   final ErrorCoder coder;
-  final InputsBuilder builder;
+  final Inputs inputs;
 
   const FormPage(
       {Key key,
       this.dev = false,
       this.title,
-      this.embed,
       this.save,
       this.byNumber,
       this.coder,
-      this.builder})
+      this.inputs})
       : super(key: key);
 
   @override
@@ -138,7 +139,7 @@ class FormPageState extends State<FormPage> {
 
   void _doSave(BuildContext context) {
     setState(() {
-      _saving = widget.save(widget.builder.data.editing).then((err) {
+      _saving = widget.save(widget.inputs.data.editing).then((err) {
         if (err == null) {
           Navigator.of(context).pop();
         }
@@ -150,11 +151,12 @@ class FormPageState extends State<FormPage> {
   @override
   void initState() {
     super.initState();
-    _route = null;
   }
 
   @override
   void dispose() {
+    _route = null;
+    _saving = null;
     super.dispose();
   }
 
@@ -187,7 +189,7 @@ class FormPageState extends State<FormPage> {
                 return Column(
                   children: <Widget>[
                     StatefulForm(
-                      builder: widget.builder,
+                      inputs: widget.inputs,
                       onSave: () => _doSave(context),
                     ),
                     err == null
@@ -213,10 +215,10 @@ class FormPageState extends State<FormPage> {
 }
 
 class StatefulForm<E> extends StatefulWidget {
-  final InputsBuilder builder;
+  final Inputs inputs;
   final VoidCallback onSave;
 
-  const StatefulForm({Key key, this.builder, this.onSave}) : super(key: key);
+  const StatefulForm({Key key, this.inputs, this.onSave}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => StatefulFormState();
@@ -228,18 +230,21 @@ class StatefulFormState extends State<StatefulForm> {
   GeneratedMessage _draft;
 
   GeneratedMessage get draft => _draft ??=
-      widget.builder.data.editing?.clone() ?? widget.builder.createEmptyDraft();
+      widget.inputs.data.editing?.clone() ?? widget.inputs.createEmptyDraft();
 
-  bool _needNotSave() => _draft == widget.builder.data.saved;
+  bool _needNotSave() => _draft == widget.inputs.data.saved;
 
-  void _doSave(BuildContext context) {
-    if (!_fbKey.currentState.validate()) return;
+  void _doSave(BuildContext context, PgdeLocalizations l10n) {
+    if (!_fbKey.currentState.validate()) {
+      BotToast.showText(text: l10n.formHasError);
+      return;
+    }
     if (_needNotSave()) {
       Navigator.of(context).pop();
       return;
     }
-    if (widget.builder.data.isRoot) return setState(widget.onSave);
-    widget.builder.data.save(draft);
+    if (widget.inputs.data.isRoot) return setState(widget.onSave);
+    widget.inputs.data.saveSelf(draft);
     Navigator.of(context).pop();
   }
 
@@ -247,6 +252,7 @@ class StatefulFormState extends State<StatefulForm> {
   Widget build(BuildContext context) {
     final ml10n = MaterialLocalizations.of(context);
     final l10n = PgdeLocalizations.of(context);
+    final theme = Theme.of(context);
     return Column(
       children: <Widget>[
         Form(
@@ -258,29 +264,24 @@ class StatefulFormState extends State<StatefulForm> {
             () => Navigator.of(context).pop(),
             noNeedAsk: _needNotSave(),
           ),
-          child: Column(
-            children: widget.builder.buildInputs(context),
-          ),
+          child: Column(children: widget.inputs.build(context)),
         ),
         Row(
           children: <Widget>[
             Expanded(
               child: MaterialButton(
-                color: Theme.of(context).accentColor,
+                color: theme.accentColor,
                 child: Text(
                   ml10n.okButtonLabel,
                   style: TextStyle(color: Colors.white),
                 ),
-                onPressed:
-                    widget.builder.hasError ? null : () => _doSave(context),
+                onPressed: () => _doSave(context, l10n),
               ),
             ),
-            SizedBox(
-              width: 20,
-            ),
+            SizedBox(width: 20),
             Expanded(
               child: MaterialButton(
-                color: Theme.of(context).accentColor,
+                color: theme.accentColor,
                 child: Text(
                   l10n.formReset,
                   style: TextStyle(color: Colors.white),
@@ -295,42 +296,34 @@ class StatefulFormState extends State<StatefulForm> {
   }
 }
 
+abstract class InOneofInputs {
+  List<Widget> build(BuildContext context);
+}
+
+class InputsWidget<T extends GeneratedMessage> extends StatelessWidget {
+  final InOneofInputs inputs;
+  const InputsWidget(this.inputs, {Key key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) => Column(children: inputs.build(context));
+}
+
 typedef CreateEmptyDraftFunc<T extends GeneratedMessage> = T Function();
 
-// also act as InputsEmbedMessageOneofBuilder by implementing InputsOneofBuilder
-abstract class InputsBuilder<T extends GeneratedMessage>
-    implements InputsOneofBuilder {
-  static FormFieldValidator catchError(
-      VoidCallback fn, List<bool> hasErrorList, int idx) {
+// also act as EmbedMessageOneofInputs by implementing InOneofInputs
+abstract class Inputs<T extends GeneratedMessage> implements InOneofInputs {
+  static FormFieldValidator catchError(VoidCallback fn) {
     return (v) {
       try {
         fn();
       } catch (e) {
-        hasErrorList[idx] = true;
         return e.toString();
       }
-      hasErrorList[idx] = false;
       return null;
     };
   }
 
-  List<Widget> buildOneofInputs(BuildContext context, int oo) {
-    final oob = oneofBuilders[draft.$_whichOneof(oo)];
-    _currentOneofs[oo] = oob;
-    return oob.buildInputs(context);
-  }
-
-  bool get oneofHasError {
-    for (var oo in _currentOneofs) {
-      if (oo != null && oo.hasError) return true;
-    }
-    return false;
-  }
-
   final FormMessageData data;
-  final List<InputsOneofBuilder> _currentOneofs;
-  InputsBuilder({@required this.data, @required int oneofSize})
-      : _currentOneofs = List(oneofSize);
+  Inputs(this.data);
 
   T _draft;
   T get draft => _draft ??= data.editing?.clone() ?? createEmptyDraft();
@@ -343,67 +336,37 @@ abstract class InputsBuilder<T extends GeneratedMessage>
   ValidateInfo<T> vi(BuildContext context) => ValidateInfo<T>(
       MaterialLocalizations.of(context), PgdeLocalizations.of(context), draft);
 
-  CreateEmptyDraftFunc get createEmptyDraft;
-  bool get hasError;
-  Map<int, InputsOneofBuilder> get oneofBuilders;
-  List<Widget> buildInputs(BuildContext context);
-}
-
-abstract class InputsOneofBuilder {
-  bool get hasError;
-  List<Widget> buildInputs(BuildContext context);
-}
-
-typedef OneofFieldBuild = Widget Function(
-    InputDecoration decoration, FormFieldValidator validator);
-
-class InputsFieldOneofBuilder extends InputsOneofBuilder {
-  final InputDecoration decoration;
-  final VoidCallback validate;
-  final OneofFieldBuild build;
+  CreateEmptyDraftFunc<T> get createEmptyDraft;
 
   @override
-  bool get hasError => _hasErrorList[0];
-  final List<bool> _hasErrorList = [false];
-
-  FormFieldValidator get validator =>
-      InputsBuilder.catchError(validate, _hasErrorList, 0);
-
-  InputsFieldOneofBuilder(
-      {@required this.decoration,
-      @required this.validate,
-      @required this.build});
-
-  @override
-  List<Widget> buildInputs(BuildContext context) {
-    return [build(decoration, validator)];
-  }
+  List<Widget> build(BuildContext context);
 }
 
-typedef CreateValidatorFunc = Function(BuildContext context, ValidateInfo vi);
+typedef FieldInOneofBuilder = Widget Function(FormFieldValidator validator);
+
+typedef CreateValidatorFunc<T extends GeneratedMessage> = GeneratedValidator<T>
+    Function(BuildContext context, ValidateInfo<T> vi);
 
 typedef CreateDecorationFunc = InputDecoration Function(
     BuildContext context, String errorText);
 
-// non-embed oneof builder
-class InputsMessageOneofBuilder extends InputsOneofBuilder {
+// non-embed oneof inputs
+class MessageFieldInOneofInputs<T extends GeneratedMessage>
+    implements InOneofInputs {
   // data from childMessage
   final FormMessageData data;
-  final CreateEmptyDraftFunc createEmptyDraft;
-  final CreateValidatorFunc createValidator;
+  final CreateEmptyDraftFunc<T> createEmptyDraft;
+  final CreateValidatorFunc<T> createValidator;
   final CreateDecorationFunc createDecoration;
 
-  @override
-  final bool hasError = false;
-
-  InputsMessageOneofBuilder(
+  MessageFieldInOneofInputs(
       {@required this.data,
       @required this.createEmptyDraft,
       @required this.createValidator,
       @required this.createDecoration});
 
   @override
-  List<Widget> buildInputs(BuildContext context) {
+  List<Widget> build(BuildContext context) {
     final draft = data.editing?.clone() ?? createEmptyDraft();
     final l10n = PgdeLocalizations.of(context);
     final vi = ValidateInfo(MaterialLocalizations.of(context), l10n, draft);

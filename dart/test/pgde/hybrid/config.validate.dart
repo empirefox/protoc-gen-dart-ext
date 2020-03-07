@@ -123,6 +123,10 @@ class BasicValidator implements $1.GeneratedValidator<$0.Basic> {
 
   $3.ConfigLocalizations _l10n;
 
+  static BasicValidator create(
+          $2.BuildContext context, $1.ValidateInfo<$0.Basic> info) =>
+      BasicValidator(context, info);
+
   BasicValidator($2.BuildContext context, $1.ValidateInfo<$0.Basic> info)
       : _ctx = context,
         _info = info,
@@ -192,6 +196,10 @@ class LogValidator implements $1.GeneratedValidator<$0.Log> {
   $1.ValidateInfo<$0.Log> _info;
 
   $3.ConfigLocalizations _l10n;
+
+  static LogValidator create(
+          $2.BuildContext context, $1.ValidateInfo<$0.Log> info) =>
+      LogValidator(context, info);
 
   LogValidator($2.BuildContext context, $1.ValidateInfo<$0.Log> info)
       : _ctx = context,
@@ -349,6 +357,10 @@ class IpfsValidator implements $1.GeneratedValidator<$0.Ipfs> {
 
   $3.ConfigLocalizations _l10n;
 
+  static IpfsValidator create(
+          $2.BuildContext context, $1.ValidateInfo<$0.Ipfs> info) =>
+      IpfsValidator(context, info);
+
   IpfsValidator($2.BuildContext context, $1.ValidateInfo<$0.Ipfs> info)
       : _ctx = context,
         _info = info,
@@ -434,6 +446,10 @@ class IpfsServerValidator implements $1.GeneratedValidator<$0.IpfsServer> {
   $1.ValidateInfo<$0.IpfsServer> _info;
 
   $3.ConfigLocalizations _l10n;
+
+  static IpfsServerValidator create(
+          $2.BuildContext context, $1.ValidateInfo<$0.IpfsServer> info) =>
+      IpfsServerValidator(context, info);
 
   IpfsServerValidator(
       $2.BuildContext context, $1.ValidateInfo<$0.IpfsServer> info)
@@ -538,6 +554,10 @@ class FileServerValidator implements $1.GeneratedValidator<$0.FileServer> {
 
   $3.ConfigLocalizations _l10n;
 
+  static FileServerValidator create(
+          $2.BuildContext context, $1.ValidateInfo<$0.FileServer> info) =>
+      FileServerValidator(context, info);
+
   FileServerValidator(
       $2.BuildContext context, $1.ValidateInfo<$0.FileServer> info)
       : _ctx = context,
@@ -634,6 +654,10 @@ class HttpProxyServerValidator
 
   $3.ConfigLocalizations _l10n;
 
+  static HttpProxyServerValidator create(
+          $2.BuildContext context, $1.ValidateInfo<$0.HttpProxyServer> info) =>
+      HttpProxyServerValidator(context, info);
+
   HttpProxyServerValidator(
       $2.BuildContext context, $1.ValidateInfo<$0.HttpProxyServer> info)
       : _ctx = context,
@@ -729,6 +753,10 @@ class AdpRouterValidator implements $1.GeneratedValidator<$0.AdpRouter> {
   $1.ValidateInfo<$0.AdpRouter> _info;
 
   $3.ConfigLocalizations _l10n;
+
+  static AdpRouterValidator create(
+          $2.BuildContext context, $1.ValidateInfo<$0.AdpRouter> info) =>
+      AdpRouterValidator(context, info);
 
   AdpRouterValidator(
       $2.BuildContext context, $1.ValidateInfo<$0.AdpRouter> info)
@@ -857,6 +885,10 @@ class IPNetRouterValidator implements $1.GeneratedValidator<$0.IPNetRouter> {
 
   $3.ConfigLocalizations _l10n;
 
+  static IPNetRouterValidator create(
+          $2.BuildContext context, $1.ValidateInfo<$0.IPNetRouter> info) =>
+      IPNetRouterValidator(context, info);
+
   IPNetRouterValidator(
       $2.BuildContext context, $1.ValidateInfo<$0.IPNetRouter> info)
       : _ctx = context,
@@ -949,6 +981,10 @@ class RouterItemValidator implements $1.GeneratedValidator<$0.RouterItem> {
   $1.ValidateInfo<$0.RouterItem> _info;
 
   $3.ConfigLocalizations _l10n;
+
+  static RouterItemValidator create(
+          $2.BuildContext context, $1.ValidateInfo<$0.RouterItem> info) =>
+      RouterItemValidator(context, info);
 
   RouterItemValidator(
       $2.BuildContext context, $1.ValidateInfo<$0.RouterItem> info)
@@ -1068,6 +1104,10 @@ class ConfigValidator implements $1.GeneratedValidator<$0.Config> {
   $1.ValidateInfo<$0.Config> _info;
 
   $3.ConfigLocalizations _l10n;
+
+  static ConfigValidator create(
+          $2.BuildContext context, $1.ValidateInfo<$0.Config> info) =>
+      ConfigValidator(context, info);
 
   ConfigValidator($2.BuildContext context, $1.ValidateInfo<$0.Config> info)
       : _ctx = context,

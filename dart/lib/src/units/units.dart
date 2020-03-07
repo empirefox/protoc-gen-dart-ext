@@ -1,11 +1,8 @@
-import '../plural/plural.dart';
-import '../l10n/pgde.l10n.dart';
+import '../plural.dart';
+import '../l10n.dart';
 
 import 'atom.dart';
 import 'prefix.dart';
-
-export 'atom.dart';
-export 'prefix.dart';
 
 class Unit {
   static const showSymbol = Show();

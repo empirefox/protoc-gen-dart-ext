@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package pgde.form;
 
-option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/form";
+option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/form;form";
 
 import "google/protobuf/descriptor.proto";
 
@@ -18,7 +18,32 @@ extend google.protobuf.EnumOptions {
 extend google.protobuf.EnumValueOptions {
   pgde.form.InputOption inputOption = 919114;
 }
-extend google.protobuf.OneofOptions { bool embed = 919114; }
+
+extend google.protobuf.OneofOptions { OneofHeader header = 919114; }
+message OneofHeader {
+  message Title {
+    enum Show {
+      icon = 0;
+      text = 1;
+      iconText = 2;
+    }
+  }
+  message AfterCreate {
+    enum State {
+      hide = 0;
+      icon = 1;
+      text = 2;
+      iconText = 3;
+      frozen = 4;
+      changeable = 5;
+    }
+  }
+
+  MaterialIcon icon = 1;
+  Title.Show title = 2;
+  AfterCreate.State afterCreate = 3;
+}
+
 extend google.protobuf.MessageOptions { pgde.form.Node node = 919114; }
 
 message InputOption { MaterialIcon icon = 1; }
@@ -39,7 +64,7 @@ message Field {
     bool disabled = 4;
     bool ensureAgain = 5;
 
-    // for non-oneof non-built-in field
+    // for non-built-in field
     bool embed = 6;
   }
 

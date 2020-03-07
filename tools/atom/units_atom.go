@@ -42,8 +42,8 @@ enum {{ Entity }} {
 `
 
 const dartTplStr = genshared.DartHead + `
-import '../plural/plural.dart';
-import '../l10n/pgde.l10n.dart';
+import '../plural.dart';
+import '../l10n.dart';
 
 abstract class _Valuer {
   String of(PgdeLocalizations l, Form p);

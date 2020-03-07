@@ -81,8 +81,9 @@ message Log {
 }
 
 message Ipfs {
+  uint32 id = 1;
   // @inject_tag: toml:",omitempty"
-  bytes fakeApiListenIp = 1 [
+  bytes fakeApiListenIp = 2 [
     (validate.rules).bytes.ip = true,
     (pgde.format.to).bytes.type = ip,
     (pgde.zero.to) = {
@@ -90,25 +91,25 @@ message Ipfs {
     }
   ];
   // @inject_tag: toml:",omitempty"
-  uint32 fakeApiListenPort = 2 [
+  uint32 fakeApiListenPort = 3 [
     (validate.rules).uint32.lt = 65535,
     (pgde.zero.to) = {
       uint32 : 1270,
     }
   ];
 
-  bool enableGateway = 3;
+  bool enableGateway = 4;
   // @inject_tag: toml:",omitempty"
-  string gatewayServerName = 4 [
+  string gatewayServerName = 5 [
     (validate.rules).string.hostname = true,
     (pgde.zero.to) = {
       string : "ipfs",
     }
   ];
 
-  bool enableApi = 5;
+  bool enableApi = 6;
   // @inject_tag: toml:",omitempty"
-  string apiServerName = 6 [
+  string apiServerName = 7 [
     (validate.rules).string.hostname = true,
     (pgde.zero.to) = {
       string : "api.ipfs",
@@ -116,67 +117,70 @@ message Ipfs {
   ];
 
   // @inject_tag: toml:",omitempty"
-  repeated string profile = 7 [ (validate.rules).repeated .unique = true ];
+  repeated string profile = 8 [ (validate.rules).repeated .unique = true ];
   // @inject_tag: toml:",omitempty"
-  bool autoMigrate = 8;
+  bool autoMigrate = 9;
   // @inject_tag: toml:",omitempty"
-  bool enableIpnsPubSub = 9;
+  bool enableIpnsPubSub = 10;
   // @inject_tag: toml:",omitempty"
-  bool enablePubSub = 10;
+  bool enablePubSub = 11;
   // @inject_tag: toml:",omitempty"
-  bool enableMultiplex = 11;
+  bool enableMultiplex = 12;
 
   // @inject_tag: toml:",omitempty"
-  string token = 12 [ (validate.rules).string.max_len = 732 ];
+  string token = 13 [ (validate.rules).string.max_len = 732 ];
 }
 
 // server types
 
 message IpfsServer {
+  uint32 id = 1;
   // @inject_tag: toml:",omitempty"
-  bool disabled = 1;
+  bool disabled = 2;
   // @inject_tag: toml:",omitempty"
-  google.protobuf.StringValue name = 2
+  google.protobuf.StringValue name = 3
       [ (validate.rules).string.hostname = true ];
   // @inject_tag: toml:",omitempty"
-  string peer = 3 [ (validate.rules).string.hostname = true ];
+  string peer = 4 [ (validate.rules).string.hostname = true ];
   // @inject_tag: toml:",omitempty"
-  string token = 4 [ (validate.rules).string.max_len = 732 ];
+  string token = 5 [ (validate.rules).string.max_len = 732 ];
 }
 
 message FileServer {
+  uint32 id = 1;
   // @inject_tag: toml:",omitempty"
-  bool disabled = 1;
+  bool disabled = 2;
   // @inject_tag: toml:",omitempty"
-  google.protobuf.StringValue name = 2
+  google.protobuf.StringValue name = 3
       [ (validate.rules).string.hostname = true ];
   // @inject_tag: toml:",omitempty"
-  string zip = 3 [ (validate.rules).string.hostname = true ];
+  string zip = 4 [ (validate.rules).string.hostname = true ];
   // @inject_tag: toml:",omitempty"
-  map<string, string> redirect = 4 [ (validate.rules).map = {
+  map<string, string> redirect = 5 [ (validate.rules).map = {
     keys : {string : {uri_ref : true}},
     values : {string : {uri_ref : true}},
   } ];
   // @inject_tag: toml:",omitempty"
-  bool dev = 5;
+  bool dev = 6;
 }
 
 message HttpProxyServer {
+  uint32 id = 1;
   // @inject_tag: toml:",omitempty"
-  bool disabled = 1;
+  bool disabled = 2;
   // @inject_tag: toml:",omitempty"
-  google.protobuf.StringValue name = 2
+  google.protobuf.StringValue name = 3
       [ (validate.rules).string.hostname = true ];
   // @inject_tag: toml:",omitempty"
-  string host = 3 [
+  string host = 4 [
     (validate.rules).string.ip = true,
     (pgde.zero.to) = {string : "127.0.0.1"}
   ];
   // @inject_tag: toml:",omitempty"
-  uint32 port = 4
+  uint32 port = 5
       [ (validate.rules).uint32.lt = 65535, (pgde.zero.to) = {uint32 : 8899} ];
   // @inject_tag: toml:",omitempty"
-  bool keepAlive = 5;
+  bool keepAlive = 6;
 }
 
 // server types end
@@ -214,15 +218,11 @@ message IPNetRouter {
     (pgde.format.to).bytes.type = ip
   ];
   // @inject_tag: toml:",omitempty"
-  repeated google.protobuf.BytesValue netv4 = 2 [
-    (validate.rules).bytes.len = 5,
-    (pgde.format.to).bytes.type = cidrv4
-  ];
+  repeated google.protobuf.BytesValue netv4 = 2
+      [ (validate.rules).bytes.len = 5, (pgde.format.to).bytes.type = cidrv4 ];
   // @inject_tag: toml:",omitempty"
-  repeated google.protobuf.BytesValue netv6 = 3 [
-    (validate.rules).bytes.len = 17,
-    (pgde.format.to).bytes.type = cidrv6
-  ];
+  repeated google.protobuf.BytesValue netv6 = 3
+      [ (validate.rules).bytes.len = 17, (pgde.format.to).bytes.type = cidrv6 ];
   // @inject_tag: toml:",omitempty"
   google.protobuf.StringValue matched = 4
       [ (validate.rules).string.hostname = true ];
@@ -237,13 +237,14 @@ message IPNetRouter {
 // routers end
 
 message RouterItem {
+  uint32 id = 1;
   // @inject_tag: toml:",omitempty"
-  bool disabled = 1;
-  string name = 2 [ (validate.rules).string.hostname = true ];
+  bool disabled = 2;
+  string name = 3 [ (validate.rules).string.hostname = true ];
   oneof router {
     option (validate.required) = true;
-    AdpRouter adp = 3;
-    IPNetRouter ipnet = 4;
+    AdpRouter adp = 4;
+    IPNetRouter ipnet = 5;
   }
 }
 

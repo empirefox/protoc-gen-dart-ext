@@ -33,6 +33,9 @@ class _{{ .DartName }} implements {{ .PgdeFile.AsDot "ZeroAction" }}<{{ .FullPbC
 		{{ template "oneOfConst" (.Zero.ForAction "all") }}
 	{{ end }}
 
+	@override
+	{{ .FullPbClass }} create() => onZeroCreate({{ .FullPbClass }}());
+
 	{{ range .Actions }}
 		{{ template "action" ($.ForAction .) }}
 	{{ end }}
@@ -41,7 +44,7 @@ class _{{ .DartName }} implements {{ .PgdeFile.AsDot "ZeroAction" }}<{{ .FullPbC
 
 const actionTpl = `
 @override
-void {{ .Action }}({{ .FullPbClass }} proto
+{{ .FullPbClass }} {{ .Action }}({{ .FullPbClass }} proto
 		{{- if .IsOnSave }}, [{{ .FullPbClass }} _$$_]{{ end -}}
 	) {
 	{{- range .NonOneOfFields }}
@@ -50,6 +53,7 @@ void {{ .Action }}({{ .FullPbClass }} proto
 	{{ range .OneOfs }}
 		{{ template "oneOf" (.Zero.ForAction $.Action) }}
 	{{- end -}}
+	return proto;
 }
 `
 

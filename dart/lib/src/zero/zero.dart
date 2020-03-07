@@ -1,7 +1,8 @@
-import 'package:protobuf/protobuf.dart';
+import 'package:protobuf/protobuf.dart' show GeneratedMessage;
 
 abstract class ZeroAction<T extends GeneratedMessage> {
-  void onZeroCreate(T proto);
-  void onZeroLoad(T proto);
-  void onZeroSave(T proto, [T orig]);
+  T create();
+  T onZeroCreate(T proto);
+  T onZeroLoad(T proto);
+  T onZeroSave(T proto, [T orig]);
 }

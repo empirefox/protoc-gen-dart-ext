@@ -41,4 +41,9 @@ class Translator {
         desc: 'edit oneof message',
         name: 'edit',
       );
+  String get hasError => Intl.message(
+        'Form validation failed!',
+        desc: 'edit oneof message',
+        name: 'hasError',
+      );
 }

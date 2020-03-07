@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart' show MaterialLocalizations;
-import 'package:protobuf/protobuf.dart';
+import 'package:protobuf/protobuf.dart'
+    show BuilderInfo, FieldInfo, GeneratedMessage;
 
-import '../format.dart';
-import '../l10n/pgde.l10n.dart';
-import '../plural/plural.dart';
-import '../units/units.dart';
+import '../format.dart' show Formatter, NumberFormatter;
+import '../l10n.dart';
+import '../plural.dart';
+import '../units.dart' show Atom, Show;
 
 /// The base interface for all generated PGV validators.
 /// Asserts validation rules on a protobuf object.
-/// Throw [ValidationError] with the first validation error encountered.
+/// Throw [ValidateError] with the first validation error encountered.
 abstract class GeneratedValidator<T extends GeneratedMessage> {
   void assertProto();
   void assertField(int tag);

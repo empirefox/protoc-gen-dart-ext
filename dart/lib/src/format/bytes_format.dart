@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart' show MaterialLocalizations;
-import 'package:ip/ip.dart';
+import 'package:ip/ip.dart' show Ip6Address;
 
-import '../l10n/pgde.l10n.dart';
-import '../plural/plural.dart';
-import '../units/units.dart';
+import '../l10n.dart';
+import '../plural.dart';
+import '../units.dart';
 
 import 'formatter.dart';
 

@@ -26,7 +26,10 @@ class _Basic implements $1.ZeroAction<$0.Basic> {
   List<int> get _$bindIp => const <int>[0xff, 0x0, 0x0, 0x1];
 
   @override
-  void onZeroCreate($0.Basic proto) {
+  $0.Basic create() => onZeroCreate($0.Basic());
+
+  @override
+  $0.Basic onZeroCreate($0.Basic proto) {
     // no zero rules for proto.version
 
     // no zero rules for proto.dev
@@ -40,10 +43,12 @@ class _Basic implements $1.ZeroAction<$0.Basic> {
     if (proto.flushIntervalMs == 0) proto.flushIntervalMs = 200;
 
     // no zero rules for proto.token
+
+    return proto;
   }
 
   @override
-  void onZeroLoad($0.Basic proto) {
+  $0.Basic onZeroLoad($0.Basic proto) {
     // no zero rules for proto.version
 
     // no zero rules for proto.dev
@@ -57,10 +62,12 @@ class _Basic implements $1.ZeroAction<$0.Basic> {
     if (proto.flushIntervalMs == 0) proto.flushIntervalMs = 200;
 
     // no zero rules for proto.token
+
+    return proto;
   }
 
   @override
-  void onZeroSave($0.Basic proto, [$0.Basic _$$_]) {
+  $0.Basic onZeroSave($0.Basic proto, [$0.Basic _$$_]) {
     // no zero rules for proto.version
 
     // no zero rules for proto.dev
@@ -74,6 +81,8 @@ class _Basic implements $1.ZeroAction<$0.Basic> {
     if (proto.flushIntervalMs == 0) proto.flushIntervalMs = 200;
 
     // no zero rules for proto.token
+
+    return proto;
   }
 }
 
@@ -84,30 +93,39 @@ class _Log implements $1.ZeroAction<$0.Log> {
   const _Log();
 
   @override
-  void onZeroCreate($0.Log proto) {
+  $0.Log create() => onZeroCreate($0.Log());
+
+  @override
+  $0.Log onZeroCreate($0.Log proto) {
     // no zero rules for proto.dev
 
     // no zero rules for proto.level
 
     // no zero rules for proto.target
+
+    return proto;
   }
 
   @override
-  void onZeroLoad($0.Log proto) {
+  $0.Log onZeroLoad($0.Log proto) {
     // no zero rules for proto.dev
 
     // no zero rules for proto.level
 
     // no zero rules for proto.target
+
+    return proto;
   }
 
   @override
-  void onZeroSave($0.Log proto, [$0.Log _$$_]) {
+  $0.Log onZeroSave($0.Log proto, [$0.Log _$$_]) {
     // no zero rules for proto.dev
 
     // no zero rules for proto.level
 
     // no zero rules for proto.target
+
+    return proto;
   }
 }
 
@@ -124,7 +142,10 @@ class _Ipfs implements $1.ZeroAction<$0.Ipfs> {
   static const _$apiServerName = r'api.ipfs';
 
   @override
-  void onZeroCreate($0.Ipfs proto) {
+  $0.Ipfs create() => onZeroCreate($0.Ipfs());
+
+  @override
+  $0.Ipfs onZeroCreate($0.Ipfs proto) {
     if (proto.fakeApiListenIp.isEmpty)
       proto.fakeApiListenIp = _$fakeApiListenIp;
 
@@ -150,10 +171,12 @@ class _Ipfs implements $1.ZeroAction<$0.Ipfs> {
     // no zero rules for proto.enableMultiplex
 
     // no zero rules for proto.token
+
+    return proto;
   }
 
   @override
-  void onZeroLoad($0.Ipfs proto) {
+  $0.Ipfs onZeroLoad($0.Ipfs proto) {
     if (proto.fakeApiListenIp.isEmpty)
       proto.fakeApiListenIp = _$fakeApiListenIp;
 
@@ -179,10 +202,12 @@ class _Ipfs implements $1.ZeroAction<$0.Ipfs> {
     // no zero rules for proto.enableMultiplex
 
     // no zero rules for proto.token
+
+    return proto;
   }
 
   @override
-  void onZeroSave($0.Ipfs proto, [$0.Ipfs _$$_]) {
+  $0.Ipfs onZeroSave($0.Ipfs proto, [$0.Ipfs _$$_]) {
     if (proto.fakeApiListenIp.isEmpty)
       proto.fakeApiListenIp = _$fakeApiListenIp;
 
@@ -208,6 +233,8 @@ class _Ipfs implements $1.ZeroAction<$0.Ipfs> {
     // no zero rules for proto.enableMultiplex
 
     // no zero rules for proto.token
+
+    return proto;
   }
 }
 
@@ -218,7 +245,10 @@ class _IpfsServer implements $1.ZeroAction<$0.IpfsServer> {
   const _IpfsServer();
 
   @override
-  void onZeroCreate($0.IpfsServer proto) {
+  $0.IpfsServer create() => onZeroCreate($0.IpfsServer());
+
+  @override
+  $0.IpfsServer onZeroCreate($0.IpfsServer proto) {
     // no zero rules for proto.disabled
 
     // no zero rules for proto.name
@@ -226,10 +256,12 @@ class _IpfsServer implements $1.ZeroAction<$0.IpfsServer> {
     // no zero rules for proto.peer
 
     // no zero rules for proto.token
+
+    return proto;
   }
 
   @override
-  void onZeroLoad($0.IpfsServer proto) {
+  $0.IpfsServer onZeroLoad($0.IpfsServer proto) {
     // no zero rules for proto.disabled
 
     // no zero rules for proto.name
@@ -237,10 +269,12 @@ class _IpfsServer implements $1.ZeroAction<$0.IpfsServer> {
     // no zero rules for proto.peer
 
     // no zero rules for proto.token
+
+    return proto;
   }
 
   @override
-  void onZeroSave($0.IpfsServer proto, [$0.IpfsServer _$$_]) {
+  $0.IpfsServer onZeroSave($0.IpfsServer proto, [$0.IpfsServer _$$_]) {
     // no zero rules for proto.disabled
 
     // no zero rules for proto.name
@@ -248,6 +282,8 @@ class _IpfsServer implements $1.ZeroAction<$0.IpfsServer> {
     // no zero rules for proto.peer
 
     // no zero rules for proto.token
+
+    return proto;
   }
 }
 
@@ -258,7 +294,10 @@ class _FileServer implements $1.ZeroAction<$0.FileServer> {
   const _FileServer();
 
   @override
-  void onZeroCreate($0.FileServer proto) {
+  $0.FileServer create() => onZeroCreate($0.FileServer());
+
+  @override
+  $0.FileServer onZeroCreate($0.FileServer proto) {
     // no zero rules for proto.disabled
 
     // no zero rules for proto.name
@@ -268,10 +307,12 @@ class _FileServer implements $1.ZeroAction<$0.FileServer> {
     // no zero rules for proto.redirect
 
     // no zero rules for proto.dev
+
+    return proto;
   }
 
   @override
-  void onZeroLoad($0.FileServer proto) {
+  $0.FileServer onZeroLoad($0.FileServer proto) {
     // no zero rules for proto.disabled
 
     // no zero rules for proto.name
@@ -281,10 +322,12 @@ class _FileServer implements $1.ZeroAction<$0.FileServer> {
     // no zero rules for proto.redirect
 
     // no zero rules for proto.dev
+
+    return proto;
   }
 
   @override
-  void onZeroSave($0.FileServer proto, [$0.FileServer _$$_]) {
+  $0.FileServer onZeroSave($0.FileServer proto, [$0.FileServer _$$_]) {
     // no zero rules for proto.disabled
 
     // no zero rules for proto.name
@@ -294,6 +337,8 @@ class _FileServer implements $1.ZeroAction<$0.FileServer> {
     // no zero rules for proto.redirect
 
     // no zero rules for proto.dev
+
+    return proto;
   }
 }
 
@@ -306,7 +351,10 @@ class _HttpProxyServer implements $1.ZeroAction<$0.HttpProxyServer> {
   static const _$host = r'127.0.0.1';
 
   @override
-  void onZeroCreate($0.HttpProxyServer proto) {
+  $0.HttpProxyServer create() => onZeroCreate($0.HttpProxyServer());
+
+  @override
+  $0.HttpProxyServer onZeroCreate($0.HttpProxyServer proto) {
     // no zero rules for proto.disabled
 
     // no zero rules for proto.name
@@ -316,10 +364,12 @@ class _HttpProxyServer implements $1.ZeroAction<$0.HttpProxyServer> {
     if (proto.port == 0) proto.port = 8899;
 
     // no zero rules for proto.keepAlive
+
+    return proto;
   }
 
   @override
-  void onZeroLoad($0.HttpProxyServer proto) {
+  $0.HttpProxyServer onZeroLoad($0.HttpProxyServer proto) {
     // no zero rules for proto.disabled
 
     // no zero rules for proto.name
@@ -329,10 +379,13 @@ class _HttpProxyServer implements $1.ZeroAction<$0.HttpProxyServer> {
     if (proto.port == 0) proto.port = 8899;
 
     // no zero rules for proto.keepAlive
+
+    return proto;
   }
 
   @override
-  void onZeroSave($0.HttpProxyServer proto, [$0.HttpProxyServer _$$_]) {
+  $0.HttpProxyServer onZeroSave($0.HttpProxyServer proto,
+      [$0.HttpProxyServer _$$_]) {
     // no zero rules for proto.disabled
 
     // no zero rules for proto.name
@@ -342,6 +395,8 @@ class _HttpProxyServer implements $1.ZeroAction<$0.HttpProxyServer> {
     if (proto.port == 0) proto.port = 8899;
 
     // no zero rules for proto.keepAlive
+
+    return proto;
   }
 }
 
@@ -352,7 +407,10 @@ class _AdpRouter implements $1.ZeroAction<$0.AdpRouter> {
   const _AdpRouter();
 
   @override
-  void onZeroCreate($0.AdpRouter proto) {
+  $0.AdpRouter create() => onZeroCreate($0.AdpRouter());
+
+  @override
+  $0.AdpRouter onZeroCreate($0.AdpRouter proto) {
     // no zero rules for proto.rulesDirName
 
     // no zero rules for proto.blocked
@@ -362,10 +420,12 @@ class _AdpRouter implements $1.ZeroAction<$0.AdpRouter> {
     // no zero rules for proto.etcHostsIpAsBlocked
 
     // no zero rules for proto.dev
+
+    return proto;
   }
 
   @override
-  void onZeroLoad($0.AdpRouter proto) {
+  $0.AdpRouter onZeroLoad($0.AdpRouter proto) {
     // no zero rules for proto.rulesDirName
 
     // no zero rules for proto.blocked
@@ -375,10 +435,12 @@ class _AdpRouter implements $1.ZeroAction<$0.AdpRouter> {
     // no zero rules for proto.etcHostsIpAsBlocked
 
     // no zero rules for proto.dev
+
+    return proto;
   }
 
   @override
-  void onZeroSave($0.AdpRouter proto, [$0.AdpRouter _$$_]) {
+  $0.AdpRouter onZeroSave($0.AdpRouter proto, [$0.AdpRouter _$$_]) {
     // no zero rules for proto.rulesDirName
 
     // no zero rules for proto.blocked
@@ -388,6 +450,8 @@ class _AdpRouter implements $1.ZeroAction<$0.AdpRouter> {
     // no zero rules for proto.etcHostsIpAsBlocked
 
     // no zero rules for proto.dev
+
+    return proto;
   }
 }
 
@@ -398,7 +462,10 @@ class _IPNetRouter implements $1.ZeroAction<$0.IPNetRouter> {
   const _IPNetRouter();
 
   @override
-  void onZeroCreate($0.IPNetRouter proto) {
+  $0.IPNetRouter create() => onZeroCreate($0.IPNetRouter());
+
+  @override
+  $0.IPNetRouter onZeroCreate($0.IPNetRouter proto) {
     // no zero rules for proto.ip
 
     // no zero rules for proto.netv4
@@ -410,10 +477,12 @@ class _IPNetRouter implements $1.ZeroAction<$0.IPNetRouter> {
     // no zero rules for proto.unmatched
 
     // no zero rules for proto.fileTest
+
+    return proto;
   }
 
   @override
-  void onZeroLoad($0.IPNetRouter proto) {
+  $0.IPNetRouter onZeroLoad($0.IPNetRouter proto) {
     // no zero rules for proto.ip
 
     // no zero rules for proto.netv4
@@ -425,10 +494,12 @@ class _IPNetRouter implements $1.ZeroAction<$0.IPNetRouter> {
     // no zero rules for proto.unmatched
 
     // no zero rules for proto.fileTest
+
+    return proto;
   }
 
   @override
-  void onZeroSave($0.IPNetRouter proto, [$0.IPNetRouter _$$_]) {
+  $0.IPNetRouter onZeroSave($0.IPNetRouter proto, [$0.IPNetRouter _$$_]) {
     // no zero rules for proto.ip
 
     // no zero rules for proto.netv4
@@ -440,6 +511,8 @@ class _IPNetRouter implements $1.ZeroAction<$0.IPNetRouter> {
     // no zero rules for proto.unmatched
 
     // no zero rules for proto.fileTest
+
+    return proto;
   }
 }
 
@@ -450,7 +523,10 @@ class _RouterItem implements $1.ZeroAction<$0.RouterItem> {
   const _RouterItem();
 
   @override
-  void onZeroCreate($0.RouterItem proto) {
+  $0.RouterItem create() => onZeroCreate($0.RouterItem());
+
+  @override
+  $0.RouterItem onZeroCreate($0.RouterItem proto) {
     // no zero rules for proto.disabled
 
     // no zero rules for proto.name
@@ -464,10 +540,11 @@ class _RouterItem implements $1.ZeroAction<$0.RouterItem> {
         break;
       default:
     }
+    return proto;
   }
 
   @override
-  void onZeroLoad($0.RouterItem proto) {
+  $0.RouterItem onZeroLoad($0.RouterItem proto) {
     // no zero rules for proto.disabled
 
     // no zero rules for proto.name
@@ -481,10 +558,11 @@ class _RouterItem implements $1.ZeroAction<$0.RouterItem> {
         break;
       default:
     }
+    return proto;
   }
 
   @override
-  void onZeroSave($0.RouterItem proto, [$0.RouterItem _$$_]) {
+  $0.RouterItem onZeroSave($0.RouterItem proto, [$0.RouterItem _$$_]) {
     // no zero rules for proto.disabled
 
     // no zero rules for proto.name
@@ -498,6 +576,7 @@ class _RouterItem implements $1.ZeroAction<$0.RouterItem> {
         break;
       default:
     }
+    return proto;
   }
 }
 
@@ -508,7 +587,10 @@ class _Config implements $1.ZeroAction<$0.Config> {
   const _Config();
 
   @override
-  void onZeroCreate($0.Config proto) {
+  $0.Config create() => onZeroCreate($0.Config());
+
+  @override
+  $0.Config onZeroCreate($0.Config proto) {
     zeroBasic.onZeroCreate(proto.ensureBasic());
 
     zeroLog.onZeroCreate(proto.ensureLog());
@@ -522,10 +604,12 @@ class _Config implements $1.ZeroAction<$0.Config> {
     // no zero rules for proto.httpProxyServers
 
     // no zero rules for proto.routers
+
+    return proto;
   }
 
   @override
-  void onZeroLoad($0.Config proto) {
+  $0.Config onZeroLoad($0.Config proto) {
     zeroBasic.onZeroLoad(proto.ensureBasic());
 
     zeroLog.onZeroLoad(proto.ensureLog());
@@ -539,10 +623,12 @@ class _Config implements $1.ZeroAction<$0.Config> {
     // no zero rules for proto.httpProxyServers
 
     // no zero rules for proto.routers
+
+    return proto;
   }
 
   @override
-  void onZeroSave($0.Config proto, [$0.Config _$$_]) {
+  $0.Config onZeroSave($0.Config proto, [$0.Config _$$_]) {
     zeroBasic.onZeroSave(proto.ensureBasic());
 
     zeroLog.onZeroSave(proto.ensureLog());
@@ -556,5 +642,7 @@ class _Config implements $1.ZeroAction<$0.Config> {
     // no zero rules for proto.httpProxyServers
 
     // no zero rules for proto.routers
+
+    return proto;
   }
 }

@@ -1,4 +1,4 @@
-import '../l10n/pgde.l10n.dart';
+import '../l10n.dart';
 
 import 'currency.dart';
 import 'formatter.dart';

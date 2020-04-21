@@ -44,14 +44,30 @@ message OneofHeader {
   AfterCreate.State afterCreate = 3;
 }
 
-extend google.protobuf.MessageOptions { pgde.form.Node node = 919114; }
+extend google.protobuf.MessageOptions {
+  pgde.form.Node node = 919114;
+  pgde.form.Crud crud = 919115;
+}
 
 message InputOption { MaterialIcon icon = 1; }
 
 message Node {
-  bool ignore = 1;
-  MaterialIcon icon = 2;
-  Protector protector = 3;
+  oneof is {
+    bool skipped = 1;
+
+    // Accepts field type of entry, Views, leaf.
+    // Rejects others fields including any built-in fields.
+    bool entry = 2;
+
+    // Leaf is a whole form, which expands everything execpt Views.
+    bool leaf = 3;
+
+    // Defines a View of leaf, must be defined under the leaf,
+    // also generates list entry for the leaf.
+    Crud view = 5;
+  }
+  MaterialIcon icon = 6;
+  Protector protector = 7;
 }
 
 extend google.protobuf.FieldOptions { pgde.form.Field field = 919114; }
@@ -63,24 +79,31 @@ message Field {
     bool hide = 3;
     bool disabled = 4;
     bool ensureAgain = 5;
-
-    // for non-built-in field
-    bool embed = 6;
   }
 
   oneof type {
     TextInput text = 11;
-    TypeAheadInput typeAhead = 12;
-    SignatureInput signature = 13;
-    NumberInput number = 14;
-    StepperInput stepper = 15;
-    SliderInput slider = 16;
-    RateInput rate = 17;
-    RadioInput radio = 18;
-    SwitchInput boolSwitch = 19;
-    ListInput list = 20;
-    DatetimePickerInput datetime = 21;
-    MapInput map = 22;
+    SignatureInput signature = 12;
+    NumberInput number = 13;
+    StepperInput stepper = 14;
+    SliderInput slider = 15;
+    RateInput rate = 16;
+
+    EnumInput.Type enumType = 17;
+
+    // Required by message View. Overwrites the Node.view of field type.
+    Crud radio = 18;
+    // Required by repeated message View. The src overwrites the Node.view of field type.
+    ListInput list = 19;
+
+    // Required by message or repeated message.
+    MaterialColor embed = 20;
+
+    SwitchInput boolSwitch = 21;
+    DatetimePickerInput datetime = 22;
+
+    // Required by map.
+    bool ignoreMap = 23;
   }
 }
 
@@ -109,13 +132,6 @@ message TextInput {
   bool autocorrect = 3;
   int32 maxLines = 4;
   bool maxLengthEnforced = 5;
-}
-
-message TypeAheadInput {
-  oneof builder {
-    string codeAccessor = 1;
-    bool fromEnum = 2;
-  }
 }
 
 message SignatureInput {
@@ -151,37 +167,41 @@ message SliderInput {
 
 message RateInput { MaterialIcon icon = 1; }
 
-message RadioInput {
+message EnumInput {
   enum Type {
     radio = 0;
     // extract a new message?
     dropdown = 1;
     segmentedControl = 2;
+    // values must be checked from fixed list
+    checkbox = 3;
+    // values can be others
+    chips = 4;
+    // support positions
+    rank = 5;
   }
-  Type type = 1;
+}
 
-  oneof builder {
-    string codeAccessor = 2;
-    bool fromEnum = 3;
+message Crud {
+  bool pager = 1;
+  uint32 rows = 2 [ (zero.to).uint32 = 10 ];
+  bool list = 3;
+  bool create = 4;
+  bool edit = 5;
+  bool delete = 6;
+  bool search = 7;
+}
+
+message ListInput {
+  Crud dst = 1;
+  oneof data {
+    // for raw src
+    bool rankraw = 2;
+    Crud src = 3;
   }
 }
 
 message SwitchInput { bool checkbox = 1; }
-
-message ListInput {
-  enum Type {
-    // values must be checked from fixed list
-    checkbox = 0;
-    // values can be others
-    chips = 1;
-  }
-  Type type = 1;
-
-  oneof builder {
-    string codeAccessor = 2;
-    bool fromEnum = 3;
-  }
-}
 
 // type and format are defined by format.Format
 message DatetimePickerInput {
@@ -191,26 +211,6 @@ message DatetimePickerInput {
   }
   DatePickerMode datePickerMode = 1;
   bool editable = 2;
-}
-
-message MapInput {
-  MapKeyValueInput key = 1;
-  MapKeyValueInput value = 2;
-}
-
-message MapKeyValueInput {
-  oneof type {
-    TextInput text = 11;
-    TypeAheadInput typeAhead = 12;
-    SignatureInput signature = 13;
-    NumberInput number = 14;
-    StepperInput stepper = 15;
-    SliderInput slider = 16;
-    RateInput rate = 17;
-    RadioInput radio = 18;
-    SwitchInput boolSwitch = 19;
-    DatetimePickerInput datetime = 21;
-  }
 }
 
 message InputDecoration {

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package pgde.form;
 
-option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/form";
+option go_package = "github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/form;form";
 
 import "pgde/zero/zero.proto";
 

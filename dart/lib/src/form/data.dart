@@ -1,6 +1,8 @@
 import 'package:path/path.dart' show posix;
 import 'package:protobuf/protobuf.dart' show GeneratedMessage;
 
+typedef CreateEmptyDraftFunc<T extends GeneratedMessage> = T Function();
+
 abstract class FormData {
   final FormData parent;
 
@@ -43,10 +45,6 @@ abstract class FormData {
 
 class FormMessageData extends FormData {
   final GeneratedMessage saved;
-
-  final Map<int, FormMessageData> cacheByTag = {};
-  final Map<int, FormMessageListData> listCacheByTag = {};
-  final Map<int, FormMessageMapData> mapCacheByTag = {};
 
   GeneratedMessage _editing;
   GeneratedMessage get editing {
@@ -119,6 +117,9 @@ class FormMessageData extends FormData {
       saved: saved.getField(tag),
       editing: editing.getField(tag));
 
+  T draft<T extends GeneratedMessage>(CreateEmptyDraftFunc<T> create) =>
+      editing?.clone() ?? create();
+
   void saveSelf(GeneratedMessage draft) {
     if (isRoot) return;
     final p = parent;
@@ -136,8 +137,6 @@ class FormMessageData extends FormData {
 class FormMessageListData extends FormData {
   final List saved;
   final List editing;
-
-  final List<FormMessageData> cache = [];
 
   FormMessageListData(
       {String route,
@@ -168,6 +167,9 @@ class FormMessageListData extends FormData {
       extra: extra,
       saved: saved[idx],
       editing: editing[idx]);
+
+  T draft<T extends GeneratedMessage>() =>
+      (parent as FormMessageData).editing.clone().getField(tag);
 
   void saveChild(int idx, GeneratedMessage draft) {
     if (insert)
@@ -201,8 +203,6 @@ class FormMessageMapData extends FormData {
   final Map saved;
   final Map editing;
 
-  final Map<dynamic, FormMessageData> cache = {};
-
   FormMessageMapData(
       {String route,
       FormData parent,
@@ -222,18 +222,19 @@ class FormMessageMapData extends FormData {
             key: key,
             extra: extra);
 
-  FormData childMessage(dynamic key) => cache.putIfAbsent(
-      key,
-      () => FormMessageData(
-          route: key is String ? posix.join(route, 's', key) : childRoute(key),
-          parent: this,
-          tag: null,
-          index: null,
-          insert: false,
-          key: key,
-          extra: extra,
-          saved: saved[key],
-          editing: editing[key]));
+  FormData childMessage(dynamic key) => FormMessageData(
+      route: key is String ? posix.join(route, 's', key) : childRoute(key),
+      parent: this,
+      tag: null,
+      index: null,
+      insert: false,
+      key: key,
+      extra: extra,
+      saved: saved[key],
+      editing: editing[key]);
+
+  T draft<T extends GeneratedMessage>() =>
+      (parent as FormMessageData).editing.clone().getField(tag);
 
   void changeKey(dynamic key, dynamic newKey) {
     editing[newKey] = editing.remove(key);
@@ -245,6 +246,5 @@ class FormMessageMapData extends FormData {
 
   void removeChild(dynamic key) {
     editing.remove(key);
-    cache.remove(key);
   }
 }

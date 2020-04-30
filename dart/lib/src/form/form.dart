@@ -214,6 +214,136 @@ class FormPageState extends State<FormPage> {
   }
 }
 
+class FormMap{
+  // TODO
+}
+
+typedef ListSaveFunc = Function(List list);
+
+class ListOperates {
+  final bool foreign;
+  final bool create;
+  final bool view;
+  final bool edit;
+  final bool delete;
+  const ListOperates(
+      {this.foreign = false,
+      this.create = false,
+      this.view = false,
+      this.edit = false,
+      this.delete = false});
+}
+
+abstract class ForeignListOperates<T extends GeneratedMessage> {
+  Future<BackendError> create(T item);
+  Future<BackendError> view(T item);
+  Future<BackendError> edit(T item);
+  Future<BackendError> exchange(T item1, T item2);
+  Future<BackendError> delete(T item);
+}
+
+class ListFormPage<E> extends StatefulWidget {
+  final bool dev;
+  final String title;
+  final ListOperates los;
+  final ListSaveFunc save;
+  final ByFieldNumberFunc byNumber;
+  final ErrorCoder coder;
+  final FormMessageListData data;
+
+  const ListFormPage(
+      {Key key,
+      this.dev = false,
+      this.title,
+      this.los,
+      this.save,
+      this.byNumber,
+      this.coder,
+      this.data})
+      : super(key: key);
+
+  @override
+  FormPageState createState() => FormPageState();
+}
+
+class ListFormPageState extends State<ListFormPage> {
+  String _route;
+  String route(BuildContext context) =>
+      _route ??= ModalRoute.of(context).settings.name;
+
+  Future<BackendError> _saving;
+
+  void _doSave(BuildContext context) {
+    widget.save(widget.data.editing);
+    Navigator.of(context).pop();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _route = null;
+    _saving = null;
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title + (widget.dev ? '-${route(context)}' : '')),
+        leading: BackButton(),
+      ),
+      body: Container(
+        margin: const EdgeInsets.all(15.0),
+        child: FutureBuilder(
+          future: _saving,
+          builder:
+              (BuildContext context, AsyncSnapshot<BackendError> snapshot) {
+            switch (snapshot.connectionState) {
+              case ConnectionState.waiting:
+              case ConnectionState.active:
+                return const Center(child: CircularProgressIndicator());
+              case ConnectionState.none:
+              case ConnectionState.done:
+                if (snapshot.hasError)
+                  return GrpcErrorRetry(
+                    err: snapshot.error,
+                    onRetry: () => _doSave(context),
+                  );
+
+                final err = snapshot.data;
+                return Column(
+                  children: <Widget>[
+                    StatefulForm(
+                      inputs: widget.inputs,
+                      onSave: () => _doSave(context),
+                    ),
+                    err == null
+                        ? Container()
+                        : ErrorText(
+                            err.fieldNumber,
+                            widget.byNumber,
+                            err.code,
+                            widget.coder,
+                            err.message,
+                          ),
+                  ],
+                );
+            }
+            assert(
+                false, 'unknown ConnectionState: ${snapshot.connectionState}');
+            return null;
+          },
+        ),
+      ),
+    );
+  }
+}
+
 class StatefulForm<E> extends StatefulWidget {
   final Inputs inputs;
   final VoidCallback onSave;
@@ -229,8 +359,8 @@ class StatefulFormState extends State<StatefulForm> {
 
   GeneratedMessage _draft;
 
-  GeneratedMessage get draft => _draft ??=
-      widget.inputs.data.editing?.clone() ?? widget.inputs.createEmptyDraft();
+  GeneratedMessage get draft =>
+      _draft ??= widget.inputs.data.draft(widget.inputs.createEmptyDraft);
 
   bool _needNotSave() => _draft == widget.inputs.data.saved;
 
@@ -296,37 +426,35 @@ class StatefulFormState extends State<StatefulForm> {
   }
 }
 
-abstract class InOneofInputs {
+abstract class InputList {
   List<Widget> build(BuildContext context);
 }
 
 class InputsWidget<T extends GeneratedMessage> extends StatelessWidget {
-  final InOneofInputs inputs;
+  final InputList inputs;
   const InputsWidget(this.inputs, {Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) => Column(children: inputs.build(context));
 }
 
-typedef CreateEmptyDraftFunc<T extends GeneratedMessage> = T Function();
+// also act as EmbedMessageOneofInputs by implementing InputList
+abstract class Inputs<T extends GeneratedMessage> implements InputList {
+  static FormFieldValidator catcher(VoidCallback fn) => (v) => catchError(fn);
 
-// also act as EmbedMessageOneofInputs by implementing InOneofInputs
-abstract class Inputs<T extends GeneratedMessage> implements InOneofInputs {
-  static FormFieldValidator catchError(VoidCallback fn) {
-    return (v) {
-      try {
-        fn();
-      } catch (e) {
-        return e.toString();
-      }
-      return null;
-    };
+  static String catchError(VoidCallback fn) {
+    try {
+      fn();
+    } catch (e) {
+      return e.toString();
+    }
+    return null;
   }
 
   final FormMessageData data;
   Inputs(this.data);
 
   T _draft;
-  T get draft => _draft ??= data.editing?.clone() ?? createEmptyDraft();
+  T get draft => _draft ??= data.draft(createEmptyDraft);
 
   bool _needNotSave() => _draft == data.saved;
 
@@ -342,49 +470,24 @@ abstract class Inputs<T extends GeneratedMessage> implements InOneofInputs {
   List<Widget> build(BuildContext context);
 }
 
-typedef FieldInOneofBuilder = Widget Function(FormFieldValidator validator);
-
-typedef CreateValidatorFunc<T extends GeneratedMessage> = GeneratedValidator<T>
-    Function(BuildContext context, ValidateInfo<T> vi);
-
-typedef CreateDecorationFunc = InputDecoration Function(
-    BuildContext context, String errorText);
-
-// non-embed oneof inputs
-class MessageFieldInOneofInputs<T extends GeneratedMessage>
-    implements InOneofInputs {
+// for non-embed-message, list, map
+class ChildFieldEntryWidget extends StatelessWidget {
   // data from childMessage
   final FormMessageData data;
-  final CreateEmptyDraftFunc<T> createEmptyDraft;
-  final CreateValidatorFunc<T> createValidator;
-  final CreateDecorationFunc createDecoration;
+  final InputDecoration decoration;
 
-  MessageFieldInOneofInputs(
-      {@required this.data,
-      @required this.createEmptyDraft,
-      @required this.createValidator,
-      @required this.createDecoration});
+  ChildFieldEntryWidget({@required this.data, @required this.decoration});
 
   @override
-  List<Widget> build(BuildContext context) {
-    final draft = data.editing?.clone() ?? createEmptyDraft();
+  Widget build(BuildContext context) {
     final l10n = PgdeLocalizations.of(context);
-    final vi = ValidateInfo(MaterialLocalizations.of(context), l10n, draft);
-    String errorText;
-    try {
-      createValidator(context, vi).assertProto();
-    } catch (e) {
-      errorText = e.toString();
-    }
-    return [
-      InputDecorator(
-        decoration: createDecoration(context, errorText)
-            .applyDefaults(Theme.of(context).inputDecorationTheme),
-        child: MaterialButton(
-          onPressed: () => Navigator.of(context).pushNamed(data.route),
-          child: Text(l10n.formEdit),
-        ),
-      )
-    ];
+    return InputDecorator(
+      decoration:
+          decoration.applyDefaults(Theme.of(context).inputDecorationTheme),
+      child: MaterialButton(
+        onPressed: () => Navigator.of(context).pushNamed(data.route),
+        child: Text(l10n.formEdit),
+      ),
+    );
   }
 }

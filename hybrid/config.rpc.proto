@@ -7,22 +7,219 @@ import "google/protobuf/empty.proto";
 import "pgde/error/error.proto";
 import "hybrid/config.proto";
 
-// scoped-unique mode: no id transport
-service RouterItemService {
-    rpc GetRouterItem(google.protobuf.Empty) returns (GetRouterItemResponse);
-    rpc SetRouterItem(RouterItem) returns (pgde.error.BackendError);
-    rpc ModifyRouterItem(ModifyRouterItemRequest) returns (pgde.error.BackendError);
-    rpc DelRouterItem(google.protobuf.Empty) returns (pgde.error.BackendError);
+service RouterUseViewService {
+  rpc FindRouterUseViews(Config.Id) returns (GetRouterUseViewsSrcResponse);
+}
+
+message GetRouterUseViewsSrcResponse {
+  message List {
+    repeated AdpRouter.UseView adp = 1;
+    repeated IPNetRouter.UseView ipnet = 2;
   }
-  
-  message GetRouterItemResponse {
-    oneof is {
-      RouterItem data = 1;
-      pgde.error.BackendError error = 2;
-    }
+  oneof is {
+    List data = 1;
+    pgde.error.BackendError error = 2;
   }
-  
-  message ModifyRouterItemRequest {
+}
+
+service ConfigService {
+  rpc FindBasic(Config.Id) returns (GetBasicResponse);
+  rpc SaveBasic(Basic) returns (pgde.error.BackendError);
+
+  rpc FindLog(Config.Id) returns (GetLogResponse);
+  rpc SaveLog(Log) returns (pgde.error.BackendError);
+
+  rpc FindIpfs(Config.Id) returns (GetIpfsResponse);
+  rpc SaveIpfs(Ipfs) returns (pgde.error.BackendError);
+
+  rpc FindServers(Config.Id) returns (GetServerMgrViewsSrcResponse);
+
+  rpc FindAdps(Config.Id) returns (GetAdpRouterMgrViewsSrcResponse);
+  rpc GetAdps1(AdpRouter.MgrView.Id) returns (GetAdpRouterResponse);
+  rpc CreateAdps1(AdpRouter) returns (pgde.error.BackendError);
+  rpc SaveAdps1(AdpRouter) returns (pgde.error.BackendError);
+  rpc DeleteAdps1(AdpRouter.MgrView.Id) returns (pgde.error.BackendError);
+
+  rpc FindIpnets(Config.Id) returns (GetIPNetRouterMgrViewsSrcResponse);
+  rpc GetIpnet1(IPNetRouter.MgrView.Id) returns (GetIPNetRouterResponse);
+  rpc CreateIpnet1(IPNetRouter) returns (pgde.error.BackendError);
+  rpc SaveIpnet1(IPNetRouter) returns (pgde.error.BackendError);
+  rpc DeleteIpnet1(IPNetRouter.MgrView.Id) returns (pgde.error.BackendError);
+
+  rpc FindRouters(Config.Id) returns (GetRouterUseViewsProxyResponse);
+  rpc AddRouter(AddRouterUseViewRequest) returns (AddRouterUseViewResponse);
+  rpc RemoveRouter(RouterUseView.Proxy.Id) returns (pgde.error.BackendError);
+  rpc InsertRouter(InsertRouterUseViewRequest)
+      returns (InsertRouterUseViewResponse);
+  rpc XposRouter(XposRouterUseViewRequest) returns (pgde.error.BackendError);
+  rpc TopRouter(RouterUseView.Proxy.Id) returns (pgde.error.BackendError);
+  rpc BottomRouter(RouterUseView.Proxy.Id) returns (pgde.error.BackendError);
+}
+
+message GetBasicResponse {
+  Basic data = 1;
+  pgde.error.BackendError error = 2;
+}
+
+message GetLogResponse {
+  Log data = 1;
+  pgde.error.BackendError error = 2;
+}
+
+message GetIpfsResponse {
+  Ipfs data = 1;
+  pgde.error.BackendError error = 2;
+}
+
+message GetServerMgrViewsSrcResponse {
+  message List {
+    repeated IpfsServer.MgrView ipfs = 1;
+    repeated FileServer.MgrView file = 2;
+    repeated HttpProxyServer.MgrView http = 3;
+  }
+  oneof is {
+    List data = 1;
+    pgde.error.BackendError error = 2;
+  }
+}
+
+message GetAdpRouterMgrViewsSrcResponse {
+  message List { repeated AdpRouter.MgrView list = 1; }
+  oneof is {
+    List data = 1;
+    pgde.error.BackendError error = 2;
+  }
+}
+
+message GetAdpRouterResponse {
+  oneof is {
+    AdpRouter data = 1;
+    pgde.error.BackendError error = 2;
+  }
+}
+
+message GetIPNetRouterMgrViewsSrcResponse {
+  message List { repeated IPNetRouter.MgrView list = 1; }
+  oneof is {
+    List data = 1;
+    pgde.error.BackendError error = 2;
+  }
+}
+
+message GetIPNetRouterResponse {
+  oneof is {
+    IPNetRouter data = 1;
+    pgde.error.BackendError error = 2;
+  }
+}
+
+message GetRouterUseViewsProxyResponse {
+  message List { repeated RouterUseView.Proxy list = 1; }
+  oneof is {
+    List data = 1;
+    pgde.error.BackendError error = 2;
+  }
+}
+
+message AddRouterUseViewRequest {
+  Config.Id config = 1;
+  RouterUseView data = 2;
+}
+
+message AddRouterUseViewResponse {
+  oneof is {
+    RouterUseView.Proxy data = 1;
+    pgde.error.BackendError error = 2;
+  }
+}
+
+message InsertRouterUseViewRequest {
+  message Add {
+    RouterUseView data = 1;
+    RouterUseView.Proxy.Id pos = 2;
+    map<RouterUseView.Proxy.Id, RouterUseView.Proxy.Id> changes = 3;
+  }
+  message Rebase {
+    Config.Id config = 1;
+    RouterUseView data = 2;
+    bool before = 3;
+    RouterUseView.Proxy.Id pos = 4;
+  }
+
+  oneof is {
+    Add add = 1;
+    Rebase rebase = 2;
+  }
+}
+
+message InsertRouterUseViewResponse {
+  oneof is {
+    bool rebuild = 1;
+    RouterUseView.Proxy data = 2;
+    pgde.error.BackendError error = 3;
+  }
+}
+
+message XposRouterUseViewRequest {
+  RouterUseView.Proxy.Id id1 = 1;
+  RouterUseView.Proxy.Id id2 = 2;
+}
+
+service ServerMgrViewService {
+  rpc FindIpfss(Config.Id) returns (GetIpfsServersMgrViewResponse);
+  rpc GetIpfs(IpfsServer.MgrView.Id) returns (GetIpfsServerResponse);
+  rpc CreateIpfs(IpfsServer) returns (pgde.error.BackendError);
+  rpc SaveIpfs(IpfsServer) returns (pgde.error.BackendError);
+  rpc DeleteIpfs(IpfsServer.MgrView.Id) returns (pgde.error.BackendError);
+
+  // file
+  // http
+}
+
+message GetIpfsServersMgrViewResponse {
+  message List { repeated IpfsServer.MgrView list = 1; }
+  oneof is {
+    List data = 1;
+    pgde.error.BackendError error = 2;
+  }
+}
+
+message GetIpfsServerResponse {
+  oneof is {
+    IpfsServer data = 1;
+    pgde.error.BackendError error = 2;
+  }
+}
+
+message Pager {
+  uint32 start = 1;
+  uint32 end = 2;
+}
+
+service RouterViewService {
+  rpc FindAdps(Config.Id) returns (GetAdpRouterMgrViewsSrcResponse);
+  rpc GetAdp(AdpRouter.Id) returns (GetAdpRouterResponse);
+  rpc CreateAdp(AdpRouter) returns (pgde.error.BackendError);
+  rpc SaveAdp(AdpRouter) returns (pgde.error.BackendError);
+  rpc DeleteAdp(AdpRouter.Id) returns (pgde.error.BackendError);
+}
+
+message GetRouterItemsResponse {
+  message List { repeated RouterItem list = 1; }
+  oneof is {
+    List data = 1;
+    pgde.error.BackendError error = 2;
+  }
+}
+
+message GetRouterItemResponse {
+  oneof is {
     RouterItem data = 1;
-    repeated int32 fields = 2;
+    pgde.error.BackendError error = 2;
   }
+}
+
+message ModifyRouterItemRequest {
+  RouterItem data = 1;
+  repeated int32 fields = 2;
+}

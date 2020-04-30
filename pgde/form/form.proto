@@ -18,8 +18,13 @@ extend google.protobuf.EnumOptions {
 extend google.protobuf.EnumValueOptions {
   pgde.form.InputOption inputOption = 919114;
 }
+message InputOption { MaterialIcon icon = 1; }
 
-extend google.protobuf.OneofOptions { OneofHeader header = 919114; }
+extend google.protobuf.OneofOptions {
+  OneofHeader header = 919114;
+  // List source
+  pgde.form.Crud source = 919115;
+}
 message OneofHeader {
   message Title {
     enum Show {
@@ -44,30 +49,76 @@ message OneofHeader {
   AfterCreate.State afterCreate = 3;
 }
 
-extend google.protobuf.MessageOptions {
-  pgde.form.Node node = 919114;
-  pgde.form.Crud crud = 919115;
+extend google.protobuf.MessageOptions { pgde.form.Msg msg = 919114; }
+message Msg {
+  oneof type {
+    pgde.form.Node node = 1;
+    // define a view from within a leaf
+    pgde.form.View view = 2;
+    // only used by entry field, manage list directly
+    bool crud = 3;
+    // choose one from source list
+    bool manytoone = 4;
+    // only used by entry field, choose a list from source list
+    pgde.form.List manytomany = 5;
+    // define an id
+    bool id = 6;
+  }
 }
 
-message InputOption { MaterialIcon icon = 1; }
-
 message Node {
-  oneof is {
-    bool skipped = 1;
+  enum Type {
+    invalid = 0;
 
     // Accepts field type of entry, Views, leaf.
     // Rejects others fields including any built-in fields.
-    bool entry = 2;
+    entry = 1;
 
     // Leaf is a whole form, which expands everything execpt Views.
-    bool leaf = 3;
-
-    // Defines a View of leaf, must be defined under the leaf,
-    // also generates list entry for the leaf.
-    Crud view = 5;
+    leaf = 2;
   }
-  MaterialIcon icon = 6;
-  Protector protector = 7;
+  Type type = 1;
+  MaterialIcon icon = 2;
+  Protector protector = 3;
+  bool disabled = 4;
+}
+
+// Defines a View of leaf, must be defined under the leaf,
+// also generates list entry for the leaf.
+message View {
+  Crud crud = 1;
+  MaterialIcon icon = 2;
+  Protector protector = 3;
+}
+
+// only for list src
+message Crud {
+  bool pager = 1;
+  uint32 rows = 2 [ (zero.to).uint32 = 10 ];
+  bool create = 4;
+  bool edit = 5;
+  bool delete = 6;
+  // add custom search widget
+  bool search = 7;
+  // operation target: view or original leaf
+  bool view = 8;
+  // generate special crud rpc
+  bool genrpc = 9;
+}
+
+message List {
+  bool pager = 1;
+  uint32 rows = 2 [ (zero.to).uint32 = 10 ];
+  // only add from source
+  bool add = 4;
+  bool remove = 5;
+  bool unique = 6;
+
+  oneof ranking {
+    bool rank = 7;
+    // add custom search widget
+    bool search = 8;
+  }
 }
 
 extend google.protobuf.FieldOptions { pgde.form.Field field = 919114; }
@@ -93,10 +144,9 @@ message Field {
 
     // Required by message View. Overwrites the Node.view of field type.
     Crud radio = 18;
-    // Required by repeated message View. The src overwrites the Node.view of field type.
-    ListInput list = 19;
 
     // Required by message or repeated message.
+    // Source based list must be set as a field of entry.
     MaterialColor embed = 20;
 
     SwitchInput boolSwitch = 21;
@@ -104,6 +154,9 @@ message Field {
 
     // Required by map.
     bool ignoreMap = 23;
+
+    // manytoone can be auto-detected.
+    // manytomany cause errors.
   }
 }
 
@@ -179,25 +232,6 @@ message EnumInput {
     chips = 4;
     // support positions
     rank = 5;
-  }
-}
-
-message Crud {
-  bool pager = 1;
-  uint32 rows = 2 [ (zero.to).uint32 = 10 ];
-  bool list = 3;
-  bool create = 4;
-  bool edit = 5;
-  bool delete = 6;
-  bool search = 7;
-}
-
-message ListInput {
-  Crud dst = 1;
-  oneof data {
-    // for raw src
-    bool rankraw = 2;
-    Crud src = 3;
   }
 }
 

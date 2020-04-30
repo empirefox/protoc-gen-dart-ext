@@ -21,6 +21,7 @@ class AdpRouterInputs extends $pgde.Inputs<AdpRouter> {
   get createEmptyDraft => null;
 }
 
+// message example
 class RouterItemInputs extends $pgde.Inputs<RouterItem> {
   @override
   final $pgde.CreateEmptyDraftFunc<RouterItem> createEmptyDraft;
@@ -44,8 +45,9 @@ class RouterItemInputs extends $pgde.Inputs<RouterItem> {
         initialValue: draft.name,
         onChanged: (n) => draft.name = n,
         autovalidate: true,
-        validator: $pgde.Inputs.catchError(validator.assertField_name),
+        validator: $pgde.Inputs.catcher(validator.assertField_name),
       ),
+      // oneof
       RouterItemRouterTabs([
         const Icon(Icons.insert_comment),
         Text(l10n.AdpRouter),
@@ -65,33 +67,38 @@ class RouterItemInputs extends $pgde.Inputs<RouterItem> {
           initialValue: draft.name,
           onChanged: (n) => draft.name = n,
           autovalidate: true,
-          validator: $pgde.Inputs.catchError(validator.assertField_name),
+          validator: $pgde.Inputs.catcher(validator.assertField_name),
         ),
         // embed
-        $pgde.InputsWidget<AdpRouter>(
-          AdpRouterInputs(data.childMessage(3)),
-        ),
-        // link
-        $pgde.InputsWidget<IPNetRouter>(
-          $pgde.MessageFieldInOneofInputs(
-            data: data.childMessage(4),
-            createEmptyDraft: zeroIPNetRouter.create,
-            createValidator: IPNetRouterValidator.create,
-            createDecoration: (BuildContext context, String errorText) =>
-                InputDecoration(
-              labelText: l10n.IPNetRouterLabel,
-              hintText: l10n.IPNetRouterHint,
-              errorText: errorText,
-            ),
+        $pgde.InputsWidget<AdpRouter>(AdpRouterInputs(data.childMessage(3))),
+        // child_form_entry
+        $pgde.ChildFieldEntryWidget(
+          data: data.childMessage(4),
+          decoration: InputDecoration(
+            labelText: l10n.IPNetRouterLabel,
+            hintText: l10n.IPNetRouterHint,
+            errorText: $pgde.Inputs.catchError(validator.assertField_ipnet),
           ),
         ),
-        // TODO list
-        // TODO  map
       ]),
+      // TODO foreign_link
+      // TODO list_entry
+      // TODO map_entry
     ];
   }
 }
 
+// list example
+class RouterItemInputsIpfsServersInput extends StatelessWidget {
+  final FormMessageData data;
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return null;
+  }
+}
+
+// oneof example
 class RouterItemRouterTabs extends StatelessWidget {
   final List<Widget> tabBarList;
   final List<Widget> tabBarViewList;

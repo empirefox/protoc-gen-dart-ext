@@ -12,7 +12,7 @@ import "validate/validate.proto";
 
 message ConfigTree {
   option (pgde.l10n.message).ignore = true;
-  option (pgde.form.node).ignore = true;
+  option (pgde.form.msg).node.disabled = true;
   option (pgde.zero.disabled) = true;
   option (validate.disabled) = true;
   string version = 1;
@@ -31,27 +31,39 @@ message ConfigTree {
 }
 
 message Basic {
+  option (pgde.form.msg).node = {
+    type : leaf
+  };
+
+  message UseView {
+    option (pgde.form.msg).view.crud = {
+      pager : true,
+      rows : 20,
+      search : true,
+    };
+  }
+
   // @inject_tag: toml:",omitempty"
-  string version = 1
+  string version = 2
       [ (pgde.l10n.field).ignore = true, (pgde.form.field).hide = true ];
 
   // @inject_tag: toml:",omitempty" env:"HYBRID_DEV"
-  bool dev = 2;
+  bool dev = 3;
 
   // @inject_tag: toml:",omitempty" env:"HYBRID_ENABLE_BIND"
-  bool enableBind = 3;
+  bool enableBind = 4;
   // @inject_tag: toml:",omitempty" env:"HYBRID_BIND_IP"
-  bytes bindIp = 4 [
+  bytes bindIp = 5 [
     (validate.rules).bytes.ip = true,
     (pgde.format.to).bytes.type = ip,
     (pgde.zero.to) = {bytes : "\xff\x00\x00\x01"}
   ];
   // @inject_tag: toml:",omitempty" env:"HYBRID_BIND_PORT"
-  uint32 bindPort = 5
+  uint32 bindPort = 6
       [ (validate.rules).uint32.lt = 65535, (pgde.zero.to) = {uint32 : 7777} ];
 
   // @inject_tag: toml:",omitempty"
-  uint32 flushIntervalMs = 6 [
+  uint32 flushIntervalMs = 7 [
     (pgde.format.to).time = {
       type : duration,
       intUnit : millisecond,
@@ -63,25 +75,48 @@ message Basic {
 
   // @inject_tag: toml:",omitempty"
   // Token is fallback token that will be veried by servers, both Ipfs
-  string token = 7 [ (validate.rules).string.max_len = 732 ];
+  bytes token = 8 [ (validate.rules).bytes.max_len = 732 ];
 }
 
 message Log {
+  option (pgde.form.msg).node = {
+    type : leaf
+  };
+
+  message UseView {
+    option (pgde.form.msg).view.crud = {
+      pager : true,
+      rows : 20,
+      search : true,
+    };
+  }
+
   // @inject_tag: toml:",omitempty"
-  bool dev = 1;
+  bool dev = 2;
   // @inject_tag: toml:",omitempty"
-  string level = 2 [ (validate.rules).string = {
+  string level = 3 [ (validate.rules).string = {
     in :
         [ "", "debug", "info", "warn", "error", "dpanic", "panic", "fatal" ]
   } ];
   // @inject_tag: toml:",omitempty"
   // Target accepts "tcp://host:port?timeout=5s", file, sentryDSN, empty or
   // "nop". Register NewTCPSink to support tcp sink. Default is stderr.
-  string target = 3;
+  string target = 4;
 }
 
 message Ipfs {
-  uint32 id = 1;
+  option (pgde.form.msg).node = {
+    type : leaf
+  };
+
+  message UseView {
+    option (pgde.form.msg).view.crud = {
+      pager : true,
+      rows : 20,
+      search : true,
+    };
+  }
+
   // @inject_tag: toml:",omitempty"
   bytes fakeApiListenIp = 2 [
     (validate.rules).bytes.ip = true,
@@ -134,6 +169,45 @@ message Ipfs {
 // server types
 
 message IpfsServer {
+  option (pgde.form.msg).node = {
+    type : leaf
+  };
+
+  message MgrView {
+    option (pgde.form.msg).view.crud = {
+      pager : true,
+      rows : 20,
+      create : true,
+      edit : true,
+      delete : true,
+      search : true,
+    };
+
+    message Id {
+      option (pgde.form.msg).id = true;
+      uint32 id = 1;
+    }
+
+    uint32 id = 1;
+    string name = 3;
+  }
+
+  message UseView {
+    option (pgde.form.msg).view.crud = {
+      pager : true,
+      rows : 20,
+      search : true,
+    };
+
+    message Id {
+      option (pgde.form.msg).id = true;
+      uint32 id = 1;
+    }
+
+    uint32 id = 1;
+    string name = 3;
+  }
+
   uint32 id = 1;
   // @inject_tag: toml:",omitempty"
   bool disabled = 2;
@@ -147,6 +221,45 @@ message IpfsServer {
 }
 
 message FileServer {
+  option (pgde.form.msg).node = {
+    type : leaf
+  };
+
+  message MgrView {
+    option (pgde.form.msg).view.crud = {
+      pager : true,
+      rows : 20,
+      create : true,
+      edit : true,
+      delete : true,
+      search : true,
+    };
+
+    message Id {
+      option (pgde.form.msg).id = true;
+      uint32 id = 1;
+    }
+
+    uint32 id = 1;
+    string name = 3;
+  }
+
+  message UseView {
+    option (pgde.form.msg).view.crud = {
+      pager : true,
+      rows : 20,
+      search : true,
+    };
+
+    message Id {
+      option (pgde.form.msg).id = true;
+      uint32 id = 1;
+    }
+
+    uint32 id = 1;
+    string name = 3;
+  }
+
   uint32 id = 1;
   // @inject_tag: toml:",omitempty"
   bool disabled = 2;
@@ -165,6 +278,45 @@ message FileServer {
 }
 
 message HttpProxyServer {
+  option (pgde.form.msg).node = {
+    type : leaf
+  };
+
+  message MgrView {
+    option (pgde.form.msg).view.crud = {
+      pager : true,
+      rows : 20,
+      create : true,
+      edit : true,
+      delete : true,
+      search : true,
+    };
+
+    message Id {
+      option (pgde.form.msg).id = true;
+      uint32 id = 1;
+    }
+
+    uint32 id = 1;
+    string name = 3;
+  }
+
+  message UseView {
+    option (pgde.form.msg).view.crud = {
+      pager : true,
+      rows : 20,
+      search : true,
+    };
+
+    message Id {
+      option (pgde.form.msg).id = true;
+      uint32 id = 1;
+    }
+
+    uint32 id = 1;
+    string name = 3;
+  }
+
   uint32 id = 1;
   // @inject_tag: toml:",omitempty"
   bool disabled = 2;
@@ -183,11 +335,88 @@ message HttpProxyServer {
   bool keepAlive = 6;
 }
 
+message ServerMgrView {
+  option (pgde.form.msg).crud = true;
+  oneof source {
+    option (pgde.form.source) = {
+      pager : true,
+      rows : 20,
+      create : true,
+      edit : true,
+      delete : true,
+      search : true,
+      genrpc : true,
+    };
+    IpfsServer.MgrView ipfs = 1;
+    FileServer.MgrView file = 2;
+    HttpProxyServer.MgrView http = 3;
+  }
+}
+
+message ServerUseView {
+  option (pgde.form.msg).manytoone = true;
+  oneof source {
+    option (pgde.form.source) = {
+      pager : true,
+      rows : 20,
+      search : true,
+      genrpc : true,
+    };
+    IpfsServer.UseView ipfs = 1;
+    FileServer.UseView file = 2;
+    HttpProxyServer.UseView http = 3;
+  }
+}
+
 // server types end
 
 // routers
 
 message AdpRouter {
+  option (pgde.form.msg).node = {
+    type : leaf
+  };
+
+  message MgrView {
+    option (pgde.form.msg).view.crud = {
+      pager : true,
+      rows : 20,
+      create : true,
+      edit : true,
+      delete : true,
+      search : true,
+    };
+
+    message Id {
+      option (pgde.form.msg).id = true;
+      uint32 id = 1;
+    }
+
+    uint32 id = 1;
+    string name = 3;
+  }
+
+  message UseView {
+    option (pgde.form.msg).view.crud = {
+      pager : true,
+      rows : 20,
+      search : true,
+    };
+
+    message Id {
+      option (pgde.form.msg).id = true;
+      uint32 id = 1;
+    }
+
+    uint32 id = 1;
+    string name = 3;
+  }
+
+  uint32 id = 1;
+  // @inject_tag: toml:",omitempty"
+  bool disabled = 2;
+  string name = 3 [ (validate.rules).string.hostname = true ];
+
   // @inject_tag: toml:",omitempty"
   // *.b64 is base64 encoded.
   // *.ipfs is fetched from ipfs network.
@@ -198,55 +427,142 @@ message AdpRouter {
   //
   //   [[Ipfs]]
   //   Path = "Qmxxx..xB"
-  string rulesDirName = 1 [ (validate.rules).string.hostname = true ];
+  string rulesDirName = 4 [ (validate.rules).string.hostname = true ];
   // @inject_tag: toml:",omitempty"
-  google.protobuf.StringValue blocked = 2
-      [ (validate.rules).string.hostname = true ];
+  ServerUseView blocked = 5;
   // @inject_tag: toml:",omitempty"
-  google.protobuf.StringValue unblocked = 3
-      [ (validate.rules).string.hostname = true ];
+  ServerUseView unblocked = 6;
   // @inject_tag: toml:",omitempty"
-  bool etcHostsIpAsBlocked = 4;
+  bool etcHostsIpAsBlocked = 7;
   // @inject_tag: toml:",omitempty"
-  bool dev = 5;
+  bool dev = 8;
 }
 
 message IPNetRouter {
-  // @inject_tag: toml:",omitempty"
-  repeated google.protobuf.BytesValue ip = 1 [
-    (validate.rules).repeated .items.bytes.ip = true,
-    (pgde.format.to).bytes.type = ip
-  ];
-  // @inject_tag: toml:",omitempty"
-  repeated google.protobuf.BytesValue netv4 = 2
-      [ (validate.rules).bytes.len = 5, (pgde.format.to).bytes.type = cidrv4 ];
-  // @inject_tag: toml:",omitempty"
-  repeated google.protobuf.BytesValue netv6 = 3
-      [ (validate.rules).bytes.len = 17, (pgde.format.to).bytes.type = cidrv6 ];
-  // @inject_tag: toml:",omitempty"
-  google.protobuf.StringValue matched = 4
-      [ (validate.rules).string.hostname = true ];
-  // @inject_tag: toml:",omitempty"
-  google.protobuf.StringValue unmatched = 5
-      [ (validate.rules).string.hostname = true ];
-  // @inject_tag: toml:",omitempty"
-  google.protobuf.StringValue fileTest = 6
-      [ (validate.rules).string.hostname = true ];
-}
+  option (pgde.form.msg).node = {
+    type : leaf
+  };
 
-// routers end
+  message MgrView {
+    option (pgde.form.msg).view.crud = {
+      pager : true,
+      rows : 20,
+      create : true,
+      edit : true,
+      delete : true,
+      search : true,
+    };
 
-message RouterItem {
+    message Id {
+      option (pgde.form.msg).id = true;
+      uint32 id = 1;
+    }
+
+    uint32 id = 1;
+    string name = 3;
+  }
+
+  message UseView {
+    option (pgde.form.msg).view.crud = {
+      pager : true,
+      rows : 20,
+      search : true,
+    };
+
+    message Id {
+      option (pgde.form.msg).id = true;
+      uint32 id = 1;
+    }
+
+    uint32 id = 1;
+    string name = 3;
+  }
+
   uint32 id = 1;
   // @inject_tag: toml:",omitempty"
   bool disabled = 2;
   string name = 3 [ (validate.rules).string.hostname = true ];
-  oneof router {
-    option (validate.required) = true;
-    AdpRouter adp = 4;
-    IPNetRouter ipnet = 5;
+
+  // @inject_tag: toml:",omitempty"
+  repeated google.protobuf.BytesValue ip = 4 [
+    (validate.rules).repeated .items.bytes.ip = true,
+    (pgde.format.to).bytes.type = ip
+  ];
+  // @inject_tag: toml:",omitempty"
+  repeated google.protobuf.BytesValue netv4 = 5
+      [ (validate.rules).bytes.len = 5, (pgde.format.to).bytes.type = cidrv4 ];
+  // @inject_tag: toml:",omitempty"
+  repeated google.protobuf.BytesValue netv6 = 6
+      [ (validate.rules).bytes.len = 17, (pgde.format.to).bytes.type = cidrv6 ];
+  // @inject_tag: toml:",omitempty"
+  ServerUseView matched = 7 [ (pgde.form.field).radio = {
+    pager : true,
+    create : true,
+    edit : true,
+    delete : true,
+    search : true,
+  } ];
+  // @inject_tag: toml:",omitempty"
+  ServerUseView unmatched = 8 [ (pgde.form.field).radio = {
+    pager : true,
+    create : true,
+    edit : true,
+    delete : true,
+    search : true,
+  } ];
+  // @inject_tag: toml:",omitempty"
+  FileServer.UseView fileTest = 9 [ (pgde.form.field).radio = {
+    pager : true,
+    create : true,
+    edit : true,
+    delete : true,
+    search : true,
+  } ];
+}
+
+message RouterUseViewList {
+  // the dst list
+  option (pgde.form.msg).manytomany = {
+    pager : false,
+    rows : 20,
+    add : true,
+    remove : true,
+    unique : true,
+    rank : true,
+  };
+
+  // the dst element, users pass the widget as input argument
+  message Element {
+    message Id {
+      option (pgde.form.msg).id = true;
+      uint32 id = 1;
+    }
+
+    enum Type {
+      invalid = 0;
+      adp = 1;
+      ipnet = 2;
+    }
+
+    uint32 id = 1;
+    Type type = 2;
+    string name = 3;
+    int64 rank = 4;
+  }
+
+  oneof source {
+    option (pgde.form.source) = {
+      pager : true,
+      rows : 20,
+      search : true,
+      genrpc : true,
+    };
+    AdpRouter.UseView adp = 1;
+    IPNetRouter.UseView ipnet = 2;
   }
 }
+
+// routers end
 
 // reserved names: DIRECT over with hybrid
 // env:
@@ -256,13 +572,23 @@ message RouterItem {
 // HYBRID_FILE_SERVERS_DISABLED=a,b,c
 // HYBRID_ROUTER_DISABLED=a,b,c
 message Config {
-  Basic basic = 1 [ (validate.rules).message.required = true ];
-  Log log = 2;
-  Ipfs ipfs = 3;
+  option (pgde.form.msg).node = {
+    type : entry
+  };
 
-  repeated IpfsServer ipfsServers = 4;
-  repeated FileServer fileServers = 5;
-  repeated HttpProxyServer httpProxyServers = 6;
+  message Id {
+    option (pgde.form.msg).id = true;
+    uint32 id = 1;
+  }
 
-  repeated RouterItem routers = 7;
+  Basic.UseView basic = 1 [ (validate.rules).message.required = true ];
+  Log.UseView log = 2;
+  Ipfs.UseView ipfs = 3;
+
+  repeated ServerMgrView servers = 4;
+
+  repeated AdpRouter.MgrView adps = 5;
+  repeated IPNetRouter.MgrView ipnets = 6;
+
+  repeated RouterUseViewList.Element routers = 7;
 }

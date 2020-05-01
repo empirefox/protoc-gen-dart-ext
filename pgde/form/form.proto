@@ -13,18 +13,12 @@ import "pgde/zero/zero.proto";
 
 extend google.protobuf.EnumOptions {
   // default Field if not set in message.
-  pgde.form.Field defaultField = 919114;
+  Field defaultField = 919114;
 }
-extend google.protobuf.EnumValueOptions {
-  pgde.form.InputOption inputOption = 919114;
-}
+extend google.protobuf.EnumValueOptions { InputOption inputOption = 919114; }
 message InputOption { MaterialIcon icon = 1; }
 
-extend google.protobuf.OneofOptions {
-  OneofHeader header = 919114;
-  // List source
-  pgde.form.Crud source = 919115;
-}
+extend google.protobuf.OneofOptions { OneofHeader header = 919114; }
 message OneofHeader {
   message Title {
     enum Show {
@@ -49,18 +43,17 @@ message OneofHeader {
   AfterCreate.State afterCreate = 3;
 }
 
-extend google.protobuf.MessageOptions { pgde.form.Msg msg = 919114; }
+extend google.protobuf.MessageOptions { Msg msg = 919114; }
 message Msg {
   oneof type {
-    pgde.form.Node node = 1;
-    // define a view from within a leaf
-    pgde.form.View view = 2;
-    // only used by entry field, manage list directly
-    bool crud = 3;
-    // choose one from source list
-    bool manytoone = 4;
-    // only used by entry field, choose a list from source list
-    pgde.form.List manytomany = 5;
+    Node node = 1;
+    // define a view from within a leaf.
+    View view = 2;
+    View viewGroup = 3;
+    // choose one from source list.
+    ManyToOne manyToOne = 4;
+    // only used by entry field, choose a list from source list.
+    ManyToMany manyToMany = 5;
     // define an id
     bool id = 6;
   }
@@ -84,14 +77,26 @@ message Node {
 }
 
 // Defines a View of leaf, must be defined under the leaf,
-// also generates list entry for the leaf.
+// also generates list crud for the leaf. Every view can do crud.
 message View {
   Crud crud = 1;
   MaterialIcon icon = 2;
   Protector protector = 3;
 }
 
-// only for list src
+message ManyToOne {
+  ListSrc source = 1;
+  MaterialIcon icon = 2;
+  Protector protector = 3;
+}
+
+message ManyToMany {
+  ListSrc source = 1;
+  ListDst dest = 2;
+  MaterialIcon icon = 3;
+  Protector protector = 4;
+}
+
 message Crud {
   bool pager = 1;
   uint32 rows = 2 [ (zero.to).uint32 = 10 ];
@@ -102,11 +107,23 @@ message Crud {
   bool search = 7;
   // operation target: view or original leaf
   bool view = 8;
-  // generate special crud rpc
+  // generate special rpc
   bool genrpc = 9;
 }
 
-message List {
+message ListSrc {
+  bool pager = 1;
+  uint32 rows = 2 [ (zero.to).uint32 = 10 ];
+  // add custom search widget
+  bool search = 7;
+  // operation target: view or original leaf
+  bool view = 8;
+  // generate special rpc
+  bool genrpc = 9;
+}
+
+// only used by ManyToMany
+message ListDst {
   bool pager = 1;
   uint32 rows = 2 [ (zero.to).uint32 = 10 ];
   // only add from source
@@ -142,11 +159,12 @@ message Field {
 
     EnumInput.Type enumType = 17;
 
-    // Required by message View. Overwrites the Node.view of field type.
-    Crud radio = 18;
+    // Required by message View. Overwrites ManyToOne.source of field type.
+    // ManyToOne can be auto-detected.
+    ListSrc radio = 18;
 
-    // Required by message or repeated message.
-    // Source based list must be set as a field of entry.
+    // Required by message or repeated message. Source based list that want to
+    // edit leaf must be set as a field of entry.
     MaterialColor embed = 20;
 
     SwitchInput boolSwitch = 21;
@@ -155,8 +173,7 @@ message Field {
     // Required by map.
     bool ignoreMap = 23;
 
-    // manytoone can be auto-detected.
-    // manytomany cause errors.
+    // ManyToMany causes errors.
   }
 }
 

@@ -336,9 +336,8 @@ message HttpProxyServer {
 }
 
 message ServerMgrView {
-  option (pgde.form.msg).crud = true;
-  oneof source {
-    option (pgde.form.source) = {
+  option (pgde.form.msg).viewGroup = {
+    crud : {
       pager : true,
       rows : 20,
       create : true,
@@ -346,7 +345,9 @@ message ServerMgrView {
       delete : true,
       search : true,
       genrpc : true,
-    };
+    },
+  };
+  oneof group {
     IpfsServer.MgrView ipfs = 1;
     FileServer.MgrView file = 2;
     HttpProxyServer.MgrView http = 3;
@@ -354,14 +355,15 @@ message ServerMgrView {
 }
 
 message ServerUseView {
-  option (pgde.form.msg).manytoone = true;
-  oneof source {
-    option (pgde.form.source) = {
+  option (pgde.form.msg).manyToOne = {
+    source : {
       pager : true,
       rows : 20,
       search : true,
       genrpc : true,
-    };
+    },
+  };
+  oneof source {
     IpfsServer.UseView ipfs = 1;
     FileServer.UseView file = 2;
     HttpProxyServer.UseView http = 3;
@@ -497,38 +499,36 @@ message IPNetRouter {
   // @inject_tag: toml:",omitempty"
   ServerUseView matched = 7 [ (pgde.form.field).radio = {
     pager : true,
-    create : true,
-    edit : true,
-    delete : true,
     search : true,
   } ];
   // @inject_tag: toml:",omitempty"
   ServerUseView unmatched = 8 [ (pgde.form.field).radio = {
     pager : true,
-    create : true,
-    edit : true,
-    delete : true,
     search : true,
   } ];
   // @inject_tag: toml:",omitempty"
   FileServer.UseView fileTest = 9 [ (pgde.form.field).radio = {
     pager : true,
-    create : true,
-    edit : true,
-    delete : true,
     search : true,
   } ];
 }
 
 message RouterUseViewList {
-  // the dst list
-  option (pgde.form.msg).manytomany = {
-    pager : false,
-    rows : 20,
-    add : true,
-    remove : true,
-    unique : true,
-    rank : true,
+  option (pgde.form.msg).manyToMany = {
+    source : {
+      pager : true,
+      rows : 20,
+      search : true,
+      genrpc : true,
+    },
+    dest : {
+      pager : false,
+      rows : 20,
+      add : true,
+      remove : true,
+      unique : true,
+      rank : true,
+    },
   };
 
   // the dst element, users pass the widget as input argument
@@ -551,12 +551,6 @@ message RouterUseViewList {
   }
 
   oneof source {
-    option (pgde.form.source) = {
-      pager : true,
-      rows : 20,
-      search : true,
-      genrpc : true,
-    };
     AdpRouter.UseView adp = 1;
     IPNetRouter.UseView ipnet = 2;
   }

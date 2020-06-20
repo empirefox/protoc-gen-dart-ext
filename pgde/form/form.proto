@@ -43,102 +43,53 @@ message OneofHeader {
   AfterCreate.State afterCreate = 3;
 }
 
-extend google.protobuf.MessageOptions { Msg msg = 919114; }
-message Msg {
-  oneof type {
-    Node node = 1;
-    // define a view from within a leaf.
-    View view = 2;
-    View viewGroup = 3;
-    // choose one from source list.
-    ManyToOne manyToOne = 4;
-    // only used by entry field, choose a list from source list.
-    ManyToMany manyToMany = 5;
-    // define an id
-    bool id = 6;
-  }
-}
+extend google.protobuf.MessageOptions { Node node = 919114; }
 
 message Node {
   enum Type {
-    invalid = 0;
+    undefined = 0;
 
-    // Accepts field type of entry, Views, leaf.
+    // Accepts field type of entry, view or views.
     // Rejects others fields including any built-in fields.
+    // Id of entry is for Find-rpc request.
     entry = 1;
 
     // Leaf is a whole form, which expands everything execpt Views.
+    // Id of leaf or view is for Get/Update/Remove-rpc request.
     leaf = 2;
+
+    // Define a view from within a leaf. Auto detect group.
+    // Id of leaf or view is for Get/Update/Remove-rpc request.
+    view = 3;
+
+    // Empty message.
+    typeName = 4;
+
+    // Auto detect group.
+    element = 5;
   }
+
   Type type = 1;
-  MaterialIcon icon = 2;
-  Protector protector = 3;
-  bool disabled = 4;
-}
-
-// Defines a View of leaf, must be defined under the leaf,
-// also generates list crud for the leaf. Every view can do crud.
-message View {
-  Crud crud = 1;
-  MaterialIcon icon = 2;
-  Protector protector = 3;
-}
-
-message ManyToOne {
-  ListSrc source = 1;
-  MaterialIcon icon = 2;
-  Protector protector = 3;
-}
-
-message ManyToMany {
-  ListSrc source = 1;
-  ListDst dest = 2;
   MaterialIcon icon = 3;
   Protector protector = 4;
+  bool disabled = 5;
 }
 
-message Crud {
-  bool pager = 1;
-  uint32 rows = 2 [ (zero.to).uint32 = 10 ];
-  bool create = 4;
-  bool edit = 5;
-  bool delete = 6;
-  // add custom search widget
-  bool search = 7;
-  // operation target: view or original leaf
-  bool view = 8;
-  // generate special rpc
-  bool genrpc = 9;
+extend google.protobuf.FieldOptions {
+  EntryField entryField = 919114;
+  Field field = 919115;
 }
 
-message ListSrc {
-  bool pager = 1;
-  uint32 rows = 2 [ (zero.to).uint32 = 10 ];
-  // add custom search widget
-  bool search = 7;
-  // operation target: view or original leaf
-  bool view = 8;
-  // generate special rpc
-  bool genrpc = 9;
-}
-
-// only used by ManyToMany
-message ListDst {
-  bool pager = 1;
-  uint32 rows = 2 [ (zero.to).uint32 = 10 ];
-  // only add from source
-  bool add = 4;
-  bool remove = 5;
-  bool unique = 6;
-
-  oneof ranking {
-    bool rank = 7;
-    // add custom search widget
-    bool search = 8;
+message EntryField {
+  message Form { bool remove = 2; }
+  oneof is {
+    Form form = 1;
+    DestList list = 2;
+    SourceList selectOne = 3;
+    ChooseList selectMany = 4;
   }
 }
 
-extend google.protobuf.FieldOptions { pgde.form.Field field = 919114; }
 message Field {
   InputDecoration decoration = 1;
   Protector protector = 2;
@@ -159,12 +110,10 @@ message Field {
 
     EnumInput.Type enumType = 17;
 
-    // Required by message View. Overwrites ManyToOne.source of field type.
-    // ManyToOne can be auto-detected.
-    ListSrc radio = 18;
+    SourceList selectOne = 18;
+    ChooseList selectMany = 19;
 
-    // Required by message or repeated message. Source based list that want to
-    // edit leaf must be set as a field of entry.
+    // Required by leaf or repeated leaf.
     MaterialColor embed = 20;
 
     SwitchInput boolSwitch = 21;
@@ -175,6 +124,140 @@ message Field {
 
     // ManyToMany causes errors.
   }
+
+  message TextInput {
+    enum Type {
+      autoByType = 0;
+
+      datetime = 2;
+      emailAddress = 3;
+      multiline = 4;
+      number = 5;
+      phone = 6;
+      text = 7;
+      url = 8;
+    }
+    Type keyboardType = 1;
+
+    bool obscureText = 2;
+    bool autocorrect = 3;
+    int32 maxLines = 4;
+    bool maxLengthEnforced = 5;
+  }
+
+  message SignatureInput {
+    double width = 1;
+    double height = 2;
+    MaterialColor backgroundColor = 3;
+    MaterialColor penColor = 4;
+    double penStrokeWidth = 5;
+  }
+
+  // configurable on all number fields
+  enum UnitPlace {
+    option (pgde.zero.defaultNotSet) = true;
+    noUnitPlace = 0;
+
+    suffix = 1;
+    labelSuffix = 2;
+  }
+  message NumberInput {
+    pgde.units.Show unit = 1;
+    UnitPlace unitPlace = 2;
+  }
+  message StepperInput {
+    pgde.units.Show unit = 1;
+    UnitPlace unitPlace = 2;
+    uint32 step = 3;
+  }
+  message SliderInput {
+    pgde.units.Show unit = 1;
+    UnitPlace unitPlace = 2;
+    uint32 divisions = 3;
+  }
+
+  message RateInput { MaterialIcon icon = 1; }
+
+  message EnumInput {
+    enum Type {
+      radio = 0;
+      // extract a new message?
+      dropdown = 1;
+      segmentedControl = 2;
+      // values must be checked from fixed list
+      checkbox = 3;
+      // values can be others
+      chips = 4;
+      // support positions
+      rank = 5;
+    }
+  }
+
+  message SwitchInput { bool checkbox = 1; }
+
+  // type and format are defined by format.Format
+  message DatetimePickerInput {
+    enum DatePickerMode {
+      day = 0;
+      year = 1;
+    }
+    DatePickerMode datePickerMode = 1;
+    bool editable = 2;
+  }
+
+  message InputDecoration {
+    MaterialIcon icon = 1;
+    MaterialIcon prefixIcon = 2;
+    MaterialIcon suffixIcon = 3;
+
+    enum CounterType {
+      byte = 0;
+      character = 1;
+    }
+
+    /// Optional text to place below the line as a character count.
+    ///
+    /// Rendered using [counterStyle]. Uses [helperStyle] if [counterStyle] is
+    /// null.
+    ///
+    /// The semantic label can be replaced by providing a [semanticCounterText].
+    ///
+    /// If null or an empty string and [counter] isn't specified, then nothing
+    /// will appear in the counter's location.
+    repeated CounterType counter = 4;
+  }
+}
+
+message SourceList {
+  bool pager = 1;
+  uint32 rows = 2 [ (zero.to).uint32 = 10 ];
+  bool remove = 3;
+  // add custom search widget
+  bool search = 7;
+}
+
+message DestList {
+  bool group = 1;
+  bool pager = 2;
+  uint32 rows = 3 [ (zero.to).uint32 = 10 ];
+  bool add = 4;
+  bool edit = 5;
+  bool remove = 6;
+  bool unique = 7;
+  bool rank = 8;
+  // add custom search widget, only enable edit/remove when searching
+  bool search = 9;
+}
+
+message ChooseList {
+  message SourceList {
+    bool pager = 1;
+    uint32 rows = 2 [ (zero.to).uint32 = 10 ];
+    // add custom search widget
+    bool search = 7;
+  }
+  SourceList src = 1;
+  DestList dst = 2;
 }
 
 enum Protector {
@@ -182,106 +265,4 @@ enum Protector {
   pin = 1;
   pattern = 2;
   password = 3;
-}
-
-message TextInput {
-  enum Type {
-    autoByType = 0;
-
-    datetime = 2;
-    emailAddress = 3;
-    multiline = 4;
-    number = 5;
-    phone = 6;
-    text = 7;
-    url = 8;
-  }
-  Type keyboardType = 1;
-
-  bool obscureText = 2;
-  bool autocorrect = 3;
-  int32 maxLines = 4;
-  bool maxLengthEnforced = 5;
-}
-
-message SignatureInput {
-  double width = 1;
-  double height = 2;
-  MaterialColor backgroundColor = 3;
-  MaterialColor penColor = 4;
-  double penStrokeWidth = 5;
-}
-
-// configurable on all number fields
-enum UnitPlace {
-  option (pgde.zero.defaultNotSet) = true;
-  noUnitPlace = 0;
-
-  suffix = 1;
-  labelSuffix = 2;
-}
-message NumberInput {
-  pgde.units.Show unit = 1;
-  UnitPlace unitPlace = 2;
-}
-message StepperInput {
-  pgde.units.Show unit = 1;
-  UnitPlace unitPlace = 2;
-  uint32 step = 3;
-}
-message SliderInput {
-  pgde.units.Show unit = 1;
-  UnitPlace unitPlace = 2;
-  uint32 divisions = 3;
-}
-
-message RateInput { MaterialIcon icon = 1; }
-
-message EnumInput {
-  enum Type {
-    radio = 0;
-    // extract a new message?
-    dropdown = 1;
-    segmentedControl = 2;
-    // values must be checked from fixed list
-    checkbox = 3;
-    // values can be others
-    chips = 4;
-    // support positions
-    rank = 5;
-  }
-}
-
-message SwitchInput { bool checkbox = 1; }
-
-// type and format are defined by format.Format
-message DatetimePickerInput {
-  enum DatePickerMode {
-    day = 0;
-    year = 1;
-  }
-  DatePickerMode datePickerMode = 1;
-  bool editable = 2;
-}
-
-message InputDecoration {
-  MaterialIcon icon = 1;
-  MaterialIcon prefixIcon = 2;
-  MaterialIcon suffixIcon = 3;
-
-  enum CounterType {
-    byte = 0;
-    character = 1;
-  }
-
-  /// Optional text to place below the line as a character count.
-  ///
-  /// Rendered using [counterStyle]. Uses [helperStyle] if [counterStyle] is
-  /// null.
-  ///
-  /// The semantic label can be replaced by providing a [semanticCounterText].
-  ///
-  /// If null or an empty string and [counter] isn't specified, then nothing
-  /// will appear in the counter's location.
-  repeated CounterType counter = 4;
 }

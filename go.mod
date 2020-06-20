@@ -13,7 +13,7 @@ require (
 	github.com/empirefox/makeplural v0.0.0-20190508023840-397833bbd152
 	github.com/empirefox/messageformat v0.0.0-20191109034724-8bed12914b94
 	github.com/envoyproxy/protoc-gen-validate v0.2.0-java
-	github.com/golang/protobuf v1.3.2
+	github.com/golang/protobuf v1.4.2
 	github.com/google/uuid v1.1.1 // indirect
 	github.com/hashicorp/go-multierror v1.0.0
 	github.com/huandu/xstrings v1.2.0 // indirect
@@ -32,7 +32,7 @@ require (
 	golang.org/x/crypto v0.0.0-20191117063200-497ca9f6d64f // indirect
 	golang.org/x/text v0.3.2
 	golang.org/x/tools v0.0.0-20191116214431-80313e1ba718
-	google.golang.org/genproto v0.0.0-20170818010345-ee236bd376b0
+	google.golang.org/protobuf v1.23.0
 	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
 	gopkg.in/yaml.v2 v2.2.5
 )

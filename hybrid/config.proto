@@ -12,7 +12,7 @@ import "validate/validate.proto";
 
 message ConfigTree {
   option (pgde.l10n.message).ignore = true;
-  option (pgde.form.msg).node.disabled = true;
+  option (pgde.form.node).disabled = true;
   option (pgde.zero.disabled) = true;
   option (validate.disabled) = true;
   string version = 1;
@@ -31,17 +31,11 @@ message ConfigTree {
 }
 
 message Basic {
-  option (pgde.form.msg).node = {
+  option (pgde.form.node) = {
     type : leaf
   };
 
-  message UseView {
-    option (pgde.form.msg).view.crud = {
-      pager : true,
-      rows : 20,
-      search : true,
-    };
-  }
+  message TypeName { option (pgde.form.node).type = typeName; }
 
   // @inject_tag: toml:",omitempty"
   string version = 2
@@ -78,44 +72,12 @@ message Basic {
   bytes token = 8 [ (validate.rules).bytes.max_len = 732 ];
 }
 
-message Log {
-  option (pgde.form.msg).node = {
-    type : leaf
-  };
-
-  message UseView {
-    option (pgde.form.msg).view.crud = {
-      pager : true,
-      rows : 20,
-      search : true,
-    };
-  }
-
-  // @inject_tag: toml:",omitempty"
-  bool dev = 2;
-  // @inject_tag: toml:",omitempty"
-  string level = 3 [ (validate.rules).string = {
-    in :
-        [ "", "debug", "info", "warn", "error", "dpanic", "panic", "fatal" ]
-  } ];
-  // @inject_tag: toml:",omitempty"
-  // Target accepts "tcp://host:port?timeout=5s", file, sentryDSN, empty or
-  // "nop". Register NewTCPSink to support tcp sink. Default is stderr.
-  string target = 4;
-}
-
 message Ipfs {
-  option (pgde.form.msg).node = {
+  option (pgde.form.node) = {
     type : leaf
   };
 
-  message UseView {
-    option (pgde.form.msg).view.crud = {
-      pager : true,
-      rows : 20,
-      search : true,
-    };
-  }
+  message TypeName { option (pgde.form.node).type = typeName; }
 
   // @inject_tag: toml:",omitempty"
   bytes fakeApiListenIp = 2 [
@@ -166,44 +128,44 @@ message Ipfs {
   string token = 13 [ (validate.rules).string.max_len = 732 ];
 }
 
-// server types
-
-message IpfsServer {
-  option (pgde.form.msg).node = {
+message Log {
+  option (pgde.form.node) = {
     type : leaf
   };
 
-  message MgrView {
-    option (pgde.form.msg).view.crud = {
-      pager : true,
-      rows : 20,
-      create : true,
-      edit : true,
-      delete : true,
-      search : true,
-    };
+  message Id { uint32 id = 1; }
 
-    message Id {
-      option (pgde.form.msg).id = true;
-      uint32 id = 1;
-    }
-
+  message View {
+    option (pgde.form.node).type = view;
     uint32 id = 1;
-    string name = 3;
+    string target = 4;
   }
 
-  message UseView {
-    option (pgde.form.msg).view.crud = {
-      pager : true,
-      rows : 20,
-      search : true,
-    };
+  uint32 id = 1;
 
-    message Id {
-      option (pgde.form.msg).id = true;
-      uint32 id = 1;
-    }
+  // @inject_tag: toml:",omitempty"
+  bool dev = 2;
+  // @inject_tag: toml:",omitempty"
+  string level = 3 [ (validate.rules).string = {
+    in : [ "", "debug", "info", "warn", "error", "dpanic", "panic", "fatal" ]
+  } ];
+  // @inject_tag: toml:",omitempty"
+  // Target accepts "tcp://host:port?timeout=5s", file, sentryDSN, empty or
+  // "nop". Register NewTCPSink to support tcp sink. Default is stderr.
+  string target = 4;
+}
 
+// server types
+
+message IpfsServer {
+  option (pgde.form.node) = {
+    type : leaf
+  };
+
+  message Id { uint32 id = 1; }
+
+  message View {
+    option (pgde.form.node).type = view;
     uint32 id = 1;
     string name = 3;
   }
@@ -221,41 +183,14 @@ message IpfsServer {
 }
 
 message FileServer {
-  option (pgde.form.msg).node = {
+  option (pgde.form.node) = {
     type : leaf
   };
 
-  message MgrView {
-    option (pgde.form.msg).view.crud = {
-      pager : true,
-      rows : 20,
-      create : true,
-      edit : true,
-      delete : true,
-      search : true,
-    };
+  message Id { uint32 id = 1; }
 
-    message Id {
-      option (pgde.form.msg).id = true;
-      uint32 id = 1;
-    }
-
-    uint32 id = 1;
-    string name = 3;
-  }
-
-  message UseView {
-    option (pgde.form.msg).view.crud = {
-      pager : true,
-      rows : 20,
-      search : true,
-    };
-
-    message Id {
-      option (pgde.form.msg).id = true;
-      uint32 id = 1;
-    }
-
+  message View {
+    option (pgde.form.node).type = view;
     uint32 id = 1;
     string name = 3;
   }
@@ -278,41 +213,14 @@ message FileServer {
 }
 
 message HttpProxyServer {
-  option (pgde.form.msg).node = {
+  option (pgde.form.node) = {
     type : leaf
   };
 
-  message MgrView {
-    option (pgde.form.msg).view.crud = {
-      pager : true,
-      rows : 20,
-      create : true,
-      edit : true,
-      delete : true,
-      search : true,
-    };
+  message Id { uint32 id = 1; }
 
-    message Id {
-      option (pgde.form.msg).id = true;
-      uint32 id = 1;
-    }
-
-    uint32 id = 1;
-    string name = 3;
-  }
-
-  message UseView {
-    option (pgde.form.msg).view.crud = {
-      pager : true,
-      rows : 20,
-      search : true,
-    };
-
-    message Id {
-      option (pgde.form.msg).id = true;
-      uint32 id = 1;
-    }
-
+  message View {
+    option (pgde.form.node).type = view;
     uint32 id = 1;
     string name = 3;
   }
@@ -335,38 +243,12 @@ message HttpProxyServer {
   bool keepAlive = 6;
 }
 
-message ServerMgrView {
-  option (pgde.form.msg).viewGroup = {
-    crud : {
-      pager : true,
-      rows : 20,
-      create : true,
-      edit : true,
-      delete : true,
-      search : true,
-      genrpc : true,
-    },
-  };
+message ServerView {
+  option (pgde.form.node).type = view;
   oneof group {
-    IpfsServer.MgrView ipfs = 1;
-    FileServer.MgrView file = 2;
-    HttpProxyServer.MgrView http = 3;
-  }
-}
-
-message ServerUseView {
-  option (pgde.form.msg).manyToOne = {
-    source : {
-      pager : true,
-      rows : 20,
-      search : true,
-      genrpc : true,
-    },
-  };
-  oneof source {
-    IpfsServer.UseView ipfs = 1;
-    FileServer.UseView file = 2;
-    HttpProxyServer.UseView http = 3;
+    IpfsServer.View ipfs = 1;
+    FileServer.View file = 2;
+    HttpProxyServer.View http = 3;
   }
 }
 
@@ -375,41 +257,14 @@ message ServerUseView {
 // routers
 
 message AdpRouter {
-  option (pgde.form.msg).node = {
+  option (pgde.form.node) = {
     type : leaf
   };
 
-  message MgrView {
-    option (pgde.form.msg).view.crud = {
-      pager : true,
-      rows : 20,
-      create : true,
-      edit : true,
-      delete : true,
-      search : true,
-    };
+  message Id { uint32 id = 1; }
 
-    message Id {
-      option (pgde.form.msg).id = true;
-      uint32 id = 1;
-    }
-
-    uint32 id = 1;
-    string name = 3;
-  }
-
-  message UseView {
-    option (pgde.form.msg).view.crud = {
-      pager : true,
-      rows : 20,
-      search : true,
-    };
-
-    message Id {
-      option (pgde.form.msg).id = true;
-      uint32 id = 1;
-    }
-
+  message View {
+    option (pgde.form.node).type = view;
     uint32 id = 1;
     string name = 3;
   }
@@ -431,9 +286,9 @@ message AdpRouter {
   //   Path = "Qmxxx..xB"
   string rulesDirName = 4 [ (validate.rules).string.hostname = true ];
   // @inject_tag: toml:",omitempty"
-  ServerUseView blocked = 5;
+  ServerView blocked = 5;
   // @inject_tag: toml:",omitempty"
-  ServerUseView unblocked = 6;
+  ServerView unblocked = 6;
   // @inject_tag: toml:",omitempty"
   bool etcHostsIpAsBlocked = 7;
   // @inject_tag: toml:",omitempty"
@@ -441,41 +296,14 @@ message AdpRouter {
 }
 
 message IPNetRouter {
-  option (pgde.form.msg).node = {
+  option (pgde.form.node) = {
     type : leaf
   };
 
-  message MgrView {
-    option (pgde.form.msg).view.crud = {
-      pager : true,
-      rows : 20,
-      create : true,
-      edit : true,
-      delete : true,
-      search : true,
-    };
+  message Id { uint32 id = 1; }
 
-    message Id {
-      option (pgde.form.msg).id = true;
-      uint32 id = 1;
-    }
-
-    uint32 id = 1;
-    string name = 3;
-  }
-
-  message UseView {
-    option (pgde.form.msg).view.crud = {
-      pager : true,
-      rows : 20,
-      search : true,
-    };
-
-    message Id {
-      option (pgde.form.msg).id = true;
-      uint32 id = 1;
-    }
-
+  message View {
+    option (pgde.form.node).type = view;
     uint32 id = 1;
     string name = 3;
   }
@@ -497,45 +325,32 @@ message IPNetRouter {
   repeated google.protobuf.BytesValue netv6 = 6
       [ (validate.rules).bytes.len = 17, (pgde.format.to).bytes.type = cidrv6 ];
   // @inject_tag: toml:",omitempty"
-  ServerUseView matched = 7 [ (pgde.form.field).radio = {
+  ServerView matched = 7 [ (pgde.form.field).selectOne = {
     pager : true,
     search : true,
   } ];
   // @inject_tag: toml:",omitempty"
-  ServerUseView unmatched = 8 [ (pgde.form.field).radio = {
+  ServerView unmatched = 8 [ (pgde.form.field).selectOne = {
     pager : true,
     search : true,
   } ];
   // @inject_tag: toml:",omitempty"
-  FileServer.UseView fileTest = 9 [ (pgde.form.field).radio = {
+  FileServer.View fileTest = 9 [ (pgde.form.field).selectOne = {
     pager : true,
     search : true,
   } ];
 }
 
-message RouterUseViewList {
-  option (pgde.form.msg).manyToMany = {
-    source : {
-      pager : true,
-      rows : 20,
-      search : true,
-      genrpc : true,
-    },
-    dest : {
-      pager : false,
-      rows : 20,
-      add : true,
-      remove : true,
-      unique : true,
-      rank : true,
-    },
-  };
+message RouterUseView {
+  option (pgde.form.node).type = view;
 
   // the dst element, users pass the widget as input argument
   message Element {
+    option (pgde.form.node).type = element;
+
     message Id {
-      option (pgde.form.msg).id = true;
       uint32 id = 1;
+      Type type = 2;
     }
 
     enum Type {
@@ -550,9 +365,9 @@ message RouterUseViewList {
     int64 rank = 4;
   }
 
-  oneof source {
-    AdpRouter.UseView adp = 1;
-    IPNetRouter.UseView ipnet = 2;
+  oneof group {
+    AdpRouter.View adp = 1;
+    IPNetRouter.View ipnet = 2;
   }
 }
 
@@ -566,23 +381,68 @@ message RouterUseViewList {
 // HYBRID_FILE_SERVERS_DISABLED=a,b,c
 // HYBRID_ROUTER_DISABLED=a,b,c
 message Config {
-  option (pgde.form.msg).node = {
+  option (pgde.form.node) = {
     type : entry
   };
 
-  message Id {
-    option (pgde.form.msg).id = true;
-    uint32 id = 1;
-  }
+  message Id { uint32 id = 1; }
 
-  Basic.UseView basic = 1 [ (validate.rules).message.required = true ];
-  Log.UseView log = 2;
-  Ipfs.UseView ipfs = 3;
+  Basic.TypeName basic = 1 [ (validate.rules).message.required = true ];
+  Ipfs.TypeName ipfs = 2 [ (pgde.form.entryField).form.remove = true ];
 
-  repeated ServerMgrView servers = 4;
+  Log.View log = 3 [ (pgde.form.entryField).selectOne = {
+    pager : true,
+    search : true,
+    remove : false,
+  } ];
+  Log.View logs = 4 [ (pgde.form.entryField).list = {
+    pager : true,
+    rows : 20,
+    add : true,
+    edit : true,
+    remove : true,
+    search : true,
+  } ];
 
-  repeated AdpRouter.MgrView adps = 5;
-  repeated IPNetRouter.MgrView ipnets = 6;
+  repeated ServerView servers = 5 [ (pgde.form.entryField).list = {
+    pager : true,
+    rows : 20,
+    add : true,
+    edit : true,
+    remove : true,
+    search : true,
+  } ];
 
-  repeated RouterUseViewList.Element routers = 7;
+  repeated AdpRouter.View adps = 6 [ (pgde.form.entryField).list = {
+    pager : true,
+    rows : 20,
+    add : true,
+    edit : true,
+    remove : true,
+    search : true,
+  } ];
+  repeated IPNetRouter.View ipnets = 7 [ (pgde.form.entryField).list = {
+    pager : true,
+    rows : 20,
+    add : true,
+    edit : true,
+    remove : true,
+    search : true,
+  } ];
+
+  repeated RouterUseView.Element routers = 8
+      [ (pgde.form.entryField).selectMany = {
+        src : {
+          pager : true,
+          search : true,
+        },
+        dst : {
+          pager : true,
+          rows : 20,
+          add : true,
+          edit : true,
+          remove : true,
+          search : true,
+        }
+      } ];
 }

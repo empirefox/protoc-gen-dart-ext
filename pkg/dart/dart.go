@@ -94,16 +94,26 @@ func (ns *messageNames) getUsedNames() UsedNames   { return ns.usedNames }
 
 type FieldNames interface {
 	Names
+	ServiceName() Qualifier
+	PayloadName() Qualifier
 	HasMethodName() Qualifier
 	ClearMethodName() Qualifier
 	EnsureMethodName() Qualifier
 }
 
 type fieldNames struct {
+	messageName      Qualifier
 	fieldName        Qualifier
 	hasMethodName    Qualifier
 	clearMethodName  Qualifier
 	ensureMethodName Qualifier
+}
+
+func (ns *fieldNames) ServiceName() Qualifier {
+	return ns.messageName + ns.fieldName.ToCamel() + "Service"
+}
+func (ns *fieldNames) PayloadName() Qualifier {
+	return ns.messageName + ns.fieldName.ToCamel() + "Payload"
 }
 
 func (ns *fieldNames) Name() Qualifier             { return ns.fieldName }
@@ -300,6 +310,7 @@ func (d *Dart) namesOfField(i pgs.Field) *fieldNames {
 		}
 
 		nty = &fieldNames{
+			messageName:      d.NameOf(i.Message()),
 			fieldName:        _defaultFieldName(name),
 			hasMethodName:    _defaultHasMethodName(name),
 			clearMethodName:  _defaultClearMethodName(name),

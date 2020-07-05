@@ -9,6 +9,7 @@ import (
 	"strings"
 	"text/template"
 
+	"github.com/empirefox/protoc-gen-dart-ext/pkg/pgrt"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/pgzt"
 
 	"github.com/BurntSushi/toml"
@@ -37,6 +38,7 @@ type DartExtModule struct {
 	dart   *dart.Dart
 	params pgs.Parameters
 
+	rpcTpl      *template.Template
 	zeroTpl     *template.Template
 	arbTpl      *template.Template
 	l10nTpl     *template.Template
@@ -47,6 +49,7 @@ func New() *DartExtModule {
 	return &DartExtModule{
 		ModuleBase: &pgs.ModuleBase{},
 		dart:       dart.NewDart(),
+		rpcTpl:     template.New("rpc"),
 		zeroTpl:    template.New("zero"),
 		arbTpl: template.Must(template.New("arb").
 			Funcs(sprig.HermeticTxtFuncMap()).
@@ -59,6 +62,7 @@ func New() *DartExtModule {
 func (m *DartExtModule) InitContext(c pgs.BuildContext) {
 	m.ModuleBase.InitContext(c)
 	m.params = c.Parameters()
+	pgrt.Register(m.rpcTpl)
 	pgzt.Register(m.zeroTpl.Funcs(m.dart.Funcs()))
 	pglt.Register(m.l10nTpl)
 	pgvt.Register(m.validateTpl, m.params)
@@ -182,6 +186,11 @@ func (m *DartExtModule) Execute(targets map[string]pgs.File, pkgs map[string]pgs
 		if m.HasParam("zero") {
 			name := f.Zeros.ImportManager.RootFilePath
 			m.AddGeneratorTemplateFile(name, m.zeroTpl, f)
+		}
+
+		if m.HasParam("rpc") {
+			name := f.RPCS.RootFilePath
+			m.AddGeneratorTemplateFile(name, m.rpcTpl, f)
 		}
 	}
 

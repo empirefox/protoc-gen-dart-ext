@@ -51,7 +51,6 @@ message Node {
 
     // Accepts field type of entry, view or views.
     // Rejects others fields including any built-in fields.
-    // Id of entry is for Find-rpc request.
     entry = 1;
 
     // Leaf is a whole form, which expands everything execpt Views.
@@ -72,16 +71,29 @@ message Node {
   Type type = 1;
   MaterialIcon icon = 3;
   Protector protector = 4;
-  bool disabled = 5;
 }
 
 extend google.protobuf.FieldOptions {
   EntryField entryField = 919114;
   Field field = 919115;
+  bool id = 919116;
 }
 
 message EntryField {
   message Form { bool remove = 2; }
+  message DestList {
+    bool groupByType = 1;
+    bool pager = 2;
+    uint32 rows = 3 [ (zero.to).uint32 = 10 ];
+    bool add = 4;
+    bool edit = 5;
+    bool remove = 6;
+    bool removeAll = 7;
+    bool unique = 8;
+    bool rank = 9;
+    // add custom search widget, only enable edit/remove when searching
+    bool search = 10;
+  }
   oneof is {
     Form form = 1;
     DestList list = 2;
@@ -113,7 +125,7 @@ message Field {
     SourceList selectOne = 18;
     ChooseList selectMany = 19;
 
-    // Required by leaf or repeated leaf.
+    // Required by leaf or repeated leaf, not view.
     MaterialColor embed = 20;
 
     SwitchInput boolSwitch = 21;
@@ -232,29 +244,30 @@ message SourceList {
   bool pager = 1;
   uint32 rows = 2 [ (zero.to).uint32 = 10 ];
   bool remove = 3;
+  bool groupByType = 6;
   // add custom search widget
   bool search = 7;
-}
-
-message DestList {
-  bool group = 1;
-  bool pager = 2;
-  uint32 rows = 3 [ (zero.to).uint32 = 10 ];
-  bool add = 4;
-  bool edit = 5;
-  bool remove = 6;
-  bool unique = 7;
-  bool rank = 8;
-  // add custom search widget, only enable edit/remove when searching
-  bool search = 9;
 }
 
 message ChooseList {
   message SourceList {
     bool pager = 1;
     uint32 rows = 2 [ (zero.to).uint32 = 10 ];
+    bool groupByType = 6;
     // add custom search widget
     bool search = 7;
+  }
+  message DestList {
+    bool groupByType = 1;
+    bool pager = 2;
+    uint32 rows = 3 [ (zero.to).uint32 = 10 ];
+    bool add = 4;
+    bool remove = 6;
+    bool removeAll = 7;
+    bool unique = 8;
+    bool rank = 9;
+    // add custom search widget, only enable edit/remove when searching
+    bool search = 10;
   }
   SourceList src = 1;
   DestList dst = 2;

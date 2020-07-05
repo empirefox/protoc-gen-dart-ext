@@ -23,6 +23,8 @@ type Message struct {
 
 	Names dart.MessageNames
 
+	RPC *RPCMessage
+
 	Zero *ZeroMessage
 
 	L10n *L10nMsgOrEnum
@@ -44,6 +46,8 @@ type Field struct {
 	Names dart.FieldNames
 
 	Message *Message
+
+	RPC *RPCField
 
 	Zero *ZeroField
 

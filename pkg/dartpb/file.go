@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/emirpasic/gods/sets/treeset"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/arb"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/dart"
 	"github.com/jhump/protoreflect/desc"
@@ -25,6 +26,8 @@ type File struct {
 	FileConfig
 
 	Names dart.FileNames
+
+	RPCS *RPCS
 
 	Zeros *Zeros
 
@@ -54,6 +57,16 @@ func NewFile(c FileConfig) (*File, error) {
 			},
 		},
 	}
+
+	r := RPCS{
+		RPCSUtil: RPCSUtil{
+			Pkg:     c.Pgs.Package(),
+			Imports: treeset.NewWithStringComparator(),
+		},
+		File:         f,
+		RootFilePath: c.Pgs.File().InputPath().SetExt(".rpc.proto").String(),
+	}
+	f.RPCS = &r
 
 	imz, err := dart.NewDefaultImportManager(c.Dart, dart.ZeroFile.RootFilePath(c.Pgs))
 	if err != nil {

@@ -12,7 +12,6 @@ import "validate/validate.proto";
 
 message ConfigTree {
   option (pgde.l10n.message).ignore = true;
-  option (pgde.form.node).disabled = true;
   option (pgde.zero.disabled) = true;
   option (validate.disabled) = true;
   string version = 1;
@@ -130,18 +129,16 @@ message Ipfs {
 
 message Log {
   option (pgde.form.node) = {
-    type : leaf
+    type : leaf,
   };
-
-  message Id { uint32 id = 1; }
 
   message View {
     option (pgde.form.node).type = view;
-    uint32 id = 1;
+    uint32 id = 1 [ (pgde.form.id) = true ];
     string target = 4;
   }
 
-  uint32 id = 1;
+  uint32 id = 1 [ (pgde.form.id) = true ];
 
   // @inject_tag: toml:",omitempty"
   bool dev = 2;
@@ -159,18 +156,16 @@ message Log {
 
 message IpfsServer {
   option (pgde.form.node) = {
-    type : leaf
+    type : leaf,
   };
-
-  message Id { uint32 id = 1; }
 
   message View {
     option (pgde.form.node).type = view;
-    uint32 id = 1;
+    uint32 id = 1 [ (pgde.form.id) = true ];
     string name = 3;
   }
 
-  uint32 id = 1;
+  uint32 id = 1 [ (pgde.form.id) = true ];
   // @inject_tag: toml:",omitempty"
   bool disabled = 2;
   // @inject_tag: toml:",omitempty"
@@ -184,18 +179,16 @@ message IpfsServer {
 
 message FileServer {
   option (pgde.form.node) = {
-    type : leaf
+    type : leaf,
   };
-
-  message Id { uint32 id = 1; }
 
   message View {
     option (pgde.form.node).type = view;
-    uint32 id = 1;
+    uint32 id = 1 [ (pgde.form.id) = true ];
     string name = 3;
   }
 
-  uint32 id = 1;
+  uint32 id = 1 [ (pgde.form.id) = true ];
   // @inject_tag: toml:",omitempty"
   bool disabled = 2;
   // @inject_tag: toml:",omitempty"
@@ -214,18 +207,16 @@ message FileServer {
 
 message HttpProxyServer {
   option (pgde.form.node) = {
-    type : leaf
+    type : leaf,
   };
-
-  message Id { uint32 id = 1; }
 
   message View {
     option (pgde.form.node).type = view;
-    uint32 id = 1;
+    uint32 id = 1 [ (pgde.form.id) = true ];
     string name = 3;
   }
 
-  uint32 id = 1;
+  uint32 id = 1 [ (pgde.form.id) = true ];
   // @inject_tag: toml:",omitempty"
   bool disabled = 2;
   // @inject_tag: toml:",omitempty"
@@ -258,18 +249,16 @@ message ServerView {
 
 message AdpRouter {
   option (pgde.form.node) = {
-    type : leaf
+    type : leaf,
   };
-
-  message Id { uint32 id = 1; }
 
   message View {
     option (pgde.form.node).type = view;
-    uint32 id = 1;
+    uint32 id = 1 [ (pgde.form.id) = true ];
     string name = 3;
   }
 
-  uint32 id = 1;
+  uint32 id = 1 [ (pgde.form.id) = true ];
   // @inject_tag: toml:",omitempty"
   bool disabled = 2;
   string name = 3 [ (validate.rules).string.hostname = true ];
@@ -297,18 +286,16 @@ message AdpRouter {
 
 message IPNetRouter {
   option (pgde.form.node) = {
-    type : leaf
+    type : leaf,
   };
-
-  message Id { uint32 id = 1; }
 
   message View {
     option (pgde.form.node).type = view;
-    uint32 id = 1;
+    uint32 id = 1 [ (pgde.form.id) = true ];
     string name = 3;
   }
 
-  uint32 id = 1;
+  uint32 id = 1 [ (pgde.form.id) = true ];
   // @inject_tag: toml:",omitempty"
   bool disabled = 2;
   string name = 3 [ (validate.rules).string.hostname = true ];
@@ -346,12 +333,9 @@ message RouterUseView {
 
   // the dst element, users pass the widget as input argument
   message Element {
-    option (pgde.form.node).type = element;
-
-    message Id {
-      uint32 id = 1;
-      Type type = 2;
-    }
+    option (pgde.form.node) = {
+      type : element,
+    };
 
     enum Type {
       invalid = 0;
@@ -359,7 +343,7 @@ message RouterUseView {
       ipnet = 2;
     }
 
-    uint32 id = 1;
+    uint32 id = 1 [ (pgde.form.id) = true ];
     Type type = 2;
     string name = 3;
     int64 rank = 4;
@@ -385,8 +369,6 @@ message Config {
     type : entry
   };
 
-  message Id { uint32 id = 1; }
-
   Basic.TypeName basic = 1 [ (validate.rules).message.required = true ];
   Ipfs.TypeName ipfs = 2 [ (pgde.form.entryField).form.remove = true ];
 
@@ -395,7 +377,7 @@ message Config {
     search : true,
     remove : false,
   } ];
-  Log.View logs = 4 [ (pgde.form.entryField).list = {
+  repeated Log.View logs = 4 [ (pgde.form.entryField).list = {
     pager : true,
     rows : 20,
     add : true,
@@ -411,6 +393,7 @@ message Config {
     edit : true,
     remove : true,
     search : true,
+    groupByType : true,
   } ];
 
   repeated AdpRouter.View adps = 6 [ (pgde.form.entryField).list = {
@@ -440,9 +423,9 @@ message Config {
           pager : true,
           rows : 20,
           add : true,
-          edit : true,
           remove : true,
           search : true,
+          rank : true,
         }
       } ];
 }

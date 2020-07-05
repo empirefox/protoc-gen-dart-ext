@@ -6,7 +6,10 @@ import (
 
 func TestRenderImports(t *testing.T) {
 	d := NewDart()
-	im := NewDefaultImportManager(d, "pkg/a.dart")
+	im, err := NewDefaultImportManager(d, "pkg/a.dart")
+	if err != nil {
+		t.Fatalf("create ImportManager err: %v", err)
+	}
 
 	collectionLib := im.Import("dart:collection")
 	materialLib := im.Import("package:flutter/material.dart")

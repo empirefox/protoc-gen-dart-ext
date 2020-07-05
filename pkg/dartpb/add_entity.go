@@ -3,6 +3,7 @@ package dartpb
 import (
 	"fmt"
 
+	"github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/form"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/format"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/l10n"
 	"github.com/empirefox/protoc-gen-dart-ext/pkg/pgde/zero"
@@ -11,6 +12,15 @@ import (
 )
 
 func (f *File) addMessage(pgsNty pgs.Message) error {
+	rpcNty := new(RPCMessage)
+	isRPC, err := pgsNty.Extension(form.E_Node, &rpcNty.Extension)
+	if err != nil {
+		return err
+	}
+	if !isRPC {
+		rpcNty = nil
+	}
+
 	zeroDisabled, err := ZeroDisabled(pgsNty)
 	if err != nil {
 		return err
@@ -36,6 +46,7 @@ func (f *File) addMessage(pgsNty pgs.Message) error {
 		},
 		Pgs:   pgsNty,
 		Names: names,
+		RPC:   rpcNty,
 		Zero: &ZeroMessage{
 			ImportManagerCommonFiles: f.Zeros.ImportManager,
 			Disabled:                 zeroDisabled,
@@ -47,6 +58,9 @@ func (f *File) addMessage(pgsNty pgs.Message) error {
 		},
 	}
 
+	if isRPC {
+		rpcNty.Message = nty
+	}
 	nty.Zero.Message = nty
 	l10nNty.Message = nty
 	nty.Validate.Message = nty
@@ -69,9 +83,31 @@ func (f *File) addMessage(pgsNty pgs.Message) error {
 	return nil
 }
 
-func (msg *Message) addField(pgsToOneOf map[pgs.OneOf]*OneOf, pgsNty pgs.Field) error {
+func (msg *Message) addField(pgsToOneOf map[pgs.OneOf]*OneOf, pgsNty pgs.Field) (err error) {
+	rpcNty := new(RPCField)
+	var isRPC bool
+	if msg.RPC != nil {
+		if msg.RPC.IsEntry() {
+			isRPC, err = pgsNty.Extension(form.E_EntryField, &rpcNty.EntryExt)
+			if err != nil {
+				return err
+			}
+			if rpcNty.EntryExt.Is == nil {
+				isRPC, err = msg.File.RPCS.checkFieldType(pgsNty, form.Node_typeName)
+			}
+		} else if msg.RPC.IsLeaf() {
+			isRPC, err = pgsNty.Extension(form.E_Field, &rpcNty.LeafExt)
+		}
+		if err != nil {
+			return err
+		}
+	}
+	if !isRPC {
+		rpcNty = nil
+	}
+
 	zeroNty := ZeroField{ImportManagerCommonFiles: msg.File.Zeros.ImportManager}
-	_, err := pgsNty.Extension(zero.E_To, &zeroNty.Extension)
+	_, err = pgsNty.Extension(zero.E_To, &zeroNty.Extension)
 	if err != nil {
 		return err
 	}
@@ -122,6 +158,7 @@ func (msg *Message) addField(pgsToOneOf map[pgs.OneOf]*OneOf, pgsNty pgs.Field) 
 		Pgs:     pgsNty,
 		Names:   names,
 		Message: msg,
+		RPC:     rpcNty,
 		Zero:    &zeroNty,
 		L10n:    &l10nNty,
 		Format:  &fmtNty,
@@ -131,6 +168,9 @@ func (msg *Message) addField(pgsToOneOf map[pgs.OneOf]*OneOf, pgsNty pgs.Field) 
 		},
 	}
 
+	if isRPC {
+		rpcNty.Field = nty
+	}
 	zeroNty.Field = nty
 	l10nNty.Entity = nty
 	fmtNty.Field = nty

@@ -79,6 +79,8 @@ func (q Qualifier) Index(simpleName Qualifier) Qualifier {
 	return q + "[" + simpleName + "]"
 }
 
+func (q Qualifier) PayloadSuffix() Qualifier { return q + "Payload" }
+
 // any_kind_of_string
 func (q Qualifier) ToSnake() Qualifier {
 	return Qualifier(strcase.ToSnake(q.String()))

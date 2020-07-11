@@ -200,6 +200,12 @@ protoc_hybrid_l10n:
 	@dartfmt -w ${dart_test}/pgde/hybrid/*.l10n.dart
 
 
+.PHONY: protoc_hybrid_rpc
+protoc_hybrid_rpc:
+	@protoc -I${makefile_dir} -I${pgv_path} \
+		--dart-ext_out=rpc:${makefile_dir} ${hybrid_path}/config.proto
+	@clang-format -i ${hybrid_path}/config.rpc.proto
+
 .PHONY: protoc_hybrid_zero
 protoc_hybrid_zero:
 	@protoc -I${makefile_dir} -I${pgv_path} \

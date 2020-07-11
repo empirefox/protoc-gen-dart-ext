@@ -34,8 +34,6 @@ message Basic {
     type : leaf
   };
 
-  message TypeName { option (pgde.form.node).type = typeName; }
-
   // @inject_tag: toml:",omitempty"
   string version = 2
       [ (pgde.l10n.field).ignore = true, (pgde.form.field).hide = true ];
@@ -75,8 +73,6 @@ message Ipfs {
   option (pgde.form.node) = {
     type : leaf
   };
-
-  message TypeName { option (pgde.form.node).type = typeName; }
 
   // @inject_tag: toml:",omitempty"
   bytes fakeApiListenIp = 2 [
@@ -331,20 +327,20 @@ message IPNetRouter {
 message RouterUseView {
   option (pgde.form.node).type = view;
 
+  message Id {
+    oneof is {
+      uint32 adp = 1;
+      uint32 ipnet = 2;
+    }
+  }
+
   // the dst element, users pass the widget as input argument
   message Element {
     option (pgde.form.node) = {
       type : element,
     };
 
-    enum Type {
-      invalid = 0;
-      adp = 1;
-      ipnet = 2;
-    }
-
-    uint32 id = 1 [ (pgde.form.id) = true ];
-    Type type = 2;
+    Id id = 1;
     string name = 3;
     int64 rank = 4;
   }
@@ -369,8 +365,8 @@ message Config {
     type : entry
   };
 
-  Basic.TypeName basic = 1 [ (validate.rules).message.required = true ];
-  Ipfs.TypeName ipfs = 2 [ (pgde.form.entryField).form.remove = true ];
+  Basic basic = 1 [ (validate.rules).message.required = true ];
+  Ipfs ipfs = 2 [ (pgde.form.entryField).form.remove = true ];
 
   Log.View log = 3 [ (pgde.form.entryField).selectOne = {
     pager : true,

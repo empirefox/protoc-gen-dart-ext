@@ -262,6 +262,7 @@ message ChooseList {
     bool pager = 2;
     uint32 rows = 3 [ (zero.to).uint32 = 10 ];
     bool add = 4;
+    bool addMany = 5;
     bool remove = 6;
     bool removeAll = 7;
     bool unique = 8;

@@ -17,6 +17,110 @@ type RPCSUtil struct {
 	Imports *treeset.Set
 }
 
+func (r *RPCSUtil) TypeIsElement(f pgs.Field) (ok bool, err error) {
+	v, err := r.TypeOf(f)
+	if err != nil {
+		return false, err
+	}
+	return r.CheckNodeType(v, form.Node_element)
+}
+
+func (r *RPCSUtil) TypeHasElement(f pgs.Field) (ok bool, err error) {
+	v, err := r.TypeOf(f)
+	if err != nil {
+		return false, err
+	}
+	return r.HasElement(v)
+}
+
+func (r *RPCSUtil) HasElement(v pgs.Message) (ok bool, err error) {
+	for _, c := range v.Messages() {
+		ok, err = r.CheckNodeType(c, form.Node_element)
+		if err != nil || ok {
+			return
+		}
+	}
+	return
+}
+
+func (r *RPCSUtil) TypeIsGroupView(f pgs.Field) (ok bool, err error) {
+	v, err := r.TypeOf(f)
+	if err != nil {
+		return false, err
+	}
+	return r.IsGroupView(v)
+}
+
+func (r *RPCSUtil) IsGroupView(v pgs.Message) (ok bool, err error) {
+	ok, err = r.IsView(v)
+	if !ok {
+		return
+	}
+
+	return r.IsGroup(v), nil
+}
+
+func (r *RPCSUtil) IsView(v pgs.Message) (ok bool, err error) {
+	var ext form.Node
+	ok, err = v.Extension(form.E_Node, &ext)
+	if !ok || err != nil {
+		return
+	}
+
+	return ext.Type == form.Node_view, nil
+}
+
+func (r *RPCSUtil) Payload(f pgs.Field) (dart.Qualifier, error) {
+	dt, err := r.TypeOf(f)
+	if err != nil {
+		return "", err
+	}
+
+	var ext form.Node
+	ok, err := dt.Extension(form.E_Node, &ext)
+	if !ok || err != nil {
+		return "", fmt.Errorf("Field type is not a node: %s", f.FullyQualifiedName())
+	}
+
+	switch ext.Type {
+	case form.Node_leaf:
+		return r.ProtoRef(dt).PayloadSuffix(), nil
+	case form.Node_view:
+		if r.IsGroup(dt) {
+			return r.ProtoRef(dt).PayloadSuffix(), nil
+		}
+
+		p, err := r.ParentMessage(dt)
+		if err != nil {
+			return "", err
+		}
+
+		return r.ProtoRef(p).PayloadSuffix(), nil
+	}
+
+	return "", fmt.Errorf("Payload only works for leaf, view: %s",
+		f.FullyQualifiedName())
+}
+
+func (r *RPCSUtil) ParentMessageWithType(embed pgs.Message, nt form.Node_Type) (pgs.Message, error) {
+	p, err := r.ParentMessage(embed)
+	if err != nil {
+		return nil, err
+	}
+
+	ok, err := r.CheckNodeType(p, nt)
+	if err != nil {
+		return nil, err
+	}
+
+	if !ok {
+		return nil, fmt.Errorf("Parent must be type of %s: %s", nt,
+			embed.FullyQualifiedName())
+	}
+
+	return p, nil
+}
+
 func (r *RPCSUtil) ParentMessage(embed pgs.Message) (pgs.Message, error) {
 	p, ok := embed.Parent().(pgs.Message)
 	if !ok {
@@ -24,6 +128,89 @@ func (r *RPCSUtil) ParentMessage(embed pgs.Message) (pgs.Message, error) {
 			embed.FullyQualifiedName())
 	}
 	return p, nil
+}
+
+func (r *RPCSUtil) TypeNameOfFieldType(pf pgs.Field) (dart.Qualifier, error) {
+	t, err := r.ViewTypeOf(pf)
+	if err != nil {
+		return "", err
+	}
+
+	t, err = r.ParentMessageWithType(t, form.Node_leaf)
+	if err != nil {
+		return "", err
+	}
+
+	return r.ProtoRef(t), nil
+}
+
+func (r *RPCSUtil) ViewNameOfFieldType(pf pgs.Field) (dart.Qualifier, error) {
+	t, err := r.ViewTypeOf(pf)
+	if err != nil {
+		return "", err
+	}
+
+	return r.ProtoRef(t), nil
+}
+
+func (r *RPCSUtil) ViewTypeOf(pf pgs.Field) (pgs.Message, error) {
+	embed, err := r.TypeOf(pf)
+	if err != nil {
+		return nil, err
+	}
+
+	ok, err := r.IsSelectMany(pf)
+	if err != nil {
+		return nil, err
+	}
+	if ok {
+		return r.ParentMessageWithType(embed, form.Node_view)
+	}
+
+	ok, err = r.CheckNodeType(embed, form.Node_view)
+	if err != nil {
+		return nil, err
+	}
+
+	if !ok {
+		return nil, fmt.Errorf("Type must be %s: %s", form.Node_view,
+			pf.FullyQualifiedName())
+	}
+
+	return embed, nil
+}
+
+func (r *RPCSUtil) hasView(m pgs.Message) (bool, error) {
+	for _, c := range m.Messages() {
+		var ext form.Node
+		_, err := c.Extension(form.E_Node, &ext)
+		if err != nil {
+			return false, err
+		}
+
+		if ext.Type == form.Node_view {
+			return true, nil
+		}
+	}
+	return false, nil
+}
+
+const ElementName = "Element"
+
+func (r *RPCSUtil) findElement(m pgs.Message) pgs.Message {
+	return r.findEmbed(m, ElementName)
+}
+func (r *RPCSUtil) findEmbedId(m pgs.Message) pgs.Message {
+	return r.findEmbed(m, "Id")
+}
+
+func (r *RPCSUtil) findEmbed(m pgs.Message, name dart.Qualifier) pgs.Message {
+	for _, mm := range m.Messages() {
+		if dart.Qualifier(mm.Name()) == name {
+			return mm
+		}
+	}
+	return nil
 }
 
 func (r *RPCSUtil) findOneof(m pgs.Message, ooName pgs.Name) (pgs.OneOf, error) {
@@ -139,10 +326,10 @@ func (r *RPCSUtil) IdTypeOfViewOrType(m pgs.Message) (dart.Qualifier, error) {
 		return "", fmt.Errorf("No id found for: %s", m.FullyQualifiedName())
 	}
 
-	return r.IdType(pf)
+	return r.ProtoType(pf)
 }
 
-func (r *RPCSUtil) IdType(pf pgs.Field) (dart.Qualifier, error) {
+func (r *RPCSUtil) ProtoType(pf pgs.Field) (dart.Qualifier, error) {
 	n := pf.Type().ProtoType().String()
 	if strings.HasPrefix(n, "TYPE_") {
 		n = strings.ToLower(n[5:])
@@ -258,6 +445,14 @@ func (r *RPCSUtil) ProtoRefFQN(fqn dart.Qualifier) (dart.Qualifier, error) {
 
 	r.AddImportStr(pf.Path())
 	return fqn, nil
+}
+
+func (r *RPCSUtil) ProtoRefFieldType(f pgs.Field) (dart.Qualifier, error) {
+	m, err := r.TypeOf(f)
+	if err != nil {
+		return "", err
+	}
+	return r.ProtoRef(m), nil
 }
 
 func (r *RPCSUtil) ProtoRef(m pgs.Message) dart.Qualifier {

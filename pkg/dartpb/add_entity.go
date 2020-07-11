@@ -60,6 +60,24 @@ func (f *File) addMessage(pgsNty pgs.Message) error {
 
 	if isRPC {
 		rpcNty.Message = nty
+		if rpcNty.IsLeaf() {
+		}
+		if rpcNty.IsView() {
+			rpcNty.ViewGroup, _ = f.RPCS.findOneof(pgsNty, "group")
+			if rpcNty.ViewGroup != nil {
+				hasElement, err := f.RPCS.HasElement(pgsNty)
+				if err != nil {
+					return err
+				}
+				if hasElement {
+					rpcNty.IdMessage = f.RPCS.findEmbedId(pgsNty)
+					if rpcNty.IdMessage == nil {
+						return fmt.Errorf("Group view with Element must have Id: %s",
+							pgsNty.FullyQualifiedName())
+					}
+				}
+			}
+		}
 	}
 	nty.Zero.Message = nty
 	l10nNty.Message = nty
@@ -104,6 +122,16 @@ func (msg *Message) addField(pgsToOneOf map[pgs.OneOf]*OneOf, pgsNty pgs.Field) 
 	}
 	if !isRPC {
 		rpcNty = nil
+	}
+
+	if (msg.RPC.IsLeaf() || msg.RPC.IsView()) && msg.RPC.IdField == nil {
+		ok, err := msg.File.RPCS.IsId(pgsNty)
+		if err != nil {
+			return err
+		}
+		if ok {
+			msg.RPC.IdField = pgsNty
+		}
 	}
 
 	zeroNty := ZeroField{ImportManagerCommonFiles: msg.File.Zeros.ImportManager}

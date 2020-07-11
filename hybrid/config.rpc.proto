@@ -8,149 +8,112 @@ import "google/protobuf/empty.proto";
 import "hybrid/config.proto";
 import "pgde/error/error.proto";
 
-service IPNetRouterMatchedService {
-  rpc Src(google.protobuf.Empty) returns (IPNetRouterMatchedPayload.SrcResp);
-  rpc Select(IPNetRouterMatchedPayload.SrcId) returns (pgde.error.BackendError);
-}
-
-message IPNetRouterMatchedPayload {
-  message SrcId {
-    oneof is {
-      uint32 ipfs = 1;
-      uint32 file = 2;
-      uint32 http = 3;
-    }
-  }
-
-  message SrcResp {
-    repeated ServerView data = 1;
-    pgde.error.BackendError error = 2;
-  }
-}
-
-service IPNetRouterUnmatchedService {
-  rpc Src(google.protobuf.Empty) returns (IPNetRouterUnmatchedPayload.SrcResp);
-  rpc Select(IPNetRouterUnmatchedPayload.SrcId)
-      returns (pgde.error.BackendError);
-}
-
-message IPNetRouterUnmatchedPayload {
-  message SrcId {
-    oneof is {
-      uint32 ipfs = 1;
-      uint32 file = 2;
-      uint32 http = 3;
-    }
-  }
-
-  message SrcResp {
-    repeated ServerView data = 1;
-    pgde.error.BackendError error = 2;
-  }
-}
-
-service IPNetRouterFileTestService {
-  rpc Src(google.protobuf.Empty) returns (IPNetRouterFileTestPayload.SrcResp);
-  rpc Select(IPNetRouterFileTestPayload.SrcId)
-      returns (pgde.error.BackendError);
-}
-
-message IPNetRouterFileTestPayload {
-  message SrcId { uint32 id = 1; }
-
-  message SrcResp {
-    repeated FileServer.View data = 1;
-    pgde.error.BackendError error = 2;
-  }
-}
-
-service ConfigBasicService {
-  rpc Get(google.protobuf.Empty) returns (ConfigBasicPayload.GetResp);
-}
-
-message ConfigBasicPayload {
+message BasicPayload {
   message GetResp {
-    Basic.TypeName data = 1;
+    Basic data = 1;
     pgde.error.BackendError error = 2;
   }
 }
 
-service ConfigIpfsService {
-  rpc Get(google.protobuf.Empty) returns (ConfigIpfsPayload.GetResp);
-}
-
-message ConfigIpfsPayload {
+message IpfsPayload {
   message GetResp {
-    Ipfs.TypeName data = 1;
+    Ipfs data = 1;
     pgde.error.BackendError error = 2;
   }
 }
 
-service ConfigLogService {
-  rpc Src(google.protobuf.Empty) returns (ConfigLogPayload.SrcResp);
-  rpc Select(ConfigLogPayload.SrcId) returns (pgde.error.BackendError);
-}
-
-message ConfigLogPayload {
+message LogPayload {
   message SrcId { uint32 id = 1; }
-
-  message SrcResp {
-    repeated Log.View data = 1;
-    pgde.error.BackendError error = 2;
-  }
-}
-
-service ConfigLogsService {
-  rpc Src(google.protobuf.Empty) returns (ConfigLogsPayload.SrcResp);
-  rpc Get(ConfigLogsPayload.SrcId) returns (ConfigLogsPayload.GetResp);
-  rpc Add(Log) returns (ConfigLogsPayload.AddResp);
-  rpc Save(Log) returns (pgde.error.BackendError);
-  rpc Remove(ConfigLogsPayload.SrcId) returns (pgde.error.BackendError);
-}
-
-message ConfigLogsPayload {
-  message SrcId { uint32 id = 1; }
-
-  message SrcResp {
-    repeated Log.View data = 1;
-    pgde.error.BackendError error = 2;
-  }
   message GetResp {
     Log data = 1;
     pgde.error.BackendError error = 2;
   }
-  message AddResp {
-    Log.View data = 1;
-    pgde.error.BackendError error = 2;
+  message View {
+    message SrcResp {
+      repeated Log.View data = 1;
+      pgde.error.BackendError error = 2;
+    }
+    message AddResp {
+      Log.View data = 1;
+      pgde.error.BackendError error = 2;
+    }
   }
 }
 
-service ConfigServersService {
-  rpc Src(google.protobuf.Empty) returns (ConfigServersPayload.SrcResp);
-  rpc Get(ConfigServersPayload.SrcId) returns (ConfigServersPayload.GetResp);
-  rpc Add(ConfigServersPayload.Element) returns (ConfigServersPayload.AddResp);
-  rpc Save(ConfigServersPayload.Element) returns (pgde.error.BackendError);
-  rpc Remove(ConfigServersPayload.SrcId) returns (pgde.error.BackendError);
+message IpfsServerPayload {
+  message SrcId { uint32 id = 1; }
+  message GetResp {
+    IpfsServer data = 1;
+    pgde.error.BackendError error = 2;
+  }
+  message View {
+    message SrcResp {
+      repeated IpfsServer.View data = 1;
+      pgde.error.BackendError error = 2;
+    }
+    message AddResp {
+      IpfsServer.View data = 1;
+      pgde.error.BackendError error = 2;
+    }
+  }
 }
 
-message ConfigServersPayload {
-  message SrcId {
-    oneof is {
-      uint32 ipfs = 1;
-      uint32 file = 2;
-      uint32 http = 3;
+message FileServerPayload {
+  message SrcId { uint32 id = 1; }
+  message GetResp {
+    FileServer data = 1;
+    pgde.error.BackendError error = 2;
+  }
+  message View {
+    message SrcResp {
+      repeated FileServer.View data = 1;
+      pgde.error.BackendError error = 2;
     }
+    message AddResp {
+      FileServer.View data = 1;
+      pgde.error.BackendError error = 2;
+    }
+  }
+}
+
+message HttpProxyServerPayload {
+  message SrcId { uint32 id = 1; }
+  message GetResp {
+    HttpProxyServer data = 1;
+    pgde.error.BackendError error = 2;
+  }
+  message View {
+    message SrcResp {
+      repeated HttpProxyServer.View data = 1;
+      pgde.error.BackendError error = 2;
+    }
+    message AddResp {
+      HttpProxyServer.View data = 1;
+      pgde.error.BackendError error = 2;
+    }
+  }
+}
+
+message ServerViewPayload {
+  message SrcId {
+    uint32 ipfs = 1;
+    uint32 file = 2;
+    uint32 http = 3;
+  }
+  message SrcResp {
+    repeated ServerView data = 1;
+    pgde.error.BackendError error = 2;
   }
   message Group {
     repeated IpfsServer.View ipfs = 1;
     repeated FileServer.View file = 2;
     repeated HttpProxyServer.View http = 3;
   }
-  message SrcResp {
+  message GroupResp {
     Group data = 1;
     pgde.error.BackendError error = 2;
   }
-  message Element {
+  message SrcElement {
     oneof is {
       IpfsServer ipfs = 1;
       FileServer file = 2;
@@ -158,7 +121,7 @@ message ConfigServersPayload {
     }
   }
   message GetResp {
-    Element data = 1;
+    SrcElement data = 1;
     pgde.error.BackendError error = 2;
   }
   message AddResp {
@@ -167,92 +130,140 @@ message ConfigServersPayload {
   }
 }
 
-service ConfigAdpsService {
-  rpc Src(google.protobuf.Empty) returns (ConfigAdpsPayload.SrcResp);
-  rpc Get(ConfigAdpsPayload.SrcId) returns (ConfigAdpsPayload.GetResp);
-  rpc Add(AdpRouter) returns (ConfigAdpsPayload.AddResp);
-  rpc Save(AdpRouter) returns (pgde.error.BackendError);
-  rpc Remove(ConfigAdpsPayload.SrcId) returns (pgde.error.BackendError);
-}
-
-message ConfigAdpsPayload {
+message AdpRouterPayload {
   message SrcId { uint32 id = 1; }
-
-  message SrcResp {
-    repeated AdpRouter.View data = 1;
-    pgde.error.BackendError error = 2;
-  }
   message GetResp {
     AdpRouter data = 1;
     pgde.error.BackendError error = 2;
   }
-  message AddResp {
-    AdpRouter.View data = 1;
-    pgde.error.BackendError error = 2;
+  message View {
+    message SrcResp {
+      repeated AdpRouter.View data = 1;
+      pgde.error.BackendError error = 2;
+    }
+    message AddResp {
+      AdpRouter.View data = 1;
+      pgde.error.BackendError error = 2;
+    }
   }
 }
 
-service ConfigIpnetsService {
-  rpc Src(google.protobuf.Empty) returns (ConfigIpnetsPayload.SrcResp);
-  rpc Get(ConfigIpnetsPayload.SrcId) returns (ConfigIpnetsPayload.GetResp);
-  rpc Add(IPNetRouter) returns (ConfigIpnetsPayload.AddResp);
-  rpc Save(IPNetRouter) returns (pgde.error.BackendError);
-  rpc Remove(ConfigIpnetsPayload.SrcId) returns (pgde.error.BackendError);
-}
-
-message ConfigIpnetsPayload {
+message IPNetRouterPayload {
   message SrcId { uint32 id = 1; }
-
-  message SrcResp {
-    repeated IPNetRouter.View data = 1;
-    pgde.error.BackendError error = 2;
-  }
   message GetResp {
     IPNetRouter data = 1;
     pgde.error.BackendError error = 2;
   }
-  message AddResp {
-    IPNetRouter.View data = 1;
-    pgde.error.BackendError error = 2;
-  }
-}
-
-service ConfigRoutersService {
-  rpc Src(google.protobuf.Empty) returns (ConfigRoutersPayload.SrcResp);
-  rpc Select(ConfigRoutersPayload.SrcId)
-      returns (ConfigRoutersPayload.SelectResp);
-
-  rpc Dst(google.protobuf.Empty) returns (ConfigRoutersPayload.DstResp);
-  rpc Remove(ConfigRoutersPayload.DstId) returns (pgde.error.BackendError);
-}
-
-message ConfigPayload {
-	message ServerView {
-		message Id {}
-		message Element {}
-	}
-
-}
-
-message ConfigRoutersPayload {
-  message SrcId {
-    oneof is {
-      uint32 adp = 1;
-      uint32 ipnet = 2;
+  message View {
+    message SrcResp {
+      repeated IPNetRouter.View data = 1;
+      pgde.error.BackendError error = 2;
+    }
+    message AddResp {
+      IPNetRouter.View data = 1;
+      pgde.error.BackendError error = 2;
     }
   }
+}
 
+service IPNetRouterMatchedService {
+  rpc Src(google.protobuf.Empty) returns (ServerViewPayload.SrcResp);
+  rpc Select(ServerViewPayload.SrcId) returns (pgde.error.BackendError);
+}
+
+service IPNetRouterUnmatchedService {
+  rpc Src(google.protobuf.Empty) returns (ServerViewPayload.SrcResp);
+  rpc Select(ServerViewPayload.SrcId) returns (pgde.error.BackendError);
+}
+
+service IPNetRouterFileTestService {
+  rpc Src(google.protobuf.Empty) returns (FileServerPayload.View.SrcResp);
+  rpc Select(FileServerPayload.SrcId) returns (pgde.error.BackendError);
+}
+
+message RouterUseViewPayload {
   message SrcResp {
     repeated RouterUseView data = 1;
+    pgde.error.BackendError error = 2;
+  }
+  message Group {
+    repeated AdpRouter.View adp = 1;
+    repeated IPNetRouter.View ipnet = 2;
+  }
+  message GroupResp {
+    Group data = 1;
+    pgde.error.BackendError error = 2;
+  }
+  message SrcElement {
+    oneof is {
+      AdpRouter adp = 1;
+      IPNetRouter ipnet = 2;
+    }
+  }
+  message GetResp {
+    SrcElement data = 1;
+    pgde.error.BackendError error = 2;
+  }
+  message AddResp {
+    RouterUseView data = 1;
+    pgde.error.BackendError error = 2;
+  }
+  message SrcIds { repeated RouterUseView.Id ids = 1; }
+  message DstResp {
+    repeated RouterUseView.Element data = 1;
     pgde.error.BackendError error = 2;
   }
   message SelectResp {
     RouterUseView.Element data = 1;
     pgde.error.BackendError error = 2;
   }
-  message DstResp {
-    repeated RouterUseView.Element data = 1;
-    pgde.error.BackendError error = 2;
-  }
-  message DstId { uint32 id = 1; }
+}
+
+service ConfigIpfsService {
+  rpc Get(google.protobuf.Empty) returns (IpfsPayload.GetResp);
+}
+
+service ConfigLogService {
+  rpc Src(google.protobuf.Empty) returns (LogPayload.View.SrcResp);
+  rpc Select(LogPayload.SrcId) returns (pgde.error.BackendError);
+}
+
+service ConfigLogsService {
+  rpc Src(google.protobuf.Empty) returns (LogPayload.View.SrcResp);
+  rpc Get(LogPayload.SrcId) returns (LogPayload.GetResp);
+  rpc Add(Log.View) returns (LogPayload.View.AddResp);
+  rpc Save(Log.View) returns (pgde.error.BackendError);
+  rpc Remove(LogPayload.SrcId) returns (pgde.error.BackendError);
+}
+
+service ConfigServersService {
+  rpc Src(google.protobuf.Empty) returns (ServerViewPayload.SrcResp);
+  rpc Get(ServerViewPayload.SrcId) returns (ServerViewPayload.GetResp);
+  rpc Add(ServerViewPayload.SrcElement) returns (ServerViewPayload.AddResp);
+  rpc Save(ServerViewPayload.SrcElement) returns (pgde.error.BackendError);
+  rpc Remove(ServerViewPayload.SrcId) returns (pgde.error.BackendError);
+}
+
+service ConfigAdpsService {
+  rpc Src(google.protobuf.Empty) returns (AdpRouterPayload.View.SrcResp);
+  rpc Get(AdpRouterPayload.SrcId) returns (AdpRouterPayload.GetResp);
+  rpc Add(AdpRouter.View) returns (AdpRouterPayload.View.AddResp);
+  rpc Save(AdpRouter.View) returns (pgde.error.BackendError);
+  rpc Remove(AdpRouterPayload.SrcId) returns (pgde.error.BackendError);
+}
+
+service ConfigIpnetsService {
+  rpc Src(google.protobuf.Empty) returns (IPNetRouterPayload.View.SrcResp);
+  rpc Get(IPNetRouterPayload.SrcId) returns (IPNetRouterPayload.GetResp);
+  rpc Add(IPNetRouter.View) returns (IPNetRouterPayload.View.AddResp);
+  rpc Save(IPNetRouter.View) returns (pgde.error.BackendError);
+  rpc Remove(IPNetRouterPayload.SrcId) returns (pgde.error.BackendError);
+}
+
+service ConfigRoutersService {
+  rpc Src(google.protobuf.Empty) returns (RouterUseViewPayload.SrcResp);
+  rpc Select(RouterUseView.Id) returns (RouterUseViewPayload.SelectResp);
+
+  rpc Dst(google.protobuf.Empty) returns (RouterUseViewPayload.DstResp);
+  rpc Remove(RouterUseView.Id) returns (pgde.error.BackendError);
 }

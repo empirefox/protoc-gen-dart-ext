@@ -7,16 +7,16 @@ import (
 	pgs "github.com/lyft/protoc-gen-star"
 )
 
-func (r *RPCS) checkHasElement(m pgs.Message, name, ooName pgs.Name) error {
+func (r *RPCSUtil) checkHasGroupElement(m pgs.Message, name, ooName pgs.Name) error {
 	for _, mm := range m.Messages() {
 		if mm.Name() == name {
-			return r.checkHasElementType(mm, ooName)
+			return r.checkHasGroupElementType(mm, ooName)
 		}
 	}
 	return fmt.Errorf("%s not found: %s", name, m.FullyQualifiedName())
 }
 
-func (r *RPCS) checkHasElementType(m pgs.Message, ooName pgs.Name) error {
+func (r *RPCSUtil) checkHasGroupElementType(m pgs.Message, ooName pgs.Name) error {
 	ft, err := r.findFieldTypeFrom(m, "type")
 	if err != nil {
 		return err
@@ -34,7 +34,7 @@ func (r *RPCS) checkHasElementType(m pgs.Message, ooName pgs.Name) error {
 	return fmt.Errorf("Type not found: %s", m.FullyQualifiedName())
 }
 
-func (r *RPCS) findFieldTypeFrom(m pgs.Message, n pgs.Name) (pgs.FieldType, error) {
+func (r *RPCSUtil) findFieldTypeFrom(m pgs.Message, n pgs.Name) (pgs.FieldType, error) {
 	for _, f := range m.NonOneOfFields() {
 		if f.Name() == n {
 			return f.Type(), nil
@@ -43,7 +43,7 @@ func (r *RPCS) findFieldTypeFrom(m pgs.Message, n pgs.Name) (pgs.FieldType, erro
 	return nil, fmt.Errorf("field %s not found: %s", n, m.FullyQualifiedName())
 }
 
-func (r *RPCS) checkElementType(m pgs.Message, e pgs.Enum, ooName pgs.Name) error {
+func (r *RPCSUtil) checkElementType(m pgs.Message, e pgs.Enum, ooName pgs.Name) error {
 	// from source
 	vs := e.Values()
 	if vs[0].Name() != "invalid" {
@@ -68,7 +68,7 @@ func (r *RPCS) checkElementType(m pgs.Message, e pgs.Enum, ooName pgs.Name) erro
 	return nil
 }
 
-func (r *RPCS) checkHasOOAllFieldsType(m pgs.Message, ooName pgs.Name, rts ...form.Node_Type) error {
+func (r *RPCSUtil) checkHasOOAllFieldsType(m pgs.Message, ooName pgs.Name, rts ...form.Node_Type) error {
 	oo, err := r.findOneof(m, ooName)
 	if err != nil {
 		return err
@@ -85,7 +85,7 @@ func (r *RPCS) checkHasOOAllFieldsType(m pgs.Message, ooName pgs.Name, rts ...fo
 	return nil
 }
 
-func (r *RPCS) checkOOAllFieldsType(oo pgs.OneOf, rts ...form.Node_Type) (bool, error) {
+func (r *RPCSUtil) checkOOAllFieldsType(oo pgs.OneOf, rts ...form.Node_Type) (bool, error) {
 	fs := oo.Fields()
 	if len(fs) == 0 {
 		return false, nil
@@ -102,7 +102,7 @@ func (r *RPCS) checkOOAllFieldsType(oo pgs.OneOf, rts ...form.Node_Type) (bool, 
 	return true, nil
 }
 
-func (r *RPCS) checkFieldType(f pgs.Field, rts ...form.Node_Type) (bool, error) {
+func (r *RPCSUtil) checkFieldType(f pgs.Field, rts ...form.Node_Type) (bool, error) {
 	typ := f.Type()
 	if !typ.IsEmbed() {
 		return false, fmt.Errorf("field type must be a Message: %s", f.FullyQualifiedName())
@@ -110,7 +110,7 @@ func (r *RPCS) checkFieldType(f pgs.Field, rts ...form.Node_Type) (bool, error) 
 	return r.CheckNodeType(typ.Embed(), rts...)
 }
 
-func (r *RPCS) NodeType(p pgs.Message) (form.Node_Type, error) {
+func (r *RPCSUtil) NodeType(p pgs.Message) (form.Node_Type, error) {
 	var node form.Node
 	_, err := p.Extension(form.E_Node, &node)
 	if err != nil {
@@ -119,7 +119,7 @@ func (r *RPCS) NodeType(p pgs.Message) (form.Node_Type, error) {
 	return node.Type, nil
 }
 
-func (r *RPCS) CheckNodeType(p pgs.Message, rts ...form.Node_Type) (bool, error) {
+func (r *RPCSUtil) CheckNodeType(p pgs.Message, rts ...form.Node_Type) (bool, error) {
 	nt, err := r.NodeType(p)
 	if err != nil {
 		return false, err

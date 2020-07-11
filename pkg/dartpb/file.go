@@ -109,6 +109,41 @@ func NewFile(c FileConfig) (*File, error) {
 		}
 	}
 
+	// for RPC
+	ntyByPgs := make(map[pgs.Message]*Message, len(f.Messages))
+	for _, nty := range f.Messages {
+		ntyByPgs[nty.Pgs] = nty
+	}
+	// add RPC Views, Element
+	for _, nty := range f.Messages {
+		rpcNty := nty.RPC
+		if rpcNty.IsLeaf() {
+			for _, pgsNty := range nty.Pgs.Messages() {
+				v, ok := ntyByPgs[pgsNty]
+				if ok && v.RPC.IsView() {
+					v.RPC.ParentLeaf = rpcNty
+					rpcNty.LeafViews = append(rpcNty.LeafViews, v.RPC)
+				}
+			}
+		}
+		if rpcNty.IsElement() {
+			p, ok := nty.Pgs.Parent().(pgs.Message)
+			if !ok {
+				return nil, fmt.Errorf("Element must be defined under View: %s",
+					nty.Pgs.FullyQualifiedName())
+			}
+
+			parentNty, ok := ntyByPgs[p]
+			if !ok {
+				return nil, fmt.Errorf("Element must be defined under View: %s",
+					nty.Pgs.FullyQualifiedName())
+			}
+
+			parentNty.RPC.ViewElement = rpcNty
+			nty.RPC.ParentView = parentNty.RPC
+		}
+	}
+
 	// add resources to arb using ref
 	for _, nty := range f.Messages {
 		nty.L10n.addAssetsResources()

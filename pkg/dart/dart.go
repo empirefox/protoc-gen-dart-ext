@@ -95,7 +95,6 @@ func (ns *messageNames) getUsedNames() UsedNames   { return ns.usedNames }
 type FieldNames interface {
 	Names
 	ServiceName() Qualifier
-	PayloadName() Qualifier
 	HasMethodName() Qualifier
 	ClearMethodName() Qualifier
 	EnsureMethodName() Qualifier
@@ -111,9 +110,6 @@ type fieldNames struct {
 
 func (ns *fieldNames) ServiceName() Qualifier {
 	return ns.messageName + ns.fieldName.ToCamel() + "Service"
-}
-func (ns *fieldNames) PayloadName() Qualifier {
-	return ns.messageName + ns.fieldName.ToCamel() + "Payload"
 }
 
 func (ns *fieldNames) Name() Qualifier             { return ns.fieldName }

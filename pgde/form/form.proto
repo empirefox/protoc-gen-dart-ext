@@ -61,11 +61,8 @@ message Node {
     // Id of leaf or view is for Get/Update/Remove-rpc request.
     view = 3;
 
-    // Empty message.
-    typeName = 4;
-
     // Auto detect group.
-    element = 5;
+    element = 4;
   }
 
   Type type = 1;

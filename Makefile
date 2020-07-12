@@ -1,10 +1,9 @@
-
+protoc_include := ${PROTOC_INCLUDE}
 makefile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 makefile_dir := $(shell dirname ${makefile_path})
 dart_path := $(abspath $(makefile_dir)/dart)
 test_path := $(abspath $(makefile_dir)/test)
 hybrid_path := $(abspath $(makefile_dir)/hybrid)
-google_path := $(abspath $(makefile_dir)/google)
 cmd_path := $(abspath $(makefile_dir)/cmd)
 pkg_path := $(abspath $(makefile_dir)/pkg)
 protos_path := $(abspath $(makefile_dir)/pgde)
@@ -159,23 +158,29 @@ protoc_clean:
 	rm -rf ${dart_path}/lib/form
 	rm -rf ${dart_path}/lib/test
 
+.PHONY: protoc_hybrid_rpc
+protoc_hybrid_rpc:
+	@protoc -I${makefile_dir} -I${pgv_path} \
+		--dart-ext_out=rpc:${makefile_dir} ${hybrid_path}/config.proto
+	@clang-format -i ${hybrid_path}/config.rpc.proto
+
 .PHONY: protoc_hybrid_base
 protoc_hybrid_base:
-	@protoc -I${makefile_dir} -I${pgv_path} --dart_out=:${dart_test}/pgde ${google_path}/protobuf/duration.proto
-	@protoc -I${makefile_dir} -I${pgv_path} --dart_out=:${dart_test}/pgde ${google_path}/protobuf/timestamp.proto
-	@protoc -I${makefile_dir} -I${pgv_path} --dart_out=:${dart_test}/pgde ${google_path}/protobuf/empty.proto
-	@protoc -I${makefile_dir} -I${pgv_path} --dart_out=:${dart_test}/pgde ${google_path}/protobuf/wrappers.proto
-	@protoc -I${makefile_dir} -I${pgv_path} --dart_out=:${dart_test}/pgde ${protos_path}/error/error.proto
-	@protoc -I${makefile_dir} -I${pgv_path} --dart_out=grpc:${dart_test}/pgde ${hybrid_path}/*.proto
+	@protoc -I${protoc_include} -I${makefile_dir} -I${pgv_path} --dart_out=:${dart_test}/pgde ${protoc_include}/google/protobuf/duration.proto
+	@protoc -I${protoc_include} -I${makefile_dir} -I${pgv_path} --dart_out=:${dart_test}/pgde ${protoc_include}/google/protobuf/timestamp.proto
+	@protoc -I${protoc_include} -I${makefile_dir} -I${pgv_path} --dart_out=:${dart_test}/pgde ${protoc_include}/google/protobuf/empty.proto
+	@protoc -I${protoc_include} -I${makefile_dir} -I${pgv_path} --dart_out=:${dart_test}/pgde ${protoc_include}/google/protobuf/wrappers.proto
+	@protoc -I${protoc_include} -I${makefile_dir} -I${pgv_path} --dart_out=:${dart_test}/pgde ${protos_path}/error/error.proto
+	@protoc -I${protoc_include} -I${makefile_dir} -I${pgv_path} --dart_out=grpc:${dart_test}/pgde ${hybrid_path}/*.proto
 
 .PHONY: protoc_hybrid_static
 protoc_hybrid_static:
 	@protoc -I${makefile_dir} \
 		--static_out=google/protobuf/timestamp.fmt.dart:${dart_test}/pgde \
-		${google_path}/protobuf/timestamp.proto
+		${protoc_include}/google/protobuf/timestamp.proto
 	@protoc -I${makefile_dir} \
 		--static_out=google/protobuf/duration.fmt.dart:${dart_test}/pgde \
-		${google_path}/protobuf/duration.proto
+		${protoc_include}/google/protobuf/duration.proto
 
 .PHONY: protoc_hybrid_l10n_zip
 protoc_hybrid_l10n_zip:
@@ -198,13 +203,6 @@ protoc_hybrid_l10n:
 		--dart-ext_out=l10n=${dart_test}/pgde/%P.gtt.toml:${dart_test}/pgde \
 		${hybrid_path}/config.proto
 	@dartfmt -w ${dart_test}/pgde/hybrid/*.l10n.dart
-
-
-.PHONY: protoc_hybrid_rpc
-protoc_hybrid_rpc:
-	@protoc -I${makefile_dir} -I${pgv_path} \
-		--dart-ext_out=rpc:${makefile_dir} ${hybrid_path}/config.proto
-	@clang-format -i ${hybrid_path}/config.rpc.proto
 
 .PHONY: protoc_hybrid_zero
 protoc_hybrid_zero:

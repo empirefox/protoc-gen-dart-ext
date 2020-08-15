@@ -38,7 +38,7 @@ message {{ .PayloadName }} {
 	{{- end }}
 	message SrcResp {
 		repeated {{ .ProtoRef }} data = 1;
-		{{ .BackendErrorName }} error = 2;
+		{{ .OperateError }} error = 2;
 	}
 	message Group {
 		{{ range .ViewGroup.Fields -}}
@@ -47,7 +47,7 @@ message {{ .PayloadName }} {
 	}
 	message GroupResp {
 		Group data = 1;
-		{{ .BackendErrorName }} error = 2;
+		{{ .OperateError }} error = 2;
 	}
 	message SrcElement {
 		oneof is {
@@ -58,11 +58,11 @@ message {{ .PayloadName }} {
 	}
 	message GetResp {
 		SrcElement data = 1;
-		{{ .BackendErrorName }} error = 2;
+		{{ .OperateError }} error = 2;
 	}
 	message AddResp {
 		{{ .ProtoRef }} data = 1;
-		{{ .BackendErrorName }} error = 2;
+		{{ .OperateError }} error = 2;
 	}
 	{{ if .ViewElement -}}
 		message SrcIds {
@@ -70,11 +70,11 @@ message {{ .PayloadName }} {
 		}
 		message DstResp {
 			repeated {{ .ProtoRef }}.Element data = 1;
-			{{ .BackendErrorName }} error = 2;
+			{{ .OperateError }} error = 2;
 		}
 		message SelectResp {
 			{{ .ProtoRef }}.Element data = 1;
-			{{ .BackendErrorName }} error = 2;
+			{{ .SubmitError }} error = 2;
 		}
 	{{- end -}}
 }`
@@ -85,7 +85,7 @@ message {{ .PayloadName }} {
 		message SrcId {
 			{{ .ProtoType .IdField }} id = {{ .IdField.Descriptor.GetNumber }};
 		}
-		{{- if .LeafHasViewElement -}}
+		{{- if .LeafHasSelectManyView -}}
 			message SrcIds {
 				repeated {{ .ProtoType .IdField }} ids = {{ .IdField.Descriptor.GetNumber }};
 			}
@@ -93,26 +93,26 @@ message {{ .PayloadName }} {
 	{{- end }}
 	message GetResp {
 		{{ .ProtoRef }} data = 1;
-		{{ .BackendErrorName }} error = 2;
+		{{ .OperateError }} error = 2;
 	}
 	{{ range .LeafViews -}}
 		message {{ .Pgs.Name }} {
 			message SrcResp {
 				repeated {{ .ProtoRef }} data = 1;
-				{{ .BackendErrorName }} error = 2;
+				{{ .OperateError }} error = 2;
 			}
 			message AddResp {
 				{{ .ProtoRef }} data = 1;
-				{{ .BackendErrorName }} error = 2;
+				{{ .SubmitError }} error = 2;
 			}
-			{{ if .ViewElement -}}
+			{{ if and .IsSelectManyView .ViewElement -}}
 				message DstResp {
 					repeated {{ .ProtoRef }}.Element data = 1;
-					{{ .BackendErrorName }} error = 2;
+					{{ .OperateError }} error = 2;
 				}
 				message SelectResp {
 					{{ .ProtoRef }}.Element data = 1;
-					{{ .BackendErrorName }} error = 2;
+					{{ .SubmitError }} error = 2;
 				}
 			{{- end -}}
 		}
@@ -153,24 +153,24 @@ service {{ .ServiceName }} {
 		rpc Add({{ .ListAddOrSaveReq }}) returns ({{ .AddResp }});
 	{{- end }}
 	{{ if .Save -}}
-		rpc Save({{ .ListAddOrSaveReq }}) returns ({{ .BackendErrorName }});
+		rpc Save({{ .ListAddOrSaveReq }}) returns ({{ .SubmitError }});
 	{{- end }}
 	{{ if .Remove -}}
-		rpc Remove({{ .SrcId }}) returns ({{ .BackendErrorName }});
+		rpc Remove({{ .SrcId }}) returns ({{ .OperateError }});
 	{{- end }}
 	{{ if .RemoveAll -}}
-		rpc RemoveAll({{ .Empty }}) returns ({{ .BackendErrorName }});
+		rpc RemoveAll({{ .Empty }}) returns ({{ .OperateError }});
 	{{- end -}}
 }`
 
-const srcRPCLineTpl = `rpc Src({{ .Empty }}) returns ({{ .SrcResp }});`
+const srcRPCLineTpl = `rpc Src({{ .SrcReq }}) returns ({{ .SrcResp }});`
 
 const selectOneTpl = `
 service {{ .ServiceName }} {
 	{{ template "srcRPCLine" . }}
-	rpc Select({{ .SrcId }}) returns ({{ .BackendErrorName }});
+	rpc Select({{ .SrcId }}) returns ({{ .SubmitError }});
 	{{ if .Remove -}}
-		rpc Remove({{ .Empty }}) returns ({{ .BackendErrorName }});
+		rpc Remove({{ .Empty }}) returns ({{ .OperateError }});
 	{{- end -}}
 }`
 
@@ -182,14 +182,14 @@ service {{ .ServiceName }} {
 		rpc Select({{ .SrcId }}) returns ({{ .SelectResp }});
 	{{- end }}
 	{{ if .AddMany -}}
-		rpc SelectMany({{ .SrcIds }}) returns ({{ .DstResp }});
+		rpc SelectMany({{ .SrcIds }}) returns ({{ .SelectManyResp }});
 	{{- end }}
 
-	rpc Dst({{ .Empty }}) returns ({{ .DstResp }});
+	rpc Dst({{ .DstReq }}) returns ({{ .DstResp }});
 	{{ if .Remove -}}
-		rpc Remove({{ .SrcId }}) returns ({{ .BackendErrorName }});
+		rpc Remove({{ .SrcId }}) returns ({{ .OperateError }});
 	{{- end }}
 	{{ if .RemoveAll -}}
-		rpc RemoveAll({{ .Empty }}) returns ({{ .BackendErrorName }});
+		rpc RemoveAll({{ .Empty }}) returns ({{ .OperateError }});
 	{{- end -}}
 }`

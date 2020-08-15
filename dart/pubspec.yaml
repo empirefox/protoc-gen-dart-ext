@@ -13,12 +13,13 @@ dependencies:
 
   bot_toast:
   collection:
+  email_validator:
   fixnum:
+  grpc:
   intl:
   ip:
-  grpc:
   protobuf:
-  email_validator:
+  retry:
 
 dev_dependencies:
   flutter_test:

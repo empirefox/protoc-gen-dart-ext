@@ -5,20 +5,21 @@ syntax = "proto3";
 package hybrid;
 option go_package = "github.com/empirefox/hybrid/config;config";
 import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
 import "hybrid/config.proto";
 import "pgde/error/error.proto";
 
 message BasicPayload {
   message GetResp {
     Basic data = 1;
-    pgde.error.BackendError error = 2;
+    pgde.error.OperateError error = 2;
   }
 }
 
 message IpfsPayload {
   message GetResp {
     Ipfs data = 1;
-    pgde.error.BackendError error = 2;
+    pgde.error.OperateError error = 2;
   }
 }
 
@@ -26,16 +27,16 @@ message LogPayload {
   message SrcId { uint32 id = 1; }
   message GetResp {
     Log data = 1;
-    pgde.error.BackendError error = 2;
+    pgde.error.OperateError error = 2;
   }
   message View {
     message SrcResp {
       repeated Log.View data = 1;
-      pgde.error.BackendError error = 2;
+      pgde.error.OperateError error = 2;
     }
     message AddResp {
       Log.View data = 1;
-      pgde.error.BackendError error = 2;
+      pgde.error.SubmitError error = 2;
     }
   }
 }
@@ -44,34 +45,35 @@ message IpfsServerPayload {
   message SrcId { uint32 id = 1; }
   message GetResp {
     IpfsServer data = 1;
-    pgde.error.BackendError error = 2;
+    pgde.error.OperateError error = 2;
   }
   message View {
     message SrcResp {
       repeated IpfsServer.View data = 1;
-      pgde.error.BackendError error = 2;
+      pgde.error.OperateError error = 2;
     }
     message AddResp {
       IpfsServer.View data = 1;
-      pgde.error.BackendError error = 2;
+      pgde.error.SubmitError error = 2;
     }
   }
 }
 
 message FileServerPayload {
   message SrcId { uint32 id = 1; }
+  message SrcIds { repeated uint32 ids = 1; }
   message GetResp {
     FileServer data = 1;
-    pgde.error.BackendError error = 2;
+    pgde.error.OperateError error = 2;
   }
   message View {
     message SrcResp {
       repeated FileServer.View data = 1;
-      pgde.error.BackendError error = 2;
+      pgde.error.OperateError error = 2;
     }
     message AddResp {
       FileServer.View data = 1;
-      pgde.error.BackendError error = 2;
+      pgde.error.SubmitError error = 2;
     }
   }
 }
@@ -80,16 +82,16 @@ message HttpProxyServerPayload {
   message SrcId { uint32 id = 1; }
   message GetResp {
     HttpProxyServer data = 1;
-    pgde.error.BackendError error = 2;
+    pgde.error.OperateError error = 2;
   }
   message View {
     message SrcResp {
       repeated HttpProxyServer.View data = 1;
-      pgde.error.BackendError error = 2;
+      pgde.error.OperateError error = 2;
     }
     message AddResp {
       HttpProxyServer.View data = 1;
-      pgde.error.BackendError error = 2;
+      pgde.error.SubmitError error = 2;
     }
   }
 }
@@ -102,7 +104,7 @@ message ServerViewPayload {
   }
   message SrcResp {
     repeated ServerView data = 1;
-    pgde.error.BackendError error = 2;
+    pgde.error.OperateError error = 2;
   }
   message Group {
     repeated IpfsServer.View ipfs = 1;
@@ -111,7 +113,7 @@ message ServerViewPayload {
   }
   message GroupResp {
     Group data = 1;
-    pgde.error.BackendError error = 2;
+    pgde.error.OperateError error = 2;
   }
   message SrcElement {
     oneof is {
@@ -122,11 +124,11 @@ message ServerViewPayload {
   }
   message GetResp {
     SrcElement data = 1;
-    pgde.error.BackendError error = 2;
+    pgde.error.OperateError error = 2;
   }
   message AddResp {
     ServerView data = 1;
-    pgde.error.BackendError error = 2;
+    pgde.error.OperateError error = 2;
   }
 }
 
@@ -134,16 +136,16 @@ message AdpRouterPayload {
   message SrcId { uint32 id = 1; }
   message GetResp {
     AdpRouter data = 1;
-    pgde.error.BackendError error = 2;
+    pgde.error.OperateError error = 2;
   }
   message View {
     message SrcResp {
       repeated AdpRouter.View data = 1;
-      pgde.error.BackendError error = 2;
+      pgde.error.OperateError error = 2;
     }
     message AddResp {
       AdpRouter.View data = 1;
-      pgde.error.BackendError error = 2;
+      pgde.error.SubmitError error = 2;
     }
   }
 }
@@ -152,39 +154,42 @@ message IPNetRouterPayload {
   message SrcId { uint32 id = 1; }
   message GetResp {
     IPNetRouter data = 1;
-    pgde.error.BackendError error = 2;
+    pgde.error.OperateError error = 2;
   }
   message View {
     message SrcResp {
       repeated IPNetRouter.View data = 1;
-      pgde.error.BackendError error = 2;
+      pgde.error.OperateError error = 2;
     }
     message AddResp {
       IPNetRouter.View data = 1;
-      pgde.error.BackendError error = 2;
+      pgde.error.SubmitError error = 2;
     }
   }
 }
 
 service IPNetRouterMatchedService {
   rpc Src(google.protobuf.Empty) returns (ServerViewPayload.SrcResp);
-  rpc Select(ServerViewPayload.SrcId) returns (pgde.error.BackendError);
+  rpc Select(ServerViewPayload.SrcId) returns (pgde.error.SubmitError);
 }
 
 service IPNetRouterUnmatchedService {
   rpc Src(google.protobuf.Empty) returns (ServerViewPayload.SrcResp);
-  rpc Select(ServerViewPayload.SrcId) returns (pgde.error.BackendError);
+  rpc Select(ServerViewPayload.SrcId) returns (pgde.error.SubmitError);
 }
 
 service IPNetRouterFileTestService {
-  rpc Src(google.protobuf.Empty) returns (FileServerPayload.View.SrcResp);
-  rpc Select(FileServerPayload.SrcId) returns (pgde.error.BackendError);
+  rpc Src(google.protobuf.UInt32Value) returns (FileServerPayload.View.SrcResp);
+  rpc Select(FileServerPayload.SrcId) returns (google.protobuf.Empty);
+  rpc SelectMany(FileServerPayload.SrcIds) returns (google.protobuf.Empty);
+
+  rpc Dst(google.protobuf.Empty) returns (FileServerPayload.View.SrcResp);
 }
 
 message RouterUseViewPayload {
   message SrcResp {
     repeated RouterUseView data = 1;
-    pgde.error.BackendError error = 2;
+    pgde.error.OperateError error = 2;
   }
   message Group {
     repeated AdpRouter.View adp = 1;
@@ -192,7 +197,7 @@ message RouterUseViewPayload {
   }
   message GroupResp {
     Group data = 1;
-    pgde.error.BackendError error = 2;
+    pgde.error.OperateError error = 2;
   }
   message SrcElement {
     oneof is {
@@ -202,21 +207,25 @@ message RouterUseViewPayload {
   }
   message GetResp {
     SrcElement data = 1;
-    pgde.error.BackendError error = 2;
+    pgde.error.OperateError error = 2;
   }
   message AddResp {
     RouterUseView data = 1;
-    pgde.error.BackendError error = 2;
+    pgde.error.OperateError error = 2;
   }
   message SrcIds { repeated RouterUseView.Id ids = 1; }
   message DstResp {
     repeated RouterUseView.Element data = 1;
-    pgde.error.BackendError error = 2;
+    pgde.error.OperateError error = 2;
   }
   message SelectResp {
     RouterUseView.Element data = 1;
-    pgde.error.BackendError error = 2;
+    pgde.error.SubmitError error = 2;
   }
+}
+
+service ConfigBasicService {
+  rpc Get(google.protobuf.Empty) returns (BasicPayload.GetResp);
 }
 
 service ConfigIpfsService {
@@ -225,45 +234,46 @@ service ConfigIpfsService {
 
 service ConfigLogService {
   rpc Src(google.protobuf.Empty) returns (LogPayload.View.SrcResp);
-  rpc Select(LogPayload.SrcId) returns (pgde.error.BackendError);
+  rpc Select(LogPayload.SrcId) returns (pgde.error.SubmitError);
 }
 
 service ConfigLogsService {
-  rpc Src(google.protobuf.Empty) returns (LogPayload.View.SrcResp);
+  rpc Src(google.protobuf.UInt32Value) returns (LogPayload.View.SrcResp);
   rpc Get(LogPayload.SrcId) returns (LogPayload.GetResp);
   rpc Add(Log.View) returns (LogPayload.View.AddResp);
-  rpc Save(Log.View) returns (pgde.error.BackendError);
-  rpc Remove(LogPayload.SrcId) returns (pgde.error.BackendError);
+  rpc Save(Log.View) returns (pgde.error.SubmitError);
+  rpc Remove(LogPayload.SrcId) returns (pgde.error.OperateError);
 }
 
 service ConfigServersService {
-  rpc Src(google.protobuf.Empty) returns (ServerViewPayload.SrcResp);
+  rpc Src(google.protobuf.UInt32Value) returns (ServerViewPayload.SrcResp);
   rpc Get(ServerViewPayload.SrcId) returns (ServerViewPayload.GetResp);
   rpc Add(ServerViewPayload.SrcElement) returns (ServerViewPayload.AddResp);
-  rpc Save(ServerViewPayload.SrcElement) returns (pgde.error.BackendError);
-  rpc Remove(ServerViewPayload.SrcId) returns (pgde.error.BackendError);
+  rpc Save(ServerViewPayload.SrcElement) returns (pgde.error.SubmitError);
+  rpc Remove(ServerViewPayload.SrcId) returns (pgde.error.OperateError);
 }
 
 service ConfigAdpsService {
-  rpc Src(google.protobuf.Empty) returns (AdpRouterPayload.View.SrcResp);
+  rpc Src(google.protobuf.UInt32Value) returns (AdpRouterPayload.View.SrcResp);
   rpc Get(AdpRouterPayload.SrcId) returns (AdpRouterPayload.GetResp);
   rpc Add(AdpRouter.View) returns (AdpRouterPayload.View.AddResp);
-  rpc Save(AdpRouter.View) returns (pgde.error.BackendError);
-  rpc Remove(AdpRouterPayload.SrcId) returns (pgde.error.BackendError);
+  rpc Save(AdpRouter.View) returns (pgde.error.SubmitError);
+  rpc Remove(AdpRouterPayload.SrcId) returns (pgde.error.OperateError);
 }
 
 service ConfigIpnetsService {
-  rpc Src(google.protobuf.Empty) returns (IPNetRouterPayload.View.SrcResp);
+  rpc Src(google.protobuf.UInt32Value)
+      returns (IPNetRouterPayload.View.SrcResp);
   rpc Get(IPNetRouterPayload.SrcId) returns (IPNetRouterPayload.GetResp);
   rpc Add(IPNetRouter.View) returns (IPNetRouterPayload.View.AddResp);
-  rpc Save(IPNetRouter.View) returns (pgde.error.BackendError);
-  rpc Remove(IPNetRouterPayload.SrcId) returns (pgde.error.BackendError);
+  rpc Save(IPNetRouter.View) returns (pgde.error.SubmitError);
+  rpc Remove(IPNetRouterPayload.SrcId) returns (pgde.error.OperateError);
 }
 
 service ConfigRoutersService {
   rpc Src(google.protobuf.Empty) returns (RouterUseViewPayload.SrcResp);
   rpc Select(RouterUseView.Id) returns (RouterUseViewPayload.SelectResp);
 
-  rpc Dst(google.protobuf.Empty) returns (RouterUseViewPayload.DstResp);
-  rpc Remove(RouterUseView.Id) returns (pgde.error.BackendError);
+  rpc Dst(google.protobuf.UInt32Value) returns (RouterUseViewPayload.DstResp);
+  rpc Remove(RouterUseView.Id) returns (pgde.error.OperateError);
 }

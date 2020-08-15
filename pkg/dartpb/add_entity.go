@@ -111,7 +111,7 @@ func (msg *Message) addField(pgsToOneOf map[pgs.OneOf]*OneOf, pgsNty pgs.Field) 
 				return err
 			}
 			if rpcNty.EntryExt.Is == nil {
-				isRPC, err = msg.File.RPCS.checkFieldType(pgsNty, form.Node_typeName)
+				isRPC, err = msg.File.RPCS.checkFieldType(pgsNty, form.Node_leaf)
 			}
 		} else if msg.RPC.IsLeaf() {
 			isRPC, err = pgsNty.Extension(form.E_Field, &rpcNty.LeafExt)

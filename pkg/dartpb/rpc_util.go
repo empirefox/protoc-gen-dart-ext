@@ -67,7 +67,7 @@ func (r *RPCSUtil) IsView(v pgs.Message) (ok bool, err error) {
 		return
 	}
 
-	return ext.Type == form.Node_view, nil
+	return ext.Type == form.Node_view || ext.Type == form.Node_selectManyView, nil
 }
 
 func (r *RPCSUtil) Payload(f pgs.Field) (dart.Qualifier, error) {
@@ -85,7 +85,7 @@ func (r *RPCSUtil) Payload(f pgs.Field) (dart.Qualifier, error) {
 	switch ext.Type {
 	case form.Node_leaf:
 		return r.ProtoRef(dt).PayloadSuffix(), nil
-	case form.Node_view:
+	case form.Node_view, form.Node_selectManyView:
 		if r.IsGroup(dt) {
 			return r.ProtoRef(dt).PayloadSuffix(), nil
 		}
@@ -102,13 +102,13 @@ func (r *RPCSUtil) Payload(f pgs.Field) (dart.Qualifier, error) {
 		f.FullyQualifiedName())
 }
 
-func (r *RPCSUtil) ParentMessageWithType(embed pgs.Message, nt form.Node_Type) (pgs.Message, error) {
+func (r *RPCSUtil) ParentMessageWithType(embed pgs.Message, nt ...form.Node_Type) (pgs.Message, error) {
 	p, err := r.ParentMessage(embed)
 	if err != nil {
 		return nil, err
 	}
 
-	ok, err := r.CheckNodeType(p, nt)
+	ok, err := r.CheckNodeType(p, nt...)
 	if err != nil {
 		return nil, err
 	}
@@ -164,17 +164,17 @@ func (r *RPCSUtil) ViewTypeOf(pf pgs.Field) (pgs.Message, error) {
 		return nil, err
 	}
 	if ok {
-		return r.ParentMessageWithType(embed, form.Node_view)
+		return r.ParentMessageWithType(embed, form.Node_view, form.Node_selectManyView)
 	}
 
-	ok, err = r.CheckNodeType(embed, form.Node_view)
+	ok, err = r.CheckNodeType(embed, form.Node_view, form.Node_selectManyView)
 	if err != nil {
 		return nil, err
 	}
 
 	if !ok {
-		return nil, fmt.Errorf("Type must be %s: %s", form.Node_view,
-			pf.FullyQualifiedName())
+		return nil, fmt.Errorf("Type must be %s: %s or %s",
+			form.Node_view, form.Node_selectManyView, pf.FullyQualifiedName())
 	}
 
 	return embed, nil
@@ -188,7 +188,7 @@ func (r *RPCSUtil) hasView(m pgs.Message) (bool, error) {
 			return false, err
 		}
 
-		if ext.Type == form.Node_view {
+		if ext.Type == form.Node_view || ext.Type == form.Node_selectManyView {
 			return true, nil
 		}
 	}
@@ -370,6 +370,9 @@ func (r *RPCSUtil) IdField(m pgs.Message) (pgs.Field, error) {
 
 func (r *RPCSUtil) Empty() (dart.Qualifier, error) {
 	return r.ProtoRefWKT(pgs.EmptyWKT)
+}
+func (r *RPCSUtil) UInt32Value() (dart.Qualifier, error) {
+	return r.ProtoRefWKT(pgs.UInt32ValueWKT)
 }
 
 func (r *RPCSUtil) IdOrEmpty(m pgs.Message) (dart.Qualifier, error) {

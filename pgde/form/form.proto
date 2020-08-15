@@ -49,20 +49,24 @@ message Node {
   enum Type {
     undefined = 0;
 
-    // Accepts field type of entry, view or views.
+    // Accepts field type of entry, leaf, view, views or element.
     // Rejects others fields including any built-in fields.
     entry = 1;
 
     // Leaf is a whole form, which expands everything execpt Views.
-    // Id of leaf or view is for Get/Update/Remove-rpc request.
     leaf = 2;
 
-    // Define a view from within a leaf. Auto detect group.
-    // Id of leaf or view is for Get/Update/Remove-rpc request.
+    // Define a view from within a leaf. Group-View with element must define Id
+    // Message. Auto detect group.
     view = 3;
 
-    // Auto detect group.
-    element = 4;
+    // Define for selectMany. SelectMany requires this field type. With group
+    // inside, must define Element. In leaf-selectManyView, Element is optional.
+    // It is also a view.
+    selectManyView = 4;
+
+    // Define element of select-many target list.
+    element = 5;
   }
 
   Type type = 1;
@@ -80,8 +84,7 @@ message EntryField {
   message Form { bool remove = 2; }
   message DestList {
     bool groupByType = 1;
-    bool pager = 2;
-    uint32 rows = 3 [ (zero.to).uint32 = 10 ];
+    uint32 rows = 3;
     bool add = 4;
     bool edit = 5;
     bool remove = 6;
@@ -238,8 +241,7 @@ message Field {
 }
 
 message SourceList {
-  bool pager = 1;
-  uint32 rows = 2 [ (zero.to).uint32 = 10 ];
+  uint32 rows = 2;
   bool remove = 3;
   bool groupByType = 6;
   // add custom search widget
@@ -248,16 +250,14 @@ message SourceList {
 
 message ChooseList {
   message SourceList {
-    bool pager = 1;
-    uint32 rows = 2 [ (zero.to).uint32 = 10 ];
+    uint32 rows = 2;
     bool groupByType = 6;
     // add custom search widget
     bool search = 7;
   }
   message DestList {
     bool groupByType = 1;
-    bool pager = 2;
-    uint32 rows = 3 [ (zero.to).uint32 = 10 ];
+    uint32 rows = 3;
     bool add = 4;
     bool addMany = 5;
     bool remove = 6;

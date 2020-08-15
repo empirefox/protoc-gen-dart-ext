@@ -338,6 +338,13 @@ packages:
       url: "https://mirrors.tuna.tsinghua.edu.cn/dart-pub"
     source: hosted
     version: "0.2.0"
+  retry:
+    dependency: "direct main"
+    description:
+      name: retry
+      url: "https://mirrors.tuna.tsinghua.edu.cn/dart-pub"
+    source: hosted
+    version: "3.0.1"
   shelf:
     dependency: transitive
     description:

@@ -2,13 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:pgde/pgde.dart' as $pgde;
 import 'package:protobuf/protobuf.dart';
 
+import '../pgde/error/error.pb.dart' as $error;
 import 'config.pb.dart';
 import 'config.l10n.dart';
 import 'config.validate.dart';
 import 'config.zero.dart';
 
 class AdpRouterInputs extends $pgde.Inputs<AdpRouter> {
-  AdpRouterInputs($pgde.FormMessageData data) : super(data);
+  AdpRouterInputs(
+    String path,
+    $pgde.FormMessageData data,
+    $pgde.SubmitError err,
+    $pgde.ErrorCoderGetter coder,
+    $pgde.PgdeLocalizations pgdeL10n,
+  ) : super(path, data, err, coder, pgdeL10n);
 
   @override
   List<Widget> build(BuildContext context) {
@@ -22,35 +29,39 @@ class AdpRouterInputs extends $pgde.Inputs<AdpRouter> {
 }
 
 // message example
-class RouterItemInputs extends $pgde.Inputs<RouterItem> {
+class LogInputs extends $pgde.Inputs<Log> {
   @override
-  final $pgde.CreateEmptyDraftFunc<RouterItem> createEmptyDraft;
+  final $pgde.CreateEmptyDraftFunc<Log> createEmptyDraft;
 
-  RouterItemInputs($pgde.FormMessageData data)
-      : createEmptyDraft = zeroRouterItem.create,
-        super(data);
+  LogInputs(String path, $pgde.FormMessageData data, $pgde.SubmitError err,
+      $pgde.ErrorCoderGetter coder, $pgde.PgdeLocalizations pgdeL10n)
+      : createEmptyDraft = zeroLog.create,
+        super(path, data, err, coder, pgdeL10n);
 
   @override
   List<Widget> build(BuildContext context) {
     final l10n = ConfigLocalizations.of(context);
-    final validator = RouterItemValidator(context, vi(context));
+    final v = LogValidator(context, vi(context));
+    final root = $pgde.EntryRoot.of(context);
+
+    final draft2 = RouterUseView_Id();
+
+    final f3 = path + '/3';
 
     return <Widget>[
-      // field_not_in_oneof
+      // normal_field_not_in_oneof
       TextFormField(
         decoration: InputDecoration(
-          labelText: l10n.RouterItemNameLabel,
-          hintText: l10n.RouterItemNameHint,
+          labelText: l10n.LogTargetLabel,
+          hintText: l10n.LogTargetHint,
         ),
-        initialValue: draft.name,
-        onChanged: (n) => draft.name = n,
+        initialValue: draft.target,
+        onChanged: (n) => draft.target = n,
         autovalidate: true,
-        validator: $pgde.Inputs.catcher(validator.assertField_name),
+        validator: validator(1, v.assertField_target),
       ),
-      // oneof
-      RouterItemRouterTabs([
-        const Icon(Icons.insert_comment),
-        Text(l10n.AdpRouter),
+      // oneof, TODO: cache oneof from root entry?
+      LogRouterTabs([
         Column(
           children: [
             const Icon(Icons.insert_comment),
@@ -58,38 +69,51 @@ class RouterItemInputs extends $pgde.Inputs<RouterItem> {
           ],
         ),
       ], [
-        // field_in_oneof
+        // normal_field_in_oneof, just like normal field
         TextFormField(
           decoration: InputDecoration(
-            labelText: l10n.RouterItemNameLabel,
-            hintText: l10n.RouterItemNameHint,
+            labelText: l10n.LogTargetLabel,
+            hintText: l10n.LogTargetHint,
           ),
-          initialValue: draft.name,
-          onChanged: (n) => draft.name = n,
+          initialValue: draft2.whichIs() == RouterUseView_Id_Is.adp
+              ? draft.target
+              : root.cache.oneof[f3],
+          onChanged: (n) {
+            draft.target = n;
+            root.cache.oneof[f3] = n;
+          },
           autovalidate: true,
-          validator: $pgde.Inputs.catcher(validator.assertField_name),
-        ),
-        // embed
-        $pgde.InputsWidget<AdpRouter>(AdpRouterInputs(data.childMessage(3))),
-        // child_form_entry
-        $pgde.ChildFieldEntryWidget(
-          data: data.childMessage(4),
-          decoration: InputDecoration(
-            labelText: l10n.IPNetRouterLabel,
-            hintText: l10n.IPNetRouterHint,
-            errorText: $pgde.Inputs.catchError(validator.assertField_ipnet),
-          ),
+          validator: validator(1, v.assertField_target),
         ),
       ]),
-      // TODO foreign_link
-      // TODO list_entry
-      // TODO map_entry
+      // embed
+      $pgde.InputsWidget<AdpRouter>(
+        AdpRouterInputs(
+          path + '/5',
+          data.childMessage(5),
+          err,
+          coder,
+          pgdeL10n,
+        ),
+        err,
+      ),
+      // TODO: move to entry field
+      $pgde.ChildFieldEntryWidget(
+        data: data.childMessage(4),
+        decoration: InputDecoration(
+          labelText: l10n.IPNetRouterLabel,
+          hintText: l10n.IPNetRouterHint,
+          errorText: $pgde.Inputs.catchError(validator.assertField_ipnet),
+        ),
+      ),
+      // TODO select_one
+      // TODO select_many
     ];
   }
 }
 
 // list example
-class RouterItemInputsIpfsServersInput extends StatelessWidget {
+class LogInputsIpfsServersInput extends StatelessWidget {
   final FormMessageData data;
   @override
   Widget build(BuildContext context) {
@@ -99,11 +123,11 @@ class RouterItemInputsIpfsServersInput extends StatelessWidget {
 }
 
 // oneof example
-class RouterItemRouterTabs extends StatelessWidget {
+class LogRouterTabs extends StatelessWidget {
   final List<Widget> tabBarList;
   final List<Widget> tabBarViewList;
 
-  RouterItemRouterTabs(this.tabBarList, this.tabBarViewList, {Key key})
+  LogRouterTabs(this.tabBarList, this.tabBarViewList, {Key key})
       : super(key: key);
 
   @override

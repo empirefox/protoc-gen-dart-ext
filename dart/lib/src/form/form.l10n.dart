@@ -41,9 +41,20 @@ class Translator {
         desc: 'edit oneof message',
         name: 'edit',
       );
-  String get hasError => Intl.message(
+  String get validateFailed => Intl.message(
         'Form validation failed!',
-        desc: 'edit oneof message',
-        name: 'hasError',
+        desc: 'form validate failed',
+        name: 'validateFailed',
+      );
+  String get operateFailed => Intl.message(
+        'Operate Failed',
+        desc: 'operate failed',
+        name: 'operateFailed',
+      );
+  String operateFailedWithCode(int code) => Intl.message(
+        'Operate Failed with code [$code]',
+        desc: 'operate failed with code',
+        name: 'operateFailedWithCode',
+        args: [code],
       );
 }

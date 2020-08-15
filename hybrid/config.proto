@@ -179,7 +179,7 @@ message FileServer {
   };
 
   message View {
-    option (pgde.form.node).type = view;
+    option (pgde.form.node).type = selectManyView;
     uint32 id = 1 [ (pgde.form.id) = true ];
     string name = 3;
   }
@@ -318,14 +318,23 @@ message IPNetRouter {
     search : true,
   } ];
   // @inject_tag: toml:",omitempty"
-  FileServer.View fileTest = 9 [ (pgde.form.field).selectOne = {
-    pager : true,
-    search : true,
+  FileServer.View fileTest = 9 [ (pgde.form.field).selectMany = {
+    src : {
+      rows : 20,
+      pager : true,
+      search : true,
+    }
+    dst : {
+      add : true,
+      addMany : true,
+      pager : true,
+      search : true,
+    }
   } ];
 }
 
 message RouterUseView {
-  option (pgde.form.node).type = view;
+  option (pgde.form.node).type = selectManyView;
 
   message Id {
     oneof is {

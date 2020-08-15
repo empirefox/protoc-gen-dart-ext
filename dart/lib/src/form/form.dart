@@ -1,112 +1,42 @@
-import 'dart:js';
-
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:grpc/grpc.dart' show CallOptions, ResponseFuture;
 import 'package:protobuf/protobuf.dart' show GeneratedMessage;
 
 import '../l10n.dart';
-import '../pgde/error/error.pb.dart';
 import '../validate.dart';
 
 import 'data.dart';
+import 'error.dart';
+import 'on_will_pop.dart';
+import 'view.dart';
 
-typedef ByFieldNumberFunc = String Function(int fieldNumber);
 typedef NoNeedAskCallback = bool Function();
 
-abstract class ErrorCoder {
-  String $byErrorCode(int number);
-}
-
-class ErrorText extends StatelessWidget {
-  final int fieldNumber;
-  final ByFieldNumberFunc byNumber;
-  final int code;
-  final ErrorCoder coder;
-  final String message;
-
-  const ErrorText(
-      this.fieldNumber, this.byNumber, this.code, this.coder, this.message,
-      {Key key})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return fieldNumber == 0
-        ? Container()
-        : Text('${coder.$byErrorCode(code)}' +
-            (message.isEmpty ? '' : ': $message'));
-  }
-}
-
-class GrpcErrorRetry extends StatelessWidget {
-  final Object err;
-  final VoidCallback onRetry;
-
-  const GrpcErrorRetry({Key key, @required this.err, @required this.onRetry})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) => Center(
-        child: Column(
-          children: <Widget>[
-            Text(
-              // TODO add l10n?
-              '$err',
-              style: const TextStyle(color: Colors.red),
-            ),
-            RaisedButton(
-                onPressed: onRetry,
-                child: Text(
-                  PgdeLocalizations.of(context).formRetry,
-                )),
-          ],
-        ),
-      );
-}
-
-Future<bool> onStayOrWillPop(BuildContext context, VoidCallback onGoBack,
-    {bool noNeedAsk}) {
-  if (noNeedAsk == true) {
-    Navigator.of(context).pop();
-    return Future.value(false);
-  }
-
-  final l10n = PgdeLocalizations.of(context);
-  showDialog<void>(
-    context: context,
-    barrierDismissible: true,
-    builder: (BuildContext dialogContext) {
-      return AlertDialog(
-        title: Text(l10n.formBackAlertTitle),
-        content: SingleChildScrollView(
-          child: ListBody(
-            children: <Widget>[
-              Text(l10n.formBackAlertContent),
-            ],
-          ),
-        ),
-        actions: <Widget>[
-          FlatButton(
-            child: Text(l10n.formBackAlertStay),
-            onPressed: () => Navigator.of(dialogContext).pop(),
-          ),
-          FlatButton(
-            child: Text(l10n.formBackAlertGoBack),
-            onPressed: () {
-              Navigator.of(dialogContext).pop();
-              onGoBack();
-            },
-          ),
-        ],
-      );
-    },
-  );
-  return Future.value(false);
-}
-
-typedef SaveFunc<T extends GeneratedMessage> = ResponseFuture<BackendError>
+typedef SaveFunc<T extends GeneratedMessage> = ResponseFuture<SubmitError>
     Function(T request, {CallOptions options});
+
+class EntryRootCache {
+  final Map<String, dynamic> oneof = const {};
+  const EntryRootCache();
+}
+
+class EntryRoot extends InheritedWidget {
+  const EntryRoot({
+    Key key,
+    @required Widget entry,
+  })  : assert(entry != null),
+        super(key: key, child: entry);
+
+  final EntryRootCache cache = const EntryRootCache();
+
+  static EntryRoot of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<EntryRoot>();
+  }
+
+  @override
+  bool updateShouldNotify(EntryRoot old) => false;
+}
 
 class FormPage<E> extends StatefulWidget {
   final bool dev;
@@ -135,7 +65,7 @@ class FormPageState extends State<FormPage> {
   String route(BuildContext context) =>
       _route ??= ModalRoute.of(context).settings.name;
 
-  Future<BackendError> _saving;
+  Future<SubmitError> _saving;
 
   void _doSave(BuildContext context) {
     setState(() {
@@ -171,8 +101,7 @@ class FormPageState extends State<FormPage> {
         margin: const EdgeInsets.all(15.0),
         child: FutureBuilder(
           future: _saving,
-          builder:
-              (BuildContext context, AsyncSnapshot<BackendError> snapshot) {
+          builder: (BuildContext context, AsyncSnapshot<SubmitError> snapshot) {
             switch (snapshot.connectionState) {
               case ConnectionState.waiting:
               case ConnectionState.active:
@@ -186,153 +115,21 @@ class FormPageState extends State<FormPage> {
                   );
 
                 final err = snapshot.data;
-                return Column(
-                  children: <Widget>[
-                    StatefulForm(
-                      inputs: widget.inputs,
-                      onSave: () => _doSave(context),
-                    ),
-                    err == null
-                        ? Container()
-                        : ErrorText(
-                            err.fieldNumber,
-                            widget.byNumber,
-                            err.code,
-                            widget.coder,
-                            err.message,
-                          ),
-                  ],
-                );
-            }
-            assert(
-                false, 'unknown ConnectionState: ${snapshot.connectionState}');
-            return null;
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class FormMap{
-  // TODO
-}
-
-typedef ListSaveFunc = Function(List list);
-
-class ListOperates {
-  final bool foreign;
-  final bool create;
-  final bool view;
-  final bool edit;
-  final bool delete;
-  const ListOperates(
-      {this.foreign = false,
-      this.create = false,
-      this.view = false,
-      this.edit = false,
-      this.delete = false});
-}
-
-abstract class ForeignListOperates<T extends GeneratedMessage> {
-  Future<BackendError> create(T item);
-  Future<BackendError> view(T item);
-  Future<BackendError> edit(T item);
-  Future<BackendError> exchange(T item1, T item2);
-  Future<BackendError> delete(T item);
-}
-
-class ListFormPage<E> extends StatefulWidget {
-  final bool dev;
-  final String title;
-  final ListOperates los;
-  final ListSaveFunc save;
-  final ByFieldNumberFunc byNumber;
-  final ErrorCoder coder;
-  final FormMessageListData data;
-
-  const ListFormPage(
-      {Key key,
-      this.dev = false,
-      this.title,
-      this.los,
-      this.save,
-      this.byNumber,
-      this.coder,
-      this.data})
-      : super(key: key);
-
-  @override
-  FormPageState createState() => FormPageState();
-}
-
-class ListFormPageState extends State<ListFormPage> {
-  String _route;
-  String route(BuildContext context) =>
-      _route ??= ModalRoute.of(context).settings.name;
-
-  Future<BackendError> _saving;
-
-  void _doSave(BuildContext context) {
-    widget.save(widget.data.editing);
-    Navigator.of(context).pop();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _route = null;
-    _saving = null;
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title + (widget.dev ? '-${route(context)}' : '')),
-        leading: BackButton(),
-      ),
-      body: Container(
-        margin: const EdgeInsets.all(15.0),
-        child: FutureBuilder(
-          future: _saving,
-          builder:
-              (BuildContext context, AsyncSnapshot<BackendError> snapshot) {
-            switch (snapshot.connectionState) {
-              case ConnectionState.waiting:
-              case ConnectionState.active:
-                return const Center(child: CircularProgressIndicator());
-              case ConnectionState.none:
-              case ConnectionState.done:
-                if (snapshot.hasError)
-                  return GrpcErrorRetry(
-                    err: snapshot.error,
-                    onRetry: () => _doSave(context),
-                  );
-
-                final err = snapshot.data;
-                return Column(
-                  children: <Widget>[
-                    StatefulForm(
-                      inputs: widget.inputs,
-                      onSave: () => _doSave(context),
-                    ),
-                    err == null
-                        ? Container()
-                        : ErrorText(
-                            err.fieldNumber,
-                            widget.byNumber,
-                            err.code,
-                            widget.coder,
-                            err.message,
-                          ),
-                  ],
-                );
+                final children = <Widget>[
+                  StatefulForm(
+                    inputs: widget.inputs,
+                    onSave: () => _doSave(context),
+                  )
+                ];
+                if (err != null) {
+                  if (err.path == null || err.path.length == 0)
+                    children.add(OperateErrorText(
+                      err.code,
+                      widget.coder,
+                      err.message,
+                    ));
+                }
+                return Column(children: children);
             }
             assert(
                 false, 'unknown ConnectionState: ${snapshot.connectionState}');
@@ -366,7 +163,7 @@ class StatefulFormState extends State<StatefulForm> {
 
   void _doSave(BuildContext context, PgdeLocalizations l10n) {
     if (!_fbKey.currentState.validate()) {
-      BotToast.showText(text: l10n.formHasError);
+      BotToast.showText(text: l10n.formValidateFailed);
       return;
     }
     if (_needNotSave()) {
@@ -426,21 +223,40 @@ class StatefulFormState extends State<StatefulForm> {
   }
 }
 
-abstract class InputList {
+abstract class InputsBase<T extends GeneratedMessage> {
+  String get path;
+  ErrorCoderGetter get coder;
+  PgdeLocalizations get pgdeL10n;
   List<Widget> build(BuildContext context);
 }
 
+// wrap leaf inputs to one widget
 class InputsWidget<T extends GeneratedMessage> extends StatelessWidget {
-  final InputList inputs;
-  const InputsWidget(this.inputs, {Key key}) : super(key: key);
+  final InputsBase<T> inputs;
+  final SubmitError err;
+  const InputsWidget(this.inputs, this.err, {Key key}) : super(key: key);
   @override
-  Widget build(BuildContext context) => Column(children: inputs.build(context));
+  Widget build(BuildContext context) {
+    final color = Theme.of(context).errorColor ?? Colors.red;
+    final List<Widget> list = inputs.build(context);
+    if (err?.path == inputs.path) {
+      list.insert(
+          0,
+          Text(
+            err.text(inputs.pgdeL10n, inputs.coder.of(T)),
+            style: TextStyle(color: color),
+          ));
+      return Container(
+        child: Column(children: list),
+        decoration: BoxDecoration(border: Border.all(color: color)),
+      );
+    }
+    return Column(children: list);
+  }
 }
 
-// also act as EmbedMessageOneofInputs by implementing InputList
-abstract class Inputs<T extends GeneratedMessage> implements InputList {
-  static FormFieldValidator catcher(VoidCallback fn) => (v) => catchError(fn);
-
+// for every leaf
+abstract class Inputs<T extends GeneratedMessage> implements InputsBase<T> {
   static String catchError(VoidCallback fn) {
     try {
       fn();
@@ -450,8 +266,12 @@ abstract class Inputs<T extends GeneratedMessage> implements InputList {
     return null;
   }
 
+  final String path;
   final FormMessageData data;
-  Inputs(this.data);
+  final SubmitError err;
+  final ErrorCoderGetter coder;
+  final PgdeLocalizations pgdeL10n;
+  Inputs(this.path, this.data, this.err, this.coder, this.pgdeL10n);
 
   T _draft;
   T get draft => _draft ??= data.draft(createEmptyDraft);
@@ -466,11 +286,51 @@ abstract class Inputs<T extends GeneratedMessage> implements InputList {
 
   CreateEmptyDraftFunc<T> get createEmptyDraft;
 
+  FormFieldValidator validator(int tag, VoidCallback fn) {
+    if (err.path == '${this.path}/$tag') {
+      if (err.when == null) err.when = data.editing.getField(tag);
+      return (v) {
+        if (err.when == v)
+          return errorText(pgdeL10n, coder.of(T), err.code, err.message);
+        return Inputs.catchError(fn);
+      };
+    }
+    return (v) => Inputs.catchError(fn);
+  }
+
   @override
   List<Widget> build(BuildContext context);
 }
 
-// for non-embed-message, list, map
+class SelectSource extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+        // TODO
+        );
+  }
+}
+
+class InfiniteSelectSource extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return InfiniteListView(
+      nextList: (page) {
+        return size;
+      },
+    );
+  }
+}
+
+class SelectDest extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+}
+
+// for select one/many field
 class ChildFieldEntryWidget extends StatelessWidget {
   // data from childMessage
   final FormMessageData data;

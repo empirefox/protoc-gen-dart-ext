@@ -129,7 +129,7 @@ func NewFile(c FileConfig) (*File, error) {
 		if rpcNty.IsElement() {
 			p, ok := nty.Pgs.Parent().(pgs.Message)
 			if !ok {
-				return nil, fmt.Errorf("Element must be defined under View: %s",
+				return nil, fmt.Errorf("Element must be defined under View Message: %s",
 					nty.Pgs.FullyQualifiedName())
 			}
 

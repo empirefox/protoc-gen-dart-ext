@@ -14,7 +14,7 @@ const BasicPayload_GetResp$json = const {
   '1': 'GetResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 1, '5': 11, '6': '.hybrid.Basic', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.OperateError', '10': 'error'},
   ],
 };
 
@@ -27,7 +27,7 @@ const IpfsPayload_GetResp$json = const {
   '1': 'GetResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 1, '5': 11, '6': '.hybrid.Ipfs', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.OperateError', '10': 'error'},
   ],
 };
 
@@ -47,7 +47,7 @@ const LogPayload_GetResp$json = const {
   '1': 'GetResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 1, '5': 11, '6': '.hybrid.Log', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.OperateError', '10': 'error'},
   ],
 };
 
@@ -60,7 +60,7 @@ const LogPayload_View_SrcResp$json = const {
   '1': 'SrcResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 3, '5': 11, '6': '.hybrid.Log.View', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.OperateError', '10': 'error'},
   ],
 };
 
@@ -68,7 +68,7 @@ const LogPayload_View_AddResp$json = const {
   '1': 'AddResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 1, '5': 11, '6': '.hybrid.Log.View', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.SubmitError', '10': 'error'},
   ],
 };
 
@@ -88,7 +88,7 @@ const IpfsServerPayload_GetResp$json = const {
   '1': 'GetResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 1, '5': 11, '6': '.hybrid.IpfsServer', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.OperateError', '10': 'error'},
   ],
 };
 
@@ -101,7 +101,7 @@ const IpfsServerPayload_View_SrcResp$json = const {
   '1': 'SrcResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 3, '5': 11, '6': '.hybrid.IpfsServer.View', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.OperateError', '10': 'error'},
   ],
 };
 
@@ -109,13 +109,13 @@ const IpfsServerPayload_View_AddResp$json = const {
   '1': 'AddResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 1, '5': 11, '6': '.hybrid.IpfsServer.View', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.SubmitError', '10': 'error'},
   ],
 };
 
 const FileServerPayload$json = const {
   '1': 'FileServerPayload',
-  '3': const [FileServerPayload_SrcId$json, FileServerPayload_GetResp$json, FileServerPayload_View$json],
+  '3': const [FileServerPayload_SrcId$json, FileServerPayload_SrcIds$json, FileServerPayload_GetResp$json, FileServerPayload_View$json],
 };
 
 const FileServerPayload_SrcId$json = const {
@@ -125,11 +125,18 @@ const FileServerPayload_SrcId$json = const {
   ],
 };
 
+const FileServerPayload_SrcIds$json = const {
+  '1': 'SrcIds',
+  '2': const [
+    const {'1': 'ids', '3': 1, '4': 3, '5': 13, '10': 'ids'},
+  ],
+};
+
 const FileServerPayload_GetResp$json = const {
   '1': 'GetResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 1, '5': 11, '6': '.hybrid.FileServer', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.OperateError', '10': 'error'},
   ],
 };
 
@@ -142,7 +149,7 @@ const FileServerPayload_View_SrcResp$json = const {
   '1': 'SrcResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 3, '5': 11, '6': '.hybrid.FileServer.View', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.OperateError', '10': 'error'},
   ],
 };
 
@@ -150,7 +157,7 @@ const FileServerPayload_View_AddResp$json = const {
   '1': 'AddResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 1, '5': 11, '6': '.hybrid.FileServer.View', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.SubmitError', '10': 'error'},
   ],
 };
 
@@ -170,7 +177,7 @@ const HttpProxyServerPayload_GetResp$json = const {
   '1': 'GetResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 1, '5': 11, '6': '.hybrid.HttpProxyServer', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.OperateError', '10': 'error'},
   ],
 };
 
@@ -183,7 +190,7 @@ const HttpProxyServerPayload_View_SrcResp$json = const {
   '1': 'SrcResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 3, '5': 11, '6': '.hybrid.HttpProxyServer.View', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.OperateError', '10': 'error'},
   ],
 };
 
@@ -191,7 +198,7 @@ const HttpProxyServerPayload_View_AddResp$json = const {
   '1': 'AddResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 1, '5': 11, '6': '.hybrid.HttpProxyServer.View', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.SubmitError', '10': 'error'},
   ],
 };
 
@@ -213,7 +220,7 @@ const ServerViewPayload_SrcResp$json = const {
   '1': 'SrcResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 3, '5': 11, '6': '.hybrid.ServerView', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.OperateError', '10': 'error'},
   ],
 };
 
@@ -230,7 +237,7 @@ const ServerViewPayload_GroupResp$json = const {
   '1': 'GroupResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 1, '5': 11, '6': '.hybrid.ServerViewPayload.Group', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.OperateError', '10': 'error'},
   ],
 };
 
@@ -250,7 +257,7 @@ const ServerViewPayload_GetResp$json = const {
   '1': 'GetResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 1, '5': 11, '6': '.hybrid.ServerViewPayload.SrcElement', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.OperateError', '10': 'error'},
   ],
 };
 
@@ -258,7 +265,7 @@ const ServerViewPayload_AddResp$json = const {
   '1': 'AddResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 1, '5': 11, '6': '.hybrid.ServerView', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.OperateError', '10': 'error'},
   ],
 };
 
@@ -278,7 +285,7 @@ const AdpRouterPayload_GetResp$json = const {
   '1': 'GetResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 1, '5': 11, '6': '.hybrid.AdpRouter', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.OperateError', '10': 'error'},
   ],
 };
 
@@ -291,7 +298,7 @@ const AdpRouterPayload_View_SrcResp$json = const {
   '1': 'SrcResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 3, '5': 11, '6': '.hybrid.AdpRouter.View', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.OperateError', '10': 'error'},
   ],
 };
 
@@ -299,7 +306,7 @@ const AdpRouterPayload_View_AddResp$json = const {
   '1': 'AddResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 1, '5': 11, '6': '.hybrid.AdpRouter.View', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.SubmitError', '10': 'error'},
   ],
 };
 
@@ -319,7 +326,7 @@ const IPNetRouterPayload_GetResp$json = const {
   '1': 'GetResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 1, '5': 11, '6': '.hybrid.IPNetRouter', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.OperateError', '10': 'error'},
   ],
 };
 
@@ -332,7 +339,7 @@ const IPNetRouterPayload_View_SrcResp$json = const {
   '1': 'SrcResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 3, '5': 11, '6': '.hybrid.IPNetRouter.View', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.OperateError', '10': 'error'},
   ],
 };
 
@@ -340,7 +347,7 @@ const IPNetRouterPayload_View_AddResp$json = const {
   '1': 'AddResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 1, '5': 11, '6': '.hybrid.IPNetRouter.View', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.SubmitError', '10': 'error'},
   ],
 };
 
@@ -353,7 +360,7 @@ const RouterUseViewPayload_SrcResp$json = const {
   '1': 'SrcResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 3, '5': 11, '6': '.hybrid.RouterUseView', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.OperateError', '10': 'error'},
   ],
 };
 
@@ -369,7 +376,7 @@ const RouterUseViewPayload_GroupResp$json = const {
   '1': 'GroupResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 1, '5': 11, '6': '.hybrid.RouterUseViewPayload.Group', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.OperateError', '10': 'error'},
   ],
 };
 
@@ -388,7 +395,7 @@ const RouterUseViewPayload_GetResp$json = const {
   '1': 'GetResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 1, '5': 11, '6': '.hybrid.RouterUseViewPayload.SrcElement', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.OperateError', '10': 'error'},
   ],
 };
 
@@ -396,7 +403,7 @@ const RouterUseViewPayload_AddResp$json = const {
   '1': 'AddResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 1, '5': 11, '6': '.hybrid.RouterUseView', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.OperateError', '10': 'error'},
   ],
 };
 
@@ -411,7 +418,7 @@ const RouterUseViewPayload_DstResp$json = const {
   '1': 'DstResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 3, '5': 11, '6': '.hybrid.RouterUseView.Element', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.OperateError', '10': 'error'},
   ],
 };
 
@@ -419,7 +426,7 @@ const RouterUseViewPayload_SelectResp$json = const {
   '1': 'SelectResp',
   '2': const [
     const {'1': 'data', '3': 1, '4': 1, '5': 11, '6': '.hybrid.RouterUseView.Element', '10': 'data'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.BackendError', '10': 'error'},
+    const {'1': 'error', '3': 2, '4': 1, '5': 11, '6': '.pgde.error.SubmitError', '10': 'error'},
   ],
 };
 

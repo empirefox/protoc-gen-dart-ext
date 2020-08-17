@@ -6,6 +6,11 @@ import 'package:intl/intl.dart';
 class Translator {
   const Translator._();
 
+  String get noMoreText => Intl.message(
+        'No More',
+        desc: 'show user there is no more item',
+        name: 'noMoreText',
+      );
   String get retry => Intl.message(
         'Retry',
         desc: 'retry when errors occur',

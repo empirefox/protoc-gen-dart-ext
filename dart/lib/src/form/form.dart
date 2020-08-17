@@ -1,6 +1,7 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:grpc/grpc.dart' show CallOptions, ResponseFuture;
+import 'package:pgde/pgde.dart';
 import 'package:protobuf/protobuf.dart' show GeneratedMessage;
 
 import '../l10n.dart';
@@ -303,21 +304,62 @@ abstract class Inputs<T extends GeneratedMessage> implements InputsBase<T> {
 }
 
 class SelectSource extends StatelessWidget {
+  @required
+  final GetListFunc getList;
+  @required
+  final IndexedWidgetBuilder itemBuilder;
+  final double separatorHeight;
+
+  const SelectSource(
+      {Key key, this.getList, this.itemBuilder, this.separatorHeight})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return ListView(
-        // TODO
-        );
+    // TODO groupByType?
+    return OneTimeListView(
+      getList: getList,
+      retryTimeoutSecond: PgdeConfig.global.retryTimeoutSecond,
+      onRetry: null,
+      itemBuilder: _buildItem,
+      noMoreText: PgdeLocalizations.of(context).formNoMoreText,
+      separatorHeight: separatorHeight,
+    );
+  }
+
+  Widget _buildItem(BuildContext context, int idx) {
+    // TODO onClick?
+    return itemBuilder(context, idx);
   }
 }
 
 class InfiniteSelectSource extends StatelessWidget {
+  @required
+  final NextListFunc nextList;
+  @required
+  final IndexedWidgetBuilder itemBuilder;
+  final double separatorHeight;
+  @required
+  final int rows;
+
+  const InfiniteSelectSource(
+      {Key key,
+      this.nextList,
+      this.itemBuilder,
+      this.separatorHeight,
+      this.rows})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return InfiniteListView(
-      nextList: (page) {
-        return size;
-      },
+      nextList: nextList,
+      retryTimeoutSecond: PgdeConfig.global.retryTimeoutSecond,
+      onRetry: null,
+      itemBuilder: itemBuilder,
+      noMoreText: PgdeLocalizations.of(context).formNoMoreText,
+      separatorHeight: separatorHeight,
+      rows: rows,
     );
   }
 }

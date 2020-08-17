@@ -241,6 +241,7 @@ message Field {
 }
 
 message SourceList {
+  double separatorHeight = 1;
   uint32 rows = 2;
   bool remove = 3;
   bool groupByType = 6;

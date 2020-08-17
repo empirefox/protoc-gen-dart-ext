@@ -1,5 +1,6 @@
 library pgde;
 
+export 'src/config.dart';
 export 'src/form.dart';
 export 'src/format.dart';
 export 'src/l10n.dart';
